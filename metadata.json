@@ -1,0 +1,6 @@
+{
+  "name": "Ford Explorer 2004 3D Manual",
+  "description": "Interactive 3D model, component repair manuals, color-coded engine systems, diagnostics wizard, and maintenance scheduler for 2004 Ford Explorer Sport Trac.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
