@@ -16,17 +16,21 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.data.SportTracData
+import com.example.data.local.AppDatabase
 import com.example.model.Component3DModel
 import com.example.model.VehicleSystem
 import com.example.ui.components.ColorSegmentBar
 import com.example.ui.components.ComponentDetailSheet
 import com.example.ui.components.FourWheelDriveDiagram
+import com.example.ui.components.MentorModeDialog
 import com.example.ui.components.TorqueSpecsQuickReference
+import kotlinx.coroutines.launch
 
 enum class RepairManualTab {
     PART_GUIDES,
@@ -46,8 +50,21 @@ fun RepairManualScreen(
     onAddToCart: ((Component3DModel) -> Unit)? = null,
     modifier: Modifier = Modifier
 ) {
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    val db = remember { AppDatabase.getDatabase(context) }
+    val savedChecklists by db.repairChecklistDao().getAllChecklists().collectAsState(initial = emptyList())
+
     var selectedTab by remember { mutableStateOf(RepairManualTab.PART_GUIDES) }
     var activeComponentForSheet by remember { mutableStateOf<Component3DModel?>(null) }
+    var activeMentorComponent by remember { mutableStateOf<Component3DModel?>(null) }
+
+    if (activeMentorComponent != null) {
+        MentorModeDialog(
+            component = activeMentorComponent!!,
+            onDismiss = { activeMentorComponent = null }
+        )
+    }
 
     if (activeComponentForSheet != null) {
         ComponentDetailSheet(
@@ -259,12 +276,135 @@ fun RepairManualScreen(
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        // Component List
+        // Component List & Saved Progress Checklists
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
+            // Saved Active Repair Checklists (Room Persistence Layer)
+            if (savedChecklists.isNotEmpty()) {
+                item {
+                    Surface(
+                        color = Color(0xFF0F2942),
+                        shape = RoundedCornerShape(16.dp),
+                        border = BorderStroke(1.5.dp, Color(0xFF10B981)),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 8.dp)
+                            .testTag("saved_checklists_section")
+                    ) {
+                        Column(modifier = Modifier.padding(14.dp)) {
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Icon(Icons.Default.Save, contentDescription = null, tint = Color(0xFF10B981), modifier = Modifier.size(18.dp))
+                                    Spacer(modifier = Modifier.width(8.dp))
+                                    Text(
+                                        text = "RESUMABLE REPAIR PROCEDURES",
+                                        style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold, letterSpacing = 0.5.sp),
+                                        color = Color(0xFF10B981)
+                                    )
+                                }
+
+                                Surface(
+                                    color = Color(0xFF064E3B),
+                                    shape = RoundedCornerShape(6.dp)
+                                ) {
+                                    Text(
+                                        text = "${savedChecklists.size} SAVED",
+                                        style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
+                                        color = Color(0xFF34D399),
+                                        modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
+                                    )
+                                }
+                            }
+
+                            Spacer(modifier = Modifier.height(10.dp))
+
+                            savedChecklists.forEach { savedItem ->
+                                val targetComp = components.firstOrNull { it.id == savedItem.componentId }
+                                Surface(
+                                    color = Color(0xFF1E293B),
+                                    shape = RoundedCornerShape(12.dp),
+                                    border = BorderStroke(1.dp, Color(0xFF334155)),
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(vertical = 4.dp)
+                                ) {
+                                    Column(modifier = Modifier.padding(12.dp)) {
+                                        Row(
+                                            modifier = Modifier.fillMaxWidth(),
+                                            horizontalArrangement = Arrangement.SpaceBetween,
+                                            verticalAlignment = Alignment.CenterVertically
+                                        ) {
+                                            Column(modifier = Modifier.weight(1f)) {
+                                                Text(
+                                                    text = savedItem.componentName,
+                                                    style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
+                                                    color = Color.White
+                                                )
+                                                Text(
+                                                    text = "Saved Step ${savedItem.currentStepIndex + 1} of ${savedItem.totalSteps}",
+                                                    style = MaterialTheme.typography.labelSmall,
+                                                    color = Color(0xFF38BDF8)
+                                                )
+                                            }
+
+                                            Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                                                IconButton(
+                                                    onClick = {
+                                                        scope.launch {
+                                                            db.repairChecklistDao().deleteChecklist(savedItem.componentId)
+                                                        }
+                                                    },
+                                                    modifier = Modifier.size(32.dp)
+                                                ) {
+                                                    Icon(Icons.Default.Delete, contentDescription = "Delete Progress", tint = Color(0xFFEF4444), modifier = Modifier.size(16.dp))
+                                                }
+
+                                                Button(
+                                                    onClick = {
+                                                        val comp = targetComp ?: components.firstOrNull()
+                                                        if (comp != null) {
+                                                            activeMentorComponent = comp
+                                                        }
+                                                    },
+                                                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF10B981)),
+                                                    contentPadding = PaddingValues(horizontal = 10.dp, vertical = 4.dp),
+                                                    modifier = Modifier.height(32.dp)
+                                                ) {
+                                                    Icon(Icons.Default.PlayArrow, contentDescription = null, modifier = Modifier.size(14.dp))
+                                                    Spacer(modifier = Modifier.width(4.dp))
+                                                    Text("Resume", style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold))
+                                                }
+                                            }
+                                        }
+
+                                        Spacer(modifier = Modifier.height(6.dp))
+                                        val percent = if (savedItem.totalSteps > 0) {
+                                            ((savedItem.currentStepIndex + 1) * 100) / savedItem.totalSteps
+                                        } else 0
+                                        LinearProgressIndicator(
+                                            progress = { if (savedItem.totalSteps > 0) (savedItem.currentStepIndex + 1).toFloat() / savedItem.totalSteps else 0f },
+                                            modifier = Modifier
+                                                .fillMaxWidth()
+                                                .height(4.dp)
+                                                .clip(RoundedCornerShape(2.dp)),
+                                            color = Color(0xFF10B981),
+                                            trackColor = Color(0xFF334155)
+                                        )
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
             items(components) { comp ->
                 Surface(
                     modifier = Modifier

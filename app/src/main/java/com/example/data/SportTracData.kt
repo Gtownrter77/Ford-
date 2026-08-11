@@ -2,6 +2,7 @@ package com.example.data
 
 import com.example.data.local.MaintenanceEntity
 import com.example.model.*
+import com.example.util.SubAssemblyMeshGenerator
 
 object SportTracData {
 
@@ -95,6 +96,216 @@ object SportTracData {
         return Pair(vertices, faces)
     }
 
+    private fun generateSubAssemblies(id: String): List<SubAssemblyPart> {
+        return when (id) {
+            "engine_block" -> listOf(
+                SubAssemblyMeshGenerator.createGasketSubAssembly(
+                    id = "head_gasket_left",
+                    name = "Left Cylinder Head Multi-Layer Steel Gasket",
+                    width = 1.8f, depth = 1.0f, thickness = 0.03f,
+                    localOffset = Point3D(-0.4f, 0.4f, 0.2f),
+                    explodeDir = Point3D(-0.5f, 0.8f, 0.2f),
+                    explodeMultiplier = 1.8f,
+                    colorHex = "#38BDF8",
+                    specDetails = "MLS 3-Ply Cylinder Head Gasket • OEM #1L2Z-6051-BA"
+                ),
+                SubAssemblyMeshGenerator.createGasketSubAssembly(
+                    id = "head_gasket_right",
+                    name = "Right Cylinder Head Multi-Layer Steel Gasket",
+                    width = 1.8f, depth = 1.0f, thickness = 0.03f,
+                    localOffset = Point3D(0.4f, 0.4f, 0.2f),
+                    explodeDir = Point3D(0.5f, 0.8f, 0.2f),
+                    explodeMultiplier = 1.8f,
+                    colorHex = "#38BDF8",
+                    specDetails = "MLS 3-Ply Cylinder Head Gasket • OEM #1L2Z-6051-AA"
+                ),
+                SubAssemblyMeshGenerator.createHexBoltSubAssembly(
+                    id = "head_bolt_1",
+                    name = "Cylinder Head TTY Flange Bolt M11",
+                    headRadius = 0.12f, shankRadius = 0.06f, shankLength = 0.5f,
+                    localOffset = Point3D(-0.6f, 0.7f, 0.5f),
+                    explodeDir = Point3D(-0.6f, 1.2f, 0.5f),
+                    explodeMultiplier = 3.6f,
+                    colorHex = "#CBD5E1",
+                    specDetails = "M11x1.50 TTY Head Bolt • Torque: 26 lb-ft + 90 deg"
+                ),
+                SubAssemblyMeshGenerator.createHexBoltSubAssembly(
+                    id = "head_bolt_2",
+                    name = "Cylinder Head TTY Flange Bolt M11",
+                    headRadius = 0.12f, shankRadius = 0.06f, shankLength = 0.5f,
+                    localOffset = Point3D(0.6f, 0.7f, 0.5f),
+                    explodeDir = Point3D(0.6f, 1.2f, 0.5f),
+                    explodeMultiplier = 3.6f,
+                    colorHex = "#CBD5E1",
+                    specDetails = "M11x1.50 TTY Head Bolt • Torque: 26 lb-ft + 90 deg"
+                ),
+                SubAssemblyMeshGenerator.createWasherSubAssembly(
+                    id = "head_washer_1",
+                    name = "Hardened Steel Head Bolt Washer",
+                    innerRadius = 0.07f, outerRadius = 0.16f,
+                    localOffset = Point3D(-0.6f, 0.55f, 0.5f),
+                    explodeDir = Point3D(-0.6f, 1.0f, 0.5f),
+                    explodeMultiplier = 2.7f,
+                    colorHex = "#E2E8F0",
+                    specDetails = "M11 Hardened Steel Washer"
+                ),
+                SubAssemblyMeshGenerator.createWasherSubAssembly(
+                    id = "head_washer_2",
+                    name = "Hardened Steel Head Bolt Washer",
+                    innerRadius = 0.07f, outerRadius = 0.16f,
+                    localOffset = Point3D(0.6f, 0.55f, 0.5f),
+                    explodeDir = Point3D(0.6f, 1.0f, 0.5f),
+                    explodeMultiplier = 2.7f,
+                    colorHex = "#E2E8F0",
+                    specDetails = "M11 Hardened Steel Washer"
+                )
+            )
+            "intake_manifold" -> listOf(
+                SubAssemblyMeshGenerator.createGasketSubAssembly(
+                    id = "intake_port_gasket_1",
+                    name = "Molded Silicone Intake Runner Port Seal",
+                    width = 1.2f, depth = 0.6f, thickness = 0.04f,
+                    localOffset = Point3D(0f, 0.1f, 0f),
+                    explodeDir = Point3D(0f, 1.2f, 0f),
+                    explodeMultiplier = 1.8f,
+                    colorHex = "#00F0FF",
+                    specDetails = "Press-In Silicone Rubber Port Seal • OEM #2L2Z-9441-AA"
+                ),
+                SubAssemblyMeshGenerator.createHexBoltSubAssembly(
+                    id = "intake_bolt_1",
+                    name = "Lower Intake Mounting Hex Flange Bolt",
+                    headRadius = 0.10f, shankRadius = 0.04f, shankLength = 0.35f,
+                    localOffset = Point3D(-0.5f, 0.4f, 0.3f),
+                    explodeDir = Point3D(-0.5f, 1.5f, 0.3f),
+                    explodeMultiplier = 3.5f,
+                    colorHex = "#CBD5E1",
+                    specDetails = "M6x1.00 Flange Bolt • Torque: 89 in-lbs"
+                ),
+                SubAssemblyMeshGenerator.createHexBoltSubAssembly(
+                    id = "intake_bolt_2",
+                    name = "Lower Intake Mounting Hex Flange Bolt",
+                    headRadius = 0.10f, shankRadius = 0.04f, shankLength = 0.35f,
+                    localOffset = Point3D(0.5f, 0.4f, 0.3f),
+                    explodeDir = Point3D(0.5f, 1.5f, 0.3f),
+                    explodeMultiplier = 3.5f,
+                    colorHex = "#CBD5E1",
+                    specDetails = "M6x1.00 Flange Bolt • Torque: 89 in-lbs"
+                ),
+                SubAssemblyMeshGenerator.createWasherSubAssembly(
+                    id = "intake_washer_1",
+                    name = "Belleville Intake Lock Washer",
+                    innerRadius = 0.05f, outerRadius = 0.12f,
+                    localOffset = Point3D(-0.5f, 0.28f, 0.3f),
+                    explodeDir = Point3D(-0.5f, 1.1f, 0.3f),
+                    explodeMultiplier = 2.5f,
+                    colorHex = "#E2E8F0",
+                    specDetails = "M6 Belleville Lock Washer"
+                )
+            )
+            "thermostat_housing" -> listOf(
+                SubAssemblyMeshGenerator.createGasketSubAssembly(
+                    id = "stat_o_ring",
+                    name = "Thermostat Housing Rubber O-Ring Seal",
+                    width = 0.5f, depth = 0.5f, thickness = 0.03f,
+                    localOffset = Point3D(0f, -0.1f, 0f),
+                    explodeDir = Point3D(0f, 1.2f, 0f),
+                    explodeMultiplier = 1.7f,
+                    colorHex = "#F97316",
+                    specDetails = "Viton Thermostat O-Ring Seal • OEM #F87Z-8255-AA"
+                ),
+                SubAssemblyMeshGenerator.createHexBoltSubAssembly(
+                    id = "stat_bolt_1",
+                    name = "Thermostat Housing Mounting Bolt",
+                    headRadius = 0.09f, shankRadius = 0.04f, shankLength = 0.30f,
+                    localOffset = Point3D(-0.25f, 0.25f, 0.2f),
+                    explodeDir = Point3D(-0.3f, 1.4f, 0.2f),
+                    explodeMultiplier = 3.4f,
+                    colorHex = "#CBD5E1",
+                    specDetails = "M6x1.0 Flange Bolt • Torque: 89 in-lbs"
+                ),
+                SubAssemblyMeshGenerator.createWasherSubAssembly(
+                    id = "stat_washer_1",
+                    name = "Sealing Flat Washer",
+                    innerRadius = 0.045f, outerRadius = 0.11f,
+                    localOffset = Point3D(-0.25f, 0.15f, 0.2f),
+                    explodeDir = Point3D(-0.3f, 1.0f, 0.2f),
+                    explodeMultiplier = 2.4f,
+                    colorHex = "#E2E8F0",
+                    specDetails = "M6 Stainless Flat Washer"
+                )
+            )
+            "water_pump", "radiator_assembly" -> listOf(
+                SubAssemblyMeshGenerator.createGasketSubAssembly(
+                    id = "wp_gasket",
+                    name = "Water Pump Flange Paper/Silicone Gasket",
+                    width = 0.7f, depth = 0.6f, thickness = 0.02f,
+                    localOffset = Point3D(0f, 0f, -0.1f),
+                    explodeDir = Point3D(0f, 0f, 1.4f),
+                    explodeMultiplier = 1.8f,
+                    colorHex = "#38BDF8",
+                    specDetails = "Molded Paper Gasket with Silicone Bead"
+                ),
+                SubAssemblyMeshGenerator.createSerpentineBeltSubAssembly(
+                    id = "serpentine_belt",
+                    name = "6-Rib EPDM Serpentine Accessory Drive Belt",
+                    pulleyCenters = listOf(
+                        Point3D(-0.6f, 0.5f, 0.1f),
+                        Point3D(0.6f, 0.5f, 0.1f),
+                        Point3D(0.5f, -0.4f, 0.1f),
+                        Point3D(-0.5f, -0.4f, 0.1f)
+                    ),
+                    localOffset = Point3D(0f, 0f, 0.3f),
+                    explodeDir = Point3D(0f, 0f, 1f),
+                    explodeMultiplier = 2.4f,
+                    colorHex = "#1E293B",
+                    specDetails = "Motorcraft JK6-825 6-Rib Belt"
+                ),
+                SubAssemblyMeshGenerator.createHexBoltSubAssembly(
+                    id = "wp_bolt_1",
+                    name = "Water Pump Flange Bolt",
+                    headRadius = 0.09f, shankRadius = 0.04f, shankLength = 0.32f,
+                    localOffset = Point3D(-0.25f, 0.2f, 0.25f),
+                    explodeDir = Point3D(-0.25f, 0.2f, 1.5f),
+                    explodeMultiplier = 3.5f,
+                    colorHex = "#CBD5E1",
+                    specDetails = "M6x1.00 Flange Bolt • Torque: 89 in-lbs"
+                )
+            )
+            else -> listOf(
+                SubAssemblyMeshGenerator.createGasketSubAssembly(
+                    id = "${id}_gasket",
+                    name = "Component Flange Seal Gasket",
+                    width = 0.8f, depth = 0.5f, thickness = 0.03f,
+                    localOffset = Point3D(0f, -0.05f, 0f),
+                    explodeDir = Point3D(0f, 1.2f, 0f),
+                    explodeMultiplier = 1.8f,
+                    colorHex = "#38BDF8",
+                    specDetails = "OEM Rubber Flange Seal"
+                ),
+                SubAssemblyMeshGenerator.createHexBoltSubAssembly(
+                    id = "${id}_bolt_1",
+                    name = "OEM Mounting Hex Flange Bolt",
+                    headRadius = 0.09f, shankRadius = 0.04f, shankLength = 0.30f,
+                    localOffset = Point3D(-0.3f, 0.2f, 0.2f),
+                    explodeDir = Point3D(-0.3f, 1.4f, 0.2f),
+                    explodeMultiplier = 3.4f,
+                    colorHex = "#CBD5E1",
+                    specDetails = "M8 Flange Bolt • Torque: 18 lb-ft"
+                ),
+                SubAssemblyMeshGenerator.createWasherSubAssembly(
+                    id = "${id}_washer_1",
+                    name = "Belleville Lock Washer",
+                    innerRadius = 0.045f, outerRadius = 0.11f,
+                    localOffset = Point3D(-0.3f, 0.1f, 0.2f),
+                    explodeDir = Point3D(-0.3f, 1.0f, 0.2f),
+                    explodeMultiplier = 2.4f,
+                    colorHex = "#E2E8F0",
+                    specDetails = "M8 Lock Washer"
+                )
+            )
+        }
+    }
+
     val components = listOf(
         // 1. ENGINE BLOCK & CYLINDER HEADS
         run {
@@ -126,7 +337,8 @@ object SportTracData {
                     RepairStep(4, "Head Bolt Extraction", "Loosen head bolts in reverse order of tightening sequence.")
                 ),
                 commonSymptoms = listOf("Engine timing chain tensioner rattle on startup", "Oil leaks from valve cover gaskets", "Compression loss across cylinders"),
-                replacementIntervalMiles = 200000
+                replacementIntervalMiles = 200000,
+                subAssemblies = generateSubAssemblies("engine_block")
             )
         },
 
@@ -654,6 +866,1242 @@ object SportTracData {
                 commonSymptoms = listOf("Power steering fluid leaking from bellows boots onto lower control arms", "Whining or groaning noise when turning steering wheel", "Excessive play or wandering steering on highway"),
                 replacementIntervalMiles = 120000
             )
+        },
+
+        // 17. BRAKE MASTER CYLINDER, VACUUM BOOSTER & ABS MODULE
+        run {
+            val (v, f) = createCylinderMesh(0.6f, 1.4f, 8, Point3D(-0.7f, 0.7f, 0.4f), "#EF4444")
+            Component3DModel(
+                id = "abs_master_cylinder_3d",
+                name = "Brake Master Cylinder, Power Vacuum Booster & 4-Wheel ABS Pump",
+                system = VehicleSystem.BRAKES_CHASSIS,
+                oemPartNumber = "1L2Z-2140-AB",
+                description = "Cast aluminum dual-reservoir brake master cylinder, 10-inch vacuum power booster diaphragm, and 4-channel hydraulic anti-lock brake pump control module.",
+                locationDescription = "Driver side engine firewall directly behind brake pedal arm.",
+                difficulty = "Intermediate",
+                estimatedTimeMinutes = 120,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(-0.7f, 0.7f, 0.4f),
+                explodeVector = Point3D(-1.4f, 1.2f, 0.4f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Master Cylinder Mounting Nuts to Booster", "18", "25", "Replace paper seal gasket"),
+                    TorqueSpec("Brake Fluid Line Fitting Nuts", "14", "19", "Use 3/8-in & 7/16-in flare nut wrenches"),
+                    TorqueSpec("ABS Module Hydraulic Unit Bolts", "89 in-lbs", "10 Nm", "")
+                ),
+                requiredTools = listOf("Flare Nut Wrench Set", "Brake Bleeder Kit", "DOT 3 / DOT 4 Brake Fluid", "FORScan / OBD scanner for ABS pump bleed"),
+                repairSteps = listOf(
+                    RepairStep(1, "Syphon Old Brake Fluid", "Extract dark degraded fluid from master cylinder translucent reservoir with turkey baster or syringe."),
+                    RepairStep(2, "Disconnect Brake Lines", "Unscrew two hydraulic flare line fittings on master cylinder body using flare nut wrench to prevent rounding nuts.", warning = "Brake fluid damages automotive body paint on contact. Wipe up any spills immediately with soapy water."),
+                    RepairStep(3, "Unbolt Booster Nuts", "Unscrew two 13mm nuts securing master cylinder to vacuum booster shell."),
+                    RepairStep(4, "Bench Bleed New Master Cylinder", "Bench bleed new master cylinder with clear tubing loops before installing onto truck to purge air pockets."),
+                    RepairStep(5, "Bleed 4 Wheel Calipers", "Bleed brakes in order: Right Rear, Left Rear, Right Front, Left Front until pedal feels rock solid.")
+                ),
+                commonSymptoms = listOf("Brake pedal slowly sinks to floorboard at stoplights", "ABS warning light illuminated on dashboard", "Spongy brake pedal feel after replacing brake pads"),
+                replacementIntervalMiles = 60000
+            )
+        },
+
+        // 18. REAR DISC / DRUM BRAKES & PARKING BRAKE SHOES
+        run {
+            val (v, f) = createBoxMesh(2.6f, 0.8f, 1.0f, Point3D(0f, -0.9f, -3.6f), "#EF4444")
+            Component3DModel(
+                id = "rear_brakes_3d",
+                name = "Rear Disc Brakes & Internal Drum Parking Brake Shoes",
+                system = VehicleSystem.BRAKES_CHASSIS,
+                oemPartNumber = "2L2Z-2200-AA",
+                description = "Solid rear brake rotors with integrated hat drum for parking brake shoes, single-piston calipers, and mechanical emergency brake tension cables.",
+                locationDescription = "Rear axle ends behind 16-inch alloy wheels.",
+                difficulty = "Intermediate",
+                estimatedTimeMinutes = 90,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0f, -0.9f, -3.6f),
+                explodeVector = Point3D(0f, -1.5f, -4.2f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Rear Caliper Mounting Pins", "26", "35", "Apply silicone brake lubricant"),
+                    TorqueSpec("Rear Caliper Bracket Bolts", "70", "95", "Apply threadlocker"),
+                    TorqueSpec("Wheel Lug Nuts", "100", "135", "Torque to 100 lb-ft")
+                ),
+                requiredTools = listOf("12mm & 15mm Sockets", "Brake Caliper Piston Press", "Parking Brake Spring Pliers", "Brake Cleaner Spray"),
+                repairSteps = listOf(
+                    RepairStep(1, "Release Parking Brake Cable", "Ensure emergency handbrake lever inside cab is completely released."),
+                    RepairStep(2, "Remove Rear Caliper & Bracket", "Unbolt two 12mm guide pins and two 15mm anchor bracket bolts to detach rear caliper assembly."),
+                    RepairStep(3, "Slide Off Rotor Hat", "Pull rotor straight off axle studs. If stuck, thread M8 bolts into threaded rotor removal holes to push off hub."),
+                    RepairStep(4, "Inspect Parking Brake Shoes", "Check internal drum shoe lining thickness and adjust star-wheel star gear tensioner."),
+                    RepairStep(5, "Compress Piston & Reassemble", "Push single caliper piston back into bore and assemble with fresh ceramic brake pads.")
+                ),
+                commonSymptoms = listOf("Grinding noise from rear axle when stopping", "Parking brake pedal goes all the way to floor without holding truck on hill", "Rear wheel hot to touch from dragging caliper"),
+                replacementIntervalMiles = 45000
+            )
+        },
+
+        // 19. STAINLESS STEEL CAT-BACK EXHAUST MUFFLER & TAILPIPE
+        run {
+            val (v, f) = createCylinderMesh(0.7f, 3.4f, 8, Point3D(0.5f, -0.7f, -2.2f), "#FF6F00")
+            Component3DModel(
+                id = "catback_exhaust_muffler_3d",
+                name = "Stainless Steel Cat-Back Exhaust Muffler & Mandrel Tailpipe",
+                system = VehicleSystem.ENGINE,
+                oemPartNumber = "2L2Z-5230-AA",
+                description = "Full 2.5-inch aluminized / stainless steel replacement exhaust system including acoustic chamber muffler, tailpipe over rear axle, and heavy-duty rubber isolator hangers.",
+                locationDescription = "Under vehicle center body extending from Y-pipe catalytic converter outlet to passenger side rear bumper.",
+                difficulty = "Intermediate",
+                estimatedTimeMinutes = 90,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0.5f, -0.7f, -2.2f),
+                explodeVector = Point3D(1.8f, -0.7f, -2.2f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Exhaust Flange Clamp Bolts", "35", "47", "Use heavy duty U-bolt clamps"),
+                    TorqueSpec("Cat-Back Inlet Flange Nuts", "30", "41", "Apply high temp anti-seize")
+                ),
+                requiredTools = listOf("Exhaust Hanger Removal Pliers", "Sawzall / Reciprocating Saw (if replacing rusted stock pipe)", "15mm & 16mm Sockets", "Penetrating Fluid"),
+                repairSteps = listOf(
+                    RepairStep(1, "Spray Exhaust Hangers", "Soak rubber isolation hangers in soapy water or silicone spray for easy sliding."),
+                    RepairStep(2, "Unbolt Y-Pipe Inlet Flange", "Remove two 15mm flange nuts connecting cat-back inlet to catalytic converter Y-pipe."),
+                    RepairStep(3, "Pry Hangers & Remove Muffler", "Use exhaust hanger pliers to pop mounting prongs out of rubber isolators and slide muffler rearward over axle."),
+                    RepairStep(4, "Install New Stainless System", "Slide replacement muffler over axle tube, align polished tailpipe tip with rear bumper cut-out, and torque exhaust clamps.")
+                ),
+                commonSymptoms = listOf("Loud rumbling or buzzing exhaust drone while driving", "Rattling noise under cargo bed floor when idling", "Visible rust hole or dark soot marks on muffler casing"),
+                replacementIntervalMiles = 100000
+            )
+        },
+
+        // 20. HEATED OXYGEN SENSORS (HO2S UPSTREAM & DOWNSTREAM)
+        run {
+            val (v, f) = createCylinderMesh(0.35f, 0.8f, 6, Point3D(-0.3f, -0.3f, -0.4f), "#EAB308")
+            Component3DModel(
+                id = "oxygen_sensors_3d",
+                name = "Upstream & Downstream Heated Oxygen Sensors (HO2S)",
+                system = VehicleSystem.ENGINE,
+                oemPartNumber = "1L2Z-9F472-AA",
+                description = "Zirconia 4-wire heated oxygen sensors (Bank 1 & Bank 2 Sensor 1 upstream for fuel trim feedback, and Sensor 2 downstream for catalytic converter monitor).",
+                locationDescription = "Threaded directly into exhaust manifolds and Y-pipe before and after catalytic converters.",
+                difficulty = "Beginner",
+                estimatedTimeMinutes = 45,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(-0.3f, -0.3f, -0.4f),
+                explodeVector = Point3D(-0.8f, 0.5f, -0.4f),
+                torqueSpecs = listOf(
+                    TorqueSpec("O2 Sensor Thread Torque", "30", "41", "Apply high-temp nickel anti-seize to threads (avoid sensor tip)")
+                ),
+                requiredTools = listOf("22mm (7/8-in) Slotted O2 Sensor Socket", "Penetrating Fluid (PB Blaster)", "Propane Torch (if seized)", "Wire Harness Cleaner"),
+                repairSteps = listOf(
+                    RepairStep(1, "Soak Threads in Penetrating Fluid", "Spray PB Blaster on threaded boss 15 minutes before attempting removal."),
+                    RepairStep(2, "Unplug 4-Pin Harness Connector", "Press locking tab on oxygen sensor pigtail harness connector and pull apart."),
+                    RepairStep(3, "Unscrew O2 Sensor", "Slip slotted 22mm O2 sensor socket over wire harness and break sensor loose counter-clockwise."),
+                    RepairStep(4, "Apply Anti-Seize & Thread New Sensor", "Coat threads with nickel anti-seize paste, hand thread into boss, and torque to 30 lb-ft.")
+                ),
+                commonSymptoms = listOf("Check Engine Light P0133, P0135, P0141 or P0153 (O2 Sensor Circuit / Slow Response)", "Poor fuel economy (12-14 MPG)", "Rich exhaust smell"),
+                replacementIntervalMiles = 75000
+            )
+        },
+
+        // 21. ALL-TERRAIN TIRES & 16-INCH CAST ALUMINUM WHEELS
+        run {
+            val (v, f) = createCylinderMesh(1.4f, 0.9f, 10, Point3D(1.1f, -0.8f, 2.0f), "#64748B")
+            Component3DModel(
+                id = "tires_wheels_3d",
+                name = "P265/70R16 All-Terrain Tires & 16x7-inch Aluminum Wheels",
+                system = VehicleSystem.BRAKES_CHASSIS,
+                oemPartNumber = "1L2Z-1007-BA",
+                description = "265/70R16 112T All-Terrain tires mounted on 16x7-inch 5-spoke machined cast aluminum wheels with 5x114.3mm (5x4.5) bolt pattern and 1/2-in-20 lug studs.",
+                locationDescription = "Four wheel corners supporting truck suspension and payload weight.",
+                difficulty = "Beginner",
+                estimatedTimeMinutes = 30,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(1.1f, -0.8f, 2.0f),
+                explodeVector = Point3D(2.2f, -0.8f, 2.5f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Wheel Lug Nuts (1/2-in-20 Thread)", "100", "135", "Tighten in 5-lug star criss-cross pattern"),
+                    TorqueSpec("Tire Cold Inflation Pressure", "35 PSI Front / 35 PSI Rear", "35 PSI", "Check pressure when tires are cold")
+                ),
+                requiredTools = listOf("19mm (3/4-in) Deep Socket", "Calibrated Torque Wrench (100 lb-ft)", "Hydraulic Floor Jack & Heavy Jack Stands", "Digital Tire Pressure Gauge"),
+                repairSteps = listOf(
+                    RepairStep(1, "Loosen Lug Nuts on Ground", "Crack loose 5 lug nuts 1/2 turn counter-clockwise while tires are resting on the ground."),
+                    RepairStep(2, "Jack Up Frame Corner", "Place hydraulic jack under front lower control arm or rear axle tube and raise vehicle onto safety jack stands."),
+                    RepairStep(3, "Remove Wheel Assembly", "Unscrew lug nuts completely and pull wheel straight off hub studs."),
+                    RepairStep(4, "Mount Wheel & Torque in Star Pattern", "Hand-thread lug nuts, lower truck to ground, and torque each lug to 100 lb-ft in a 5-point star pattern.")
+                ),
+                commonSymptoms = listOf("Vibration in steering wheel at 55-65 MPH (unbalanced tire or bent wheel rim)", "Uneven tire tread wear on inside edge (front alignment toe/camber out)", "Slow air leak around tire valve stem or rim bead"),
+                replacementIntervalMiles = 50000
+            )
+        },
+
+        // 22. FRONT WHEEL HUB BEARING ASSEMBLY & LUG STUDS
+        run {
+            val (v, f) = createCylinderMesh(0.7f, 1.1f, 8, Point3D(0.9f, -0.8f, 1.8f), "#EF4444")
+            Component3DModel(
+                id = "wheel_bearings_hubs_3d",
+                name = "Front Wheel Hub & Sealed Bearing Assembly with ABS Sensor",
+                system = VehicleSystem.BRAKES_CHASSIS,
+                oemPartNumber = "2L2Z-1104-AB",
+                description = "Complete unitized front wheel hub assembly with pre-greased sealed double-row roller bearings, 5 pressed wheel studs, and integrated ABS wheel speed sensor wiring harness.",
+                locationDescription = "Bolted inside front steering knuckle behind brake rotor.",
+                difficulty = "Intermediate",
+                estimatedTimeMinutes = 90,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0.9f, -0.8f, 1.8f),
+                explodeVector = Point3D(1.8f, -0.8f, 2.2f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Front Axle Shaft Nut (4WD Models)", "184", "250", "Must use 32mm socket & replace cotter pin"),
+                    TorqueSpec("Hub Bearing Assembly to Knuckle Bolts", "83", "112", "Torque three 15mm mounting bolts"),
+                    TorqueSpec("Brake Caliper Anchor Bracket Bolts", "85", "115", "Apply blue threadlocker")
+                ),
+                requiredTools = listOf("32mm Axle Nut Socket", "15mm 6-Point Socket", "Slide Hammer / Hub Puller", "Torque Wrench (up to 200 lb-ft)"),
+                repairSteps = listOf(
+                    RepairStep(1, "Remove Axle Nut & Brake Rotor", "Remove 32mm front CV axle nut, caliper, caliper anchor bracket, and brake rotor."),
+                    RepairStep(2, "Disconnect ABS Harness Connector", "Unplug ABS wheel speed sensor harness connector pinned behind plastic inner fender liner."),
+                    RepairStep(3, "Unbolt Hub Assembly", "Remove three 15mm bolts from back side of steering knuckle and pull hub off CV axle spline."),
+                    RepairStep(4, "Install Fresh Hub & Torque Axle Nut", "Clean knuckle bore, slide new hub onto axle shaft, tighten 3 knuckle bolts to 83 lb-ft, and torque axle nut to 184 lb-ft.")
+                ),
+                commonSymptoms = listOf("Loud humming, growling or roaring wheel noise that increases with road speed", "ABS indicator light illuminated with speed sensor code", "Steering wheel looseness or wheel play when wiggled at 12 and 6 o'clock"),
+                replacementIntervalMiles = 90000
+            )
+        },
+
+        // 23. DASHBOARD INSTRUMENT CLUSTER & GAUGE BEZEL
+        run {
+            val (v, f) = createBoxMesh(2.2f, 0.9f, 0.8f, Point3D(-0.4f, 0.6f, 0.8f), "#38BDF8")
+            Component3DModel(
+                id = "dash_dashboard_cluster_3d",
+                name = "Instrument Cluster Gauges, White Face Overlay & Dash Bezel",
+                system = VehicleSystem.ELECTRICAL,
+                oemPartNumber = "1L2Z-10849-BA",
+                description = "Sport Trac white-face gauge cluster including 120 MPH speedometer, tachometer, fuel level, engine coolant temp, oil pressure, battery voltage gauges, and backlighting bulb circuit board.",
+                locationDescription = "Inside driver cab dashboard directly behind steering wheel.",
+                difficulty = "Beginner",
+                estimatedTimeMinutes = 45,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(-0.4f, 0.6f, 0.8f),
+                explodeVector = Point3D(-0.4f, 1.2f, 1.6f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Dash Trim Bezel Screws (7mm Head)", "18 in-lbs", "2 Nm", "Do not overtighten into plastic clips"),
+                    TorqueSpec("Instrument Cluster Mounting Screws", "22 in-lbs", "2.5 Nm", "Hand tighten securely")
+                ),
+                requiredTools = listOf("7mm Socket & Nut Driver", "Plastic Trim Removal Pry Tool", "T15 Torx Driver", "Replacement #194 / #37 Incandescent or LED Bulbs"),
+                repairSteps = listOf(
+                    RepairStep(1, "Disconnect Negative Battery Cable", "Disconnect battery negative terminal to prevent shorting dash electrical circuits."),
+                    RepairStep(2, "Remove Lower Steering Column Cover", "Unscrew two 7mm screws and unclip plastic lower dash knee bolster trim panel."),
+                    RepairStep(3, "Unscrew Instrument Bezel", "Remove four 7mm screws securing dash cluster surround bezel and unclip headlight switch electrical harness."),
+                    RepairStep(4, "Pull Cluster & Unplug Wiring Connectors", "Remove four 7mm cluster screws, tilt unit forward, and depress release tabs on two main wire harness connectors."),
+                    RepairStep(5, "Replace Backlight Bulbs or Solder Joints", "Twist bulb sockets 1/4 turn to replace burnt gauge illumination bulbs or repair odometer display cold solder joints.")
+                ),
+                commonSymptoms = listOf("Odometer & gear indicator display flickering or turning completely black (cracked PCB solder joints)", "Instrument gauge backlights burnt out or dark at night", "Speedometer or tachometer needle sticking or jumping erratically"),
+                replacementIntervalMiles = 100000
+            )
+        },
+
+        // 24. MAIN DASHBOARD WIRING HARNESS & FUSE BOX (CJB)
+        run {
+            val (v, f) = createBoxMesh(2.4f, 0.6f, 1.2f, Point3D(0.0f, 0.4f, 0.6f), "#EAB308")
+            Component3DModel(
+                id = "dash_wiring_harness_3d",
+                name = "Main Dash Wiring Harness & Central Junction Box (Inside Fuse Panel)",
+                system = VehicleSystem.ELECTRICAL,
+                oemPartNumber = "2L2Z-14401-AA",
+                description = "Complete under-dash main wiring harness interfacing Central Junction Box (CJB interior fuse panel), GEM (Generic Electronic Module), ignition switch, HVAC controls, and radio audio connections.",
+                locationDescription = "Runs across entire firewall beneath dashboard pad from driver kick panel fuse box to glovebox.",
+                difficulty = "Advanced",
+                estimatedTimeMinutes = 180,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0.0f, 0.4f, 0.6f),
+                explodeVector = Point3D(0.0f, 0.9f, 1.4f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Central Junction Box Mounting Bolts", "89 in-lbs", "10 Nm", "Hand start bolts"),
+                    TorqueSpec("Dash Skeleton Reinforcement Bracket Bolts", "18", "25", "10mm socket")
+                ),
+                requiredTools = listOf("10mm & 8mm Sockets", "Digital Multimeter & Wire Strippers", "Electrical Contact Cleaner Spray", "Automotive Fuse Tester & Puller"),
+                repairSteps = listOf(
+                    RepairStep(1, "Disconnect Battery & Disarm Airbags", "Disconnect battery terminals and wait 10 minutes to safely discharge airbag backup capacitors before touching dash wiring."),
+                    RepairStep(2, "Access Driver Kick Panel Fuse Box", "Remove left lower trim panel to expose Central Junction Box fuse block and GEM module connectors."),
+                    RepairStep(3, "Inspect Relay & Fuse Contacts", "Use multimeter or continuity tester to check mini-fuses (10A, 15A, 20A) and ISO relays for corrosion or melting."),
+                    RepairStep(4, "Trace & Solder Damaged Wire Leads", "Repair melted wires or broken ground rings using heat-shrink tubing and rosin-core solder.")
+                ),
+                commonSymptoms = listOf("Intermittent power window, door lock, or wiper failure (GEM module circuit glitch)", "Blows interior fuses repeatedly upon turning key to RUN", "Melted wire insulation or burnt electrical plastic odor behind dashboard"),
+                replacementIntervalMiles = 150000
+            )
+        },
+
+        // 25. POWER MOONROOF GLASS PANEL & WEATHERSTRIP SEALS
+        run {
+            val (v, f) = createBoxMesh(2.2f, 0.2f, 1.8f, Point3D(0.0f, 1.4f, -0.4f), "#0284C7")
+            Component3DModel(
+                id = "sunroof_glass_frame_3d",
+                name = "Power Moonroof Tempered Glass Panel & Weatherstrip Perimeter Seal",
+                system = VehicleSystem.ELECTRICAL,
+                oemPartNumber = "1L2Z-78502A00-AA",
+                description = "Dark tint solar glass tempered moonroof panel with metal perimeter carrier frame, adjustable height tilt brackets, and rubber perimeter weatherstrip seal.",
+                locationDescription = "Roof panel above driver and front passenger seats.",
+                difficulty = "Intermediate",
+                estimatedTimeMinutes = 60,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0.0f, 1.4f, -0.4f),
+                explodeVector = Point3D(0.0f, 2.5f, -0.4f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Glass Panel Corner Fastener Screws (T25 Torx)", "27 in-lbs", "3 Nm", "Hand tighten carefully to avoid cracking glass frame"),
+                    TorqueSpec("Sunroof Frame Assembly Reinforcement Bolts", "89 in-lbs", "10 Nm", "")
+                ),
+                requiredTools = listOf("T25 Torx Screwdriver", "Plastic Trim Removal Wedges", "Silicone Weatherstrip Lubricant", "Denatured Alcohol Cleaner"),
+                repairSteps = listOf(
+                    RepairStep(1, "Tilt Sunroof Glass Open", "Press overhead console switch to place moonroof in full TILT-UP position."),
+                    RepairStep(2, "Remove Side Accordion Blind Covers", "Unclip plastic rubber side accordion bellows covers to expose four T25 Torx mounting screws."),
+                    RepairStep(3, "Unscrew Glass Corner Torx Screws", "Remove four T25 Torx screws securing glass panel brackets to sliding track mechanism."),
+                    RepairStep(4, "Lift Out Glass Panel & Inspect Rubber Seal", "Lift tempered glass panel straight up off roof opening and check bulb seal for cracks or deterioration."),
+                    RepairStep(5, "Adjust Flush Glass Height", "Reinstall glass and adjust corner height so top glass edge rests 1mm below roof line to prevent wind noise.")
+                ),
+                commonSymptoms = listOf("Water leaking into interior headliner or front A-pillar grab handles during heavy rain", "Excessive wind whistle or air rush noise at highway speeds (55+ MPH)", "Cracked, chipped or shattered top glass panel"),
+                replacementIntervalMiles = 100000
+            )
+        },
+
+        // 26. SUNROOF DRIVE MOTOR, HELICAL CABLES & GUIDE TRACK RAILS
+        run {
+            val (v, f) = createCylinderMesh(0.5f, 1.8f, 8, Point3D(0.0f, 1.3f, -0.9f), "#EAB308")
+            Component3DModel(
+                id = "sunroof_motor_tracks_3d",
+                name = "Sunroof Electric Drive Motor, Helical Drive Cables & Track Rails",
+                system = VehicleSystem.ELECTRICAL,
+                oemPartNumber = "1L2Z-15790-AA",
+                description = "High-torque 12V electric drive motor with worm gear gearbox, twin flexible spiral/helical push-pull cables, aluminum guide track channels, and internal limit switches.",
+                locationDescription = "Mounted inside roof ceiling structure behind overhead console and beneath front headliner.",
+                difficulty = "Advanced",
+                estimatedTimeMinutes = 150,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0.0f, 1.3f, -0.9f),
+                explodeVector = Point3D(0.0f, 2.2f, -1.2f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Sunroof Drive Motor Mounting Screws (T20 Torx)", "35 in-lbs", "4 Nm", "Apply blue threadlocker"),
+                    TorqueSpec("Roof Headliner Grab Handle Screw Bolts", "30 in-lbs", "3.5 Nm", "")
+                ),
+                requiredTools = listOf("T20 & T25 Torx Drivers", "White Lithium Grease", "4mm Allen Wrench (for manual emergency crank)", "Multimeter / Wire Probe"),
+                repairSteps = listOf(
+                    RepairStep(1, "Lower Front Roof Headliner", "Remove sun visors, center overhead console, and front A-pillar trim panels to drop headliner down 6 inches."),
+                    RepairStep(2, "Unplug Motor Wire Harness", "Disconnect 3-pin power & ground electrical connector on drive motor attached to front frame crossmember."),
+                    RepairStep(3, "Unscrew Drive Motor", "Remove three T20 Torx screws securing motor gearbox to cable housing assembly."),
+                    RepairStep(4, "Clean & Grease Helical Cables", "Clean accumulated dirt/debris out of aluminum track grooves with brake cleaner and apply fresh white lithium grease."),
+                    RepairStep(5, "Calibrate & Synchronize Track Positions", "Run manual re-initialization sequence (hold TILT switch 10 seconds) until motor resets home position stops.")
+                ),
+                commonSymptoms = listOf("Sunroof gets stuck halfway open or tilts unevenly to one side", "Loud popping, grinding or clicking gear noise when pressing open/close switch", "Motor hums but glass does not slide back or move"),
+                replacementIntervalMiles = 120000
+            )
+        },
+
+        // 27. SUNROOF DRAIN TUBES, SLIDING SUNSHADE & SWITCH
+        run {
+            val (v, f) = createCylinderMesh(0.25f, 2.8f, 6, Point3D(-0.8f, 1.1f, -0.4f), "#10B981")
+            Component3DModel(
+                id = "sunroof_drain_tubes_shade_3d",
+                name = "Sunroof Water Drain Hoses, Interior Sunshade & Overhead Switch",
+                system = VehicleSystem.ELECTRICAL,
+                oemPartNumber = "1L2Z-78502C52-AA",
+                description = "Four vinyl corner water drainage tubes (routing through A-pillars and C-pillars), vinyl vinyl-wrapped sliding interior fabric sunshade panel, and overhead rocker control switch.",
+                locationDescription = "Four corners of sunroof tray routing down front A-pillars to fender wells and rear C-pillars.",
+                difficulty = "Beginner",
+                estimatedTimeMinutes = 45,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(-0.8f, 1.1f, -0.4f),
+                explodeVector = Point3D(-1.6f, 1.8f, -0.4f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Overhead Console Mounting Screws", "18 in-lbs", "2 Nm", "Snug tight")
+                ),
+                requiredTools = listOf("Weed Trimmer Nylon Line (0.080-in) or Air Blow Gun", "7mm Socket", "Trim Removal Tools", "Rubbing Alcohol"),
+                repairSteps = listOf(
+                    RepairStep(1, "Locate Tray Corner Drain Hole", "Open sunroof fully and inspect front left and right corners of aluminum water trough tray."),
+                    RepairStep(2, "Clear Clogged Drain Lines", "Snake flexible nylon string trimmer line down corner drain grommets to push out dirt, pine needles, and leaves."),
+                    RepairStep(3, "Flush Lines with Warm Water", "Pour a small cup of warm water into tray channel to verify water drains freely beneath front tires onto ground."),
+                    RepairStep(4, "Replace Loose Drain Hose Fittings", "If leaking onto floorboards, remove A-pillar trim and reconnect loose drain hose elbow fitting to body exit firewall grommet.")
+                ),
+                commonSymptoms = listOf("Water dripping onto driver or passenger lap from overhead console after car wash", "Wet damp carpet or standing water in front footwells", "Musty mildew odor inside cab"),
+                replacementIntervalMiles = 50000
+            )
+        },
+
+        // 28. FRONT LAMINATED SAFETY WINDSHIELD, WIPERS & COWL GRID
+        run {
+            val (v, f) = createBoxMesh(2.4f, 0.9f, 1.2f, Point3D(0.0f, 1.0f, 0.4f), "#38BDF8")
+            Component3DModel(
+                id = "front_windshield_3d",
+                name = "Front Acoustic Safety Laminated Windshield, Wipers & Cowl Grille",
+                system = VehicleSystem.ELECTRICAL,
+                oemPartNumber = "1L2Z-7803100-BA",
+                description = "Solar-control laminated safety glass front windshield with acoustic layer, integrated rearview mirror bracket, dual wiper arms with 22-inch blades, washer jet nozzles, and plastic wiper cowl intake grille.",
+                locationDescription = "Front cabin windshield frame resting above hood line and dashboard.",
+                difficulty = "Intermediate",
+                estimatedTimeMinutes = 60,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0.0f, 1.0f, 0.4f),
+                explodeVector = Point3D(0.0f, 1.9f, 1.0f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Wiper Arm Mounting Pivot Nuts", "14", "19", "Pop plastic nut cover cap off first"),
+                    TorqueSpec("Wiper Linkage Motor Mounting Bolts", "89 in-lbs", "10 Nm", "Apply blue threadlocker")
+                ),
+                requiredTools = listOf("Wiper Arm Puller / Small Battery Terminal Puller", "15mm Socket & Extension", "Urethane Windshield Cutout Wire / Knife", "Glass Cleaner & Microfiber"),
+                repairSteps = listOf(
+                    RepairStep(1, "Remove Plastic Wiper Arm Cap & Nut", "Pop 15mm nut cap off wiper pivot arms and unscrew nut."),
+                    RepairStep(2, "Use Puller to Pop Wiper Arms", "Attach wiper arm puller tool to press wiper arms off tapered splined shafts."),
+                    RepairStep(3, "Remove Plastic Cowl Retaining Pins", "Unclip plastic push-pins securing driver and passenger wiper cowl grille halves."),
+                    RepairStep(4, "Slice Polyurethane Bead Seal", "When replacing glass, cut perimeter automotive urethane bead using cold knife or cut wire, clean pinchweld, and apply primer/urethane bead.")
+                ),
+                commonSymptoms = listOf("Spiderweb cracks, bullseye stone chips or stress cracks obscuring driver vision", "Streaking or chattering wiper blades across glass during rain", "Water leaking under dashboard onto carpet after heavy downpour"),
+                replacementIntervalMiles = 100000
+            )
+        },
+
+        // 29. POWER DROP-DOWN REAR SLIDING GLASS WINDOW & MOTOR
+        run {
+            val (v, f) = createBoxMesh(2.2f, 0.8f, 0.2f, Point3D(0.0f, 1.0f, -2.4f), "#0284C7")
+            Component3DModel(
+                id = "rear_window_power_slide_3d",
+                name = "Power Drop-Down Rear Glass Window, Regulator & Weatherstrip Channel",
+                system = VehicleSystem.ELECTRICAL,
+                oemPartNumber = "1L2Z-7842006-AA",
+                description = "Signature Sport Trac full-width power drop-down rear window assembly with solar tinted tempered glass, electric cable-driven window regulator motor, defroster heating grid, and lower trough drainage seals.",
+                locationDescription = "Rear cab wall separating passenger cabin from truck bed cargo box.",
+                difficulty = "Advanced",
+                estimatedTimeMinutes = 90,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0.0f, 1.0f, -2.4f),
+                explodeVector = Point3D(0.0f, 1.8f, -3.2f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Rear Window Glass Clamp Bolts", "44 in-lbs", "5 Nm", "Tighten carefully into rubber glass channel"),
+                    TorqueSpec("Rear Regulator Assembly Nut Screws", "89 in-lbs", "10 Nm", "")
+                ),
+                requiredTools = listOf("10mm & 8mm Sockets", "Torx T20 Screwdriver", "Silicone Spray Lubricant", "Trim Removal Pry Tool"),
+                repairSteps = listOf(
+                    RepairStep(1, "Remove Rear Seat Backrest & Back Wall Carpet", "Fold down rear seats and unclip rear carpet insulation panel to access lower cab wall."),
+                    RepairStep(2, "Unbolt Lower Access Cover Panel", "Remove 10mm bolts securing steel access cover plate exposing window regulator tracks."),
+                    RepairStep(3, "Disconnect Power Window Motor Harness", "Unplug 2-pin electrical connector for rear power sliding window motor."),
+                    RepairStep(4, "Unbolt Glass Clamp Brackets & Lift Glass", "Loosen glass clamp bolts and carefully slide rear glass panel up out of lower channel guide track.")
+                ),
+                commonSymptoms = listOf("Rear glass gets stuck open or refuses to drop down when pressing dash switch", "Grinding, clicking or popping sound coming from behind rear seats when lowering window", "Water leaking into rear carpet under rear seat bench during rain"),
+                replacementIntervalMiles = 120000
+            )
+        },
+
+        // 30. DRIVER AIRBAG MODULE & STEERING COLUMN CLOCK SPRING
+        run {
+            val (v, f) = createCylinderMesh(0.6f, 0.5f, 8, Point3D(-0.4f, 0.5f, 0.6f), "#EF4444")
+            Component3DModel(
+                id = "airbag_driver_clockspring_3d",
+                name = "Driver Steering Wheel Airbag Module & Spiral Clock Spring Harness",
+                system = VehicleSystem.ELECTRICAL,
+                oemPartNumber = "1L2Z-14A664-AB",
+                description = "Dual-stage pyrotechnic driver frontal airbag inflator module mounted behind steering wheel emblem cover, paired with multi-channel spiral cable clock spring harness supplying continuous electrical contact for horn, cruise control switches, and airbag ignition circuits.",
+                locationDescription = "Mounted in center hub of steering wheel column.",
+                difficulty = "Intermediate",
+                estimatedTimeMinutes = 45,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(-0.4f, 0.5f, 0.6f),
+                explodeVector = Point3D(-0.4f, 1.2f, 1.2f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Airbag Steering Wheel Side Screws (8mm Head)", "84 in-lbs", "9.5 Nm", "Two side cover screws"),
+                    TorqueSpec("Steering Wheel Center Hub Bolt", "33", "45", "Apply blue threadlocker")
+                ),
+                requiredTools = listOf("8mm Socket & Extension", "Steering Wheel Puller Kit", "Plastic Trim Removal Wedges", "T30 Torx Driver"),
+                repairSteps = listOf(
+                    RepairStep(1, "Disconnect Battery & Wait 15 Minutes", "Disconnect negative battery cable and wait 15 minutes for airbag backup power storage capacitors to fully discharge.", warning = "ALWAYS disconnect negative battery terminal and wait 15 minutes before servicing any SRS airbag wire or component to avoid accidental deployment!"),
+                    RepairStep(2, "Remove Steering Column Side Bolt Covers", "Pop plastic side caps off steering wheel body and unscrew two 8mm airbag module retaining screws."),
+                    RepairStep(3, "Disconnect Yellow SRS Wire Connectors", "Carefully lift driver airbag module off wheel center and depress locking tabs on yellow SRS electrical wire harness connectors."),
+                    RepairStep(4, "Unbolt Steering Wheel & Replace Clock Spring", "Remove center wheel bolt, pull steering wheel off splined shaft, and unclip plastic clock spring assembly from column housing.")
+                ),
+                commonSymptoms = listOf("Airbag warning light flashing on instrument cluster (Airbag Lamp Fault Code 19 or Code 32 - Driver Airbag Circuit Resistance High)", "Horn stops working or functions intermittently", "Cruise control steering wheel buttons non-responsive"),
+                replacementIntervalMiles = 150000
+            )
+        },
+
+        // 31. RESTRAINT CONTROL MODULE (RCM) & FRONT CRASH IMPACT SENSORS
+        run {
+            val (v, f) = createBoxMesh(0.8f, 0.4f, 0.8f, Point3D(0.0f, 0.1f, 0.2f), "#DC2626")
+            Component3DModel(
+                id = "airbag_rcm_sensors_3d",
+                name = "Restraint Control Module (RCM) & Front Crash Impact Sensors",
+                system = VehicleSystem.ELECTRICAL,
+                oemPartNumber = "1L2Z-14B056-AA",
+                description = "Microprocessor-controlled SRS Restraint Control Module (RCM) with internal solid-state accelerometers and rollover sensors, plus dual front radiator core support crash impact sensors.",
+                locationDescription = "RCM mounted under center console on floor tunnel; crash sensors mounted on front radiator core support crossmember.",
+                difficulty = "Advanced",
+                estimatedTimeMinutes = 90,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0.0f, 0.1f, 0.2f),
+                explodeVector = Point3D(0.0f, 0.8f, 0.8f),
+                torqueSpecs = listOf(
+                    TorqueSpec("RCM Ground Fastener Nuts to Floor Pan", "106 in-lbs", "12 Nm", "Must maintain clean metal-to-metal ground seal"),
+                    TorqueSpec("Front Crash Sensor Core Support Bolts", "89 in-lbs", "10 Nm", "Torque to prevent sensor housing vibration")
+                ),
+                requiredTools = listOf("10mm Socket & Ratchet", "FORScan / High-End OBD2 Scanner with SRS diagnostics", "Dielectric Grease"),
+                repairSteps = listOf(
+                    RepairStep(1, "Disconnect Battery & Disarm Airbag System", "Remove negative battery terminal and wait 15 minutes before unbolting module."),
+                    RepairStep(2, "Remove Center Console Assembly", "Unbolt interior floor console cover to expose aluminum RCM module grounded to floor pan."),
+                    RepairStep(3, "Unplug RCM Harness Connectors", "Slide red secondary locking wedges back on dual 24-pin yellow airbag connectors."),
+                    RepairStep(4, "Replace Front Radiator Core Support Sensors", "Unbolt rusted front impact sensors from behind grille mesh and install new gold-plated contacts.")
+                ),
+                commonSymptoms = listOf("Airbag indicator light illuminated continuously on dash without turning off", "OBD code B1318 (Low Battery Voltage to RCM) or B1231 (Crash Data Stored)", "Front crash sensor corrosion causing SRS flash code 42"),
+                replacementIntervalMiles = 150000
+            )
+        },
+
+        // 32. SEATBELT PRETENSIONERS & OCCUPANT SENSORS
+        run {
+            val (v, f) = createCylinderMesh(0.3f, 1.2f, 6, Point3D(-0.6f, 0.2f, -0.2f), "#EF4444")
+            Component3DModel(
+                id = "airbag_seatbelt_pretensioners_3d",
+                name = "Pyrotechnic Seatbelt Buckle Pretensioners & Buckle Switch Harness",
+                system = VehicleSystem.ELECTRICAL,
+                oemPartNumber = "1L2Z-7861203-AB",
+                description = "Driver and front passenger pyrotechnic cable-pull seatbelt buckle pretensioner anchors, equipped with integrated buckle latch switches that signal the RCM module whether occupants are buckled in.",
+                locationDescription = "Mounted to inner side of front driver and passenger bucket seat frames.",
+                difficulty = "Intermediate",
+                estimatedTimeMinutes = 45,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(-0.6f, 0.2f, -0.2f),
+                explodeVector = Point3D(-1.2f, 0.6f, -0.2f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Seatbelt Anchor Bolt to Seat Frame", "30", "40", "T50 Torx head bolt - heavy threadlocker"),
+                    TorqueSpec("Seat Frame Track Floor Mounting Bolts", "39", "53", "15mm socket")
+                ),
+                requiredTools = listOf("T50 Torx Socket & Breaker Bar", "15mm Socket", "Wire Harness Contact Cleaner"),
+                repairSteps = listOf(
+                    RepairStep(1, "Disarm Airbag System", "Disconnect battery negative terminal and wait 15 minutes."),
+                    RepairStep(2, "Unbolt Seat Track & Tilt Seat Back", "Remove four 15mm floor bolts securing front bucket seat to access inner buckle mounting bracket."),
+                    RepairStep(3, "Unplug Under-Seat Airbag Harness", "Disconnect yellow seatbelt pretensioner wire pigtail located under seat cushion."),
+                    RepairStep(4, "Unbolt Buckle Anchor", "Use T50 Torx socket to remove pretensioner assembly bolt from lower seat frame rail.")
+                ),
+                commonSymptoms = listOf("Airbag light flashing Code 46 or 47 (Driver/Passenger Seatbelt Pretensioner Circuit Open)", "Buckle chime continues chiming even when seatbelt is latched", "Pretensioner cable crumpled or contracted after minor fender bender"),
+                replacementIntervalMiles = 150000
+            )
+        },
+
+        // 33. A/C COMPRESSOR, MAGNETIC CLUTCH & PRESSURE SWITCHES
+        run {
+            val (v, f) = createCylinderMesh(0.65f, 1.4f, 8, Point3D(0.6f, 0.4f, 1.2f), "#06B6D4")
+            Component3DModel(
+                id = "ac_compressor",
+                name = "A/C Compressor, Electromagnetic Clutch & High/Low Pressure Cut-off Switches",
+                system = VehicleSystem.AIR_CONDITIONING,
+                oemPartNumber = "1L2Z-19703-AA",
+                description = "FS10 10-piston aluminum A/C compressor with electromagnetic clutch coil, 6-groove serpentine belt pulley, magnetic air gap shims, low-pressure cycling switch, and high-pressure safety cut-out switch filled with PAG 46 oil and 28 oz R134a refrigerant.",
+                locationDescription = "Lower passenger side front engine bay driven directly by serpentine belt.",
+                difficulty = "Intermediate",
+                estimatedTimeMinutes = 120,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0.6f, 0.4f, 1.2f),
+                explodeVector = Point3D(1.4f, 0.8f, 1.6f),
+                torqueSpecs = listOf(
+                    TorqueSpec("A/C Compressor Mounting Bolts (3 Bolts)", "18", "25", "Tighten in 2 stages"),
+                    TorqueSpec("A/C Manifold Hose Block Bolt", "15", "20", "Must replace green HNBR O-rings"),
+                    TorqueSpec("Clutch Hub Front Center Nut", "10", "14", "Adjust air gap to 0.020 - 0.035 inches")
+                ),
+                requiredTools = listOf("A/C Manifold Gauge Set & Vacuum Pump", "R134a Refrigerant Recovery Machine", "8mm & 10mm Sockets", "HNBR Green A/C O-Ring Seal Kit", "A/C Clutch Hub Holding Tool"),
+                repairSteps = listOf(
+                    RepairStep(1, "Evacuate R134a Refrigerant", "Connect EPA-certified A/C recovery machine to high and low service ports to evacuate R134a gas safely.", warning = "Never vent R134a refrigerant into atmosphere! Pressurized refrigerant causes severe frostbite on skin contact."),
+                    RepairStep(2, "Remove Serpentine Belt & Skid Plate", "Release tensioner pulley with 3/8-inch ratchet and slip serpentine belt off compressor pulley."),
+                    RepairStep(3, "Disconnect A/C Hose Block & Switches", "Remove single 10mm bolt securing manifold hose assembly block to compressor back and unplug 2-pin clutch wire connector."),
+                    RepairStep(4, "Unbolt & Replace Compressor", "Remove three 10mm mounting bolts, install new compressor pre-filled with 7 oz PAG 46 oil, replace green HNBR O-rings, and vacuum system to -29 inHg for 45 minutes before charging 28 oz R134a.")
+                ),
+                commonSymptoms = listOf("A/C blows hot air or fails to cool cabin", "Loud squealing or metallic grinding noise from compressor pulley bearing when A/C is turned ON", "A/C clutch plate fails to engage or rapid-cycles ON and OFF every 3 seconds due to low refrigerant level"),
+                replacementIntervalMiles = 90000
+            )
+        },
+
+        // 34. HEATER CORE, VACUUM VALVE & DUAL HEATER HOSES
+        run {
+            val (v, f) = createBoxMesh(1.2f, 0.9f, 0.4f, Point3D(0.4f, 0.5f, -0.2f), "#EF4444")
+            Component3DModel(
+                id = "heater_core_hvac_3d",
+                name = "Aluminum Heater Core, Vacuum Control Valve & Heater Hoses",
+                system = VehicleSystem.AIR_CONDITIONING,
+                oemPartNumber = "1L2Z-18476-AA",
+                description = "Heavy-duty aluminum heat-exchanger core housed inside dash HVAC housing, vacuum-actuated 4-port heater coolant control shut-off valve, and dual 5/8-inch reinforced rubber heater supply/return hoses.",
+                locationDescription = "Mounted inside lower passenger dash HVAC plenum box; heater control valve located on engine firewall.",
+                difficulty = "Advanced",
+                estimatedTimeMinutes = 210,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0.4f, 0.5f, -0.2f),
+                explodeVector = Point3D(1.0f, 1.2f, -0.2f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Heater Hose Clamp Tensioners", "22 in-lbs", "2.5 Nm", "Inspect rubber hoses for swelling"),
+                    TorqueSpec("HVAC Case Plenum Mounting Stud Nuts", "89 in-lbs", "10 Nm", "Engine firewall studs")
+                ),
+                requiredTools = listOf("Hose Disconnect Pliers", "7mm, 8mm & 10mm Sockets", "Coolant Drain Pan", "Heater Core Flush Kit", "50/50 Premium Gold Coolant"),
+                repairSteps = listOf(
+                    RepairStep(1, "Drain Engine Coolant", "Open radiator petcock valve to drain 1.5 gallons of engine coolant below heater hose level."),
+                    RepairStep(2, "Disconnect Firewall Heater Hoses", "Squeeze constant-tension clamps on firewall 5/8-inch heater hoses and disconnect from core nipples.", warning = "Engine coolant is toxic to pets. Catch all fluid in clean sealed containers."),
+                    RepairStep(3, "Unbolt Lower Passenger Dashboard", "Remove passenger dash trim, glovebox, and right HVAC ducting to expose heater core access door."),
+                    RepairStep(4, "Slide Out Old Core & Flush System", "Unscrew 4 cover door screws, pull leaking heater core out, install fresh aluminum core with foam insulation tape, and refill coolant system.")
+                ),
+                commonSymptoms = listOf("Sweet antifreeze coolant smell inside cabin with greasy fog film coating inside windshield", "Passenger side front carpet damp or soaked with green/gold coolant", "No heat from dashboard vents even with engine at full operating temperature (clogged core passages)"),
+                replacementIntervalMiles = 100000
+            )
+        },
+
+        // 35. HVAC BLOWER MOTOR & MULTI-SPEED RESISTOR PACK
+        run {
+            val (v, f) = createCylinderMesh(0.55f, 0.8f, 8, Point3D(0.7f, 0.6f, 0.3f), "#06B6D4")
+            Component3DModel(
+                id = "hvac_blower_motor_3d",
+                name = "HVAC Blower Motor Fan Assembly & 4-Speed Resistor Block",
+                system = VehicleSystem.AIR_CONDITIONING,
+                oemPartNumber = "2L2Z-19805-AA",
+                description = "High-output 12V permanent magnet blower motor with balanced plastic squirrel cage fan wheel, paired with a ceramic-coated 4-position blower motor resistor block and thermal cutoff fuse.",
+                locationDescription = "Mounted on right passenger engine firewall under hood; resistor block mounted directly in HVAC air duct stream.",
+                difficulty = "Beginner",
+                estimatedTimeMinutes = 40,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0.7f, 0.6f, 0.3f),
+                explodeVector = Point3D(1.4f, 1.0f, 0.3f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Blower Motor Mounting Screws (4 Screws)", "25 in-lbs", "2.8 Nm", "Hand tighten carefully into plastic housing"),
+                    TorqueSpec("Blower Resistor Retaining Screws", "18 in-lbs", "2 Nm", "")
+                ),
+                requiredTools = listOf("8mm Socket & Nut Driver", "T20 Torx Driver", "Electrical Contact Cleaner", "Wire Strippers / Heat Shrink Terminal Kit (if connector melted)"),
+                repairSteps = listOf(
+                    RepairStep(1, "Unplug Blower Motor Wire Harness", "Press release tab on 2-pin electrical connector at blower motor on engine firewall."),
+                    RepairStep(2, "Remove Blower Motor Screws", "Unscrew four 8mm screws securing blower flange to plastic HVAC casing."),
+                    RepairStep(3, "Extract Blower Wheel & Motor", "Tilt motor assembly forward and pull out of engine bay firewall opening."),
+                    RepairStep(4, "Replace Blower Motor Resistor Pack", "Unbolt two 8mm screws on passenger firewall HVAC case to replace burnt resistor block and inspect wire harness connector for melted pin terminals.")
+                ),
+                commonSymptoms = listOf("Blower fan works ONLY on HIGH speed (#4) but stays dead on low speeds #1, #2, and #3 (burnt resistor pack)", "Loud chirping, squeaking or vibrating thumping noise when heater fan is running", "Blower motor fails to blow any air through dash vents on any speed setting"),
+                replacementIntervalMiles = 80000
+            )
+        },
+
+        // 36. HVAC ELECTRIC BLEND DOOR ACTUATOR & TEMPERATURE FLAP
+        run {
+            val (v, f) = createBoxMesh(0.5f, 0.4f, 0.5f, Point3D(0.1f, 0.5f, 0.1f), "#EAB308")
+            Component3DModel(
+                id = "hvac_blend_door_actuator_3d",
+                name = "HVAC Electric Temperature Blend Door Actuator Motor",
+                system = VehicleSystem.AIR_CONDITIONING,
+                oemPartNumber = "1L2Z-19E616-BA",
+                description = "Micro-stepper electric motor actuator with internal nylon gear reduction drive and feedback potentiometer, controlling the HVAC plenum chamber blend door flap to blend hot heater core air with cold A/C evaporator air.",
+                locationDescription = "Mounted on top of HVAC plenum box behind center dashboard radio / climate control panel.",
+                difficulty = "Intermediate",
+                estimatedTimeMinutes = 75,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0.1f, 0.5f, 0.1f),
+                explodeVector = Point3D(0.1f, 1.2f, 0.1f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Blend Door Actuator Screws (8mm Head)", "18 in-lbs", "2 Nm", "Do not overtighten screws into plastic plenum")
+                ),
+                requiredTools = listOf("8mm Socket & Mini Ratchet / Flex Extension", "Plastic Pry Tools", "Heavy-Duty Aluminum Replacement Blend Door Flap (if axle shaft broken)"),
+                repairSteps = listOf(
+                    RepairStep(1, "Remove Center Dash Bezel & Glovebox", "Unscrew 7mm radio bezel screws and lower glovebox door to gain access behind center dash."),
+                    RepairStep(2, "Locate Actuator Motor on Plenum Top", "Reach through glovebox opening to locate black rectangular actuator motor seated on top of HVAC plenum chamber."),
+                    RepairStep(3, "Unscrew Mounting Screws & Unplug Wire Harness", "Remove three 8mm screws using mini ratchet or flex driver and unplug 5-pin wire connector."),
+                    RepairStep(4, "Inspect Blend Door Axle D-Shaft & Replace Actuator", "Check plastic blend door axle socket for cracks. If cracked, install reinforced metal blend door axle before securing new motor actuator.")
+                ),
+                commonSymptoms = listOf("Repetitive loud rhythmic clicking or popping noise behind center dashboard when turning key ON or adjusting temperature", "A/C blows cold on driver side but hot on passenger side, or stuck blowing ice cold air with no heat available", "Temperature selector dial has no effect on air temperature"),
+                replacementIntervalMiles = 75000
+            )
+        },
+
+        // 37. A/C EVAPORATOR CORE, ACCUMULATOR DRIER & ORIFICE TUBE
+        run {
+            val (v, f) = createCylinderMesh(0.5f, 1.6f, 8, Point3D(0.6f, 0.5f, -0.1f), "#06B6D4")
+            Component3DModel(
+                id = "ac_evaporator_accumulator_3d",
+                name = "A/C Evaporator Core, Accumulator / Drier Bottle & Fixed Orifice Tube",
+                system = VehicleSystem.AIR_CONDITIONING,
+                oemPartNumber = "1L2Z-19860-AA",
+                description = "High-efficiency aluminum tube-and-fin A/C evaporator core, aluminum accumulator drier receiver bottle with internal desiccant bag and low-pressure cycling switch port, and color-coded red (0.062-in) expansion orifice tube metering device.",
+                locationDescription = "Evaporator housed inside passenger firewall case; accumulator bottle mounted directly on passenger firewall.",
+                difficulty = "Advanced",
+                estimatedTimeMinutes = 150,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0.6f, 0.5f, -0.1f),
+                explodeVector = Point3D(1.4f, 1.2f, -0.1f),
+                torqueSpecs = listOf(
+                    TorqueSpec("A/C Accumulator Nut Coupling Spring Lock", "15", "20", "Use spring lock tool #4 & #5"),
+                    TorqueSpec("Low Pressure Cycling Switch to Accumulator Port", "89 in-lbs", "10 Nm", "Includes Schrader valve seal")
+                ),
+                requiredTools = listOf("Spring Lock Quick Disconnect Tool Set (Red 3/8 & Blue 1/2 in)", "Needle Nose Pliers for Orifice Tube Extraction", "A/C Manifold Gauge Set & Vacuum Pump", "New PAG 46 Oil (3 oz)"),
+                repairSteps = listOf(
+                    RepairStep(1, "Recover R134a Refrigerant", "Evacuate refrigerant system using A/C recovery machine."),
+                    RepairStep(2, "Disconnect Spring-Lock Line Fittings", "Use spring lock release tool to separate aluminum suction and liquid lines from accumulator bottle and evaporator inlet.", warning = "Always replace desiccant accumulator bottle whenever A/C system is opened to atmosphere to prevent moisture contamination."),
+                    RepairStep(3, "Extract Fixed Orifice Tube", "Use needle-nose pliers or specialized orifice tube puller tool to extract plastic orifice tube from liquid line pipe.", tip = "Inspect orifice tube mesh screen for metal debris ('black death') from compressor failure."),
+                    RepairStep(4, "Replace Evaporator & Accumulator", "Install new accumulator drier bottle, insert fresh red calibrated orifice tube, replace green O-rings, and evacuate/recharge system with 28 oz R134a.")
+                ),
+                commonSymptoms = listOf("Musty vinegar smell or damp mold odor coming from dashboard air vents when A/C is turned ON", "A/C air starts cold then gradually fades to warm as evaporator core freezes into a solid block of ice", "Accumulator bottle covered in thick white frost or ice build-up"),
+                replacementIntervalMiles = 100000
+            )
+        },
+
+        // 38. A/C CONDENSER CORE & HIGH-PRESSURE SUCTION / LIQUID HOSES
+        run {
+            val (v, f) = createBoxMesh(2.6f, 1.8f, 0.3f, Point3D(0.0f, 0.5f, 2.5f), "#06B6D4")
+            Component3DModel(
+                id = "ac_condenser_lines_3d",
+                name = "A/C Condenser Parallel-Flow Radiator Core & High-Pressure Hose Assembly",
+                system = VehicleSystem.AIR_CONDITIONING,
+                oemPartNumber = "1L2Z-19712-AA",
+                description = "Heavy-duty aluminum parallel-flow A/C condenser heat exchanger with integrated sub-cooler, high-pressure aluminum discharge lines, flexible barrier rubber hoses, and dual high/low Schrader service valve ports.",
+                locationDescription = "Mounted at very front of vehicle in front of main radiator behind front grille mesh.",
+                difficulty = "Intermediate",
+                estimatedTimeMinutes = 110,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0.0f, 0.5f, 2.5f),
+                explodeVector = Point3D(0.0f, 0.5f, 3.2f),
+                torqueSpecs = listOf(
+                    TorqueSpec("A/C Condenser Bracket Retaining Bolts", "89 in-lbs", "10 Nm", ""),
+                    TorqueSpec("High Pressure Hose Fitting Block Bolt", "15", "20", "Replace green HNBR O-ring seals")
+                ),
+                requiredTools = listOf("A/C Spring-Lock Disconnect Tool Set", "10mm Socket & Ratchet", "Fin Straightener Comb", "Electronic A/C Leak Detector / UV Dye Flashlight"),
+                repairSteps = listOf(
+                    RepairStep(1, "Evacuate Refrigerant", "Recover all R134a gas using certified A/C machine."),
+                    RepairStep(2, "Remove Front Grille & Upper Header Panel", "Unclip front grille mesh and header panel clips to expose aluminum A/C condenser core."),
+                    RepairStep(3, "Disconnect High-Pressure Lines", "Unbolt 10mm line block fittings from condenser manifolds and inspect for UV dye leaks."),
+                    RepairStep(4, "Replace Condenser Core", "Unbolt four 10mm mounting bracket bolts, lift old condenser up, install fresh parallel-flow unit, replace HNBR O-rings, pull vacuum for 45 min, and charge 28 oz R134a.")
+                ),
+                commonSymptoms = listOf("A/C cools moderately while driving at 50 MPH but blows hot air when idling at stoplights (poor heat dissipation)", "Oily green UV dye residue visible on condenser aluminum cooling fins from rock chip puncture", "A/C high side pressure exceeds 350 PSI due to restricted condenser fins or bent tubes"),
+                replacementIntervalMiles = 100000
+            )
+        },
+
+        // 39. DASHBOARD INSTRUMENT CLUSTER & GAUGE PACK
+        run {
+            val (v, f) = createBoxMesh(1.8f, 0.8f, 0.4f, Point3D(-0.4f, 0.9f, 0.5f), "#F59E0B")
+            Component3DModel(
+                id = "dash_instrument_cluster_3d",
+                name = "Dashboard Instrument Cluster & White-Face Gauge Pack",
+                system = VehicleSystem.INTERIOR_DASH,
+                oemPartNumber = "1L2Z-10849-BA",
+                description = "Sport Trac factory white-faced gauge instrument cluster featuring analog speedometer, tachometer, engine temp, fuel gauge, oil pressure, battery voltage gauge, illuminated gear position display, and dual 16-pin micro-lock electrical connectors.",
+                locationDescription = "Mounted inside dashboard instrument bezel directly behind steering wheel.",
+                difficulty = "Intermediate",
+                estimatedTimeMinutes = 45,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(-0.4f, 0.9f, 0.5f),
+                explodeVector = Point3D(-0.4f, 1.3f, 1.2f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Instrument Cluster Retaining Screws (4 Screws)", "22 in-lbs", "2.5 Nm", "Hand tighten into plastic dash framing"),
+                    TorqueSpec("Dash Bezel Screws (7mm Head)", "18 in-lbs", "2 Nm", "Two screws located above gauge lens hood")
+                ),
+                requiredTools = listOf("7mm Socket & Nut Driver", "Plastic Trim Removal Tool", "T15 Torx Screwdriver", "Replacement #194 / #37 Mini Wedge Bulbs or LED Conversion Kit"),
+                repairSteps = listOf(
+                    RepairStep(1, "Remove Dash Bezel Trim", "Unscrew two 7mm screws from upper instrument hood and gently pull plastic bezel away from dash clips."),
+                    RepairStep(2, "Unscrew Instrument Cluster Frame", "Remove four 7mm gold screws holding instrument cluster housing to dashboard dashboard structure."),
+                    RepairStep(3, "Disconnect Rear Electrical Plugs & Speedo Cable", "Tilt cluster top forward, press release tabs on black and grey 16-pin wiring harness plugs, and disconnect PRNDL gear selector string clip."),
+                    RepairStep(4, "Replace Backlight Bulbs / Install Cluster", "Twist ¼-turn bulb sockets on cluster rear circuit board to replace dead gauge backlights, reconnect wiring, and test all gauge needles.")
+                ),
+                commonSymptoms = listOf("Speedometer needle bounces erratically, stays stuck at zero, or digital odometer display goes completely blank", "Backlight bulbs burned out causing dark spots on tachometer or fuel gauge at night", "ABS, Battery, or 4x4 High indicator lights stay continuously illuminated on gauge face"),
+                replacementIntervalMiles = 120000
+            )
+        },
+
+        // 40. DASH CENTER STACK CLIMATE CONTROLS, RADIO & 4WD AUTO SWITCH
+        run {
+            val (v, f) = createBoxMesh(1.2f, 1.4f, 0.5f, Point3D(0.0f, 0.7f, 0.5f), "#F59E0B")
+            Component3DModel(
+                id = "dash_hvac_radio_center_stack_3d",
+                name = "Dash Center Stack Radio, Electronic HVAC Panel & 4WD Switch",
+                system = VehicleSystem.INTERIOR_DASH,
+                oemPartNumber = "1L2Z-19B888-AB",
+                description = "Center dash control console housing factory Mach 500 double-DIN radio unit, rotary HVAC vacuum selector switch module, temperature control potentiometer, rear power window toggle switch, and 3-position rotary 4WD Auto / 4x4 High / 4x4 Low transfer case selector switch.",
+                locationDescription = "Located in center dashboard stack directly above center floor console.",
+                difficulty = "Beginner",
+                estimatedTimeMinutes = 35,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0.0f, 0.7f, 0.5f),
+                explodeVector = Point3D(0.0f, 1.0f, 1.4f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Center Radio Bezel Screws (7mm Head)", "18 in-lbs", "2 Nm", "Two screws above HVAC panel"),
+                    TorqueSpec("HVAC Control Module Screws", "15 in-lbs", "1.7 Nm", "Four mini screws into plastic housing")
+                ),
+                requiredTools = listOf("7mm Socket & Driver", "Ford DIN Radio Removal Keys (if removing head unit)", "Plastic Pry Tools", "Electrical Contact Cleaner"),
+                repairSteps = listOf(
+                    RepairStep(1, "Unscrew Bezel Retaining Bolts", "Unscrew two 7mm screws located in lip above climate control knobs."),
+                    RepairStep(2, "Unclip Bezel Assembly", "Gently pry around perimeter with plastic trim tool to release spring steel retaining clips."),
+                    RepairStep(3, "Disconnect Switch Wire Connectors & Vacuum Harness", "Unplug 4WD switch connector, rear power window switch plug, cigarette lighter socket, and 5-tube HVAC vacuum line harness block."),
+                    RepairStep(4, "Replace Control Switch / Module", "Unbolt four 7mm screws on rear of bezel to replace damaged 4WD rotary switch or climate control module.")
+                ),
+                commonSymptoms = listOf("Turning 4WD selector knob does not engage 4x4 or cause transfer case shift motor to click", "Air blows ONLY out of defrost vents on windshield regardless of HVAC knob position (vacuum leak)", "Rear power window toggle switch fails to lower back glass window"),
+                replacementIntervalMiles = 100000
+            )
+        },
+
+        // 41. STEERING COLUMN, CRUISE CONTROL & DRIVER SRS AIRBAG MODULE
+        run {
+            val (v, f) = createCylinderMesh(0.6f, 1.2f, 8, Point3D(-0.4f, 0.7f, 0.8f), "#F59E0B")
+            Component3DModel(
+                id = "steering_wheel_airbag_column_3d",
+                name = "Steering Column, Cruise Control Switches & Driver SRS Airbag Module",
+                system = VehicleSystem.INTERIOR_DASH,
+                oemPartNumber = "1L2Z-3600-BA",
+                description = "Collapsible tilt steering column assembly complete with leather-wrapped steering wheel, steering column clockspring wiring coil, multifunction turn signal wiper lever, cruise control ON/OFF/SET thumb switches, ignition lock cylinder, and driver SRS airbag module.",
+                locationDescription = "Mounted through driver side dash bulkhead to steering gear rack shaft.",
+                difficulty = "Advanced",
+                estimatedTimeMinutes = 90,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(-0.4f, 0.7f, 0.8f),
+                explodeVector = Point3D(-0.4f, 1.2f, 1.6f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Steering Wheel Center Hub Retaining Bolt", "33", "45", "Apply blue threadlocker to M12 bolt"),
+                    TorqueSpec("Driver Airbag Module Retaining Screws (8mm)", "89 in-lbs", "10 Nm", "Two screws behind steering wheel spokes"),
+                    TorqueSpec("Steering Column Pinch Bolt to Shaft", "26", "35", "")
+                ),
+                requiredTools = listOf("8mm Socket", "15mm Socket & Torque Wrench", "2-Jaw Steering Wheel Puller", "T25 Torx Driver", "Battery Disconnect Wrench"),
+                repairSteps = listOf(
+                    RepairStep(1, "Disconnect Battery & Wait 15 Minutes", "Disconnect negative battery cable and wait 15 minutes to fully discharge SRS airbag backup capacitor.", warning = "Failure to disconnect battery before working on SRS airbag can trigger accidental deployment."),
+                    RepairStep(2, "Remove Airbag Module", "Remove two 8mm plastic access covers on back of steering wheel, unscrew 8mm bolts, and unplug yellow SRS connector."),
+                    RepairStep(3, "Unbolt Center Steering Hub Bolt", "Remove center 15mm bolt and use steering wheel puller tool to lift wheel off column splines."),
+                    RepairStep(4, "Replace Clockspring / Multifunction Switch", "Unclip steering column plastic shrouds and unscrew clockspring assembly or multifunction turn signal switch lever.")
+                ),
+                commonSymptoms = listOf("Airbag SRS warning light stays continuously illuminated or flashes 19/32 flash codes on dashboard", "Horn fails to sound and cruise control buttons stop functioning (broken clockspring ribbon cable)", "Turn signal switch lever fails to click into detent or windshield wipers run continuously"),
+                replacementIntervalMiles = 150000
+            )
+        },
+
+        // 42. OVERHEAD ROOF CONSOLE WITH DIGITAL COMPASS & TEMP DISPLAY
+        run {
+            val (v, f) = createBoxMesh(0.8f, 1.6f, 0.3f, Point3D(0.0f, 1.6f, 0.6f), "#F59E0B")
+            Component3DModel(
+                id = "overhead_console_compass_3d",
+                name = "Overhead Roof Console with Digital Compass, Temp Display & Sunroof Switch",
+                system = VehicleSystem.INTERIOR_DASH,
+                oemPartNumber = "1L2Z-51519A58-AA",
+                description = "Factory overhead roof console containing green VFD digital display for exterior temperature and heading compass, twin dome map lights, garage door opener storage compartment, sunglass holder bay, and power sunroof toggle control switch.",
+                locationDescription = "Mounted to center roof headliner directly above rearview mirror.",
+                difficulty = "Beginner",
+                estimatedTimeMinutes = 30,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0.0f, 1.6f, 0.6f),
+                explodeVector = Point3D(0.0f, 2.1f, 0.6f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Overhead Console Front Screw (Ph2)", "15 in-lbs", "1.7 Nm", "Single Phillips screw inside sunglass compartment")
+                ),
+                requiredTools = listOf("Phillips #2 Screwdriver", "Soldering Iron & 470-Ohm Resistors (for fixing dim display)", "Plastic Pry Bar"),
+                repairSteps = listOf(
+                    RepairStep(1, "Open Sunglass Compartment & Remove Screw", "Press latch to drop sunglass holder door and remove single Phillips screw inside upper roof bracket."),
+                    RepairStep(2, "Pull Console Assembly Down", "Gently pull rear of console downward to disengage spring clips from roof headliner frame."),
+                    RepairStep(3, "Unplug Electrical Connector", "Disconnect 8-pin wiring harness plug powering map lights, compass circuit board, and sunroof switch."),
+                    RepairStep(4, "Repair / Replace Compass Circuit Board", "Unscrew circuit board from console housing. Resolder surface-mount SMD 470-ohm chip resistors (R51 & R47) if display was completely dark.")
+                ),
+                commonSymptoms = listOf("Digital compass and ambient temperature readout screen went completely dark or flickers randomly", "Exterior temperature reads '-40°F' or '122°F' constantly (failed front bumper temp sensor)", "Overhead map reading lights fail to turn on when doors open"),
+                replacementIntervalMiles = 100000
+            )
+        },
+
+        // 43. FACTORY POWER GLASS SUNROOF ASSEMBLY & TRACK RAILS
+        run {
+            val (v, f) = createBoxMesh(2.2f, 0.2f, 2.0f, Point3D(0.0f, 1.8f, -0.2f), "#14B8A6")
+            Component3DModel(
+                id = "power_sunroof_assembly_3d",
+                name = "Factory Power Glass Sunroof Assembly, Dual-Track Rails & Water Drain Hoses",
+                system = VehicleSystem.SUNROOF_ROOF,
+                oemPartNumber = "1L2Z-78502C52-AA",
+                description = "Complete power glass sunroof assembly featuring tinted tempered glass panel with perimeter rubber weatherseal gasket, dual extruded aluminum guide track rails, tilt/slide mechanism lifter arms, sliding interior fabric sunshade, and 4-corner rubber water drain hoses routed down A/C roof pillars.",
+                locationDescription = "Integrated into roof panel structure above front driver and passenger seats.",
+                difficulty = "Advanced",
+                estimatedTimeMinutes = 120,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0.0f, 1.8f, -0.2f),
+                explodeVector = Point3D(0.0f, 2.5f, -0.2f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Glass Panel Side Screws (Torx T25 - 4 Screws)", "35 in-lbs", "4 Nm", "Adjust glass panel flush with outer roof line"),
+                    TorqueSpec("Sunroof Frame Retaining Bolts (10mm)", "89 in-lbs", "10 Nm", "Eight bolts to roof internal crossmembers")
+                ),
+                requiredTools = listOf("T25 Torx Driver", "10mm Socket & Flex Extension", "Silicone Spray Lubricant", "Weed Trimmer Line / Compressed Air (for clearing drain tubes)"),
+                repairSteps = listOf(
+                    RepairStep(1, "Retract Accordion Side Rubber Seals", "Slide sunroof glass to tilt position and unclip rubber side bellows accordion covers to expose glass adjustment Torx screws."),
+                    RepairStep(2, "Remove Sunroof Glass Panel", "Remove four T25 Torx screws (2 per side) and lift tempered glass panel up and off roof frame."),
+                    RepairStep(3, "Clean Track Channels & Drain Holes", "Inspect aluminum track grooves for broken plastic guide feet or dried grease. Insert trimmer line into 4 corner drain holes to clear leaves and dirt."),
+                    RepairStep(4, "Reinstall & Align Glass Panel", "Set glass panel onto brackets, tighten T25 screws finger tight, align glass flush with roof surface (+1mm higher at rear edge), and torque screws to 35 in-lbs.")
+                ),
+                commonSymptoms = listOf("Water leaking from overhead console, A-pillar trim, or wet front carpet after heavy rain (clogged sunroof drain hoses)", "Sunroof glass gets stuck halfway when closing or makes loud grinding crunching noise", "Wind noise or water drips entering cab around glass perimeter weatherseal"),
+                replacementIntervalMiles = 120000
+            )
+        },
+
+        // 44. SUNROOF ELECTRIC DRIVE MOTOR & CABLE MECHANISM
+        run {
+            val (v, f) = createCylinderMesh(0.4f, 0.8f, 8, Point3D(0.0f, 1.7f, 0.4f), "#14B8A6")
+            Component3DModel(
+                id = "sunroof_motor_drive_gear_3d",
+                name = "Sunroof Electric Drive Motor, Helical Drive Cables & Limit Module",
+                system = VehicleSystem.SUNROOF_ROOF,
+                oemPartNumber = "1L2Z-15790-AA",
+                description = "High-torque 12V reversible electric gear motor with internal brass pinion drive gear, meshing with dual flexible steel helical cables to slide and tilt the sunroof glass, equipped with electronic overload limit sensing and manual hex key emergency closure socket.",
+                locationDescription = "Mounted behind overhead roof console attached to forward sunroof crossmember.",
+                difficulty = "Intermediate",
+                estimatedTimeMinutes = 60,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0.0f, 1.7f, 0.4f),
+                explodeVector = Point3D(0.0f, 2.2f, 0.4f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Sunroof Motor Mounting Screws (T20 - 3 Screws)", "40 in-lbs", "4.5 Nm", "Do not cross-thread into metal bracket")
+                ),
+                requiredTools = listOf("T20 Torx Driver", "4mm Allen Wrench (for emergency manual cranking)", "White Lithium Grease", "10mm Socket"),
+                repairSteps = listOf(
+                    RepairStep(1, "Remove Overhead Roof Console", "Unscrew and remove overhead console to gain access to sunroof drive motor assembly."),
+                    RepairStep(2, "Emergency Manual Closure (if stuck open)", "Insert 4mm Allen wrench into center socket of motor gear shaft and manually turn clockwise to crank glass fully closed."),
+                    RepairStep(3, "Unplug Motor Connector & Unbolt Screws", "Disconnect 6-pin electrical plug and unscrew three T20 Torx screws securing motor to roof frame."),
+                    RepairStep(4, "Replace Motor & Calibrate Auto-Stop", "Install new drive motor, hold sunroof control switch forward for 10 seconds until motor clicks to reset closed position memory.")
+                ),
+                commonSymptoms = listOf("Pressing sunroof switch results in clicking sound from roof but glass panel does not move", "Sunroof drive motor spins freely but glass remains stationary (stripped motor pinion drive gear)", "Sunroof glass reverses direction automatically when trying to close"),
+                replacementIntervalMiles = 100000
+            )
+        },
+
+        // 45. SPORT TRAC POWER DROP-DOWN REAR SLIDING BACK GLASS WINDOW
+        run {
+            val (v, f) = createBoxMesh(2.4f, 1.0f, 0.2f, Point3D(0.0f, 1.1f, -2.2f), "#14B8A6")
+            Component3DModel(
+                id = "power_rear_window_assembly_3d",
+                name = "Sport Trac Power Drop-Down Back Glass Window & Cable Regulator Motor",
+                system = VehicleSystem.SUNROOF_ROOF,
+                oemPartNumber = "1L2Z-3542006-AA",
+                description = "Signature Sport Trac full-width power drop-down rear window assembly featuring heated tempered back glass with defrost grid, dual-cable scissor regulator track, high-torque electric motor, bottom drain trough, and rubber weatherstripping seal.",
+                locationDescription = "Mounted inside rear cab back wall structure behind rear passenger seatback.",
+                difficulty = "Advanced",
+                estimatedTimeMinutes = 90,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0.0f, 1.1f, -2.2f),
+                explodeVector = Point3D(0.0f, 1.1f, -2.8f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Rear Window Regulator Bracket Bolts (10mm)", "89 in-lbs", "10 Nm", ""),
+                    TorqueSpec("Glass Mounting Channel Clamp Screws", "35 in-lbs", "4 Nm", "Ensure rubber clamp isolator pads in place")
+                ),
+                requiredTools = listOf("10mm Socket & Ratchet", "12mm Socket for Seat Bolts", "Plastic Trim Removal Tool", "Glass Cleaner & Silicone Spray"),
+                repairSteps = listOf(
+                    RepairStep(1, "Remove Rear Seat Bench & Back Trim", "Unbolt rear 60/40 folding seat brackets and unscrew back cab wall carpet insulation panel."),
+                    RepairStep(2, "Expose Power Rear Window Regulator", "Locate steel window regulator channels and 12V motor mounted inside double-walled rear cab metal frame."),
+                    RepairStep(3, "Unbolt Window Clamps & Cable Pulley", "Lower glass slightly, unbolt two 10mm glass clamp brackets, and carefully support back glass with suction cups."),
+                    RepairStep(4, "Replace Regulator Motor / Cable Unit", "Unbolt regulator motor from cab wall, replace snapped cable assembly, reattach glass clamps, and test rear window switch operation.")
+                ),
+                commonSymptoms = listOf("Rear power back window drops down into cab wall suddenly and won't roll back up (snapped regulator cable)", "Motor hums when pressing dash switch but back glass does not slide smoothly", "Water puddling under carpet behind rear seats after washing vehicle"),
+                replacementIntervalMiles = 120000
+            )
+        },
+
+        // 46. DUAL BEAM HALOGEN HEADLIGHT ASSEMBLIES, CORNER MARKERS & FOG LAMPS
+        run {
+            val (v, f) = createBoxMesh(2.6f, 0.6f, 0.6f, Point3D(0.0f, 0.6f, 2.7f), "#EC4899")
+            Component3DModel(
+                id = "headlight_foglight_assemblies_3d",
+                name = "Dual-Beam Halogen Headlight Assemblies, Corner Markers & Fog Lamps",
+                system = VehicleSystem.LIGHTING_BODY,
+                oemPartNumber = "1L2Z-13008-AA",
+                description = "Clear poly-carbonate front lighting pack consisting of dual composite headlight housings with 9007 HB5 dual-filament halogen bulbs, amber turn signal corner marker lenses with 3157NA bulbs, and lower bumper round fog lamp housings with H10 42W halogen bulbs.",
+                locationDescription = "Mounted in front radiator header panel and front bumper cover.",
+                difficulty = "Beginner",
+                estimatedTimeMinutes = 25,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0.0f, 0.6f, 2.7f),
+                explodeVector = Point3D(0.0f, 0.6f, 3.4f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Headlight Retaining Retraction Pins", "Hand Latch", "N/A", "Pull two vertical steel slide retainer pins straight up"),
+                    TorqueSpec("Fog Lamp Mounting Bracket Bolts (8mm)", "45 in-lbs", "5 Nm", "Aiming adjustment bolt on rear bracket")
+                ),
+                requiredTools = listOf("Needle Nose Pliers / Hands", "8mm Socket", "Clean Cotton Gloves (do not touch glass halogen bulbs with bare skin)"),
+                repairSteps = listOf(
+                    RepairStep(1, "Lift Hood & Locate Headlight Retainer Pins", "Open hood and locate two vertical steel L-shaped locking retainer pins behind top of headlight housing."),
+                    RepairStep(2, "Slide Retainer Pins Straight Up", "Pull both steel locking pins upward until they disengage from headlight mounting tabs."),
+                    RepairStep(3, "Pull Headlight Housing Forward", "Pull complete headlight lens assembly straight forward away from radiator header panel."),
+                    RepairStep(4, "Twist Bulb Collar & Replace Bulb", "Rotate 9007 bulb retaining ring ¼-turn counter-clockwise, unplug electrical harness connector, and insert fresh 9007 halogen bulb.")
+                ),
+                commonSymptoms = listOf("Headlight lens heavily yellowed, oxidized, or hazy restricting night visibility", "High beam / low beam headlight bulb burned out on one side", "Fog lamp lens cracked from highway stone impact"),
+                replacementIntervalMiles = 50000
+            )
+        },
+
+        // 47. REAR TAIL LIGHT LENSES, BRAKE LIGHT SOCKETS & REVERSE HARNESS
+        run {
+            val (v, f) = createBoxMesh(2.6f, 0.8f, 0.4f, Point3D(0.0f, 0.8f, -2.6f), "#EC4899")
+            Component3DModel(
+                id = "tail_light_reverse_assemblies_3d",
+                name = "Rear Tail Light Lenses, Brake Light Sockets & Reverse Wire Harness",
+                system = VehicleSystem.LIGHTING_BODY,
+                oemPartNumber = "1L2Z-13404-AA",
+                description = "Rear bed corner tail lamp assemblies featuring red brake/tail light section (3157 dual-filament bulb), clear reverse light section (3156 bulb), amber turn signal section, rubber weatherproof bulb socket seals, and bed wiring harness plug.",
+                locationDescription = "Mounted on rear outer bed corners adjacent to tailgate.",
+                difficulty = "Beginner",
+                estimatedTimeMinutes = 20,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0.0f, 0.8f, -2.6f),
+                explodeVector = Point3D(0.0f, 0.8f, -3.2f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Tail Light Housing Screws (Ph2 - 2 Screws)", "18 in-lbs", "2 Nm", "Tighten into plastic bed grommets")
+                ),
+                requiredTools = listOf("Phillips #2 Screwdriver", "Dielectric Silicone Grease", "3157 & 3156 Replacement Bulbs"),
+                repairSteps = listOf(
+                    RepairStep(1, "Lower Tailgate", "Drop tailgate to reveal two Phillips screws on inner bed flange of tail light housing."),
+                    RepairStep(2, "Unscrew Housing Screws", "Remove two Phillips screws securing tail light lens assembly to sheet metal bed pillar."),
+                    RepairStep(3, "Pull Housing Outward", "Gently pull outer edge of housing straight out to release two plastic alignment alignment pins from bed rubber sockets."),
+                    RepairStep(4, "Twist Sockets ¼-Turn to Change Bulbs", "Twist bulb socket ¼-turn counter-clockwise, pull out old 3157 bulb, coat contacts with dielectric grease, and snap new bulb in.")
+                ),
+                commonSymptoms = listOf("Brake lights do not illuminate when pressing brake pedal or turn signal blinks rapidly (hyper-flash due to burnt bulb)", "Water or condensation visible inside tail light lens", "Reverse lights stay dark when shifting into Reverse gear"),
+                replacementIntervalMiles = 40000
+            )
+        },
+
+        // 48. BORGWARNER 4411 TRANSFER CASE & ELECTRONIC 4WD SHIFT MOTOR
+        run {
+            val (v, f) = createBoxMesh(1.4f, 1.2f, 1.4f, Point3D(-0.2f, -0.3f, -0.6f), "#8B5CF6")
+            Component3DModel(
+                id = "transfer_case_shift_motor_3d",
+                name = "BorgWarner 4411 Transfer Case & Electronic 4WD Shift Control Motor",
+                system = VehicleSystem.DRIVETRAIN_4WD,
+                oemPartNumber = "1L2Z-7A195-AA",
+                description = "Cast aluminum BorgWarner 4411 electronic shift-on-the-fly transfer case complete with planetary gear reduction set, electromagnetic clutch assembly for 4x4 Auto torque splitting, internal oil pump, drive chain, and rear-mounted 12V DC electric shift encoder motor.",
+                locationDescription = "Bolted directly behind 5R55E automatic transmission tailshaft housing under center chassis frame.",
+                difficulty = "Advanced",
+                estimatedTimeMinutes = 120,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(-0.2f, -0.3f, -0.6f),
+                explodeVector = Point3D(-0.6f, -0.8f, -0.6f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Transfer Case to Transmission Adapter Bolts (13mm)", "30", "41", ""),
+                    TorqueSpec("4WD Shift Motor Mounting Bolts (T30 / 10mm)", "89 in-lbs", "10 Nm", "Three bolts attaching motor to shift shaft"),
+                    TorqueSpec("Transfer Case Fill & Drain Plugs (3/8 In Drive)", "22", "30", "Uses 1.5 quarts MERCON V ATF")
+                ),
+                requiredTools = listOf("10mm & 13mm Sockets", "3/8-Inch Square Drive Ratchet", "MERCON V ATF (1.5 Qts) & Fluid Pump", "RTV Silicone Gasket Maker"),
+                repairSteps = listOf(
+                    RepairStep(1, "Unplug 4WD Shift Motor Wire Connector", "Press locking tab on 7-pin round wiring harness plug attached to rear of transfer case."),
+                    RepairStep(2, "Unbolt 4WD Shift Motor", "Remove three 10mm bolts securing shift motor assembly to transfer case aluminum rear housing."),
+                    RepairStep(3, "Inspect Triangular Shift Shaft Rotary Pin", "Use pliers to verify manual rotation of triangular shift shaft pin on transfer case."),
+                    RepairStep(4, "Install New Shift Motor / Change ATF Fluid", "Align new motor socket onto triangular shaft pin, torque 10mm bolts, and drain/refill transfer case with 1.5 qts fresh MERCON V ATF.")
+                ),
+                commonSymptoms = listOf("4x4 High and 4x4 Low dash lights flash 6 times periodically while driving", "Turning 4WD dash switch produces no sound or engagement under truck", "Grinding noise when 4WD auto engages during rear wheel slip"),
+                replacementIntervalMiles = 100000
+            )
+        },
+
+        // 49. REAR ALUMINUM DRIVESHAFT, SLIP YOKE & HEAVY-DUTY U-JOINTS
+        run {
+            val (v, f) = createCylinderMesh(0.4f, 3.2f, 8, Point3D(0.0f, -0.4f, -1.6f), "#8B5CF6")
+            Component3DModel(
+                id = "rear_driveshaft_slip_yoke_3d",
+                name = "Rear Aluminum Driveshaft Assembly, Slip Yoke & Heavy-Duty U-Joints",
+                system = VehicleSystem.DRIVETRAIN_4WD,
+                oemPartNumber = "1L2Z-4602-AA",
+                description = "Balanced 4-inch diameter lightweight aluminum rear driveshaft tube featuring splined transmission slip yoke, rear pinion companion flange, and dual greaseable Spicer 1330 series universal joints.",
+                locationDescription = "Extends from transfer case / transmission rear slip seal to rear differential pinion flange.",
+                difficulty = "Intermediate",
+                estimatedTimeMinutes = 60,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0.0f, -0.4f, -1.6f),
+                explodeVector = Point3D(0.0f, -1.0f, -1.6f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Rear Pinion Flange 12-Point Bolts (12mm Head)", "83", "112", "Apply red threadlocker to 4 flange bolts"),
+                    TorqueSpec("U-Joint Strap Bolts (8mm)", "15", "20", "")
+                ),
+                requiredTools = listOf("12mm 12-Point Socket & Breaker Bar", "Red Threadlocker 271", "U-Joint Press Tool / C-Clamp", "PTFE High-Temp Slip Yoke Grease"),
+                repairSteps = listOf(
+                    RepairStep(1, "Mark Pinion Flange Alignment", "Use paint pen to mark indexing alignment mark on driveshaft flange and differential pinion flange."),
+                    RepairStep(2, "Remove Four 12-Point Flange Bolts", "Unscrew four 12mm 12-point bolts securing driveshaft flange to rear differential."),
+                    RepairStep(3, "Slide Slip Yoke Out of Transfer Case", "Lower rear of driveshaft and slide front slip yoke out of transfer case rear extension housing seal."),
+                    RepairStep(4, "Replace U-Joints & Grease Slip Yoke Splines", "Press out old dry needle bearing U-joints, install greaseable Spicer 1330 U-joints, apply PTFE grease to slip yoke splines, and torque flange bolts to 83 lb-ft with red threadlocker.")
+                ),
+                commonSymptoms = listOf("Squeaking or chirping noise from under truck that speeds up with vehicle speed (dry U-joint needle bearings)", "Loud clunking thump felt when shifting from Park into Drive or Reverse (worn U-joint play)", "High-speed driveline vibration felt through floorboards above 55 MPH"),
+                replacementIntervalMiles = 90000
+            )
+        },
+
+        // 50. FORD 8.8-INCH REAR DIFFERENTIAL AXLE WITH TRACTION-LOK
+        run {
+            val (v, f) = createBoxMesh(2.2f, 1.2f, 1.2f, Point3D(0.0f, -0.5f, -2.6f), "#8B5CF6")
+            Component3DModel(
+                id = "rear_differential_88_3d",
+                name = "Ford 8.8-Inch Rear Differential Axle with Limited Slip Traction-Lok",
+                system = VehicleSystem.DRIVETRAIN_4WD,
+                oemPartNumber = "1L2Z-4000-AA",
+                description = "Cast iron Ford 8.8-inch rear axle housing with 3.73 or 4.10 ring and pinion gear set, Traction-Lok multi-disc clutch pack limited-slip differential carrier, 31-spline axle shafts, steel rear cover pan, and ABS wheel speed sensor port.",
+                locationDescription = "Center rear axle assembly supporting rear suspension leaf springs.",
+                difficulty = "Advanced",
+                estimatedTimeMinutes = 150,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0.0f, -0.5f, -2.6f),
+                explodeVector = Point3D(0.0f, -1.2f, -2.6f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Differential Cover Pan Bolts (10 Bolts - 1/2 In Head)", "33", "45", "Tighten in star pattern with RTV sealant"),
+                    TorqueSpec("Pinion Nut", "160", "217", "Sets pinion bearing preload"),
+                    TorqueSpec("Differential Fill Plug (3/8 In Drive)", "22", "30", "Use 80W-90 / 75W-140 Synthetic + 4oz Friction Modifier")
+                ),
+                requiredTools = listOf("1/2-Inch & 9/16-Inch Sockets", "3/8-Inch Square Ratchet", "Permatex Ultra Grey RTV Gasket Maker", "75W-140 Synthetic Gear Oil (2.5 Qts)", "Ford XL-3 Friction Modifier Additive (4 oz)"),
+                repairSteps = listOf(
+                    RepairStep(1, "Place Drain Pan & Remove Cover Pan Bolts", "Unbolt 10 differential cover bolts, pry bottom of steel cover pan to drain old dark gear oil."),
+                    RepairStep(2, "Clean Differential Housing & Cover Flanges", "Scrape old RTV gasket material clean off housing flange using razor scraper and brake cleaner."),
+                    RepairStep(3, "Inspect Ring & Pinion Gear Teeth", "Inspect ring gear teeth for chipping, pitting, or excess backlash metal shavings on magnet."),
+                    RepairStep(4, "Apply RTV Sealant & Refill Gear Oil", "Apply continuous 1/8-in bead of RTV grey silicone around cover pan, torque 10 bolts to 33 lb-ft, wait 1 hour, and fill with 2.5 qts 75W-140 synthetic gear oil + 4oz XL-3 friction modifier additive.")
+                ),
+                commonSymptoms = listOf("Whining or howling noise from rear end that changes when accelerating vs coasting (worn pinion/carrier bearings)", "Rear tires chatter, hop or bind during tight parking lot turns (worn Traction-Lok clutch packs needing friction modifier additive)", "Fluid leaking from bottom edge of differential cover pan or rear pinion seal"),
+                replacementIntervalMiles = 100000
+            )
+        },
+
+        // 51. CYLINDER HEADS, VALVES & HYDRAULIC ROLLER FOLLOWERS (4.0L SOHC)
+        run {
+            val (v, f) = createBoxMesh(2.0f, 1.0f, 1.2f, Point3D(0.0f, 1.1f, 0.2f), "#FF6F00")
+            Component3DModel(
+                id = "cylinder_heads_valvetrain_3d",
+                name = "Aluminum Cylinder Heads, Valves, Hydraulic Roller Followers & Head Bolts",
+                system = VehicleSystem.ENGINE,
+                oemPartNumber = "1L2Z-6049-BA",
+                description = "Cast aluminum cylinder heads for Cologne 4.0L SOHC V6 featuring 12 overhead valves (6 intake / 6 exhaust), single overhead camshaft per bank, hydraulic roller rocker arm followers, beehive valve springs, MLS multi-layer steel head gaskets, and torque-to-yield head bolts.",
+                locationDescription = "Bolted to top left and right cylinder banks of engine block.",
+                difficulty = "Advanced",
+                estimatedTimeMinutes = 360,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0.0f, 1.1f, 0.2f),
+                explodeVector = Point3D(0.0f, 1.8f, 0.2f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Head Bolts - Pass 1", "26", "35", "Use NEW TTY Bolts"),
+                    TorqueSpec("Head Bolts - Pass 2", "59", "80", "Tighten in specified sequence"),
+                    TorqueSpec("Head Bolts - Pass 3", "Rotate +90°", "Angle Torque", "Final angle torque turn")
+                ),
+                requiredTools = listOf("Torque Wrench & Angle Torque Gauge", "T55 Torx Socket", "Valve Spring Compressor", "MLS Head Gasket Set", "Cam Alignment Holding Tools"),
+                repairSteps = listOf(
+                    RepairStep(1, "Drain Engine Coolant & Remove Intakes", "Drain radiator coolant, remove intake manifold plenum, valve covers, and timing chain cassettes."),
+                    RepairStep(2, "Unbolt Torque-to-Yield Cylinder Head Bolts", "Unbolt 8 head bolts per side using T55 Torx in reverse sequence.", warning = "Cologne 4.0L SOHC head bolts are Torque-to-Yield (TTY) and MUST be discarded and replaced with new bolts upon reassembly."),
+                    RepairStep(3, "Lift Off Cylinder Head & Clean Deck Surface", "Lift off aluminum head, inspect combustion chambers and valves, scrape block deck surface perfectly flat."),
+                    RepairStep(4, "Install MLS Head Gaskets & Torque Head Bolts", "Place fresh MLS steel head gaskets dry, position head, install NEW TTY bolts lubricated with engine oil, and follow 3-pass torque-to-yield sequence (26 ft-lb -> 59 ft-lb -> +90° turn).")
+                ),
+                commonSymptoms = listOf("Engine overheating with white sweet-smelling exhaust smoke and loss of coolant", "Milky chocolate-colored foam on engine oil dipstick (coolant mixing with motor oil due to blown head gasket)", "Low compression on adjacent cylinders causing misfire flash code P0300/P0301"),
+                replacementIntervalMiles = 150000
+            )
+        },
+
+        // 52. FRONT UPPER & LOWER CONTROL ARMS WITH HEAVY-DUTY BALL JOINTS
+        run {
+            val (v, f) = createBoxMesh(2.4f, 0.8f, 1.4f, Point3D(0.0f, -0.6f, 1.2f), "#EF4444")
+            Component3DModel(
+                id = "front_control_arms_balljoints_3d",
+                name = "Front Upper & Lower Control Arms with Heavy-Duty Press-In Ball Joints",
+                system = VehicleSystem.BRAKES_CHASSIS,
+                oemPartNumber = "1L2Z-3078-AA",
+                description = "Forged steel upper and lower front A-arm control suspension arms complete with natural rubber frame pivot bushings, greaseable heavy-duty press-in upper/lower ball joints, torsion bar mounting socket, and sway bar end link mounts.",
+                locationDescription = "Connects front wheel steering knuckles to vehicle chassis frame.",
+                difficulty = "Advanced",
+                estimatedTimeMinutes = 120,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0.0f, -0.6f, 1.2f),
+                explodeVector = Point3D(0.0f, -1.2f, 1.8f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Lower Ball Joint Pinch Nut", "83", "112", "Install fresh cotter pin"),
+                    TorqueSpec("Upper Control Arm Camber Pinch Bolts (2 Bolts)", "98", "133", "Requires 4-wheel alignment after replacement"),
+                    TorqueSpec("Lower Control Arm Frame Pivot Bolts", "111", "150", "Torque while vehicle weight is resting on suspension")
+                ),
+                requiredTools = listOf("C-Frame Ball Joint Press Tool Kit", "Pickle Fork / Ball Joint Separator", "18mm & 21mm Deep Sockets", "Torque Wrench (up to 150 lb-ft)", "Grease Gun with NLGI #2 EP Grease"),
+                repairSteps = listOf(
+                    RepairStep(1, "Jack Up Front Frame & Remove Front Wheel", "Secure vehicle on heavy jack stands, remove front 19mm wheel lug nuts and tire."),
+                    RepairStep(2, "Unbolt Ball Joint Pinch Nuts & Separate Knuckle", "Unbolt upper and lower ball joint nuts, use ball joint separator tool to pop tapered ball joint studs free from steering knuckle."),
+                    RepairStep(3, "Press Out Old Ball Joints", "Use C-frame ball joint press tool with receiver cups to press worn ball joint out of lower control arm bore."),
+                    RepairStep(4, "Press In Greaseable Ball Joint / Align Alignment", "Press in new greaseable ball joint, install snap ring, torque ball joint nuts, grease Zerk fitting, and perform 4-wheel alignment.")
+                ),
+                commonSymptoms = listOf("Loud clunking thumping noise when driving over speed bumps or potholed roads", "Front tires showing severe uneven edge wear (feathering / cupping)", "Squeaking creaking sound when turning steering wheel at low speeds"),
+                replacementIntervalMiles = 80000
+            )
+        },
+
+        // 53. MACH 500 / PIONEER PREMIUM DOUBLE-DIN RADIO HEAD UNIT & CD CHANGER
+        run {
+            val (v, f) = createBoxMesh(1.1f, 0.8f, 0.9f, Point3D(0.0f, 0.85f, 0.65f), "#F59E0B")
+            Component3DModel(
+                id = "radio_mach500_head_unit_3d",
+                name = "Mach 500 / Pioneer Premium Double-DIN AM/FM Radio & CD Changer Head Unit",
+                system = VehicleSystem.INTERIOR_DASH,
+                oemPartNumber = "1L2F-18C815-AA",
+                description = "Factory premium double-DIN stereo receiver head unit featuring integrated 6-disc in-dash CD changer mechanism, RDS digital radio tuner module, dot-matrix green vacuum fluorescent display screen, dual volume/tuner rotary encoder dials, speed-compensated volume control processor, rear subwoofer preamp output plug, and dual 16-pin Ford factory wiring harness sockets.",
+                locationDescription = "Mounted in center dash stack bezel directly above HVAC climate control knobs.",
+                difficulty = "Beginner",
+                estimatedTimeMinutes = 20,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0.0f, 0.85f, 0.65f),
+                explodeVector = Point3D(0.0f, 1.2f, 1.5f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Center Dash Bezel Screws (7mm Head)", "18 in-lbs", "2 Nm", "Two 7mm screws located above climate control knobs"),
+                    TorqueSpec("Radio Side Mounting Bracket Screws", "15 in-lbs", "1.7 Nm", "Four mini T15 Torx screws into side chassis")
+                ),
+                requiredTools = listOf("7mm Socket & Nut Driver", "Ford U-Shaped DIN Radio Removal Key Tool Set (Ford # T83P-19061-A)", "Plastic Trim Removal Tool", "Electrical Contact Cleaner Spray"),
+                repairSteps = listOf(
+                    RepairStep(1, "Remove Dash Bezel Screws", "Unscrew two 7mm hex screws located in the lip directly above climate control rotary knobs."),
+                    RepairStep(2, "Unclip Center Dash Bezel", "Gently insert plastic pry bar around radio bezel edge and pop four spring steel retention clips free from dashboard."),
+                    RepairStep(3, "Insert Ford DIN Removal Tool Keys", "Insert pair of U-shaped Ford DIN removal keys into four holes on radio faceplate until internal spring clips click open."),
+                    RepairStep(4, "Slide Radio Chassis Out & Unplug Harnesses", "Spread DIN keys outward slightly and pull head unit straight forward. Unplug main 16-pin wiring harness, subwoofer RCA/remote plug, and motorola antenna coax lead."),
+                    RepairStep(5, "Install Replacement Head Unit / Aftermarket Adapter", "Connect Ford wiring harness adapter plug, snap antenna coax lead in place, and slide chassis into center stack frame until latches lock.")
+                ),
+                commonSymptoms = listOf(
+                    "High-pitch alternator whistle/whine pitch tracking engine RPM through speakers due to bad stereo ground or alternator diode ripple",
+                    "CD Changer mechanism jammed with 'CD ERROR' or 'INITIALIZING' displayed on VFD screen",
+                    "Radio volume knob skips erratically or fails to respond when rotated",
+                    "Head unit screen goes completely blank or internal display backlights burn out"
+                ),
+                replacementIntervalMiles = 100000
+            )
+        },
+
+        // 54. FACTORY 6x8 CUSTOM DOOR SPEAKERS & PIONEER POWERED SUBWOOFER SYSTEM
+        run {
+            val (v, f) = createCylinderMesh(0.7f, 0.5f, 8, Point3D(0.8f, 0.4f, -0.2f), "#F59E0B")
+            Component3DModel(
+                id = "audio_door_speakers_subwoofer_3d",
+                name = "Factory 6x8 Custom Door Speakers, Tweeters & Pioneer 8\" Powered Subwoofer",
+                system = VehicleSystem.INTERIOR_DASH,
+                oemPartNumber = "1L2Z-18808-BA",
+                description = "High-fidelity vehicle audio transducer system comprising four 6x8-inch polypropylene full-range coaxial door speakers with treated cloth surrounds, A-pillar silk dome tweeters, and the factory Pioneer rear cabin trim-integrated 8-inch powered subwoofer enclosure with dedicated 290-watt peak audio amplifier module.",
+                locationDescription = "Door speaker units mounted inside all four interior door trim panels; Pioneer subwoofer mounted behind rear passenger trim panel.",
+                difficulty = "Intermediate",
+                estimatedTimeMinutes = 45,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0.8f, 0.4f, -0.2f),
+                explodeVector = Point3D(1.6f, 0.6f, -0.2f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Door Speaker Mounting Screws (4 Screws per Door)", "18 in-lbs", "2 Nm", "7mm screws into plastic door sheet metal inserts"),
+                    TorqueSpec("Door Interior Handle Screws (7mm Head)", "25 in-lbs", "2.8 Nm", "Two screws behind armrest access cover"),
+                    TorqueSpec("Pioneer Subwoofer Enclosure Bracket Bolts", "89 in-lbs", "10 Nm", "Three 10mm bolts to rear cab wall")
+                ),
+                requiredTools = listOf("7mm & 8mm Sockets & Driver", "T20 Torx Bit", "Plastic Interior Door Trim Removal Pry Tool", "Wire Stripper & Crimp Connectors"),
+                repairSteps = listOf(
+                    RepairStep(1, "Remove Interior Door Trim Panel", "Remove lower door reflector lens, unscrew two 7mm screws under armrest handle, and unclip plastic window switch bezel."),
+                    RepairStep(2, "Pry Trim Panel From Door Frame", "Use plastic trim pry bar to release perimeter christmas tree push-pin fasteners and lift door panel upward off window ledge."),
+                    RepairStep(3, "Unscrew 6x8 Speaker & Disconnect Plug", "Unscrew four 7mm hex screws securing speaker frame to door frame and disconnect 2-pin Ford speaker wire plug."),
+                    RepairStep(4, "Install 6x8 Speaker & Harness Adapter", "Snap plug-and-play Ford speaker wire harness adapter onto speaker terminals, secure frame with 7mm screws, and reattach door trim panel."),
+                    RepairStep(5, "Inspect Pioneer Subwoofer Fuse & Ground", "If rear subwoofer produces no bass, verify 15A audio amplifier fuse #1.03 in engine junction box and clean rear cab floor ground eyelet.")
+                ),
+                commonSymptoms = listOf(
+                    "Loud crackling, static scratching, or muffled sound when playing music at high volume (dry rotted speaker cone surround or torn voice coil)",
+                    "Complete silence from individual door speaker channel (broken wire in door hinge rubber boot or burnt speaker coil)",
+                    "Pioneer rear subwoofer produces zero low-frequency bass or rattles loudly inside rear trim panel"
+                ),
+                replacementIntervalMiles = 80000
+            )
         }
     )
 
@@ -675,6 +2123,7 @@ object SportTracData {
             systemName = VehicleSystem.ENGINE.displayName,
             mileageAtService = 112000,
             dateLoggedMillis = System.currentTimeMillis() - (60L * 24 * 3600 * 1000),
+            componentDescription = "Motorcraft FL-820S Oil Filter & 5.0 Qts 5W-30 Motor Oil",
             costUsd = 45.0,
             notes = "Used 5.0 qts Motorcraft 5W-30 synthetic blend and FL-820S filter. Oil pressure normal.",
             isCompleted = true
@@ -682,12 +2131,37 @@ object SportTracData {
         MaintenanceEntity(
             id = 2,
             scheduleItemId = "coolant_flush",
-            title = "Cooling System Flush & Thermostat Housing Upgrade",
+            title = "Cooling System Flush & Thermostat Housing",
             systemName = VehicleSystem.COOLING.displayName,
             mileageAtService = 110000,
             dateLoggedMillis = System.currentTimeMillis() - (120L * 24 * 3600 * 1000),
+            componentDescription = "Upgraded Aluminum Thermostat Housing Assembly & Motorcraft Premium Gold Coolant",
             costUsd = 120.0,
             notes = "Replaced factory plastic thermostat housing with upgraded metal assembly. Refilled with Motorcraft Gold coolant.",
+            isCompleted = true
+        ),
+        MaintenanceEntity(
+            id = 3,
+            scheduleItemId = "trans_fluid",
+            title = "5R55E Transmission Fluid & Solenoid Filter Service",
+            systemName = VehicleSystem.TRANSMISSION.displayName,
+            mileageAtService = 105000,
+            dateLoggedMillis = System.currentTimeMillis() - (180L * 24 * 3600 * 1000),
+            componentDescription = "5R55E Valve Body Solenoid Pack, Filter & MERCON V ATF Fluid",
+            costUsd = 185.0,
+            notes = "Replaced transmission filter and pan gasket. Refilled with MERCON V ATF. Solenoid pressure confirmed.",
+            isCompleted = true
+        ),
+        MaintenanceEntity(
+            id = 4,
+            scheduleItemId = "spark_plugs",
+            title = "Spark Plugs & EDIS Ignition Coil Pack Replacement",
+            systemName = VehicleSystem.ENGINE.displayName,
+            mileageAtService = 98000,
+            dateLoggedMillis = System.currentTimeMillis() - (300L * 24 * 3600 * 1000),
+            componentDescription = "Motorcraft AGSF-22PP Platinum Plugs & 6-Tower EDIS Coil Pack",
+            costUsd = 95.0,
+            notes = "Gapped spark plugs to 0.054 inches. Replaced original EDIS ignition coil pack to fix cylinder misfire.",
             isCompleted = true
         )
     )
@@ -817,6 +2291,58 @@ object SportTracData {
                             confidencePercentage = 87,
                             urgencyLevel = "Medium",
                             recommendedAction = "Hook up manifold pressure gauges. If pressure is good, remove single clutch bolt and remove one shim spacer to adjust air gap to 0.020 inches."
+                        )
+                    )
+                )
+            )
+        ),
+
+        DiagnosticSymptomCategory(
+            id = "cat_audio_radio",
+            categoryName = "Radio, Audio & Speakers Diagnostics",
+            system = VehicleSystem.INTERIOR_DASH,
+            commonSymptoms = listOf("High pitch engine RPM whistle through speakers", "Door speaker static or muffled crackle", "CD changer jammed with error", "Pioneer subwoofer no bass"),
+            rootQuestion = DiagnosticQuestion(
+                id = "q_audio_symptom",
+                questionText = "What specific audio or radio issue are you experiencing in your Sport Trac?",
+                options = listOf(
+                    DiagnosticOption(
+                        optionText = "High-pitched whining or whistling sound from speakers that changes pitch when stepping on the gas pedal",
+                        resultDiagnosis = DiagnosticResult(
+                            title = "Alternator Ground Noise / Diode Ripple Interference in Audio System",
+                            problemSummary = "Alternator AC diode ripple or a degraded engine block/firewall ground strap induces electrical noise directly into the radio power feed or unshielded speaker wires.",
+                            probableCause = "Loose firewall ground strap or faulty alternator diode bridge leaking AC voltage into stereo 12V line.",
+                            obdCode = "None",
+                            targetComponentId = "radio_mach500_head_unit_3d",
+                            confidencePercentage = 96,
+                            urgencyLevel = "Low",
+                            recommendedAction = "Clean engine firewall ground lug, test alternator diode ripple with multimeter AC scale, or install an inline 12V audio power noise choke filter."
+                        )
+                    ),
+                    DiagnosticOption(
+                        optionText = "Door speaker produces loud static, scratching crackle, or dead sound when volume is turned up",
+                        resultDiagnosis = DiagnosticResult(
+                            title = "Door Speaker Dry Rotted Cone Surround or Burnt Voice Coil",
+                            problemSummary = "Exposure to humidity and heat inside door panels degrades the factory foam or cloth surround of the 6x8 speakers over time, causing the voice coil to rub against the magnet.",
+                            probableCause = "Dry rotted speaker surround or broken door hinge wire harness flex leads.",
+                            obdCode = "None",
+                            targetComponentId = "audio_door_speakers_subwoofer_3d",
+                            confidencePercentage = 94,
+                            urgencyLevel = "Low",
+                            recommendedAction = "Remove interior door trim panel, test 6x8 speaker terminals for 4-ohm resistance with multimeter, and replace with fresh 6x8 coaxial speakers."
+                        )
+                    ),
+                    DiagnosticOption(
+                        optionText = "Mach 500 radio display shows 'CD ERROR' or CD changer is physically jammed and won't eject discs",
+                        resultDiagnosis = DiagnosticResult(
+                            title = "In-Dash 6-Disc CD Changer Mechanical Ejection Jam",
+                            problemSummary = "Internal plastic drive gears and disc loading trays in the factory Mach 500 head unit jam or slip off guide tracks after years of thermal expansion.",
+                            probableCause = "Broken internal CD tray slider gear or misaligned optical pickup laser.",
+                            obdCode = "None",
+                            targetComponentId = "radio_mach500_head_unit_3d",
+                            confidencePercentage = 91,
+                            urgencyLevel = "Low",
+                            recommendedAction = "Pull radio head unit using U-shaped Ford DIN removal keys. Disassemble top cover to manually clear stuck disc or upgrade to modern double-DIN Bluetooth head unit."
                         )
                     )
                 )

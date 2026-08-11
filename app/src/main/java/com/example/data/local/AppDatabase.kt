@@ -6,12 +6,25 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(
-    entities = [MaintenanceEntity::class, VehicleProfileEntity::class],
-    version = 1,
+    entities = [
+        MaintenanceEntity::class,
+        VehicleProfileEntity::class,
+        AcousticReferenceEntity::class,
+        RepairChecklistEntity::class,
+        UpcomingTaskEntity::class,
+        Cached3DAssetEntity::class,
+        CachedRepairManualEntity::class,
+        CachedSymptomEntity::class,
+        CacheManifestEntity::class
+    ],
+    version = 6,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun maintenanceDao(): MaintenanceDao
+    abstract fun acousticReferenceDao(): AcousticReferenceDao
+    abstract fun repairChecklistDao(): RepairChecklistDao
+    abstract fun offlineCacheDao(): OfflineCacheDao
 
     companion object {
         @Volatile

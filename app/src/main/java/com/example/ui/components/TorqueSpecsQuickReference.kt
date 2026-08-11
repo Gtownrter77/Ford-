@@ -57,6 +57,19 @@ fun TorqueSpecsQuickReference(
     var selectedSystemFilter by remember { mutableStateOf<VehicleSystem?>(null) }
     var selectedUnit by remember { mutableStateOf(TorqueUnit.FT_LBS) }
     var showTtyOnly by remember { mutableStateOf(false) }
+    var activeTorqueSimulatorEntry by remember { mutableStateOf<TorqueEntry?>(null) }
+
+    activeTorqueSimulatorEntry?.let { entry ->
+        TorqueWrenchSimulatorDialog(
+            fastenerName = entry.boltLocation,
+            componentName = entry.componentName,
+            targetTorqueFtLbs = entry.torqueFtLbs,
+            socketSize = entry.socketSize,
+            isTty = entry.isTty,
+            targetAngleDegrees = if (entry.isTty) 90f else 0f,
+            onDismiss = { activeTorqueSimulatorEntry = null }
+        )
+    }
 
     // Master database of 2004 Ford Explorer Sport Trac Torque Specs compiled from OEM service manuals & component models
     val allTorqueEntries = remember(components) {
@@ -382,7 +395,8 @@ fun TorqueSpecsQuickReference(
                 items(filteredEntries, key = { it.id }) { entry ->
                     TorqueSpecCard(
                         entry = entry,
-                        unit = selectedUnit
+                        unit = selectedUnit,
+                        onCalibrateTorque = { activeTorqueSimulatorEntry = entry }
                     )
                 }
             }
@@ -394,6 +408,7 @@ fun TorqueSpecsQuickReference(
 fun TorqueSpecCard(
     entry: TorqueEntry,
     unit: TorqueUnit,
+    onCalibrateTorque: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     // Formatted Value Conversion
@@ -577,6 +592,22 @@ fun TorqueSpecCard(
                         )
                     }
                 }
+            }
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            // Torque Wrench Simulator Action Button
+            Button(
+                onClick = onCalibrateTorque,
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF6F00)),
+                shape = RoundedCornerShape(10.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .testTag("btn_calibrate_torque_${entry.id}")
+            ) {
+                Icon(Icons.Default.Build, contentDescription = null, modifier = Modifier.size(16.dp))
+                Spacer(modifier = Modifier.width(8.dp))
+                Text("⚡ OPEN DIGITAL TORQUE WRENCH SIMULATOR", style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold))
             }
         }
     }

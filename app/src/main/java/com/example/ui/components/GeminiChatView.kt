@@ -27,9 +27,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.graphics.vector.ImageVector
 import com.example.model.ChatMessage
 import com.example.model.ChatSender
 import kotlinx.coroutines.launch
+
+data class SymptomCardData(
+    val title: String,
+    val subtitle: String,
+    val icon: ImageVector,
+    val color: Color,
+    val prompt: String
+)
 
 @Composable
 fun GeminiChatView(
@@ -52,13 +61,63 @@ fun GeminiChatView(
         }
     }
 
-    val quickPrompts = listOf(
-        "P0171 / P0174 Lean Idle",
-        "Cold Start Engine Rattle",
-        "Coolant Valley Leak (P0128)",
-        "5R55E 2-3 Gear Shift Flare",
-        "Engine Misfire / Jerking (P0300)",
-        "A/C Blowing Warm Air"
+    val quickSymptomCards = listOf(
+        SymptomCardData(
+            title = "Listen to Engine Sound",
+            subtitle = "Mic audio FFT & Gemini AI acoustic analyzer",
+            icon = Icons.Default.GraphicEq,
+            color = Color(0xFF00F0FF),
+            prompt = "Analyze engine acoustic noise recording against 2004 Sport Trac 4.0L V6 timing chain and valve train failure signatures"
+        ),
+        SymptomCardData(
+            title = "Engine Sputtering",
+            subtitle = "Jerking under load, Misfire P0300",
+            icon = Icons.Default.Warning,
+            color = Color(0xFFEF4444),
+            prompt = "Engine sputtering and jerking under load, misfiring codes P0300 / P0301"
+        ),
+        SymptomCardData(
+            title = "Engine Overheating",
+            subtitle = "Coolant valley leak, P0128",
+            icon = Icons.Default.Thermostat,
+            color = Color(0xFFFF6F00),
+            prompt = "Engine overheating with coolant puddle in valley, thermostat housing leak P0128"
+        ),
+        SymptomCardData(
+            title = "5R55E Shift Flare",
+            subtitle = "2-3 slip, O/D light flashing P0732",
+            icon = Icons.Default.Speed,
+            color = Color(0xFFA855F7),
+            prompt = "5R55E transmission 2-3 gear shift flare and slipping, code P0732"
+        ),
+        SymptomCardData(
+            title = "Cold Start Rattle",
+            subtitle = "4.0L SOHC timing chain slap",
+            icon = Icons.Default.ReportProblem,
+            color = Color(0xFFEAB308),
+            prompt = "Cold start engine chain rattle noise for 3 seconds on 4.0L SOHC V6"
+        ),
+        SymptomCardData(
+            title = "No-Start / Clicking",
+            subtitle = "Battery voltage, starter relay",
+            icon = Icons.Default.FlashOn,
+            color = Color(0xFF3B82F6),
+            prompt = "No start condition with clicking noise when turning key in ignition"
+        ),
+        SymptomCardData(
+            title = "A/C Warm Air",
+            subtitle = "Compressor clutch gap",
+            icon = Icons.Default.AcUnit,
+            color = Color(0xFF06B6D4),
+            prompt = "A/C blowing warm air, compressor clutch not engaging"
+        ),
+        SymptomCardData(
+            title = "Brake Squeal",
+            subtitle = "Rotor pulsation & pad wear",
+            icon = Icons.Default.DirectionsCar,
+            color = Color(0xFF10B981),
+            prompt = "Brake squeal noise and pedal pulsation when stopping"
+        )
     )
 
     Column(
@@ -67,7 +126,7 @@ fun GeminiChatView(
             .background(Color(0xFF0F172A))
             .testTag("gemini_chat_view")
     ) {
-        // Chat Header
+        // Conversational Diagnostics Wizard Header
         Surface(
             color = Color(0xFF1E293B),
             border = BorderStroke(1.dp, Color(0xFF334155))
@@ -83,7 +142,7 @@ fun GeminiChatView(
                     Box(
                         contentAlignment = Alignment.Center,
                         modifier = Modifier
-                            .size(36.dp)
+                            .size(38.dp)
                             .clip(CircleShape)
                             .background(Color(0xFF0284C7))
                     ) {
@@ -91,15 +150,18 @@ fun GeminiChatView(
                             Icons.Default.AutoAwesome,
                             contentDescription = "Gemini AI",
                             tint = Color.White,
-                            modifier = Modifier.size(20.dp)
+                            modifier = Modifier.size(22.dp)
                         )
                     }
                     Spacer(modifier = Modifier.width(10.dp))
                     Column {
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Text(
-                                text = "GEMINI AI MECHANIC",
-                                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
+                                text = "CONVERSATIONAL DIAGNOSTICS WIZARD",
+                                style = MaterialTheme.typography.titleMedium.copy(
+                                    fontWeight = FontWeight.Bold,
+                                    letterSpacing = 0.5.sp
+                                ),
                                 color = Color.White
                             )
                             Spacer(modifier = Modifier.width(6.dp))
@@ -109,7 +171,7 @@ fun GeminiChatView(
                                 border = BorderStroke(1.dp, Color(0xFF10B981))
                             ) {
                                 Text(
-                                    text = "3.5 Flash",
+                                    text = "Gemini 3.5 Flash",
                                     style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
                                     color = Color(0xFF10B981),
                                     modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
@@ -117,7 +179,7 @@ fun GeminiChatView(
                             }
                         }
                         Text(
-                            text = "2004 Ford Explorer Sport Trac 4.0L SOHC Specialist",
+                            text = "2004 Ford Explorer Sport Trac Factory Manuals & TSB AI Engine",
                             style = MaterialTheme.typography.labelSmall,
                             color = Color(0xFF94A3B8)
                         )
@@ -133,6 +195,96 @@ fun GeminiChatView(
                         contentDescription = "Clear Chat",
                         tint = Color(0xFF94A3B8)
                     )
+                }
+            }
+        }
+
+        // Common Symptoms Prompt Carousel
+        Surface(
+            color = Color(0xFF0B132B),
+            border = BorderStroke(1.dp, Color(0xFF1E293B)),
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Column(modifier = Modifier.padding(vertical = 8.dp)) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 14.dp, vertical = 4.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(
+                            Icons.Default.Psychology,
+                            contentDescription = null,
+                            tint = Color(0xFFFFD700),
+                            modifier = Modifier.size(16.dp)
+                        )
+                        Spacer(modifier = Modifier.width(6.dp))
+                        Text(
+                            text = "COMMON SPORT TRAC SYMPTOMS (TAP TO DIAGNOSE):",
+                            style = MaterialTheme.typography.labelSmall.copy(
+                                fontWeight = FontWeight.Bold,
+                                letterSpacing = 0.5.sp
+                            ),
+                            color = Color(0xFFFFD700)
+                        )
+                    }
+                    Text(
+                        text = "Ford TSB Grounded",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = Color(0xFF64748B)
+                    )
+                }
+
+                LazyRow(
+                    contentPadding = PaddingValues(horizontal = 12.dp, vertical = 4.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    items(quickSymptomCards) { symptom ->
+                        Surface(
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(12.dp))
+                                .clickable { onSendMessage(symptom.prompt) }
+                                .testTag("symptom_card_${symptom.title.lowercase().replace(' ', '_')}"),
+                            color = Color(0xFF1E293B),
+                            shape = RoundedCornerShape(12.dp),
+                            border = BorderStroke(1.dp, symptom.color.copy(alpha = 0.7f))
+                        ) {
+                            Row(
+                                modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Box(
+                                    contentAlignment = Alignment.Center,
+                                    modifier = Modifier
+                                        .size(28.dp)
+                                        .clip(CircleShape)
+                                        .background(symptom.color.copy(alpha = 0.2f))
+                                ) {
+                                    Icon(
+                                        symptom.icon,
+                                        contentDescription = null,
+                                        tint = symptom.color,
+                                        modifier = Modifier.size(16.dp)
+                                    )
+                                }
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Column {
+                                    Text(
+                                        text = symptom.title,
+                                        style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
+                                        color = Color.White
+                                    )
+                                    Text(
+                                        text = symptom.subtitle,
+                                        style = MaterialTheme.typography.labelSmall,
+                                        color = Color(0xFF94A3B8)
+                                    )
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -168,48 +320,8 @@ fun GeminiChatView(
                         )
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
-                            text = "Gemini Master Mechanic is diagnosing symptoms...",
+                            text = "Conversational AI Wizard is evaluating Ford Sport Trac documentation...",
                             style = MaterialTheme.typography.bodySmall,
-                            color = Color(0xFF38BDF8)
-                        )
-                    }
-                }
-            }
-        }
-
-        // Quick Prompt Chips
-        LazyRow(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(Color(0xFF0B132B))
-                .padding(horizontal = 12.dp, vertical = 6.dp),
-            horizontalArrangement = Arrangement.spacedBy(6.dp)
-        ) {
-            items(quickPrompts) { prompt ->
-                Surface(
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(12.dp))
-                        .clickable {
-                            onSendMessage(prompt)
-                        }
-                        .testTag("prompt_chip_$prompt"),
-                    color = Color(0xFF1E293B),
-                    border = BorderStroke(1.dp, Color(0xFF38BDF8).copy(alpha = 0.5f))
-                ) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp)
-                    ) {
-                        Icon(
-                            Icons.Default.ElectricBolt,
-                            contentDescription = null,
-                            tint = Color(0xFFFFD700),
-                            modifier = Modifier.size(12.dp)
-                        )
-                        Spacer(modifier = Modifier.width(4.dp))
-                        Text(
-                            text = prompt,
-                            style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Medium),
                             color = Color(0xFF38BDF8)
                         )
                     }

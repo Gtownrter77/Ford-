@@ -39,7 +39,10 @@ import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -48,6 +51,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
 import com.example.model.Component3DModel
 import com.example.model.VehicleSystem
+import com.example.util.HapticHelper
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -62,6 +66,8 @@ fun ArOverlayView(
 ) {
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
+    val view = LocalView.current
+    val haptic = LocalHapticFeedback.current
 
     var hasCameraPermission by remember {
         mutableStateOf(
@@ -77,10 +83,34 @@ fun ArOverlayView(
 
     // AR HUD Overlay Settings
     var showWireframes by remember { mutableStateOf(true) }
+    var showDigitalLabels by remember { mutableStateOf(true) }
     var showGuidedSteps by remember { mutableStateOf(false) }
+    var showCameraMeasurementDialog by remember { mutableStateOf(false) }
+    var showMentorModeDialog by remember { mutableStateOf(false) }
     var activeStepIndex by remember { mutableIntStateOf(0) }
     var torchEnabled by remember { mutableStateOf(false) }
     var simFeedMode by remember { mutableStateOf(!hasCameraPermission) }
+
+    // AR System Filter & Calibration Nudge Offsets
+    var labelFilterSystem by remember { mutableStateOf<VehicleSystem?>(null) }
+    var isArCalibrating by remember { mutableStateOf(false) }
+    var arOffsetDx by remember { mutableFloatStateOf(0f) }
+    var arOffsetDy by remember { mutableFloatStateOf(0f) }
+
+    val activeComp = selectedComponent ?: components.firstOrNull()
+
+    if (showMentorModeDialog && activeComp != null) {
+        MentorModeDialog(
+            component = activeComp,
+            onDismiss = { showMentorModeDialog = false }
+        )
+    }
+
+    if (showCameraMeasurementDialog) {
+        CameraMeasurementDialog(
+            onDismiss = { showCameraMeasurementDialog = false }
+        )
+    }
 
     // Pulsing animation for AR tracking crosshairs
     val infiniteTransition = rememberInfiniteTransition(label = "ar_pulse")
@@ -104,14 +134,19 @@ fun ArOverlayView(
         label = "reticle_rot"
     )
 
-    val activeComp = selectedComponent ?: components.firstOrNull()
-
-    Box(
+    BoxWithConstraints(
         modifier = modifier
             .fillMaxSize()
             .background(Color(0xFF090D16))
             .testTag("ar_camera_view_container")
     ) {
+        val density = LocalDensity.current
+        val screenWidthPx = constraints.maxWidth.toFloat()
+        val screenHeightPx = constraints.maxHeight.toFloat()
+
+        val centerX = screenWidthPx / 2f + arOffsetDx
+        val centerY = screenHeightPx / 2f + arOffsetDy
+
         // 1. CAMERA PREVIEW FEED OR ENGINE BAY SIMULATION
         if (hasCameraPermission && !simFeedMode) {
             AndroidView(
@@ -160,8 +195,6 @@ fun ArOverlayView(
         Canvas(modifier = Modifier.fillMaxSize()) {
             val canvasWidth = size.width
             val canvasHeight = size.height
-            val centerX = canvasWidth / 2f
-            val centerY = canvasHeight / 2f
 
             // Grid Lines for AR Spatial Tracking Effect
             if (showWireframes) {
@@ -213,204 +246,435 @@ fun ArOverlayView(
 
             // Draw Wireframe Highlights for discovered engine components
             components.forEach { comp ->
-                val isSelected = comp.id == activeComp?.id
+                if (labelFilterSystem == null || comp.system == labelFilterSystem) {
+                    val isSelected = comp.id == activeComp?.id
 
-                // Calculate screen position from 3D model center offset
-                val screenX = centerX + (comp.centerOffset.x * 220.dp.toPx())
-                val screenY = centerY + (-comp.centerOffset.y * 180.dp.toPx()) - 40.dp.toPx()
+                    // Calculate screen position from 3D model center offset
+                    val screenX = centerX + (comp.centerOffset.x * 220.dp.toPx())
+                    val screenY = centerY + (-comp.centerOffset.y * 180.dp.toPx()) - 40.dp.toPx()
 
-                val boxWidth = if (isSelected) 140.dp.toPx() else 90.dp.toPx()
-                val boxHeight = if (isSelected) 100.dp.toPx() else 70.dp.toPx()
+                    val boxWidth = if (isSelected) 140.dp.toPx() else 90.dp.toPx()
+                    val boxHeight = if (isSelected) 100.dp.toPx() else 70.dp.toPx()
 
-                val rectLeft = screenX - boxWidth / 2f
-                val rectTop = screenY - boxHeight / 2f
+                    val rectLeft = screenX - boxWidth / 2f
+                    val rectTop = screenY - boxHeight / 2f
 
-                if (showWireframes) {
-                    val compColor = if (isSelected) comp.system.color else Color(0xFF38BDF8).copy(alpha = 0.5f)
+                    if (showWireframes) {
+                        val compColor = if (isSelected) comp.system.color else Color(0xFF38BDF8).copy(alpha = 0.5f)
 
-                    // Bounding Box Frame
-                    drawRoundRect(
-                        color = compColor.copy(alpha = if (isSelected) 0.8f * pulseAlpha else 0.3f),
-                        topLeft = Offset(rectLeft, rectTop),
-                        size = Size(boxWidth, boxHeight),
-                        cornerRadius = CornerRadius(12.dp.toPx()),
-                        style = Stroke(
-                            width = if (isSelected) 2.5.dp.toPx() else 1.dp.toPx(),
-                            pathEffect = PathEffect.dashPathEffect(floatArrayOf(15f, 10f), 0f)
+                        // Bounding Box Frame
+                        drawRoundRect(
+                            color = compColor.copy(alpha = if (isSelected) 0.8f * pulseAlpha else 0.3f),
+                            topLeft = Offset(rectLeft, rectTop),
+                            size = Size(boxWidth, boxHeight),
+                            cornerRadius = CornerRadius(12.dp.toPx()),
+                            style = Stroke(
+                                width = if (isSelected) 2.5.dp.toPx() else 1.dp.toPx(),
+                                pathEffect = PathEffect.dashPathEffect(floatArrayOf(15f, 10f), 0f)
+                            )
                         )
-                    )
 
-                    // Corner Brackets
-                    val cornerLen = 16.dp.toPx()
-                    // Top-Left
-                    drawLine(compColor, Offset(rectLeft, rectTop), Offset(rectLeft + cornerLen, rectTop), 3.dp.toPx())
-                    drawLine(compColor, Offset(rectLeft, rectTop), Offset(rectLeft, rectTop + cornerLen), 3.dp.toPx())
+                        // Corner Brackets
+                        val cornerLen = 16.dp.toPx()
+                        // Top-Left
+                        drawLine(compColor, Offset(rectLeft, rectTop), Offset(rectLeft + cornerLen, rectTop), 3.dp.toPx())
+                        drawLine(compColor, Offset(rectLeft, rectTop), Offset(rectLeft, rectTop + cornerLen), 3.dp.toPx())
 
-                    // Top-Right
-                    drawLine(compColor, Offset(rectLeft + boxWidth, rectTop), Offset(rectLeft + boxWidth - cornerLen, rectTop), 3.dp.toPx())
-                    drawLine(compColor, Offset(rectLeft + boxWidth, rectTop), Offset(rectLeft + boxWidth, rectTop + cornerLen), 3.dp.toPx())
+                        // Top-Right
+                        drawLine(compColor, Offset(rectLeft + boxWidth, rectTop), Offset(rectLeft + boxWidth - cornerLen, rectTop), 3.dp.toPx())
+                        drawLine(compColor, Offset(rectLeft + boxWidth, rectTop), Offset(rectLeft + boxWidth, rectTop + cornerLen), 3.dp.toPx())
 
-                    // Bottom-Left
-                    drawLine(compColor, Offset(rectLeft, rectTop + boxHeight), Offset(rectLeft + cornerLen, rectTop + boxHeight), 3.dp.toPx())
-                    drawLine(compColor, Offset(rectLeft, rectTop + boxHeight), Offset(rectLeft, rectTop + boxHeight - cornerLen), 3.dp.toPx())
+                        // Bottom-Left
+                        drawLine(compColor, Offset(rectLeft, rectTop + boxHeight), Offset(rectLeft + cornerLen, rectTop + boxHeight), 3.dp.toPx())
+                        drawLine(compColor, Offset(rectLeft, rectTop + boxHeight), Offset(rectLeft, rectTop + boxHeight - cornerLen), 3.dp.toPx())
 
-                    // Bottom-Right
-                    drawLine(compColor, Offset(rectLeft + boxWidth, rectTop + boxHeight), Offset(rectLeft + boxWidth - cornerLen, rectTop + boxHeight), 3.dp.toPx())
-                    drawLine(compColor, Offset(rectLeft + boxWidth, rectTop + boxHeight), Offset(rectLeft + boxWidth, rectTop + boxHeight - cornerLen), 3.dp.toPx())
-                }
-
-                // Leader Line to Label Card for selected component
-                if (isSelected) {
-                    val cardX = (screenX + 160.dp.toPx()).coerceAtMost(canvasWidth - 180.dp.toPx())
-                    val cardY = (screenY - 120.dp.toPx()).coerceAtLeast(80.dp.toPx())
-
-                    val leaderPath = Path().apply {
-                        moveTo(screenX, screenY)
-                        lineTo(screenX + 40.dp.toPx(), cardY + 30.dp.toPx())
-                        lineTo(cardX - 10.dp.toPx(), cardY + 30.dp.toPx())
+                        // Bottom-Right
+                        drawLine(compColor, Offset(rectLeft + boxWidth, rectTop + boxHeight), Offset(rectLeft + boxWidth - cornerLen, rectTop + boxHeight), 3.dp.toPx())
+                        drawLine(compColor, Offset(rectLeft + boxWidth, rectTop + boxHeight), Offset(rectLeft + boxWidth, rectTop + boxHeight - cornerLen), 3.dp.toPx())
                     }
 
-                    drawPath(
-                        path = leaderPath,
-                        color = Color(0xFFFF6F00),
-                        style = Stroke(
-                            width = 2.dp.toPx(),
-                            pathEffect = PathEffect.dashPathEffect(floatArrayOf(10f, 6f), 0f)
-                        )
-                    )
+                    // Leader Line to Label Card for selected component
+                    if (isSelected) {
+                        val cardX = (screenX + 160.dp.toPx()).coerceAtMost(canvasWidth - 180.dp.toPx())
+                        val cardY = (screenY - 120.dp.toPx()).coerceAtLeast(80.dp.toPx())
 
-                    drawCircle(
-                        color = Color(0xFFFF6F00),
-                        radius = 6.dp.toPx(),
-                        center = Offset(screenX, screenY)
-                    )
+                        val leaderPath = Path().apply {
+                            moveTo(screenX, screenY)
+                            lineTo(screenX + 40.dp.toPx(), cardY + 30.dp.toPx())
+                            lineTo(cardX - 10.dp.toPx(), cardY + 30.dp.toPx())
+                        }
+
+                        drawPath(
+                            path = leaderPath,
+                            color = Color(0xFFFF6F00),
+                            style = Stroke(
+                                width = 2.dp.toPx(),
+                                pathEffect = PathEffect.dashPathEffect(floatArrayOf(10f, 6f), 0f)
+                            )
+                        )
+
+                        drawCircle(
+                            color = Color(0xFFFF6F00),
+                            radius = 6.dp.toPx(),
+                            center = Offset(screenX, screenY)
+                        )
+                    }
                 }
             }
         }
 
-        // 3. TOP AR HUD HEADER & TOOLBAR
-        Surface(
+        // 2b. DIGITAL FLOATING LABELS OVERLAID ON PHYSICAL ENGINE COMPONENTS
+        if (showDigitalLabels) {
+            val scaleX = with(density) { 220.dp.toPx() }
+            val scaleY = with(density) { 180.dp.toPx() }
+            val yPad = with(density) { 40.dp.toPx() }
+            val maxXMargin = with(density) { (screenWidthPx - 140.dp.toPx()).toDp() }
+            val maxYMargin = with(density) { (screenHeightPx - 160.dp.toPx()).toDp() }
+
+            components.forEach { comp ->
+                if (labelFilterSystem == null || comp.system == labelFilterSystem) {
+                    val isSelected = comp.id == activeComp?.id
+
+                    val compScreenX = centerX + (comp.centerOffset.x * scaleX)
+                    val compScreenY = centerY + (-comp.centerOffset.y * scaleY) - yPad
+
+                    val compXDp = with(density) { compScreenX.toDp() }
+                    val compYDp = with(density) { compScreenY.toDp() }
+
+                    Surface(
+                        modifier = Modifier
+                            .offset(
+                                x = (compXDp - 55.dp).coerceIn(8.dp, maxXMargin),
+                                y = (compYDp - 42.dp).coerceIn(120.dp, maxYMargin)
+                            )
+                            .clip(RoundedCornerShape(10.dp))
+                            .clickable {
+                                HapticHelper.triggerComponentHaptic(context, view, haptic, comp)
+                                onSelectComponent(comp)
+                            }
+                            .testTag("ar_digital_label_${comp.id}"),
+                        color = if (isSelected) Color(0xFF0F172A).copy(alpha = 0.95f) else Color(0xFF1E293B).copy(alpha = 0.85f),
+                        shape = RoundedCornerShape(10.dp),
+                        border = BorderStroke(
+                            if (isSelected) 2.dp else 1.dp,
+                            if (isSelected) Color(0xFFFF6F00) else comp.system.color
+                        )
+                    ) {
+                        Row(
+                            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Box(
+                                modifier = Modifier
+                                    .size(8.dp)
+                                    .clip(CircleShape)
+                                    .background(comp.system.color)
+                            )
+                            Spacer(modifier = Modifier.width(6.dp))
+                            Column {
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Text(
+                                        text = comp.name,
+                                        style = MaterialTheme.typography.labelSmall.copy(
+                                            fontWeight = if (isSelected) FontWeight.Black else FontWeight.Bold,
+                                            fontSize = 11.sp
+                                        ),
+                                        color = Color.White
+                                    )
+                                    if (isSelected) {
+                                        Spacer(modifier = Modifier.width(4.dp))
+                                        Icon(
+                                            Icons.Default.CheckCircle,
+                                            contentDescription = null,
+                                            tint = Color(0xFFFF6F00),
+                                            modifier = Modifier.size(10.dp)
+                                        )
+                                    }
+                                }
+                                Text(
+                                    text = "OEM: ${comp.oemPartNumber}",
+                                    style = MaterialTheme.typography.labelSmall.copy(fontSize = 9.sp),
+                                    color = Color(0xFF38BDF8)
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // 3. TOP AR HUD HEADER, SYSTEM FILTER & TOOLBAR
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(12.dp)
-                .align(Alignment.TopCenter),
-            color = Color(0xFF0F172A).copy(alpha = 0.85f),
-            shape = RoundedCornerShape(16.dp),
-            border = BorderStroke(1.dp, Color(0xFF334155))
+                .align(Alignment.TopCenter)
         ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 14.dp, vertical = 8.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
+            Surface(
+                modifier = Modifier.fillMaxWidth(),
+                color = Color(0xFF0F172A).copy(alpha = 0.88f),
+                shape = RoundedCornerShape(16.dp),
+                border = BorderStroke(1.dp, Color(0xFF334155))
             ) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Box(
-                        modifier = Modifier
-                            .size(10.dp)
-                            .clip(CircleShape)
-                            .background(Color(0xFF10B981))
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Column {
-                        Text(
-                            text = "AR ENGINE VISION",
-                            style = MaterialTheme.typography.labelSmall.copy(
-                                fontWeight = FontWeight.Bold,
-                                letterSpacing = 1.sp
-                            ),
-                            color = Color(0xFF38BDF8)
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 12.dp, vertical = 8.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Box(
+                            modifier = Modifier
+                                .size(10.dp)
+                                .clip(CircleShape)
+                                .background(Color(0xFF10B981))
                         )
-                        Text(
-                            text = if (simFeedMode) "Simulated Engine Bay Feed" else "Live Camera HUD Stream",
-                            style = MaterialTheme.typography.bodySmall,
-                            color = Color.White
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Column {
+                            Text(
+                                text = "AR DIGITAL COMPONENT LABELS",
+                                style = MaterialTheme.typography.labelSmall.copy(
+                                    fontWeight = FontWeight.Bold,
+                                    letterSpacing = 1.sp
+                                ),
+                                color = Color(0xFF38BDF8)
+                            )
+                            Text(
+                                text = if (simFeedMode) "3D Model Physical Placement" else "Live Camera Real-World HUD",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = Color.White
+                            )
+                        }
+                    }
+
+                    Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                        // Digital Label Toggle
+                        IconButton(
+                            onClick = {
+                                HapticHelper.triggerControlTick(context, view, haptic)
+                                showDigitalLabels = !showDigitalLabels
+                            },
+                            modifier = Modifier
+                                .size(34.dp)
+                                .background(
+                                    if (showDigitalLabels) Color(0xFF0284C7) else Color(0xFF1E293B),
+                                    CircleShape
+                                )
+                                .testTag("ar_toggle_digital_labels")
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Label,
+                                contentDescription = "Digital Labels",
+                                tint = Color.White,
+                                modifier = Modifier.size(16.dp)
+                            )
+                        }
+
+                        // AR Calibration Nudge Toggle
+                        IconButton(
+                            onClick = {
+                                HapticHelper.triggerControlTick(context, view, haptic)
+                                isArCalibrating = !isArCalibrating
+                            },
+                            modifier = Modifier
+                                .size(34.dp)
+                                .background(
+                                    if (isArCalibrating) Color(0xFFFF6F00) else Color(0xFF1E293B),
+                                    CircleShape
+                                )
+                                .testTag("ar_toggle_calibrate")
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Tune,
+                                contentDescription = "Calibrate AR Grid",
+                                tint = Color.White,
+                                modifier = Modifier.size(16.dp)
+                            )
+                        }
+
+                        // Camera vs Simulation Toggle
+                        IconButton(
+                            onClick = {
+                                if (!hasCameraPermission) {
+                                    permissionLauncher.launch(Manifest.permission.CAMERA)
+                                } else {
+                                    simFeedMode = !simFeedMode
+                                }
+                            },
+                            modifier = Modifier
+                                .size(34.dp)
+                                .background(
+                                    if (simFeedMode) Color(0xFF1E293B) else Color(0xFF0284C7),
+                                    CircleShape
+                                )
+                                .testTag("ar_toggle_sim_camera")
+                        ) {
+                            Icon(
+                                imageVector = if (simFeedMode) Icons.Default.VideocamOff else Icons.Default.Videocam,
+                                contentDescription = "Toggle Camera",
+                                tint = Color.White,
+                                modifier = Modifier.size(16.dp)
+                            )
+                        }
+
+                        // Wireframe Mesh Toggle
+                        IconButton(
+                            onClick = { showWireframes = !showWireframes },
+                            modifier = Modifier
+                                .size(34.dp)
+                                .background(
+                                    if (showWireframes) Color(0xFF0284C7) else Color(0xFF1E293B),
+                                    CircleShape
+                                )
+                                .testTag("ar_toggle_wireframe")
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.ViewInAr,
+                                contentDescription = "Toggle Wireframe",
+                                tint = Color.White,
+                                modifier = Modifier.size(16.dp)
+                            )
+                        }
+
+                        // Guided Step-by-Step Toggle
+                        IconButton(
+                            onClick = { showGuidedSteps = !showGuidedSteps },
+                            modifier = Modifier
+                                .size(34.dp)
+                                .background(
+                                    if (showGuidedSteps) Color(0xFFFF6F00) else Color(0xFF1E293B),
+                                    CircleShape
+                                )
+                                .testTag("ar_toggle_guided_steps")
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Build,
+                                contentDescription = "Guided Steps",
+                                tint = Color.White,
+                                modifier = Modifier.size(16.dp)
+                            )
+                        }
+
+                        // Computer Vision Bolt & Gap Measurement Button
+                        IconButton(
+                            onClick = { showCameraMeasurementDialog = true },
+                            modifier = Modifier
+                                .size(34.dp)
+                                .background(
+                                    Color(0xFF0284C7),
+                                    CircleShape
+                                )
+                                .testTag("ar_toggle_camera_measurement")
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Straighten,
+                                contentDescription = "CV Bolt & Gap Measure",
+                                tint = Color.White,
+                                modifier = Modifier.size(16.dp)
+                            )
+                        }
+                    }
+                }
+            }
+
+            // System Filter Row for Digital Labels
+            Spacer(modifier = Modifier.height(6.dp))
+            LazyRow(
+                horizontalArrangement = Arrangement.spacedBy(6.dp),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                item {
+                    FilterChip(
+                        selected = labelFilterSystem == null,
+                        onClick = { labelFilterSystem = null },
+                        label = { Text("All Labels (${components.size})", fontSize = 11.sp) },
+                        colors = FilterChipDefaults.filterChipColors(
+                            selectedContainerColor = Color(0xFF0284C7),
+                            selectedLabelColor = Color.White,
+                            containerColor = Color(0xFF0F172A).copy(alpha = 0.85f),
+                            labelColor = Color(0xFFCBD5E1)
+                        )
+                    )
+                }
+
+                items(VehicleSystem.entries) { sys ->
+                    val count = components.count { it.system == sys }
+                    if (count > 0) {
+                        FilterChip(
+                            selected = labelFilterSystem == sys,
+                            onClick = { labelFilterSystem = sys },
+                            label = { Text("${sys.displayName} ($count)", fontSize = 11.sp) },
+                            leadingIcon = {
+                                Box(
+                                    modifier = Modifier
+                                        .size(6.dp)
+                                        .clip(CircleShape)
+                                        .background(sys.color)
+                                )
+                            },
+                            colors = FilterChipDefaults.filterChipColors(
+                                selectedContainerColor = sys.color,
+                                selectedLabelColor = Color.White,
+                                containerColor = Color(0xFF0F172A).copy(alpha = 0.85f),
+                                labelColor = Color(0xFFCBD5E1)
+                            )
                         )
                     }
                 }
+            }
 
-                Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                    // Camera vs Simulation Toggle
-                    IconButton(
-                        onClick = {
-                            if (!hasCameraPermission) {
-                                permissionLauncher.launch(Manifest.permission.CAMERA)
-                            } else {
-                                simFeedMode = !simFeedMode
+            // AR Alignment Calibration Offset Panel when active
+            if (isArCalibrating) {
+                Spacer(modifier = Modifier.height(6.dp))
+                Surface(
+                    color = Color(0xFF0F172A).copy(alpha = 0.95f),
+                    shape = RoundedCornerShape(12.dp),
+                    border = BorderStroke(1.dp, Color(0xFFFF6F00)),
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Row(
+                        modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = "Align AR Grid to Engine Frame",
+                            style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
+                            color = Color(0xFFFF6F00)
+                        )
+
+                        Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                            IconButton(
+                                onClick = { arOffsetDx -= 15f },
+                                modifier = Modifier.size(28.dp).background(Color(0xFF1E293B), CircleShape)
+                            ) {
+                                Icon(Icons.Default.ChevronLeft, contentDescription = "Left", tint = Color.White, modifier = Modifier.size(16.dp))
                             }
-                        },
-                        modifier = Modifier
-                            .size(36.dp)
-                            .background(
-                                if (simFeedMode) Color(0xFF1E293B) else Color(0xFF0284C7),
-                                CircleShape
-                            )
-                            .testTag("ar_toggle_sim_camera")
-                    ) {
-                        Icon(
-                            imageVector = if (simFeedMode) Icons.Default.VideocamOff else Icons.Default.Videocam,
-                            contentDescription = "Toggle Camera",
-                            tint = Color.White,
-                            modifier = Modifier.size(18.dp)
-                        )
-                    }
-
-                    // Wireframe Mesh Toggle
-                    IconButton(
-                        onClick = { showWireframes = !showWireframes },
-                        modifier = Modifier
-                            .size(36.dp)
-                            .background(
-                                if (showWireframes) Color(0xFF0284C7) else Color(0xFF1E293B),
-                                CircleShape
-                            )
-                            .testTag("ar_toggle_wireframe")
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.ViewInAr,
-                            contentDescription = "Toggle Wireframe",
-                            tint = Color.White,
-                            modifier = Modifier.size(18.dp)
-                        )
-                    }
-
-                    // Guided Step-by-Step Toggle
-                    IconButton(
-                        onClick = { showGuidedSteps = !showGuidedSteps },
-                        modifier = Modifier
-                            .size(36.dp)
-                            .background(
-                                if (showGuidedSteps) Color(0xFFFF6F00) else Color(0xFF1E293B),
-                                CircleShape
-                            )
-                            .testTag("ar_toggle_guided_steps")
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Build,
-                            contentDescription = "Guided Steps",
-                            tint = Color.White,
-                            modifier = Modifier.size(18.dp)
-                        )
-                    }
-
-                    // Torch Toggle
-                    if (hasCameraPermission && !simFeedMode) {
-                        IconButton(
-                            onClick = { torchEnabled = !torchEnabled },
-                            modifier = Modifier
-                                .size(36.dp)
-                                .background(
-                                    if (torchEnabled) Color(0xFFFFD700) else Color(0xFF1E293B),
-                                    CircleShape
-                                )
-                        ) {
-                            Icon(
-                                imageVector = if (torchEnabled) Icons.Default.FlashOn else Icons.Default.FlashOff,
-                                contentDescription = "Torch",
-                                tint = if (torchEnabled) Color.Black else Color.White,
-                                modifier = Modifier.size(18.dp)
-                            )
+                            IconButton(
+                                onClick = { arOffsetDx += 15f },
+                                modifier = Modifier.size(28.dp).background(Color(0xFF1E293B), CircleShape)
+                            ) {
+                                Icon(Icons.Default.ChevronRight, contentDescription = "Right", tint = Color.White, modifier = Modifier.size(16.dp))
+                            }
+                            IconButton(
+                                onClick = { arOffsetDy -= 15f },
+                                modifier = Modifier.size(28.dp).background(Color(0xFF1E293B), CircleShape)
+                            ) {
+                                Icon(Icons.Default.KeyboardArrowUp, contentDescription = "Up", tint = Color.White, modifier = Modifier.size(16.dp))
+                            }
+                            IconButton(
+                                onClick = { arOffsetDy += 15f },
+                                modifier = Modifier.size(28.dp).background(Color(0xFF1E293B), CircleShape)
+                            ) {
+                                Icon(Icons.Default.KeyboardArrowDown, contentDescription = "Down", tint = Color.White, modifier = Modifier.size(16.dp))
+                            }
+                            TextButton(
+                                onClick = { arOffsetDx = 0f; arOffsetDy = 0f },
+                                contentPadding = PaddingValues(horizontal = 6.dp, vertical = 0.dp)
+                            ) {
+                                Text("Reset", fontSize = 10.sp, color = Color(0xFF38BDF8))
+                            }
                         }
                     }
                 }
@@ -494,17 +758,33 @@ fun ArOverlayView(
 
                     Spacer(modifier = Modifier.height(10.dp))
 
-                    Button(
-                        onClick = { onOpenDetailSheet(comp) },
-                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF0284C7)),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(34.dp),
-                        contentPadding = PaddingValues(0.dp)
-                    ) {
-                        Icon(Icons.Default.MenuBook, contentDescription = null, modifier = Modifier.size(14.dp))
-                        Spacer(modifier = Modifier.width(6.dp))
-                        Text("Repair Guide", style = MaterialTheme.typography.labelSmall)
+                    Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                        Button(
+                            onClick = { onOpenDetailSheet(comp) },
+                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF0284C7)),
+                            modifier = Modifier
+                                .weight(1f)
+                                .height(34.dp),
+                            contentPadding = PaddingValues(0.dp)
+                        ) {
+                            Icon(Icons.Default.MenuBook, contentDescription = null, modifier = Modifier.size(12.dp))
+                            Spacer(modifier = Modifier.width(4.dp))
+                            Text("Guide", style = MaterialTheme.typography.labelSmall.copy(fontSize = 11.sp))
+                        }
+
+                        Button(
+                            onClick = { showMentorModeDialog = true },
+                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF10B981)),
+                            modifier = Modifier
+                                .weight(1.2f)
+                                .height(34.dp)
+                                .testTag("ar_callout_mentor_mode_btn"),
+                            contentPadding = PaddingValues(0.dp)
+                        ) {
+                            Icon(Icons.Default.RecordVoiceOver, contentDescription = null, modifier = Modifier.size(12.dp))
+                            Spacer(modifier = Modifier.width(4.dp))
+                            Text("Voice Mentor", style = MaterialTheme.typography.labelSmall.copy(fontSize = 11.sp, fontWeight = FontWeight.Bold))
+                        }
                     }
                 }
             }
@@ -556,7 +836,15 @@ fun ArOverlayView(
                             )
                         }
 
-                        Row {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            IconButton(
+                                onClick = { showMentorModeDialog = true },
+                                modifier = Modifier
+                                    .size(32.dp)
+                                    .testTag("ar_hud_mentor_mode_btn")
+                            ) {
+                                Icon(Icons.Default.RecordVoiceOver, contentDescription = "Launch Voice Mentor Mode", tint = Color(0xFF10B981))
+                            }
                             IconButton(
                                 onClick = { if (activeStepIndex > 0) activeStepIndex-- },
                                 enabled = activeStepIndex > 0,

@@ -11,6 +11,7 @@ data class MaintenanceEntity(
     val systemName: String,
     val mileageAtService: Int,
     val dateLoggedMillis: Long = System.currentTimeMillis(),
+    val componentDescription: String = "",
     val costUsd: Double = 0.0,
     val notes: String = "",
     val isCompleted: Boolean = true
@@ -25,3 +26,4 @@ data class VehicleProfileEntity(
     val trimName: String = "Sport Trac XLT 4.0L SOHC V6",
     val transmissionType: String = "5R55E 5-Speed Automatic"
 )
+

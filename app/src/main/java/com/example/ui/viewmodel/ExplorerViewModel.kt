@@ -26,6 +26,133 @@ class ExplorerViewModel(application: Application) : AndroidViewModel(application
 
     private val db = AppDatabase.getDatabase(application)
     private val repository = MaintenanceRepository(db.maintenanceDao())
+    val acousticRepository = com.example.data.AcousticDiagnosticRepository(db.acousticReferenceDao())
+    val repairChecklistRepo = com.example.data.RepairChecklistRepository(db.repairChecklistDao())
+    val offlineCacheRepo = com.example.data.OfflineCacheRepository(db.offlineCacheDao())
+
+    val cached3DAssetsCount: StateFlow<Int> = offlineCacheRepo.assets3DCountFlow
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = 0
+        )
+
+    val cachedManualsCount: StateFlow<Int> = offlineCacheRepo.manualsCountFlow
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = 0
+        )
+
+    val cachedSymptomsCount: StateFlow<Int> = offlineCacheRepo.symptomsCountFlow
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = 0
+        )
+
+    val cacheManifest: StateFlow<com.example.data.local.CacheManifestEntity?> = offlineCacheRepo.manifestFlow
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = com.example.data.local.CacheManifestEntity()
+        )
+
+    fun resyncOfflineCache() {
+        viewModelScope.launch {
+            offlineCacheRepo.seedAndSyncOfflineCache()
+            _voiceNotice.value = "Room DB Offline Cache synced successfully!"
+        }
+    }
+
+    fun upgradeOfflineCache() {
+        viewModelScope.launch {
+            val updatedVer = offlineCacheRepo.performUpgradeToLatestVersion()
+            _voiceNotice.value = "Room Cache Upgraded to v$updatedVer!"
+        }
+    }
+
+    fun checkForCacheUpgrades() {
+        viewModelScope.launch {
+            val isAvail = offlineCacheRepo.checkForUpgrades()
+            if (isAvail) {
+                _voiceNotice.value = "New CAD & Manual Content v2.5.0 Available for Upgrade!"
+            } else {
+                _voiceNotice.value = "Room DB content is already at the latest version."
+            }
+        }
+    }
+
+    fun clearOfflineCache() {
+        viewModelScope.launch {
+            offlineCacheRepo.clearAllOfflineCache()
+            _voiceNotice.value = "Room DB Offline Cache cleared."
+        }
+    }
+
+    val savedChecklists: StateFlow<List<com.example.data.local.RepairChecklistEntity>> = repairChecklistRepo.allSavedChecklists
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = emptyList()
+        )
+
+    fun saveRepairChecklistProgress(
+        componentId: String,
+        componentName: String,
+        currentStepIndex: Int,
+        completedIndices: Set<Int>,
+        totalSteps: Int
+    ) {
+        viewModelScope.launch {
+            repairChecklistRepo.saveProgress(
+                componentId = componentId,
+                componentName = componentName,
+                currentStepIndex = currentStepIndex,
+                completedIndices = completedIndices,
+                totalSteps = totalSteps
+            )
+        }
+    }
+
+    fun resetRepairChecklistProgress(componentId: String) {
+        viewModelScope.launch {
+            repairChecklistRepo.resetProgress(componentId)
+        }
+    }
+
+    // Skill Level Experience Setting
+    private val _skillLevel = MutableStateFlow(com.example.ui.components.SkillLevel.ROOKIE)
+    val skillLevel: StateFlow<com.example.ui.components.SkillLevel> = _skillLevel.asStateFlow()
+
+    // Team & Virtual Mentor Panel State
+    private val _isTeamPanelOpen = MutableStateFlow(false)
+    val isTeamPanelOpen: StateFlow<Boolean> = _isTeamPanelOpen.asStateFlow()
+
+    // Voice Synthesis Settings Dialog State
+    private val _isVoiceSettingsOpen = MutableStateFlow(false)
+    val isVoiceSettingsOpen: StateFlow<Boolean> = _isVoiceSettingsOpen.asStateFlow()
+
+    fun setSkillLevel(level: com.example.ui.components.SkillLevel) {
+        _skillLevel.value = level
+        _voiceNotice.value = "Skill level updated to ${level.label}: AI Mentor will adapt repair steps!"
+    }
+
+    fun openTeamPanel() {
+        _isTeamPanelOpen.value = true
+    }
+
+    fun closeTeamPanel() {
+        _isTeamPanelOpen.value = false
+    }
+
+    fun openVoiceSettings() {
+        _isVoiceSettingsOpen.value = true
+    }
+
+    fun closeVoiceSettings() {
+        _isVoiceSettingsOpen.value = false
+    }
 
     // Active Navigation Tab
     private val _currentTab = MutableStateFlow(MainTab.VIEW_3D)
@@ -81,6 +208,12 @@ class ExplorerViewModel(application: Application) : AndroidViewModel(application
         initialValue = VehicleProfileEntity()
     )
 
+    val upcomingTasks: StateFlow<List<com.example.data.local.UpcomingTaskEntity>> = repository.upcomingTasks.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = emptyList()
+    )
+
     // Components List filtered by active system and search query
     val filteredComponents: StateFlow<List<Component3DModel>> = combine(
         _activeSystem,
@@ -108,6 +241,8 @@ class ExplorerViewModel(application: Application) : AndroidViewModel(application
     init {
         viewModelScope.launch {
             repository.initializeDefaultDataIfEmpty()
+            acousticRepository.seedInitialDatabaseIfEmpty()
+            offlineCacheRepo.seedAndSyncOfflineCache()
         }
     }
 
@@ -140,6 +275,18 @@ class ExplorerViewModel(application: Application) : AndroidViewModel(application
         viewModelScope.launch {
             repository.logMaintenance(log)
             repository.updateVehicleMileage(log.mileageAtService)
+        }
+    }
+
+    fun updateMaintenanceLog(log: MaintenanceEntity) {
+        viewModelScope.launch {
+            repository.updateLog(log)
+        }
+    }
+
+    fun deleteMaintenanceLog(id: Long) {
+        viewModelScope.launch {
+            repository.deleteLog(id)
         }
     }
 
@@ -193,10 +340,30 @@ class ExplorerViewModel(application: Application) : AndroidViewModel(application
                 setTab(MainTab.VIEW_3D)
                 "Filtered 3D model to Electrical System"
             }
-            text.contains("air condition") || text.contains("climate") || text.contains("a/c") || text.contains("ac") -> {
+            text.contains("air condition") || text.contains("climate") || text.contains("a/c") || text.contains("ac") || text.contains("head and air") -> {
                 setSystemFilter(VehicleSystem.AIR_CONDITIONING)
                 setTab(MainTab.VIEW_3D)
-                "Filtered 3D model to A/C System"
+                "Filtered 3D model to Heating & A/C System"
+            }
+            text.contains("dash") || text.contains("interior") || text.contains("gauge") || text.contains("cluster") || text.contains("airbag") -> {
+                setSystemFilter(VehicleSystem.INTERIOR_DASH)
+                setTab(MainTab.VIEW_3D)
+                "Filtered 3D model to Dash & Interior"
+            }
+            text.contains("sunroof") || text.contains("roof") || text.contains("back window") -> {
+                setSystemFilter(VehicleSystem.SUNROOF_ROOF)
+                setTab(MainTab.VIEW_3D)
+                "Filtered 3D model to Power Sunroof & Glass"
+            }
+            text.contains("light") || text.contains("headlight") || text.contains("taillight") || text.contains("fog") -> {
+                setSystemFilter(VehicleSystem.LIGHTING_BODY)
+                setTab(MainTab.VIEW_3D)
+                "Filtered 3D model to Lighting & Body"
+            }
+            text.contains("drivetrain") || text.contains("4wd") || text.contains("4x4") || text.contains("differential") || text.contains("transfer case") || text.contains("driveshaft") -> {
+                setSystemFilter(VehicleSystem.DRIVETRAIN_4WD)
+                setTab(MainTab.VIEW_3D)
+                "Filtered 3D model to 4WD Drivetrain"
             }
             text.contains("all") || text.contains("reset") || text.contains("show all") -> {
                 setSystemFilter(VehicleSystem.ALL)
@@ -461,6 +628,37 @@ class ExplorerViewModel(application: Application) : AndroidViewModel(application
     fun deleteLog(id: Long) {
         viewModelScope.launch {
             repository.deleteLog(id)
+        }
+    }
+
+    fun addUpcomingTask(task: com.example.data.local.UpcomingTaskEntity) {
+        viewModelScope.launch {
+            repository.addUpcomingTask(task)
+            _voiceNotice.value = "Upcoming maintenance task added to Room DB!"
+        }
+    }
+
+    fun completeUpcomingTask(
+        task: com.example.data.local.UpcomingTaskEntity,
+        actualMileage: Int,
+        costUsd: Double,
+        notes: String
+    ) {
+        viewModelScope.launch {
+            repository.completeUpcomingTask(task, actualMileage, costUsd, notes)
+            _voiceNotice.value = "Task '${task.title}' marked completed in Room DB!"
+        }
+    }
+
+    fun deleteUpcomingTask(taskId: Long) {
+        viewModelScope.launch {
+            repository.deleteUpcomingTask(taskId)
+        }
+    }
+
+    fun updateUpcomingTask(task: com.example.data.local.UpcomingTaskEntity) {
+        viewModelScope.launch {
+            repository.updateUpcomingTask(task)
         }
     }
 }

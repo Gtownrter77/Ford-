@@ -8,7 +8,9 @@ import androidx.activity.viewModels
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
@@ -26,7 +28,10 @@ import com.example.ui.screens.MaintenanceScreen
 import com.example.ui.screens.Model3DScreen
 import com.example.ui.screens.PartsShoppingScreen
 import com.example.ui.screens.RepairManualScreen
+import com.example.ui.components.TeamPanelDialog
+import com.example.ui.components.MentorVoiceSettingsDialog
 import com.example.ui.components.VoiceControlOverlay
+import androidx.compose.foundation.clickable
 import com.example.ui.theme.SportTracTheme
 import com.example.ui.viewmodel.ExplorerViewModel
 import com.example.ui.viewmodel.MainTab
@@ -51,6 +56,7 @@ class MainActivity : ComponentActivity() {
                 val searchQuery by viewModel.manualSearchQuery.collectAsStateWithLifecycle()
                 val vehicleProfile by viewModel.vehicleProfile.collectAsStateWithLifecycle()
                 val maintenanceLogs by viewModel.maintenanceLogs.collectAsStateWithLifecycle()
+                val upcomingTasks by viewModel.upcomingTasks.collectAsStateWithLifecycle()
                 val requestDetailSheetOpen by viewModel.requestDetailSheetOpen.collectAsStateWithLifecycle()
                 val voiceNotice by viewModel.voiceNotice.collectAsStateWithLifecycle()
                 val chatMessages by viewModel.chatMessages.collectAsStateWithLifecycle()
@@ -59,6 +65,35 @@ class MainActivity : ComponentActivity() {
                 val commercialAccount by viewModel.commercialAccount.collectAsStateWithLifecycle()
                 val cartSortOption by viewModel.cartSortOption.collectAsStateWithLifecycle()
                 val orderSuccessNotice by viewModel.orderSuccessNotice.collectAsStateWithLifecycle()
+                val skillLevel by viewModel.skillLevel.collectAsStateWithLifecycle()
+                val isTeamPanelOpen by viewModel.isTeamPanelOpen.collectAsStateWithLifecycle()
+                val isVoiceSettingsOpen by viewModel.isVoiceSettingsOpen.collectAsStateWithLifecycle()
+                val cached3DCount by viewModel.cached3DAssetsCount.collectAsStateWithLifecycle()
+                val cachedManualsCount by viewModel.cachedManualsCount.collectAsStateWithLifecycle()
+                val cachedSymptomsCount by viewModel.cachedSymptomsCount.collectAsStateWithLifecycle()
+                val cacheManifest by viewModel.cacheManifest.collectAsStateWithLifecycle()
+
+                if (isTeamPanelOpen) {
+                    TeamPanelDialog(
+                        currentSkillLevel = skillLevel,
+                        onSkillLevelChange = { level -> viewModel.setSkillLevel(level) },
+                        onDismiss = { viewModel.closeTeamPanel() }
+                    )
+                }
+
+                if (isVoiceSettingsOpen) {
+                    MentorVoiceSettingsDialog(
+                        cached3DCount = cached3DCount,
+                        cachedManualsCount = cachedManualsCount,
+                        cachedSymptomsCount = cachedSymptomsCount,
+                        cacheManifest = cacheManifest,
+                        onForceUpdate = { viewModel.resyncOfflineCache() },
+                        onUpgradeContent = { viewModel.upgradeOfflineCache() },
+                        onCheckForUpgrades = { viewModel.checkForCacheUpgrades() },
+                        onClearCache = { viewModel.clearOfflineCache() },
+                        onDismiss = { viewModel.closeVoiceSettings() }
+                    )
+                }
 
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
@@ -67,6 +102,8 @@ class MainActivity : ComponentActivity() {
                         Column(
                             modifier = Modifier.windowInsetsPadding(WindowInsets.statusBars)
                         ) {
+                            val voiceState by voiceCommandManager.voiceState.collectAsState()
+
                             Surface(
                                 color = Color(0xFF0F172A),
                                 border = BorderStroke(1.dp, Color(0xFF1E293B))
@@ -74,7 +111,7 @@ class MainActivity : ComponentActivity() {
                                 Row(
                                     modifier = Modifier
                                         .fillMaxWidth()
-                                        .padding(horizontal = 16.dp, vertical = 10.dp),
+                                        .padding(horizontal = 16.dp, vertical = 6.dp),
                                     horizontalArrangement = Arrangement.SpaceBetween,
                                     verticalAlignment = Alignment.CenterVertically
                                 ) {
@@ -83,42 +120,102 @@ class MainActivity : ComponentActivity() {
                                             Icons.Default.DirectionsCar,
                                             contentDescription = "Ford Explorer",
                                             tint = Color(0xFFFF6F00),
-                                            modifier = Modifier.size(28.dp)
+                                            modifier = Modifier.size(24.dp)
                                         )
-                                        Spacer(modifier = Modifier.width(10.dp))
+                                        Spacer(modifier = Modifier.width(8.dp))
                                         Column {
                                             Text(
                                                 text = "FORD EXPLORER",
-                                                style = MaterialTheme.typography.labelMedium.copy(
+                                                style = MaterialTheme.typography.labelSmall.copy(
                                                     fontWeight = FontWeight.Bold,
-                                                    letterSpacing = 1.sp
+                                                    letterSpacing = 0.5.sp
                                                 ),
                                                 color = Color(0xFFFF6F00)
                                             )
                                             Text(
-                                                text = "2004 Sport Trac 4.0L SOHC",
-                                                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
+                                                text = "2004 Sport Trac 4.0L",
+                                                style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold),
                                                 color = Color.White
                                             )
                                         }
                                     }
 
-                                    Surface(
-                                        color = Color(0xFF1E293B),
-                                        shape = RoundedCornerShape(8.dp),
-                                        border = BorderStroke(1.dp, Color(0xFF0284C7))
+                                    Row(
+                                        verticalAlignment = Alignment.CenterVertically,
+                                        horizontalArrangement = Arrangement.spacedBy(8.dp)
                                     ) {
-                                        Text(
-                                            text = "3D MANUAL",
-                                            style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
-                                            color = Color(0xFF38BDF8),
-                                            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
-                                        )
+                                        Surface(
+                                            color = Color(0xFF1E293B),
+                                            shape = CircleShape,
+                                            border = BorderStroke(1.dp, Color(0xFF38BDF8)),
+                                            modifier = Modifier
+                                                .size(34.dp)
+                                                .clip(CircleShape)
+                                                .clickable { viewModel.openVoiceSettings() }
+                                                .testTag("btn_open_voice_settings")
+                                        ) {
+                                            Box(contentAlignment = Alignment.Center) {
+                                                Icon(
+                                                    imageVector = Icons.Default.RecordVoiceOver,
+                                                    contentDescription = "Mentor Voice Settings",
+                                                    tint = Color(0xFF38BDF8),
+                                                    modifier = Modifier.size(18.dp)
+                                                )
+                                            }
+                                        }
+
+                                        Surface(
+                                            color = if (voiceState is com.example.util.VoiceState.Listening) Color(0xFF0284C7) else Color(0xFF1E293B),
+                                            shape = CircleShape,
+                                            border = BorderStroke(1.dp, if (voiceState is com.example.util.VoiceState.Listening) Color(0xFF38BDF8) else Color(0xFF334155)),
+                                            modifier = Modifier
+                                                .size(34.dp)
+                                                .clip(CircleShape)
+                                                .clickable {
+                                                    if (voiceState is com.example.util.VoiceState.Listening) {
+                                                        voiceCommandManager.stopListening()
+                                                    } else {
+                                                        voiceCommandManager.startListening()
+                                                    }
+                                                }
+                                                .testTag("voice_mic_fab")
+                                        ) {
+                                            Box(contentAlignment = Alignment.Center) {
+                                                Icon(
+                                                    imageVector = Icons.Default.Mic,
+                                                    contentDescription = "Voice Commands",
+                                                    tint = if (voiceState is com.example.util.VoiceState.Listening) Color.White else Color(0xFF38BDF8),
+                                                    modifier = Modifier.size(18.dp)
+                                                )
+                                            }
+                                        }
+
+                                        Surface(
+                                            color = Color(0xFF1E293B),
+                                            shape = RoundedCornerShape(20.dp),
+                                            border = BorderStroke(1.dp, skillLevel.color),
+                                            modifier = Modifier
+                                                .clickable { viewModel.openTeamPanel() }
+                                                .testTag("btn_open_team_panel")
+                                        ) {
+                                            Row(
+                                                modifier = Modifier.padding(horizontal = 8.dp, vertical = 5.dp),
+                                                verticalAlignment = Alignment.CenterVertically
+                                            ) {
+                                                Icon(Icons.Default.Group, contentDescription = null, tint = skillLevel.color, modifier = Modifier.size(14.dp))
+                                                Spacer(modifier = Modifier.width(4.dp))
+                                                Text(
+                                                    text = skillLevel.label.uppercase(),
+                                                    style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
+                                                    color = Color.White
+                                                )
+                                            }
+                                        }
                                     }
                                 }
                             }
 
-                            // Voice Command Bar Overlay
+                            // Voice Notice Toast Overlay (Only floats down when active)
                             VoiceControlOverlay(
                                 voiceCommandManager = voiceCommandManager,
                                 voiceNotice = voiceNotice,
@@ -242,11 +339,16 @@ class MainActivity : ComponentActivity() {
                                 components = filteredComponents,
                                 selectedComponent = selectedComponent,
                                 activeSystem = activeSystem,
+                                cached3DCount = cached3DCount,
+                                cachedManualsCount = cachedManualsCount,
+                                cachedSymptomsCount = cachedSymptomsCount,
                                 requestDetailSheetOpen = requestDetailSheetOpen,
                                 onClearDetailSheetRequest = { viewModel.clearDetailSheetRequest() },
                                 onSelectSystem = { sys -> viewModel.setSystemFilter(sys) },
                                 onSelectComponent = { comp -> viewModel.selectComponent(comp) },
-                                onAddToCart = { comp -> viewModel.addPartForComponent(comp) }
+                                onAddToCart = { comp -> viewModel.addPartForComponent(comp) },
+                                onReSyncOfflineCache = { viewModel.resyncOfflineCache() },
+                                onClearOfflineCache = { viewModel.clearOfflineCache() }
                             )
 
                             MainTab.REPAIR_MANUAL -> RepairManualScreen(
@@ -270,9 +372,13 @@ class MainActivity : ComponentActivity() {
                             MainTab.MAINTENANCE -> MaintenanceScreen(
                                 vehicleProfile = vehicleProfile,
                                 maintenanceLogs = maintenanceLogs,
+                                upcomingTasks = upcomingTasks,
                                 onUpdateMileage = { miles -> viewModel.updateMileage(miles) },
                                 onLogService = { log -> viewModel.logMaintenance(log) },
-                                onDeleteLog = { id -> viewModel.deleteLog(id) }
+                                onDeleteLog = { id -> viewModel.deleteLog(id) },
+                                onAddUpcomingTask = { task -> viewModel.addUpcomingTask(task) },
+                                onCompleteUpcomingTask = { task, miles, cost, notes -> viewModel.completeUpcomingTask(task, miles, cost, notes) },
+                                onDeleteUpcomingTask = { taskId -> viewModel.deleteUpcomingTask(taskId) }
                             )
 
                             MainTab.PARTS_CART -> PartsShoppingScreen(

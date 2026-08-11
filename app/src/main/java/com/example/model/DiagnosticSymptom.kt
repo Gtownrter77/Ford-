@@ -30,3 +30,26 @@ data class DiagnosticSymptomCategory(
     val commonSymptoms: List<String>,
     val rootQuestion: DiagnosticQuestion
 )
+
+data class SymptomItem(
+    val id: String,
+    val title: String,
+    val description: String,
+    val system: VehicleSystem,
+    val severity: String = "Moderate" // "Critical", "Severe", "Moderate", "Minor"
+)
+
+data class ServiceManualTroubleMatch(
+    val id: String,
+    val title: String,
+    val serviceManualSection: String,
+    val tsbNumber: String? = null,
+    val problemSummary: String,
+    val probableCause: String,
+    val obdCodes: List<String> = emptyList(),
+    val targetComponentId: String,
+    val urgencyLevel: String, // "Critical", "High", "Medium", "Low"
+    val matchingSymptomIds: List<String>,
+    val diagnosticVerificationSteps: List<String>,
+    val difficulty: String = "Intermediate"
+)

@@ -64,5 +64,33 @@ enum class VehicleSystem(
         hexColor = "#EF4444",
         description = "Front Torsion Bars, Rear Leaf Springs, Calipers & Rotors",
         iconName = "Build"
+    ),
+    INTERIOR_DASH(
+        displayName = "Dash & Interior",
+        color = Color(0xFFF59E0B),
+        hexColor = "#F59E0B",
+        description = "Instrument Cluster, Center Stack HVAC, Airbags & Steering Column",
+        iconName = "Dashboard"
+    ),
+    LIGHTING_BODY(
+        displayName = "Lighting & Exterior",
+        color = Color(0xFFEC4899),
+        hexColor = "#EC4899",
+        description = "Headlights, Tail Lights, Fog Lamps, Grille & Mirrors",
+        iconName = "Lightbulb"
+    ),
+    SUNROOF_ROOF(
+        displayName = "Sunroof & Power Windows",
+        color = Color(0xFF14B8A6),
+        hexColor = "#14B8A6",
+        description = "Power Glass Sunroof Assembly, Tracks, Motor & Power Back Window",
+        iconName = "Window"
+    ),
+    DRIVETRAIN_4WD(
+        displayName = "4WD & Drivetrain",
+        color = Color(0xFF8B5CF6),
+        hexColor = "#8B5CF6",
+        description = "BorgWarner 4411 Transfer Case, Front/Rear Driveshafts & Differentials",
+        iconName = "AirlineStops"
     )
 }

@@ -100,22 +100,22 @@ fun VoiceControlOverlay(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 12.dp, vertical = 6.dp)
+            .padding(horizontal = 16.dp, vertical = 4.dp)
             .testTag("voice_control_overlay")
     ) {
-        // Voice Feedback Bar Notice
+        // Voice Feedback Bar Notice (Only shown when active or feedback present)
         AnimatedVisibility(
-            visible = voiceNotice != null || voiceState is VoiceState.Listening || voiceState is VoiceState.Error,
+            visible = voiceNotice != null || voiceState is VoiceState.Listening || voiceState is VoiceState.Error || voiceState is VoiceState.Processing,
             enter = fadeIn() + slideInVertically(),
             exit = fadeOut() + slideOutVertically()
         ) {
             Surface(
                 color = when (voiceState) {
-                    is VoiceState.Listening -> Color(0xFF0F2238)
+                    is VoiceState.Listening -> Color(0xFF0F2D4A)
                     is VoiceState.Error -> Color(0xFF451A1A)
                     else -> Color(0xFF1E293B)
                 },
-                shape = RoundedCornerShape(12.dp),
+                shape = RoundedCornerShape(20.dp),
                 border = BorderStroke(
                     1.dp,
                     when (voiceState) {
@@ -124,13 +124,14 @@ fun VoiceControlOverlay(
                         else -> Color(0xFF10B981)
                     }
                 ),
+                shadowElevation = 6.dp,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(bottom = 6.dp)
+                    .padding(vertical = 4.dp)
             ) {
                 Row(
                     modifier = Modifier
-                        .padding(horizontal = 12.dp, vertical = 8.dp)
+                        .padding(horizontal = 14.dp, vertical = 8.dp)
                         .fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceBetween
@@ -151,20 +152,18 @@ fun VoiceControlOverlay(
                                 is VoiceState.Error -> Color(0xFFEF4444)
                                 else -> Color(0xFF10B981)
                             },
-                            modifier = Modifier.size(20.dp)
+                            modifier = Modifier.size(18.dp)
                         )
                         Spacer(modifier = Modifier.width(8.dp))
-                        Column {
-                            Text(
-                                text = when (voiceState) {
-                                    is VoiceState.Listening -> "Listening under hood... \"$lastRecognizedText\""
-                                    is VoiceState.Error -> (voiceState as VoiceState.Error).message
-                                    else -> voiceNotice ?: "Hands-free Voice Active"
-                                },
-                                style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Bold),
-                                color = Color.White
-                            )
-                        }
+                        Text(
+                            text = when (voiceState) {
+                                is VoiceState.Listening -> "Listening... \"$lastRecognizedText\""
+                                is VoiceState.Error -> (voiceState as VoiceState.Error).message
+                                else -> voiceNotice ?: "Voice Command Processed"
+                            },
+                            style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Bold),
+                            color = Color.White
+                        )
                     }
 
                     IconButton(
@@ -172,123 +171,10 @@ fun VoiceControlOverlay(
                             voiceCommandManager.resetState()
                             onDismissNotice()
                         },
-                        modifier = Modifier.size(24.dp)
+                        modifier = Modifier.size(22.dp)
                     ) {
-                        Icon(Icons.Default.Close, contentDescription = "Dismiss", tint = Color(0xFF94A3B8))
+                        Icon(Icons.Default.Close, contentDescription = "Dismiss", tint = Color(0xFF94A3B8), modifier = Modifier.size(16.dp))
                     }
-                }
-            }
-        }
-
-        // Quick Hands-Free Floating Control Strip
-        Surface(
-            color = Color(0xFF0B132B),
-            shape = RoundedCornerShape(20.dp),
-            border = BorderStroke(1.dp, Color(0xFF1E293B)),
-            shadowElevation = 8.dp,
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Row(
-                modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                // Mic Floating Action Button
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Box(
-                        contentAlignment = Alignment.Center,
-                        modifier = Modifier
-                            .size(40.dp)
-                            .clip(CircleShape)
-                            .background(
-                                if (voiceState is VoiceState.Listening) Color(0xFF0284C7) else Color(0xFF1E293B)
-                            )
-                            .clickable {
-                                if (!hasMicPermission) {
-                                    permissionLauncher.launch(Manifest.permission.RECORD_AUDIO)
-                                } else {
-                                    if (voiceState is VoiceState.Listening) {
-                                        voiceCommandManager.stopListening()
-                                    } else {
-                                        voiceCommandManager.startListening()
-                                    }
-                                }
-                            }
-                            .testTag("voice_mic_fab")
-                    ) {
-                        Icon(
-                            imageVector = if (hasMicPermission) Icons.Default.Mic else Icons.Default.MicOff,
-                            contentDescription = "Voice Commands",
-                            tint = if (voiceState is VoiceState.Listening) Color.White else Color(0xFF38BDF8),
-                            modifier = Modifier.size(22.dp)
-                        )
-                    }
-
-                    Spacer(modifier = Modifier.width(8.dp))
-
-                    Column {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Text(
-                                text = "HANDS-FREE VOICE",
-                                style = MaterialTheme.typography.labelSmall.copy(
-                                    fontWeight = FontWeight.Bold,
-                                    letterSpacing = 0.5.sp
-                                ),
-                                color = Color.White
-                            )
-                            Spacer(modifier = Modifier.width(4.dp))
-                            Box(
-                                modifier = Modifier
-                                    .size(6.dp)
-                                    .clip(CircleShape)
-                                    .background(if (hasMicPermission) Color(0xFF10B981) else Color(0xFFFF6F00))
-                            )
-                        }
-                        Text(
-                            text = if (hasMicPermission) "Tap mic or say command" else "Tap to allow mic access",
-                            style = MaterialTheme.typography.labelSmall,
-                            color = Color(0xFF94A3B8)
-                        )
-                    }
-                }
-
-                // Sample Quick Voice Command Chips
-                LazyRow(
-                    horizontalArrangement = Arrangement.spacedBy(6.dp),
-                    modifier = Modifier.weight(1f).padding(horizontal = 8.dp)
-                ) {
-                    val quickCmds = listOf("Show Engine", "PCV Valve", "Next", "Manual", "Diagnostics")
-                    items(quickCmds) { cmd ->
-                        Surface(
-                            modifier = Modifier
-                                .clip(RoundedCornerShape(12.dp))
-                                .clickable { onExecuteCommand(cmd) }
-                                .testTag("voice_quick_chip_$cmd"),
-                            color = Color(0xFF1E293B),
-                            border = BorderStroke(1.dp, Color(0xFF334155))
-                        ) {
-                            Text(
-                                text = "\"$cmd\"",
-                                style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Medium),
-                                color = Color(0xFF38BDF8),
-                                modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
-                            )
-                        }
-                    }
-                }
-
-                // "What can I say?" Help Button
-                IconButton(
-                    onClick = { showCheatSheet = true },
-                    modifier = Modifier
-                        .size(32.dp)
-                        .testTag("voice_cheat_sheet_button")
-                ) {
-                    Icon(
-                        Icons.Default.HelpOutline,
-                        contentDescription = "Voice Help",
-                        tint = Color(0xFFFFD700)
-                    )
                 }
             }
         }
@@ -329,6 +215,7 @@ fun VoiceCheatSheetDialog(
                 Spacer(modifier = Modifier.height(10.dp))
 
                 val categories = listOf(
+                    "Mentor Mode TTS" to listOf("Confirm Step", "Repeat Step", "Previous Step", "Read Torque Specs", "Mute Voice"),
                     "3D Systems" to listOf("Engine", "Intake", "Brakes", "Transmission", "Cooling", "Electrical", "Show All"),
                     "Part Selection" to listOf("PCV Valve", "Intake Manifold", "Coil Pack", "Thermostat", "MAF Sensor", "EGR Valve"),
                     "3D Navigation" to listOf("Next Part", "Previous Part", "Open Detail Sheet"),
