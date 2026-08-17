@@ -47,6 +47,7 @@ fun GeminiChatView(
     onSendMessage: (String) -> Unit,
     onClearChat: () -> Unit,
     onNavigateToComponent: (String) -> Unit,
+    onRetryLastQuery: (() -> Unit)? = null,
     modifier: Modifier = Modifier
 ) {
     var inputText by remember { mutableStateOf("") }
@@ -301,30 +302,17 @@ fun GeminiChatView(
             items(messages, key = { it.id }) { msg ->
                 ChatMessageItem(
                     message = msg,
-                    onNavigateToComponent = onNavigateToComponent
+                    onNavigateToComponent = onNavigateToComponent,
+                    onRetry = if (msg.isError) onRetryLastQuery else null
                 )
             }
 
             if (isThinking) {
                 item {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier
-                            .padding(8.dp)
-                            .testTag("gemini_thinking_indicator")
-                    ) {
-                        CircularProgressIndicator(
-                            modifier = Modifier.size(16.dp),
-                            color = Color(0xFF38BDF8),
-                            strokeWidth = 2.dp
-                        )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(
-                            text = "Conversational AI Wizard is evaluating Ford Sport Trac documentation...",
-                            style = MaterialTheme.typography.bodySmall,
-                            color = Color(0xFF38BDF8)
-                        )
-                    }
+                    GeminiAiLoadingAnimation(
+                        isCompact = true,
+                        modifier = Modifier.padding(horizontal = 4.dp, vertical = 2.dp)
+                    )
                 }
             }
         }
@@ -407,7 +395,8 @@ fun GeminiChatView(
 @Composable
 fun ChatMessageItem(
     message: ChatMessage,
-    onNavigateToComponent: (String) -> Unit
+    onNavigateToComponent: (String) -> Unit,
+    onRetry: (() -> Unit)? = null
 ) {
     val isUser = message.sender == ChatSender.USER
 
@@ -422,10 +411,10 @@ fun ChatMessageItem(
                     .padding(top = 4.dp, end = 8.dp)
                     .size(28.dp)
                     .clip(CircleShape)
-                    .background(Color(0xFF0284C7))
+                    .background(if (message.isError) Color(0xFFEF4444) else Color(0xFF0284C7))
             ) {
                 Icon(
-                    Icons.Default.Build,
+                    imageVector = if (message.isError) Icons.Default.Warning else Icons.Default.Build,
                     contentDescription = null,
                     tint = Color.White,
                     modifier = Modifier.size(14.dp)
@@ -434,7 +423,7 @@ fun ChatMessageItem(
         }
 
         Surface(
-            color = if (isUser) Color(0xFF0284C7) else Color(0xFF1E293B),
+            color = if (isUser) Color(0xFF0284C7) else if (message.isError) Color(0xFF1F0D10) else Color(0xFF1E293B),
             shape = RoundedCornerShape(
                 topStart = 16.dp,
                 topEnd = 16.dp,
@@ -478,6 +467,33 @@ fun ChatMessageItem(
                     style = MaterialTheme.typography.bodyMedium,
                     color = Color.White
                 )
+
+                // Error Retry Button
+                if (message.isError && onRetry != null) {
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Button(
+                        onClick = onRetry,
+                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFEF4444)),
+                        shape = RoundedCornerShape(8.dp),
+                        contentPadding = PaddingValues(horizontal = 12.dp, vertical = 4.dp),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(32.dp)
+                            .testTag("gemini_error_retry_btn")
+                    ) {
+                        Icon(
+                            Icons.Default.Refresh,
+                            contentDescription = "Retry",
+                            tint = Color.White,
+                            modifier = Modifier.size(14.dp)
+                        )
+                        Spacer(modifier = Modifier.width(6.dp))
+                        Text(
+                            text = "Retry Gemini Request",
+                            style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold)
+                        )
+                    }
+                }
 
                 // Interactive 3D Part Link Button
                 if (!isUser && !message.suggestedComponentId.isNullOrBlank()) {

@@ -40,6 +40,7 @@ fun DiagnosticsScreen(
     onSendMessage: (String) -> Unit,
     onClearChat: () -> Unit,
     onNavigateToComponent: (String) -> Unit,
+    onRetryLastQuery: (() -> Unit)? = null,
     modifier: Modifier = Modifier
 ) {
     var activeMode by remember { mutableStateOf(DiagnosticMode.GEMINI_CHAT) }
@@ -254,6 +255,7 @@ fun DiagnosticsScreen(
                     onSendMessage = onSendMessage,
                     onClearChat = onClearChat,
                     onNavigateToComponent = onNavigateToComponent,
+                    onRetryLastQuery = onRetryLastQuery,
                     modifier = Modifier.weight(1f)
                 )
             }

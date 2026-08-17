@@ -9,6 +9,9 @@ import com.example.data.local.AppDatabase
 import com.example.data.local.MaintenanceEntity
 import com.example.data.local.VehicleProfileEntity
 import com.example.model.*
+import com.example.ui.components.SnackbarPayload
+import com.example.ui.components.SnackbarType
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
@@ -191,6 +194,21 @@ class ExplorerViewModel(application: Application) : AndroidViewModel(application
     private val _isGeminiThinking = MutableStateFlow(false)
     val isGeminiThinking: StateFlow<Boolean> = _isGeminiThinking.asStateFlow()
 
+    // 3D Model Loading State
+    private val _is3DModelLoading = MutableStateFlow(false)
+    val is3DModelLoading: StateFlow<Boolean> = _is3DModelLoading.asStateFlow()
+
+    private val _model3DLoadingProgress = MutableStateFlow<Int?>(null)
+    val model3DLoadingProgress: StateFlow<Int?> = _model3DLoadingProgress.asStateFlow()
+
+    // Global Snackbar Event State for Error Handling & Notifications
+    private val _snackbarEvent = MutableStateFlow<SnackbarPayload?>(null)
+    val snackbarEvent: StateFlow<SnackbarPayload?> = _snackbarEvent.asStateFlow()
+
+    // Last Diagnostic Query for Instant Retries
+    private val _lastDiagnosticQuery = MutableStateFlow<String?>(null)
+    val lastDiagnosticQuery: StateFlow<String?> = _lastDiagnosticQuery.asStateFlow()
+
     // Search Query for Repair Manual
     private val _manualSearchQuery = MutableStateFlow("")
     val manualSearchQuery: StateFlow<String> = _manualSearchQuery.asStateFlow()
@@ -256,6 +274,9 @@ class ExplorerViewModel(application: Application) : AndroidViewModel(application
 
     fun selectComponent(component: Component3DModel?) {
         _selectedComponent.value = component
+        if (component != null) {
+            trigger3DModelLoading(component.name)
+        }
     }
 
     fun selectComponentById(componentId: String) {
@@ -264,6 +285,60 @@ class ExplorerViewModel(application: Application) : AndroidViewModel(application
             _selectedComponent.value = found
             _activeSystem.value = found.system
             _currentTab.value = MainTab.VIEW_3D
+            trigger3DModelLoading(found.name)
+        }
+    }
+
+    fun trigger3DModelLoading(partName: String) {
+        viewModelScope.launch {
+            _is3DModelLoading.value = true
+            _model3DLoadingProgress.value = 15
+            delay(150)
+            _model3DLoadingProgress.value = 55
+            delay(200)
+            _model3DLoadingProgress.value = 90
+            delay(150)
+            _model3DLoadingProgress.value = 100
+            delay(100)
+            _is3DModelLoading.value = false
+            _model3DLoadingProgress.value = null
+        }
+    }
+
+    fun trigger3DModelError(partName: String, errorMessage: String) {
+        showSnackbar(
+            SnackbarPayload(
+                type = SnackbarType.MODEL_3D_ERROR,
+                message = "Failed to load high-res 3D asset for $partName",
+                subtext = "$errorMessage. Switched to procedural 3D vector CAD mesh fallback.",
+                actionLabel = "Retry Load",
+                onAction = {
+                    trigger3DModelLoading(partName)
+                    showSnackbar(
+                        SnackbarPayload(
+                            type = SnackbarType.SUCCESS,
+                            message = "3D CAD mesh reloaded successfully for $partName",
+                            durationMillis = 3000L
+                        )
+                    )
+                }
+            )
+        )
+    }
+
+    fun showSnackbar(payload: SnackbarPayload) {
+        _snackbarEvent.value = payload
+    }
+
+    fun dismissSnackbar() {
+        _snackbarEvent.value = null
+    }
+
+    fun retryLastGeminiQuery() {
+        val lastQuery = _lastDiagnosticQuery.value
+        if (!lastQuery.isNullOrBlank()) {
+            dismissSnackbar()
+            sendDiagnosticQuery(lastQuery)
         }
     }
 
@@ -483,6 +558,8 @@ class ExplorerViewModel(application: Application) : AndroidViewModel(application
         val trimmed = userQueryText.trim()
         if (trimmed.isEmpty() || _isGeminiThinking.value) return
 
+        _lastDiagnosticQuery.value = trimmed
+
         val userMessage = ChatMessage(
             sender = ChatSender.USER,
             text = trimmed
@@ -500,6 +577,22 @@ class ExplorerViewModel(application: Application) : AndroidViewModel(application
                 val updated = _chatMessages.value.toMutableList()
                 updated.add(mechanicResponse)
                 _chatMessages.value = updated
+
+                // If response was generated via local fallback, notify user
+                val isFallback = com.example.BuildConfig.GEMINI_API_KEY.isBlank() || 
+                                 com.example.BuildConfig.GEMINI_API_KEY == "MY_GEMINI_API_KEY"
+                if (isFallback) {
+                    showSnackbar(
+                        SnackbarPayload(
+                            type = SnackbarType.WARNING,
+                            message = "Offline 2004 Sport Trac AI Mechanic active",
+                            subtext = "Live Gemini cloud API is currently unreachable. Used local Ford TSB diagnostic engine.",
+                            actionLabel = "Retry Cloud AI",
+                            onAction = { retryLastGeminiQuery() },
+                            durationMillis = 4000L
+                        )
+                    )
+                }
             } catch (e: Exception) {
                 val errorMsg = ChatMessage(
                     sender = ChatSender.GEMINI_MECHANIC,
@@ -509,6 +602,17 @@ class ExplorerViewModel(application: Application) : AndroidViewModel(application
                 val updated = _chatMessages.value.toMutableList()
                 updated.add(errorMsg)
                 _chatMessages.value = updated
+
+                showSnackbar(
+                    SnackbarPayload(
+                        type = SnackbarType.GEMINI_ERROR,
+                        message = "Gemini API Request Failed",
+                        subtext = "${e.localizedMessage ?: "Network/timeout error occurred while contacting AI service."}",
+                        actionLabel = "Retry Analysis",
+                        onAction = { retryLastGeminiQuery() },
+                        durationMillis = 6500L
+                    )
+                )
             } finally {
                 _isGeminiThinking.value = false
             }
