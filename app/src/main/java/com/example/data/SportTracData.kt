@@ -1390,11 +1390,11 @@ object SportTracData {
         run {
             val (v, f) = createCylinderMesh(0.65f, 1.4f, 8, Point3D(0.6f, 0.4f, 1.2f), "#06B6D4")
             Component3DModel(
-                id = "ac_compressor",
+                id = "ac_compressor_pressure_controls",
                 name = "A/C Compressor, Electromagnetic Clutch & High/Low Pressure Cut-off Switches",
                 system = VehicleSystem.AIR_CONDITIONING,
                 oemPartNumber = "1L2Z-19703-AA",
-                description = "FS10 10-piston aluminum A/C compressor with electromagnetic clutch coil, 6-groove serpentine belt pulley, magnetic air gap shims, low-pressure cycling switch, and high-pressure safety cut-out switch filled with PAG 46 oil and 28 oz R134a refrigerant.",
+                description = "FS10 10-piston aluminum A/C compressor with electromagnetic clutch coil, 6-groove serpentine-belt pulley, air-gap shims, pressure-protection controls, and a sealed R-134a refrigerant circuit. Refrigerant amount and oil balance must be confirmed from the under-hood label and Ford service procedure for the exact vehicle.",
                 locationDescription = "Lower passenger side front engine bay driven directly by serpentine belt.",
                 difficulty = "Intermediate",
                 estimatedTimeMinutes = 120,
@@ -1405,14 +1405,14 @@ object SportTracData {
                 torqueSpecs = listOf(
                     TorqueSpec("A/C Compressor Mounting Bolts (3 Bolts)", "18", "25", "Tighten in 2 stages"),
                     TorqueSpec("A/C Manifold Hose Block Bolt", "15", "20", "Must replace green HNBR O-rings"),
-                    TorqueSpec("Clutch Hub Front Center Nut", "10", "14", "Adjust air gap to 0.020 - 0.035 inches")
+                    TorqueSpec("Clutch Hub Front Center Nut", "Verify", "Verify", "Measure clutch air gap and use the Ford service specification for this exact compressor/clutch.")
                 ),
                 requiredTools = listOf("A/C Manifold Gauge Set & Vacuum Pump", "R134a Refrigerant Recovery Machine", "8mm & 10mm Sockets", "HNBR Green A/C O-Ring Seal Kit", "A/C Clutch Hub Holding Tool"),
                 repairSteps = listOf(
                     RepairStep(1, "Evacuate R134a Refrigerant", "Connect EPA-certified A/C recovery machine to high and low service ports to evacuate R134a gas safely.", warning = "Never vent R134a refrigerant into atmosphere! Pressurized refrigerant causes severe frostbite on skin contact."),
                     RepairStep(2, "Remove Serpentine Belt & Skid Plate", "Release tensioner pulley with 3/8-inch ratchet and slip serpentine belt off compressor pulley."),
                     RepairStep(3, "Disconnect A/C Hose Block & Switches", "Remove single 10mm bolt securing manifold hose assembly block to compressor back and unplug 2-pin clutch wire connector."),
-                    RepairStep(4, "Unbolt & Replace Compressor", "Remove three 10mm mounting bolts, install new compressor pre-filled with 7 oz PAG 46 oil, replace green HNBR O-rings, and vacuum system to -29 inHg for 45 minutes before charging 28 oz R134a.")
+                    RepairStep(4, "Unbolt & Replace Compressor", "Remove the compressor fasteners, install approved new O-rings lubricated with the specified PAG oil, and have the system recovered, evacuated, leak-tested, and charged to the exact under-hood-label specification by qualified A/C service equipment.", warning = "Do not guess refrigerant charge or compressor-oil quantity. An incorrect charge or oil balance can damage the replacement compressor.")
                 ),
                 commonSymptoms = listOf("A/C blows hot air or fails to cool cabin", "Loud squealing or metallic grinding noise from compressor pulley bearing when A/C is turned ON", "A/C clutch plate fails to engage or rapid-cycles ON and OFF every 3 seconds due to low refrigerant level"),
                 replacementIntervalMiles = 90000
@@ -1522,7 +1522,7 @@ object SportTracData {
                 name = "A/C Evaporator Core, Accumulator / Drier Bottle & Fixed Orifice Tube",
                 system = VehicleSystem.AIR_CONDITIONING,
                 oemPartNumber = "1L2Z-19860-AA",
-                description = "High-efficiency aluminum tube-and-fin A/C evaporator core, aluminum accumulator drier receiver bottle with internal desiccant bag and low-pressure cycling switch port, and color-coded red (0.062-in) expansion orifice tube metering device.",
+                description = "High-efficiency aluminum evaporator core, accumulator/drier bottle with internal desiccant and pressure-switch port, and fixed-orifice metering device. The exact replacement configuration must match the VIN-specific parts catalogue and service procedure.",
                 locationDescription = "Evaporator housed inside passenger firewall case; accumulator bottle mounted directly on passenger firewall.",
                 difficulty = "Advanced",
                 estimatedTimeMinutes = 150,
@@ -1534,12 +1534,12 @@ object SportTracData {
                     TorqueSpec("A/C Accumulator Nut Coupling Spring Lock", "15", "20", "Use spring lock tool #4 & #5"),
                     TorqueSpec("Low Pressure Cycling Switch to Accumulator Port", "89 in-lbs", "10 Nm", "Includes Schrader valve seal")
                 ),
-                requiredTools = listOf("Spring Lock Quick Disconnect Tool Set (Red 3/8 & Blue 1/2 in)", "Needle Nose Pliers for Orifice Tube Extraction", "A/C Manifold Gauge Set & Vacuum Pump", "New PAG 46 Oil (3 oz)"),
+                requiredTools = listOf("Correct spring-lock quick-disconnect tools", "Approved orifice-tube extraction tool", "A/C recovery, evacuation, and leak-test equipment", "Ford-specified PAG oil and new compatible O-rings"),
                 repairSteps = listOf(
                     RepairStep(1, "Recover R134a Refrigerant", "Evacuate refrigerant system using A/C recovery machine."),
                     RepairStep(2, "Disconnect Spring-Lock Line Fittings", "Use spring lock release tool to separate aluminum suction and liquid lines from accumulator bottle and evaporator inlet.", warning = "Always replace desiccant accumulator bottle whenever A/C system is opened to atmosphere to prevent moisture contamination."),
                     RepairStep(3, "Extract Fixed Orifice Tube", "Use needle-nose pliers or specialized orifice tube puller tool to extract plastic orifice tube from liquid line pipe.", tip = "Inspect orifice tube mesh screen for metal debris ('black death') from compressor failure."),
-                    RepairStep(4, "Replace Evaporator & Accumulator", "Install new accumulator drier bottle, insert fresh red calibrated orifice tube, replace green O-rings, and evacuate/recharge system with 28 oz R134a.")
+                    RepairStep(4, "Replace Evaporator & Accumulator", "Install the correct accumulator/drier, fixed orifice, and compatible O-rings. Before charging, have the system evacuated, leak-tested, and charged to the exact under-hood-label specification.", warning = "Opening the refrigerant circuit requires correct recovery equipment; do not release refrigerant to atmosphere.")
                 ),
                 commonSymptoms = listOf("Musty vinegar smell or damp mold odor coming from dashboard air vents when A/C is turned ON", "A/C air starts cold then gradually fades to warm as evaporator core freezes into a solid block of ice", "Accumulator bottle covered in thick white frost or ice build-up"),
                 replacementIntervalMiles = 100000
@@ -1571,14 +1571,47 @@ object SportTracData {
                     RepairStep(1, "Evacuate Refrigerant", "Recover all R134a gas using certified A/C machine."),
                     RepairStep(2, "Remove Front Grille & Upper Header Panel", "Unclip front grille mesh and header panel clips to expose aluminum A/C condenser core."),
                     RepairStep(3, "Disconnect High-Pressure Lines", "Unbolt 10mm line block fittings from condenser manifolds and inspect for UV dye leaks."),
-                    RepairStep(4, "Replace Condenser Core", "Unbolt four 10mm mounting bracket bolts, lift old condenser up, install fresh parallel-flow unit, replace HNBR O-rings, pull vacuum for 45 min, and charge 28 oz R134a.")
+                    RepairStep(4, "Replace Condenser Core", "Install the correct condenser and compatible new O-rings, then have the system evacuated, leak-tested, and charged to the exact under-hood-label specification with approved A/C equipment.", warning = "Do not charge by a guessed pressure target or a generic can label; use the vehicle-specific label and Ford procedure.")
                 ),
                 commonSymptoms = listOf("A/C cools moderately while driving at 50 MPH but blows hot air when idling at stoplights (poor heat dissipation)", "Oily green UV dye residue visible on condenser aluminum cooling fins from rock chip puncture", "A/C high side pressure exceeds 350 PSI due to restricted condenser fins or bent tubes"),
                 replacementIntervalMiles = 100000
             )
         },
 
-        // 39. DASHBOARD INSTRUMENT CLUSTER & GAUGE PACK
+        // 39. A/C SERVICE PORTS, PRESSURE PROTECTION & CLUTCH COMMAND PATH
+        run {
+            val (v, f) = createBoxMesh(1.15f, 0.55f, 0.45f, Point3D(0.95f, 0.72f, 0.72f), "#0EA5E9")
+            Component3DModel(
+                id = "ac_service_ports_controls_3d",
+                name = "A/C Service Ports, Pressure-Protection Controls & Clutch Command Path",
+                system = VehicleSystem.AIR_CONDITIONING,
+                oemPartNumber = "AC-SVC-2004-REFERENCE",
+                description = "Diagnostic-reference assembly representing the high- and low-side service ports, pressure-protection controls, A/C relay/fuse command path, compressor clutch connector, and associated harness routing. It is intended to guide safe observation and electrical inspection without bypassing safety controls or opening the sealed refrigerant circuit.",
+                locationDescription = "Service ports and pressure-control fittings are located along the refrigerant lines; relay/fuse locations must be confirmed from the exact owner-manual diagram; compressor clutch connector is at the lower passenger-side compressor.",
+                difficulty = "Beginner diagnostic / Professional refrigerant service",
+                estimatedTimeMinutes = 45,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0.95f, 0.72f, 0.72f),
+                explodeVector = Point3D(1.6f, 1.1f, 1.15f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Service-port cap and valve handling", "N/A", "N/A", "Do not remove Schrader valves or loosen fittings for a basic diagnostic inspection."),
+                    TorqueSpec("Pressure-control and clutch-circuit verification", "N/A", "N/A", "Use the Ford wiring information and approved test methods; do not jumper protective switches.")
+                ),
+                requiredTools = listOf("Owner-manual fuse/relay diagram", "Flashlight", "Safety glasses", "Digital multimeter only if experienced", "Professional MVAC recovery/diagnostic equipment for any refrigerant-circuit service"),
+                repairSteps = listOf(
+                    RepairStep(1, "Heat and engine-safety preflight", "Park outdoors or in a fully ventilated area, work in shade where possible, set the parking brake, and keep hands and clothing clear of belts and fans."),
+                    RepairStep(2, "Confirm cabin-air and A/C request", "Verify the blower moves air and that MAX A/C / low-temperature control settings are actually requesting cooling before testing the compressor command path."),
+                    RepairStep(3, "Inspect without opening the system", "With the engine OFF and cool, inspect service-port caps, visible line routing, the compressor-clutch connector, and nearby harnesses for damage, oil-stained dirt, or corrosion."),
+                    RepairStep(4, "Check protected electrical path", "Use the exact owner-manual diagram to inspect the specified fuse and relay. Do not bypass the relay, pressure switches, or clutch connector to force compressor operation.", warning = "Pressure switches protect the system. Bypassing them can damage components or create a hazardous condition."),
+                    RepairStep(5, "Escalate sealed-system diagnosis", "If airflow and basic electrical checks are normal but cooling is still poor, have a qualified A/C technician recover, measure, leak-test, evacuate, and charge the system according to the under-hood label and Ford procedure.")
+                ),
+                commonSymptoms = listOf("Compressor clutch does not engage", "Compressor clutch rapidly cycles", "A/C works while driving but is warm at idle", "Strong blower airflow but warm vent air", "Visible oily residue at a fitting or service-port area"),
+                replacementIntervalMiles = null
+            )
+        },
+
+        // 40. DASHBOARD INSTRUMENT CLUSTER & GAUGE PACK
         run {
             val (v, f) = createBoxMesh(1.8f, 0.8f, 0.4f, Point3D(-0.4f, 0.9f, 0.5f), "#F59E0B")
             Component3DModel(
@@ -2103,7 +2136,7 @@ object SportTracData {
                 replacementIntervalMiles = 80000
             )
         }
-    )
+    ).map(VehicleHardwareCatalog::enrich)
 
     val defaultMaintenanceSchedules = listOf(
         MaintenanceScheduleItem("oil_change", "Engine Oil & Filter Service", VehicleSystem.ENGINE, 4000, 4, "5W-30 Motorcraft Blend (5.0 qts) & FL-820S Filter", "Essential for Cologne 4.0L SOHC timing chain tensioner hydraulic pressure.", "engine_block"),

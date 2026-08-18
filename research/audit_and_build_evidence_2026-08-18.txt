@@ -1,0 +1,276 @@
+=== FEATURE SOURCE PRESENCE ===
+app/src/main/java/com/example/ui/components/Interactive3DViewport.kt
+app/src/main/java/com/example/ui/screens/Model3DScreen.kt
+app/src/main/java/com/example/ui/components/MentorModeDialog.kt
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt
+app/src/main/java/com/example/service/AudioAnalysisPipeline.kt
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt
+app/src/main/java/com/example/data/SportTracPartsReadiness.kt
+app/src/main/java/com/example/ui/components/PriceWatchDialog.kt
+app/src/main/java/com/example/ui/components/ReadinessDashboardDialog.kt
+app/src/main/java/com/example/ui/screens/PartsShoppingScreen.kt
+app/src/main/java/com/example/ui/screens/LoungeScreen.kt
+app/src/main/java/com/example/model/PartStoreRanking.kt
+app/src/main/java/com/example/model/RecommendationIntegrity.kt
+app/src/test/java/com/example/model/RecommendationIntegrityTest.kt
+=== SYMBOL EVIDENCE ===
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt:163:                title = "A/C Compressor or Pulley Bearing Growl — Compare and Verify",
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt:171:                recommendedFix = "Use the model to inspect the belt and compressor access path first. With the engine OFF, inspect the belt/pulleys visually; if the sound is severe, stop A/C use and obtain a qualified accessory-drive or A/C diagnosis before buying parts.",
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt:178:                title = "A/C Clutch Cycling Clicks — Context Required",
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt:185:                rootCause = "Possible A/C clutch cycling pattern requiring supporting airflow, electrical-command, and professionally measured refrigerant-system checks.",
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt:186:                recommendedFix = "Do not jumper the clutch or pressure controls. Record whether cooling changes, whether the clutch cycles, and whether airflow is strong; then use the A/C Workbench before deciding on service.",
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt:193:                title = "A/C-On Belt or Clutch Squeal — Compare and Verify",
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt:199:                soundCharacteristics = "A high-pitch friction squeal that may change when A/C load changes. Belt condition, tensioner, pulley, clutch, and compressor load can overlap acoustically.",
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt:201:                recommendedFix = "Turn A/C OFF if a strong squeal or smoke occurs. With the engine cool and OFF, inspect the belt path. Do not spray belt dressing, reach into a running engine bay, or open the refrigerant circuit based on sound alone.",
+app/src/main/java/com/example/data/SportTracPartsCatalog.kt:807:        // A/C Compressor & Clutch
+app/src/main/java/com/example/data/SportTracPartsCatalog.kt:811:            partName = "Murray Climate Control FS10 A/C Compressor with Clutch Assembly",
+app/src/main/java/com/example/data/SportTracPartsCatalog.kt:907:        // A/C Accumulator Receiver Drier
+app/src/main/java/com/example/data/SportTracPartsCatalog.kt:911:            partName = "Murray Climate Control A/C Accumulator Drier Bottle & Orifice Tube",
+app/src/main/java/com/example/data/SportTracPartsCatalog.kt:927:        // A/C Condenser Core
+app/src/main/java/com/example/data/SportTracPartsCatalog.kt:931:            partName = "Murray Heat Transfer Heavy Duty Parallel Flow A/C Condenser Core",
+app/src/main/java/com/example/data/SportTracData.kt:509:        // 7. A/C COMPRESSOR & CLUTCH
+app/src/main/java/com/example/data/SportTracData.kt:514:                name = "A/C Scroll Compressor & Magnetic Clutch",
+app/src/main/java/com/example/data/SportTracData.kt:526:                    TorqueSpec("A/C Compressor Mounting Bolts", "18", "25", "3 long bolts through engine bracket"),
+app/src/main/java/com/example/data/SportTracData.kt:529:                requiredTools = listOf("A/C Manifold Gauge Set", "Vacuum Pump", "R134a Refrigerant Scale", "Snap Ring Pliers", "Feeler Gauge for Clutch Gap"),
+app/src/main/java/com/example/data/SportTracData.kt:531:                    RepairStep(1, "Evacuate R134a System", "Recover refrigerant legally using certified A/C recovery machine.", warning = "Venting R134a into atmosphere violates EPA Section 609 regulations."),
+app/src/main/java/com/example/data/SportTracData.kt:537:                commonSymptoms = listOf("A/C blows warm air", "Loud clack or screeching noise when A/C button pressed", "Refrigerant oil visible around compressor shaft seal"),
+app/src/main/java/com/example/data/SportTracData.kt:1389:        // 33. A/C COMPRESSOR, MAGNETIC CLUTCH & PRESSURE SWITCHES
+app/src/main/java/com/example/data/SportTracData.kt:1394:                name = "A/C Compressor, Electromagnetic Clutch & High/Low Pressure Cut-off Switches",
+app/src/main/java/com/example/data/SportTracData.kt:1397:                description = "FS10 10-piston aluminum A/C compressor with electromagnetic clutch coil, 6-groove serpentine-belt pulley, air-gap shims, pressure-protection controls, and a sealed R-134a refrigerant circuit. Refrigerant amount and oil balance must be confirmed from the under-hood label and Ford service procedure for the exact vehicle.",
+app/src/main/java/com/example/data/SportTracData.kt:1406:                    TorqueSpec("A/C Compressor Mounting Bolts (3 Bolts)", "18", "25", "Tighten in 2 stages"),
+app/src/main/java/com/example/data/SportTracData.kt:1407:                    TorqueSpec("A/C Manifold Hose Block Bolt", "15", "20", "Must replace green HNBR O-rings"),
+app/src/main/java/com/example/data/SportTracData.kt:1410:                requiredTools = listOf("A/C Manifold Gauge Set & Vacuum Pump", "R134a Refrigerant Recovery Machine", "8mm & 10mm Sockets", "HNBR Green A/C O-Ring Seal Kit", "A/C Clutch Hub Holding Tool"),
+app/src/main/java/com/example/data/SportTracData.kt:1412:                    RepairStep(1, "Evacuate R134a Refrigerant", "Connect EPA-certified A/C recovery machine to high and low service ports to evacuate R134a gas safely.", warning = "Never vent R134a refrigerant into atmosphere! Pressurized refrigerant causes severe frostbite on skin contact."),
+app/src/main/java/com/example/data/SportTracData.kt:1414:                    RepairStep(3, "Disconnect A/C Hose Block & Switches", "Remove single 10mm bolt securing manifold hose assembly block to compressor back and unplug 2-pin clutch wire connector."),
+app/src/main/java/com/example/data/SportTracData.kt:1415:                    RepairStep(4, "Unbolt & Replace Compressor", "Remove the compressor fasteners, install approved new O-rings lubricated with the specified PAG oil, and have the system recovered, evacuated, leak-tested, and charged to the exact under-hood-label specification by qualified A/C service equipment.", warning = "Do not guess refrigerant charge or compressor-oil quantity. An incorrect charge or oil balance can damage the replacement compressor.")
+app/src/main/java/com/example/data/SportTracData.kt:1417:                commonSymptoms = listOf("A/C blows hot air or fails to cool cabin", "Loud squealing or metallic grinding noise from compressor pulley bearing when A/C is turned ON", "A/C clutch plate fails to engage or rapid-cycles ON and OFF every 3 seconds due to low refrigerant level"),
+app/src/main/java/com/example/data/SportTracData.kt:1494:                description = "Micro-stepper electric motor actuator with internal nylon gear reduction drive and feedback potentiometer, controlling the HVAC plenum chamber blend door flap to blend hot heater core air with cold A/C evaporator air.",
+app/src/main/java/com/example/data/SportTracData.kt:1512:                commonSymptoms = listOf("Repetitive loud rhythmic clicking or popping noise behind center dashboard when turning key ON or adjusting temperature", "A/C blows cold on driver side but hot on passenger side, or stuck blowing ice cold air with no heat available", "Temperature selector dial has no effect on air temperature"),
+app/src/main/java/com/example/data/SportTracData.kt:1517:        // 37. A/C EVAPORATOR CORE, ACCUMULATOR DRIER & ORIFICE TUBE
+app/src/main/java/com/example/data/SportTracData.kt:1522:                name = "A/C Evaporator Core, Accumulator / Drier Bottle & Fixed Orifice Tube",
+app/src/main/java/com/example/data/SportTracData.kt:1534:                    TorqueSpec("A/C Accumulator Nut Coupling Spring Lock", "15", "20", "Use spring lock tool #4 & #5"),
+app/src/main/java/com/example/data/SportTracData.kt:1537:                requiredTools = listOf("Correct spring-lock quick-disconnect tools", "Approved orifice-tube extraction tool", "A/C recovery, evacuation, and leak-test equipment", "Ford-specified PAG oil and new compatible O-rings"),
+app/src/main/java/com/example/data/SportTracData.kt:1539:                    RepairStep(1, "Recover R134a Refrigerant", "Evacuate refrigerant system using A/C recovery machine."),
+app/src/main/java/com/example/data/SportTracData.kt:1540:                    RepairStep(2, "Disconnect Spring-Lock Line Fittings", "Use spring lock release tool to separate aluminum suction and liquid lines from accumulator bottle and evaporator inlet.", warning = "Always replace desiccant accumulator bottle whenever A/C system is opened to atmosphere to prevent moisture contamination."),
+app/src/main/java/com/example/data/SportTracData.kt:1544:                commonSymptoms = listOf("Musty vinegar smell or damp mold odor coming from dashboard air vents when A/C is turned ON", "A/C air starts cold then gradually fades to warm as evaporator core freezes into a solid block of ice", "Accumulator bottle covered in thick white frost or ice build-up"),
+app/src/main/java/com/example/data/SportTracData.kt:1549:        // 38. A/C CONDENSER CORE & HIGH-PRESSURE SUCTION / LIQUID HOSES
+app/src/main/java/com/example/data/SportTracData.kt:1554:                name = "A/C Condenser Parallel-Flow Radiator Core & High-Pressure Hose Assembly",
+app/src/main/java/com/example/data/SportTracData.kt:1557:                description = "Heavy-duty aluminum parallel-flow A/C condenser heat exchanger with integrated sub-cooler, high-pressure aluminum discharge lines, flexible barrier rubber hoses, and dual high/low Schrader service valve ports.",
+app/src/main/java/com/example/data/SportTracData.kt:1566:                    TorqueSpec("A/C Condenser Bracket Retaining Bolts", "89 in-lbs", "10 Nm", ""),
+app/src/main/java/com/example/data/SportTracData.kt:1569:                requiredTools = listOf("A/C Spring-Lock Disconnect Tool Set", "10mm Socket & Ratchet", "Fin Straightener Comb", "Electronic A/C Leak Detector / UV Dye Flashlight"),
+app/src/main/java/com/example/data/SportTracData.kt:1571:                    RepairStep(1, "Evacuate Refrigerant", "Recover all R134a gas using certified A/C machine."),
+app/src/main/java/com/example/data/SportTracData.kt:1572:                    RepairStep(2, "Remove Front Grille & Upper Header Panel", "Unclip front grille mesh and header panel clips to expose aluminum A/C condenser core."),
+app/src/main/java/com/example/data/SportTracData.kt:1574:                    RepairStep(4, "Replace Condenser Core", "Install the correct condenser and compatible new O-rings, then have the system evacuated, leak-tested, and charged to the exact under-hood-label specification with approved A/C equipment.", warning = "Do not charge by a guessed pressure target or a generic can label; use the vehicle-specific label and Ford procedure.")
+app/src/main/java/com/example/data/SportTracData.kt:1576:                commonSymptoms = listOf("A/C cools moderately while driving at 50 MPH but blows hot air when idling at stoplights (poor heat dissipation)", "Oily green UV dye residue visible on condenser aluminum cooling fins from rock chip puncture", "A/C high side pressure exceeds 350 PSI due to restricted condenser fins or bent tubes"),
+app/src/main/java/com/example/data/SportTracData.kt:1581:        // 39. A/C SERVICE PORTS, PRESSURE PROTECTION & CLUTCH COMMAND PATH
+app/src/main/java/com/example/data/SportTracData.kt:1586:                name = "A/C Service Ports, Pressure-Protection Controls & Clutch Command Path",
+app/src/main/java/com/example/data/SportTracData.kt:1589:                description = "Diagnostic-reference assembly representing the high- and low-side service ports, pressure-protection controls, A/C relay/fuse command path, compressor clutch connector, and associated harness routing. It is intended to guide safe observation and electrical inspection without bypassing safety controls or opening the sealed refrigerant circuit.",
+app/src/main/java/com/example/data/SportTracData.kt:1604:                    RepairStep(2, "Confirm cabin-air and A/C request", "Verify the blower moves air and that MAX A/C / low-temperature control settings are actually requesting cooling before testing the compressor command path."),
+app/src/main/java/com/example/data/SportTracData.kt:1607:                    RepairStep(5, "Escalate sealed-system diagnosis", "If airflow and basic electrical checks are normal but cooling is still poor, have a qualified A/C technician recover, measure, leak-test, evacuate, and charge the system according to the under-hood label and Ford procedure.")
+app/src/main/java/com/example/data/SportTracData.kt:1609:                commonSymptoms = listOf("Compressor clutch does not engage", "Compressor clutch rapidly cycles", "A/C works while driving but is warm at idle", "Strong blower airflow but warm vent air", "Visible oily residue at a fitting or service-port area"),
+app/src/main/java/com/example/data/SportTracData.kt:1750:                description = "Complete power glass sunroof assembly featuring tinted tempered glass panel with perimeter rubber weatherseal gasket, dual extruded aluminum guide track rails, tilt/slide mechanism lifter arms, sliding interior fabric sunshade, and 4-corner rubber water drain hoses routed down A/C roof pillars.",
+app/src/main/java/com/example/data/SportTracData.kt:2148:        MaintenanceScheduleItem("ac_service", "A/C Pressure Inspection & System Check", VehicleSystem.AIR_CONDITIONING, 30000, 24, "R134a Refrigerant & PAG 46 Oil", "Measures high/low port pressures and checks compressor magnetic clutch air gap.", "ac_compressor")
+app/src/main/java/com/example/data/SportTracData.kt:2309:            categoryName = "A/C Blowing Warm Air",
+app/src/main/java/com/example/data/SportTracData.kt:2311:            commonSymptoms = listOf("A/C blows warm air", "Compressor clutch clicks continuously", "Refrigerant pressure low"),
+app/src/main/java/com/example/data/SportTracData.kt:2314:                questionText = "Does the A/C compressor clutch hub spin when A/C is turned ON?",
+app/src/main/java/com/example/data/SportTracData.kt:2319:                            title = "A/C Clutch Air Gap Too Wide or Low R134a Pressure",
+app/src/main/java/com/example/data/SportTracServiceManualDiagnostics.kt:61:            title = "A/C Blows Warm Air / Clutch Clicks Rapidly",
+app/src/main/java/com/example/data/SportTracServiceManualDiagnostics.kt:292:            title = "A/C Compressor Clutch Air Gap Wear / Shim Adjustment",
+app/src/main/java/com/example/data/SportTracServiceManualDiagnostics.kt:295:            problemSummary = "As the magnetic clutch friction face wears down, the air gap between drive pulley and front clutch plate widens past 0.035 in. The electromagnetic coil cannot pull the clutch plate closed when hot, causing rapid cycling or loss of A/C.",
+app/src/main/java/com/example/data/ForscanData.kt:76:            suggestedForscanTest = "Check VPWR PID at idle with headlights and A/C blower on high (must maintain > 13.5V)."
+app/src/main/java/com/example/data/GeminiDiagnosticRepository.kt:126:                Pair("ac_compressor", "A/C Scroll Compressor & Magnetic Clutch")
+app/src/main/java/com/example/data/SportTracPartsReadiness.kt:45:            title = "A/C and extreme-heat readiness",
+app/src/main/java/com/example/data/SportTracPartsReadiness.kt:47:            description = "The first watch package for no-cooling, weak-airflow, clutch-command, accessory-drive, and heat-management diagnosis. Use the A/C Workbench and fitment verification before ordering a sealed-system part.",
+app/src/main/java/com/example/data/SportTracPartsReadiness.kt:61:                PendingFitmentItem("A/C hose and service-port seals", "Confirm line routing and fitting style by VIN before part-number lookup."),
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:73:        title = "Map the A/C cooling path",
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:82:        goal = "Practice the first decision: can the HVAC system move cabin air before asking whether the A/C circuit can cool it?",
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:85:        realVehicleTransfer = "On the truck, test all fan speeds first. A failed blower or resistor is a cabin-air problem, not a reason to charge the A/C system.",
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:90:        goal = "Understand that clutch operation depends on a requested A/C command, electrical protection, and pressure-protection logic.",
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:109:        realVehicleTransfer = "If diagnosis points to a leak, contamination, compressor failure, or an opened line, document symptoms and hand off recovery/evacuation/charging work to a properly equipped A/C technician.",
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:129:        stopCondition = "Stop if a fuse repeatedly opens, wiring smells hot, or a connector is melted. Electrical repair should be diagnosed before any A/C refrigerant work."
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:134:        symptom = "The dash blower works, but the center clutch plate on the A/C compressor does not pull in when A/C is requested.",
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:140:            "Set MAX A/C, blower high, and a low temperature setting. Observe from a safe distance whether the clutch hub changes from stationary to turning with the pulley.",
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:141:            "Check the A/C-related fuse and relay locations using the exact owner-manual diagram for this truck. Do not bypass a relay or pressure switch.",
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:153:        tools = "Flashlight, thermometer for vent comparison, professional A/C service equipment for pressure testing",
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:155:            "Confirm the blower is moving a strong, steady stream of air first; a weak blower can make normal A/C feel ineffective.",
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:158:            "If clutch engagement changes only after the engine bay has heat-soaked, document that behavior for the A/C technician; it may help separate an electrical/clutch issue from charge protection.",
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:166:        symptom = "A/C improves at road speed but turns warm when stopped, especially in extreme heat.",
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:174:            "Document whether the A/C is cooler at 40–50 mph than at a stoplight; that strongly helps a shop target condenser airflow, fan-clutch performance, or high-side pressure issues.",
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:177:        stopCondition = "Stop testing if engine temperature rises above normal, steam appears, or there is a coolant smell/leak. Engine cooling takes priority over cabin A/C."
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:198:        symptom = "A/C operation makes a harsh noise, the belt area smokes, or oily residue is visible near a refrigerant fitting.",
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:203:            "Turn A/C OFF immediately if there is grinding, smoke, a burning-belt smell, or a severe metal noise.",
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:214: * Dedicated A/C symptom workbench. It handles safe, non-invasive diagnosis
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:219:fun AcSystemWorkbenchDialog(
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:245:                        text = "A/C WORKBENCH",
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:338:                                text = "Refrigerant recovery, evacuation, leak testing, and charging require correct A/C equipment and should be handled by a qualified MVAC technician. Use the under-hood label and Ford service information—not a guessed pressure target—for the exact charge specification.",
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:636:                    text = "The Parts Finder already compares the build’s compatible A/C catalog entries and cost snapshots. Use it after the sound comparison, A/C Workbench, and 3D rehearsal point to one component. Sort by cost, but verify VIN fitment, included seals, warranty, core charge, and current seller price before buying.",
+app/src/main/java/com/example/ui/components/AcousticSoundDiagnosticDialog.kt:40:import com.example.service.AudioAnalysisPipeline
+app/src/main/java/com/example/ui/components/AcousticSoundDiagnosticDialog.kt:56:    val pipeline = remember { AudioAnalysisPipeline(context, scope) }
+app/src/main/java/com/example/ui/components/Interactive3DViewport.kt:64:enum class CadRenderStyle(val label: String, val description: String) {
+app/src/main/java/com/example/ui/components/Interactive3DViewport.kt:122:data class MentorRepairStep(
+app/src/main/java/com/example/ui/components/Interactive3DViewport.kt:138:private fun generateMentorSteps(visibleComponents: List<Component3DModel>): List<MentorRepairStep> {
+app/src/main/java/com/example/ui/components/Interactive3DViewport.kt:179:        MentorRepairStep(
+app/src/main/java/com/example/ui/components/Interactive3DViewport.kt:198:fun Interactive3DViewport(
+app/src/main/java/com/example/ui/components/GeminiChatView.kt:109:            title = "A/C Warm Air",
+app/src/main/java/com/example/ui/components/GeminiChatView.kt:113:            prompt = "A/C blowing warm air, compressor clutch not engaging"
+app/src/main/java/com/example/ui/components/PriceWatchDialog.kt:55:import com.example.model.RecommendationIntegrity
+app/src/main/java/com/example/ui/components/PriceWatchDialog.kt:67:fun PriceWatchDialog(
+app/src/main/java/com/example/ui/components/PriceWatchDialog.kt:89:        RecommendationIntegrity.sortedForReview(savedQuoteRecords(part))
+app/src/main/java/com/example/ui/components/ReadinessDashboardDialog.kt:52:fun ReadinessDashboardDialog(
+app/src/main/java/com/example/ui/components/ReadinessDashboardDialog.kt:199:            title = "A/C and cooling seasonal preparation",
+app/src/main/java/com/example/ui/components/ReadinessDashboardDialog.kt:200:            detail = "Before sustained hot weather, practice the A/C diagnosis flow: airflow, blower/resistor, clutch-command, belt, condenser visual condition, and cooling-system visual checks. This is not an automatic refrigerant-charge instruction.",
+app/src/main/java/com/example/ui/components/ReadinessDashboardDialog.kt:216:            detail = "Complete the queued fitment items—such as fuel pump, water pump, radiator/hoses, starter, air filter, wire set, fuses, coolant, and A/C controls—before a price watch can become a purchase candidate.",
+app/src/main/java/com/example/ui/screens/DiagnosticsScreen.kt:52:    var showAcSystemWorkbench by remember { mutableStateOf(false) }
+app/src/main/java/com/example/ui/screens/DiagnosticsScreen.kt:54:    if (showAcSystemWorkbench) {
+app/src/main/java/com/example/ui/screens/DiagnosticsScreen.kt:55:        com.example.ui.components.AcSystemWorkbenchDialog(
+app/src/main/java/com/example/ui/screens/DiagnosticsScreen.kt:56:            onDismiss = { showAcSystemWorkbench = false },
+app/src/main/java/com/example/ui/screens/DiagnosticsScreen.kt:277:                    // A/C Workbench Hero Card — targeted, safety-first climate-control diagnosis.
+app/src/main/java/com/example/ui/screens/DiagnosticsScreen.kt:283:                                .clickable { showAcSystemWorkbench = true }
+app/src/main/java/com/example/ui/screens/DiagnosticsScreen.kt:307:                                                text = "A/C Workbench",
+app/src/main/java/com/example/ui/screens/DiagnosticsScreen.kt:329:                                    text = "A focused, safety-first diagnostic path for the Sport Trac A/C system. It separates cabin airflow, electrical control, compressor operation, condenser airflow, and refrigerant service so no one has to guess which repair comes first.",
+app/src/main/java/com/example/ui/screens/DiagnosticsScreen.kt:335:                                    onClick = { showAcSystemWorkbench = true },
+app/src/main/java/com/example/ui/screens/DiagnosticsScreen.kt:341:                                    Text("Open A/C Workbench", style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Bold))
+app/src/main/java/com/example/ui/screens/PartsShoppingScreen.kt:32:import com.example.ui.components.PriceWatchDialog
+app/src/main/java/com/example/ui/screens/PartsShoppingScreen.kt:33:import com.example.ui.components.ReadinessDashboardDialog
+app/src/main/java/com/example/ui/screens/PartsShoppingScreen.kt:56:    var showReadinessDashboard by remember { mutableStateOf(false) }
+app/src/main/java/com/example/ui/screens/PartsShoppingScreen.kt:348:                    onOpenDashboard = { showReadinessDashboard = true },
+app/src/main/java/com/example/ui/screens/PartsShoppingScreen.kt:359:                        readinessNotice = "Weekly review enabled for all ${acReadinessPackage.partIds.size} A/C and heat-readiness entries."
+app/src/main/java/com/example/ui/screens/PartsShoppingScreen.kt:658:        PriceWatchDialog(
+app/src/main/java/com/example/ui/screens/PartsShoppingScreen.kt:664:    if (showReadinessDashboard) {
+app/src/main/java/com/example/ui/screens/PartsShoppingScreen.kt:665:        ReadinessDashboardDialog(
+app/src/main/java/com/example/ui/screens/PartsShoppingScreen.kt:666:            onDismiss = { showReadinessDashboard = false },
+app/src/main/java/com/example/ui/screens/PartsShoppingScreen.kt:668:                showReadinessDashboard = false
+app/src/main/java/com/example/ui/screens/PartsShoppingScreen.kt:1147:                            Icon(Icons.Default.CheckCircle, contentDescription = "A/C watch enabled", tint = Color(0xFF6EE7B7), modifier = Modifier.size(18.dp))
+app/src/main/java/com/example/ui/screens/PartsShoppingScreen.kt:1165:                    Text(if (acEnabled) "A/C Watch Ready" else "Watch A/C First", style = MaterialTheme.typography.labelSmall)
+app/src/main/java/com/example/ui/screens/LoungeScreen.kt:48:import com.example.ui.viewmodel.MainTab
+app/src/main/java/com/example/ui/screens/LoungeScreen.kt:58:fun LoungeScreen(
+app/src/main/java/com/example/ui/screens/LoungeScreen.kt:65:    onNavigate: (MainTab) -> Unit,
+app/src/main/java/com/example/ui/screens/LoungeScreen.kt:118:                    tab = MainTab.VIEW_3D,
+app/src/main/java/com/example/ui/screens/LoungeScreen.kt:123:                    subtitle = "Symptoms, A/C, sound clues, and evidence before buying.",
+app/src/main/java/com/example/ui/screens/LoungeScreen.kt:126:                    tab = MainTab.DIAGNOSTICS,
+app/src/main/java/com/example/ui/screens/LoungeScreen.kt:134:                    tab = MainTab.PARTS_CART,
+app/src/main/java/com/example/ui/screens/LoungeScreen.kt:142:                    tab = MainTab.MAINTENANCE,
+app/src/main/java/com/example/ui/screens/LoungeScreen.kt:180:    val tab: MainTab?,
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:20:enum class MainTab {
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:162:    private val _currentTab = MutableStateFlow(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:163:    val currentTab: StateFlow<MainTab> = _currentTab.asStateFlow()
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:165:    // Active System Filter (Engine, Intake, Trans, Cooling, A/C, Elect, Brakes)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:268:    fun setTab(tab: MainTab) {
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:288:            _currentTab.value = MainTab.VIEW_3D
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:391:                setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:396:                setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:401:                setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:406:                setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:411:                setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:416:                setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:421:                setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:422:                "Filtered 3D model to Heating & A/C System"
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:426:                setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:431:                setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:436:                setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:441:                setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:446:                setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:452:                setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:456:                setTab(MainTab.REPAIR_MANUAL)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:460:                setTab(MainTab.DIAGNOSTICS)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:464:                setTab(MainTab.MAINTENANCE)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:475:                    setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:485:                    setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:493:                setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:540:                setTab(MainTab.REPAIR_MANUAL)
+app/src/main/java/com/example/model/VehicleSystem.kt:51:        description = "A/C Compressor, Condenser, Accumulator & Evaporator Core",
+app/src/main/java/com/example/model/PriceWatchModels.kt:64:data class WeeklyPriceWatch(
+app/src/main/java/com/example/model/RecommendationIntegrity.kt:8:object RecommendationIntegrity {
+app/src/main/java/com/example/service/AudioAnalysisPipeline.kt:22:data class LiveAudioAnalysisState(
+app/src/main/java/com/example/service/AudioAnalysisPipeline.kt:53:    AC_COMPRESSOR_GROWL("A/C Compressor / Pulley Bearing Growl — Training Pattern", 1200, "Simulated low mechanical growl for comparison practice; not a confirmed diagnosis"),
+app/src/main/java/com/example/service/AudioAnalysisPipeline.kt:54:    AC_CLUTCH_BELT_SQUEAL("A/C Clutch / Belt Squeal — Training Pattern", 3150, "Simulated high friction squeal for comparison practice; not a confirmed diagnosis")
+app/src/main/java/com/example/service/AudioAnalysisPipeline.kt:57:class AudioAnalysisPipeline(
+app/src/main/java/com/example/service/AudioAnalysisPipeline.kt:66:    private val _state = MutableStateFlow(LiveAudioAnalysisState())
+app/src/main/java/com/example/service/AudioAnalysisPipeline.kt:67:    val state: StateFlow<LiveAudioAnalysisState> = _state.asStateFlow()
+app/src/main/java/com/example/MainActivity.kt:27:import com.example.ui.screens.LoungeScreen
+app/src/main/java/com/example/MainActivity.kt:38:import com.example.ui.viewmodel.MainTab
+app/src/main/java/com/example/MainActivity.kt:242:                                selected = currentTab == MainTab.LOUNGE,
+app/src/main/java/com/example/MainActivity.kt:243:                                onClick = { viewModel.setTab(MainTab.LOUNGE) },
+app/src/main/java/com/example/MainActivity.kt:257:                                selected = currentTab == MainTab.VIEW_3D,
+app/src/main/java/com/example/MainActivity.kt:258:                                onClick = { viewModel.setTab(MainTab.VIEW_3D) },
+app/src/main/java/com/example/MainActivity.kt:272:                                selected = currentTab == MainTab.REPAIR_MANUAL,
+app/src/main/java/com/example/MainActivity.kt:273:                                onClick = { viewModel.setTab(MainTab.REPAIR_MANUAL) },
+app/src/main/java/com/example/MainActivity.kt:287:                                selected = currentTab == MainTab.DIAGNOSTICS,
+app/src/main/java/com/example/MainActivity.kt:288:                                onClick = { viewModel.setTab(MainTab.DIAGNOSTICS) },
+app/src/main/java/com/example/MainActivity.kt:302:                                selected = currentTab == MainTab.MAINTENANCE,
+app/src/main/java/com/example/MainActivity.kt:303:                                onClick = { viewModel.setTab(MainTab.MAINTENANCE) },
+app/src/main/java/com/example/MainActivity.kt:317:                                selected = currentTab == MainTab.PARTS_CART,
+app/src/main/java/com/example/MainActivity.kt:318:                                onClick = { viewModel.setTab(MainTab.PARTS_CART) },
+app/src/main/java/com/example/MainActivity.kt:354:                            MainTab.LOUNGE -> LoungeScreen(
+app/src/main/java/com/example/MainActivity.kt:364:                            MainTab.VIEW_3D -> Model3DScreen(
+app/src/main/java/com/example/MainActivity.kt:380:                            MainTab.REPAIR_MANUAL -> RepairManualScreen(
+app/src/main/java/com/example/MainActivity.kt:390:                            MainTab.DIAGNOSTICS -> DiagnosticsScreen(
+app/src/main/java/com/example/MainActivity.kt:398:                            MainTab.MAINTENANCE -> MaintenanceScreen(
+app/src/main/java/com/example/MainActivity.kt:410:                            MainTab.PARTS_CART -> PartsShoppingScreen(
+app/src/test/java/com/example/model/RecommendationIntegrityTest.kt:7:class RecommendationIntegrityTest {
+app/src/test/java/com/example/model/RecommendationIntegrityTest.kt:24:        val ranked = RecommendationIntegrity.sortedForReview(
+app/src/test/java/com/example/model/RecommendationIntegrityTest.kt:46:        val ranked = RecommendationIntegrity.sortedForReview(listOf(manualRecord, savedRecord))
+=== BUILD: COMPILE DEBUG KOTLIN ===
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.3.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:generateDebugBuildConfig UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:processDebugGoogleServices UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:processDebugNavigationResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:generateDebugRFile UP-TO-DATE
+> Task :app:kspDebugKotlin UP-TO-DATE
+> Task :app:compileDebugKotlin UP-TO-DATE
+
+BUILD SUCCESSFUL in 15s
+9 actionable tasks: 9 up-to-date
+compile_exit=0
+=== TEST: DEBUG UNIT TESTS ===
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.3.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:generateDebugBuildConfig UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:processDebugGoogleServices UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:processDebugNavigationResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:generateDebugRFile UP-TO-DATE
+> Task :app:kspDebugKotlin UP-TO-DATE
+> Task :app:compileDebugKotlin UP-TO-DATE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:compileDebugJavaWithJavac UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:compileDebugNavigationResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:bundleDebugClassesToRuntimeJar
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest UP-TO-DATE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets UP-TO-DATE
+> Task :app:packageDebugUnitTestForUnitTest UP-TO-DATE
+> Task :app:processDebugUnitTestManifest UP-TO-DATE
+> Task :app:generateDebugUnitTestConfig UP-TO-DATE
+> Task :app:processDebugJavaRes UP-TO-DATE
+> Task :app:kspDebugUnitTestKotlin
+> Task :app:compileDebugUnitTestKotlin
+> Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :app:processDebugUnitTestJavaRes UP-TO-DATE
+> Task :app:testDebugUnitTest
+> Task :app:finalizeTestRoborazziDebug SKIPPED
+
+BUILD SUCCESSFUL in 38s
+33 actionable tasks: 5 executed, 28 up-to-date
+test_exit=0

@@ -55,6 +55,7 @@ import com.example.model.SubAssemblyPart
 import com.example.model.SubAssemblyType
 import com.example.model.VehicleSystem
 import com.example.util.HapticHelper
+import com.example.util.MaterialResponse
 import kotlinx.coroutines.delay
 import kotlin.math.*
 
@@ -253,17 +254,9 @@ fun Interactive3DViewport(
     var isPlayingBiltAnimation by remember { mutableStateOf(false) }
     var isVoiceGuidanceMuted by remember { mutableStateOf(false) }
 
-    // Pulsing animation for glowing BILT target markers
-    val infiniteTransition = rememberInfiniteTransition(label = "bilt_pulse")
-    val pulseGlow by infiniteTransition.animateFloat(
-        initialValue = 0.4f,
-        targetValue = 1.0f,
-        animationSpec = infiniteRepeatable(
-            animation = tween(900, easing = LinearEasing),
-            repeatMode = RepeatMode.Reverse
-        ),
-        label = "pulseGlow"
-    )
+    // Stable marker glow keeps the default viewport from running a perpetual recomposition loop.
+    // Interactive camera, mentor, and explicit animation controls remain available below.
+    val pulseGlow = 0.7f
 
     val animatedExplode by animateFloatAsState(targetValue = explodeFactor, label = "explode")
     val textMeasurer = rememberTextMeasurer()
@@ -427,14 +420,18 @@ fun Interactive3DViewport(
             .background(canvasBgColor)
             .testTag("3d_viewport_box")
     ) {
-        var projectedCenters by remember { mutableStateOf<List<ProjectedComponentCenter>>(emptyList()) }
+        // Tap hit-testing needs the latest projected centers, but updating snapshot state
+        // from every Canvas draw would trigger avoidable recompositions.
+        val projectedCentersRef = remember {
+            arrayOf<List<ProjectedComponentCenter>>(emptyList())
+        }
 
         // BILT 3D Canvas Visualizer (Hardware-Accelerated GLTF Render Canvas)
         Canvas(
             modifier = Modifier
                 .fillMaxSize()
                 .graphicsLayer {
-                    compositingStrategy = CompositingStrategy.Offscreen
+                    compositingStrategy = CompositingStrategy.Auto
                 }
                 .pointerInput(Unit) {
                     detectDragGestures { change, dragAmount ->
@@ -445,7 +442,7 @@ fun Interactive3DViewport(
                 }
                 .pointerInput(visibleComponents, cameraYaw, cameraPitch, cameraZoom, animatedExplode) {
                     detectTapGestures { tapOffset ->
-                        val hit = projectedCenters
+                        val hit = projectedCentersRef[0]
                             .filter { sqrt((it.screenPos.x - tapOffset.x).pow(2) + (it.screenPos.y - tapOffset.y).pow(2)) < 90f }
                             .minByOrNull { sqrt((it.screenPos.x - tapOffset.x).pow(2) + (it.screenPos.y - tapOffset.y).pow(2)) }
 
@@ -514,9 +511,12 @@ fun Interactive3DViewport(
                 val isSelected = selectedComponent?.id == comp.id
                 val isCurrentStepPart = isBiltStepMode && currentBiltStepPart?.id == comp.id
 
-                val explodedX = comp.centerOffset.x + comp.explodeVector.x * animatedExplode
-                val explodedY = comp.centerOffset.y + comp.explodeVector.y * animatedExplode
-                val explodedZ = comp.centerOffset.z + comp.explodeVector.z * animatedExplode
+                // Component vertices are authored in their own assembly position.
+                // Explode vectors are therefore additive offsets only; adding the
+                // center offset here would translate every mesh twice.
+                val explodedX = comp.explodeVector.x * animatedExplode
+                val explodedY = comp.explodeVector.y * animatedExplode
+                val explodedZ = comp.explodeVector.z * animatedExplode
 
                 // Check cutaway clipping plane filter
                 if (clipPlaneSlice < 1.0f && explodedZ > (clipPlaneSlice * 4.0f - 2.0f)) {
@@ -524,10 +524,13 @@ fun Interactive3DViewport(
                 }
 
                 // Center position transform
-                val rxCenter = explodedX * cosY - explodedZ * sinY
-                val rzCenter = explodedX * sinY + explodedZ * cosY
-                val ryCenter = explodedY * cosP - rzCenter * sinP
-                val finalZCenter = explodedY * sinP + rzCenter * cosP
+                val centerWorldX = comp.centerOffset.x + explodedX
+                val centerWorldY = comp.centerOffset.y + explodedY
+                val centerWorldZ = comp.centerOffset.z + explodedZ
+                val rxCenter = centerWorldX * cosY - centerWorldZ * sinY
+                val rzCenter = centerWorldX * sinY + centerWorldZ * cosY
+                val ryCenter = centerWorldY * cosP - rzCenter * sinP
+                val finalZCenter = centerWorldY * sinP + rzCenter * cosP
 
                 val projXCenter = centerX + rxCenter * baseScale
                 val projYCenter = centerY - ryCenter * baseScale
@@ -701,9 +704,12 @@ fun Interactive3DViewport(
 
                         val isSubSelected = selectedSubAssembly?.id == subPart.id
 
-                        val subExplodedX = explodedX + subPart.localOffset.x + subPart.explodeDirection.x * animatedExplode * subPart.explodeDistanceMultiplier
-                        val subExplodedY = explodedY + subPart.localOffset.y + subPart.explodeDirection.y * animatedExplode * subPart.explodeDistanceMultiplier
-                        val subExplodedZ = explodedZ + subPart.localOffset.z + subPart.explodeDirection.z * animatedExplode * subPart.explodeDistanceMultiplier
+                        // Subassembly meshes already include their local offsets.
+                        // Anchor them once to the parent assembly's world center,
+                        // then apply only the requested exploded-view separation.
+                        val subExplodedX = comp.centerOffset.x + explodedX + subPart.explodeDirection.x * animatedExplode * subPart.explodeDistanceMultiplier
+                        val subExplodedY = comp.centerOffset.y + explodedY + subPart.explodeDirection.y * animatedExplode * subPart.explodeDistanceMultiplier
+                        val subExplodedZ = comp.centerOffset.z + explodedZ + subPart.explodeDirection.z * animatedExplode * subPart.explodeDistanceMultiplier
 
                         val subBaseColor = when {
                             isSubSelected -> Color(0xFFFFD700)
@@ -772,7 +778,14 @@ fun Interactive3DViewport(
                                 val dotLight = (normX * lightVector.x + normY * lightVector.y + normZ * lightVector.z).coerceIn(-1.0f, 1.0f)
                                 val diffuse = max(0.35f, (dotLight + 1.0f) / 2.0f)
                                 val reflectZ = 2f * dotLight * normZ - lightVector.z
-                                val specGloss = if (reflectZ > 0f) reflectZ.pow(10f) * 0.45f else 0f
+
+                                // Material-aware Canvas highlight approximation. These values shape
+                                // the hand-written highlight only; this is not a GPU PBR shader.
+                                val specGloss = MaterialResponse.specularHighlight(
+                                    reflectZ = reflectZ,
+                                    metallicFactor = subPart.metallicFactor,
+                                    roughnessFactor = subPart.roughnessFactor
+                                )
 
                                 val shadedFill = Color(
                                     red = (subBaseColor.red * diffuse + specGloss).coerceIn(0f, 1f),
@@ -810,7 +823,7 @@ fun Interactive3DViewport(
                 }
             }
 
-            projectedCenters = newProjectedCenters
+            projectedCentersRef[0] = newProjectedCenters
 
             // Sort faces back to front (Painter's algorithm Z-sorting)
             facesToDraw.sortBy { it.avgZ }

@@ -1,0 +1,77 @@
+=== SOURCE COUNTS ===
+all_files=2332
+kotlin_files=112
+markdown_files=10
+source_without_build_files=164
+=== LARGEST SOURCE FILES (EXCLUDING BUILD) ===
+3645100	/home/ubuntu/ford-sport-trac/.gradle/9.3.1/executionHistory/executionHistory.bin
+947962	/home/ubuntu/ford-sport-trac/app/src/main/res/drawable/ford_explorer_icon_1785484695993.jpg
+230519	/home/ubuntu/ford-sport-trac/.gradle/9.3.1/fileHashes/fileHashes.bin
+182603	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/data/SportTracData.kt
+171035	/home/ubuntu/ford-sport-trac/.gradle/9.3.1/checksums/sha1-checksums.bin
+168131	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/ui/components/Interactive3DViewport.kt
+91565	/home/ubuntu/ford-sport-trac/.gradle/9.3.1/checksums/md5-checksums.bin
+73069	/home/ubuntu/ford-sport-trac/.gradle/9.3.1/fileHashes/resourceHashesCache.bin
+65886	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt
+61817	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/ui/screens/PartsShoppingScreen.kt
+61528	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/ui/components/MentorVoiceSettingsDialog.kt
+49056	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/ui/components/AcousticSoundDiagnosticDialog.kt
+49003	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/data/SportTracPartsCatalog.kt
+48383	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/ui/components/ArOverlayView.kt
+46205	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/ui/components/CustomFeedbackComponents.kt
+42664	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/ui/components/SceneViewGltfViewport.kt
+42349	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/ui/screens/DiagnosticsScreen.kt
+41797	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/ui/components/LayerController.kt
+37584	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/ui/components/FourWheelDriveDiagram.kt
+36780	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/ui/components/ComponentDetailSheet.kt
+36546	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt
+36461	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/ui/components/CameraMeasurementDialog.kt
+36071	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/data/GeminiDiagnosticRepository.kt
+34161	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/ui/screens/MaintenanceScreen.kt
+32583	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/ui/components/MentorModeDialog.kt
+32453	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/ui/components/UpcomingTasksListView.kt
+31652	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/ui/components/CadStepIngestionDialog.kt
+30941	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/ui/components/ExplodedPhysicsDialog.kt
+30768	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/ui/components/TorqueSpecsQuickReference.kt
+30543	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt
+26570	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/ui/components/SymptomTroubleshootingDialog.kt
+26185	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/MainActivity.kt
+26173	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/ui/screens/RepairManualScreen.kt
+25901	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/ui/components/ForscanDialog.kt
+25693	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/ui/components/MaintenanceNotificationDialog.kt
+24129	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/ui/components/GeminiChatView.kt
+23865	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/data/SportTracServiceManualDiagnostics.kt
+23264	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/physics/Physics3DEngine.kt
+23177	/home/ubuntu/ford-sport-trac/.gradle/buildOutputCleanup/outputFiles.bin
+22601	/home/ubuntu/ford-sport-trac/app/src/main/java/com/example/ui/screens/Model3DScreen.kt
+=== DELIVERABLES ===
+474723468	ford-sport-trac-complete-local-archive.zip
+119378110	ford-sport-trac-ac-training-checkpoint.zip
+119110276	ford-sport-trac-hardware-checkpoint.zip
+59488374	ford-sport-trac-lounge-debug.apk
+59488371	ford-sport-trac-safe-start-debug.apk
+59310147	ford-sport-trac-ac-training-debug.apk
+57831586	ford-sport-trac-3d-gift-debug.apk
+45154001	ford-sport-trac-safe-start.zip
+5920123	ford-sport-trac-connected-destination-concept.png
+5636187	ford-sport-trac-shop-interior-concept.png
+154001	ford-sport-trac-ac-training-update.patch
+145192	ford-sport-trac-current-model-coverage.png
+58303	ford-sport-trac-hardware-checkpoint.patch
+17183	Construction_to_AI_Transition_Reality_Check.md
+16965	FORD_SPORT_TRAC_PROJECT_HANDOFF.md
+7334	sport-trac-destination-concept-docs.zip
+6929	SPORT_TRAC_APP_ROADMAP.md
+2852	ford-sport-trac-premium-part-store-release-notes.md
+135	ford-sport-trac-complete-local-archive.sha256
+=== CHECKSUMS ===
+/home/ubuntu/deliverables/ford-sport-trac-complete-local-archive.sha256
+d860f0a822c89705e60aff25ae13b2091f53f1759f652bebd638d256ef3d28ed  /home/ubuntu/deliverables/ford-sport-trac-complete-local-archive.zip
+=== BUILD/TEST RELATED FILES ===
+/home/ubuntu/ford-sport-trac/app/build.gradle.kts
+/home/ubuntu/ford-sport-trac/build.gradle.kts
+/home/ubuntu/ford-sport-trac/.gradle/9.3.1/fileChanges/last-build.bin
+/home/ubuntu/ford-sport-trac/.gradle/buildOutputCleanup/buildOutputCleanup.lock
+=== GIT ===
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git

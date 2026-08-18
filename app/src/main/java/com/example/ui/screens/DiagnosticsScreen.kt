@@ -49,6 +49,14 @@ fun DiagnosticsScreen(
     var showAcousticDialog by remember { mutableStateOf(false) }
     var showSymptomTroubleshootingDialog by remember { mutableStateOf(false) }
     var showDiagnosticWizardDialog by remember { mutableStateOf(false) }
+    var showAcSystemWorkbench by remember { mutableStateOf(false) }
+
+    if (showAcSystemWorkbench) {
+        com.example.ui.components.AcSystemWorkbenchDialog(
+            onDismiss = { showAcSystemWorkbench = false },
+            onNavigateToComponent = onNavigateToComponent
+        )
+    }
 
     if (showDiagnosticWizardDialog) {
         com.example.ui.components.DiagnosticWizardDialog(
@@ -266,6 +274,76 @@ fun DiagnosticsScreen(
                     contentPadding = PaddingValues(horizontal = 16.dp, vertical = 12.dp),
                     verticalArrangement = Arrangement.spacedBy(14.dp)
                 ) {
+                    // A/C Workbench Hero Card — targeted, safety-first climate-control diagnosis.
+                    item {
+                        Surface(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clip(RoundedCornerShape(16.dp))
+                                .clickable { showAcSystemWorkbench = true }
+                                .testTag("ac_workbench_hero_card"),
+                            color = Color(0xFF0B2840),
+                            shape = RoundedCornerShape(16.dp),
+                            border = BorderStroke(1.5.dp, Color(0xFF38BDF8))
+                        ) {
+                            Column(modifier = Modifier.padding(16.dp)) {
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    Row(verticalAlignment = Alignment.CenterVertically) {
+                                        Surface(color = Color(0xFF0284C7), shape = RoundedCornerShape(8.dp)) {
+                                            Icon(
+                                                imageVector = Icons.Default.AcUnit,
+                                                contentDescription = null,
+                                                tint = Color.White,
+                                                modifier = Modifier.padding(8.dp).size(20.dp)
+                                            )
+                                        }
+                                        Spacer(modifier = Modifier.width(10.dp))
+                                        Column {
+                                            Text(
+                                                text = "A/C Workbench",
+                                                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
+                                                color = Color.White
+                                            )
+                                            Text(
+                                                text = "Start here for warm air, weak airflow, clutch, or idle-cooling issues",
+                                                style = MaterialTheme.typography.labelSmall,
+                                                color = Color(0xFF7DD3FC)
+                                            )
+                                        }
+                                    }
+                                    Surface(color = Color(0xFF0C4A6E), shape = RoundedCornerShape(6.dp)) {
+                                        Text(
+                                            text = "PRIORITY",
+                                            style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Black, fontSize = 9.sp),
+                                            color = Color(0xFFBAE6FD),
+                                            modifier = Modifier.padding(horizontal = 7.dp, vertical = 4.dp)
+                                        )
+                                    }
+                                }
+                                Spacer(modifier = Modifier.height(10.dp))
+                                Text(
+                                    text = "A focused, safety-first diagnostic path for the Sport Trac A/C system. It separates cabin airflow, electrical control, compressor operation, condenser airflow, and refrigerant service so no one has to guess which repair comes first.",
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = Color(0xFFE0F2FE)
+                                )
+                                Spacer(modifier = Modifier.height(12.dp))
+                                Button(
+                                    onClick = { showAcSystemWorkbench = true },
+                                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF0284C7)),
+                                    modifier = Modifier.fillMaxWidth().testTag("open_ac_workbench_btn")
+                                ) {
+                                    Icon(Icons.Default.PlayArrow, contentDescription = null, modifier = Modifier.size(18.dp))
+                                    Spacer(modifier = Modifier.width(6.dp))
+                                    Text("Open A/C Workbench", style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Bold))
+                                }
+                            }
+                        }
+                    }
+
                     // Diagnostic Decision Tree Wizard Hero Card
                     item {
                         Surface(

@@ -74,7 +74,9 @@ fun AcousticSoundDiagnosticDialog(
         if (isGranted) {
             pipeline.startRecording(referenceProfiles)
         } else {
-            pipeline.startSimulatedScenario(SimulatedEngineScenario.TIMING_CHAIN_RATTLE, referenceProfiles)
+            // Do not substitute a simulated sound for an actual denied recording.
+            // Training patterns remain an explicit, separately selected practice mode.
+            pipeline.stopRecording()
         }
     }
 
@@ -132,7 +134,7 @@ fun AcousticSoundDiagnosticDialog(
                         Column {
                             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                                 Text(
-                                    text = "4.0L V6 ACOUSTIC DIAGNOSTIC PIPELINE",
+                                    text = "4.0L V6 SOUND COMPARISON WORKBENCH",
                                     style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Black, letterSpacing = 0.8.sp),
                                     color = Color(0xFF00F0FF)
                                 )
@@ -149,7 +151,7 @@ fun AcousticSoundDiagnosticDialog(
                                 }
                             }
                             Text(
-                                text = "Realtime Frequency Spectrum vs Room DB Profiles",
+                                text = "Live recording compared with in-app reference profiles",
                                 style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                                 color = Color.White
                             )
@@ -371,7 +373,7 @@ fun AcousticSoundDiagnosticDialog(
                                     Icon(Icons.Default.Mic, contentDescription = null, modifier = Modifier.size(16.dp))
                                     Spacer(modifier = Modifier.width(6.dp))
                                     Text(
-                                        text = "🔴 Record Engine",
+                                        text = "Record Vehicle Sound",
                                         style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold)
                                     )
                                 }
@@ -387,7 +389,7 @@ fun AcousticSoundDiagnosticDialog(
                                     Icon(Icons.Default.Pause, contentDescription = null, modifier = Modifier.size(16.dp))
                                     Spacer(modifier = Modifier.width(6.dp))
                                     Text(
-                                        text = "⏸️ Pause Stream",
+                                        text = "Pause Recording",
                                         style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold)
                                     )
                                 }
@@ -415,7 +417,7 @@ fun AcousticSoundDiagnosticDialog(
                                         isAnalyzingWithGemini = false
                                     }
                                 },
-                                enabled = !isAnalyzingWithGemini,
+                                enabled = !isAnalyzingWithGemini && (pipelineState.isRecording || pipelineState.fftResult != null),
                                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF0284C7)),
                                 shape = RoundedCornerShape(10.dp),
                                 modifier = Modifier
@@ -437,7 +439,7 @@ fun AcousticSoundDiagnosticDialog(
                                     Icon(Icons.Default.AutoAwesome, contentDescription = null, tint = Color(0xFF00F0FF), modifier = Modifier.size(16.dp))
                                     Spacer(modifier = Modifier.width(6.dp))
                                     Text(
-                                        text = "✨ Analyze sound",
+                                        text = "Analyze Pattern",
                                         style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold)
                                     )
                                 }
@@ -451,7 +453,7 @@ fun AcousticSoundDiagnosticDialog(
                 // 4.0L V6 Audio Scenario Selector Row
                 Column(modifier = Modifier.fillMaxWidth()) {
                     Text(
-                        text = "4.0L V6 PRESET ENGINE RECORDINGS",
+                        text = "IN-APP TRAINING PATTERNS — NOT LIVE VEHICLE RECORDINGS",
                         style = MaterialTheme.typography.labelSmall.copy(
                             fontWeight = FontWeight.Bold,
                             letterSpacing = 0.5.sp
@@ -604,14 +606,21 @@ fun AcousticSoundDiagnosticDialog(
 
                 Spacer(modifier = Modifier.height(8.dp))
 
-                // Results & Room Database Spectral Matches Section
+                AcousticEvidenceBoundaryBanner(
+                    isTrainingPattern = pipelineState.isUsingSimulator,
+                    statusMessage = pipelineState.statusMessage
+                )
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                // Ranked reference-pattern similarity results
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = "SPECTRAL MATCHES (ROOM DATABASE)",
+                        text = "REFERENCE-PATTERN SIMILARITY RESULTS",
                         style = MaterialTheme.typography.labelMedium.copy(
                             fontWeight = FontWeight.Bold,
                             letterSpacing = 0.8.sp
@@ -627,7 +636,7 @@ fun AcousticSoundDiagnosticDialog(
                             border = BorderStroke(1.dp, if (topMatch.isNormalBaseline) Color(0xFF22C55E) else Color(0xFFEF4444))
                         ) {
                             Text(
-                                text = "TOP: ${topMatch.matchConfidencePercent}% ${topMatch.severityTag}",
+                                text = "TOP SIMILARITY: ${topMatch.matchConfidencePercent}% ${topMatch.severityTag}",
                                 style = MaterialTheme.typography.labelSmall.copy(
                                     fontWeight = FontWeight.Black,
                                     fontSize = 10.sp
@@ -842,6 +851,53 @@ fun AcousticSoundDiagnosticDialog(
                         style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Bold)
                     )
                 }
+            }
+        }
+    }
+}
+
+@Composable
+private fun AcousticEvidenceBoundaryBanner(
+    isTrainingPattern: Boolean,
+    statusMessage: String
+) {
+    Surface(
+        color = if (isTrainingPattern) Color(0xFF172554) else Color(0xFF0C2B3F),
+        shape = RoundedCornerShape(12.dp),
+        border = BorderStroke(1.dp, if (isTrainingPattern) Color(0xFF818CF8) else Color(0xFF38BDF8)),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Row(
+            modifier = Modifier.padding(11.dp),
+            verticalAlignment = Alignment.Top,
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            Icon(
+                imageVector = if (isTrainingPattern) Icons.Default.School else Icons.Default.Info,
+                contentDescription = null,
+                tint = if (isTrainingPattern) Color(0xFFA5B4FC) else Color(0xFF7DD3FC),
+                modifier = Modifier.size(18.dp)
+            )
+            Column(verticalArrangement = Arrangement.spacedBy(3.dp)) {
+                Text(
+                    text = if (isTrainingPattern) "TRAINING-PATTERN MODE" else "EVIDENCE, NOT A DIAGNOSIS",
+                    style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Black, letterSpacing = 0.5.sp),
+                    color = if (isTrainingPattern) Color(0xFFC7D2FE) else Color(0xFFBAE6FD)
+                )
+                Text(
+                    text = if (isTrainingPattern) {
+                        "This spectrum is simulated for practice. Use it to learn how results are displayed, not to compare it as if it were a recorded vehicle sound."
+                    } else {
+                        "The similarity score only compares the recording’s spectrum with the app’s reference profiles. Treat the top matches as inspection clues. Confirm airflow, electrical behavior, component access, and safety conditions on the model before deciding on a real repair."
+                    },
+                    style = MaterialTheme.typography.bodySmall,
+                    color = Color(0xFFE0F2FE)
+                )
+                Text(
+                    text = statusMessage,
+                    style = MaterialTheme.typography.labelSmall,
+                    color = Color(0xFF94A3B8)
+                )
             }
         }
     }

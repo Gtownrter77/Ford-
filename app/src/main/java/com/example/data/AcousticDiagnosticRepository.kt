@@ -157,6 +157,51 @@ class AcousticDiagnosticRepository(private val dao: AcousticReferenceDao) {
                 targetComponentId = "exhaust_manifolds_3d",
                 colorHex = "#EC4899",
                 audioSampleUrlOrResource = "acoustic_db/ref_exhaust_leak.wav"
+            ),
+            AcousticReferenceEntity(
+                soundProfileId = "ac_compressor_pulley_growl_training_008",
+                title = "A/C Compressor or Pulley Bearing Growl — Compare and Verify",
+                matchCategory = "AC_ACCESSORY_DRIVE",
+                frequencyMinHz = 800,
+                frequencyMaxHz = 1700,
+                spectralPatternSignature = "AC_ACCESSORY_DRIVE_LOW_MECHANICAL_GROWL",
+                matchConfidencePercent = 70,
+                soundCharacteristics = "Low mechanical growl or rough rotating sound near the passenger-side accessory drive. The same broad sound can also come from an idler, tensioner, belt, or another pulley.",
+                rootCause = "Possible compressor/pulley-bearing or accessory-drive wear; audio alone cannot isolate the failed part.",
+                recommendedFix = "Use the model to inspect the belt and compressor access path first. With the engine OFF, inspect the belt/pulleys visually; if the sound is severe, stop A/C use and obtain a qualified accessory-drive or A/C diagnosis before buying parts.",
+                targetComponentId = "ac_compressor",
+                colorHex = "#F59E0B",
+                audioSampleUrlOrResource = "training_profile/ac_compressor_pulley_growl"
+            ),
+            AcousticReferenceEntity(
+                soundProfileId = "ac_clutch_cycling_context_009",
+                title = "A/C Clutch Cycling Clicks — Context Required",
+                matchCategory = "AC_CLUTCH_ELECTRICAL",
+                frequencyMinHz = 1800,
+                frequencyMaxHz = 3600,
+                spectralPatternSignature = "INTERMITTENT_AC_CLUTCH_TRANSIENT_CLICK_CONTEXT",
+                matchConfidencePercent = 55,
+                soundCharacteristics = "Intermittent engagement clicks may be heard as the clutch cycles. A simple frequency match cannot determine whether cycling is normal, charge-related, electrical, thermal, or commanded by the vehicle controls.",
+                rootCause = "Possible A/C clutch cycling pattern requiring supporting airflow, electrical-command, and professionally measured refrigerant-system checks.",
+                recommendedFix = "Do not jumper the clutch or pressure controls. Record whether cooling changes, whether the clutch cycles, and whether airflow is strong; then use the A/C Workbench before deciding on service.",
+                targetComponentId = "ac_service_ports_controls_3d",
+                colorHex = "#38BDF8",
+                audioSampleUrlOrResource = "training_profile/ac_clutch_cycling_context"
+            ),
+            AcousticReferenceEntity(
+                soundProfileId = "ac_belt_squeal_training_010",
+                title = "A/C-On Belt or Clutch Squeal — Compare and Verify",
+                matchCategory = "AC_ACCESSORY_DRIVE",
+                frequencyMinHz = 2600,
+                frequencyMaxHz = 4400,
+                spectralPatternSignature = "AC_ACCESSORY_HIGH_FRICTION_SQUEAL",
+                matchConfidencePercent = 68,
+                soundCharacteristics = "A high-pitch friction squeal that may change when A/C load changes. Belt condition, tensioner, pulley, clutch, and compressor load can overlap acoustically.",
+                rootCause = "Possible accessory-drive belt slip, tensioner/pulley wear, clutch issue, or compressor load issue; further inspection is required.",
+                recommendedFix = "Turn A/C OFF if a strong squeal or smoke occurs. With the engine cool and OFF, inspect the belt path. Do not spray belt dressing, reach into a running engine bay, or open the refrigerant circuit based on sound alone.",
+                targetComponentId = "ac_compressor",
+                colorHex = "#EF4444",
+                audioSampleUrlOrResource = "training_profile/ac_belt_squeal"
             )
         )
 

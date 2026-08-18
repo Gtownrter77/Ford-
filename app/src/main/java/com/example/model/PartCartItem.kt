@@ -29,7 +29,8 @@ data class PartItem(
     val category: String = "OEM Replacement",
     val warranty: String = "Limited Lifetime Warranty",
     val coreDeposit: Double = 0.0,
-    val isLoanerTool: Boolean = false
+    val isLoanerTool: Boolean = false,
+    val countryOfOrigin: CountryOfOriginClaim = CountryOfOriginClaim.NOT_DISCLOSED
 ) {
     val commercialDiscountPct: Int
         get() = if (oreillyRetailPrice > 0) {
@@ -59,15 +60,15 @@ enum class CartSortOption(val displayName: String) {
 }
 
 data class OreillyCommercialAccount(
-    val companyName: String = "Metro Fleet & Auto Repair LLC",
-    val accountNumber: String = "OR-COM-8492019",
-    val tierLevel: String = "First Call Commercial Gold Tier",
-    val discountDescription: String = "30-35% Off Retail Parts Pricing",
-    val assignedHubStore: String = "O'Reilly Store #1428 (Commercial Desk)",
-    val hubAddress: String = "1204 Main Street, Commercial Hub",
-    val commercialHotline: String = "(555) 382-7400 - Ext 3",
-    val accountManager: String = "Marcus Vance (Sr. Commercial Specialist)",
-    val creditLimit: Double = 15000.00,
-    val currentBalance: Double = 1840.50,
-    val paymentTerms: String = "Net 30 Days Commercial Credit"
+    val companyName: String = "Commercial price reference",
+    val accountNumber: String = "Private account not connected",
+    val tierLevel: String = "Manual retailer verification required",
+    val discountDescription: String = "Saved values are not live quotes",
+    val assignedHubStore: String = "Sign in to your retailer account to confirm local fulfillment",
+    val hubAddress: String = "Not stored in the app",
+    val commercialHotline: String = "Use your private retailer contact information",
+    val accountManager: String = "Not stored in the app",
+    val creditLimit: Double = 0.0,
+    val currentBalance: Double = 0.0,
+    val paymentTerms: String = "No payment or credit information is stored here"
 )

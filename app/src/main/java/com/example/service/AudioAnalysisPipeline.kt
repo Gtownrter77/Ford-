@@ -49,7 +49,9 @@ enum class SimulatedEngineScenario(val displayName: String, val baseFreq: Int, v
     TIMING_CHAIN_RATTLE("SOHC Timing Chain Cassette Rattle", 650, "Metallic rattle/clatter at cylinder head front timing cover"),
     HYDRAULIC_LIFTER_TICK("Hydraulic Lash Adjuster / Lifter Tick", 450, "Sharp 8Hz tapping noise from valve train at idle"),
     ALTERNATOR_DIODE_WHINE("Alternator Stator Diode Whine", 3400, "RPM-tracking high pitch electrical ground whine"),
-    WATER_PUMP_SCREECH("Water Pump Bearing Screech", 2800, "High friction metal-on-metal screeching at accessory drive")
+    WATER_PUMP_SCREECH("Water Pump Bearing Screech", 2800, "High friction metal-on-metal screeching at accessory drive"),
+    AC_COMPRESSOR_GROWL("A/C Compressor / Pulley Bearing Growl — Training Pattern", 1200, "Simulated low mechanical growl for comparison practice; not a confirmed diagnosis"),
+    AC_CLUTCH_BELT_SQUEAL("A/C Clutch / Belt Squeal — Training Pattern", 3150, "Simulated high friction squeal for comparison practice; not a confirmed diagnosis")
 }
 
 class AudioAnalysisPipeline(
@@ -85,8 +87,11 @@ class AudioAnalysisPipeline(
 
         val hasPerm = checkPermission()
         if (!hasPerm) {
-            // Fallback to high-fidelity engine scenario simulator if hardware mic permission is missing
-            startSimulatedScenario(SimulatedEngineScenario.TIMING_CHAIN_RATTLE, referenceProfiles)
+            _state.value = _state.value.copy(
+                isRecording = false,
+                isUsingSimulator = false,
+                statusMessage = "Microphone permission is required for a live recording. Training patterns remain available for practice."
+            )
             return
         }
 
@@ -108,10 +113,10 @@ class AudioAnalysisPipeline(
                     // Fallback to simulator if AudioRecord initialization fails
                     withContext(Dispatchers.Main) {
                         _state.value = _state.value.copy(
-                            statusMessage = "AudioRecord mic busy. Switching to 4.0L V6 Simulator."
+                            statusMessage = "AudioRecord could not start. Check microphone access, then retry; training patterns are available separately."
                         )
                     }
-                    startSimulatedScenario(SimulatedEngineScenario.TIMING_CHAIN_RATTLE, referenceProfiles)
+                    stopRecordingInternal()
                     return@launch
                 }
 
@@ -174,10 +179,12 @@ class AudioAnalysisPipeline(
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     _state.value = _state.value.copy(
-                        statusMessage = "AudioRecord error: ${e.message}. Using 4.0L Simulator."
+                        isRecording = false,
+                        isUsingSimulator = false,
+                        statusMessage = "AudioRecord error: ${e.message}. Check microphone access and retry; no simulated result is being substituted for a live recording."
                     )
                 }
-                startSimulatedScenario(SimulatedEngineScenario.TIMING_CHAIN_RATTLE, referenceProfiles)
+                stopRecordingInternal()
             } finally {
                 stopRecordingInternal()
             }
@@ -196,7 +203,7 @@ class AudioAnalysisPipeline(
                     isRecording = true,
                     isUsingSimulator = true,
                     activeScenarioName = scenario.displayName,
-                    statusMessage = "Synthesizing 4.0L V6 recording: ${scenario.displayName}"
+                    statusMessage = "Running simulated training pattern: ${scenario.displayName}. This is not a live vehicle recording."
                 )
             }
 
@@ -220,6 +227,8 @@ class AudioAnalysisPipeline(
                         SimulatedEngineScenario.HYDRAULIC_LIFTER_TICK -> fundamental * 0.4f + harmonic2 * 0.8f + noise * 0.2f
                         SimulatedEngineScenario.ALTERNATOR_DIODE_WHINE -> fundamental * 0.2f + sin(2.0 * Math.PI * 3600 * i / sampleRate).toFloat() * 0.8f + noise * 0.05f
                         SimulatedEngineScenario.WATER_PUMP_SCREECH -> fundamental * 0.2f + sin(2.0 * Math.PI * 2900 * i / sampleRate).toFloat() * 0.85f + noise * 0.3f
+                        SimulatedEngineScenario.AC_COMPRESSOR_GROWL -> fundamental * 0.55f + harmonic1 * 0.45f + noise * 0.32f
+                        SimulatedEngineScenario.AC_CLUTCH_BELT_SQUEAL -> fundamental * 0.15f + sin(2.0 * Math.PI * 3300 * i / sampleRate).toFloat() * 0.82f + noise * 0.18f
                         SimulatedEngineScenario.LIVE_MIC -> fundamental * 0.5f + noise
                     }
                     floatBuffer[i] = sample.coerceIn(-1.0f, 1.0f)
@@ -245,7 +254,7 @@ class AudioAnalysisPipeline(
                         peakFrequencyHz = fftResult.peakFrequencyHz,
                         topMatch = matches.firstOrNull(),
                         rankedMatches = matches,
-                        statusMessage = "Matched against 4.0L V6 Room Database Profiles"
+                        statusMessage = "Comparing spectrum against in-app reference profiles; results are clues, not a diagnosis."
                     )
                 }
                 delay(40)
@@ -302,21 +311,22 @@ class AudioAnalysisPipeline(
                 "ELECTRICAL" -> fft.highWhineEnergyRatio * 2.2f
                 "ENGINE_VALVETRAIN", "ENGINE_TIMING" -> fft.valvetrainEnergyRatio * 2.2f
                 "TIRES_BRAKES", "EXHAUST_EMISSIONS" -> fft.subBassEnergyRatio * 2.2f + fft.lowRumbleEnergyRatio * 1.5f
-                "COOLING", "ACCESSORY_DRIVE" -> fft.frictionEnergyRatio * 2.5f
+                "COOLING", "ACCESSORY_DRIVE", "AC_ACCESSORY_DRIVE", "AC_CLUTCH_ELECTRICAL" -> fft.frictionEnergyRatio * 2.1f + fft.highWhineEnergyRatio * 0.7f
                 "FUEL_SYSTEM" -> fft.highWhineEnergyRatio * 2.0f
                 else -> fft.lowRumbleEnergyRatio * 1.5f
             }.coerceIn(0.1f, 1.0f)
 
-            // Combined spectral confidence percent (60% to 99%)
+            // This is spectral similarity, not a diagnostic probability. Keep the range
+            // deliberately conservative so the UI does not imply a confirmed failure.
             val rawConfidence = ((freqOverlapScore * 0.55f + categoryEnergyScore * 0.45f) * 100).toInt()
-            val adjustedConfidence = (rawConfidence + (profile.id.toInt() % 5)).coerceIn(62, 99)
+            val adjustedConfidence = (rawConfidence + (profile.id.toInt() % 5)).coerceIn(35, 92)
             val deltaHz = abs(peakHz - ((minHz + maxHz) / 2))
 
             val severityTag = when {
                 isNormal -> "NORMAL OPERATION"
-                adjustedConfidence >= 90 -> "HIGH CERTAINTY FAULT"
-                adjustedConfidence >= 75 -> "MODERATE FAULT WARNING"
-                else -> "POSSIBLE FAULT PATTERN"
+                adjustedConfidence >= 85 -> "STRONGEST PATTERN MATCH"
+                adjustedConfidence >= 65 -> "POSSIBLE PATTERN MATCH"
+                else -> "WEAK PATTERN MATCH"
             }
 
             AcousticMatchResult(

@@ -50,6 +50,7 @@ fun MentorModeDialog(
     val completedStepIndices = remember { mutableStateListOf<Int>() }
     var voiceFeedbackNotice by remember { mutableStateOf<String?>(null) }
     var hasResumedFromRoom by remember { mutableStateOf(false) }
+    var isVoiceListeningEnabled by remember { mutableStateOf(false) }
     var showVoiceSettingsDialog by remember { mutableStateOf(false) }
 
     if (showVoiceSettingsDialog) {
@@ -177,14 +178,20 @@ fun MentorModeDialog(
         }
     }
 
-    // Continuous voice listening in hands-free Mentor Mode
-    LaunchedEffect(Unit) {
-        vcm.startListening()
+    // Voice listening is opt-in so opening Mentor does not activate the microphone silently.
+    LaunchedEffect(isVoiceListeningEnabled) {
+        if (isVoiceListeningEnabled) {
+            vcm.startListening()
+        } else {
+            vcm.stopListening()
+        }
     }
 
     DisposableEffect(Unit) {
         onDispose {
+            vcm.stopListening()
             ttsManager.shutdown()
+            vcm.destroy()
         }
     }
 
@@ -281,6 +288,7 @@ fun MentorModeDialog(
                             )
                         }
                         IconButton(onClick = {
+                            isVoiceListeningEnabled = false
                             ttsManager.stop()
                             onDismiss()
                         }) {
@@ -313,9 +321,11 @@ fun MentorModeDialog(
                             Spacer(modifier = Modifier.width(8.dp))
                             Text(
                                 text = when {
-                                    isMuted -> "TTS Muted • Tap speaker icon to unmute voice"
-                                    isSpeaking -> "Speaking step out loud... (Listening for 'Confirm')"
-                                    else -> "Voice Active • Say 'Confirm Step', 'Next', or 'Repeat'"
+                                    isMuted && !isVoiceListeningEnabled -> "TTS muted • Microphone off"
+                                    isMuted -> "TTS muted • Microphone listening"
+                                    isSpeaking && isVoiceListeningEnabled -> "Speaking step out loud... Listening enabled"
+                                    isVoiceListeningEnabled -> "Microphone listening • Say 'Confirm Step', 'Next', or 'Repeat'"
+                                    else -> "Microphone off • Tap the mic to enable voice commands"
                                 },
                                 style = MaterialTheme.typography.labelSmall,
                                 color = if (isSpeaking) Color(0xFFFFD700) else Color(0xFFE2E8F0)
@@ -323,13 +333,15 @@ fun MentorModeDialog(
                         }
 
                         IconButton(
-                            onClick = { vcm.startListening() },
-                            modifier = Modifier.size(24.dp)
+                            onClick = { isVoiceListeningEnabled = !isVoiceListeningEnabled },
+                            modifier = Modifier
+                                .size(24.dp)
+                                .testTag("mentor_voice_toggle_btn")
                         ) {
                             Icon(
-                                Icons.Default.Mic,
-                                contentDescription = "Listen Voice",
-                                tint = Color(0xFF38BDF8),
+                                if (isVoiceListeningEnabled) Icons.Default.Mic else Icons.Default.MicOff,
+                                contentDescription = if (isVoiceListeningEnabled) "Stop listening" else "Start listening",
+                                tint = if (isVoiceListeningEnabled) Color(0xFF38BDF8) else Color(0xFF94A3B8),
                                 modifier = Modifier.size(16.dp)
                             )
                         }

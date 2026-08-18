@@ -11,6 +11,7 @@ import com.example.data.local.VehicleProfileEntity
 import com.example.model.*
 import com.example.ui.components.SnackbarPayload
 import com.example.ui.components.SnackbarType
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -18,6 +19,7 @@ import kotlinx.coroutines.launch
 import com.example.data.SportTracPartsCatalog
 
 enum class MainTab {
+    LOUNGE,
     VIEW_3D,
     REPAIR_MANUAL,
     DIAGNOSTICS,
@@ -257,7 +259,7 @@ class ExplorerViewModel(application: Application) : AndroidViewModel(application
     )
 
     init {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             repository.initializeDefaultDataIfEmpty()
             acousticRepository.seedInitialDatabaseIfEmpty()
             offlineCacheRepo.seedAndSyncOfflineCache()
@@ -714,15 +716,6 @@ class ExplorerViewModel(application: Application) : AndroidViewModel(application
 
     fun clearCart() {
         _cartItems.value = emptyList()
-    }
-
-    fun checkoutOrder(paymentMethod: String) {
-        val total = _cartItems.value.sumOf { it.itemTotal }
-        val count = _cartItems.value.sumOf { it.quantity }
-        val orderNum = "OR-2026-${(100000..999999).random()}"
-        
-        _orderSuccessNotice.value = "✅ Order #$orderNum Confirmed!\n$count parts total: \$${String.format("%.2f", total)} charged via $paymentMethod.\nO'Reilly Store #1428 notification sent for pickup/delivery!"
-        clearCart()
     }
 
     fun dismissOrderSuccessNotice() {

@@ -18,12 +18,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.data.SportTracPartsCatalog
+import com.example.data.PartStoreCatalogRanking
+import com.example.data.PartsReadinessPackage
+import com.example.data.PartsReadinessTier
+import com.example.data.SportTracPartsReadiness
+import com.example.ui.components.PriceWatchDialog
+import com.example.ui.components.ReadinessDashboardDialog
 import com.example.model.*
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -38,15 +45,30 @@ fun PartsShoppingScreen(
     onUpdateFulfillment: (String, FulfillmentType) -> Unit,
     onRemoveItem: (String) -> Unit,
     onAddPartToCart: (PartItem) -> Unit,
-    onCheckout: (String) -> Unit,
     onDismissSuccessNotice: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var showCheckoutDialog by remember { mutableStateOf(false) }
-    var selectedPaymentMethod by remember { mutableStateOf("O'Reilly Commercial Line of Credit (Net 30)") }
+    var showPartsListReviewDialog by remember { mutableStateOf(false) }
     var searchQuery by remember { mutableStateOf("") }
     var showBusinessInfoDialog by remember { mutableStateOf(false) }
     var selectedCategoryFilter by remember { mutableStateOf("ALL") }
+    var comparisonPart by remember { mutableStateOf<PartItem?>(null) }
+    var showReadinessDashboard by remember { mutableStateOf(false) }
+    var catalogRanking by remember { mutableStateOf(PartsRankingPreference.PREMIUM_CHOICES) }
+    var catalogRankingMenuOpen by remember { mutableStateOf(false) }
+    val context = LocalContext.current
+    val readinessPreferences = remember { context.getSharedPreferences("weekly_price_watch", android.content.Context.MODE_PRIVATE) }
+    val readinessPackages = remember { SportTracPartsReadiness.packages }
+    val acReadinessPackage = remember { SportTracPartsReadiness.defaultWatchPackage }
+    val allReadinessPartIds = remember { SportTracPartsReadiness.allPreparedPartIds }
+    val pendingReadinessCount = remember { readinessPackages.sumOf { it.pendingFitmentItems.size } }
+    var acReadinessEnabled by remember {
+        mutableStateOf(acReadinessPackage.partIds.all { readinessPreferences.getBoolean("enabled_$it", false) })
+    }
+    var allReadinessEnabled by remember {
+        mutableStateOf(allReadinessPartIds.all { readinessPreferences.getBoolean("enabled_$it", false) })
+    }
+    var readinessNotice by remember { mutableStateOf<String?>(null) }
 
     // Sort Cart Items according to current sort option (DEFAULT: CHEAPEST FIRST)
     val sortedCartItems = remember(cartItems, cartSortOption) {
@@ -111,7 +133,7 @@ fun PartsShoppingScreen(
                                     shape = RoundedCornerShape(4.dp)
                                 ) {
                                     Text(
-                                        text = "COMMERCIAL VERIFIED",
+                                        text = "PRIVATE PART STORE",
                                         style = MaterialTheme.typography.labelSmall.copy(
                                             fontSize = 9.sp,
                                             fontWeight = FontWeight.Bold
@@ -122,7 +144,7 @@ fun PartsShoppingScreen(
                                 }
                             }
                             Text(
-                                text = "Commercial Shopping List & Inventory",
+                                text = "Private Parts Store & Readiness",
                                 style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                                 color = Color.White
                             )
@@ -146,7 +168,7 @@ fun PartsShoppingScreen(
                                 Icon(Icons.Default.DirectionsCar, contentDescription = null, tint = Color(0xFF10B981), modifier = Modifier.size(16.dp))
                                 Spacer(modifier = Modifier.width(4.dp))
                                 Text(
-                                    text = "VIN: 2004 Sport Trac ✓",
+                                    text = "Fitment: verify VIN",
                                     style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
                                     color = Color(0xFF10B981)
                                 )
@@ -169,7 +191,7 @@ fun PartsShoppingScreen(
                                 Icon(Icons.Default.Storefront, contentDescription = null, tint = Color(0xFF38BDF8), modifier = Modifier.size(16.dp))
                                 Spacer(modifier = Modifier.width(4.dp))
                                 Text(
-                                    text = "Store Info",
+                                    text = "Privacy & Fitment",
                                     style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
                                     color = Color(0xFF38BDF8)
                                 )
@@ -195,7 +217,7 @@ fun PartsShoppingScreen(
                     ) {
                         Column {
                             Text(
-                                text = "${commercialAccount.companyName} (Acc #${commercialAccount.accountNumber})",
+                                text = commercialAccount.companyName,
                                 style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Bold),
                                 color = Color.White
                             )
@@ -208,7 +230,7 @@ fun PartsShoppingScreen(
 
                         Column(horizontalAlignment = Alignment.End) {
                             Text(
-                                text = "Credit Line: \$${String.format("%.2f", commercialAccount.creditLimit - commercialAccount.currentBalance)}",
+                                text = "Private in-app planning only",
                                 style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
                                 color = Color(0xFF10B981)
                             )
@@ -314,6 +336,49 @@ fun PartsShoppingScreen(
                 .padding(horizontal = 14.dp, vertical = 10.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
+            item {
+                ReadinessLibraryCard(
+                    packages = readinessPackages,
+                    acPackage = acReadinessPackage,
+                    acEnabled = acReadinessEnabled,
+                    allEnabled = allReadinessEnabled,
+                    allPartCount = allReadinessPartIds.size,
+                    pendingCount = pendingReadinessCount,
+                    notice = readinessNotice,
+                    onOpenDashboard = { showReadinessDashboard = true },
+                    onEnableAcWatch = {
+                        val now = System.currentTimeMillis()
+                        val editor = readinessPreferences.edit()
+                        acReadinessPackage.partIds.forEach { partId ->
+                            editor.putBoolean("enabled_$partId", true)
+                            editor.putStringSet("retailers_$partId", acReadinessPackage.defaultWatchRetailers.map { it.name }.toSet())
+                            editor.putLong("configured_$partId", now)
+                        }
+                        editor.apply()
+                        acReadinessEnabled = true
+                        readinessNotice = "Weekly review enabled for all ${acReadinessPackage.partIds.size} A/C and heat-readiness entries."
+                    },
+                    onEnableAllWatch = {
+                        val now = System.currentTimeMillis()
+                        val editor = readinessPreferences.edit()
+                        readinessPackages.forEach { readinessPackage ->
+                            readinessPackage.partIds.forEach { partId ->
+                                editor.putBoolean("enabled_$partId", true)
+                                editor.putStringSet("retailers_$partId", readinessPackage.defaultWatchRetailers.map { it.name }.toSet())
+                                editor.putLong("configured_$partId", now)
+                            }
+                        }
+                        editor.apply()
+                        acReadinessEnabled = true
+                        allReadinessEnabled = true
+                        readinessNotice = "Weekly review enabled for all ${allReadinessPartIds.size} prepared parts across every system."
+                    },
+                    onReviewPackage = { readinessPackage ->
+                        comparisonPart = SportTracPartsCatalog.catalog.firstOrNull { it.id in readinessPackage.partIds }
+                    }
+                )
+            }
+
             // Cart Items Header
             item {
                 Row(
@@ -395,16 +460,49 @@ fun PartsShoppingScreen(
                         style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold, letterSpacing = 1.sp),
                         color = Color(0xFFFFD700)
                     )
-                    Text(
-                        text = "Click part to add",
-                        style = MaterialTheme.typography.labelSmall,
-                        color = Color(0xFF94A3B8)
-                    )
+                    Column(horizontalAlignment = Alignment.End) {
+                        Surface(
+                            color = Color(0xFF0C2B3F),
+                            shape = RoundedCornerShape(7.dp),
+                            border = BorderStroke(1.dp, Color(0xFF38BDF8)),
+                            modifier = Modifier
+                                .clickable { catalogRankingMenuOpen = true }
+                                .testTag("catalog_ranking_dropdown")
+                        ) {
+                            Row(
+                                modifier = Modifier.padding(horizontal = 7.dp, vertical = 4.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Icon(Icons.Default.Sort, contentDescription = null, tint = Color(0xFF7DD3FC), modifier = Modifier.size(13.dp))
+                                Spacer(modifier = Modifier.width(4.dp))
+                                Text(catalogRanking.label, style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold), color = Color(0xFFBAE6FD))
+                            }
+                        }
+                        DropdownMenu(
+                            expanded = catalogRankingMenuOpen,
+                            onDismissRequest = { catalogRankingMenuOpen = false }
+                        ) {
+                            PartsRankingPreference.entries.forEach { preference ->
+                                DropdownMenuItem(
+                                    text = {
+                                        Column {
+                                            Text(preference.label, style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Bold))
+                                            Text(preference.detail, style = MaterialTheme.typography.labelSmall)
+                                        }
+                                    },
+                                    onClick = {
+                                        catalogRanking = preference
+                                        catalogRankingMenuOpen = false
+                                    }
+                                )
+                            }
+                        }
+                    }
                 }
             }
 
             // Catalog Quick Add Cards
-            val catalogParts = SportTracPartsCatalog.catalog.sortedBy { it.oreillyCommercialPrice }
+            val catalogParts = PartStoreCatalogRanking.sort(SportTracPartsCatalog.catalog, catalogRanking)
             items(catalogParts, key = { "cat_${it.id}" }) { part ->
                 val isInCart = cartItems.any { it.part.id == part.id }
 
@@ -442,7 +540,26 @@ fun PartsShoppingScreen(
                                     color = Color(0xFF94A3B8)
                                 )
                             }
+                            Spacer(modifier = Modifier.height(3.dp))
+                            Text(
+                                text = "Origin: ${part.countryOfOrigin.label}",
+                                style = MaterialTheme.typography.labelSmall,
+                                color = if (part.countryOfOrigin.isVerifiedAmericanMade) Color(0xFF6EE7B7) else Color(0xFF94A3B8)
+                            )
                             Spacer(modifier = Modifier.height(4.dp))
+                            OutlinedButton(
+                                onClick = { comparisonPart = part },
+                                border = BorderStroke(1.dp, Color(0xFF38BDF8)),
+                                contentPadding = PaddingValues(horizontal = 8.dp, vertical = 0.dp),
+                                modifier = Modifier
+                                    .height(26.dp)
+                                    .testTag("catalog_compare_watch_${part.id}")
+                            ) {
+                                Icon(Icons.Default.CompareArrows, contentDescription = null, tint = Color(0xFF7DD3FC), modifier = Modifier.size(13.dp))
+                                Spacer(modifier = Modifier.width(4.dp))
+                                Text("Compare / Watch", style = MaterialTheme.typography.labelSmall, color = Color(0xFFBAE6FD))
+                            }
+                            Spacer(modifier = Modifier.height(5.dp))
                             Text(
                                 text = part.partName,
                                 style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
@@ -452,7 +569,7 @@ fun PartsShoppingScreen(
                                 Icon(Icons.Default.Verified, contentDescription = null, tint = Color(0xFF10B981), modifier = Modifier.size(12.dp))
                                 Spacer(modifier = Modifier.width(4.dp))
                                 Text(
-                                    text = "Stock Verified at Store #1428 (${part.storeStockCount} available)",
+                                    text = "Saved catalog reference — confirm stock and fitment at retailer",
                                     style = MaterialTheme.typography.labelSmall,
                                     color = Color(0xFF10B981)
                                 )
@@ -521,7 +638,7 @@ fun PartsShoppingScreen(
                     }
 
                     Button(
-                        onClick = { showCheckoutDialog = true },
+                        onClick = { showPartsListReviewDialog = true },
                         colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF10B981)),
                         shape = RoundedCornerShape(12.dp),
                         modifier = Modifier
@@ -530,17 +647,34 @@ fun PartsShoppingScreen(
                     ) {
                         Icon(Icons.Default.Payment, contentDescription = null)
                         Spacer(modifier = Modifier.width(8.dp))
-                        Text("Checkout / Order Now", style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold))
+                        Text("Review Parts List", style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold))
                     }
                 }
             }
         }
     }
 
-    // CHECKOUT DIALOG / IN-APP PAYMENT
-    if (showCheckoutDialog) {
+    comparisonPart?.let { part ->
+        PriceWatchDialog(
+            part = part,
+            onDismiss = { comparisonPart = null }
+        )
+    }
+
+    if (showReadinessDashboard) {
+        ReadinessDashboardDialog(
+            onDismiss = { showReadinessDashboard = false },
+            onReviewPackage = { readinessPackage ->
+                showReadinessDashboard = false
+                comparisonPart = SportTracPartsCatalog.catalog.firstOrNull { it.id in readinessPackage.partIds }
+            }
+        )
+    }
+
+    // PRIVATE PARTS-LIST REVIEW — NO CHECKOUT OR ORDER SUBMISSION
+    if (showPartsListReviewDialog) {
         AlertDialog(
-            onDismissRequest = { showCheckoutDialog = false },
+            onDismissRequest = { showPartsListReviewDialog = false },
             containerColor = Color(0xFF0F172A),
             titleContentColor = Color.White,
             textContentColor = Color.White,
@@ -548,13 +682,13 @@ fun PartsShoppingScreen(
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(Icons.Default.ShoppingCartCheckout, contentDescription = null, tint = Color(0xFF10B981))
                     Spacer(modifier = Modifier.width(8.dp))
-                    Text("O'Reilly Commercial Checkout", style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold))
+                    Text("Private Parts List Review", style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold))
                 }
             },
             text = {
                 Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                     Text(
-                        text = "Review commercial order total and select payment option:",
+                        text = "Review your saved list before opening any retailer manually. This app does not submit orders, collect payment, or charge an account.",
                         style = MaterialTheme.typography.bodySmall,
                         color = Color(0xFFCBD5E1)
                     )
@@ -569,82 +703,59 @@ fun PartsShoppingScreen(
                                 modifier = Modifier.fillMaxWidth(),
                                 horizontalArrangement = Arrangement.SpaceBetween
                             ) {
-                                Text("Parts Subtotal:", style = MaterialTheme.typography.bodySmall, color = Color(0xFF94A3B8))
+                                Text("Saved-list reference total:", style = MaterialTheme.typography.bodySmall, color = Color(0xFF94A3B8))
                                 Text("\$${String.format("%.2f", subtotal)}", style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Bold), color = Color.White)
                             }
                             Row(
                                 modifier = Modifier.fillMaxWidth(),
                                 horizontalArrangement = Arrangement.SpaceBetween
                             ) {
-                                Text("Commercial Discount Applied:", style = MaterialTheme.typography.bodySmall, color = Color(0xFF10B981))
-                                Text("-\$${String.format("%.2f", totalSavings)}", style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Bold), color = Color(0xFF10B981))
+                                Text("Price-source status:", style = MaterialTheme.typography.bodySmall, color = Color(0xFF10B981))
+                                Text("Saved catalog values — verify", style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Bold), color = Color(0xFF10B981))
                             }
                             Row(
                                 modifier = Modifier.fillMaxWidth(),
                                 horizontalArrangement = Arrangement.SpaceBetween
                             ) {
-                                Text("Commercial Freight / Tax:", style = MaterialTheme.typography.bodySmall, color = Color(0xFF94A3B8))
-                                Text("\$0.00 (Exempt Line)", style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Bold), color = Color.White)
+                                Text("Shipping, core charge, and tax:", style = MaterialTheme.typography.bodySmall, color = Color(0xFF94A3B8))
+                                Text("Confirm at retailer", style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Bold), color = Color.White)
                             }
                             HorizontalDivider(color = Color(0xFF334155), modifier = Modifier.padding(vertical = 6.dp))
                             Row(
                                 modifier = Modifier.fillMaxWidth(),
                                 horizontalArrangement = Arrangement.SpaceBetween
                             ) {
-                                Text("Final Amount Due:", style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold), color = Color.White)
+                                Text("Planning total only:", style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold), color = Color.White)
                                 Text("\$${String.format("%.2f", subtotal)}", style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold), color = Color(0xFF10B981))
                             }
                         }
                     }
 
-                    Text("SELECT PAYMENT METHOD", style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold), color = Color(0xFF38BDF8))
-
-                    val paymentMethods = listOf(
-                        "O'Reilly Commercial Line of Credit (Net 30)",
-                        "Corporate Credit Card (Visa ending in 4821)",
-                        "Google Pay Commercial"
-                    )
-
-                    paymentMethods.forEach { method ->
-                        val isSelected = selectedPaymentMethod == method
-                        Surface(
-                            color = if (isSelected) Color(0xFF0284C7).copy(alpha = 0.2f) else Color(0xFF1E293B),
-                            shape = RoundedCornerShape(8.dp),
-                            border = BorderStroke(1.dp, if (isSelected) Color(0xFF38BDF8) else Color(0xFF334155)),
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .clickable { selectedPaymentMethod = method }
-                        ) {
-                            Row(
-                                modifier = Modifier.padding(10.dp),
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                RadioButton(
-                                    selected = isSelected,
-                                    onClick = { selectedPaymentMethod = method },
-                                    colors = RadioButtonDefaults.colors(selectedColor = Color(0xFF38BDF8))
-                                )
-                                Spacer(modifier = Modifier.width(6.dp))
-                                Text(method, style = MaterialTheme.typography.bodySmall, color = Color.White)
-                            }
-                        }
+                    Surface(
+                        color = Color(0xFF0C2B3F),
+                        shape = RoundedCornerShape(10.dp),
+                        border = BorderStroke(1.dp, Color(0xFF38BDF8))
+                    ) {
+                        Text(
+                            text = "To purchase, open a retailer comparison from the individual part record, verify fitment and the final delivered cost, then complete checkout directly with that retailer. No payment method, account balance, or order details are stored here.",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = Color(0xFFE0F2FE),
+                            modifier = Modifier.padding(11.dp)
+                        )
                     }
                 }
             },
             confirmButton = {
                 Button(
-                    onClick = {
-                        showCheckoutDialog = false
-                        onCheckout(selectedPaymentMethod)
-                    },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF10B981)),
-                    modifier = Modifier.testTag("btn_confirm_checkout")
+                    onClick = { showPartsListReviewDialog = false },
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF0284C7)),
+                    modifier = Modifier.testTag("btn_confirm_list_review")
                 ) {
-                    Text("Place Order Now")
+                    Text("Keep List Ready")
                 }
             },
             dismissButton = {
-                OutlinedButton(onClick = { showCheckoutDialog = false }) {
+                OutlinedButton(onClick = { showPartsListReviewDialog = false }) {
                     Text("Cancel", color = Color(0xFF94A3B8))
                 }
             }
@@ -662,13 +773,13 @@ fun PartsShoppingScreen(
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(Icons.Default.Storefront, contentDescription = null, tint = Color(0xFF38BDF8))
                     Spacer(modifier = Modifier.width(8.dp))
-                    Text("O'Reilly Commercial Hub #1428", style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold))
+                    Text("Private Retailer Handoff", style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold))
                 }
             },
             text = {
                 Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                     Text(
-                        text = "Store Address & Business Information:",
+                        text = "FITMENT AND PRIVACY GUIDANCE",
                         style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
                         color = Color(0xFFFFD700)
                     )
@@ -679,24 +790,13 @@ fun PartsShoppingScreen(
                         border = BorderStroke(1.dp, Color(0xFF334155))
                     ) {
                         Column(modifier = Modifier.padding(12.dp)) {
-                            Text("📍 Location:", style = MaterialTheme.typography.labelSmall, color = Color(0xFF94A3B8))
-                            Text("1204 Main Street, Commercial Hub Suite B", style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Bold), color = Color.White)
-                            Spacer(modifier = Modifier.height(6.dp))
+                            Text("Your retailer account, account number, payment information, location, and contact list are not stored in this app.", style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Bold), color = Color.White)
+                            Spacer(modifier = Modifier.height(8.dp))
 
-                            Text("📞 Commercial Desk Hotline:", style = MaterialTheme.typography.labelSmall, color = Color(0xFF94A3B8))
-                            Text("(555) 382-7400 (Ext 3 - Commercial Parts)", style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Bold), color = Color(0xFF38BDF8))
-                            Spacer(modifier = Modifier.height(6.dp))
+                            Text("Before opening any retailer link, confirm the vehicle VIN, exact part number, condition, shipping, core charge, and return policy.", style = MaterialTheme.typography.bodySmall, color = Color(0xFFCBD5E1))
+                            Spacer(modifier = Modifier.height(8.dp))
 
-                            Text("👤 Account Representative:", style = MaterialTheme.typography.labelSmall, color = Color(0xFF94A3B8))
-                            Text("Marcus Vance (Sr. Commercial Specialist)", style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Bold), color = Color.White)
-                            Spacer(modifier = Modifier.height(6.dp))
-
-                            Text("⏰ Commercial Desk Hours:", style = MaterialTheme.typography.labelSmall, color = Color(0xFF94A3B8))
-                            Text("Mon-Fri: 7:00 AM - 6:00 PM | Sat: 8:00 AM - 4:00 PM", style = MaterialTheme.typography.bodySmall, color = Color(0xFFCBD5E1))
-                            Spacer(modifier = Modifier.height(6.dp))
-
-                            Text("🚚 Delivery Fleet Dispatch:", style = MaterialTheme.typography.labelSmall, color = Color(0xFF94A3B8))
-                            Text("Hot Shot Commercial Delivery Vans (30-45 min local delivery)", style = MaterialTheme.typography.bodySmall, color = Color(0xFF10B981))
+                            Text("The Part Store prepares the comparison and practice path. Any final checkout happens only on the retailer’s own page after the customer chooses to proceed.", style = MaterialTheme.typography.bodySmall, color = Color(0xFFBAE6FD))
                         }
                     }
                 }
@@ -927,6 +1027,164 @@ fun PartCartItemCard(
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun ReadinessLibraryCard(
+    packages: List<PartsReadinessPackage>,
+    acPackage: PartsReadinessPackage,
+    acEnabled: Boolean,
+    allEnabled: Boolean,
+    allPartCount: Int,
+    pendingCount: Int,
+    notice: String?,
+    onOpenDashboard: () -> Unit,
+    onEnableAcWatch: () -> Unit,
+    onEnableAllWatch: () -> Unit,
+    onReviewPackage: (PartsReadinessPackage) -> Unit
+) {
+    Surface(
+        color = Color(0xFF0B2440),
+        shape = RoundedCornerShape(16.dp),
+        border = BorderStroke(1.5.dp, Color(0xFF38BDF8)),
+        modifier = Modifier
+            .fillMaxWidth()
+            .testTag("parts_readiness_library")
+    ) {
+        Column(modifier = Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Surface(color = Color(0xFF0284C7), shape = RoundedCornerShape(9.dp)) {
+                    Icon(
+                        Icons.Default.Inventory2,
+                        contentDescription = null,
+                        tint = Color.White,
+                        modifier = Modifier.padding(8.dp).size(20.dp)
+                    )
+                }
+                Spacer(modifier = Modifier.width(9.dp))
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = "PREBUILT PARTS READINESS LIBRARY",
+                        style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Black, letterSpacing = 0.6.sp),
+                        color = Color(0xFFBAE6FD)
+                    )
+                    Text(
+                        text = "$allPartCount price-watch-ready parts plus $pendingCount VIN/capacity lookup items across ${packages.size} system packages",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = Color(0xFFE0F2FE)
+                    )
+                }
+                if (allEnabled) {
+                    Icon(Icons.Default.CheckCircle, contentDescription = "All system watches enabled", tint = Color(0xFF6EE7B7))
+                }
+            }
+
+            Text(
+                text = "Each package is built from an existing part-number record. Enabling a watch saves a seven-day review schedule with O'Reilly Pro, RockAuto, Amazon, eBay, Facebook Marketplace, and other-source verification options. Live price retrieval remains separately labeled until authorized data access is connected.",
+                style = MaterialTheme.typography.bodySmall,
+                color = Color(0xFFCBD5E1)
+            )
+            OutlinedButton(
+                onClick = onOpenDashboard,
+                border = BorderStroke(1.dp, Color(0xFF7DD3FC)),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .testTag("open_readiness_dashboard")
+            ) {
+                Icon(Icons.Default.Dashboard, contentDescription = null, tint = Color(0xFF7DD3FC), modifier = Modifier.size(17.dp))
+                Spacer(modifier = Modifier.width(6.dp))
+                Text("Open All-Inclusive Dashboard", color = Color(0xFFBAE6FD))
+            }
+
+            packages.forEach { readinessPackage ->
+                val isAc = readinessPackage.id == acPackage.id
+                val tierColor = when (readinessPackage.tier) {
+                    PartsReadinessTier.READY_NOW -> Color(0xFF38BDF8)
+                    PartsReadinessTier.HIGH_PRIORITY -> Color(0xFFF59E0B)
+                    PartsReadinessTier.PREPARED_REFERENCE -> Color(0xFF94A3B8)
+                }
+                Surface(
+                    color = if (isAc) Color(0xFF064E3B) else Color(0xFF1E293B),
+                    shape = RoundedCornerShape(11.dp),
+                    border = BorderStroke(1.dp, if (isAc) Color(0xFF34D399) else Color(0xFF334155)),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { onReviewPackage(readinessPackage) }
+                        .testTag("readiness_package_${readinessPackage.id}")
+                ) {
+                    Row(
+                        modifier = Modifier.padding(10.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Surface(color = tierColor.copy(alpha = 0.18f), shape = RoundedCornerShape(6.dp)) {
+                            Text(
+                                text = readinessPackage.tier.label.uppercase(),
+                                style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Black, fontSize = 8.sp),
+                                color = tierColor,
+                                modifier = Modifier.padding(horizontal = 6.dp, vertical = 3.dp)
+                            )
+                        }
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text(readinessPackage.title, style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Bold), color = Color.White)
+                            Text(
+                                text = buildString {
+                                    append("${readinessPackage.partIds.size} price-watch records")
+                                    if (readinessPackage.pendingFitmentItems.isNotEmpty()) {
+                                        append(" · ${readinessPackage.pendingFitmentItems.size} VIN lookup items")
+                                    }
+                                    append(" · Tap to review first part")
+                                },
+                                style = MaterialTheme.typography.labelSmall,
+                                color = Color(0xFF94A3B8)
+                            )
+                        }
+                        if (isAc && acEnabled) {
+                            Icon(Icons.Default.CheckCircle, contentDescription = "A/C watch enabled", tint = Color(0xFF6EE7B7), modifier = Modifier.size(18.dp))
+                        } else {
+                            Icon(Icons.Default.ChevronRight, contentDescription = "Review package", tint = Color(0xFF7DD3FC), modifier = Modifier.size(18.dp))
+                        }
+                    }
+                }
+            }
+
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.fillMaxWidth()) {
+                Button(
+                    onClick = onEnableAcWatch,
+                    colors = ButtonDefaults.buttonColors(containerColor = if (acEnabled) Color(0xFF047857) else Color(0xFF0284C7)),
+                    modifier = Modifier
+                        .weight(1f)
+                        .testTag("enable_ac_readiness_watch")
+                ) {
+                    Icon(Icons.Default.AcUnit, contentDescription = null, modifier = Modifier.size(16.dp))
+                    Spacer(modifier = Modifier.width(5.dp))
+                    Text(if (acEnabled) "A/C Watch Ready" else "Watch A/C First", style = MaterialTheme.typography.labelSmall)
+                }
+                OutlinedButton(
+                    onClick = onEnableAllWatch,
+                    border = BorderStroke(1.dp, Color(0xFFF59E0B)),
+                    modifier = Modifier
+                        .weight(1f)
+                        .testTag("enable_all_readiness_watch")
+                ) {
+                    Icon(Icons.Default.Schedule, contentDescription = null, tint = Color(0xFFFDE68A), modifier = Modifier.size(16.dp))
+                    Spacer(modifier = Modifier.width(5.dp))
+                    Text(if (allEnabled) "All Watches Ready" else "Watch Every System", style = MaterialTheme.typography.labelSmall, color = Color(0xFFFDE68A))
+                }
+            }
+
+            notice?.let { message ->
+                Surface(color = Color(0xFF064E3B), shape = RoundedCornerShape(9.dp), modifier = Modifier.fillMaxWidth()) {
+                    Text(
+                        text = message,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = Color(0xFFD1FAE5),
+                        modifier = Modifier.padding(9.dp)
+                    )
                 }
             }
         }

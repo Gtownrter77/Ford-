@@ -1,0 +1,212 @@
+=== DEVICE ACCESS ===
+bash: adb: command not found
+=== EMULATOR AVAILABILITY ===
+No emulator binary available
+=== LAUNCHER CONFIG ===
+app/src/main/AndroidManifest.xml:29:            android:name=".MainActivity"
+app/src/main/AndroidManifest.xml:34:                <action android:name="android.intent.action.MAIN" />
+app/src/main/AndroidManifest.xml:36:                <category android:name="android.intent.category.LAUNCHER" />
+app/src/main/java/com/example/data/SportTracData.kt:1100:        // 24. MAIN DASHBOARD WIRING HARNESS & FUSE BOX (CJB)
+app/src/main/java/com/example/data/GltfCadAssetService.kt:67:                type = SubAssemblyType.MAIN_BODY,
+app/src/main/java/com/example/ui/components/SceneViewGltfViewport.kt:581:                    SubAssemblyType.MAIN_BODY -> "#38BDF8"
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt:54:    LOW("LOW / ROUTINE MAINTENANCE", Color(0xFF10B981))
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt:695:                    text = "SELECT DIAGNOSTIC DOMAIN",
+app/src/main/java/com/example/ui/components/VehicleHealthDashboard.kt:309:        // 3. UPCOMING MAINTENANCE TIMELINE GRAPH (GANTT MILEAGE AXIS)
+app/src/main/java/com/example/ui/components/VehicleHealthDashboard.kt:326:                            text = "MILEAGE MAINTENANCE TIMELINE",
+app/src/main/java/com/example/ui/components/ReadinessDashboardDialog.kt:162:        DashboardAlertKind.MAINTENANCE_WINDOW -> Icons.Default.Event to Color(0xFFF59E0B)
+app/src/main/java/com/example/ui/components/ReadinessDashboardDialog.kt:207:            kind = DashboardAlertKind.MAINTENANCE_WINDOW,
+app/src/main/java/com/example/ui/screens/MaintenanceScreen.kt:438:                            text = "SYSTEM HEALTH & MAINTENANCE INTERVALS",
+app/src/main/java/com/example/ui/screens/PartsShoppingScreen.kt:331:        // 3. MAIN CONTENT: CART ITEMS & QUICK ADD PARTS CATALOG
+app/src/main/java/com/example/ui/screens/LoungeScreen.kt:142:                    tab = MainTab.MAINTENANCE,
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:25:    MAINTENANCE,
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:464:                setTab(MainTab.MAINTENANCE)
+app/src/main/java/com/example/model/Component3DModel.kt:22:    MAIN_BODY("Component Housing", "#0284C7"),
+app/src/main/java/com/example/model/ReadinessDashboardModels.kt:8:    MAINTENANCE_WINDOW("Maintenance window", "Review a scheduled mileage or time-based service item before it becomes overdue."),
+app/src/main/java/com/example/service/MaintenanceSchedulerService.kt:11:import com.example.MainActivity
+app/src/main/java/com/example/service/MaintenanceSchedulerService.kt:53:        val intent = Intent(context, MainActivity::class.java).apply {
+app/src/main/java/com/example/service/MaintenanceSchedulerService.kt:206:                    "⚠️ OVERDUE MAINTENANCE: ${item.title}"
+app/src/main/java/com/example/MainActivity.kt:41:class MainActivity : ComponentActivity() {
+app/src/main/java/com/example/MainActivity.kt:302:                                selected = currentTab == MainTab.MAINTENANCE,
+app/src/main/java/com/example/MainActivity.kt:303:                                onClick = { viewModel.setTab(MainTab.MAINTENANCE) },
+app/src/main/java/com/example/MainActivity.kt:398:                            MainTab.MAINTENANCE -> MaintenanceScreen(
+app/src/main/java/com/example/physics/Physics3DEngine.kt:103:    val subAssemblyType: SubAssemblyType = SubAssemblyType.MAIN_BODY
+app/src/main/java/com/example/physics/PhysicsAssemblyFactory.kt:34:            subAssemblyType = SubAssemblyType.MAIN_BODY
+app/src/main/java/com/example/physics/PhysicsAssemblyFactory.kt:103:                    SubAssemblyType.BELT, SubAssemblyType.MAIN_BODY -> {
+app/src/main/AndroidManifest.xml:29:            android:name=".MainActivity"
+app/src/main/AndroidManifest.xml:34:                <action android:name="android.intent.action.MAIN" />
+app/src/main/AndroidManifest.xml:36:                <category android:name="android.intent.category.LAUNCHER" />
+=== STARTUP / SIDE EFFECTS ===
+app/src/main/java/com/example/MainActivity.kt:32:import com.example.ui.components.TeamPanelDialog
+app/src/main/java/com/example/MainActivity.kt:33:import com.example.ui.components.MentorVoiceSettingsDialog
+app/src/main/java/com/example/MainActivity.kt:34:import com.example.ui.components.VoiceControlOverlay
+app/src/main/java/com/example/MainActivity.kt:53:                val currentTab by viewModel.currentTab.collectAsStateWithLifecycle()
+app/src/main/java/com/example/MainActivity.kt:54:                val activeSystem by viewModel.activeSystem.collectAsStateWithLifecycle()
+app/src/main/java/com/example/MainActivity.kt:55:                val selectedComponent by viewModel.selectedComponent.collectAsStateWithLifecycle()
+app/src/main/java/com/example/MainActivity.kt:56:                val filteredComponents by viewModel.filteredComponents.collectAsStateWithLifecycle()
+app/src/main/java/com/example/MainActivity.kt:57:                val searchQuery by viewModel.manualSearchQuery.collectAsStateWithLifecycle()
+app/src/main/java/com/example/MainActivity.kt:58:                val vehicleProfile by viewModel.vehicleProfile.collectAsStateWithLifecycle()
+app/src/main/java/com/example/MainActivity.kt:59:                val maintenanceLogs by viewModel.maintenanceLogs.collectAsStateWithLifecycle()
+app/src/main/java/com/example/MainActivity.kt:60:                val upcomingTasks by viewModel.upcomingTasks.collectAsStateWithLifecycle()
+app/src/main/java/com/example/MainActivity.kt:61:                val requestDetailSheetOpen by viewModel.requestDetailSheetOpen.collectAsStateWithLifecycle()
+app/src/main/java/com/example/MainActivity.kt:62:                val voiceNotice by viewModel.voiceNotice.collectAsStateWithLifecycle()
+app/src/main/java/com/example/MainActivity.kt:63:                val chatMessages by viewModel.chatMessages.collectAsStateWithLifecycle()
+app/src/main/java/com/example/MainActivity.kt:64:                val isGeminiThinking by viewModel.isGeminiThinking.collectAsStateWithLifecycle()
+app/src/main/java/com/example/MainActivity.kt:65:                val cartItems by viewModel.cartItems.collectAsStateWithLifecycle()
+app/src/main/java/com/example/MainActivity.kt:66:                val commercialAccount by viewModel.commercialAccount.collectAsStateWithLifecycle()
+app/src/main/java/com/example/MainActivity.kt:67:                val cartSortOption by viewModel.cartSortOption.collectAsStateWithLifecycle()
+app/src/main/java/com/example/MainActivity.kt:68:                val orderSuccessNotice by viewModel.orderSuccessNotice.collectAsStateWithLifecycle()
+app/src/main/java/com/example/MainActivity.kt:69:                val skillLevel by viewModel.skillLevel.collectAsStateWithLifecycle()
+app/src/main/java/com/example/MainActivity.kt:70:                val isTeamPanelOpen by viewModel.isTeamPanelOpen.collectAsStateWithLifecycle()
+app/src/main/java/com/example/MainActivity.kt:71:                val isVoiceSettingsOpen by viewModel.isVoiceSettingsOpen.collectAsStateWithLifecycle()
+app/src/main/java/com/example/MainActivity.kt:72:                val cached3DCount by viewModel.cached3DAssetsCount.collectAsStateWithLifecycle()
+app/src/main/java/com/example/MainActivity.kt:73:                val cachedManualsCount by viewModel.cachedManualsCount.collectAsStateWithLifecycle()
+app/src/main/java/com/example/MainActivity.kt:74:                val cachedSymptomsCount by viewModel.cachedSymptomsCount.collectAsStateWithLifecycle()
+app/src/main/java/com/example/MainActivity.kt:75:                val cacheManifest by viewModel.cacheManifest.collectAsStateWithLifecycle()
+app/src/main/java/com/example/MainActivity.kt:80:                        onSkillLevelChange = { level -> viewModel.setSkillLevel(level) },
+app/src/main/java/com/example/MainActivity.kt:81:                        onDismiss = { viewModel.closeTeamPanel() }
+app/src/main/java/com/example/MainActivity.kt:91:                        onForceUpdate = { viewModel.resyncOfflineCache() },
+app/src/main/java/com/example/MainActivity.kt:92:                        onUpgradeContent = { viewModel.upgradeOfflineCache() },
+app/src/main/java/com/example/MainActivity.kt:93:                        onCheckForUpgrades = { viewModel.checkForCacheUpgrades() },
+app/src/main/java/com/example/MainActivity.kt:94:                        onClearCache = { viewModel.clearOfflineCache() },
+app/src/main/java/com/example/MainActivity.kt:95:                        onDismiss = { viewModel.closeVoiceSettings() }
+app/src/main/java/com/example/MainActivity.kt:155:                                                .clickable { viewModel.openVoiceSettings() }
+app/src/main/java/com/example/MainActivity.kt:199:                                                .clickable { viewModel.openTeamPanel() }
+app/src/main/java/com/example/MainActivity.kt:224:                                    viewModel.processVoiceCommand(spokenText)
+app/src/main/java/com/example/MainActivity.kt:227:                                    viewModel.dismissVoiceNotice()
+app/src/main/java/com/example/MainActivity.kt:243:                                onClick = { viewModel.setTab(MainTab.LOUNGE) },
+app/src/main/java/com/example/MainActivity.kt:258:                                onClick = { viewModel.setTab(MainTab.VIEW_3D) },
+app/src/main/java/com/example/MainActivity.kt:273:                                onClick = { viewModel.setTab(MainTab.REPAIR_MANUAL) },
+app/src/main/java/com/example/MainActivity.kt:288:                                onClick = { viewModel.setTab(MainTab.DIAGNOSTICS) },
+app/src/main/java/com/example/MainActivity.kt:303:                                onClick = { viewModel.setTab(MainTab.MAINTENANCE) },
+app/src/main/java/com/example/MainActivity.kt:318:                                onClick = { viewModel.setTab(MainTab.PARTS_CART) },
+app/src/main/java/com/example/MainActivity.kt:343:                                modifier = Modifier.testTag("tab_parts_cart")
+app/src/main/java/com/example/MainActivity.kt:359:                                onOpenSkillSettings = { viewModel.openTeamPanel() },
+app/src/main/java/com/example/MainActivity.kt:360:                                onOpenVoiceSettings = { viewModel.openVoiceSettings() },
+app/src/main/java/com/example/MainActivity.kt:361:                                onNavigate = { tab -> viewModel.setTab(tab) }
+app/src/main/java/com/example/MainActivity.kt:365:                                components = filteredComponents,
+app/src/main/java/com/example/MainActivity.kt:372:                                onClearDetailSheetRequest = { viewModel.clearDetailSheetRequest() },
+app/src/main/java/com/example/MainActivity.kt:373:                                onSelectSystem = { sys -> viewModel.setSystemFilter(sys) },
+app/src/main/java/com/example/MainActivity.kt:374:                                onSelectComponent = { comp -> viewModel.selectComponent(comp) },
+app/src/main/java/com/example/MainActivity.kt:375:                                onAddToCart = { comp -> viewModel.addPartForComponent(comp) },
+app/src/main/java/com/example/MainActivity.kt:376:                                onReSyncOfflineCache = { viewModel.resyncOfflineCache() },
+app/src/main/java/com/example/MainActivity.kt:377:                                onClearOfflineCache = { viewModel.clearOfflineCache() }
+app/src/main/java/com/example/MainActivity.kt:381:                                components = filteredComponents,
+app/src/main/java/com/example/MainActivity.kt:384:                                onSearchQueryChange = { q -> viewModel.setManualSearchQuery(q) },
+app/src/main/java/com/example/MainActivity.kt:385:                                onSelectSystem = { sys -> viewModel.setSystemFilter(sys) },
+app/src/main/java/com/example/MainActivity.kt:386:                                onSelectComponent = { comp -> viewModel.selectComponent(comp) },
+app/src/main/java/com/example/MainActivity.kt:387:                                onAddToCart = { comp -> viewModel.addPartForComponent(comp) }
+app/src/main/java/com/example/MainActivity.kt:393:                                onSendMessage = { text -> viewModel.sendDiagnosticQuery(text) },
+app/src/main/java/com/example/MainActivity.kt:394:                                onClearChat = { viewModel.clearChatHistory() },
+app/src/main/java/com/example/MainActivity.kt:395:                                onNavigateToComponent = { compId -> viewModel.selectComponentById(compId) }
+app/src/main/java/com/example/MainActivity.kt:402:                                onUpdateMileage = { miles -> viewModel.updateMileage(miles) },
+app/src/main/java/com/example/MainActivity.kt:403:                                onLogService = { log -> viewModel.logMaintenance(log) },
+app/src/main/java/com/example/MainActivity.kt:404:                                onDeleteLog = { id -> viewModel.deleteLog(id) },
+app/src/main/java/com/example/MainActivity.kt:405:                                onAddUpcomingTask = { task -> viewModel.addUpcomingTask(task) },
+app/src/main/java/com/example/MainActivity.kt:406:                                onCompleteUpcomingTask = { task, miles, cost, notes -> viewModel.completeUpcomingTask(task, miles, cost, notes) },
+app/src/main/java/com/example/MainActivity.kt:407:                                onDeleteUpcomingTask = { taskId -> viewModel.deleteUpcomingTask(taskId) }
+app/src/main/java/com/example/MainActivity.kt:415:                                onSortOptionChange = { sort -> viewModel.setCartSortOption(sort) },
+app/src/main/java/com/example/MainActivity.kt:416:                                onUpdateQuantity = { id, q -> viewModel.updateCartItemQuantity(id, q) },
+app/src/main/java/com/example/MainActivity.kt:417:                                onUpdateFulfillment = { id, ful -> viewModel.updateCartItemFulfillment(id, ful) },
+app/src/main/java/com/example/MainActivity.kt:418:                                onRemoveItem = { id -> viewModel.removeFromCart(id) },
+app/src/main/java/com/example/MainActivity.kt:419:                                onAddPartToCart = { part -> viewModel.addPartToCart(part) },
+app/src/main/java/com/example/MainActivity.kt:420:                                onDismissSuccessNotice = { viewModel.dismissOrderSuccessNotice() }
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:7:import com.example.data.SportTracData
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:12:import com.example.ui.components.SnackbarPayload
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:13:import com.example.ui.components.SnackbarType
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:68:            _voiceNotice.value = "Room DB Offline Cache synced successfully!"
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:75:            _voiceNotice.value = "Room Cache Upgraded to v$updatedVer!"
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:85:                _voiceNotice.value = "Room DB content is already at the latest version."
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:93:            _voiceNotice.value = "Room DB Offline Cache cleared."
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:129:    private val _skillLevel = MutableStateFlow(com.example.ui.components.SkillLevel.ROOKIE)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:130:    val skillLevel: StateFlow<com.example.ui.components.SkillLevel> = _skillLevel.asStateFlow()
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:140:    fun setSkillLevel(level: com.example.ui.components.SkillLevel) {
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:170:    private val _selectedComponent = MutableStateFlow<Component3DModel?>(SportTracData.components.firstOrNull())
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:188:                text = "Hello! I am your Gemini AI Master Mechanic specializing in the 2004 Ford Explorer Sport Trac 4.0L SOHC V6.\n\nDescribe any engine noises, rough idling, transmission flares, coolant leaks, or diagnostic trouble codes (like P0171, P0300, P0128, P0732) to get a targeted diagnostic breakdown and matching 3D repair parts!",
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:206:    private val _snackbarEvent = MutableStateFlow<SnackbarPayload?>(null)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:207:    val snackbarEvent: StateFlow<SnackbarPayload?> = _snackbarEvent.asStateFlow()
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:217:    // Room Database State Flows
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:241:        var list = SportTracData.components
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:257:        initialValue = SportTracData.components
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:262:            repository.initializeDefaultDataIfEmpty()
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:268:    fun setTab(tab: MainTab) {
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:284:        val found = SportTracData.components.find { it.id == componentId }
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:311:            SnackbarPayload(
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:313:                message = "Failed to load high-res 3D asset for $partName",
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:319:                        SnackbarPayload(
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:321:                            message = "3D CAD mesh reloaded successfully for $partName",
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:330:    fun showSnackbar(payload: SnackbarPayload) {
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:331:        _snackbarEvent.value = payload
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:391:                setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:396:                setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:401:                setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:406:                setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:411:                setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:416:                setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:421:                setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:426:                setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:431:                setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:436:                setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:441:                setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:446:                setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:452:                setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:456:                setTab(MainTab.REPAIR_MANUAL)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:460:                setTab(MainTab.DIAGNOSTICS)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:464:                setTab(MainTab.MAINTENANCE)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:475:                    setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:477:                } else "No components available"
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:485:                    setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:487:                } else "No components available"
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:493:                setTab(MainTab.VIEW_3D)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:540:                setTab(MainTab.REPAIR_MANUAL)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:587:                        SnackbarPayload(
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:608:                    SnackbarPayload(
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:733:            _voiceNotice.value = "Upcoming maintenance task added to Room DB!"
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:745:            _voiceNotice.value = "Task '${task.title}' marked completed in Room DB!"
+app/src/main/java/com/example/ui/screens/Model3DScreen.kt:33:import com.example.ui.components.ArOverlayView
+app/src/main/java/com/example/ui/screens/Model3DScreen.kt:34:import com.example.ui.components.CameraMeasurementDialog
+app/src/main/java/com/example/ui/screens/Model3DScreen.kt:35:import com.example.ui.components.ColorSegmentBar
+app/src/main/java/com/example/ui/screens/Model3DScreen.kt:36:import com.example.ui.components.ComponentDetailSheet
+app/src/main/java/com/example/ui/screens/Model3DScreen.kt:37:import com.example.ui.components.Interactive3DViewport
+app/src/main/java/com/example/ui/screens/Model3DScreen.kt:48:import com.example.ui.components.OfflineCacheDialog
+app/src/main/java/com/example/ui/screens/Model3DScreen.kt:49:import com.example.ui.components.CadStepIngestionDialog
+app/src/main/java/com/example/ui/screens/Model3DScreen.kt:50:import com.example.ui.components.ExplodedPhysicsDialog
+app/src/main/java/com/example/ui/screens/Model3DScreen.kt:51:import com.example.ui.components.LayerControllerDialog
+app/src/main/java/com/example/ui/screens/Model3DScreen.kt:52:import com.example.ui.components.LayerControllerState
+app/src/main/java/com/example/ui/screens/Model3DScreen.kt:53:import com.example.ui.components.SceneViewGltfViewport
+app/src/main/java/com/example/ui/screens/Model3DScreen.kt:63:    components: List<Component3DModel>,
+app/src/main/java/com/example/ui/screens/Model3DScreen.kt:106:            components = components,
+app/src/main/java/com/example/ui/screens/Model3DScreen.kt:121:            components = components,
+app/src/main/java/com/example/ui/screens/Model3DScreen.kt:131:                val match = components.firstOrNull { it.id == targetCompId }
+app/src/main/java/com/example/ui/screens/Model3DScreen.kt:139:    LaunchedEffect(requestDetailSheetOpen) {
+app/src/main/java/com/example/ui/screens/Model3DScreen.kt:159:        // 1. Full-bleed Main Viewport Canvas (Either Interactive 3D Canvas, SceneView GLTF Renderer, or AR Overlay View)
+app/src/main/java/com/example/ui/screens/Model3DScreen.kt:163:                    components = components,
+app/src/main/java/com/example/ui/screens/Model3DScreen.kt:175:                SceneViewGltfViewport(
+app/src/main/java/com/example/ui/screens/Model3DScreen.kt:176:                    components = components,
+app/src/main/java/com/example/ui/screens/Model3DScreen.kt:184:                    components = components,
+app/src/main/java/com/example/ui/screens/Model3DScreen.kt:195:        // Floating Focus Canvas Toggle (Eye Icon in Top-Right corner)
+app/src/main/java/com/example/ui/screens/Model3DScreen.kt:284:                                    contentDescription = "SceneView GLTF",
+app/src/main/java/com/example/ui/screens/Model3DScreen.kt:377:                                    contentDescription = "Room Offline Caching Status",
+app/src/main/java/com/example/ui/screens/Model3DScreen.kt:410:                                text = "PARTS LAYER (${components.size})",
+app/src/main/java/com/example/ui/screens/Model3DScreen.kt:441:                            items(components) { comp ->
+app/src/main/java/com/example/ui/screens/PartsShoppingScreen.kt:32:import com.example.ui.components.PriceWatchDialog
+app/src/main/java/com/example/ui/screens/PartsShoppingScreen.kt:33:import com.example.ui.components.ReadinessDashboardDialog
+app/src/main/java/com/example/ui/screens/PartsShoppingScreen.kt:374:                        readinessNotice = "Weekly review enabled for all ${allReadinessPartIds.size} prepared parts across every system."
+app/src/main/java/com/example/ui/screens/PartsShoppingScreen.kt:1056:            .testTag("parts_readiness_library")
+app/src/main/java/com/example/ui/screens/PartsShoppingScreen.kt:1076:                        text = "$allPartCount price-watch-ready parts plus $pendingCount VIN/capacity lookup items across ${packages.size} system packages",
+=== APK METADATA ===
+b2db5bdee71140ffb4b493d587084d859efa3df19a3ea95b0bfa4523afa769f6  /home/ubuntu/deliverables/ford-sport-trac-safe-start-debug.apk
+No errors detected in compressed data of /home/ubuntu/deliverables/ford-sport-trac-safe-start-debug.apk.
+package: name='com.aistudio.fordexplorer2004.trac3d' versionCode='1' versionName='1.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'
+sdkVersion:'24'
+targetSdkVersion:'36'
+uses-permission: name='android.permission.CAMERA'
+uses-permission: name='android.permission.VIBRATE'
+uses-permission: name='android.permission.RECORD_AUDIO'
+uses-permission: name='android.permission.BLUETOOTH'
+uses-permission: name='android.permission.BLUETOOTH_ADMIN'
+uses-permission: name='android.permission.BLUETOOTH_CONNECT'
+uses-permission: name='android.permission.BLUETOOTH_SCAN'
+uses-permission: name='android.permission.POST_NOTIFICATIONS'
+uses-permission: name='android.permission.SCHEDULE_EXACT_ALARM'
+=== STATIC FAILURE BOUNDARY ===
+No connected device or emulator means runtime ANR/crash cannot be reproduced in this sandbox.

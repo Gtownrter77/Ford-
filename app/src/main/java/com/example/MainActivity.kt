@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.ui.screens.DiagnosticsScreen
+import com.example.ui.screens.LoungeScreen
 import com.example.ui.screens.MaintenanceScreen
 import com.example.ui.screens.Model3DScreen
 import com.example.ui.screens.PartsShoppingScreen
@@ -238,6 +239,21 @@ class MainActivity : ComponentActivity() {
                                 .testTag("main_navigation_bar")
                         ) {
                             NavigationBarItem(
+                                selected = currentTab == MainTab.LOUNGE,
+                                onClick = { viewModel.setTab(MainTab.LOUNGE) },
+                                icon = { Icon(Icons.Default.Home, contentDescription = "Lounge") },
+                                label = { Text("Lounge") },
+                                colors = NavigationBarItemDefaults.colors(
+                                    selectedIconColor = Color.White,
+                                    selectedTextColor = Color(0xFFF59E0B),
+                                    indicatorColor = Color(0xFF92400E),
+                                    unselectedIconColor = Color(0xFF94A3B8),
+                                    unselectedTextColor = Color(0xFF94A3B8)
+                                ),
+                                modifier = Modifier.testTag("tab_lounge")
+                            )
+
+                            NavigationBarItem(
                                 selected = currentTab == MainTab.VIEW_3D,
                                 onClick = { viewModel.setTab(MainTab.VIEW_3D) },
                                 icon = { Icon(Icons.Default.ViewInAr, contentDescription = "3D Model") },
@@ -335,6 +351,16 @@ class MainActivity : ComponentActivity() {
                             .padding(innerPadding)
                     ) {
                         when (currentTab) {
+                            MainTab.LOUNGE -> LoungeScreen(
+                                vehicleProfile = vehicleProfile,
+                                maintenanceLogs = maintenanceLogs,
+                                upcomingTasks = upcomingTasks,
+                                skillLabel = skillLevel.label,
+                                onOpenSkillSettings = { viewModel.openTeamPanel() },
+                                onOpenVoiceSettings = { viewModel.openVoiceSettings() },
+                                onNavigate = { tab -> viewModel.setTab(tab) }
+                            )
+
                             MainTab.VIEW_3D -> Model3DScreen(
                                 components = filteredComponents,
                                 selectedComponent = selectedComponent,
@@ -391,7 +417,6 @@ class MainActivity : ComponentActivity() {
                                 onUpdateFulfillment = { id, ful -> viewModel.updateCartItemFulfillment(id, ful) },
                                 onRemoveItem = { id -> viewModel.removeFromCart(id) },
                                 onAddPartToCart = { part -> viewModel.addPartToCart(part) },
-                                onCheckout = { method -> viewModel.checkoutOrder(method) },
                                 onDismissSuccessNotice = { viewModel.dismissOrderSuccessNotice() }
                             )
                         }

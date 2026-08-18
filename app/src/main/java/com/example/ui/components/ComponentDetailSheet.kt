@@ -368,8 +368,14 @@ fun ComponentDetailSheet(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Text("FASTENERS, WASHERS & WIRING HARNESS", style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold, letterSpacing = 1.sp), color = Color(0xFF00F0FF))
-                            Text("${hardwareList.size} HARDWARE ITEMS", style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold), color = Color(0xFF38BDF8))
+                            Text("${hardwareList.sumOf { it.quantity }} DISPLAYED UNITS", style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold), color = Color(0xFF38BDF8))
                         }
+                        Spacer(modifier = Modifier.height(6.dp))
+                        Text(
+                            text = "SERVICE-SCOPE VISUAL REFERENCE — verify exact VIN-specific fastener count, part number, torque, and installation sequence against Ford workshop and parts documentation.",
+                            style = MaterialTheme.typography.labelSmall.copy(fontSize = 10.sp),
+                            color = Color(0xFFFBBF24)
+                        )
                         Spacer(modifier = Modifier.height(8.dp))
 
                         Surface(
