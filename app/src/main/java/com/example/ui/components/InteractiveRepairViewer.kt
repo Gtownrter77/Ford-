@@ -192,7 +192,8 @@ private data class VrModeState(
 fun InteractiveRepairViewer(
     modifier: Modifier = Modifier,
     catalogAssetPath: String = DEFAULT_PARTS_CATALOG_PATH,
-    onExit: () -> Unit = {}
+    onExit: () -> Unit = {},
+    onPartTap: (String) -> Unit = {}
 ) {
     val context = LocalContext.current
     var loadState by remember { mutableStateOf<RepairRealmLoadState>(RepairRealmLoadState.Preparing) }
@@ -244,6 +245,7 @@ fun InteractiveRepairViewer(
                     onModelReady = { modelNode = it },
                     onPartRaycast = { hitNode ->
                         findPartForNode(hitNode, state.catalog.parts)?.let { part ->
+                            onPartTap(part.id)
                             selectedPart = part
                             sceneView?.focusCinematically(part.focusCamera)
                         }
