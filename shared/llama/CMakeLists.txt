@@ -8,9 +8,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Pin the exact upstream revision inspected for this integration. Update deliberately,
-# then revalidate LlamaInference.cpp against the new include/llama.h API.
-set(SPORTTRAC_LLAMA_CPP_REVISION "fe8156f789011f6ea0baf6917ea09f88b89d9554")
+# Pin the exact upstream revision validated during Android native activation.
+# Update deliberately, then revalidate LlamaInference.cpp against the new API.
+set(SPORTTRAC_LLAMA_CPP_REVISION "645ca2834bc16e7eab112a91aeb282ebb913f935")
 
 # Keep the embedded library minimal. Backends are selected explicitly by platform
 # toolchains rather than inheriting host-only defaults.

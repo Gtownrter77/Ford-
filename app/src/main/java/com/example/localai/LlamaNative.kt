@@ -1,12 +1,19 @@
 package com.example.localai
 
 /**
- * JNI declaration scaffold only.
- *
- * No System.loadLibrary call is present, so this class cannot invoke native code
- * until an approved CMake/NDK integration phase adds the native library.
+ * JNI entry points for the locally built `sporttrac_llama` shared library.
  */
+private object LlamaNativeLibrary {
+    init {
+        System.loadLibrary("sporttrac_llama")
+    }
+}
+
 class LlamaNative {
+    init {
+        LlamaNativeLibrary
+    }
+
     external fun nativeCreate(): Long
 
     external fun nativeLoadModel(handle: Long, modelPath: String): Boolean

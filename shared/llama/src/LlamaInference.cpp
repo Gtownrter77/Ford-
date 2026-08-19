@@ -166,7 +166,7 @@ InferenceResult LlamaInference::generate(
             break;
         }
 
-        const auto nextToken = llama_sampler_sample(sampler, context, -1);
+        auto nextToken = llama_sampler_sample(sampler, context, -1);
         if (llama_vocab_is_eog(vocab, nextToken)) {
             completed = true;
             break;
