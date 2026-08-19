@@ -5,45 +5,52 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.Build
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.MenuBook
+import androidx.compose.material.icons.filled.Psychology
+import androidx.compose.material.icons.filled.Shield
+import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material.icons.filled.Speed
+import androidx.compose.material.icons.filled.ViewInAr
 import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.ui.screens.DiagnosticsScreen
 import com.example.ui.screens.LoungeScreen
-import com.example.ui.screens.MaintenanceScreen
-import com.example.ui.screens.Model3DScreen
-import com.example.ui.screens.PartsShoppingScreen
-import com.example.ui.screens.RepairManualScreen
-import com.example.ui.components.TeamPanelDialog
-import com.example.ui.components.MentorVoiceSettingsDialog
-import com.example.ui.components.VoiceControlOverlay
-import androidx.compose.foundation.clickable
 import com.example.ui.theme.SportTracTheme
 import com.example.ui.viewmodel.ExplorerViewModel
 import com.example.ui.viewmodel.MainTab
-import com.example.util.VoiceCommandManager
 
-// Physical-device crash-loop containment. Re-enable each function only after focused device evidence.
+// Keep this true until the merged APK has passed the physical-device protocol.
 private const val SAFE_SHELL_MODE = true
 
 class MainActivity : ComponentActivity() {
 
-    private val viewModel: ExplorerViewModel by viewModels()
+    /**
+     * Track 3: Android creates this ViewModel lazily. The Lounge-first composition below does
+     * not resolve it; it is reached only from the explicit 3D tab callback.
+     */
+    private val explorerViewModel: ExplorerViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,329 +58,92 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             SportTracTheme {
-                val voiceCommandManager = remember { VoiceCommandManager(applicationContext) }
+                var selectedTab by remember { mutableStateOf(MainTab.LOUNGE) }
 
-                val currentTab by viewModel.currentTab.collectAsStateWithLifecycle()
-                val activeSystem by viewModel.activeSystem.collectAsStateWithLifecycle()
-                val selectedComponent by viewModel.selectedComponent.collectAsStateWithLifecycle()
-                val filteredComponents by viewModel.filteredComponents.collectAsStateWithLifecycle()
-                val searchQuery by viewModel.manualSearchQuery.collectAsStateWithLifecycle()
-                val vehicleProfile by viewModel.vehicleProfile.collectAsStateWithLifecycle()
-                val maintenanceLogs by viewModel.maintenanceLogs.collectAsStateWithLifecycle()
-                val upcomingTasks by viewModel.upcomingTasks.collectAsStateWithLifecycle()
-                val requestDetailSheetOpen by viewModel.requestDetailSheetOpen.collectAsStateWithLifecycle()
-                val voiceNotice by viewModel.voiceNotice.collectAsStateWithLifecycle()
-                val chatMessages by viewModel.chatMessages.collectAsStateWithLifecycle()
-                val isGeminiThinking by viewModel.isGeminiThinking.collectAsStateWithLifecycle()
-                val cartItems by viewModel.cartItems.collectAsStateWithLifecycle()
-                val commercialAccount by viewModel.commercialAccount.collectAsStateWithLifecycle()
-                val cartSortOption by viewModel.cartSortOption.collectAsStateWithLifecycle()
-                val orderSuccessNotice by viewModel.orderSuccessNotice.collectAsStateWithLifecycle()
-                val skillLevel by viewModel.skillLevel.collectAsStateWithLifecycle()
-                val isTeamPanelOpen by viewModel.isTeamPanelOpen.collectAsStateWithLifecycle()
-                val isVoiceSettingsOpen by viewModel.isVoiceSettingsOpen.collectAsStateWithLifecycle()
-                val cached3DCount by viewModel.cached3DAssetsCount.collectAsStateWithLifecycle()
-                val cachedManualsCount by viewModel.cachedManualsCount.collectAsStateWithLifecycle()
-                val cachedSymptomsCount by viewModel.cachedSymptomsCount.collectAsStateWithLifecycle()
-                val cacheManifest by viewModel.cacheManifest.collectAsStateWithLifecycle()
-
-                if (!SAFE_SHELL_MODE && isTeamPanelOpen) {
-                    TeamPanelDialog(
-                        currentSkillLevel = skillLevel,
-                        onSkillLevelChange = { level -> viewModel.setSkillLevel(level) },
-                        onDismiss = { viewModel.closeTeamPanel() }
-                    )
-                }
-
-                if (!SAFE_SHELL_MODE && isVoiceSettingsOpen) {
-                    MentorVoiceSettingsDialog(
-                        cached3DCount = cached3DCount,
-                        cachedManualsCount = cachedManualsCount,
-                        cachedSymptomsCount = cachedSymptomsCount,
-                        cacheManifest = cacheManifest,
-                        onForceUpdate = { viewModel.resyncOfflineCache() },
-                        onUpgradeContent = { viewModel.upgradeOfflineCache() },
-                        onCheckForUpgrades = { viewModel.checkForCacheUpgrades() },
-                        onClearCache = { viewModel.clearOfflineCache() },
-                        onDismiss = { viewModel.closeVoiceSettings() }
-                    )
-                }
-
-                Scaffold(
-                    modifier = Modifier.fillMaxSize(),
-                    containerColor = Color(0xFF0F172A),
-                    topBar = {
-                        Column(
-                            modifier = Modifier.windowInsetsPadding(WindowInsets.statusBars)
-                        ) {
-                            val voiceState by voiceCommandManager.voiceState.collectAsState()
-
-                            Surface(
-                                color = Color(0xFF0F172A),
-                                border = BorderStroke(1.dp, Color(0xFF1E293B))
-                            ) {
-                                Row(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .padding(horizontal = 16.dp, vertical = 6.dp),
-                                    horizontalArrangement = Arrangement.SpaceBetween,
-                                    verticalAlignment = Alignment.CenterVertically
-                                ) {
-                                    Row(verticalAlignment = Alignment.CenterVertically) {
-                                        Icon(
-                                            Icons.Default.DirectionsCar,
-                                            contentDescription = "Ford Explorer",
-                                            tint = Color(0xFFFF6F00),
-                                            modifier = Modifier.size(24.dp)
-                                        )
-                                        Spacer(modifier = Modifier.width(8.dp))
-                                        Column {
-                                            Text(
-                                                text = "FORD EXPLORER",
-                                                style = MaterialTheme.typography.labelSmall.copy(
-                                                    fontWeight = FontWeight.Bold,
-                                                    letterSpacing = 0.5.sp
-                                                ),
-                                                color = Color(0xFFFF6F00)
-                                            )
-                                            Text(
-                                                text = "2004 Sport Trac 4.0L",
-                                                style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold),
-                                                color = Color.White
-                                            )
-                                        }
-                                    }
-
-                                    Row(
-                                        verticalAlignment = Alignment.CenterVertically,
-                                        horizontalArrangement = Arrangement.spacedBy(8.dp)
-                                    ) {
-                                        Surface(
-                                            color = Color(0xFF1E293B),
-                                            shape = CircleShape,
-                                            border = BorderStroke(1.dp, Color(0xFF38BDF8)),
-                                            modifier = Modifier
-                                                .size(34.dp)
-                                                .clip(CircleShape)
-                                                .clickable(enabled = !SAFE_SHELL_MODE) { viewModel.openVoiceSettings() }
-                                                .testTag("btn_open_voice_settings")
-                                        ) {
-                                            Box(contentAlignment = Alignment.Center) {
-                                                Icon(
-                                                    imageVector = Icons.Default.RecordVoiceOver,
-                                                    contentDescription = "Mentor Voice Settings",
-                                                    tint = Color(0xFF38BDF8),
-                                                    modifier = Modifier.size(18.dp)
-                                                )
-                                            }
-                                        }
-
-                                        Surface(
-                                            color = if (voiceState is com.example.util.VoiceState.Listening) Color(0xFF0284C7) else Color(0xFF1E293B),
-                                            shape = CircleShape,
-                                            border = BorderStroke(1.dp, if (voiceState is com.example.util.VoiceState.Listening) Color(0xFF38BDF8) else Color(0xFF334155)),
-                                            modifier = Modifier
-                                                .size(34.dp)
-                                                .clip(CircleShape)
-                                                .clickable(enabled = !SAFE_SHELL_MODE) {
-                                                    if (voiceState is com.example.util.VoiceState.Listening) {
-                                                        voiceCommandManager.stopListening()
-                                                    } else {
-                                                        voiceCommandManager.startListening()
-                                                    }
-                                                }
-                                                .testTag("voice_mic_fab")
-                                        ) {
-                                            Box(contentAlignment = Alignment.Center) {
-                                                Icon(
-                                                    imageVector = Icons.Default.Mic,
-                                                    contentDescription = "Voice Commands",
-                                                    tint = if (voiceState is com.example.util.VoiceState.Listening) Color.White else Color(0xFF38BDF8),
-                                                    modifier = Modifier.size(18.dp)
-                                                )
-                                            }
-                                        }
-
-                                        Surface(
-                                            color = Color(0xFF1E293B),
-                                            shape = RoundedCornerShape(20.dp),
-                                            border = BorderStroke(1.dp, skillLevel.color),
-                                            modifier = Modifier
-                                                .clickable(enabled = !SAFE_SHELL_MODE) { viewModel.openTeamPanel() }
-                                                .testTag("btn_open_team_panel")
-                                        ) {
-                                            Row(
-                                                modifier = Modifier.padding(horizontal = 8.dp, vertical = 5.dp),
-                                                verticalAlignment = Alignment.CenterVertically
-                                            ) {
-                                                Icon(Icons.Default.Group, contentDescription = null, tint = skillLevel.color, modifier = Modifier.size(14.dp))
-                                                Spacer(modifier = Modifier.width(4.dp))
-                                                Text(
-                                                    text = skillLevel.label.uppercase(),
-                                                    style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
-                                                    color = Color.White
-                                                )
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-
-                            // Voice Notice Toast Overlay (Only floats down when active)
-                            VoiceControlOverlay(
-                                voiceCommandManager = voiceCommandManager,
-                                voiceNotice = voiceNotice,
-                                onExecuteCommand = { spokenText ->
-                                    viewModel.processVoiceCommand(spokenText)
-                                },
-                                onDismissNotice = {
-                                    viewModel.dismissVoiceNotice()
-                                }
-                            )
+                SafeLaunchShell(
+                    selectedTab = selectedTab,
+                    onTabSelected = { tab ->
+                        // This is the only root route allowed to open Room-backed feature data.
+                        if (tab == MainTab.VIEW_3D) {
+                            explorerViewModel.ensureFeatureData()
                         }
+                        selectedTab = tab
                     },
-                    bottomBar = {
-                        NavigationBar(
-                            containerColor = Color(0xFF0F172A),
-                            contentColor = Color.White,
-                            tonalElevation = 8.dp,
-                            modifier = Modifier
-                                .navigationBarsPadding()
-                                .testTag("main_navigation_bar")
-                        ) {
-                            NavigationBarItem(
-                                selected = currentTab == MainTab.LOUNGE,
-                                onClick = { viewModel.setTab(MainTab.LOUNGE) },
-                                icon = { Icon(Icons.Default.Home, contentDescription = "Lounge") },
-                                label = { Text("Lounge") },
-                                colors = NavigationBarItemDefaults.colors(
-                                    selectedIconColor = Color.White,
-                                    selectedTextColor = Color(0xFFF59E0B),
-                                    indicatorColor = Color(0xFF92400E),
-                                    unselectedIconColor = Color(0xFF94A3B8),
-                                    unselectedTextColor = Color(0xFF94A3B8)
-                                ),
-                                modifier = Modifier.testTag("tab_lounge")
-                            )
-
-                            NavigationBarItem(
-                                selected = currentTab == MainTab.VIEW_3D,
-                                onClick = { viewModel.setTab(MainTab.VIEW_3D) },
-                                icon = { Icon(Icons.Default.ViewInAr, contentDescription = "3D Model") },
-                                label = { Text("3D Model") },
-                                colors = NavigationBarItemDefaults.colors(
-                                    selectedIconColor = Color.White,
-                                    selectedTextColor = Color(0xFF38BDF8),
-                                    indicatorColor = Color(0xFF0284C7),
-                                    unselectedIconColor = Color(0xFF94A3B8),
-                                    unselectedTextColor = Color(0xFF94A3B8)
-                                ),
-                                modifier = Modifier.testTag("tab_3d_model")
-                            )
-
-                            NavigationBarItem(
-                                selected = currentTab == MainTab.REPAIR_MANUAL,
-                                onClick = { viewModel.setTab(MainTab.REPAIR_MANUAL) },
-                                icon = { Icon(Icons.Default.MenuBook, contentDescription = "Manual") },
-                                label = { Text("Manual") },
-                                colors = NavigationBarItemDefaults.colors(
-                                    selectedIconColor = Color.White,
-                                    selectedTextColor = Color(0xFF38BDF8),
-                                    indicatorColor = Color(0xFF0284C7),
-                                    unselectedIconColor = Color(0xFF94A3B8),
-                                    unselectedTextColor = Color(0xFF94A3B8)
-                                ),
-                                modifier = Modifier.testTag("tab_manual")
-                            )
-
-                            NavigationBarItem(
-                                selected = currentTab == MainTab.DIAGNOSTICS,
-                                onClick = { viewModel.setTab(MainTab.DIAGNOSTICS) },
-                                icon = { Icon(Icons.Default.Psychology, contentDescription = "Diagnostics") },
-                                label = { Text("Diagnostics") },
-                                colors = NavigationBarItemDefaults.colors(
-                                    selectedIconColor = Color.White,
-                                    selectedTextColor = Color(0xFF38BDF8),
-                                    indicatorColor = Color(0xFF0284C7),
-                                    unselectedIconColor = Color(0xFF94A3B8),
-                                    unselectedTextColor = Color(0xFF94A3B8)
-                                ),
-                                modifier = Modifier.testTag("tab_diagnostics")
-                            )
-
-                            NavigationBarItem(
-                                selected = currentTab == MainTab.MAINTENANCE,
-                                onClick = { viewModel.setTab(MainTab.MAINTENANCE) },
-                                icon = { Icon(Icons.Default.Speed, contentDescription = "Maintenance") },
-                                label = { Text("Schedule") },
-                                colors = NavigationBarItemDefaults.colors(
-                                    selectedIconColor = Color.White,
-                                    selectedTextColor = Color(0xFF38BDF8),
-                                    indicatorColor = Color(0xFF0284C7),
-                                    unselectedIconColor = Color(0xFF94A3B8),
-                                    unselectedTextColor = Color(0xFF94A3B8)
-                                ),
-                                modifier = Modifier.testTag("tab_maintenance")
-                            )
-
-                            NavigationBarItem(
-                                selected = currentTab == MainTab.PARTS_CART,
-                                onClick = { viewModel.setTab(MainTab.PARTS_CART) },
-                                icon = {
-                                    BadgedBox(
-                                        badge = {
-                                            if (cartItems.isNotEmpty()) {
-                                                Badge(
-                                                    containerColor = Color(0xFF10B981),
-                                                    contentColor = Color.White
-                                                ) {
-                                                    Text("${cartItems.sumOf { it.quantity }}")
-                                                }
-                                            }
-                                        }
-                                    ) {
-                                        Icon(Icons.Default.ShoppingCart, contentDescription = "Parts Cart")
-                                    }
-                                },
-                                label = { Text("Parts Cart") },
-                                colors = NavigationBarItemDefaults.colors(
-                                    selectedIconColor = Color.White,
-                                    selectedTextColor = Color(0xFF10B981),
-                                    indicatorColor = Color(0xFF059669),
-                                    unselectedIconColor = Color(0xFF94A3B8),
-                                    unselectedTextColor = Color(0xFF94A3B8)
-                                ),
-                                modifier = Modifier.testTag("tab_parts_cart")
-                            )
-                        }
-                    }
-                ) { innerPadding ->
-                    Box(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(innerPadding)
-                    ) {
-                        when (currentTab) {
-                            MainTab.LOUNGE -> LoungeScreen(
-                                vehicleProfile = vehicleProfile,
-                                maintenanceLogs = maintenanceLogs,
-                                upcomingTasks = upcomingTasks,
-                                skillLabel = skillLevel.label,
-                                onOpenSkillSettings = {},
-                                onOpenVoiceSettings = {},
-                                onNavigate = { tab -> viewModel.setTab(tab) }
-                            )
-
-                            else -> RouteUnderReviewScreen(
-                                tab = currentTab,
-                                onReturnToLounge = { viewModel.setTab(MainTab.LOUNGE) }
-                            )
-                        }
-                    }
-                }
+                    onReturnToLounge = { selectedTab = MainTab.LOUNGE }
+                )
             }
         }
     }
+}
+
+/**
+ * Track 1/3 cold-launch root. It composes LoungeScreen() with no ViewModel, Room, voice,
+ * preference, navigation, or coroutine dependency. Feature routes remain isolated for device
+ * testing while SAFE_SHELL_MODE is true.
+ */
+@Composable
+private fun SafeLaunchShell(
+    selectedTab: MainTab,
+    onTabSelected: (MainTab) -> Unit,
+    onReturnToLounge: () -> Unit
+) {
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        containerColor = Color(0xFF0F172A),
+        bottomBar = {
+            NavigationBar(
+                containerColor = Color(0xFF0F172A),
+                contentColor = Color.White,
+                modifier = Modifier.testTag("main_navigation_bar")
+            ) {
+                SafeTabButton(MainTab.LOUNGE, selectedTab, "Lounge", Icons.Default.Home, "tab_lounge", onTabSelected)
+                SafeTabButton(MainTab.VIEW_3D, selectedTab, "3D Model", Icons.Default.ViewInAr, "tab_3d_model", onTabSelected)
+                SafeTabButton(MainTab.REPAIR_MANUAL, selectedTab, "Manual", Icons.Default.MenuBook, "tab_manual", onTabSelected)
+                SafeTabButton(MainTab.DIAGNOSTICS, selectedTab, "Diagnostics", Icons.Default.Psychology, "tab_diagnostics", onTabSelected)
+                SafeTabButton(MainTab.MAINTENANCE, selectedTab, "Schedule", Icons.Default.Speed, "tab_maintenance", onTabSelected)
+                SafeTabButton(MainTab.PARTS_CART, selectedTab, "Parts", Icons.Default.ShoppingCart, "tab_parts_cart", onTabSelected)
+            }
+        }
+    ) { innerPadding ->
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+        ) {
+            when (selectedTab) {
+                MainTab.LOUNGE -> LoungeScreen()
+                else -> RouteUnderReviewScreen(
+                    tab = selectedTab,
+                    onReturnToLounge = onReturnToLounge
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun RowScope.SafeTabButton(
+    tab: MainTab,
+    selectedTab: MainTab,
+    label: String,
+    icon: androidx.compose.ui.graphics.vector.ImageVector,
+    tag: String,
+    onTabSelected: (MainTab) -> Unit
+) {
+    NavigationBarItem(
+        selected = selectedTab == tab,
+        onClick = { onTabSelected(tab) },
+        icon = { Icon(icon, contentDescription = label) },
+        label = { Text(label) },
+        colors = NavigationBarItemDefaults.colors(
+            selectedIconColor = Color.White,
+            selectedTextColor = Color(0xFFF59E0B),
+            indicatorColor = Color(0xFF92400E),
+            unselectedIconColor = Color(0xFF94A3B8),
+            unselectedTextColor = Color(0xFF94A3B8)
+        ),
+        modifier = Modifier.testTag(tag)
+    )
 }
 
 /**
@@ -404,19 +174,22 @@ private fun RouteUnderReviewScreen(
         Surface(
             color = Color(0xFF182231),
             shape = RoundedCornerShape(24.dp),
-            border = BorderStroke(1.dp, Color(0xFFF59E0B).copy(alpha = 0.75f)),
             modifier = Modifier.testTag("route_under_review")
         ) {
             Column(
                 modifier = Modifier.padding(22.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Icon(Icons.Default.Shield, contentDescription = null, tint = Color(0xFFFBBF24), modifier = Modifier.size(34.dp))
+                Icon(Icons.Default.Shield, contentDescription = null, tint = Color(0xFFFBBF24))
                 Spacer(modifier = Modifier.height(12.dp))
                 Text(title, color = Color.White, style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold))
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
-                    text = "This function is temporarily under physical-device review while the crash loop is isolated. It is not being presented as ready.",
+                    text = if (SAFE_SHELL_MODE) {
+                        "This function is temporarily under physical-device review while the crash loop is isolated. It is not being presented as ready."
+                    } else {
+                        "This function is not yet enabled for this build."
+                    },
                     color = Color(0xFFCBD5E1),
                     style = MaterialTheme.typography.bodyMedium
                 )
@@ -425,7 +198,9 @@ private fun RouteUnderReviewScreen(
                     color = Color(0xFF0284C7),
                     contentColor = Color.White,
                     shape = RoundedCornerShape(14.dp),
-                    modifier = Modifier.clickable(onClick = onReturnToLounge).testTag("return_to_lounge_btn")
+                    modifier = Modifier
+                        .clickable(onClick = onReturnToLounge)
+                        .testTag("return_to_lounge_btn")
                 ) {
                     Text(
                         "Return to Lounge",
