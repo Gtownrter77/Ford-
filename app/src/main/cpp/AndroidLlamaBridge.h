@@ -3,10 +3,11 @@
 #include <jni.h>
 
 /**
- * Android JNI declarations only.
+ * Android JNI declarations for the shared llama.cpp-backed inference engine.
  *
- * This header does not load a native library, request storage permission, load a
- * GGUF file, or invoke llama.cpp. JNI package names match LlamaNative.kt.
+ * The active Android app still does not load this library or request model storage;
+ * JNI package names match LlamaNative.kt and are wired only after the documented
+ * Gradle/CMake integration steps are applied.
  */
 extern "C" {
 

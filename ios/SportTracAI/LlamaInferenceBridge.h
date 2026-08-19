@@ -9,6 +9,10 @@ NS_ASSUME_NONNULL_BEGIN
  * llama.cpp are added to an Xcode project.
  */
 @interface LlamaInferenceBridge : NSObject
+{
+@private
+    void *_engine;
+}
 
 - (BOOL)loadModelAtPath:(NSString *)modelPath error:(NSError * _Nullable * _Nullable)error;
 - (NSString *)generateForPrompt:(NSString *)prompt

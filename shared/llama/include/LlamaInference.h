@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+#include <memory>
 #include <string>
 
 namespace sporttrac::llama {
@@ -18,13 +19,19 @@ struct InferenceResult {
 };
 
 /**
- * Shared llama.cpp-facing contract only.
+ * Shared llama.cpp inference contract.
  *
- * This class does not include llama.h, link llama.cpp, allocate a model context,
- * read a GGUF file, or perform inference until a native integration phase wires it.
+ * The implementation loads a caller-provided GGUF path. It does not download,
+ * embed, install, or otherwise distribute a model file.
  */
 class LlamaInference {
 public:
+    LlamaInference();
+    ~LlamaInference();
+
+    LlamaInference(const LlamaInference&) = delete;
+    LlamaInference& operator=(const LlamaInference&) = delete;
+
     bool loadModel(const std::string& modelPath);
     InferenceResult generate(const std::string& prompt, const GenerationConfig& config);
     void unloadModel();
@@ -33,6 +40,8 @@ public:
     [[nodiscard]] const std::string& modelPath() const;
 
 private:
+    struct Impl;
+    std::unique_ptr<Impl> impl_;
     std::string modelPath_;
     bool loaded_ = false;
 };
