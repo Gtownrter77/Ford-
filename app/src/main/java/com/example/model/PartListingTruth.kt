@@ -25,7 +25,8 @@ fun PriceQuoteRecord.truthSummary(): PartListingTruth {
         },
         fitmentLabel = when (fitmentEvidence) {
             FitmentEvidence.VIN_REQUIRED -> "Fitment requires VIN or vehicle confirmation"
-            FitmentEvidence.CATALOG_MATCH -> "Catalog match — verify before purchase"
+            FitmentEvidence.PART_NUMBER_MATCH -> "Part-number match — verify vehicle fitment before purchase"
+            FitmentEvidence.SELLER_AND_FITMENT_REVIEW -> "Seller and fitment review required before purchase"
             FitmentEvidence.CONFIRMED_BY_USER -> "Fitment confirmed by user"
         },
         sellerLabel = sellerName?.takeIf { it.isNotBlank() } ?: "Seller not verified by this app",

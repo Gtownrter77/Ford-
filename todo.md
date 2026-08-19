@@ -220,3 +220,58 @@
 - [ ] Inspect the configured repository remote and available authorization state.
 - [ ] Commit the reconciled documentation and existing local project changes without running a build or packaging artifacts.
 - [ ] Push the commit to Ry’s confirmed GitHub repository and verify the remote reference.
+
+## Requested Supabase connection verification — read-only
+- [ ] Locate and inspect `/lib/supabaseClient.ts` for `createClient`, the expected public environment-variable names, and missing-variable handling.
+- [ ] Check the available local and authorized hosting configuration for `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` without exposing secret values.
+- [ ] Verify the existence of the `tenants`, `users`, `leads`, `inspections`, `reports`, and `audit_logs` tables in the authorized Supabase project.
+- [ ] Run and record the results of the requested read-only counts for `users` and `tenants`, or document the exact access limitation.
+- [ ] Reconfirm the complete Supabase connection checklist after an authenticated dashboard session is available, and report only confirmed evidence.
+- [ ] Locate the stated `~/projects/roof-os` codebase and inspect its actual Supabase client and local environment configuration before drawing connection conclusions.
+- [ ] Create the user-confirmed `roof-os-final` Supabase project in `us-east-1` without exposing or recording the supplied database password.
+- [ ] Retrieve and verify the new project’s URL and browser-safe anonymous key from its API settings after provisioning finishes.
+- [ ] Verify the accessible Supabase project connection and current schema state before any migration execution.
+- [ ] Preflight the generated migration against the live project and obtain a separate confirmation before creating tables, policies, triggers, or indexes.
+- [ ] Check the current Supabase status page and assess a viable two-minute monitoring approach without using a task schedule for high-frequency polling.
+- [ ] Keep CAPTCHA completion and account login under user control; do not attempt to solve or bypass CAPTCHA protections.
+- [x] Implement a browser-open Supabase status monitor that polls the official status page at initial load and every two minutes, showing a clear Waiting or Ready state.
+- [x] Verify that the monitor does not claim true background operation after the browser page closes; document that boundary at delivery.
+- [ ] Audit available Supabase, email, and hosting access before claiming a live lead, email delivery, migration execution, or production deployment.
+- [x] Add a persistent dismissible browser notification on a Waiting-to-Ready Supabase status transition.
+- [x] Add a local, clearly labeled approval state for the prototype follow-up; do not represent it as a live email send.
+- [x] Document the missing prerequisites for database migration, real lead persistence, email delivery, and a full feature-count verification.
+
+## Confirmed physical-device ANR — source-level diagnosis
+- [x] Preserve the screenshot-derived device evidence: the 3D parts screen partially renders, then Android reports that `Sport Trac 3D` is not responding.
+- [x] Trace the 3D viewport, parts-layer state, and screen/navigation code for a UI-thread block or unbounded rendering/recomposition path.
+- [ ] Produce a confidence-limited root-cause assessment and a fix-first recommendation; obtain logcat before claiming an exact blocking method or line.
+
+## Authorized independent Lounge workstream — avoid 3D renderer and builds
+- [x] Review the Lounge first-visit state and existing onboarding controls without navigating to or modifying the 3D renderer.
+- [x] Improve the Lounge entry experience and source-level onboarding flow without running a build.
+- [x] Perform source-only validation and document that physical-device verification remains blocked by the separate 3D ANR.
+
+## Authorized physical-device ANR repair and rebuild
+- [x] Replace the default full 56-component 3D render path with an explicit, resource-bounded model-loading path.
+- [x] Defer high-cost hardware subassemblies and bloom from the initial interactive scene; preserve an explicit detail-mode path for later loading.
+- [x] Run source checks, unit tests, and the authorized debug APK build after the repair.
+- [x] Package the rebuilt APK with a checksum and require a fresh physical-device ANR verification before release claims.
+
+## Reported physical-device force-close after function tap
+- [ ] Record the current evidence: the rebuilt APK launches, but opening a function force-closes the app; exact route and stack trace are not yet captured.
+- [ ] Inventory every MainTab navigation route and trace composable construction for immediate crash risks.
+- [ ] Repair the identified route failure, rebuild, and perform a focused phone re-test before making another readiness claim.
+
+## Authorized crash-loop containment and route isolation
+- [x] Produce a minimal safe application shell that does not construct the high-risk function composables at startup.
+- [x] Make each non-shell function explicitly unavailable until it is individually re-enabled for device testing, rather than allowing an unexplained force-close.
+- [x] Build and package the safe-shell APK, then test Lounge launch before testing any re-enabled route.
+
+## Authorized GitHub reconciliation — current source and evidence
+- [ ] Clone the confirmed `Gtownrter77/Ford-` repository into a fresh Git checkout and compare it with the local working source.
+- [ ] Reconcile current source, the safe-shell repair, and all current evidence records without committing generated build outputs or APK binaries.
+- [ ] Commit, push, and verify the remote `main` reference before resuming the next crash-isolation feature pass.
+
+## Requested tenant-aware Supabase migration — generate only
+- [x] Design the `tenants`, `users`, `leads`, `inspections`, `reports`, and `audit_logs` schema with foreign keys, tenant scoping, timestamps, and practical indexes.
+- [x] Generate and locally validate a non-destructive SQL migration script; do not execute it against Supabase without separate authorization.

@@ -38,6 +38,9 @@ import com.example.ui.viewmodel.ExplorerViewModel
 import com.example.ui.viewmodel.MainTab
 import com.example.util.VoiceCommandManager
 
+// Physical-device crash-loop containment. Re-enable each function only after focused device evidence.
+private const val SAFE_SHELL_MODE = true
+
 class MainActivity : ComponentActivity() {
 
     private val viewModel: ExplorerViewModel by viewModels()
@@ -74,7 +77,7 @@ class MainActivity : ComponentActivity() {
                 val cachedSymptomsCount by viewModel.cachedSymptomsCount.collectAsStateWithLifecycle()
                 val cacheManifest by viewModel.cacheManifest.collectAsStateWithLifecycle()
 
-                if (isTeamPanelOpen) {
+                if (!SAFE_SHELL_MODE && isTeamPanelOpen) {
                     TeamPanelDialog(
                         currentSkillLevel = skillLevel,
                         onSkillLevelChange = { level -> viewModel.setSkillLevel(level) },
@@ -82,7 +85,7 @@ class MainActivity : ComponentActivity() {
                     )
                 }
 
-                if (isVoiceSettingsOpen) {
+                if (!SAFE_SHELL_MODE && isVoiceSettingsOpen) {
                     MentorVoiceSettingsDialog(
                         cached3DCount = cached3DCount,
                         cachedManualsCount = cachedManualsCount,
@@ -152,7 +155,7 @@ class MainActivity : ComponentActivity() {
                                             modifier = Modifier
                                                 .size(34.dp)
                                                 .clip(CircleShape)
-                                                .clickable { viewModel.openVoiceSettings() }
+                                                .clickable(enabled = !SAFE_SHELL_MODE) { viewModel.openVoiceSettings() }
                                                 .testTag("btn_open_voice_settings")
                                         ) {
                                             Box(contentAlignment = Alignment.Center) {
@@ -172,7 +175,7 @@ class MainActivity : ComponentActivity() {
                                             modifier = Modifier
                                                 .size(34.dp)
                                                 .clip(CircleShape)
-                                                .clickable {
+                                                .clickable(enabled = !SAFE_SHELL_MODE) {
                                                     if (voiceState is com.example.util.VoiceState.Listening) {
                                                         voiceCommandManager.stopListening()
                                                     } else {
@@ -196,7 +199,7 @@ class MainActivity : ComponentActivity() {
                                             shape = RoundedCornerShape(20.dp),
                                             border = BorderStroke(1.dp, skillLevel.color),
                                             modifier = Modifier
-                                                .clickable { viewModel.openTeamPanel() }
+                                                .clickable(enabled = !SAFE_SHELL_MODE) { viewModel.openTeamPanel() }
                                                 .testTag("btn_open_team_panel")
                                         ) {
                                             Row(
@@ -356,71 +359,79 @@ class MainActivity : ComponentActivity() {
                                 maintenanceLogs = maintenanceLogs,
                                 upcomingTasks = upcomingTasks,
                                 skillLabel = skillLevel.label,
-                                onOpenSkillSettings = { viewModel.openTeamPanel() },
-                                onOpenVoiceSettings = { viewModel.openVoiceSettings() },
+                                onOpenSkillSettings = {},
+                                onOpenVoiceSettings = {},
                                 onNavigate = { tab -> viewModel.setTab(tab) }
                             )
 
-                            MainTab.VIEW_3D -> Model3DScreen(
-                                components = filteredComponents,
-                                selectedComponent = selectedComponent,
-                                activeSystem = activeSystem,
-                                cached3DCount = cached3DCount,
-                                cachedManualsCount = cachedManualsCount,
-                                cachedSymptomsCount = cachedSymptomsCount,
-                                requestDetailSheetOpen = requestDetailSheetOpen,
-                                onClearDetailSheetRequest = { viewModel.clearDetailSheetRequest() },
-                                onSelectSystem = { sys -> viewModel.setSystemFilter(sys) },
-                                onSelectComponent = { comp -> viewModel.selectComponent(comp) },
-                                onAddToCart = { comp -> viewModel.addPartForComponent(comp) },
-                                onReSyncOfflineCache = { viewModel.resyncOfflineCache() },
-                                onClearOfflineCache = { viewModel.clearOfflineCache() }
-                            )
-
-                            MainTab.REPAIR_MANUAL -> RepairManualScreen(
-                                components = filteredComponents,
-                                activeSystem = activeSystem,
-                                searchQuery = searchQuery,
-                                onSearchQueryChange = { q -> viewModel.setManualSearchQuery(q) },
-                                onSelectSystem = { sys -> viewModel.setSystemFilter(sys) },
-                                onSelectComponent = { comp -> viewModel.selectComponent(comp) },
-                                onAddToCart = { comp -> viewModel.addPartForComponent(comp) }
-                            )
-
-                            MainTab.DIAGNOSTICS -> DiagnosticsScreen(
-                                chatMessages = chatMessages,
-                                isThinking = isGeminiThinking,
-                                onSendMessage = { text -> viewModel.sendDiagnosticQuery(text) },
-                                onClearChat = { viewModel.clearChatHistory() },
-                                onNavigateToComponent = { compId -> viewModel.selectComponentById(compId) }
-                            )
-
-                            MainTab.MAINTENANCE -> MaintenanceScreen(
-                                vehicleProfile = vehicleProfile,
-                                maintenanceLogs = maintenanceLogs,
-                                upcomingTasks = upcomingTasks,
-                                onUpdateMileage = { miles -> viewModel.updateMileage(miles) },
-                                onLogService = { log -> viewModel.logMaintenance(log) },
-                                onDeleteLog = { id -> viewModel.deleteLog(id) },
-                                onAddUpcomingTask = { task -> viewModel.addUpcomingTask(task) },
-                                onCompleteUpcomingTask = { task, miles, cost, notes -> viewModel.completeUpcomingTask(task, miles, cost, notes) },
-                                onDeleteUpcomingTask = { taskId -> viewModel.deleteUpcomingTask(taskId) }
-                            )
-
-                            MainTab.PARTS_CART -> PartsShoppingScreen(
-                                cartItems = cartItems,
-                                commercialAccount = commercialAccount,
-                                cartSortOption = cartSortOption,
-                                orderSuccessNotice = orderSuccessNotice,
-                                onSortOptionChange = { sort -> viewModel.setCartSortOption(sort) },
-                                onUpdateQuantity = { id, q -> viewModel.updateCartItemQuantity(id, q) },
-                                onUpdateFulfillment = { id, ful -> viewModel.updateCartItemFulfillment(id, ful) },
-                                onRemoveItem = { id -> viewModel.removeFromCart(id) },
-                                onAddPartToCart = { part -> viewModel.addPartToCart(part) },
-                                onDismissSuccessNotice = { viewModel.dismissOrderSuccessNotice() }
+                            else -> RouteUnderReviewScreen(
+                                tab = currentTab,
+                                onReturnToLounge = { viewModel.setTab(MainTab.LOUNGE) }
                             )
                         }
                     }
+                }
+            }
+        }
+    }
+}
+
+/**
+ * During physical-device isolation, disabled routes state their status plainly instead of
+ * constructing a feature screen that could repeat the observed crash loop.
+ */
+@Composable
+private fun RouteUnderReviewScreen(
+    tab: MainTab,
+    onReturnToLounge: () -> Unit
+) {
+    val title = when (tab) {
+        MainTab.VIEW_3D -> "3D Practice Model"
+        MainTab.REPAIR_MANUAL -> "Repair Manual"
+        MainTab.DIAGNOSTICS -> "Diagnostics"
+        MainTab.MAINTENANCE -> "Service Schedule"
+        MainTab.PARTS_CART -> "Part Store"
+        MainTab.LOUNGE -> "Lounge"
+    }
+
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color(0xFF0F172A))
+            .padding(24.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Surface(
+            color = Color(0xFF182231),
+            shape = RoundedCornerShape(24.dp),
+            border = BorderStroke(1.dp, Color(0xFFF59E0B).copy(alpha = 0.75f)),
+            modifier = Modifier.testTag("route_under_review")
+        ) {
+            Column(
+                modifier = Modifier.padding(22.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Icon(Icons.Default.Shield, contentDescription = null, tint = Color(0xFFFBBF24), modifier = Modifier.size(34.dp))
+                Spacer(modifier = Modifier.height(12.dp))
+                Text(title, color = Color.White, style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold))
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = "This function is temporarily under physical-device review while the crash loop is isolated. It is not being presented as ready.",
+                    color = Color(0xFFCBD5E1),
+                    style = MaterialTheme.typography.bodyMedium
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Surface(
+                    color = Color(0xFF0284C7),
+                    contentColor = Color.White,
+                    shape = RoundedCornerShape(14.dp),
+                    modifier = Modifier.clickable(onClick = onReturnToLounge).testTag("return_to_lounge_btn")
+                ) {
+                    Text(
+                        "Return to Lounge",
+                        modifier = Modifier.padding(horizontal = 18.dp, vertical = 11.dp),
+                        style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Bold)
+                    )
                 }
             }
         }

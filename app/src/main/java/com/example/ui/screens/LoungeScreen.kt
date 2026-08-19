@@ -20,6 +20,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Build
+import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.DirectionsCar
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.LocalGasStation
@@ -27,6 +28,7 @@ import androidx.compose.material.icons.filled.MenuBook
 import androidx.compose.material.icons.filled.Psychology
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.filled.Speed
+import androidx.compose.material.icons.filled.Shield
 import androidx.compose.material.icons.filled.Tune
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -35,9 +37,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -66,6 +73,14 @@ fun LoungeScreen(
     modifier: Modifier = Modifier
 ) {
     val profile = vehicleProfile ?: VehicleProfileEntity()
+    val context = LocalContext.current
+    val loungePrefs = remember {
+        context.getSharedPreferences("sport_trac_lounge", android.content.Context.MODE_PRIVATE)
+    }
+    var hasAcknowledgedWelcome by remember {
+        mutableStateOf(loungePrefs.getBoolean("welcome_acknowledged", false))
+    }
+    val nextTask = upcomingTasks.firstOrNull()
 
     LazyColumn(
         modifier = modifier
@@ -100,8 +115,28 @@ fun LoungeScreen(
             }
         }
 
+        if (!hasAcknowledgedWelcome) {
+            item {
+                FirstVisitCard(
+                    onOpenSkillSettings = onOpenSkillSettings,
+                    onOpenVoiceSettings = onOpenVoiceSettings,
+                    onContinue = {
+                        loungePrefs.edit().putBoolean("welcome_acknowledged", true).apply()
+                        hasAcknowledgedWelcome = true
+                    }
+                )
+            }
+        }
+
         item {
             VehicleWelcomeCard(profile = profile, onOpenSkillSettings = onOpenSkillSettings)
+        }
+
+        item {
+            NextPracticalStepCard(
+                task = nextTask,
+                onNavigate = { onNavigate(MainTab.MAINTENANCE) }
+            )
         }
 
         item {
@@ -111,12 +146,13 @@ fun LoungeScreen(
         items(
             items = listOf(
                 Doorway(
-                    title = "Get to Work",
-                    subtitle = "Practice on the to-scale truck before the real repair.",
+                    title = "3D Practice Model",
+                    subtitle = "Temporarily under device review. Use the Manual, Diagnostics, or Parts Plan while it is being stabilized.",
                     icon = Icons.Default.Build,
                     accent = Color(0xFFF59E0B),
-                    tab = MainTab.VIEW_3D,
-                    tag = "door_shop"
+                    tab = null,
+                    tag = "door_shop",
+                    availability = "UNDER REVIEW"
                 ),
                 Doorway(
                     title = "Figure It Out",
@@ -149,7 +185,7 @@ fun LoungeScreen(
                     accent = Color(0xFFFB7185),
                     tab = null,
                     tag = "door_body_shop",
-                    roadmapOnly = true
+                    availability = "NEXT"
                 )
             ),
             key = { it.title }
@@ -179,8 +215,119 @@ private data class Doorway(
     val accent: Color,
     val tab: MainTab?,
     val tag: String,
-    val roadmapOnly: Boolean = false
+    val availability: String? = null
 )
+
+@Composable
+private fun FirstVisitCard(
+    onOpenSkillSettings: () -> Unit,
+    onOpenVoiceSettings: () -> Unit,
+    onContinue: () -> Unit
+) {
+    Card(
+        colors = CardDefaults.cardColors(containerColor = Color(0xFF172554)),
+        border = BorderStroke(1.dp, Color(0xFF38BDF8).copy(alpha = 0.7f)),
+        shape = RoundedCornerShape(22.dp),
+        modifier = Modifier.fillMaxWidth().testTag("lounge_first_visit_card")
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Surface(
+                    color = Color(0xFF38BDF8).copy(alpha = 0.16f),
+                    shape = RoundedCornerShape(14.dp),
+                    modifier = Modifier.size(46.dp)
+                ) {
+                    Box(contentAlignment = Alignment.Center) {
+                        Icon(Icons.Default.Shield, contentDescription = null, tint = Color(0xFF7DD3FC), modifier = Modifier.size(25.dp))
+                    }
+                }
+                Spacer(modifier = Modifier.width(12.dp))
+                Column(modifier = Modifier.weight(1f)) {
+                    Text("Start on your terms", color = Color.White, style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold))
+                    Text("Set the kind of help you want before turning a wrench.", color = Color(0xFFBAE6FD), style = MaterialTheme.typography.bodySmall)
+                }
+            }
+            Spacer(modifier = Modifier.height(14.dp))
+            LoungeCommitmentRow("Mentor microphone stays off until you choose to use it.")
+            LoungeCommitmentRow("Parts are planning choices; no order or payment is placed from this screen.")
+            LoungeCommitmentRow("The interactive 3D model is marked under review instead of being presented as ready.")
+            Spacer(modifier = Modifier.height(14.dp))
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Surface(
+                    color = Color(0xFF0EA5E9),
+                    contentColor = Color.White,
+                    shape = RoundedCornerShape(12.dp),
+                    modifier = Modifier.clickable(onClick = onOpenSkillSettings).testTag("lounge_first_visit_guidance")
+                ) {
+                    Text("Set guidance", modifier = Modifier.padding(horizontal = 12.dp, vertical = 9.dp), style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Bold))
+                }
+                Surface(
+                    color = Color.Transparent,
+                    contentColor = Color(0xFFBAE6FD),
+                    border = BorderStroke(1.dp, Color(0xFF38BDF8).copy(alpha = 0.55f)),
+                    shape = RoundedCornerShape(12.dp),
+                    modifier = Modifier.clickable(onClick = onOpenVoiceSettings).testTag("lounge_first_visit_privacy")
+                ) {
+                    Text("Voice & privacy", modifier = Modifier.padding(horizontal = 12.dp, vertical = 9.dp), style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Bold))
+                }
+            }
+            Spacer(modifier = Modifier.height(10.dp))
+            Surface(
+                color = Color(0xFF1E3A5F),
+                contentColor = Color.White,
+                shape = RoundedCornerShape(12.dp),
+                modifier = Modifier.fillMaxWidth().clickable(onClick = onContinue).testTag("lounge_first_visit_continue")
+            ) {
+                Text(
+                    "I understand — open my Lounge",
+                    modifier = Modifier.padding(vertical = 10.dp),
+                    style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Bold),
+                    textAlign = androidx.compose.ui.text.style.TextAlign.Center
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun LoungeCommitmentRow(text: String) {
+    Row(modifier = Modifier.padding(vertical = 3.dp), verticalAlignment = Alignment.Top) {
+        Icon(Icons.Default.CheckCircle, contentDescription = null, tint = Color(0xFF5EEAD4), modifier = Modifier.size(16.dp))
+        Spacer(modifier = Modifier.width(8.dp))
+        Text(text, color = Color(0xFFDBEAFE), style = MaterialTheme.typography.bodySmall, modifier = Modifier.weight(1f))
+    }
+}
+
+@Composable
+private fun NextPracticalStepCard(
+    task: UpcomingTaskEntity?,
+    onNavigate: () -> Unit
+) {
+    Card(
+        colors = CardDefaults.cardColors(containerColor = Color(0xFF1C2A26)),
+        border = BorderStroke(1.dp, Color(0xFF34D399).copy(alpha = 0.55f)),
+        shape = RoundedCornerShape(18.dp),
+        modifier = Modifier.fillMaxWidth().clickable(onClick = onNavigate).testTag("lounge_next_step")
+    ) {
+        Row(modifier = Modifier.fillMaxWidth().padding(14.dp), verticalAlignment = Alignment.CenterVertically) {
+            Surface(color = Color(0xFF34D399).copy(alpha = 0.14f), shape = RoundedCornerShape(12.dp), modifier = Modifier.size(42.dp)) {
+                Box(contentAlignment = Alignment.Center) {
+                    Icon(Icons.Default.LocalGasStation, contentDescription = null, tint = Color(0xFF6EE7B7), modifier = Modifier.size(22.dp))
+                }
+            }
+            Spacer(modifier = Modifier.width(12.dp))
+            Column(modifier = Modifier.weight(1f)) {
+                Text("Next practical step", color = Color(0xFF6EE7B7), style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold, letterSpacing = 0.8.sp))
+                Text(
+                    text = task?.title ?: "Open the service schedule and choose what to plan next.",
+                    color = Color.White,
+                    style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold)
+                )
+            }
+            Text("OPEN", color = Color(0xFF6EE7B7), style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold))
+        }
+    }
+}
 
 @Composable
 private fun VehicleWelcomeCard(
@@ -277,11 +424,11 @@ private fun DoorwayCard(doorway: Doorway, onClick: () -> Unit) {
                         color = Color.White,
                         style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)
                     )
-                    if (doorway.roadmapOnly) {
+                    if (doorway.availability != null) {
                         Spacer(modifier = Modifier.width(8.dp))
                         Surface(color = Color(0xFF334155), shape = RoundedCornerShape(50)) {
                             Text(
-                                text = "NEXT",
+                                text = doorway.availability,
                                 color = Color(0xFFFBBF24),
                                 style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
                                 modifier = Modifier.padding(horizontal = 7.dp, vertical = 3.dp)

@@ -160,7 +160,10 @@ class ExplorerViewModel(application: Application) : AndroidViewModel(application
     }
 
     // Active Navigation Tab
-    private val _currentTab = MutableStateFlow(MainTab.VIEW_3D)
+    // The Lounge is intentionally the safe first route while the full interactive 3D scene
+    // remains under physical-device performance review. Users can still choose the 3D tab,
+    // but application startup no longer opens the known ANR-prone route automatically.
+    private val _currentTab = MutableStateFlow(MainTab.LOUNGE)
     val currentTab: StateFlow<MainTab> = _currentTab.asStateFlow()
 
     // Active System Filter (Engine, Intake, Trans, Cooling, A/C, Elect, Brakes)
@@ -759,4 +762,3 @@ class ExplorerViewModel(application: Application) : AndroidViewModel(application
         }
     }
 }
-

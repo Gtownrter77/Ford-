@@ -100,6 +100,10 @@ enum class ViewportLayerTab {
     ANIMATION
 }
 
+// Physical-device ANR containment: the first interactive scene must remain bounded.
+// Detailed hardware and full-system exploration are explicit follow-up actions, not launch work.
+private const val SAFE_INITIAL_SCENE_COMPONENT_LIMIT = 8
+
 /**
  * Blender-Level 3D Keyframe Animation Tracks
  */
@@ -212,6 +216,8 @@ fun Interactive3DViewport(
     var activeLayerTab by remember { mutableStateOf(ViewportLayerTab.CLEAN) }
     var layerControllerState by remember { mutableStateOf(LayerControllerState()) }
     var showLayerControllerDialog by remember { mutableStateOf(false) }
+    var isInteractiveSceneLoaded by remember { mutableStateOf(false) }
+    var showHardwareDetail by remember { mutableStateOf(false) }
 
     if (showLayerControllerDialog) {
         LayerControllerDialog(
@@ -232,7 +238,8 @@ fun Interactive3DViewport(
     val showCalloutLeaders = layerControllerState.showCalloutLeaders
     val showTechnicalAnnotations = layerControllerState.showTechnicalAnnotations
     val showHudInfoCards = layerControllerState.showHudInfoCards
-    var showBloomEffect by remember { mutableStateOf(true) }
+    // Bloom is intentionally opt-in after the physical-device ANR. It amplifies overdraw.
+    var showBloomEffect by remember { mutableStateOf(false) }
     var clipPlaneSlice by remember { mutableFloatStateOf(1.0f) } // 0..1 cutaway
 
     // Sub-Assembly Exploded View & Hardware Filter State
@@ -278,11 +285,28 @@ fun Interactive3DViewport(
         label = "animatedZoom"
     )
 
-    // Filter components based on vehicle system tab & layer controller visibility state
-    val visibleComponents = remember(components, activeSystemFilter, layerControllerState) {
+    // Filter components based on vehicle system tab & layer controller visibility state.
+    // The complete filtered catalog is retained for the controls, but it is not rendered by default.
+    val filterMatchedComponents = remember(components, activeSystemFilter, layerControllerState) {
         components.filter { comp ->
             val systemMatch = (activeSystemFilter == VehicleSystem.ALL || comp.system == activeSystemFilter)
             systemMatch && layerControllerState.isPartVisible(comp)
+        }
+    }
+
+    // The first interactive frame is intentionally bounded. With ALL selected, render only the
+    // active part; with a system selected, keep the active part first and cap the scene at eight.
+    val visibleComponents = remember(filterMatchedComponents, selectedComponent?.id, activeSystemFilter, isInteractiveSceneLoaded) {
+        if (!isInteractiveSceneLoaded) {
+            emptyList()
+        } else {
+            val selectedVisible = filterMatchedComponents.firstOrNull { it.id == selectedComponent?.id }
+            val ordered = if (activeSystemFilter == VehicleSystem.ALL) {
+                listOfNotNull(selectedVisible ?: filterMatchedComponents.firstOrNull())
+            } else {
+                listOfNotNull(selectedVisible) + filterMatchedComponents.filterNot { it.id == selectedComponent?.id }
+            }
+            ordered.take(SAFE_INITIAL_SCENE_COMPONENT_LIMIT)
         }
     }
 
@@ -426,8 +450,20 @@ fun Interactive3DViewport(
             arrayOf<List<ProjectedComponentCenter>>(emptyList())
         }
 
-        // BILT 3D Canvas Visualizer (Hardware-Accelerated GLTF Render Canvas)
-        Canvas(
+        if (!isInteractiveSceneLoaded) {
+            SafeSceneLoadGate(
+                availableComponentCount = filterMatchedComponents.size,
+                onLoadSafeScene = {
+                    activeLayerTab = ViewportLayerTab.CLEAN
+                    showHardwareDetail = false
+                    showBloomEffect = false
+                    isInteractiveSceneLoaded = true
+                },
+                modifier = Modifier.align(Alignment.Center)
+            )
+        } else {
+            // BILT 3D Canvas Visualizer (procedural Canvas render path)
+            Canvas(
             modifier = Modifier
                 .fillMaxSize()
                 .graphicsLayer {
@@ -696,7 +732,7 @@ fun Interactive3DViewport(
                 }
 
                 // 3. Transform & Render Connected Sub-Assemblies (Bolts, Screws, Washers, Gaskets, Belts)
-                if (comp.subAssemblies.isNotEmpty()) {
+                if (showHardwareDetail && comp.subAssemblies.isNotEmpty()) {
                     comp.subAssemblies.forEach { subPart ->
                         if (subAssemblyTypeFilter != null && subPart.type != subAssemblyTypeFilter) {
                             return@forEach
@@ -1203,6 +1239,30 @@ fun Interactive3DViewport(
                 sinP = sinP,
                 textMeasurer = textMeasurer
             )
+            }
+        }
+
+        if (isInteractiveSceneLoaded && !showHardwareDetail) {
+            Surface(
+                color = Color(0xE60F172A),
+                shape = RoundedCornerShape(14.dp),
+                border = BorderStroke(1.dp, Color(0xFFF59E0B).copy(alpha = 0.70f)),
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .padding(12.dp)
+                    .clip(RoundedCornerShape(14.dp))
+                    .clickable {
+                        // Hardware stays opt-in and bloom stays off for the first detail load.
+                        showHardwareDetail = true
+                        showBloomEffect = false
+                    }
+                    .testTag("load_hardware_detail_btn")
+            ) {
+                Column(modifier = Modifier.padding(horizontal = 12.dp, vertical = 9.dp)) {
+                    Text("SAFE SCENE · ${visibleComponents.size} PARTS", color = Color(0xFFBAE6FD), style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold))
+                    Text("Load hardware detail", color = Color(0xFFFBBF24), style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold))
+                }
+            }
         }
 
         // Unified Layer Control Bar & Layer Panels (Declutters 3D Canvas)
