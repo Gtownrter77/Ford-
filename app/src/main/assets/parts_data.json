@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "vehicle": {
+    "vehicleId": "2004-ford-explorer-sport-trac-wreck",
+    "displayName": "2004 Ford Explorer Sport Trac — Repair Realm",
+    "modelAssetPath": "models/ford_explorer_sport_trac_2004_wreck.glb",
+    "overviewCamera": {
+      "position": [8.2, 4.4, 10.6],
+      "lookAt": [0.0, 1.2, 0.0]
+    }
+  },
+  "parts": [
+    {
+      "id": "front_bumper",
+      "nodeNames": ["front_bumper", "bumper_front", "FrontBumper"],
+      "partName": "Front Bumper Cover Assembly",
+      "oemPartNumber": "2L2Z-17D957-BA",
+      "aftermarketPartNumber": "CAPA-compatible equivalent — verify trim and paint code",
+      "focusCamera": {
+        "position": [4.8, 1.7, 7.4],
+        "lookAt": [0.0, 0.9, 3.0]
+      },
+      "replacementSteps": [
+        "Disconnect the negative battery terminal and support the damaged bumper cover.",
+        "Remove grille, wheel-well fasteners, lower retainers, and any lamp or sensor connectors.",
+        "Transfer reusable energy absorber, lamps, brackets, and hardware after inspecting for hidden damage.",
+        "Install the replacement cover loosely, align panel gaps, then torque retainers to the service-manual specification."
+      ],
+      "mentorScript": "Start with support and safety. Hidden bumper damage is common, so inspect the reinforcement and mounting brackets before installing a new cover."
+    },
+    {
+      "id": "front_left_wheel",
+      "nodeNames": ["front_left_wheel", "wheel_fl", "FrontLeftWheel"],
+      "partName": "Front Left Wheel, Tire, and Brake Inspection Zone",
+      "oemPartNumber": "Wheel application varies by trim — verify wheel diameter and bolt pattern",
+      "aftermarketPartNumber": "Use a tire-and-wheel fitment catalog matched to 2004 Sport Trac trim",
+      "focusCamera": {
+        "position": [-5.1, 2.0, 5.6],
+        "lookAt": [-2.8, 0.7, 2.3]
+      },
+      "replacementSteps": [
+        "Chock the rear wheels, raise the vehicle at the approved front lifting point, and support it with a rated stand.",
+        "Remove the wheel and inspect tire sidewall, rim runout, brake hose routing, and suspension hardware.",
+        "Replace damaged components one system at a time; do not reuse compromised lug hardware.",
+        "Install the wheel, lower the vehicle, and torque lug nuts in a star pattern to the current service-manual specification."
+      ],
+      "mentorScript": "A wheel-zone impact can move more than the wheel itself. Check brake lines, steering links, and suspension mounting points before treating this as a tire-only repair."
+    },
+    {
+      "id": "driver_front_door",
+      "nodeNames": ["driver_front_door", "door_driver_front", "DriverFrontDoor"],
+      "partName": "Driver Front Door Assembly",
+      "oemPartNumber": "Door shell varies by paint code, trim, and power-option package",
+      "aftermarketPartNumber": "Use a corrosion-protected shell; transfer compatible internal hardware after inspection",
+      "focusCamera": {
+        "position": [-7.3, 3.1, 1.8],
+        "lookAt": [-3.4, 1.5, 0.0]
+      },
+      "replacementSteps": [
+        "Disconnect battery power before opening harness connectors or working around side-impact wiring.",
+        "Support the door with a stand, mark hinge positions, and disconnect the harness through the body-side boot.",
+        "Transfer glass, regulator, latch, weather seals, and trim only after inspecting each part for collision damage.",
+        "Align the door for even gaps, verify latch engagement and weather sealing, then complete window and lock checks."
+      ],
+      "mentorScript": "Door alignment is a measurement job, not a force job. Stabilize the door, preserve hinge reference marks, and verify both latch engagement and window sealing before calling it finished."
+    },
+    {
+      "id": "engine_assembly",
+      "nodeNames": ["engine_assembly", "engine", "EngineAssembly"],
+      "partName": "4.0L SOHC V6 Engine Inspection Zone",
+      "oemPartNumber": "Verify engine code and emissions calibration before ordering engine-specific parts",
+      "aftermarketPartNumber": "Professional-grade, warranty-backed replacement components only",
+      "focusCamera": {
+        "position": [2.2, 5.8, 4.5],
+        "lookAt": [0.4, 2.2, 1.3]
+      },
+      "replacementSteps": [
+        "Allow the engine to cool fully and disconnect the negative battery cable before inspection.",
+        "Document fluid leaks, damaged mounts, broken accessories, and harness routing before removing parts.",
+        "Follow the workshop manual for the exact component procedure, torque sequence, and replacement seals.",
+        "After reassembly, verify fluid levels, check for leaks, and perform the required diagnostic and road-test checks."
+      ],
+      "mentorScript": "Use the engine bay as a system map. Before replacing any part, document what the impact moved, pinched, cracked, or contaminated. That prevents a quick repair from becoming a repeat repair."
+    },
+    {
+      "id": "rear_bumper",
+      "nodeNames": ["rear_bumper", "bumper_rear", "RearBumper"],
+      "partName": "Rear Bumper and Step Pad Assembly",
+      "oemPartNumber": "Verify bumper configuration, hitch package, and sensor cutouts before ordering",
+      "aftermarketPartNumber": "Use a corrosion-protected assembly with documented fitment",
+      "focusCamera": {
+        "position": [-3.8, 2.5, -8.1],
+        "lookAt": [0.0, 0.9, -3.1]
+      },
+      "replacementSteps": [
+        "Support the bumper and disconnect trailer, lamp, or sensor wiring as equipped.",
+        "Remove fasteners in sequence and inspect bumper brackets, frame attachment points, and harness retainers.",
+        "Install the replacement assembly loosely, center it to the body, then torque fasteners to service-manual specification.",
+        "Verify lamps, trailer connector operation, and tailgate clearance before returning the truck to service."
+      ],
+      "mentorScript": "Rear repairs hide damage behind the cover. Check brackets, frame attachment points, and trailer wiring before a new bumper makes the outside look finished."
+    }
+  ]
+}

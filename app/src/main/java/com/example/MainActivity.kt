@@ -37,6 +37,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.ui.screens.LoungeScreen
+import com.example.ui.components.InteractiveRepairViewer
 import com.example.ui.theme.SportTracTheme
 import com.example.ui.viewmodel.ExplorerViewModel
 import com.example.ui.viewmodel.MainTab
@@ -112,6 +113,18 @@ private fun SafeLaunchShell(
         ) {
             when (selectedTab) {
                 MainTab.LOUNGE -> LoungeScreen()
+                MainTab.VIEW_3D -> {
+                    if (SAFE_SHELL_MODE) {
+                        RouteUnderReviewScreen(
+                            tab = selectedTab,
+                            onReturnToLounge = onReturnToLounge
+                        )
+                    } else {
+                        // Realm construction remains impossible during Lounge cold launch. This
+                        // route is deliberately gated until physical-device safe-shell release.
+                        InteractiveRepairViewer(onExit = onReturnToLounge)
+                    }
+                }
                 else -> RouteUnderReviewScreen(
                     tab = selectedTab,
                     onReturnToLounge = onReturnToLounge
