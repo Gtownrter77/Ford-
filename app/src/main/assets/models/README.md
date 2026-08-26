@@ -1,7 +1,7 @@
 # Vehicle GLB drop folder
 
-Put the licensed 2004 Ford Explorer Sport Trac wreck model here:
+Drop a complete 2004 Ford Explorer Sport Trac here. Not a wreck.
 
-`ford_explorer_sport_trac_2004_wreck.glb`
+`ford_explorer_sport_trac_2004.glb`
 
-Until that file exists, the 3D hub reports accuracy as blocked and will not pretend the Canvas schematic is Blender-level.
+Export from Blender as glTF 2.0 with Principled BSDF. Keep factory body, glass, wheels, and interior readable. Instructions pin to named nodes, they do not require collision damage in the mesh.

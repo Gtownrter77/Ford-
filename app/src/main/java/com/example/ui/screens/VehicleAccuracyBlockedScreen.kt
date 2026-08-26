@@ -23,9 +23,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.data.VehicleAsset
 
-/**
- * Honest hub state. The product wants Blender-level accuracy. That file is missing.
- */
 @Composable
 fun VehicleAccuracyBlockedScreen(
     onOpenSchematicPractice: () -> Unit,
@@ -45,7 +42,7 @@ fun VehicleAccuracyBlockedScreen(
         ) {
             Spacer(Modifier.height(48.dp))
             Text(
-                "3D HUB — ACCURACY BLOCKED",
+                "3D HUB — COMPLETE VEHICLE REQUIRED",
                 color = Color(0xFFF59E0B),
                 style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Black)
             )
@@ -57,14 +54,14 @@ fun VehicleAccuracyBlockedScreen(
             )
             Spacer(Modifier.height(16.dp))
             Text(
-                "Blender-level graphics and 100% vehicle accuracy are not finished. There is no licensed wreck GLB in this APK. Filament is wired and will load the truck the moment this file is packaged:",
+                "The hub is a complete truck, not a wreck. Package a factory-accurate Sport Trac GLB and Filament will load it:",
                 color = Color(0xFFCBD5E1),
                 style = MaterialTheme.typography.bodyMedium
             )
             Spacer(Modifier.height(16.dp))
             Surface(color = Color(0xFF111827), shape = RoundedCornerShape(12.dp), modifier = Modifier.fillMaxWidth()) {
                 Text(
-                    "app/src/main/assets/${VehicleAsset.WRECK_GLB_PATH}",
+                    "app/src/main/assets/${VehicleAsset.GLB_PATH}",
                     color = Color(0xFF38BDF8),
                     fontFamily = FontFamily.Monospace,
                     modifier = Modifier.padding(14.dp)
@@ -72,7 +69,7 @@ fun VehicleAccuracyBlockedScreen(
             }
             Spacer(Modifier.height(16.dp))
             Text(
-                "Required Blender export: glTF 2.0 .glb, Principled BSDF, metallic/roughness maps, nodes front_bumper, front_left_wheel, driver_front_door, engine_assembly, rear_bumper.",
+                "Blender export: glTF 2.0 .glb, Principled BSDF, metallic/roughness maps, nodes front_bumper, front_left_wheel, driver_front_door, engine_assembly, rear_bumper.",
                 color = Color(0xFF94A3B8),
                 style = MaterialTheme.typography.bodySmall
             )
@@ -88,7 +85,7 @@ fun VehicleAccuracyBlockedScreen(
             }
             Spacer(Modifier.height(8.dp))
             OutlinedButton(onClick = {}, enabled = false, modifier = Modifier.fillMaxWidth()) {
-                Text("Filament wreck model — waiting on GLB")
+                Text("Filament complete vehicle — waiting on GLB")
             }
         }
     }
