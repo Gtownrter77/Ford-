@@ -21,3 +21,13 @@
 
 - **Ford/Charm: 2004 Explorer Sport Trac compressor service procedure** — https://charm.li/Ford/2004/Explorer%20Sport%20Trac%202WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Heating%20and%20Air%20Conditioning/Compressor%20HVAC/Service%20and%20Repair/
   - Used for the model’s conservative compressor/contamination/O-ring repair boundaries. Confirm the exact vehicle configuration, VIN, and under-hood label before physical service.
+
+## Official 2004 owner publications
+
+- **Ford owner-manual hub** — https://www.ford.com/support/owner-manuals-details/explorer-sport-trac/2004
+- **Owner Guide part 1** — https://www.fordservicecontent.com/Ford_Content/catalog/owner_guides/04p27og1e.pdf
+- **Owner Guide part 2** — https://www.fordservicecontent.com/Ford_Content/catalog/owner_guides/04p27og2e.pdf
+- **Owner Guide part 3** — https://www.fordservicecontent.com/Ford_Content/catalog/owner_guides/04p27og3e.pdf
+- **Quick Reference Guide** — https://www.fordservicecontent.com/Ford_Content/catalog/owner_guides/04p27qg1e.pdf
+- Extracted tables: `docs/2004_SPORT_TRAC_OWNER_GUIDE_SPECS.md`
+- Scope: fluids, Motorcraft service parts, capacities, engine data, dimensions, lug-nut torque. Not workshop pinpoint tests or repair torque sequences.
