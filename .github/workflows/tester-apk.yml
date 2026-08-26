@@ -1,0 +1,38 @@
+name: Tester APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "app/**"
+      - ".github/workflows/tester-apk.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  debug-apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: android-actions/setup-android@v3
+      - name: Prepare env and debug keystore
+        run: |
+          cp -n .env.example .env || true
+          if [ ! -f debug.keystore ]; then
+            keytool -genkeypair -v -keystore debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
+          fi
+          chmod +x gradlew || true
+      - name: Assemble debug APK
+        run: ./gradlew :app:assembleDebug --stacktrace
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mentor-sport-trac-debug
+          path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: warn
