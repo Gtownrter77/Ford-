@@ -1,5 +1,6 @@
 package com.example.mentor
 
+import com.example.data.CommunityRepairVideos
 import com.example.data.SportTracPartsCatalog
 import com.example.data.SportTracServiceManualDiagnostics
 import com.example.model.Component3DModel
@@ -26,7 +27,8 @@ data class MentorBriefing(
     val firstStepTitle: String?,
     val firstStepInstruction: String?,
     val relatedPartNumbers: List<String>,
-    val uncertaintyNote: String
+    val uncertaintyNote: String,
+    val communityVideos: List<String>
 )
 
 object MentorKnowledge {
@@ -41,6 +43,7 @@ object MentorKnowledge {
         val relatedParts = SportTracPartsCatalog.getPartsForComponent(component.id)
             .map { "${it.partName} (${it.partNumber})" }
             .take(4)
+        val videos = CommunityRepairVideos.matching(component.name, component)
 
         return MentorBriefing(
             vehicleLine = VEHICLE_LINE,
@@ -58,7 +61,8 @@ object MentorKnowledge {
             firstStepTitle = component.repairSteps.firstOrNull()?.title,
             firstStepInstruction = component.repairSteps.firstOrNull()?.instruction,
             relatedPartNumbers = relatedParts,
-            uncertaintyNote = "Owner-guide fluids and Motorcraft numbers are from the 2004 P207 Sport Trac Owners Guide. Torque sequences and teardown steps still need the workshop manual before turning a wrench."
+            uncertaintyNote = "Owner-guide fluids and Motorcraft numbers are from the 2004 P207 Sport Trac Owners Guide. Torque sequences and teardown steps still need the workshop manual before turning a wrench.",
+            communityVideos = videos.map { "${it.title} ${it.url}" }
         )
     }
 
@@ -74,6 +78,11 @@ object MentorKnowledge {
         } else {
             "No packaged TSB match is indexed to this exact component id."
         }
+        val videoLine = if (brief.communityVideos.isNotEmpty()) {
+            " Community how-to: ${brief.communityVideos.first()}. ${CommunityRepairVideos.DISCLAIMER}"
+        } else {
+            ""
+        }
         return buildString {
             append("Mentor on the ${brief.vehicleLine}. ")
             append("Selected ${brief.componentName}, OEM ${brief.oemPartNumber}, ${brief.systemName}. ")
@@ -83,13 +92,23 @@ object MentorKnowledge {
             append(" Opening torque callout: $torque. ")
             brief.firstStepInstruction?.let { append("First practice step: $it ") }
             append(brief.uncertaintyNote)
+            append(videoLine)
         }
     }
 
     fun answer(component: Component3DModel, question: String): String {
         val q = question.lowercase()
         val brief = briefing(component)
+        val askedForVideo = q.contains("video") || q.contains("youtube") || q.contains("watch") || q.contains("tutorial")
         return when {
+            askedForVideo -> {
+                val videos = CommunityRepairVideos.matching(question, component)
+                if (videos.isEmpty()) {
+                    CommunityRepairVideos.format(CommunityRepairVideos.matching(component.name, component))
+                } else {
+                    CommunityRepairVideos.format(videos)
+                }
+            }
             q.contains("torque") || q.contains("ft-lb") || q.contains("tighten") -> {
                 if (brief.torqueCallouts.isEmpty()) {
                     "No packaged torque value for ${component.name}. Use the Ford workshop manual, not guesswork."
@@ -126,11 +145,17 @@ object MentorKnowledge {
             }
             q.contains("step") || q.contains("how") || q.contains("replace") || q.contains("start") -> {
                 val step = component.repairSteps.firstOrNull()
-                if (step == null) {
+                val stepText = if (step == null) {
                     "No packaged repair steps for ${component.name}."
                 } else {
                     "Step ${step.stepNumber}: ${step.title}. ${step.instruction}" +
                         (step.warning?.let { " Warning: $it" } ?: "")
+                }
+                val videos = CommunityRepairVideos.matching(question, component)
+                if (videos.isEmpty()) {
+                    stepText
+                } else {
+                    "$stepText Community how-to: ${CommunityRepairVideos.format(videos)}"
                 }
             }
             else -> spokenBriefing(component)

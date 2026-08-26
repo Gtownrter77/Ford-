@@ -25,4 +25,12 @@ class MentorKnowledgeTest {
         assertTrue(answer.contains(component.name))
         assertFalse(answer.contains("inventing"))
     }
+
+    @Test
+    fun videoQuestionReturnsYoutubePointerAndDisclaimer() {
+        val component = SportTracData.components.first()
+        val answer = MentorKnowledge.answer(component, "show me a brake video")
+        assertTrue(answer.contains("youtube.com/watch"))
+        assertTrue(answer.contains("Community video only"))
+    }
 }
