@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "vehicle": {
-    "vehicleId": "2004-ford-explorer-sport-trac-wreck",
-    "displayName": "2004 Ford Explorer Sport Trac — Repair Realm",
-    "modelAssetPath": "models/ford_explorer_sport_trac_2004_wreck.glb",
+    "vehicleId": "2004-ford-explorer-sport-trac",
+    "displayName": "2004 Ford Explorer Sport Trac",
+    "modelAssetPath": "models/ford_explorer_sport_trac_2004.glb",
     "overviewCamera": {
       "position": [8.2, 4.4, 10.6],
       "lookAt": [0.0, 1.2, 0.0]
@@ -21,12 +21,12 @@
         "lookAt": [0.0, 0.9, 3.0]
       },
       "replacementSteps": [
-        "Disconnect the negative battery terminal and support the damaged bumper cover.",
+        "Disconnect the negative battery terminal and support the bumper cover.",
         "Remove grille, wheel-well fasteners, lower retainers, and any lamp or sensor connectors.",
-        "Transfer reusable energy absorber, lamps, brackets, and hardware after inspecting for hidden damage.",
+        "Transfer reusable energy absorber, lamps, brackets, and hardware after inspection.",
         "Install the replacement cover loosely, align panel gaps, then torque retainers to the service-manual specification."
       ],
-      "mentorScript": "Start with support and safety. Hidden bumper damage is common, so inspect the reinforcement and mounting brackets before installing a new cover."
+      "mentorScript": "Start with support and safety. Inspect the reinforcement and mounting brackets before installing a new cover."
     },
     {
       "id": "front_left_wheel",
@@ -41,10 +41,10 @@
       "replacementSteps": [
         "Chock the rear wheels, raise the vehicle at the approved front lifting point, and support it with a rated stand.",
         "Remove the wheel and inspect tire sidewall, rim runout, brake hose routing, and suspension hardware.",
-        "Replace damaged components one system at a time; do not reuse compromised lug hardware.",
+        "Replace worn components one system at a time; do not reuse compromised lug hardware.",
         "Install the wheel, lower the vehicle, and torque lug nuts in a star pattern to the current service-manual specification."
       ],
-      "mentorScript": "A wheel-zone impact can move more than the wheel itself. Check brake lines, steering links, and suspension mounting points before treating this as a tire-only repair."
+      "mentorScript": "Check brake lines, steering links, and suspension mounting points before treating this as a tire-only job."
     },
     {
       "id": "driver_front_door",
@@ -59,10 +59,10 @@
       "replacementSteps": [
         "Disconnect battery power before opening harness connectors or working around side-impact wiring.",
         "Support the door with a stand, mark hinge positions, and disconnect the harness through the body-side boot.",
-        "Transfer glass, regulator, latch, weather seals, and trim only after inspecting each part for collision damage.",
+        "Transfer glass, regulator, latch, weather seals, and trim only after inspecting each part.",
         "Align the door for even gaps, verify latch engagement and weather sealing, then complete window and lock checks."
       ],
-      "mentorScript": "Door alignment is a measurement job, not a force job. Stabilize the door, preserve hinge reference marks, and verify both latch engagement and window sealing before calling it finished."
+      "mentorScript": "Door alignment is a measurement job, not a force job. Preserve hinge reference marks and verify latch engagement and window sealing."
     },
     {
       "id": "engine_assembly",
@@ -76,11 +76,11 @@
       },
       "replacementSteps": [
         "Allow the engine to cool fully and disconnect the negative battery cable before inspection.",
-        "Document fluid leaks, damaged mounts, broken accessories, and harness routing before removing parts.",
+        "Document fluid leaks, mounts, accessories, and harness routing before removing parts.",
         "Follow the workshop manual for the exact component procedure, torque sequence, and replacement seals.",
         "After reassembly, verify fluid levels, check for leaks, and perform the required diagnostic and road-test checks."
       ],
-      "mentorScript": "Use the engine bay as a system map. Before replacing any part, document what the impact moved, pinched, cracked, or contaminated. That prevents a quick repair from becoming a repeat repair."
+      "mentorScript": "Use the engine bay as a system map. Document leaks, routing, and accessories before replacing any part."
     },
     {
       "id": "rear_bumper",
@@ -98,7 +98,7 @@
         "Install the replacement assembly loosely, center it to the body, then torque fasteners to service-manual specification.",
         "Verify lamps, trailer connector operation, and tailgate clearance before returning the truck to service."
       ],
-      "mentorScript": "Rear repairs hide damage behind the cover. Check brackets, frame attachment points, and trailer wiring before a new bumper makes the outside look finished."
+      "mentorScript": "Check brackets, frame attachment points, and trailer wiring before calling the rear bumper finished."
     }
   ]
 }
