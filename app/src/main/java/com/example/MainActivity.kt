@@ -49,18 +49,13 @@ import com.example.ui.screens.LoungeScreen
 import com.example.ui.screens.MaintenanceScreen
 import com.example.ui.screens.PartsShoppingScreen
 import com.example.ui.screens.RepairManualScreen
-import com.example.ui.screens.SafeProcedural3DRoute
+import com.example.ui.screens.VehicleHubRoute
 import com.example.ui.theme.SportTracTheme
 import com.example.ui.viewmodel.ExplorerViewModel
 import com.example.ui.viewmodel.MainTab
 
 class MainActivity : ComponentActivity() {
 
-    /**
-     * ViewModel is created lazily by the Activity. Lounge composition does not
-     * read it. Feature data still stays closed until a route that needs Room
-     * is selected, or until the user authorizes the safe 3D scene.
-     */
     private val explorerViewModel: ExplorerViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,7 +64,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             SportTracTheme {
-                var selectedTab by remember { mutableStateOf(MainTab.LOUNGE) }
+                var selectedTab by remember { mutableStateOf(MainTab.VIEW_3D) }
 
                 FeatureLaunchShell(
                     selectedTab = selectedTab,
@@ -123,7 +118,7 @@ private fun FeatureLaunchShell(
                     if (!FeatureRoutePolicy.isEnabled(selectedTab)) {
                         RouteUnderReviewScreen(selectedTab, onReturnToLounge)
                     } else {
-                        SafeProcedural3DHost(viewModel = viewModel)
+                        VehicleHubHost(viewModel = viewModel)
                     }
                 }
                 MainTab.REPAIR_MANUAL -> {
@@ -192,7 +187,7 @@ private fun FeatureLaunchShell(
 }
 
 @Composable
-private fun SafeProcedural3DHost(viewModel: ExplorerViewModel) {
+private fun VehicleHubHost(viewModel: ExplorerViewModel) {
     val selectedComponent by viewModel.selectedComponent.collectAsState()
     val activeSystem by viewModel.activeSystem.collectAsState()
     val requestDetailSheetOpen by viewModel.requestDetailSheetOpen.collectAsState()
@@ -200,7 +195,7 @@ private fun SafeProcedural3DHost(viewModel: ExplorerViewModel) {
     val cachedManualsCount by viewModel.cachedManualsCount.collectAsState()
     val cachedSymptomsCount by viewModel.cachedSymptomsCount.collectAsState()
 
-    SafeProcedural3DRoute(
+    VehicleHubRoute(
         selectedComponent = selectedComponent,
         activeSystem = activeSystem,
         requestDetailSheetOpen = requestDetailSheetOpen,
