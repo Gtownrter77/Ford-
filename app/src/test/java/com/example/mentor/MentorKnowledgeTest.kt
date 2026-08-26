@@ -33,4 +33,18 @@ class MentorKnowledgeTest {
         assertTrue(answer.contains("youtube.com/watch"))
         assertTrue(answer.contains("Community video only"))
     }
+
+    @Test
+    fun workshopQuestionReturnsFourWheelDriveCharmLeaf() {
+        val component = SportTracData.components.first { it.name.contains("Transfer", ignoreCase = true) }
+        val answer = MentorKnowledge.answer(component, "open the CHARM workshop page")
+        assertTrue(answer.contains("charm.li"))
+        assertTrue(answer.contains("4WD"))
+        assertFalse(answer.contains("2WD"))
+        val brief = MentorKnowledge.briefing(component)
+        assertTrue(brief.workshopLeaves.isNotEmpty())
+        brief.workshopLeaves.forEach { leaf ->
+            assertFalse(leaf.contains("2WD"))
+        }
+    }
 }
