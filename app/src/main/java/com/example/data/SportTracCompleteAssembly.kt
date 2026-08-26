@@ -4,10 +4,8 @@ import com.example.model.Component3DModel
 
 /**
  * Everything the 3D tab should show for this truck:
- * catalog service parts + meter-true hull + remaining systems + fastener stacks.
- *
- * Not a VIN-complete Ford CAD dump. Hidden TTY head bolts, interior screws,
- * body clips, and harness retainers stay in the workshop manual.
+ * catalog service parts + meter-true hull + remaining systems + fastener stacks
+ * + Bank 2 lean / misfire kit on the 4.0L.
  *
  * Wire ExplorerViewModel.filteredComponents to [components].
  */
@@ -20,6 +18,7 @@ object SportTracCompleteAssembly {
                 SportTracHullExtras.components
             ).distinctBy { it.id }
         merged.map { SportTracFastenerLayer.enrich(it) }
+            .map { SportTracBank2LeanKit.attachToEngine(it) }
     }
 
     val hullOnly: List<Component3DModel>
