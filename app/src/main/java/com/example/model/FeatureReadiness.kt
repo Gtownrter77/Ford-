@@ -27,8 +27,8 @@ object FoundationTrackCatalog {
             domainId = "procedural_3d",
             displayName = "Procedural 3D model",
             readiness = FeatureReadiness.DEVICE_PENDING,
-            evidenceNote = "Compose Canvas renderer and generated reference hardware exist in source; physical runtime is unverified.",
-            nextFoundationStep = "Prioritize A/C assemblies and expand coverage with evidence-backed geometry."
+            evidenceNote = "2026-08-26: 3D tab opens a safe-scene gate; first authorized frame is bounded to one part or eight parts in one system. Physical runtime remains unverified.",
+            nextFoundationStep = "Run PHYSICAL_DEVICE_VERIFICATION_PROTOCOL.md against this gated 3D path."
         ),
         FeatureFoundationStatus(
             domainId = "ac_workbench",
