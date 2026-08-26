@@ -34,14 +34,10 @@ class OfflineCacheRepository(
     val symptomsCountFlow: Flow<Int> = offlineCacheDao.getSymptomsCountFlow()
     val manifestFlow: Flow<CacheManifestEntity?> = offlineCacheDao.getCacheManifestFlow()
 
-    /**
-     * Seeds or syncs local Room database with 3D assets and repair manuals from application registry.
-     */
     suspend fun seedAndSyncOfflineCache(targetVersion: String = "2.4.0") = withContext(Dispatchers.IO) {
         val now = System.currentTimeMillis()
 
-        // 1. Convert and Cache 3D Components
-        val assets3DToCache = SportTracData.components.map { model ->
+        val assets3DToCache = PublishedSportTracData.components.map { model ->
             val repairStepsJsonArray = JSONArray()
             model.repairSteps.forEach { step ->
                 val obj = JSONObject().apply {
@@ -104,7 +100,6 @@ class OfflineCacheRepository(
         }
         offlineCacheDao.insert3DAssets(assets3DToCache)
 
-        // 2. Convert and Cache Repair Manuals (Service Manual Trouble Matches)
         val manualsToCache = SportTracServiceManualDiagnostics.manualTroubleMatches.map { match ->
             val diagStepsArray = JSONArray()
             match.diagnosticVerificationSteps.forEach { step -> diagStepsArray.put(step) }
@@ -129,7 +124,6 @@ class OfflineCacheRepository(
         }
         offlineCacheDao.insertRepairManuals(manualsToCache)
 
-        // 3. Convert and Cache Symptoms
         val symptomsToCache = SportTracServiceManualDiagnostics.symptomsList.map { sym ->
             CachedSymptomEntity(
                 id = sym.id,
@@ -143,7 +137,6 @@ class OfflineCacheRepository(
         }
         offlineCacheDao.insertSymptoms(symptomsToCache)
 
-        // 4. Update or Create Manifest
         val existingManifest = offlineCacheDao.getCacheManifest()
         val manifestToInsert = existingManifest?.copy(
             contentVersion = targetVersion,
@@ -157,14 +150,10 @@ class OfflineCacheRepository(
         offlineCacheDao.insertOrUpdateManifest(manifestToInsert)
     }
 
-    /**
-     * Checks if an upgrade/update is available in the manifest repository.
-     */
     suspend fun checkForUpgrades(): Boolean = withContext(Dispatchers.IO) {
         val manifest = offlineCacheDao.getCacheManifest()
         val currentVersion = manifest?.contentVersion ?: "2.4.0"
         val latestVersion = manifest?.latestAvailableVersion ?: "2.5.0"
-        
         val isUpgradeAvailable = currentVersion != latestVersion
         if (isUpgradeAvailable && manifest != null) {
             offlineCacheDao.insertOrUpdateManifest(manifest.copy(hasPendingUpgrade = true))
@@ -172,16 +161,10 @@ class OfflineCacheRepository(
         return@withContext isUpgradeAvailable
     }
 
-    /**
-     * Executes content & database upgrade to latest version (e.g. v2.5.0).
-     */
     suspend fun performUpgradeToLatestVersion(): String = withContext(Dispatchers.IO) {
         val manifest = offlineCacheDao.getCacheManifest()
         val targetVersion = manifest?.latestAvailableVersion ?: "2.5.0"
-
-        // Perform seed and sync with new target version
         seedAndSyncOfflineCache(targetVersion = targetVersion)
-
         val updatedManifest = (offlineCacheDao.getCacheManifest() ?: CacheManifestEntity()).copy(
             contentVersion = targetVersion,
             hasPendingUpgrade = false,
@@ -192,14 +175,10 @@ class OfflineCacheRepository(
         return@withContext targetVersion
     }
 
-    /**
-     * Clears all cached Room tables for testing or resetting offline storage.
-     */
     suspend fun clearAllOfflineCache() = withContext(Dispatchers.IO) {
         offlineCacheDao.clear3DAssetsCache()
         offlineCacheDao.clearRepairManualsCache()
         offlineCacheDao.clearSymptomsCache()
-        
         val manifest = offlineCacheDao.getCacheManifest()
         if (manifest != null) {
             offlineCacheDao.insertOrUpdateManifest(manifest.copy(
