@@ -54,6 +54,8 @@ fun MentorDock(
     val uriHandler = LocalUriHandler.current
     val communityVideo = brief.communityVideos.firstOrNull()
     val communityVideoUrl = communityVideo?.let { Regex("https://\\S+").find(it)?.value }
+    val workshopLeaf = brief.workshopLeaves.firstOrNull()
+    val workshopUrl = workshopLeaf?.let { Regex("https://\\S+").find(it)?.value }
 
     if (showMentor) {
         MentorModeDialog(
@@ -100,6 +102,23 @@ fun MentorDock(
                         .then(
                             if (communityVideoUrl != null) {
                                 Modifier.clickable { uriHandler.openUri(communityVideoUrl) }
+                            } else {
+                                Modifier
+                            }
+                        )
+                )
+            }
+            if (workshopLeaf != null) {
+                Spacer(Modifier.height(4.dp))
+                Text(
+                    text = "4WD VIN K workshop: $workshopLeaf",
+                    color = Color(0xFF93C5FD),
+                    style = MaterialTheme.typography.labelSmall,
+                    modifier = Modifier
+                        .testTag("mentor_dock_workshop")
+                        .then(
+                            if (workshopUrl != null) {
+                                Modifier.clickable { uriHandler.openUri(workshopUrl) }
                             } else {
                                 Modifier
                             }
