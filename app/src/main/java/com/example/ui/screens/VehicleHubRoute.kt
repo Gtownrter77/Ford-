@@ -42,7 +42,7 @@ fun VehicleHubRoute(
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
-    val glbReady = remember { VehicleAsset.isWreckGlbPresent(context) }
+    val glbReady = remember { VehicleAsset.isGlbPresent(context) }
     var showSchematicPractice by rememberSaveable { mutableStateOf(false) }
     val focused = selectedComponent ?: SportTracData.components.firstOrNull()
 
