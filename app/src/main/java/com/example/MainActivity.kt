@@ -16,7 +16,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.MenuBook
 import androidx.compose.material.icons.filled.Psychology
@@ -24,8 +23,16 @@ import androidx.compose.material.icons.filled.Shield
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.filled.Speed
 import androidx.compose.material.icons.filled.ViewInAr
-import androidx.compose.material3.*
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -36,20 +43,23 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.navigation.FeatureRoutePolicy
+import com.example.ui.screens.DiagnosticsScreen
 import com.example.ui.screens.LoungeScreen
-import com.example.ui.components.InteractiveRepairViewer
+import com.example.ui.screens.MaintenanceScreen
+import com.example.ui.screens.PartsShoppingScreen
+import com.example.ui.screens.RepairManualScreen
+import com.example.ui.screens.SafeProcedural3DRoute
 import com.example.ui.theme.SportTracTheme
 import com.example.ui.viewmodel.ExplorerViewModel
 import com.example.ui.viewmodel.MainTab
 
-// Keep this true until the merged APK has passed the physical-device protocol.
-private const val SAFE_SHELL_MODE = true
-
 class MainActivity : ComponentActivity() {
 
     /**
-     * Track 3: Android creates this ViewModel lazily. The Lounge-first composition below does
-     * not resolve it; it is reached only from the explicit 3D tab callback.
+     * ViewModel is created lazily by the Activity. Lounge composition does not
+     * read it. Feature data still stays closed until a route that needs Room
+     * is selected, or until the user authorizes the safe 3D scene.
      */
     private val explorerViewModel: ExplorerViewModel by viewModels()
 
@@ -61,11 +71,11 @@ class MainActivity : ComponentActivity() {
             SportTracTheme {
                 var selectedTab by remember { mutableStateOf(MainTab.LOUNGE) }
 
-                SafeLaunchShell(
+                FeatureLaunchShell(
                     selectedTab = selectedTab,
+                    viewModel = explorerViewModel,
                     onTabSelected = { tab ->
-                        // This is the only root route allowed to open Room-backed feature data.
-                        if (tab == MainTab.VIEW_3D) {
+                        if (FeatureRoutePolicy.requiresFeatureData(tab)) {
                             explorerViewModel.ensureFeatureData()
                         }
                         selectedTab = tab
@@ -77,14 +87,10 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-/**
- * Track 1/3 cold-launch root. It composes LoungeScreen() with no ViewModel, Room, voice,
- * preference, navigation, or coroutine dependency. Feature routes remain isolated for device
- * testing while SAFE_SHELL_MODE is true.
- */
 @Composable
-private fun SafeLaunchShell(
+private fun FeatureLaunchShell(
     selectedTab: MainTab,
+    viewModel: ExplorerViewModel,
     onTabSelected: (MainTab) -> Unit,
     onReturnToLounge: () -> Unit
 ) {
@@ -114,24 +120,101 @@ private fun SafeLaunchShell(
             when (selectedTab) {
                 MainTab.LOUNGE -> LoungeScreen()
                 MainTab.VIEW_3D -> {
-                    if (SAFE_SHELL_MODE) {
-                        RouteUnderReviewScreen(
-                            tab = selectedTab,
-                            onReturnToLounge = onReturnToLounge
-                        )
+                    if (!FeatureRoutePolicy.isEnabled(selectedTab)) {
+                        RouteUnderReviewScreen(selectedTab, onReturnToLounge)
                     } else {
-                        // Realm construction remains impossible during Lounge cold launch. This
-                        // route is deliberately gated until physical-device safe-shell release.
-                        InteractiveRepairViewer(onExit = onReturnToLounge)
+                        SafeProcedural3DHost(viewModel = viewModel)
                     }
                 }
-                else -> RouteUnderReviewScreen(
-                    tab = selectedTab,
-                    onReturnToLounge = onReturnToLounge
-                )
+                MainTab.REPAIR_MANUAL -> {
+                    val components by viewModel.filteredComponents.collectAsState()
+                    val activeSystem by viewModel.activeSystem.collectAsState()
+                    val searchQuery by viewModel.manualSearchQuery.collectAsState()
+                    RepairManualScreen(
+                        components = components,
+                        activeSystem = activeSystem,
+                        searchQuery = searchQuery,
+                        onSearchQueryChange = viewModel::setManualSearchQuery,
+                        onSelectSystem = viewModel::setSystemFilter,
+                        onSelectComponent = viewModel::selectComponent,
+                        onAddToCart = viewModel::addPartForComponent
+                    )
+                }
+                MainTab.DIAGNOSTICS -> {
+                    val chatMessages by viewModel.chatMessages.collectAsState()
+                    val isThinking by viewModel.isGeminiThinking.collectAsState()
+                    DiagnosticsScreen(
+                        chatMessages = chatMessages,
+                        isThinking = isThinking,
+                        onSendMessage = viewModel::sendDiagnosticQuery,
+                        onClearChat = viewModel::clearChatHistory,
+                        onNavigateToComponent = viewModel::selectComponentById,
+                        onRetryLastQuery = viewModel::retryLastGeminiQuery
+                    )
+                }
+                MainTab.MAINTENANCE -> {
+                    val profile by viewModel.vehicleProfile.collectAsState()
+                    val logs by viewModel.maintenanceLogs.collectAsState()
+                    val tasks by viewModel.upcomingTasks.collectAsState()
+                    MaintenanceScreen(
+                        vehicleProfile = profile,
+                        maintenanceLogs = logs,
+                        upcomingTasks = tasks,
+                        onUpdateMileage = viewModel::updateMileage,
+                        onLogService = viewModel::logMaintenance,
+                        onDeleteLog = viewModel::deleteMaintenanceLog,
+                        onAddUpcomingTask = viewModel::addUpcomingTask,
+                        onCompleteUpcomingTask = viewModel::completeUpcomingTask,
+                        onDeleteUpcomingTask = viewModel::deleteUpcomingTask
+                    )
+                }
+                MainTab.PARTS_CART -> {
+                    val cartItems by viewModel.cartItems.collectAsState()
+                    val commercialAccount by viewModel.commercialAccount.collectAsState()
+                    val cartSortOption by viewModel.cartSortOption.collectAsState()
+                    val orderSuccessNotice by viewModel.orderSuccessNotice.collectAsState()
+                    PartsShoppingScreen(
+                        cartItems = cartItems,
+                        commercialAccount = commercialAccount,
+                        cartSortOption = cartSortOption,
+                        orderSuccessNotice = orderSuccessNotice,
+                        onSortOptionChange = viewModel::setCartSortOption,
+                        onUpdateQuantity = viewModel::updateCartItemQuantity,
+                        onUpdateFulfillment = viewModel::updateCartItemFulfillment,
+                        onRemoveItem = viewModel::removeFromCart,
+                        onAddPartToCart = { viewModel.addPartToCart(it) },
+                        onDismissSuccessNotice = viewModel::dismissOrderSuccessNotice
+                    )
+                }
             }
         }
     }
+}
+
+@Composable
+private fun SafeProcedural3DHost(viewModel: ExplorerViewModel) {
+    val selectedComponent by viewModel.selectedComponent.collectAsState()
+    val activeSystem by viewModel.activeSystem.collectAsState()
+    val requestDetailSheetOpen by viewModel.requestDetailSheetOpen.collectAsState()
+    val cached3DCount by viewModel.cached3DAssetsCount.collectAsState()
+    val cachedManualsCount by viewModel.cachedManualsCount.collectAsState()
+    val cachedSymptomsCount by viewModel.cachedSymptomsCount.collectAsState()
+
+    SafeProcedural3DRoute(
+        selectedComponent = selectedComponent,
+        activeSystem = activeSystem,
+        requestDetailSheetOpen = requestDetailSheetOpen,
+        cached3DCount = cached3DCount,
+        cachedManualsCount = cachedManualsCount,
+        cachedSymptomsCount = cachedSymptomsCount,
+        onClearDetailSheetRequest = viewModel::clearDetailSheetRequest,
+        onSelectSystem = viewModel::setSystemFilter,
+        onSelectComponent = viewModel::selectComponent,
+        onAddToCart = viewModel::addPartForComponent,
+        onReSyncOfflineCache = viewModel::resyncOfflineCache,
+        onClearOfflineCache = viewModel::clearOfflineCache,
+        onSafeSceneAuthorized = viewModel::ensureFeatureData
+    )
 }
 
 @Composable
@@ -159,10 +242,6 @@ private fun RowScope.SafeTabButton(
     )
 }
 
-/**
- * During physical-device isolation, disabled routes state their status plainly instead of
- * constructing a feature screen that could repeat the observed crash loop.
- */
 @Composable
 private fun RouteUnderReviewScreen(
     tab: MainTab,
@@ -198,11 +277,7 @@ private fun RouteUnderReviewScreen(
                 Text(title, color = Color.White, style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold))
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
-                    text = if (SAFE_SHELL_MODE) {
-                        "This function is temporarily under physical-device review while the crash loop is isolated. It is not being presented as ready."
-                    } else {
-                        "This function is not yet enabled for this build."
-                    },
+                    text = "This function is not enabled in the current route policy.",
                     color = Color(0xFFCBD5E1),
                     style = MaterialTheme.typography.bodyMedium
                 )
