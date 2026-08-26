@@ -25,6 +25,16 @@ object CharmWorkshopIndex {
     val leaves: List<CharmWorkshopLeaf> = listOf(
         CharmWorkshopLeaf("4WD VIN K hub", HUB, listOf("workshop", "charm", "manual", "fsm", "hub")),
         CharmWorkshopLeaf(
+            "Parts and Labor",
+            ROOT + "Parts%20and%20Labor/",
+            listOf("parts", "labor", "times", "estimate")
+        ),
+        CharmWorkshopLeaf(
+            "Offline 4WD VIN K zip bundle",
+            "https://charm.li/bundle/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/",
+            listOf("bundle", "zip", "offline", "download")
+        ),
+        CharmWorkshopLeaf(
             "Repair and Diagnosis",
             ROOT + "Repair%20and%20Diagnosis/",
             listOf("repair", "diagnosis", "workshop")
