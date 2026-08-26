@@ -70,7 +70,7 @@ object MentorKnowledge {
         )
     }
 
-    const val OWNER_GUIDE_FLUIDS = "2004 OG: oil 5.0 qt 5W-30 + FL-820S; coolant 14.0 qt Premium Gold; 5R55E 4x4 MERCON V dry-fill about 10.3 qt set by dipstick; transfer case 1.3 qt MERCON ATF not MERCON V; PS MERCON ATF; rear axle 75W-90 FE synthetic 5.5-5.8 pints plus XL-7 4 oz if Traction-Lok."
+    const val OWNER_GUIDE_FLUIDS = "2004 OG: oil 5.0 qt 5W-30 + FL-820S; coolant 14.0 qt Premium Gold; 5R55E 4x4 MERCON V (Mercon 5) dry-fill about 10.3 qt set by dipstick. Transfer case official: 1.3 qt MERCON ATF XT-2-QDX, not MERCON V. Power steering official: MERCON ATF. Common sense: XT-2 is discontinued, so shops use MERCON V in the t-case and PS when original Mercon cannot be sourced. Do not treat that as the printed OG spec."
     const val OWNER_GUIDE_PARTS = "2004 OG Motorcraft: air FA-1744, fuel FG-1036, oil FL-820S, battery BXT-65-650, PCV EV-243, plugs AGSF-22PP gap 0.052-0.056 in. Lug nuts 1/2-20 at 84-114 lb-ft."
 
     fun spokenBriefing(component: Component3DModel): String {
@@ -146,7 +146,7 @@ object MentorKnowledge {
                 if (match == null) {
                     "No packaged TSB is indexed to ${component.id}. Describe the symptom and I will stay inside the Sport Trac catalog instead of inventing a diagnosis."
                 } else {
-                    "${match.title}. ${match.problemSummary} Cause on this truck: ${match.probableCause} Codes: ${match.obdCodes.joinToString().ifBlank { "none packaged" }}. Section ${match.serviceManualSection}."
+                    "${match.title}. ${match.problemSummary} Cause on this truck: ${match.probableCause} Codes: ${match.obdCodes.joinToString().ifBlank { \"none packaged\" }}. Section ${match.serviceManualSection}."
                 }
             }
             q.contains("fluid") || q.contains("capacity") || q.contains("quart") || q.contains("coolant") || q.contains("mercon") -> {
