@@ -1,5 +1,6 @@
 package com.example.mentor
 
+import com.example.data.CharmWorkshopIndex
 import com.example.data.CommunityRepairVideos
 import com.example.data.SportTracPartsCatalog
 import com.example.data.SportTracServiceManualDiagnostics
@@ -28,7 +29,8 @@ data class MentorBriefing(
     val firstStepInstruction: String?,
     val relatedPartNumbers: List<String>,
     val uncertaintyNote: String,
-    val communityVideos: List<String>
+    val communityVideos: List<String>,
+    val workshopLeaves: List<String>
 )
 
 object MentorKnowledge {
@@ -44,6 +46,7 @@ object MentorKnowledge {
             .map { "${it.partName} (${it.partNumber})" }
             .take(4)
         val videos = CommunityRepairVideos.matching(component.name, component)
+        val workshop = CharmWorkshopIndex.matching(component.name, component)
 
         return MentorBriefing(
             vehicleLine = VEHICLE_LINE,
@@ -62,7 +65,8 @@ object MentorKnowledge {
             firstStepInstruction = component.repairSteps.firstOrNull()?.instruction,
             relatedPartNumbers = relatedParts,
             uncertaintyNote = "Owner-guide fluids and Motorcraft numbers are from the 2004 P207 Sport Trac Owners Guide. Torque sequences and teardown steps still need the workshop manual before turning a wrench.",
-            communityVideos = videos.map { "${it.title} ${it.url}" }
+            communityVideos = videos.map { "${it.title} ${it.url}" },
+            workshopLeaves = workshop.map { "${it.title} ${it.url}" }
         )
     }
 
@@ -83,6 +87,11 @@ object MentorKnowledge {
         } else {
             ""
         }
+        val workshopLine = if (brief.workshopLeaves.isNotEmpty()) {
+            " 4WD VIN K workshop: ${brief.workshopLeaves.first()}. ${CharmWorkshopIndex.DISCLAIMER}"
+        } else {
+            ""
+        }
         return buildString {
             append("Mentor on the ${brief.vehicleLine}. ")
             append("Selected ${brief.componentName}, OEM ${brief.oemPartNumber}, ${brief.systemName}. ")
@@ -93,6 +102,7 @@ object MentorKnowledge {
             brief.firstStepInstruction?.let { append("First practice step: $it ") }
             append(brief.uncertaintyNote)
             append(videoLine)
+            append(workshopLine)
         }
     }
 
@@ -100,7 +110,12 @@ object MentorKnowledge {
         val q = question.lowercase()
         val brief = briefing(component)
         val askedForVideo = q.contains("video") || q.contains("youtube") || q.contains("watch") || q.contains("tutorial")
+        val askedForWorkshop = q.contains("workshop") || q.contains("charm") || q.contains("fsm") ||
+            q.contains("service manual") || q.contains("repair manual")
         return when {
+            askedForWorkshop -> {
+                CharmWorkshopIndex.format(CharmWorkshopIndex.matching(question, component))
+            }
             askedForVideo -> {
                 val videos = CommunityRepairVideos.matching(question, component)
                 if (videos.isEmpty()) {
