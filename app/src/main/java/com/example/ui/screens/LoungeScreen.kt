@@ -83,7 +83,7 @@ fun LoungeScreen(
                 .testTag("lounge_cold_launch_notice")
         ) {
             Text(
-                text = "SAFE START\nThe Lounge is open. Feature rooms remain offline until they are individually cleared for device testing.",
+                text = "SAFE START\nLounge is the cold-launch room. Manual, Diagnostics, Schedule, and Parts are live. 3D stays behind an explicit safe-scene gate and never draws all 56 parts on the first frame.",
                 color = Color(0xFFDBEAFE),
                 style = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier.padding(18.dp)
