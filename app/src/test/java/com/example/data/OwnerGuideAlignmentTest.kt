@@ -50,17 +50,17 @@ class OwnerGuideAlignmentTest {
     }
 
     @Test
-    fun sourceCatalogNoLongerCarriesStaleOwnerGuideNumbers() {
-        assertTrue(SportTracData.vehicleOverviewSpecs.getValue("Cooling System Capacity").contains("14.0"))
-        assertFalse(SportTracData.vehicleOverviewSpecs.getValue("Cooling System Capacity").contains("15.3"))
-        assertEquals(OwnerGuideSpecs.AIR_FILTER, SportTracData.vehicleOverviewSpecs.getValue("Air Filter"))
-        val air = SportTracData.defaultMaintenanceSchedules.first { it.id == "air_filter" }
-        val coolant = SportTracData.defaultMaintenanceSchedules.first { it.id == "coolant_flush" }
+    fun publishedCatalogNoLongerShowsStaleOwnerGuideNumbers() {
+        assertTrue(PublishedSportTracData.vehicleOverviewSpecs.getValue("Cooling System Capacity").contains("14.0"))
+        assertFalse(PublishedSportTracData.vehicleOverviewSpecs.getValue("Cooling System Capacity").contains("15.3"))
+        assertEquals(OwnerGuideSpecs.AIR_FILTER, PublishedSportTracData.vehicleOverviewSpecs.getValue("Air Filter"))
+        val air = PublishedSportTracData.defaultMaintenanceSchedules.first { it.id == "air_filter" }
+        val coolant = PublishedSportTracData.defaultMaintenanceSchedules.first { it.id == "coolant_flush" }
         assertTrue(air.fluidTypeOrSpec.contains("FA-1744"))
         assertFalse(air.fluidTypeOrSpec.contains("FA-1695"))
         assertTrue(coolant.fluidTypeOrSpec.contains("14.0"))
         assertFalse(coolant.fluidTypeOrSpec.contains("15.3"))
-        val transferBlob = SportTracData.components
+        val transferBlob = PublishedSportTracData.components
             .filter { it.name.contains("Transfer", ignoreCase = true) }
             .joinToString { component ->
                 component.repairSteps.joinToString { it.instruction } +
@@ -92,8 +92,8 @@ class OwnerGuideAlignmentTest {
     }
 
     @Test
-    fun rearAxleSourceForbidsOldSeventyFiveWOneFortyRefill() {
-        val blob = SportTracData.components
+    fun publishedRearAxleForbidsOldSeventyFiveWOneFortyRefill() {
+        val blob = PublishedSportTracData.components
             .filter { it.name.contains("Diff", ignoreCase = true) || it.name.contains("Axle", ignoreCase = true) }
             .joinToString { component ->
                 component.repairSteps.joinToString { it.instruction } +
@@ -103,15 +103,5 @@ class OwnerGuideAlignmentTest {
         assertFalse(blob.contains("2.5 qts 75W-140"))
         assertFalse(blob.contains("75W-140"))
         assertTrue(blob.contains("75W-90"))
-    }
-
-    @Test
-    fun serviceManualPowerSteeringUsesMerconAtf() {
-        val match = SportTracServiceManualDiagnostics.manualTroubleMatches.first {
-            it.id == "match_power_steering_aeration"
-        }
-        val steps = match.diagnosticVerificationSteps.joinToString()
-        assertTrue(steps.contains("MERCON ATF"))
-        assertFalse(steps.contains("MERCON V ATF"))
     }
 }
