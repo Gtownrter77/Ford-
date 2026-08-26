@@ -1,5 +1,6 @@
 package com.example.navigation
 
+import com.example.data.PublishedSportTracData
 import com.example.data.SportTracData
 import com.example.model.Component3DModel
 import com.example.model.VehicleSystem
@@ -39,7 +40,7 @@ object FeatureRoutePolicy {
      * ALL filter: selected component only. System filter: up to eight parts.
      */
     fun boundedSceneComponents(
-        allComponents: List<Component3DModel> = SportTracData.components,
+        allComponents: List<Component3DModel> = PublishedSportTracData.components,
         selectedComponent: Component3DModel?,
         activeSystem: VehicleSystem
     ): List<Component3DModel> {

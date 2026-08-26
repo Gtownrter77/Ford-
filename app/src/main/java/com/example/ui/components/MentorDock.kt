@@ -53,7 +53,7 @@ fun MentorDock(
     val failure = brief.knownFailures.firstOrNull()
     val uriHandler = LocalUriHandler.current
     val communityVideo = brief.communityVideos.firstOrNull()
-    val communityVideoUrl = communityVideo?.let { Regex("""https://\\S+""").find(it)?.value }
+    val communityVideoUrl = communityVideo?.let { Regex("https://\\S+").find(it)?.value }
 
     if (showMentor) {
         MentorModeDialog(
