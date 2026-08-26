@@ -2,6 +2,8 @@ package com.example.ui.screens
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -10,16 +12,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.unit.dp
 import com.example.data.SportTracData
 import com.example.model.Component3DModel
 import com.example.model.VehicleSystem
 import com.example.navigation.FeatureRoutePolicy
+import com.example.ui.components.MentorDock
 import com.example.ui.components.SafeSceneLoadGate
 
 /**
- * 3D tab entry. The full Canvas is not composed until the user taps
- * "Load safe interactive scene". The scene then receives a bounded
- * component list so the first frame cannot draw all 56 parts.
+ * 3D hub. Canvas stays gated. After Load, Mentor sits on the selected part.
  */
 @Composable
 fun SafeProcedural3DRoute(
@@ -63,21 +65,35 @@ fun SafeProcedural3DRoute(
         selectedComponent = selectedComponent,
         activeSystem = activeSystem
     )
+    val focused = selectedComponent ?: visibleComponents.firstOrNull()
 
-    Model3DScreen(
-        components = visibleComponents,
-        selectedComponent = selectedComponent ?: visibleComponents.firstOrNull(),
-        activeSystem = activeSystem,
-        cached3DCount = cached3DCount,
-        cachedManualsCount = cachedManualsCount,
-        cachedSymptomsCount = cachedSymptomsCount,
-        requestDetailSheetOpen = requestDetailSheetOpen,
-        onClearDetailSheetRequest = onClearDetailSheetRequest,
-        onSelectSystem = onSelectSystem,
-        onSelectComponent = onSelectComponent,
-        onAddToCart = onAddToCart,
-        onReSyncOfflineCache = onReSyncOfflineCache,
-        onClearOfflineCache = onClearOfflineCache,
-        modifier = modifier.testTag("safe_procedural_3d_scene")
-    )
+    Box(
+        modifier = modifier
+            .fillMaxSize()
+            .testTag("safe_procedural_3d_scene")
+    ) {
+        Model3DScreen(
+            components = visibleComponents,
+            selectedComponent = focused,
+            activeSystem = activeSystem,
+            cached3DCount = cached3DCount,
+            cachedManualsCount = cachedManualsCount,
+            cachedSymptomsCount = cachedSymptomsCount,
+            requestDetailSheetOpen = requestDetailSheetOpen,
+            onClearDetailSheetRequest = onClearDetailSheetRequest,
+            onSelectSystem = onSelectSystem,
+            onSelectComponent = onSelectComponent,
+            onAddToCart = onAddToCart,
+            onReSyncOfflineCache = onReSyncOfflineCache,
+            onClearOfflineCache = onClearOfflineCache,
+            modifier = Modifier.fillMaxSize()
+        )
+        MentorDock(
+            component = focused,
+            modifier = Modifier
+                .align(Alignment.TopCenter)
+                .padding(top = 56.dp, start = 12.dp, end = 58.dp)
+                .fillMaxWidth()
+        )
+    }
 }
