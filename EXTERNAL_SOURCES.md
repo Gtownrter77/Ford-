@@ -40,6 +40,8 @@ Owner Guide (P207 Sport Trac):
 - Printing 3: https://www.fordservicecontent.com/Ford_Content/catalog/owner_guides/04p27og3e.pdf
 - Extracted tables: `docs/2004_SPORT_TRAC_OWNER_GUIDE_SPECS.md`
 - Scope: fluids, Motorcraft service parts, capacities, engine data, dimensions, lug-nut torque. Not workshop pinpoint tests.
+- Third-party HTML viewer (same OG header, not source of truth): https://www.manualslib.com/products/Ford-2004-P207-Explorer-Sport-Trac-3821136.html
+- Viewer pages: https://www.manualslib.com/manual/624782/Ford-P207-Explorer-Sport-Trac.html
 
 Quick Reference Guide:
 - Printing 1: https://www.fordservicecontent.com/Ford_Content/catalog/owner_guides/04p27qg1e.pdf
