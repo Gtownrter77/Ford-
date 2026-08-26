@@ -13,7 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
-import com.example.data.SportTracData
+import com.example.data.PublishedSportTracData
 import com.example.model.Component3DModel
 import com.example.model.VehicleSystem
 import com.example.navigation.FeatureRoutePolicy
@@ -41,7 +41,7 @@ fun SafeProcedural3DRoute(
     modifier: Modifier = Modifier
 ) {
     var sceneAuthorized by rememberSaveable { mutableStateOf(false) }
-    val catalogSize = SportTracData.components.size
+    val catalogSize = PublishedSportTracData.components.size
 
     if (!sceneAuthorized) {
         Box(
