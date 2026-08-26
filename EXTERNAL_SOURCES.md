@@ -19,8 +19,16 @@
 - **EPA: Handling Contaminated Automotive Refrigerants** — https://www.epa.gov/mvac/handling-contaminated-automotive-refrigerants
   - Vehicles should have a refrigerant identification label. Contaminated or unfamiliar automotive refrigerant must be recovered before repair or recharge; venting automotive refrigerants is prohibited except carbon dioxide/R-744. The app’s seasonal A/C alert therefore prompts inspection and documented service preparation, not automatic refrigerant charging.
 
-- **Ford/Charm: 2004 Explorer Sport Trac compressor service procedure** — https://charm.li/Ford/2004/Explorer%20Sport%20Trac%202WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Heating%20and%20Air%20Conditioning/Compressor%20HVAC/Service%20and%20Repair/
-  - Used for the model’s conservative compressor/contamination/O-ring repair boundaries. Confirm the exact vehicle configuration, VIN, and under-hood label before physical service.
+## Workshop manual (CHARM) — 2004 Sport Trac 4WD V6-4.0L VIN K Flex Fuel
+
+- **Hub** — https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/
+- **Repair and Diagnosis** — https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/
+- **All DTCs** — https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/A%20L%20L%20%20Diagnostic%20Trouble%20Codes%20%28%20DTC%20%29/
+- **Parts and Labor** — https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Parts%20and%20Labor/
+- **A/C compressor service (4WD VIN K)** — https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Heating%20and%20Air%20Conditioning/Compressor%20HVAC/Service%20and%20Repair/
+- Index file: `docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md`
+- Older 2WD compressor URL kept only as a prior citation; 4WD truck work uses the 4WD hub above.
+- **2WD compressor citation (do not use for 4WD truck)** — https://charm.li/Ford/2004/Explorer%20Sport%20Trac%202WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Heating%20and%20Air%20Conditioning/Compressor%20HVAC/Service%20and%20Repair/
 
 ## Official 2004 owner publications
 
