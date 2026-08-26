@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
-import com.example.data.SportTracData
+import com.example.data.PublishedSportTracData
 import com.example.data.VehicleAsset
 import com.example.model.Component3DModel
 import com.example.model.VehicleSystem
@@ -44,7 +44,7 @@ fun VehicleHubRoute(
     val context = LocalContext.current
     val glbReady = remember { VehicleAsset.isGlbPresent(context) }
     var showSchematicPractice by rememberSaveable { mutableStateOf(false) }
-    val focused = selectedComponent ?: SportTracData.components.firstOrNull()
+    val focused = selectedComponent ?: PublishedSportTracData.components.firstOrNull()
 
     if (glbReady) {
         Box(modifier = modifier.fillMaxSize().testTag("vehicle_hub_filament")) {
@@ -52,7 +52,7 @@ fun VehicleHubRoute(
                 catalogAssetPath = VehicleAsset.PARTS_CATALOG_PATH,
                 onExit = {},
                 onPartTap = { partId ->
-                    SportTracData.components.firstOrNull { it.id == partId }?.let(onSelectComponent)
+                    PublishedSportTracData.components.firstOrNull { it.id == partId }?.let(onSelectComponent)
                 },
                 modifier = Modifier.fillMaxSize()
             )
