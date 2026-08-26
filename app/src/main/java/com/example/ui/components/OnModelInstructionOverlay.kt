@@ -16,21 +16,31 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.VolumeOff
+import androidx.compose.material.icons.filled.VolumeUp
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -38,6 +48,7 @@ import androidx.compose.ui.unit.sp
 import com.example.mentor.OnModelInstruction
 import com.example.mentor.OnModelInstructions
 import com.example.model.Component3DModel
+import com.example.util.MentorTtsManager
 
 @Composable
 fun OnModelInstructionOverlay(
@@ -47,9 +58,32 @@ fun OnModelInstructionOverlay(
     if (component == null) return
     val instructions = OnModelInstructions.forComponent(component)
     if (instructions.isEmpty()) return
+
+    val context = LocalContext.current
+    val tts = remember { MentorTtsManager(context) }
+    val isMuted by tts.isMuted.collectAsState()
+    val isSpeaking by tts.isSpeaking.collectAsState()
+
     var activeIndex by rememberSaveable(component.id) { mutableIntStateOf(0) }
     val safeIndex = activeIndex.coerceIn(0, instructions.lastIndex)
     val active = instructions[safeIndex]
+
+    DisposableEffect(Unit) {
+        onDispose { tts.shutdown() }
+    }
+
+    LaunchedEffect(component.id, safeIndex, isMuted) {
+        if (!isMuted) {
+            tts.speakStep(
+                stepNumber = active.index,
+                totalSteps = instructions.size,
+                title = active.title,
+                instruction = active.body,
+                warning = active.warning,
+                notes = active.tip
+            )
+        }
+    }
 
     Surface(
         color = Color(0xF2101827),
@@ -60,11 +94,26 @@ fun OnModelInstructionOverlay(
             .testTag("on_model_instruction_overlay")
     ) {
         Column(modifier = Modifier.padding(12.dp)) {
-            Text(
-                "ON MODEL — ${component.name}",
-                color = Color(0xFFFBBF24),
-                style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Black, letterSpacing = 0.6.sp)
-            )
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    "ON MODEL — ${component.name}",
+                    color = Color(0xFFFBBF24),
+                    style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Black, letterSpacing = 0.6.sp),
+                    modifier = Modifier.weight(1f)
+                )
+                IconButton(
+                    onClick = { tts.toggleMute() },
+                    modifier = Modifier
+                        .size(32.dp)
+                        .testTag("on_model_mute_btn")
+                ) {
+                    Icon(
+                        imageVector = if (isMuted) Icons.Default.VolumeOff else Icons.Default.VolumeUp,
+                        contentDescription = if (isMuted) "Unmute Mentor" else "Mute Mentor",
+                        tint = if (isSpeaking) Color(0xFFFBBF24) else Color(0xFF94A3B8)
+                    )
+                }
+            }
             Spacer(Modifier.height(8.dp))
             Row(
                 modifier = Modifier
