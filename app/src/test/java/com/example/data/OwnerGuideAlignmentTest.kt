@@ -74,6 +74,38 @@ class OwnerGuideAlignmentTest {
     }
 
     @Test
+    fun overviewPublishesBrakeWasherAxlesAndWheelbase() {
+        val specs = PublishedSportTracData.vehicleOverviewSpecs
+        assertTrue(specs.getValue("Brake Fluid").contains("DOT 3"))
+        assertTrue(specs.getValue("Washer Fluid").contains("2.7"))
+        assertTrue(specs.getValue("Battery").contains("BXT-65-650"))
+        assertTrue(specs.getValue("Fuel Filter").contains("FG-1036"))
+        assertTrue(specs.getValue("Rear Axle").contains("75W-90"))
+        assertTrue(specs.getValue("Firing Order").contains("1-4-2-5-3-6"))
+        assertTrue(specs.getValue("Wheelbase").contains("125.9"))
+    }
+
+    @Test
+    fun maintenanceScheduleIncludesOgServiceIds() {
+        val ids = PublishedSportTracData.defaultMaintenanceSchedules.map { it.id }.toSet()
+        assertTrue(ids.containsAll(listOf("fuel_filter", "transfer_case", "front_axle", "rear_axle", "battery", "pcv")))
+    }
+
+    @Test
+    fun rearAxleSourceForbidsOldSeventyFiveWOneFortyRefill() {
+        val blob = SportTracData.components
+            .filter { it.name.contains("Diff", ignoreCase = true) || it.name.contains("Axle", ignoreCase = true) }
+            .joinToString { component ->
+                component.repairSteps.joinToString { it.instruction } +
+                    component.torqueSpecs.joinToString { it.notes } +
+                    component.requiredTools.joinToString()
+            }
+        assertFalse(blob.contains("2.5 qts 75W-140"))
+        assertFalse(blob.contains("75W-140"))
+        assertTrue(blob.contains("75W-90"))
+    }
+
+    @Test
     fun serviceManualPowerSteeringUsesMerconAtf() {
         val match = SportTracServiceManualDiagnostics.manualTroubleMatches.first {
             it.id == "match_power_steering_aeration"
