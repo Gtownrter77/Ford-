@@ -52,15 +52,18 @@ object MentorKnowledge {
             estimatedMinutes = component.estimatedTimeMinutes,
             knownFailures = failures,
             torqueCallouts = component.torqueSpecs.map { spec ->
-                "${spec.fastenerName}: ${spec.torqueFtLbs} ft-lb / ${spec.torqueNm} N·m${if (spec.notes.isNotBlank()) " — ${spec.notes}" else ""}"
+                "${spec.fastenerName}: ${spec.torqueFtLbs} ft-lb / ${spec.torqueNm} N\u00b7m${if (spec.notes.isNotBlank()) " \u2014 ${spec.notes}" else ""}"
             },
             tools = component.requiredTools,
             firstStepTitle = component.repairSteps.firstOrNull()?.title,
             firstStepInstruction = component.repairSteps.firstOrNull()?.instruction,
             relatedPartNumbers = relatedParts,
-            uncertaintyNote = "This briefing is packaged training data for this VIN family. Confirm torque, fastener, and procedure against the current Ford workshop manual before turning a wrench on a real truck."
+            uncertaintyNote = "Owner-guide fluids and Motorcraft numbers are from the 2004 P207 Sport Trac Owners Guide. Torque sequences and teardown steps still need the workshop manual before turning a wrench."
         )
     }
+
+    const val OWNER_GUIDE_FLUIDS = "2004 OG: oil 5.0 qt 5W-30 + FL-820S; coolant 14.0 qt Premium Gold; 5R55E 4x4 MERCON V dry-fill about 10.3 qt set by dipstick; transfer case 1.3 qt MERCON ATF not MERCON V; PS MERCON ATF; rear axle 75W-90 FE synthetic 5.5-5.8 pints plus XL-7 4 oz if Traction-Lok."
+    const val OWNER_GUIDE_PARTS = "2004 OG Motorcraft: air FA-1744, fuel FG-1036, oil FL-820S, battery BXT-65-650, PCV EV-243, plugs AGSF-22PP gap 0.052-0.056 in. Lug nuts 1/2-20 at 84-114 lb-ft."
 
     fun spokenBriefing(component: Component3DModel): String {
         val brief = briefing(component)
@@ -111,6 +114,12 @@ object MentorKnowledge {
                 } else {
                     "${match.title}. ${match.problemSummary} Cause on this truck: ${match.probableCause} Codes: ${match.obdCodes.joinToString().ifBlank { "none packaged" }}. Section ${match.serviceManualSection}."
                 }
+            }
+            q.contains("fluid") || q.contains("capacity") || q.contains("quart") || q.contains("coolant") || q.contains("mercon") -> {
+                OWNER_GUIDE_FLUIDS
+            }
+            q.contains("filter") || q.contains("motorcraft") || q.contains("gap") || q.contains("lug") -> {
+                OWNER_GUIDE_PARTS
             }
             q.contains("where") || q.contains("location") || q.contains("find") -> {
                 "${component.name} is ${component.locationDescription}."

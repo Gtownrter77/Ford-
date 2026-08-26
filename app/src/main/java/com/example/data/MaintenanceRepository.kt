@@ -47,10 +47,8 @@ class MaintenanceRepository(private val maintenanceDao: MaintenanceDao) {
         costUsd: Double,
         notes: String
     ) {
-        // Mark upcoming task complete in Room
         maintenanceDao.markUpcomingTaskCompleted(task.id)
 
-        // Log service completed in Room
         val logEntity = MaintenanceEntity(
             scheduleItemId = task.scheduleItemId,
             title = task.title,
@@ -64,7 +62,6 @@ class MaintenanceRepository(private val maintenanceDao: MaintenanceDao) {
         )
         maintenanceDao.insertLog(logEntity)
 
-        // Create next interval task in Room automatically!
         val nextTargetMileage = actualMileage + task.intervalMiles
         val thirtyDaysMillis = 30L * 24 * 60 * 60 * 1000
         val estimatedIntervalDays = ((task.intervalMiles.toDouble() / 12000.0) * 365.0).toLong()
@@ -106,7 +103,7 @@ class MaintenanceRepository(private val maintenanceDao: MaintenanceDao) {
                     title = "Cooling System & Thermostat Housing",
                     systemName = "Cooling",
                     targetMileage = 115200,
-                    dueDateMillis = now - (2 * dayMillis), // Overdue
+                    dueDateMillis = now - (2 * dayMillis),
                     intervalMiles = 40000,
                     fluidSpecOrPart = "Motorcraft Gold Premium Antifreeze & Thermostat Assembly",
                     priorityLevel = "CRITICAL",
@@ -144,10 +141,10 @@ class MaintenanceRepository(private val maintenanceDao: MaintenanceDao) {
                     targetMileage = 120000,
                     dueDateMillis = now + (45 * dayMillis),
                     intervalMiles = 30000,
-                    fluidSpecOrPart = "1.25 Quarts Motorcraft MERCON V ATF",
+                    fluidSpecOrPart = "1.3 Quarts Motorcraft MERCON ATF (XT-2-QDX) \u2014 2004 OG",
                     priorityLevel = "NORMAL",
                     estimatedCostUsd = 28.00,
-                    notes = "Check drain/fill plug washers"
+                    notes = "OG: transfer case uses MERCON ATF, not MERCON V. Fill to bottom of filler plug."
                 ),
                 UpcomingTaskEntity(
                     scheduleItemId = "sched_sparks_1",
@@ -159,7 +156,7 @@ class MaintenanceRepository(private val maintenanceDao: MaintenanceDao) {
                     fluidSpecOrPart = "Motorcraft AGSF-22PP & Wire Set",
                     priorityLevel = "NORMAL",
                     estimatedCostUsd = 110.00,
-                    notes = "Gap to 0.054 inches. Apply dielectric grease to boots"
+                    notes = "OG gap 0.052-0.056 in (AGSF-22PP). Apply dielectric grease to boots"
                 ),
                 UpcomingTaskEntity(
                     scheduleItemId = "sched_diff_1",
@@ -168,14 +165,13 @@ class MaintenanceRepository(private val maintenanceDao: MaintenanceDao) {
                     targetMileage = 130000,
                     dueDateMillis = now + (150 * dayMillis),
                     intervalMiles = 50000,
-                    fluidSpecOrPart = "75W-140 Synthetic Gear Oil + Friction Modifier",
+                    fluidSpecOrPart = "Motorcraft SAE 75W-90 FE Synthetic + XL-7 if Traction-Lok \u2014 2004 OG",
                     priorityLevel = "NORMAL",
                     estimatedCostUsd = 65.00,
-                    notes = "Requires 4 oz friction modifier if limited slip (Trac-Lok)"
+                    notes = "OG rear axle: 5.5-5.8 pints 75W-90 FE synthetic. Add 4 oz XL-7 only for Traction-Lok complete refill."
                 )
             )
             maintenanceDao.insertUpcomingTasks(defaultTasks)
         }
     }
 }
-
