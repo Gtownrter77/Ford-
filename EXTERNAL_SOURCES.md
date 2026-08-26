@@ -39,3 +39,12 @@
 - **Quick Reference Guide** — https://www.fordservicecontent.com/Ford_Content/catalog/owner_guides/04p27qg1e.pdf
 - Extracted tables: `docs/2004_SPORT_TRAC_OWNER_GUIDE_SPECS.md`
 - Scope: fluids, Motorcraft service parts, capacities, engine data, dimensions, lug-nut torque. Not workshop pinpoint tests or repair torque sequences.
+
+## Community and aftermarket references (not factory spec)
+
+- **Ford Explorer Forums** — https://www.explorerforum.com/forums/
+- **2001-2005 Explorer Sport Trac board (this truck)** — https://www.explorerforum.com/forums/forums/2001-2005-explorer-sport-trac.120/
+- **2007-2010 Explorer Sport Trac board (do not mix)** — https://www.explorerforum.com/forums/forums/2007-2010-explorer-sport-trac.124/
+- Use: owner failure patterns and real-truck notes only. Do not override Owner Guide or CHARM values.
+- **Haynes aftermarket manual (Storer, 2005; Sport Trac through 2005)** — https://archive.org/details/fordexplorermazd0000stor_x6g5
+  - ISBN 1563925915. Print-disabled / borrow item. Not the factory WSM.
