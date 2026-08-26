@@ -1,7 +1,9 @@
 package com.example.mentor
 
 import com.example.data.CharmWorkshopIndex
+import com.example.data.CommunityForumThreads
 import com.example.data.CommunityRepairVideos
+import com.example.data.OfficialOwnerPublications
 import com.example.data.SportTracPartsCatalog
 import com.example.data.SportTracServiceManualDiagnostics
 import com.example.model.Component3DModel
@@ -70,8 +72,16 @@ object MentorKnowledge {
         )
     }
 
-    const val OWNER_GUIDE_FLUIDS = "2004 OG: oil 5.0 qt 5W-30 + FL-820S; coolant 14.0 qt Premium Gold; 5R55E 4x4 MERCON V (Mercon 5) dry-fill about 10.3 qt set by dipstick. Transfer case official: 1.3 qt MERCON ATF XT-2-QDX, not MERCON V. Power steering official: MERCON ATF. Common sense: XT-2 is discontinued, so shops use MERCON V in the t-case and PS when original Mercon cannot be sourced. Do not treat that as the printed OG spec."
-    const val OWNER_GUIDE_PARTS = "2004 OG Motorcraft: air FA-1744, fuel FG-1036, oil FL-820S, battery BXT-65-650, PCV EV-243, plugs AGSF-22PP gap 0.052-0.056 in. Lug nuts 1/2-20 at 84-114 lb-ft."
+    const val OWNER_GUIDE_FLUIDS =
+        "2004 OG: oil 5.0 qt 5W-30 + FL-820S; coolant 14.0 qt Premium Gold; 5R55E 4x4 MERCON V (Mercon 5) dry-fill about 10.3 qt set by dipstick; 4x2 about 10.0 qt. Transfer case official: 1.3 qt MERCON ATF XT-2-QDX, not MERCON V. Power steering official: MERCON ATF. Brake: DOT 3 to reservoir line. Washer: 2.7 qt. Common sense: XT-2 is discontinued, so shops use MERCON V in the t-case and PS when original Mercon cannot be sourced. Do not treat that as the printed OG spec. Ford printed do-not-mix MERCON and MERCON V."
+    const val OWNER_GUIDE_PARTS =
+        "2004 OG Motorcraft: air FA-1744, fuel FG-1036, oil FL-820S, battery BXT-65-650, PCV EV-243, plugs AGSF-22PP gap 0.052-0.056 in. Lug nuts 1/2-20 at 84-114 lb-ft."
+    const val OWNER_GUIDE_AXLES =
+        "2004 OG: front axle 1.8 qt 80W-90 on 4x4. Rear axle 5.5-5.8 pints 75W-90 FE synthetic, fill 6-14 mm below the hole. Add XL-7 4 oz on a complete Traction-Lok refill. Rear synthetic is lubricated for life unless leak, service, or water submersion. 75W-140 is not the printed OG fill."
+    const val OWNER_GUIDE_ENGINE =
+        "2004 OG engine data: 4.0L SOHC V6, 245 ci, compression 9.7:1, firing order 1-4-2-5-3-6, EDIS ignition, 87 octane or E85 max, AGSF-22PP gap 0.052-0.056 in. VECI decal overrides the table if it differs."
+    const val OWNER_GUIDE_DIMENSIONS =
+        "2004 OG 4-door: length 205.9 in, width 71.8 in, height 69.9 in (70.6 in max 4x4 16-in tires), wheelbase 125.9 in, track 58.5 / 58.3 in."
 
     fun spokenBriefing(component: Component3DModel): String {
         val brief = briefing(component)
@@ -112,9 +122,20 @@ object MentorKnowledge {
         val askedForVideo = q.contains("video") || q.contains("youtube") || q.contains("watch") || q.contains("tutorial")
         val askedForWorkshop = q.contains("workshop") || q.contains("charm") || q.contains("fsm") ||
             q.contains("service manual") || q.contains("repair manual")
+        val askedForOfficial = q.contains("owner guide") || q.contains("owners guide") ||
+            q.contains("official pdf") || q.contains("quick reference") || q.contains("warranty") ||
+            q.contains("fordservicecontent") || q.contains("owner manual")
+        val askedForForum = q.contains("forum") || q.contains("explorerforum") || q.contains("thread") ||
+            q.contains("blend door") || q.contains("valve body")
         return when {
             askedForWorkshop -> {
                 CharmWorkshopIndex.format(CharmWorkshopIndex.matching(question, component))
+            }
+            askedForOfficial -> {
+                OfficialOwnerPublications.format(OfficialOwnerPublications.matching(question))
+            }
+            askedForForum -> {
+                CommunityForumThreads.format(CommunityForumThreads.matching(question))
             }
             askedForVideo -> {
                 val videos = CommunityRepairVideos.matching(question, component)
@@ -146,8 +167,17 @@ object MentorKnowledge {
                 if (match == null) {
                     "No packaged TSB is indexed to ${component.id}. Describe the symptom and I will stay inside the Sport Trac catalog instead of inventing a diagnosis."
                 } else {
-                    "${match.title}. ${match.problemSummary} Cause on this truck: ${match.probableCause} Codes: ${match.obdCodes.joinToString().ifBlank { \"none packaged\" }}. Section ${match.serviceManualSection}."
+                    "${match.title}. ${match.problemSummary} Cause on this truck: ${match.probableCause} Codes: ${match.obdCodes.joinToString().ifBlank { "none packaged" }}. Section ${match.serviceManualSection}."
                 }
+            }
+            q.contains("axle") || q.contains("75w") || q.contains("xl-7") || q.contains("traction-lok") || q.contains("traction lok") -> {
+                OWNER_GUIDE_AXLES
+            }
+            q.contains("displacement") || q.contains("firing") || q.contains("edis") || q.contains("compression") || q.contains("octane") -> {
+                OWNER_GUIDE_ENGINE
+            }
+            q.contains("wheelbase") || q.contains("dimension") || q.contains("overall length") -> {
+                OWNER_GUIDE_DIMENSIONS
             }
             q.contains("fluid") || q.contains("capacity") || q.contains("quart") || q.contains("coolant") || q.contains("mercon") -> {
                 OWNER_GUIDE_FLUIDS
