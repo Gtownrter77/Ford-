@@ -2,6 +2,7 @@ package com.example.data
 
 import com.example.model.Component3DModel
 import com.example.model.MaintenanceScheduleItem
+import com.example.model.VehicleSystem
 
 /**
  * Owner-guide overlay on packaged Sport Trac data.
@@ -11,20 +12,26 @@ object PublishedSportTracData {
     val vehicleOverviewSpecs: Map<String, String> =
         SportTracData.vehicleOverviewSpecs + OwnerGuideSpecs.overview
 
+    private val extraOgSchedules: List<MaintenanceScheduleItem> = listOf(
+        MaintenanceScheduleItem("fuel_filter", "Fuel Filter Replacement", VehicleSystem.ENGINE, 30000, 24, "Motorcraft FG-1036 (2004 OG)", "Owner Guide fuel-filter number. Confirm under-hood VECI if it differs.", "engine_block"),
+        MaintenanceScheduleItem("transfer_case", "Transfer Case Fluid Service", VehicleSystem.TRANSMISSION, 60000, 48, "1.3 qt Motorcraft MERCON ATF (XT-2-QDX) per 2004 OG", "Official OG is MERCON ATF, not MERCON V. Fill to filler-hole bottom. Shop substitute MERCON V only when XT-2 cannot be sourced.", "transfer_case"),
+        MaintenanceScheduleItem("front_axle", "Front Axle Fluid Inspection", VehicleSystem.BRAKES_CHASSIS, 60000, 48, "1.8 qt Motorcraft SAE 80W-90 (4x4 OG)", "4x4 front axle OG fill. Inspect for leaks before treating as a routine drain.", "front_diff"),
+        MaintenanceScheduleItem("rear_axle", "Rear Axle Inspection", VehicleSystem.BRAKES_CHASSIS, 0, 12, "75W-90 FE 5.5-5.8 pt; lifetime unless leak/service/water", "2004 OG: lubricated for life unless leak, service, or water submersion. Add XL-7 4 oz on Traction-Lok refill. Fill 6-14 mm below hole.", "rear_diff"),
+        MaintenanceScheduleItem("battery", "Battery Inspection", VehicleSystem.ELECTRICAL, 0, 12, "Motorcraft BXT-65-650 (2004 OG)", "Owner Guide battery group. Load-test before replacing on age alone.", "alternator_ignition"),
+        MaintenanceScheduleItem("pcv", "PCV Valve Inspection", VehicleSystem.ENGINE, 60000, 48, "Motorcraft EV-243 (2004 OG)", "Owner Guide PCV number for the 4.0L SOHC.", "engine_block")
+    )
+
     val defaultMaintenanceSchedules: List<MaintenanceScheduleItem> =
         SportTracData.defaultMaintenanceSchedules.map { item ->
             when (item.id) {
                 "air_filter" -> item.copy(fluidTypeOrSpec = "Motorcraft FA-1744 (2004 OG)")
                 "coolant_flush" -> item.copy(fluidTypeOrSpec = "Motorcraft Premium Gold VC-7-A, 14.0 qt (2004 OG)")
                 "spark_plugs" -> item.copy(fluidTypeOrSpec = "Motorcraft AGSF-22PP gap 0.052-0.056 in (2004 OG)")
-                "fuel_filter" -> item.copy(fluidTypeOrSpec = "Motorcraft FG-1036 (2004 OG)")
-                "transfer_case" -> item.copy(fluidTypeOrSpec = "1.3 qt Motorcraft MERCON ATF (XT-2-QDX) per 2004 OG")
-                "front_axle" -> item.copy(fluidTypeOrSpec = "1.8 qt Motorcraft SAE 80W-90 (4x4 OG)")
-                "rear_axle" -> item.copy(fluidTypeOrSpec = "75W-90 FE 5.5-5.8 pt + XL-7; lifetime unless leak/service/water")
-                "battery" -> item.copy(fluidTypeOrSpec = "Motorcraft BXT-65-650 (2004 OG)")
-                "pcv" -> item.copy(fluidTypeOrSpec = "Motorcraft EV-243 (2004 OG)")
                 else -> item
             }
+        }.let { mapped ->
+            val existing = mapped.map { it.id }.toSet()
+            mapped + extraOgSchedules.filter { it.id !in existing }
         }
 
     val components: List<Component3DModel> = SportTracData.components.map { component ->
