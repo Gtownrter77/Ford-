@@ -5,6 +5,7 @@ package com.example.data
  * Source: 2004 P207 Owners Guide USA English (04p27og1e/2e/3e.pdf).
  * Hub: https://www.ford.com/support/owner-manuals-details/explorer-sport-trac/2004
  * Not a workshop manual. Do not treat these as repair torque sequences.
+ * Shop substitutes are labeled separately from printed OG specs.
  */
 object OwnerGuideSpecs {
     const val SOURCE = "2004 P207 Explorer Sport Trac Owners Guide (post-2002-fmt) USA English"
@@ -24,8 +25,12 @@ object OwnerGuideSpecs {
     const val TRANS_4X4_DRY_FILL = "10.3 quarts (9.8 L) approximate dry-fill; set by dipstick"
     const val TRANS_FLUID = "Motorcraft MERCON V ATF (XT-5-QM)"
     const val TRANSFER_CASE_CAPACITY = "1.3 quarts (1.2 L)"
-    const val TRANSFER_CASE_FLUID = "Motorcraft MERCON ATF (XT-2-QDX), not MERCON V"
-    const val POWER_STEERING_FLUID = "Motorcraft MERCON ATF; fill to reservoir line"
+    const val TRANSFER_CASE_FLUID =
+        "Official 2004 OG: Motorcraft MERCON ATF (XT-2-QDX), not MERCON V. XT-2 is discontinued. Shop substitute when XT-2 cannot be sourced: MERCON V (XT-5)."
+    const val POWER_STEERING_FLUID =
+        "Official 2004 OG: Motorcraft MERCON ATF; fill to reservoir line. Shop substitute: MERCON V."
+    const val FLUID_COMMON_SENSE =
+        "5R55E takes MERCON V. Transfer case and power steering officially take original MERCON (XT-2-QDX). Ford printed do-not-mix. XT-2 is gone, so shops commonly use MERCON V there. Label official vs substitute."
     const val FRONT_AXLE = "1.8 quarts Motorcraft SAE 80W-90 (4x4)"
     const val REAR_AXLE = "5.5-5.8 pints Motorcraft SAE 75W-90 Fuel Efficient High Performance Synthetic"
     const val TRACTION_LOK_ADDITIVE = "118 ml (4 oz) XL-7 / EST-M2C118-A on complete Traction-Lok refill"
