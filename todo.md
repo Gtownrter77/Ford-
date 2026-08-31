@@ -275,3 +275,26 @@
 ## Requested tenant-aware Supabase migration — generate only
 - [x] Design the `tenants`, `users`, `leads`, `inspections`, `reports`, and `audit_logs` schema with foreign keys, tenant scoping, timestamps, and practical indexes.
 - [x] Generate and locally validate a non-destructive SQL migration script; do not execute it against Supabase without separate authorization.
+
+## App-scoped follow-up clarification
+- [x] Answer the rear-click question strictly from the current app’s documented symptom/component data.
+- [x] State clearly whether a single-to-dual exhaust conversion and parts recommendation are implemented in the current app or remain outside its present scope.
+
+## Factory-manual source-of-truth correction
+- [x] Re-audit the supplied local factory-service-manual archive rather than relying on the app registry alone.
+- [x] Trace the rear-click symptom through rear suspension, wheel, axle, body, and exhaust-related manual pages.
+- [x] Trace all single-exhaust and exhaust-component procedures, specifications, clearances, and parts references in the manual.
+- [x] Reconcile verified manual findings with the current app and correct any incomplete guidance before reporting back.
+
+## Scope clarification
+- [x] Treat the complete approximately 9,500-page supplied archive as the audit scope and source of truth; do not describe or perform the work as a 9.5-page review.
+
+## Repository update requested
+- [x] Stage the complete-manual archive audit index and source-first rear-click/exhaust findings.
+- [x] Commit and push the documentation update to the configured GitHub repository.
+- [x] Verify the remote commit and clean working tree.
+
+## Complete manual archive upload
+- [x] Package the complete extracted approximately 9.2k-page HTML manual archive for repository storage.
+- [x] Verify page count, archive integrity, size, and checksum before commit.
+- [x] Commit and push the complete archive, then verify the remote commit and clean working tree.

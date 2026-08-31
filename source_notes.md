@@ -36,3 +36,11 @@ Visual verification of downloaded CHARM plates: diagram 34-1 is a 1-bit grayscal
 ## Live 4WD rear-suspension torque verification
 
 Operation CHARM page verified for 2004 Ford Explorer Sport Trac 4WD V6-4.0L VIN K Flex Fuel: `https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Steering%20and%20Suspension/Suspension/Specifications/Rear/`. The visible rear torque table lists shock absorber-to-frame nuts at 23 N·m (17 lb-ft) and the shock absorber lower bolt at 63 N·m (46 lb-ft), alongside rear suspension fasteners. This confirms the same numerical values found in the local 2WD extraction, but the app should cite this 4WD URL for the 4WD feature.
+
+## Full local manual re-audit: rear click and exhaust
+
+An archive-wide scan covered all 9,188 HTML pages in the supplied 2004 Explorer Sport Trac 2WD V6-4.0L VIN K bundle. Relevant exact pages include pages/5313 and 7205 for rear suspension/shock context, page 2999 for driveline noise diagnosis, page 8750 for muffler and tailpipe service, and page 2269 for exhaust description and operation.
+
+Page 2999 states that a clunk can be caused by driveline backlash or loose suspension components. Page 8750 says muffler/tailpipe service requires removing the shock absorber bolt to position the shock out of the way and moving the RH stabilizer bar link out of the way; it warns against oil/grease-based lubricants on rubber isolators and requires a new converter outlet gasket and new exhaust fasteners. Page 2269 describes the factory system as stainless steel with a dual-converter Y-pipe, dual three-way catalytic converter, and muffler/resonator assembly; exhaust fasteners are torque-prevailing and must be torqued to specification. The supplied archive does not document a conversion from a single tailpipe to a dual tailpipe system; it documents the factory catalytic/Y-pipe arrangement and a single muffler/resonator/tailpipe service assembly.
+
+Because this local bundle is labeled 2WD while the vehicle task is 4WD, any 4WD-specific fitment or clearance claim must remain explicitly caveated and cross-checked against the live 4WD source.
