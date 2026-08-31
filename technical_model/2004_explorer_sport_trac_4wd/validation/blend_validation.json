@@ -1,0 +1,101 @@
+{
+  "blend_path": "/home/ubuntu/ford_explorer_sport_trac_2004/explorer_sport_trac_teaching_model_4wd.blend",
+  "object_count": 170,
+  "mesh_count": 137,
+  "curve_count": 29,
+  "materials": 16,
+  "collections": {
+    "Annotations": {
+      "objects": 12,
+      "types": {
+        "FONT": 11,
+        "MESH": 1
+      },
+      "animated": 0
+    },
+    "Body": {
+      "objects": 29,
+      "types": {
+        "MESH": 29
+      },
+      "animated": 29
+    },
+    "Chassis": {
+      "objects": 11,
+      "types": {
+        "MESH": 9,
+        "CURVE": 2
+      },
+      "animated": 0
+    },
+    "Engine": {
+      "objects": 20,
+      "types": {
+        "MESH": 16,
+        "CURVE": 4
+      },
+      "animated": 20
+    },
+    "Fasteners": {
+      "objects": 38,
+      "types": {
+        "MESH": 38
+      },
+      "animated": 36
+    },
+    "Interior": {
+      "objects": 6,
+      "types": {
+        "MESH": 6
+      },
+      "animated": 6
+    },
+    "Presentation": {
+      "objects": 5,
+      "types": {
+        "CAMERA": 1,
+        "LIGHT": 3,
+        "MESH": 1
+      },
+      "animated": 0
+    },
+    "Suspension": {
+      "objects": 32,
+      "types": {
+        "MESH": 26,
+        "CURVE": 6
+      },
+      "animated": 27
+    },
+    "Transmission": {
+      "objects": 5,
+      "types": {
+        "MESH": 3,
+        "CURVE": 2
+      },
+      "animated": 3
+    },
+    "Wiring": {
+      "objects": 12,
+      "types": {
+        "CURVE": 4,
+        "MESH": 8
+      },
+      "animated": 12
+    }
+  },
+  "animated_object_count": 133,
+  "all_keyframes_bezier": true,
+  "animation_frame_range": [
+    1,
+    250
+  ],
+  "scene_properties": {
+    "manual_source": "LEMON Manuals bundle: 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel",
+    "manual_pages": 9185,
+    "manual_images": 17887,
+    "model_scope": "Teaching-grade major-system representation; dimensions inferred/approximated where the manual has no CAD geometry.",
+    "fitment": "4WD, V6 4.0L VIN K Flex Fuel",
+    "drive_configuration": "4WD teaching representation with transfer case, front propeller shaft, front differential, and front halfshafts"
+  }
+}

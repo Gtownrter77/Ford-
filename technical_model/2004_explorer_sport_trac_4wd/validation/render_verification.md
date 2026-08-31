@@ -1,0 +1,3 @@
+# Render Verification Notes
+
+The front three-quarter and side renders are full 3840×2160 PNGs. Both show the vehicle silhouette, wheel assemblies, major body modules, labeled engine/transmission/frame/harness systems, and the 2 m reference bar without visible render corruption. The front three-quarter view provides the strongest presentation composition; the side view provides the clearest system-label layout. The model is intentionally a teaching-grade parametric representation rather than a production CAD reconstruction, because the supplied manual is procedural/service literature and does not provide a complete native CAD dataset.
