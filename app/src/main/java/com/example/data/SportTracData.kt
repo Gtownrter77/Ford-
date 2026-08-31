@@ -96,6 +96,36 @@ object SportTracData {
         return Pair(vertices, faces)
     }
 
+    // Design reminder: the workshop model uses restrained technical colors, asymmetric exploded vectors,
+    // and explicit source labeling so geometry supports inspection rather than decorative illustration.
+    private fun createRearShockMesh(): Pair<List<Point3D>, List<Face3D>> {
+        val (bodyVertices, bodyFaces) = createBoxMesh(
+            width = 0.34f, height = 1.45f, depth = 0.34f,
+            center = Point3D(0f, -0.45f, 0f), colorHex = "#334155"
+        )
+        val (rodVertices, rodFaces) = createCylinderMesh(
+            radius = 0.075f, height = 0.95f, segments = 12,
+            center = Point3D(0f, 0.75f, 0f), colorHex = "#CBD5E1"
+        )
+        val (upperEyeVertices, upperEyeFaces) = createBoxMesh(
+            width = 0.46f, height = 0.18f, depth = 0.38f,
+            center = Point3D(0f, 1.28f, 0f), colorHex = "#64748B"
+        )
+        val (lowerEyeVertices, lowerEyeFaces) = createBoxMesh(
+            width = 0.46f, height = 0.18f, depth = 0.38f,
+            center = Point3D(0f, -1.23f, 0f), colorHex = "#64748B"
+        )
+        val vertices = bodyVertices + rodVertices + upperEyeVertices + lowerEyeVertices
+        fun offsetFaces(faces: List<Face3D>, offset: Int) = faces.map { face ->
+            face.copy(vertexIndices = face.vertexIndices.map { it + offset })
+        }
+        val faces = bodyFaces +
+            offsetFaces(rodFaces, bodyVertices.size) +
+            offsetFaces(upperEyeFaces, bodyVertices.size + rodVertices.size) +
+            offsetFaces(lowerEyeFaces, bodyVertices.size + rodVertices.size + upperEyeVertices.size)
+        return Pair(vertices, faces)
+    }
+
     private fun generateSubAssemblies(id: String): List<SubAssemblyPart> {
         return when (id) {
             "engine_block" -> listOf(
@@ -2061,7 +2091,53 @@ object SportTracData {
             )
         },
 
-        // 53. MACH 500 / PIONEER PREMIUM DOUBLE-DIN RADIO HEAD UNIT & CD CHANGER
+        // 53. REAR SHOCK ABSORBER — 4WD VIN K
+        run {
+            val (v, f) = createRearShockMesh()
+            Component3DModel(
+                id = "rear_shock_absorbers_4wd_3d",
+                name = "4WD Rear Shock Absorber Pair & Mounting Eyes",
+                system = VehicleSystem.BRAKES_CHASSIS,
+                oemPartNumber = "AFTERMARKET DIRECT-FIT — VERIFY VIN / AXLE CODE",
+                description = "Pair of rear telescopic shock absorbers for the 2004 Explorer Sport Trac 4WD chassis, shown with steel damper bodies, polished piston rods, upper and lower mounting eyes, and service fastener interfaces. Geometry is a teaching aid; confirm replacement fitment against the VIN and axle code before purchase.",
+                locationDescription = "One shock is mounted at each side of the rear axle, between the frame rail and rear axle/spring assembly.",
+                difficulty = "Intermediate",
+                estimatedTimeMinutes = 120,
+                vertices = v,
+                faces = f,
+                centerOffset = Point3D(0.0f, -0.8f, -1.9f),
+                explodeVector = Point3D(0.0f, -1.4f, -1.0f),
+                torqueSpecs = listOf(
+                    TorqueSpec("Shock absorber-to-frame nuts", "17", "23", "4WD VIN K CHARM rear specification"),
+                    TorqueSpec("Shock absorber lower bolt", "46", "63", "4WD VIN K CHARM rear specification"),
+                    TorqueSpec("Wheel nuts", "100", "135", "Reinstall wheel and torque in star pattern")
+                ),
+                requiredTools = listOf("Floor jack and rated jack stands", "Wheel chocks", "18mm/19mm socket set", "Torque wrench (17–100 lb-ft range)", "Rust penetrant and wire brush", "Safety glasses and mechanic gloves"),
+                repairSteps = listOf(
+                    RepairStep(1, "Verify fitment and prepare the work area", "Confirm the replacement pair is listed for 2004 Explorer Sport Trac 4WD, compare the mounting-eye orientation, park on a level surface, apply the parking brake, chock the front wheels, and disconnect no electrical components.", warning = "Do not work beneath a vehicle supported only by a floor jack. Support the frame with rated jack stands before removing a shock fastener."),
+                    RepairStep(2, "Lift and support the rear of the truck", "Loosen the rear wheel nuts slightly, lift the rear frame with a floor jack, place rated jack stands under the frame, and keep the axle supported separately so it cannot drop when the shock is removed.", warning = "Never place a stand under a thin body panel or an unstable suspension arm. Confirm the vehicle is stable before entering the work zone."),
+                    RepairStep(3, "Remove the upper shock mounting nuts", "Brush the exposed threads, apply penetrant, and remove the upper shock absorber-to-frame nuts. If the stud turns with the nut, use the correct counter-hold method rather than applying heat near rubber components or fuel-system parts."),
+                    RepairStep(4, "Remove the lower bolt and the old shock", "Support the axle, remove the lower shock absorber bolt, then withdraw the shock. Compare the old and new units for length, bushing stack, eye orientation, and physical damage before installation."),
+                    RepairStep(5, "Install the replacement shock pair", "Install both shocks with the same orientation and hardware stack as removed. Start all threads by hand; do not fully tighten the bushings while the axle is hanging if the mount design requires ride-height loading."),
+                    RepairStep(6, "Torque, lower, and inspect", "Torque the upper frame nuts to 17 lb-ft (23 N·m) and the lower bolts to 46 lb-ft (63 N·m) using the 4WD VIN K rear specification. Reinstall wheels and torque wheel nuts to 100 lb-ft (135 N·m), lower the vehicle, and perform a bounce/visual inspection for contact, loose hardware, or asymmetric ride height.", tip = "After a short, low-speed test, recheck for oil leakage, loose hardware, abnormal noise, and correct shock clearance. Stop immediately if the vehicle wanders or a mount shifts.")
+                ),
+                commonSymptoms = listOf("Rear-end float or repeated bouncing after a bump", "Damped oil leakage from a shock body", "Uneven rear tire cupping or scalloped tread", "Clunking from a loose shock mount"),
+                replacementIntervalMiles = null,
+                fasteners = listOf(
+                    FastenerInventoryItem("Upper shock-to-frame nut", FastenerCategory.BOLT, 2, "Factory rear shock mount", "Torque wrench", "Torque 23 N·m / 17 lb-ft per 4WD VIN K rear specification"),
+                    FastenerInventoryItem("Lower shock mounting bolt", FastenerCategory.BOLT, 2, "Factory rear shock lower mount", "Torque wrench", "Torque 63 N·m / 46 lb-ft per 4WD VIN K rear specification"),
+                    FastenerInventoryItem("Wheel nuts", FastenerCategory.BOLT, 10, "Wheel stud nuts", "Torque wrench", "Torque 135 N·m / 100 lb-ft after wheel installation")
+                ),
+                subAssemblies = listOf(
+                    SubAssemblyPart("rear_shock_damper_body", "Twin-tube damper body", SubAssemblyType.MAIN_BODY, v, f, specDetails = "Teaching geometry; verify actual replacement dimensions"),
+                    SubAssemblyPart("rear_shock_upper_eye", "Upper frame mounting eye", SubAssemblyType.BOLT, emptyList(), emptyList(), localOffset = Point3D(0f, 1.28f, 0f), specDetails = "Upper nuts: 23 N·m / 17 lb-ft"),
+                    SubAssemblyPart("rear_shock_lower_eye", "Lower axle mounting eye", SubAssemblyType.BOLT, emptyList(), emptyList(), localOffset = Point3D(0f, -1.23f, 0f), specDetails = "Lower bolt: 63 N·m / 46 lb-ft")
+                ),
+                manualSectionRef = "Operation CHARM 4WD VIN K: Suspension > Specifications > Rear"
+            )
+        },
+
+        // 54. MACH 500 / PIONEER PREMIUM DOUBLE-DIN RADIO HEAD UNIT & CD CHANGER
         run {
             val (v, f) = createBoxMesh(1.1f, 0.8f, 0.9f, Point3D(0.0f, 0.85f, 0.65f), "#F59E0B")
             Component3DModel(

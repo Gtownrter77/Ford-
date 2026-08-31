@@ -32,3 +32,7 @@ Live CHARM diagram verification: the 4WD VIN K `Electrical Diagrams / Transfer C
 
 
 Visual verification of downloaded CHARM plates: diagram 34-1 is a 1-bit grayscale PNG, 1870x1280, and is legible. It shows the four-wheel-drive control module (14B466), C281A/C281B and C215/C350 connector references, transfer-case assembly (7A195), VREF/VPWR, VSS, battery-junction and central-junction-box feeds, fuses F1.22/F1.20/F2.15/F2.14/F2.25, grounds, wire colors/gauges, and the transfer-case motor/position-switch circuits. Diagram 34-2 is 1846x1392 and legible. It shows the 4x4 mode switch (1B166) with Off/High/Low positions, instrument-cluster 4WD Low/High indicators, central security module, data-link connector, the four-wheel-drive control module, connector C284, splice/ground references, illumination, and wire colors/gauges. Both are actual source plates, not project-authored diagrams.
+
+## Live 4WD rear-suspension torque verification
+
+Operation CHARM page verified for 2004 Ford Explorer Sport Trac 4WD V6-4.0L VIN K Flex Fuel: `https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Steering%20and%20Suspension/Suspension/Specifications/Rear/`. The visible rear torque table lists shock absorber-to-frame nuts at 23 N·m (17 lb-ft) and the shock absorber lower bolt at 63 N·m (46 lb-ft), alongside rear suspension fasteners. This confirms the same numerical values found in the local 2WD extraction, but the app should cite this 4WD URL for the 4WD feature.

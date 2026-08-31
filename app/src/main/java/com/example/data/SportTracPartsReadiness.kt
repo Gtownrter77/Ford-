@@ -86,6 +86,17 @@ object SportTracPartsReadiness {
             )
         ),
         PartsReadinessPackage(
+            id = "rear_suspension_readiness",
+            title = "Rear suspension and shock readiness",
+            tier = PartsReadinessTier.HIGH_PRIORITY,
+            description = "A focused replacement package for worn or leaking rear shocks on the 4WD chassis. Confirm VIN/axle-code fitment and compare the pair price before ordering; the torque values come from the 4WD VIN K rear suspension specification.",
+            partIds = setOf("part_rear_shock_kyb_344269_pair"),
+            pendingFitmentItems = listOf(
+                PendingFitmentItem("Rear shock mounting hardware", "Inspect upper nuts, lower bolts, bushings, and sleeves; replace damaged or corroded hardware before reassembly."),
+                PendingFitmentItem("Rear shock application", "Verify 4WD fitment, mounting-eye orientation, and pair quantity against the VIN and axle code before purchase.")
+            )
+        ),
+        PartsReadinessPackage(
             id = "brake_wheel_safety_readiness",
             title = "Brake, wheel, and safety readiness",
             tier = PartsReadinessTier.HIGH_PRIORITY,

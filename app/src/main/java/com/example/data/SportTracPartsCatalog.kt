@@ -10,6 +10,26 @@ object SportTracPartsCatalog {
 
     // Comprehensive catalog of 2004 Ford Explorer Sport Trac parts with O'Reilly Commercial Pricing vs Competitors
     val catalog: List<PartItem> = listOf(
+        // Rear shock replacement — benchmark pricing, verify live fitment before purchase
+        PartItem(
+            id = "part_rear_shock_kyb_344269_pair",
+            componentId = "rear_shock_absorbers_4wd_3d",
+            partName = "KYB Excel-G Rear Shock Absorbers (Pair) — 2001–2005 Sport Trac 4WD fitment",
+            brand = "KYB",
+            partNumber = "344269 x2",
+            oreillyCommercialPrice = 91.14,
+            oreillyRetailPrice = 109.92,
+            inStockLocalStore = false,
+            storeStockCount = 0,
+            competitorPrices = listOf(
+                CompetitorPrice("RockAuto", 91.14, 0.0, "Benchmark listing; shipping varies"),
+                CompetitorPrice("Detroit Axle", 104.00, 0.0, "Rear pair benchmark"),
+                CompetitorPrice("eBay Motors", 109.92, 0.0, "Pair listing benchmark"),
+                CompetitorPrice("Amazon", 119.99, 0.0, "Verify seller and fitment")
+            ),
+            category = "Suspension",
+            warranty = "Verify manufacturer warranty at checkout"
+        ),
         // Spark Plugs & Ignition
         PartItem(
             id = "part_spark_plug_motorcraft",
