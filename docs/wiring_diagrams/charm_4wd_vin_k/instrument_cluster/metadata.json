@@ -1,0 +1,49 @@
+{
+  "label": "Instrument Cluster",
+  "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Instrument%20Panel%2C%20Gauges%20and%20Warning%20Indicators/System%20Diagram/Instrument%20Cluster/",
+  "status": 200,
+  "images": [
+    {
+      "label": "60-1:",
+      "url": "https://charm.li/images/DM05Q313/ford30/1501602014/",
+      "file": "instrument_cluster/60-1__1501602014.png",
+      "bytes": 11517
+    },
+    {
+      "label": "60-2:",
+      "url": "https://charm.li/images/DM05Q313/ford30/1501609219/",
+      "file": "instrument_cluster/60-2__1501609219.png",
+      "bytes": 19773
+    },
+    {
+      "label": "60-3:",
+      "url": "https://charm.li/images/DM05Q313/ford30/1501622403/",
+      "file": "instrument_cluster/60-3__1501622403.png",
+      "bytes": 27944
+    },
+    {
+      "label": "60-4:",
+      "url": "https://charm.li/images/DM05Q313/ford30/1501639993/",
+      "file": "instrument_cluster/60-4__1501639993.png",
+      "bytes": 21391
+    },
+    {
+      "label": "60-5:",
+      "url": "https://charm.li/images/DM05Q313/ford30/1501654218/",
+      "file": "instrument_cluster/60-5__1501654218.png",
+      "bytes": 35320
+    },
+    {
+      "label": "60-6:",
+      "url": "https://charm.li/images/DM05Q313/ford30/1501677264/",
+      "file": "instrument_cluster/60-6__1501677264.png",
+      "bytes": 27436
+    },
+    {
+      "label": "60-7:",
+      "url": "https://charm.li/images/DM05Q313/ford30/1501695100/",
+      "file": "instrument_cluster/60-7__1501695100.png",
+      "bytes": 15176
+    }
+  ]
+}

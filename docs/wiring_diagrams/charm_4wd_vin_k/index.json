@@ -1,0 +1,4946 @@
+{
+  "tree_url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/",
+  "categories": [
+    {
+      "label": "Electrical Diagrams",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Powertrain%20Management/Ignition%20System/Diagrams/Electrical%20Diagrams/",
+      "status": 200,
+      "images": [
+        {
+          "label": "21-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/654575598/",
+          "file": "electrical_diagrams/21-1__654575598.png",
+          "bytes": 24008
+        },
+        {
+          "label": "21-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/654590438/",
+          "file": "electrical_diagrams/21-2__654590438.png",
+          "bytes": 14533
+        }
+      ]
+    },
+    {
+      "label": "Wiring Diagram Index",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Powertrain%20Management/Diagrams/Electrical%20Diagrams/Wiring%20Diagram%20Index/",
+      "status": 200,
+      "images": [
+        {
+          "label": "Explorer Sport Trac 4WD V6-4.0L VIN K Flex Fuel",
+          "url": "https://charm.li/images/DM05Q313/ford30/661494372/",
+          "file": "wiring_diagram_index/Explorer_Sport_Trac_4WD_V6-4.0L_VIN_K_Flex_Fuel_661494372.png",
+          "bytes": 21197
+        }
+      ]
+    },
+    {
+      "label": "23-1",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Powertrain%20Management/Diagrams/Electrical%20Diagrams/23-1/",
+      "status": 200,
+      "images": [
+        {
+          "label": "23-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/661877777/",
+          "file": "23-1/23-1__661877777.png",
+          "bytes": 13065
+        }
+      ]
+    },
+    {
+      "label": "23-2",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Powertrain%20Management/Diagrams/Electrical%20Diagrams/23-2/",
+      "status": 200,
+      "images": [
+        {
+          "label": "23-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/662382089/",
+          "file": "23-2/23-2__662382089.png",
+          "bytes": 15022
+        }
+      ]
+    },
+    {
+      "label": "23-3",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Powertrain%20Management/Diagrams/Electrical%20Diagrams/23-3/",
+      "status": 200,
+      "images": [
+        {
+          "label": "23-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/662781570/",
+          "file": "23-3/23-3__662781570.png",
+          "bytes": 25795
+        }
+      ]
+    },
+    {
+      "label": "23-4",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Powertrain%20Management/Diagrams/Electrical%20Diagrams/23-4/",
+      "status": 200,
+      "images": [
+        {
+          "label": "23-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/663274482/",
+          "file": "23-4/23-4__663274482.png",
+          "bytes": 24438
+        }
+      ]
+    },
+    {
+      "label": "23-5",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Powertrain%20Management/Diagrams/Electrical%20Diagrams/23-5/",
+      "status": 200,
+      "images": [
+        {
+          "label": "23-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/663716614/",
+          "file": "23-5/23-5__663716614.png",
+          "bytes": 25916
+        }
+      ]
+    },
+    {
+      "label": "23-6",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Powertrain%20Management/Diagrams/Electrical%20Diagrams/23-6/",
+      "status": 200,
+      "images": [
+        {
+          "label": "23-6:",
+          "url": "https://charm.li/images/DM05Q313/ford30/663977078/",
+          "file": "23-6/23-6__663977078.png",
+          "bytes": 20111
+        }
+      ]
+    },
+    {
+      "label": "23-7",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Powertrain%20Management/Diagrams/Electrical%20Diagrams/23-7/",
+      "status": 200,
+      "images": [
+        {
+          "label": "23-7:",
+          "url": "https://charm.li/images/DM05Q313/ford30/664212500/",
+          "file": "23-7/23-7__664212500.png",
+          "bytes": 24128
+        }
+      ]
+    },
+    {
+      "label": "23-8",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Powertrain%20Management/Diagrams/Electrical%20Diagrams/23-8/",
+      "status": 200,
+      "images": [
+        {
+          "label": "23-8:",
+          "url": "https://charm.li/images/DM05Q313/ford30/664687870/",
+          "file": "23-8/23-8__664687870.png",
+          "bytes": 16294
+        }
+      ]
+    },
+    {
+      "label": "23-9",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Powertrain%20Management/Diagrams/Electrical%20Diagrams/23-9/",
+      "status": 200,
+      "images": [
+        {
+          "label": "23-9:",
+          "url": "https://charm.li/images/DM05Q313/ford30/665114360/",
+          "file": "23-9/23-9__665114360.png",
+          "bytes": 17908
+        }
+      ]
+    },
+    {
+      "label": "23-10",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Powertrain%20Management/Diagrams/Electrical%20Diagrams/23-10/",
+      "status": 200,
+      "images": [
+        {
+          "label": "23-10:",
+          "url": "https://charm.li/images/DM05Q313/ford30/665188463/",
+          "file": "23-10/23-10__665188463.png",
+          "bytes": 18450
+        }
+      ]
+    },
+    {
+      "label": "23-11",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Powertrain%20Management/Diagrams/Electrical%20Diagrams/23-11/",
+      "status": 200,
+      "images": [
+        {
+          "label": "23-11:",
+          "url": "https://charm.li/images/DM05Q313/ford30/665256422/",
+          "file": "23-11/23-11__665256422.png",
+          "bytes": 25839
+        }
+      ]
+    },
+    {
+      "label": "23-12",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Powertrain%20Management/Diagrams/Electrical%20Diagrams/23-12/",
+      "status": 200,
+      "images": [
+        {
+          "label": "23-12:",
+          "url": "https://charm.li/images/DM05Q313/ford30/665349347/",
+          "file": "23-12/23-12__665349347.png",
+          "bytes": 5215
+        }
+      ]
+    },
+    {
+      "label": "Electrical Diagrams",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Transmission%20and%20Drivetrain/Automatic%20Transmission%2FTransaxle/Shift%20Interlock/Diagrams/Electrical%20Diagrams/",
+      "status": 200,
+      "images": [
+        {
+          "label": "37-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/679748607/",
+          "file": "electrical_diagrams/37-1__679748607.png",
+          "bytes": 15190
+        }
+      ]
+    },
+    {
+      "label": "Wiring Diagram Index",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Transmission%20and%20Drivetrain/Automatic%20Transmission%2FTransaxle/Diagrams/Electrical%20Diagrams/Wiring%20Diagram%20Index/",
+      "status": 200,
+      "images": [
+        {
+          "label": "Explorer Sport Trac 4WD V6-4.0L VIN K Flex Fuel",
+          "url": "https://charm.li/images/DM05Q313/ford30/840042992/",
+          "file": "wiring_diagram_index/Explorer_Sport_Trac_4WD_V6-4.0L_VIN_K_Flex_Fuel_840042992.png",
+          "bytes": 12047
+        }
+      ]
+    },
+    {
+      "label": "29-1",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Transmission%20and%20Drivetrain/Automatic%20Transmission%2FTransaxle/Diagrams/Electrical%20Diagrams/29-1/",
+      "status": 200,
+      "images": [
+        {
+          "label": "29-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/840996578/",
+          "file": "29-1/29-1__840996578.png",
+          "bytes": 21600
+        }
+      ]
+    },
+    {
+      "label": "29-2",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Transmission%20and%20Drivetrain/Automatic%20Transmission%2FTransaxle/Diagrams/Electrical%20Diagrams/29-2/",
+      "status": 200,
+      "images": [
+        {
+          "label": "29-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/841291154/",
+          "file": "29-2/29-2__841291154.png",
+          "bytes": 20455
+        }
+      ]
+    },
+    {
+      "label": "29-3",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Transmission%20and%20Drivetrain/Automatic%20Transmission%2FTransaxle/Diagrams/Electrical%20Diagrams/29-3/",
+      "status": 200,
+      "images": [
+        {
+          "label": "29-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/841635043/",
+          "file": "29-3/29-3__841635043.png",
+          "bytes": 36180
+        }
+      ]
+    },
+    {
+      "label": "Electrical Diagrams",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Transmission%20and%20Drivetrain/Transfer%20Case/Diagrams/Electrical%20Diagrams/",
+      "status": 200,
+      "images": [
+        {
+          "label": "34-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1027137804/",
+          "file": "electrical_diagrams/34-1__1027137804.png",
+          "bytes": 29816
+        },
+        {
+          "label": "34-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1027155903/",
+          "file": "electrical_diagrams/34-2__1027155903.png",
+          "bytes": 25016
+        },
+        {
+          "label": "34-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1027171573/",
+          "file": "electrical_diagrams/34-3__1027171573.png",
+          "bytes": 15135
+        }
+      ]
+    },
+    {
+      "label": "Electrical Diagrams",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Brakes%20and%20Traction%20Control/Antilock%20Brakes%20%2F%20Traction%20Control%20Systems/Diagrams/Electrical%20Diagrams/",
+      "status": 200,
+      "images": [
+        {
+          "label": "42-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1040967012/",
+          "file": "electrical_diagrams/42-1__1040967012.png",
+          "bytes": 19648
+        },
+        {
+          "label": "42-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1040979199/",
+          "file": "electrical_diagrams/42-2__1040979199.png",
+          "bytes": 33160
+        }
+      ]
+    },
+    {
+      "label": "Electrical Diagrams",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Charging%20System/Diagrams/Electrical%20Diagrams/",
+      "status": 200,
+      "images": [
+        {
+          "label": "12-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1077605096/",
+          "file": "electrical_diagrams/12-1__1077605096.png",
+          "bytes": 21668
+        }
+      ]
+    },
+    {
+      "label": "Electrical Diagrams",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Starting%20System/Diagrams/Electrical%20Diagrams/",
+      "status": 200,
+      "images": [
+        {
+          "label": "20-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1084178775/",
+          "file": "electrical_diagrams/20-1__1084178775.png",
+          "bytes": 20101
+        }
+      ]
+    },
+    {
+      "label": "G100",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G100/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1091714457/",
+          "file": "g100/10-1__1091714457.png",
+          "bytes": 14041
+        }
+      ]
+    },
+    {
+      "label": "G101",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G101/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1091944327/",
+          "file": "g101/10-2__1091944327.png",
+          "bytes": 11534
+        }
+      ]
+    },
+    {
+      "label": "G102",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G102/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1091714457/",
+          "file": "g102/10-1__1091714457.png",
+          "bytes": 14041
+        }
+      ]
+    },
+    {
+      "label": "G103",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G103/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1092145563/",
+          "file": "g103/10-3__1092145563.png",
+          "bytes": 8452
+        }
+      ]
+    },
+    {
+      "label": "G104",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G104/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1092145563/",
+          "file": "g104/10-3__1092145563.png",
+          "bytes": 8452
+        }
+      ]
+    },
+    {
+      "label": "G105",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G105/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1092363644/",
+          "file": "g105/10-4__1092363644.png",
+          "bytes": 11726
+        }
+      ]
+    },
+    {
+      "label": "G106",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G106/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1092363644/",
+          "file": "g106/10-4__1092363644.png",
+          "bytes": 11726
+        }
+      ]
+    },
+    {
+      "label": "G107",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G107/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1092450657/",
+          "file": "g107/10-5__1092450657.png",
+          "bytes": 10634
+        }
+      ]
+    },
+    {
+      "label": "G108",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G108/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1092450657/",
+          "file": "g108/10-5__1092450657.png",
+          "bytes": 10634
+        }
+      ]
+    },
+    {
+      "label": "G109",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G109/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1092450657/",
+          "file": "g109/10-5__1092450657.png",
+          "bytes": 10634
+        }
+      ]
+    },
+    {
+      "label": "G200",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G200/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-6:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1093104156/",
+          "file": "g200/10-6__1093104156.png",
+          "bytes": 16058
+        }
+      ]
+    },
+    {
+      "label": "G201",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G201/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-7:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1093427736/",
+          "file": "g201/10-7__1093427736.png",
+          "bytes": 11387
+        }
+      ]
+    },
+    {
+      "label": "G202",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G202/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-7:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1093427736/",
+          "file": "g202/10-7__1093427736.png",
+          "bytes": 11387
+        }
+      ]
+    },
+    {
+      "label": "G203",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G203/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-7:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1093427736/",
+          "file": "g203/10-7__1093427736.png",
+          "bytes": 11387
+        }
+      ]
+    },
+    {
+      "label": "G204",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G204/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-8:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1094323829/",
+          "file": "g204/10-8__1094323829.png",
+          "bytes": 15685
+        },
+        {
+          "label": "10-9:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1094333413/",
+          "file": "g204/10-9__1094333413.png",
+          "bytes": 6899
+        }
+      ]
+    },
+    {
+      "label": "G205",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G205/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-8:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1094323829/",
+          "file": "g205/10-8__1094323829.png",
+          "bytes": 15685
+        }
+      ]
+    },
+    {
+      "label": "G300",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G300/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-10:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1095148075/",
+          "file": "g300/10-10__1095148075.png",
+          "bytes": 18990
+        },
+        {
+          "label": "10-11:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1095159733/",
+          "file": "g300/10-11__1095159733.png",
+          "bytes": 17501
+        },
+        {
+          "label": "10-12:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1095170354/",
+          "file": "g300/10-12__1095170354.png",
+          "bytes": 12824
+        },
+        {
+          "label": "10-13:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1095177998/",
+          "file": "g300/10-13__1095177998.png",
+          "bytes": 15424
+        }
+      ]
+    },
+    {
+      "label": "G301",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G301/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-14:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1095490698/",
+          "file": "g301/10-14__1095490698.png",
+          "bytes": 16486
+        }
+      ]
+    },
+    {
+      "label": "G901",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G901/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-14:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1095490698/",
+          "file": "g901/10-14__1095490698.png",
+          "bytes": 16486
+        }
+      ]
+    },
+    {
+      "label": "Wiring Diagram Index",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/Wiring%20Diagram%20Index/",
+      "status": 200,
+      "images": [
+        {
+          "label": "Explorer Sport Trac 4WD V6-4.0L VIN K Flex Fuel",
+          "url": "https://charm.li/images/DM05Q313/ford30/1096618410/",
+          "file": "wiring_diagram_index/Explorer_Sport_Trac_4WD_V6-4.0L_VIN_K_Flex_Fuel_1096618410.png",
+          "bytes": 19228
+        }
+      ]
+    },
+    {
+      "label": "13-1",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/13-1/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1097796403/",
+          "file": "13-1/13-1__1097796403.png",
+          "bytes": 26966
+        }
+      ]
+    },
+    {
+      "label": "13-2",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/13-2/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1098388290/",
+          "file": "13-2/13-2__1098388290.png",
+          "bytes": 16998
+        }
+      ]
+    },
+    {
+      "label": "13-3",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/13-3/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1098910638/",
+          "file": "13-3/13-3__1098910638.png",
+          "bytes": 24689
+        }
+      ]
+    },
+    {
+      "label": "13-4",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/13-4/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1099470803/",
+          "file": "13-4/13-4__1099470803.png",
+          "bytes": 16601
+        }
+      ]
+    },
+    {
+      "label": "13-5",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/13-5/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1100033548/",
+          "file": "13-5/13-5__1100033548.png",
+          "bytes": 14971
+        }
+      ]
+    },
+    {
+      "label": "13-6",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/13-6/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-6:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1100590070/",
+          "file": "13-6/13-6__1100590070.png",
+          "bytes": 12196
+        }
+      ]
+    },
+    {
+      "label": "13-7",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/13-7/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-7:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1101173275/",
+          "file": "13-7/13-7__1101173275.png",
+          "bytes": 28138
+        }
+      ]
+    },
+    {
+      "label": "13-8",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/13-8/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-8:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1101729142/",
+          "file": "13-8/13-8__1101729142.png",
+          "bytes": 18756
+        }
+      ]
+    },
+    {
+      "label": "13-9",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/13-9/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-9:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1102254292/",
+          "file": "13-9/13-9__1102254292.png",
+          "bytes": 18460
+        }
+      ]
+    },
+    {
+      "label": "13-10",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/13-10/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-10:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1102795675/",
+          "file": "13-10/13-10__1102795675.png",
+          "bytes": 8884
+        }
+      ]
+    },
+    {
+      "label": "13-11",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/13-11/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-11:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1103095693/",
+          "file": "13-11/13-11__1103095693.png",
+          "bytes": 22127
+        }
+      ]
+    },
+    {
+      "label": "13-12",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/13-12/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-12:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1103410939/",
+          "file": "13-12/13-12__1103410939.png",
+          "bytes": 16680
+        }
+      ]
+    },
+    {
+      "label": "13-13",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/13-13/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-13:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1103714620/",
+          "file": "13-13/13-13__1103714620.png",
+          "bytes": 28762
+        }
+      ]
+    },
+    {
+      "label": "13-14",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Starting%20and%20Charging/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/13-14/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-14:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1103977609/",
+          "file": "13-14/13-14__1103977609.png",
+          "bytes": 14623
+        }
+      ]
+    },
+    {
+      "label": "G100",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G100/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1091714457/",
+          "file": "g100/10-1__1091714457.png",
+          "bytes": 14041
+        }
+      ]
+    },
+    {
+      "label": "G101",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G101/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1091944327/",
+          "file": "g101/10-2__1091944327.png",
+          "bytes": 11534
+        }
+      ]
+    },
+    {
+      "label": "G102",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G102/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1091714457/",
+          "file": "g102/10-1__1091714457.png",
+          "bytes": 14041
+        }
+      ]
+    },
+    {
+      "label": "G103",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G103/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1092145563/",
+          "file": "g103/10-3__1092145563.png",
+          "bytes": 8452
+        }
+      ]
+    },
+    {
+      "label": "G104",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G104/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1092145563/",
+          "file": "g104/10-3__1092145563.png",
+          "bytes": 8452
+        }
+      ]
+    },
+    {
+      "label": "G105",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G105/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1092363644/",
+          "file": "g105/10-4__1092363644.png",
+          "bytes": 11726
+        }
+      ]
+    },
+    {
+      "label": "G106",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G106/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1092363644/",
+          "file": "g106/10-4__1092363644.png",
+          "bytes": 11726
+        }
+      ]
+    },
+    {
+      "label": "G107",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G107/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1092450657/",
+          "file": "g107/10-5__1092450657.png",
+          "bytes": 10634
+        }
+      ]
+    },
+    {
+      "label": "G108",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G108/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1092450657/",
+          "file": "g108/10-5__1092450657.png",
+          "bytes": 10634
+        }
+      ]
+    },
+    {
+      "label": "G109",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G109/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1092450657/",
+          "file": "g109/10-5__1092450657.png",
+          "bytes": 10634
+        }
+      ]
+    },
+    {
+      "label": "G200",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G200/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-6:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1093104156/",
+          "file": "g200/10-6__1093104156.png",
+          "bytes": 16058
+        }
+      ]
+    },
+    {
+      "label": "G201",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G201/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-7:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1093427736/",
+          "file": "g201/10-7__1093427736.png",
+          "bytes": 11387
+        }
+      ]
+    },
+    {
+      "label": "G202",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G202/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-7:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1093427736/",
+          "file": "g202/10-7__1093427736.png",
+          "bytes": 11387
+        }
+      ]
+    },
+    {
+      "label": "G203",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G203/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-7:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1093427736/",
+          "file": "g203/10-7__1093427736.png",
+          "bytes": 11387
+        }
+      ]
+    },
+    {
+      "label": "G204",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G204/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-8:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1094323829/",
+          "file": "g204/10-8__1094323829.png",
+          "bytes": 15685
+        },
+        {
+          "label": "10-9:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1094333413/",
+          "file": "g204/10-9__1094333413.png",
+          "bytes": 6899
+        }
+      ]
+    },
+    {
+      "label": "G205",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G205/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-8:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1094323829/",
+          "file": "g205/10-8__1094323829.png",
+          "bytes": 15685
+        }
+      ]
+    },
+    {
+      "label": "G300",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G300/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-10:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1095148075/",
+          "file": "g300/10-10__1095148075.png",
+          "bytes": 18990
+        },
+        {
+          "label": "10-11:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1095159733/",
+          "file": "g300/10-11__1095159733.png",
+          "bytes": 17501
+        },
+        {
+          "label": "10-12:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1095170354/",
+          "file": "g300/10-12__1095170354.png",
+          "bytes": 12824
+        },
+        {
+          "label": "10-13:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1095177998/",
+          "file": "g300/10-13__1095177998.png",
+          "bytes": 15424
+        }
+      ]
+    },
+    {
+      "label": "G301",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G301/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-14:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1095490698/",
+          "file": "g301/10-14__1095490698.png",
+          "bytes": 16486
+        }
+      ]
+    },
+    {
+      "label": "G901",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Ground%20Distribution/G901/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-14:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1095490698/",
+          "file": "g901/10-14__1095490698.png",
+          "bytes": 16486
+        }
+      ]
+    },
+    {
+      "label": "Wiring Diagram Index",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/Wiring%20Diagram%20Index/",
+      "status": 200,
+      "images": [
+        {
+          "label": "Explorer Sport Trac 4WD V6-4.0L VIN K Flex Fuel",
+          "url": "https://charm.li/images/DM05Q313/ford30/1096618410/",
+          "file": "wiring_diagram_index/Explorer_Sport_Trac_4WD_V6-4.0L_VIN_K_Flex_Fuel_1096618410.png",
+          "bytes": 19228
+        }
+      ]
+    },
+    {
+      "label": "13-1",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/13-1/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1097796403/",
+          "file": "13-1/13-1__1097796403.png",
+          "bytes": 26966
+        }
+      ]
+    },
+    {
+      "label": "13-2",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/13-2/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1098388290/",
+          "file": "13-2/13-2__1098388290.png",
+          "bytes": 16998
+        }
+      ]
+    },
+    {
+      "label": "13-3",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/13-3/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1098910638/",
+          "file": "13-3/13-3__1098910638.png",
+          "bytes": 24689
+        }
+      ]
+    },
+    {
+      "label": "13-4",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/13-4/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1099470803/",
+          "file": "13-4/13-4__1099470803.png",
+          "bytes": 16601
+        }
+      ]
+    },
+    {
+      "label": "13-5",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/13-5/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1100033548/",
+          "file": "13-5/13-5__1100033548.png",
+          "bytes": 14971
+        }
+      ]
+    },
+    {
+      "label": "13-6",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/13-6/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-6:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1100590070/",
+          "file": "13-6/13-6__1100590070.png",
+          "bytes": 12196
+        }
+      ]
+    },
+    {
+      "label": "13-7",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/13-7/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-7:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1101173275/",
+          "file": "13-7/13-7__1101173275.png",
+          "bytes": 28138
+        }
+      ]
+    },
+    {
+      "label": "13-8",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/13-8/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-8:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1101729142/",
+          "file": "13-8/13-8__1101729142.png",
+          "bytes": 18756
+        }
+      ]
+    },
+    {
+      "label": "13-9",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/13-9/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-9:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1102254292/",
+          "file": "13-9/13-9__1102254292.png",
+          "bytes": 18460
+        }
+      ]
+    },
+    {
+      "label": "13-10",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/13-10/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-10:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1102795675/",
+          "file": "13-10/13-10__1102795675.png",
+          "bytes": 8884
+        }
+      ]
+    },
+    {
+      "label": "13-11",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/13-11/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-11:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1103095693/",
+          "file": "13-11/13-11__1103095693.png",
+          "bytes": 22127
+        }
+      ]
+    },
+    {
+      "label": "13-12",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/13-12/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-12:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1103410939/",
+          "file": "13-12/13-12__1103410939.png",
+          "bytes": 16680
+        }
+      ]
+    },
+    {
+      "label": "13-13",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/13-13/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-13:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1103714620/",
+          "file": "13-13/13-13__1103714620.png",
+          "bytes": 28762
+        }
+      ]
+    },
+    {
+      "label": "13-14",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Power%20and%20Ground%20Distribution/Diagrams/Electrical%20Diagrams/Power%20Distribution%20Diagrams/13-14/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-14:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1103977609/",
+          "file": "13-14/13-14__1103977609.png",
+          "bytes": 14623
+        }
+      ]
+    },
+    {
+      "label": "Electrical Diagrams",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Heating%20and%20Air%20Conditioning/Diagrams/Electrical%20Diagrams/",
+      "status": 200,
+      "images": [
+        {
+          "label": "54-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1202077493/",
+          "file": "electrical_diagrams/54-1__1202077493.png",
+          "bytes": 19504
+        },
+        {
+          "label": "54-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1202089452/",
+          "file": "electrical_diagrams/54-2__1202089452.png",
+          "bytes": 20321
+        },
+        {
+          "label": "54-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1202101995/",
+          "file": "electrical_diagrams/54-3__1202101995.png",
+          "bytes": 21007
+        },
+        {
+          "label": "54-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1202115131/",
+          "file": "electrical_diagrams/54-4__1202115131.png",
+          "bytes": 24366
+        },
+        {
+          "label": "54-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1202130635/",
+          "file": "electrical_diagrams/54-5__1202130635.png",
+          "bytes": 9015
+        }
+      ]
+    },
+    {
+      "label": "Electrical Diagrams",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Restraints%20and%20Safety%20Systems/Air%20Bag%20Systems/Diagrams/Electrical%20Diagrams/",
+      "status": 200,
+      "images": [
+        {
+          "label": "46-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1268227844/",
+          "file": "electrical_diagrams/46-1__1268227844.png",
+          "bytes": 26456
+        },
+        {
+          "label": "46-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1268244210/",
+          "file": "electrical_diagrams/46-2__1268244210.png",
+          "bytes": 22239
+        },
+        {
+          "label": "46-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1268259375/",
+          "file": "electrical_diagrams/46-3__1268259375.png",
+          "bytes": 24286
+        },
+        {
+          "label": "46-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1268275506/",
+          "file": "electrical_diagrams/46-4__1268275506.png",
+          "bytes": 25224
+        }
+      ]
+    },
+    {
+      "label": "Electrical Diagrams",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Accessories%20and%20Optional%20Equipment/Antitheft%20and%20Alarm%20Systems/Keyless%20Entry/Diagrams/Electrical%20Diagrams/",
+      "status": 200,
+      "images": [
+        {
+          "label": "117-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281085461/",
+          "file": "electrical_diagrams/117-1__1281085461.png",
+          "bytes": 34651
+        },
+        {
+          "label": "117-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281108105/",
+          "file": "electrical_diagrams/117-2__1281108105.png",
+          "bytes": 15249
+        },
+        {
+          "label": "117-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281117211/",
+          "file": "electrical_diagrams/117-3__1281117211.png",
+          "bytes": 14769
+        },
+        {
+          "label": "117-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281126526/",
+          "file": "electrical_diagrams/117-4__1281126526.png",
+          "bytes": 14936
+        },
+        {
+          "label": "117-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281135450/",
+          "file": "electrical_diagrams/117-5__1281135450.png",
+          "bytes": 14442
+        },
+        {
+          "label": "117-6:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281144049/",
+          "file": "electrical_diagrams/117-6__1281144049.png",
+          "bytes": 14759
+        }
+      ]
+    },
+    {
+      "label": "Anti-Theft",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Accessories%20and%20Optional%20Equipment/Antitheft%20and%20Alarm%20Systems/Diagrams/Electrical%20Diagrams/Anti-Theft/",
+      "status": 200,
+      "images": [
+        {
+          "label": "112-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1289801584/",
+          "file": "anti-theft/112-1__1289801584.png",
+          "bytes": 19806
+        }
+      ]
+    },
+    {
+      "label": "Multifunction Electronic Control Modules Diagrams",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Accessories%20and%20Optional%20Equipment/Antitheft%20and%20Alarm%20Systems/Diagrams/Electrical%20Diagrams/Multifunction%20Electronic%20Control%20Modules%20Diagrams/",
+      "status": 200,
+      "images": [
+        {
+          "label": "59-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1289859588/",
+          "file": "multifunction_electronic_control_modules_diagrams/59-1__1289859588.png",
+          "bytes": 27625
+        },
+        {
+          "label": "59-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1289876853/",
+          "file": "multifunction_electronic_control_modules_diagrams/59-2__1289876853.png",
+          "bytes": 11665
+        }
+      ]
+    },
+    {
+      "label": "Remote Control Alarm and Locks",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Accessories%20and%20Optional%20Equipment/Antitheft%20and%20Alarm%20Systems/Diagrams/Electrical%20Diagrams/Remote%20Control%20Alarm%20and%20Locks/",
+      "status": 200,
+      "images": [
+        {
+          "label": "117-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281085461/",
+          "file": "remote_control_alarm_and_locks/117-1__1281085461.png",
+          "bytes": 34651
+        },
+        {
+          "label": "117-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281108105/",
+          "file": "remote_control_alarm_and_locks/117-2__1281108105.png",
+          "bytes": 15249
+        },
+        {
+          "label": "117-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281117211/",
+          "file": "remote_control_alarm_and_locks/117-3__1281117211.png",
+          "bytes": 14769
+        },
+        {
+          "label": "117-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281126526/",
+          "file": "remote_control_alarm_and_locks/117-4__1281126526.png",
+          "bytes": 14936
+        },
+        {
+          "label": "117-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281135450/",
+          "file": "remote_control_alarm_and_locks/117-5__1281135450.png",
+          "bytes": 14442
+        },
+        {
+          "label": "117-6:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281144049/",
+          "file": "remote_control_alarm_and_locks/117-6__1281144049.png",
+          "bytes": 14759
+        }
+      ]
+    },
+    {
+      "label": "Electrical Diagrams",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Accessories%20and%20Optional%20Equipment/Radio%2C%20Stereo%2C%20and%20Compact%20Disc/Diagrams/Electrical%20Diagrams/",
+      "status": 200,
+      "images": [
+        {
+          "label": "130-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1319499928/",
+          "file": "electrical_diagrams/130-1__1319499928.png",
+          "bytes": 15870
+        },
+        {
+          "label": "130-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1319510042/",
+          "file": "electrical_diagrams/130-2__1319510042.png",
+          "bytes": 8334
+        },
+        {
+          "label": "130-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1319515275/",
+          "file": "electrical_diagrams/130-3__1319515275.png",
+          "bytes": 9365
+        },
+        {
+          "label": "130-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1319521006/",
+          "file": "electrical_diagrams/130-4__1319521006.png",
+          "bytes": 15008
+        },
+        {
+          "label": "130-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1319529889/",
+          "file": "electrical_diagrams/130-5__1319529889.png",
+          "bytes": 17260
+        },
+        {
+          "label": "130-6:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1319539848/",
+          "file": "electrical_diagrams/130-6__1319539848.png",
+          "bytes": 19915
+        }
+      ]
+    },
+    {
+      "label": "Electrical Diagrams",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Body%20and%20Frame/Locks/Keyless%20Entry/Diagrams/Electrical%20Diagrams/",
+      "status": 200,
+      "images": [
+        {
+          "label": "117-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281085461/",
+          "file": "electrical_diagrams/117-1__1281085461.png",
+          "bytes": 34651
+        },
+        {
+          "label": "117-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281108105/",
+          "file": "electrical_diagrams/117-2__1281108105.png",
+          "bytes": 15249
+        },
+        {
+          "label": "117-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281117211/",
+          "file": "electrical_diagrams/117-3__1281117211.png",
+          "bytes": 14769
+        },
+        {
+          "label": "117-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281126526/",
+          "file": "electrical_diagrams/117-4__1281126526.png",
+          "bytes": 14936
+        },
+        {
+          "label": "117-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281135450/",
+          "file": "electrical_diagrams/117-5__1281135450.png",
+          "bytes": 14442
+        },
+        {
+          "label": "117-6:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281144049/",
+          "file": "electrical_diagrams/117-6__1281144049.png",
+          "bytes": 14759
+        }
+      ]
+    },
+    {
+      "label": "Power Door Locks",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Body%20and%20Frame/Locks/Power%20Locks/Diagrams/Electrical%20Diagrams/Power%20Door%20Locks/",
+      "status": 200,
+      "images": [
+        {
+          "label": "110-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1381989853/",
+          "file": "power_door_locks/110-1__1381989853.png",
+          "bytes": 14541
+        },
+        {
+          "label": "110-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1381998582/",
+          "file": "power_door_locks/110-2__1381998582.png",
+          "bytes": 16250
+        },
+        {
+          "label": "110-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1382008489/",
+          "file": "power_door_locks/110-3__1382008489.png",
+          "bytes": 23658
+        },
+        {
+          "label": "110-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1382023273/",
+          "file": "power_door_locks/110-4__1382023273.png",
+          "bytes": 14289
+        }
+      ]
+    },
+    {
+      "label": "Remote Control Alarm and Locks",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Body%20and%20Frame/Locks/Power%20Locks/Diagrams/Electrical%20Diagrams/Remote%20Control%20Alarm%20and%20Locks/",
+      "status": 200,
+      "images": [
+        {
+          "label": "117-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281085461/",
+          "file": "remote_control_alarm_and_locks/117-1__1281085461.png",
+          "bytes": 34651
+        },
+        {
+          "label": "117-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281108105/",
+          "file": "remote_control_alarm_and_locks/117-2__1281108105.png",
+          "bytes": 15249
+        },
+        {
+          "label": "117-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281117211/",
+          "file": "remote_control_alarm_and_locks/117-3__1281117211.png",
+          "bytes": 14769
+        },
+        {
+          "label": "117-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281126526/",
+          "file": "remote_control_alarm_and_locks/117-4__1281126526.png",
+          "bytes": 14936
+        },
+        {
+          "label": "117-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281135450/",
+          "file": "remote_control_alarm_and_locks/117-5__1281135450.png",
+          "bytes": 14442
+        },
+        {
+          "label": "117-6:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281144049/",
+          "file": "remote_control_alarm_and_locks/117-6__1281144049.png",
+          "bytes": 14759
+        }
+      ]
+    },
+    {
+      "label": "Electronic Day/Night Mirror",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Body%20and%20Frame/Mirrors/Diagrams/Electrical%20Diagrams/Electronic%20Day%2FNight%20Mirror/",
+      "status": 200,
+      "images": [
+        {
+          "label": "125-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1390701243/",
+          "file": "electronic_day_night_mirror/125-1__1390701243.png",
+          "bytes": 14668
+        }
+      ]
+    },
+    {
+      "label": "Power Mirrors",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Body%20and%20Frame/Mirrors/Diagrams/Electrical%20Diagrams/Power%20Mirrors/",
+      "status": 200,
+      "images": [
+        {
+          "label": "124-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1391104740/",
+          "file": "power_mirrors/124-1__1391104740.png",
+          "bytes": 22247
+        }
+      ]
+    },
+    {
+      "label": "Electrical Diagrams",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Body%20and%20Frame/Roof%20and%20Associated%20Components/Sunroof%20%2F%20Moonroof/Diagrams/Electrical%20Diagrams/",
+      "status": 200,
+      "images": [
+        {
+          "label": "101-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1396600650/",
+          "file": "electrical_diagrams/101-1__1396600650.png",
+          "bytes": 19981
+        }
+      ]
+    },
+    {
+      "label": "Climate Controlled Seats",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Body%20and%20Frame/Seats/Diagrams/Electrical%20Diagrams/Climate%20Controlled%20Seats/",
+      "status": 200,
+      "images": [
+        {
+          "label": "119-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1402509529/",
+          "file": "climate_controlled_seats/119-1__1402509529.png",
+          "bytes": 7708
+        },
+        {
+          "label": "119-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1402514433/",
+          "file": "climate_controlled_seats/119-2__1402514433.png",
+          "bytes": 18698
+        }
+      ]
+    },
+    {
+      "label": "Power Seats",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Body%20and%20Frame/Seats/Diagrams/Electrical%20Diagrams/Power%20Seats/",
+      "status": 200,
+      "images": [
+        {
+          "label": "120-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1451209390/",
+          "file": "power_seats/120-1__1451209390.png",
+          "bytes": 14451
+        },
+        {
+          "label": "120-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1451218111/",
+          "file": "power_seats/120-2__1451218111.png",
+          "bytes": 13046
+        }
+      ]
+    },
+    {
+      "label": "Power Lumbar Seats",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Body%20and%20Frame/Seats/Diagrams/Electrical%20Diagrams/Power%20Lumbar%20Seats/",
+      "status": 200,
+      "images": [
+        {
+          "label": "122-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1451540506/",
+          "file": "power_lumbar_seats/122-1__1451540506.png",
+          "bytes": 21095
+        }
+      ]
+    },
+    {
+      "label": "Electrical Diagrams",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Cruise%20Control/Diagrams/Electrical%20Diagrams/",
+      "status": 200,
+      "images": [
+        {
+          "label": "31-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1466123498/",
+          "file": "electrical_diagrams/31-1__1466123498.png",
+          "bytes": 30958
+        },
+        {
+          "label": "31-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1466143975/",
+          "file": "electrical_diagrams/31-2__1466143975.png",
+          "bytes": 20750
+        },
+        {
+          "label": "31-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1466156838/",
+          "file": "electrical_diagrams/31-3__1466156838.png",
+          "bytes": 18992
+        }
+      ]
+    },
+    {
+      "label": "Instrument Cluster",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Instrument%20Panel%2C%20Gauges%20and%20Warning%20Indicators/Diagrams/Electrical%20Diagrams/Instrument%20Cluster/",
+      "status": 200,
+      "images": [
+        {
+          "label": "60-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1501602014/",
+          "file": "instrument_cluster/60-1__1501602014.png",
+          "bytes": 11517
+        },
+        {
+          "label": "60-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1501609219/",
+          "file": "instrument_cluster/60-2__1501609219.png",
+          "bytes": 19773
+        },
+        {
+          "label": "60-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1501622403/",
+          "file": "instrument_cluster/60-3__1501622403.png",
+          "bytes": 27944
+        },
+        {
+          "label": "60-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1501639993/",
+          "file": "instrument_cluster/60-4__1501639993.png",
+          "bytes": 21391
+        },
+        {
+          "label": "60-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1501654218/",
+          "file": "instrument_cluster/60-5__1501654218.png",
+          "bytes": 35320
+        },
+        {
+          "label": "60-6:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1501677264/",
+          "file": "instrument_cluster/60-6__1501677264.png",
+          "bytes": 27436
+        },
+        {
+          "label": "60-7:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1501695100/",
+          "file": "instrument_cluster/60-7__1501695100.png",
+          "bytes": 15176
+        }
+      ]
+    },
+    {
+      "label": "Instrument Illumination",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Instrument%20Panel%2C%20Gauges%20and%20Warning%20Indicators/Diagrams/Electrical%20Diagrams/Instrument%20Illumination/",
+      "status": 200,
+      "images": [
+        {
+          "label": "71-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1502684906/",
+          "file": "instrument_illumination/71-1__1502684906.png",
+          "bytes": 27888
+        },
+        {
+          "label": "71-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1502701543/",
+          "file": "instrument_illumination/71-2__1502701543.png",
+          "bytes": 29603
+        }
+      ]
+    },
+    {
+      "label": "Overhead Console",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Instrument%20Panel%2C%20Gauges%20and%20Warning%20Indicators/Diagrams/Electrical%20Diagrams/Overhead%20Console/",
+      "status": 200,
+      "images": [
+        {
+          "label": "102-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1503579246/",
+          "file": "overhead_console/102-1__1503579246.png",
+          "bytes": 17977
+        }
+      ]
+    },
+    {
+      "label": "Electrical Diagrams",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Lighting%20and%20Horns/Backup%20Lamp/Diagrams/Electrical%20Diagrams/",
+      "status": 200,
+      "images": [
+        {
+          "label": "93-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1506560016/",
+          "file": "electrical_diagrams/93-1__1506560016.png",
+          "bytes": 19887
+        }
+      ]
+    },
+    {
+      "label": "Electrical Diagrams",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Lighting%20and%20Horns/Courtesy%20Lamp/Diagrams/Electrical%20Diagrams/",
+      "status": 200,
+      "images": [
+        {
+          "label": "89-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1518510053/",
+          "file": "electrical_diagrams/89-1__1518510053.png",
+          "bytes": 18922
+        },
+        {
+          "label": "89-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1518521202/",
+          "file": "electrical_diagrams/89-2__1518521202.png",
+          "bytes": 12422
+        },
+        {
+          "label": "89-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1518528826/",
+          "file": "electrical_diagrams/89-3__1518528826.png",
+          "bytes": 28273
+        }
+      ]
+    },
+    {
+      "label": "Electrical Diagrams",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Lighting%20and%20Horns/Daytime%20Running%20Lamp/Diagrams/Electrical%20Diagrams/",
+      "status": 200,
+      "images": [
+        {
+          "label": "97-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1520689892/",
+          "file": "electrical_diagrams/97-1__1520689892.png",
+          "bytes": 25835
+        },
+        {
+          "label": "97-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1520705757/",
+          "file": "electrical_diagrams/97-2__1520705757.png",
+          "bytes": 15432
+        }
+      ]
+    },
+    {
+      "label": "Electrical Diagrams",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Lighting%20and%20Horns/Fog%2FDriving%20Lamp/Diagrams/Electrical%20Diagrams/",
+      "status": 200,
+      "images": [
+        {
+          "label": "86-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1524446278/",
+          "file": "electrical_diagrams/86-1__1524446278.png",
+          "bytes": 23527
+        },
+        {
+          "label": "86-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1524460082/",
+          "file": "electrical_diagrams/86-2__1524460082.png",
+          "bytes": 18238
+        }
+      ]
+    },
+    {
+      "label": "Electrical Diagrams",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Lighting%20and%20Horns/Hazard%20Warning%20Lamps/Diagrams/Electrical%20Diagrams/",
+      "status": 200,
+      "images": [
+        {
+          "label": "90-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1509635614/",
+          "file": "electrical_diagrams/90-1__1509635614.png",
+          "bytes": 29631
+        },
+        {
+          "label": "90-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1509654250/",
+          "file": "electrical_diagrams/90-2__1509654250.png",
+          "bytes": 22696
+        }
+      ]
+    },
+    {
+      "label": "Headlamps",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Lighting%20and%20Horns/Headlamp/Diagrams/Electrical%20Diagrams/Headlamps/",
+      "status": 200,
+      "images": [
+        {
+          "label": "85-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1532339342/",
+          "file": "headlamps/85-1__1532339342.png",
+          "bytes": 18549
+        },
+        {
+          "label": "85-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1532350770/",
+          "file": "headlamps/85-2__1532350770.png",
+          "bytes": 20347
+        }
+      ]
+    },
+    {
+      "label": "Autolamps",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Lighting%20and%20Horns/Headlamp/Diagrams/Electrical%20Diagrams/Autolamps/",
+      "status": 200,
+      "images": [
+        {
+          "label": "87-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1533099875/",
+          "file": "autolamps/87-1__1533099875.png",
+          "bytes": 21803
+        },
+        {
+          "label": "87-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1533112984/",
+          "file": "autolamps/87-2__1533112984.png",
+          "bytes": 23509
+        }
+      ]
+    },
+    {
+      "label": "Electrical Diagrams",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Lighting%20and%20Horns/Horn/Diagrams/Electrical%20Diagrams/",
+      "status": 200,
+      "images": [
+        {
+          "label": "44-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1468013347/",
+          "file": "electrical_diagrams/44-1__1468013347.png",
+          "bytes": 18595
+        },
+        {
+          "label": "44-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1468024544/",
+          "file": "electrical_diagrams/44-2__1468024544.png",
+          "bytes": 14993
+        },
+        {
+          "label": "44-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1468033339/",
+          "file": "electrical_diagrams/44-3__1468033339.png",
+          "bytes": 19318
+        }
+      ]
+    },
+    {
+      "label": "Electrical Diagrams",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Lighting%20and%20Horns/Turn%20Signals/Diagrams/Electrical%20Diagrams/",
+      "status": 200,
+      "images": [
+        {
+          "label": "90-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1509635614/",
+          "file": "electrical_diagrams/90-1__1509635614.png",
+          "bytes": 29631
+        },
+        {
+          "label": "90-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1509654250/",
+          "file": "electrical_diagrams/90-2__1509654250.png",
+          "bytes": 22696
+        }
+      ]
+    },
+    {
+      "label": "Electrical Diagrams",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Lighting%20and%20Horns/Diagrams/Electrical%20Diagrams/",
+      "status": 200,
+      "images": [
+        {
+          "label": "71-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1502684906/",
+          "file": "electrical_diagrams/71-1__1502684906.png",
+          "bytes": 27888
+        },
+        {
+          "label": "71-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1502701543/",
+          "file": "electrical_diagrams/71-2__1502701543.png",
+          "bytes": 29603
+        }
+      ]
+    },
+    {
+      "label": "Electrical Diagrams",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Windows%20and%20Glass/Windows/Diagrams/Electrical%20Diagrams/",
+      "status": 200,
+      "images": [
+        {
+          "label": "100-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1558633521/",
+          "file": "electrical_diagrams/100-1__1558633521.png",
+          "bytes": 8842
+        },
+        {
+          "label": "100-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1558639083/",
+          "file": "electrical_diagrams/100-2__1558639083.png",
+          "bytes": 18786
+        },
+        {
+          "label": "100-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1558650624/",
+          "file": "electrical_diagrams/100-3__1558650624.png",
+          "bytes": 31424
+        },
+        {
+          "label": "100-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1558670038/",
+          "file": "electrical_diagrams/100-4__1558670038.png",
+          "bytes": 15575
+        }
+      ]
+    },
+    {
+      "label": "Electrical Diagrams",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Wiper%20and%20Washer%20Systems/Diagrams/Electrical%20Diagrams/",
+      "status": 200,
+      "images": [
+        {
+          "label": "81-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1572374904/",
+          "file": "electrical_diagrams/81-1__1572374904.png",
+          "bytes": 21348
+        },
+        {
+          "label": "81-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1572388427/",
+          "file": "electrical_diagrams/81-2__1572388427.png",
+          "bytes": 20342
+        }
+      ]
+    },
+    {
+      "label": "Please Note",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Please%20Note/",
+      "status": 200,
+      "images": []
+    },
+    {
+      "label": "10-1 to 10-5",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2010/10-1%20to%2010-5/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1091714457/",
+          "file": "10-1_to_10-5/10-1__1091714457.png",
+          "bytes": 14041
+        },
+        {
+          "label": "10-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1091944327/",
+          "file": "10-1_to_10-5/10-2__1091944327.png",
+          "bytes": 11534
+        },
+        {
+          "label": "10-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1092145563/",
+          "file": "10-1_to_10-5/10-3__1092145563.png",
+          "bytes": 8452
+        },
+        {
+          "label": "10-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1092363644/",
+          "file": "10-1_to_10-5/10-4__1092363644.png",
+          "bytes": 11726
+        },
+        {
+          "label": "10-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1092450657/",
+          "file": "10-1_to_10-5/10-5__1092450657.png",
+          "bytes": 10634
+        }
+      ]
+    },
+    {
+      "label": "10-6 to 10-10",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2010/10-6%20to%2010-10/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-6:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1093104156/",
+          "file": "10-6_to_10-10/10-6__1093104156.png",
+          "bytes": 16058
+        },
+        {
+          "label": "10-7:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1093427736/",
+          "file": "10-6_to_10-10/10-7__1093427736.png",
+          "bytes": 11387
+        },
+        {
+          "label": "10-8:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1094323829/",
+          "file": "10-6_to_10-10/10-8__1094323829.png",
+          "bytes": 15685
+        },
+        {
+          "label": "10-9:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1094333413/",
+          "file": "10-6_to_10-10/10-9__1094333413.png",
+          "bytes": 6899
+        },
+        {
+          "label": "10-10:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1095148075/",
+          "file": "10-6_to_10-10/10-10__1095148075.png",
+          "bytes": 18990
+        }
+      ]
+    },
+    {
+      "label": "10-11 to 10-14",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2010/10-11%20to%2010-14/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-11:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1095159733/",
+          "file": "10-11_to_10-14/10-11__1095159733.png",
+          "bytes": 17501
+        },
+        {
+          "label": "10-12:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1095170354/",
+          "file": "10-11_to_10-14/10-12__1095170354.png",
+          "bytes": 12824
+        },
+        {
+          "label": "10-13:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1095177998/",
+          "file": "10-11_to_10-14/10-13__1095177998.png",
+          "bytes": 15424
+        },
+        {
+          "label": "10-14:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1095490698/",
+          "file": "10-11_to_10-14/10-14__1095490698.png",
+          "bytes": 16486
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 12",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2012/",
+      "status": 200,
+      "images": [
+        {
+          "label": "12-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1077605096/",
+          "file": "diagram_set_12/12-1__1077605096.png",
+          "bytes": 21668
+        }
+      ]
+    },
+    {
+      "label": "13-1 to 13-5",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2013/13-1%20to%2013-5/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1097796403/",
+          "file": "13-1_to_13-5/13-1__1097796403.png",
+          "bytes": 26966
+        },
+        {
+          "label": "13-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1098388290/",
+          "file": "13-1_to_13-5/13-2__1098388290.png",
+          "bytes": 16998
+        },
+        {
+          "label": "13-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1098910638/",
+          "file": "13-1_to_13-5/13-3__1098910638.png",
+          "bytes": 24689
+        },
+        {
+          "label": "13-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1099470803/",
+          "file": "13-1_to_13-5/13-4__1099470803.png",
+          "bytes": 16601
+        },
+        {
+          "label": "13-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1100033548/",
+          "file": "13-1_to_13-5/13-5__1100033548.png",
+          "bytes": 14971
+        }
+      ]
+    },
+    {
+      "label": "13-6 to 13-10",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2013/13-6%20to%2013-10/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-6:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1100590070/",
+          "file": "13-6_to_13-10/13-6__1100590070.png",
+          "bytes": 12196
+        },
+        {
+          "label": "13-7:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1101173275/",
+          "file": "13-6_to_13-10/13-7__1101173275.png",
+          "bytes": 28138
+        },
+        {
+          "label": "13-8:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1101729142/",
+          "file": "13-6_to_13-10/13-8__1101729142.png",
+          "bytes": 18756
+        },
+        {
+          "label": "13-9:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1102254292/",
+          "file": "13-6_to_13-10/13-9__1102254292.png",
+          "bytes": 18460
+        },
+        {
+          "label": "13-10:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1102795675/",
+          "file": "13-6_to_13-10/13-10__1102795675.png",
+          "bytes": 8884
+        }
+      ]
+    },
+    {
+      "label": "13-11 to 13-14",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2013/13-11%20to%2013-14/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-11:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1103095693/",
+          "file": "13-11_to_13-14/13-11__1103095693.png",
+          "bytes": 22127
+        },
+        {
+          "label": "13-12:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1103410939/",
+          "file": "13-11_to_13-14/13-12__1103410939.png",
+          "bytes": 16680
+        },
+        {
+          "label": "13-13:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1103714620/",
+          "file": "13-11_to_13-14/13-13__1103714620.png",
+          "bytes": 28762
+        },
+        {
+          "label": "13-14:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1103977609/",
+          "file": "13-11_to_13-14/13-14__1103977609.png",
+          "bytes": 14623
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 14",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2014/",
+      "status": 200,
+      "images": [
+        {
+          "label": "14-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/473601402/",
+          "file": "diagram_set_14/14-1__473601402.png",
+          "bytes": 16564
+        },
+        {
+          "label": "14-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/473611402/",
+          "file": "diagram_set_14/14-2__473611402.png",
+          "bytes": 10825
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 20",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2020/",
+      "status": 200,
+      "images": [
+        {
+          "label": "20-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1084178775/",
+          "file": "diagram_set_20/20-1__1084178775.png",
+          "bytes": 20101
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 21",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2021/",
+      "status": 200,
+      "images": [
+        {
+          "label": "21-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/654575598/",
+          "file": "diagram_set_21/21-1__654575598.png",
+          "bytes": 24008
+        },
+        {
+          "label": "21-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/654590438/",
+          "file": "diagram_set_21/21-2__654590438.png",
+          "bytes": 14533
+        }
+      ]
+    },
+    {
+      "label": "23-1 to 23-4",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2023/23-1%20to%2023-4/",
+      "status": 200,
+      "images": [
+        {
+          "label": "23-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/661877777/",
+          "file": "23-1_to_23-4/23-1__661877777.png",
+          "bytes": 13065
+        },
+        {
+          "label": "23-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/662382089/",
+          "file": "23-1_to_23-4/23-2__662382089.png",
+          "bytes": 15022
+        },
+        {
+          "label": "23-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/662781570/",
+          "file": "23-1_to_23-4/23-3__662781570.png",
+          "bytes": 25795
+        },
+        {
+          "label": "23-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/663274482/",
+          "file": "23-1_to_23-4/23-4__663274482.png",
+          "bytes": 24438
+        }
+      ]
+    },
+    {
+      "label": "23-5 to 23-8",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2023/23-5%20to%2023-8/",
+      "status": 200,
+      "images": [
+        {
+          "label": "23-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/663716614/",
+          "file": "23-5_to_23-8/23-5__663716614.png",
+          "bytes": 25916
+        },
+        {
+          "label": "23-6:",
+          "url": "https://charm.li/images/DM05Q313/ford30/663977078/",
+          "file": "23-5_to_23-8/23-6__663977078.png",
+          "bytes": 20111
+        },
+        {
+          "label": "23-7:",
+          "url": "https://charm.li/images/DM05Q313/ford30/664212500/",
+          "file": "23-5_to_23-8/23-7__664212500.png",
+          "bytes": 24128
+        },
+        {
+          "label": "23-8:",
+          "url": "https://charm.li/images/DM05Q313/ford30/664687870/",
+          "file": "23-5_to_23-8/23-8__664687870.png",
+          "bytes": 16294
+        }
+      ]
+    },
+    {
+      "label": "23-9 to 23-12",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2023/23-9%20to%2023-12/",
+      "status": 200,
+      "images": [
+        {
+          "label": "23-9:",
+          "url": "https://charm.li/images/DM05Q313/ford30/665114360/",
+          "file": "23-9_to_23-12/23-9__665114360.png",
+          "bytes": 17908
+        },
+        {
+          "label": "23-10:",
+          "url": "https://charm.li/images/DM05Q313/ford30/665188463/",
+          "file": "23-9_to_23-12/23-10__665188463.png",
+          "bytes": 18450
+        },
+        {
+          "label": "23-11:",
+          "url": "https://charm.li/images/DM05Q313/ford30/665256422/",
+          "file": "23-9_to_23-12/23-11__665256422.png",
+          "bytes": 25839
+        },
+        {
+          "label": "23-12:",
+          "url": "https://charm.li/images/DM05Q313/ford30/665349347/",
+          "file": "23-9_to_23-12/23-12__665349347.png",
+          "bytes": 5215
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 29",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2029/",
+      "status": 200,
+      "images": [
+        {
+          "label": "29-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/840996578/",
+          "file": "diagram_set_29/29-1__840996578.png",
+          "bytes": 21600
+        },
+        {
+          "label": "29-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/841291154/",
+          "file": "diagram_set_29/29-2__841291154.png",
+          "bytes": 20455
+        },
+        {
+          "label": "29-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/841635043/",
+          "file": "diagram_set_29/29-3__841635043.png",
+          "bytes": 36180
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 31",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2031/",
+      "status": 200,
+      "images": [
+        {
+          "label": "31-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1466123498/",
+          "file": "diagram_set_31/31-1__1466123498.png",
+          "bytes": 30958
+        },
+        {
+          "label": "31-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1466143975/",
+          "file": "diagram_set_31/31-2__1466143975.png",
+          "bytes": 20750
+        },
+        {
+          "label": "31-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1466156838/",
+          "file": "diagram_set_31/31-3__1466156838.png",
+          "bytes": 18992
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 34",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2034/",
+      "status": 200,
+      "images": [
+        {
+          "label": "34-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1027137804/",
+          "file": "diagram_set_34/34-1__1027137804.png",
+          "bytes": 29816
+        },
+        {
+          "label": "34-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1027155903/",
+          "file": "diagram_set_34/34-2__1027155903.png",
+          "bytes": 25016
+        },
+        {
+          "label": "34-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1027171573/",
+          "file": "diagram_set_34/34-3__1027171573.png",
+          "bytes": 15135
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 37",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2037/",
+      "status": 200,
+      "images": [
+        {
+          "label": "37-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/679748607/",
+          "file": "diagram_set_37/37-1__679748607.png",
+          "bytes": 15190
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 42",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2042/",
+      "status": 200,
+      "images": [
+        {
+          "label": "42-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1040967012/",
+          "file": "diagram_set_42/42-1__1040967012.png",
+          "bytes": 19648
+        },
+        {
+          "label": "42-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1040979199/",
+          "file": "diagram_set_42/42-2__1040979199.png",
+          "bytes": 33160
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 44",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2044/",
+      "status": 200,
+      "images": [
+        {
+          "label": "44-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1468013347/",
+          "file": "diagram_set_44/44-1__1468013347.png",
+          "bytes": 18595
+        },
+        {
+          "label": "44-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1468024544/",
+          "file": "diagram_set_44/44-2__1468024544.png",
+          "bytes": 14993
+        },
+        {
+          "label": "44-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1468033339/",
+          "file": "diagram_set_44/44-3__1468033339.png",
+          "bytes": 19318
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 46",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2046/",
+      "status": 200,
+      "images": [
+        {
+          "label": "46-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1268227844/",
+          "file": "diagram_set_46/46-1__1268227844.png",
+          "bytes": 26456
+        },
+        {
+          "label": "46-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1268244210/",
+          "file": "diagram_set_46/46-2__1268244210.png",
+          "bytes": 22239
+        },
+        {
+          "label": "46-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1268259375/",
+          "file": "diagram_set_46/46-3__1268259375.png",
+          "bytes": 24286
+        },
+        {
+          "label": "46-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1268275506/",
+          "file": "diagram_set_46/46-4__1268275506.png",
+          "bytes": 25224
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 54",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2054/",
+      "status": 200,
+      "images": [
+        {
+          "label": "54-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1202077493/",
+          "file": "diagram_set_54/54-1__1202077493.png",
+          "bytes": 19504
+        },
+        {
+          "label": "54-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1202089452/",
+          "file": "diagram_set_54/54-2__1202089452.png",
+          "bytes": 20321
+        },
+        {
+          "label": "54-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1202101995/",
+          "file": "diagram_set_54/54-3__1202101995.png",
+          "bytes": 21007
+        },
+        {
+          "label": "54-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1202115131/",
+          "file": "diagram_set_54/54-4__1202115131.png",
+          "bytes": 24366
+        },
+        {
+          "label": "54-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1202130635/",
+          "file": "diagram_set_54/54-5__1202130635.png",
+          "bytes": 9015
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 59",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2059/",
+      "status": 200,
+      "images": [
+        {
+          "label": "59-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1289859588/",
+          "file": "diagram_set_59/59-1__1289859588.png",
+          "bytes": 27625
+        },
+        {
+          "label": "59-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1289876853/",
+          "file": "diagram_set_59/59-2__1289876853.png",
+          "bytes": 11665
+        }
+      ]
+    },
+    {
+      "label": "60-1 to 60-4",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2060/60-1%20to%2060-4/",
+      "status": 200,
+      "images": [
+        {
+          "label": "60-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1501602014/",
+          "file": "60-1_to_60-4/60-1__1501602014.png",
+          "bytes": 11517
+        },
+        {
+          "label": "60-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1501609219/",
+          "file": "60-1_to_60-4/60-2__1501609219.png",
+          "bytes": 19773
+        },
+        {
+          "label": "60-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1501622403/",
+          "file": "60-1_to_60-4/60-3__1501622403.png",
+          "bytes": 27944
+        },
+        {
+          "label": "60-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1501639993/",
+          "file": "60-1_to_60-4/60-4__1501639993.png",
+          "bytes": 21391
+        }
+      ]
+    },
+    {
+      "label": "60-5 to 60-7",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2060/60-5%20to%2060-7/",
+      "status": 200,
+      "images": [
+        {
+          "label": "60-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1501654218/",
+          "file": "60-5_to_60-7/60-5__1501654218.png",
+          "bytes": 35320
+        },
+        {
+          "label": "60-6:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1501677264/",
+          "file": "60-5_to_60-7/60-6__1501677264.png",
+          "bytes": 27436
+        },
+        {
+          "label": "60-7:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1501695100/",
+          "file": "60-5_to_60-7/60-7__1501695100.png",
+          "bytes": 15176
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 71",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2071/",
+      "status": 200,
+      "images": [
+        {
+          "label": "71-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1502684906/",
+          "file": "diagram_set_71/71-1__1502684906.png",
+          "bytes": 27888
+        },
+        {
+          "label": "71-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1502701543/",
+          "file": "diagram_set_71/71-2__1502701543.png",
+          "bytes": 29603
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 81",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2081/",
+      "status": 200,
+      "images": [
+        {
+          "label": "81-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1572374904/",
+          "file": "diagram_set_81/81-1__1572374904.png",
+          "bytes": 21348
+        },
+        {
+          "label": "81-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1572388427/",
+          "file": "diagram_set_81/81-2__1572388427.png",
+          "bytes": 20342
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 85",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2085/",
+      "status": 200,
+      "images": [
+        {
+          "label": "85-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1532339342/",
+          "file": "diagram_set_85/85-1__1532339342.png",
+          "bytes": 18549
+        },
+        {
+          "label": "85-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1532350770/",
+          "file": "diagram_set_85/85-2__1532350770.png",
+          "bytes": 20347
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 86",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2086/",
+      "status": 200,
+      "images": [
+        {
+          "label": "86-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1524446278/",
+          "file": "diagram_set_86/86-1__1524446278.png",
+          "bytes": 23527
+        },
+        {
+          "label": "86-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1524460082/",
+          "file": "diagram_set_86/86-2__1524460082.png",
+          "bytes": 18238
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 87",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2087/",
+      "status": 200,
+      "images": [
+        {
+          "label": "87-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1533099875/",
+          "file": "diagram_set_87/87-1__1533099875.png",
+          "bytes": 21803
+        },
+        {
+          "label": "87-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1533112984/",
+          "file": "diagram_set_87/87-2__1533112984.png",
+          "bytes": 23509
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 89",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2089/",
+      "status": 200,
+      "images": [
+        {
+          "label": "89-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1518510053/",
+          "file": "diagram_set_89/89-1__1518510053.png",
+          "bytes": 18922
+        },
+        {
+          "label": "89-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1518521202/",
+          "file": "diagram_set_89/89-2__1518521202.png",
+          "bytes": 12422
+        },
+        {
+          "label": "89-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1518528826/",
+          "file": "diagram_set_89/89-3__1518528826.png",
+          "bytes": 28273
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 90",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2090/",
+      "status": 200,
+      "images": [
+        {
+          "label": "90-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1509635614/",
+          "file": "diagram_set_90/90-1__1509635614.png",
+          "bytes": 29631
+        },
+        {
+          "label": "90-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1509654250/",
+          "file": "diagram_set_90/90-2__1509654250.png",
+          "bytes": 22696
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 92",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2092/",
+      "status": 200,
+      "images": [
+        {
+          "label": "92-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1537099064/",
+          "file": "diagram_set_92/92-1__1537099064.png",
+          "bytes": 25293
+        },
+        {
+          "label": "92-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1537113820/",
+          "file": "diagram_set_92/92-2__1537113820.png",
+          "bytes": 23687
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 93",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2093/",
+      "status": 200,
+      "images": [
+        {
+          "label": "93-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1506560016/",
+          "file": "diagram_set_93/93-1__1506560016.png",
+          "bytes": 19887
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 95",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2095/",
+      "status": 200,
+      "images": [
+        {
+          "label": "95-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1321092140/",
+          "file": "diagram_set_95/95-1__1321092140.png",
+          "bytes": 19253
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 97",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%2097/",
+      "status": 200,
+      "images": [
+        {
+          "label": "97-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1520689892/",
+          "file": "diagram_set_97/97-1__1520689892.png",
+          "bytes": 25835
+        },
+        {
+          "label": "97-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1520705757/",
+          "file": "diagram_set_97/97-2__1520705757.png",
+          "bytes": 15432
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 100",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%20100/",
+      "status": 200,
+      "images": [
+        {
+          "label": "100-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1558633521/",
+          "file": "diagram_set_100/100-1__1558633521.png",
+          "bytes": 8842
+        },
+        {
+          "label": "100-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1558639083/",
+          "file": "diagram_set_100/100-2__1558639083.png",
+          "bytes": 18786
+        },
+        {
+          "label": "100-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1558650624/",
+          "file": "diagram_set_100/100-3__1558650624.png",
+          "bytes": 31424
+        },
+        {
+          "label": "100-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1558670038/",
+          "file": "diagram_set_100/100-4__1558670038.png",
+          "bytes": 15575
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 101",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%20101/",
+      "status": 200,
+      "images": [
+        {
+          "label": "101-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1396600650/",
+          "file": "diagram_set_101/101-1__1396600650.png",
+          "bytes": 19981
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 102",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%20102/",
+      "status": 200,
+      "images": [
+        {
+          "label": "102-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1503579246/",
+          "file": "diagram_set_102/102-1__1503579246.png",
+          "bytes": 17977
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 110",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%20110/",
+      "status": 200,
+      "images": [
+        {
+          "label": "110-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1381989853/",
+          "file": "diagram_set_110/110-1__1381989853.png",
+          "bytes": 14541
+        },
+        {
+          "label": "110-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1381998582/",
+          "file": "diagram_set_110/110-2__1381998582.png",
+          "bytes": 16250
+        },
+        {
+          "label": "110-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1382008489/",
+          "file": "diagram_set_110/110-3__1382008489.png",
+          "bytes": 23658
+        },
+        {
+          "label": "110-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1382023273/",
+          "file": "diagram_set_110/110-4__1382023273.png",
+          "bytes": 14289
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 112",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%20112/",
+      "status": 200,
+      "images": [
+        {
+          "label": "112-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1289801584/",
+          "file": "diagram_set_112/112-1__1289801584.png",
+          "bytes": 19806
+        }
+      ]
+    },
+    {
+      "label": "117-1 to 117-3",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%20117/117-1%20to%20117-3/",
+      "status": 200,
+      "images": [
+        {
+          "label": "117-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281085461/",
+          "file": "117-1_to_117-3/117-1__1281085461.png",
+          "bytes": 34651
+        },
+        {
+          "label": "117-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281108105/",
+          "file": "117-1_to_117-3/117-2__1281108105.png",
+          "bytes": 15249
+        },
+        {
+          "label": "117-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281117211/",
+          "file": "117-1_to_117-3/117-3__1281117211.png",
+          "bytes": 14769
+        }
+      ]
+    },
+    {
+      "label": "117-4 to 117-6",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%20117/117-4%20to%20117-6/",
+      "status": 200,
+      "images": [
+        {
+          "label": "117-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281126526/",
+          "file": "117-4_to_117-6/117-4__1281126526.png",
+          "bytes": 14936
+        },
+        {
+          "label": "117-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281135450/",
+          "file": "117-4_to_117-6/117-5__1281135450.png",
+          "bytes": 14442
+        },
+        {
+          "label": "117-6:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281144049/",
+          "file": "117-4_to_117-6/117-6__1281144049.png",
+          "bytes": 14759
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 119",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%20119/",
+      "status": 200,
+      "images": [
+        {
+          "label": "119-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1402509529/",
+          "file": "diagram_set_119/119-1__1402509529.png",
+          "bytes": 7708
+        },
+        {
+          "label": "119-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1402514433/",
+          "file": "diagram_set_119/119-2__1402514433.png",
+          "bytes": 18698
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 120",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%20120/",
+      "status": 200,
+      "images": [
+        {
+          "label": "120-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1451209390/",
+          "file": "diagram_set_120/120-1__1451209390.png",
+          "bytes": 14451
+        },
+        {
+          "label": "120-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1451218111/",
+          "file": "diagram_set_120/120-2__1451218111.png",
+          "bytes": 13046
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 122",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%20122/",
+      "status": 200,
+      "images": [
+        {
+          "label": "122-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1451540506/",
+          "file": "diagram_set_122/122-1__1451540506.png",
+          "bytes": 21095
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 124",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%20124/",
+      "status": 200,
+      "images": [
+        {
+          "label": "124-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1391104740/",
+          "file": "diagram_set_124/124-1__1391104740.png",
+          "bytes": 22247
+        }
+      ]
+    },
+    {
+      "label": "Diagram Set 125",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%20125/",
+      "status": 200,
+      "images": [
+        {
+          "label": "125-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1390701243/",
+          "file": "diagram_set_125/125-1__1390701243.png",
+          "bytes": 14668
+        }
+      ]
+    },
+    {
+      "label": "130-1 to 130-3",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%20130/130-1%20to%20130-3/",
+      "status": 200,
+      "images": [
+        {
+          "label": "130-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1319499928/",
+          "file": "130-1_to_130-3/130-1__1319499928.png",
+          "bytes": 15870
+        },
+        {
+          "label": "130-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1319510042/",
+          "file": "130-1_to_130-3/130-2__1319510042.png",
+          "bytes": 8334
+        },
+        {
+          "label": "130-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1319515275/",
+          "file": "130-1_to_130-3/130-3__1319515275.png",
+          "bytes": 9365
+        }
+      ]
+    },
+    {
+      "label": "130-4 to 130-6",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%20130/130-4%20to%20130-6/",
+      "status": 200,
+      "images": [
+        {
+          "label": "130-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1319521006/",
+          "file": "130-4_to_130-6/130-4__1319521006.png",
+          "bytes": 15008
+        },
+        {
+          "label": "130-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1319529889/",
+          "file": "130-4_to_130-6/130-5__1319529889.png",
+          "bytes": 17260
+        },
+        {
+          "label": "130-6:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1319539848/",
+          "file": "130-4_to_130-6/130-6__1319539848.png",
+          "bytes": 19915
+        }
+      ]
+    },
+    {
+      "label": "G100",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Ground%20Distribution/G100/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1091714457/",
+          "file": "g100/10-1__1091714457.png",
+          "bytes": 14041
+        }
+      ]
+    },
+    {
+      "label": "G101",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Ground%20Distribution/G101/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1091944327/",
+          "file": "g101/10-2__1091944327.png",
+          "bytes": 11534
+        }
+      ]
+    },
+    {
+      "label": "G102",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Ground%20Distribution/G102/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1091714457/",
+          "file": "g102/10-1__1091714457.png",
+          "bytes": 14041
+        }
+      ]
+    },
+    {
+      "label": "G103",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Ground%20Distribution/G103/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1092145563/",
+          "file": "g103/10-3__1092145563.png",
+          "bytes": 8452
+        }
+      ]
+    },
+    {
+      "label": "G104",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Ground%20Distribution/G104/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1092145563/",
+          "file": "g104/10-3__1092145563.png",
+          "bytes": 8452
+        }
+      ]
+    },
+    {
+      "label": "G105",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Ground%20Distribution/G105/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1092363644/",
+          "file": "g105/10-4__1092363644.png",
+          "bytes": 11726
+        }
+      ]
+    },
+    {
+      "label": "G106",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Ground%20Distribution/G106/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1092363644/",
+          "file": "g106/10-4__1092363644.png",
+          "bytes": 11726
+        }
+      ]
+    },
+    {
+      "label": "G107",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Ground%20Distribution/G107/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1092450657/",
+          "file": "g107/10-5__1092450657.png",
+          "bytes": 10634
+        }
+      ]
+    },
+    {
+      "label": "G108",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Ground%20Distribution/G108/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1092450657/",
+          "file": "g108/10-5__1092450657.png",
+          "bytes": 10634
+        }
+      ]
+    },
+    {
+      "label": "G109",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Ground%20Distribution/G109/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1092450657/",
+          "file": "g109/10-5__1092450657.png",
+          "bytes": 10634
+        }
+      ]
+    },
+    {
+      "label": "G200",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Ground%20Distribution/G200/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-6:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1093104156/",
+          "file": "g200/10-6__1093104156.png",
+          "bytes": 16058
+        }
+      ]
+    },
+    {
+      "label": "G201",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Ground%20Distribution/G201/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-7:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1093427736/",
+          "file": "g201/10-7__1093427736.png",
+          "bytes": 11387
+        }
+      ]
+    },
+    {
+      "label": "G202",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Ground%20Distribution/G202/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-7:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1093427736/",
+          "file": "g202/10-7__1093427736.png",
+          "bytes": 11387
+        }
+      ]
+    },
+    {
+      "label": "G203",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Ground%20Distribution/G203/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-7:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1093427736/",
+          "file": "g203/10-7__1093427736.png",
+          "bytes": 11387
+        }
+      ]
+    },
+    {
+      "label": "G204",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Ground%20Distribution/G204/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-8:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1094323829/",
+          "file": "g204/10-8__1094323829.png",
+          "bytes": 15685
+        },
+        {
+          "label": "10-9:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1094333413/",
+          "file": "g204/10-9__1094333413.png",
+          "bytes": 6899
+        }
+      ]
+    },
+    {
+      "label": "G205",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Ground%20Distribution/G205/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-8:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1094323829/",
+          "file": "g205/10-8__1094323829.png",
+          "bytes": 15685
+        }
+      ]
+    },
+    {
+      "label": "G300",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Ground%20Distribution/G300/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-10:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1095148075/",
+          "file": "g300/10-10__1095148075.png",
+          "bytes": 18990
+        },
+        {
+          "label": "10-11:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1095159733/",
+          "file": "g300/10-11__1095159733.png",
+          "bytes": 17501
+        },
+        {
+          "label": "10-12:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1095170354/",
+          "file": "g300/10-12__1095170354.png",
+          "bytes": 12824
+        },
+        {
+          "label": "10-13:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1095177998/",
+          "file": "g300/10-13__1095177998.png",
+          "bytes": 15424
+        }
+      ]
+    },
+    {
+      "label": "G301",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Ground%20Distribution/G301/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-14:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1095490698/",
+          "file": "g301/10-14__1095490698.png",
+          "bytes": 16486
+        }
+      ]
+    },
+    {
+      "label": "G901",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Ground%20Distribution/G901/",
+      "status": 200,
+      "images": [
+        {
+          "label": "10-14:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1095490698/",
+          "file": "g901/10-14__1095490698.png",
+          "bytes": 16486
+        }
+      ]
+    },
+    {
+      "label": "Wiring Diagram Index",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Power%20Distribution%20Diagrams/Wiring%20Diagram%20Index/",
+      "status": 200,
+      "images": [
+        {
+          "label": "Explorer Sport Trac 4WD V6-4.0L VIN K Flex Fuel",
+          "url": "https://charm.li/images/DM05Q313/ford30/1096618410/",
+          "file": "wiring_diagram_index/Explorer_Sport_Trac_4WD_V6-4.0L_VIN_K_Flex_Fuel_1096618410.png",
+          "bytes": 19228
+        }
+      ]
+    },
+    {
+      "label": "13-1",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Power%20Distribution%20Diagrams/13-1/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1097796403/",
+          "file": "13-1/13-1__1097796403.png",
+          "bytes": 26966
+        }
+      ]
+    },
+    {
+      "label": "13-2",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Power%20Distribution%20Diagrams/13-2/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1098388290/",
+          "file": "13-2/13-2__1098388290.png",
+          "bytes": 16998
+        }
+      ]
+    },
+    {
+      "label": "13-3",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Power%20Distribution%20Diagrams/13-3/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1098910638/",
+          "file": "13-3/13-3__1098910638.png",
+          "bytes": 24689
+        }
+      ]
+    },
+    {
+      "label": "13-4",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Power%20Distribution%20Diagrams/13-4/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1099470803/",
+          "file": "13-4/13-4__1099470803.png",
+          "bytes": 16601
+        }
+      ]
+    },
+    {
+      "label": "13-5",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Power%20Distribution%20Diagrams/13-5/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1100033548/",
+          "file": "13-5/13-5__1100033548.png",
+          "bytes": 14971
+        }
+      ]
+    },
+    {
+      "label": "13-6",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Power%20Distribution%20Diagrams/13-6/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-6:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1100590070/",
+          "file": "13-6/13-6__1100590070.png",
+          "bytes": 12196
+        }
+      ]
+    },
+    {
+      "label": "13-7",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Power%20Distribution%20Diagrams/13-7/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-7:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1101173275/",
+          "file": "13-7/13-7__1101173275.png",
+          "bytes": 28138
+        }
+      ]
+    },
+    {
+      "label": "13-8",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Power%20Distribution%20Diagrams/13-8/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-8:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1101729142/",
+          "file": "13-8/13-8__1101729142.png",
+          "bytes": 18756
+        }
+      ]
+    },
+    {
+      "label": "13-9",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Power%20Distribution%20Diagrams/13-9/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-9:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1102254292/",
+          "file": "13-9/13-9__1102254292.png",
+          "bytes": 18460
+        }
+      ]
+    },
+    {
+      "label": "13-10",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Power%20Distribution%20Diagrams/13-10/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-10:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1102795675/",
+          "file": "13-10/13-10__1102795675.png",
+          "bytes": 8884
+        }
+      ]
+    },
+    {
+      "label": "13-11",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Power%20Distribution%20Diagrams/13-11/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-11:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1103095693/",
+          "file": "13-11/13-11__1103095693.png",
+          "bytes": 22127
+        }
+      ]
+    },
+    {
+      "label": "13-12",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Power%20Distribution%20Diagrams/13-12/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-12:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1103410939/",
+          "file": "13-12/13-12__1103410939.png",
+          "bytes": 16680
+        }
+      ]
+    },
+    {
+      "label": "13-13",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Power%20Distribution%20Diagrams/13-13/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-13:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1103714620/",
+          "file": "13-13/13-13__1103714620.png",
+          "bytes": 28762
+        }
+      ]
+    },
+    {
+      "label": "13-14",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Power%20Distribution%20Diagrams/13-14/",
+      "status": 200,
+      "images": [
+        {
+          "label": "13-14:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1103977609/",
+          "file": "13-14/13-14__1103977609.png",
+          "bytes": 14623
+        }
+      ]
+    },
+    {
+      "label": "Air Bag Systems",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Air%20Bag%20Systems/",
+      "status": 200,
+      "images": [
+        {
+          "label": "46-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1268227844/",
+          "file": "air_bag_systems/46-1__1268227844.png",
+          "bytes": 26456
+        },
+        {
+          "label": "46-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1268244210/",
+          "file": "air_bag_systems/46-2__1268244210.png",
+          "bytes": 22239
+        },
+        {
+          "label": "46-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1268259375/",
+          "file": "air_bag_systems/46-3__1268259375.png",
+          "bytes": 24286
+        },
+        {
+          "label": "46-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1268275506/",
+          "file": "air_bag_systems/46-4__1268275506.png",
+          "bytes": 25224
+        }
+      ]
+    },
+    {
+      "label": "Antilock Brakes / Traction Control Systems",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Antilock%20Brakes%20%2F%20Traction%20Control%20Systems/",
+      "status": 200,
+      "images": [
+        {
+          "label": "42-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1040967012/",
+          "file": "antilock_brakes_traction_control_systems/42-1__1040967012.png",
+          "bytes": 19648
+        },
+        {
+          "label": "42-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1040979199/",
+          "file": "antilock_brakes_traction_control_systems/42-2__1040979199.png",
+          "bytes": 33160
+        }
+      ]
+    },
+    {
+      "label": "Anti-Theft",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Antitheft%20and%20Alarm%20Systems/Anti-Theft/",
+      "status": 200,
+      "images": [
+        {
+          "label": "112-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1289801584/",
+          "file": "anti-theft/112-1__1289801584.png",
+          "bytes": 19806
+        }
+      ]
+    },
+    {
+      "label": "Multifunction Electronic Control Modules Diagrams",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Antitheft%20and%20Alarm%20Systems/Multifunction%20Electronic%20Control%20Modules%20Diagrams/",
+      "status": 200,
+      "images": [
+        {
+          "label": "59-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1289859588/",
+          "file": "multifunction_electronic_control_modules_diagrams/59-1__1289859588.png",
+          "bytes": 27625
+        },
+        {
+          "label": "59-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1289876853/",
+          "file": "multifunction_electronic_control_modules_diagrams/59-2__1289876853.png",
+          "bytes": 11665
+        }
+      ]
+    },
+    {
+      "label": "Remote Control Alarm and Locks",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Antitheft%20and%20Alarm%20Systems/Remote%20Control%20Alarm%20and%20Locks/",
+      "status": 200,
+      "images": [
+        {
+          "label": "117-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281085461/",
+          "file": "remote_control_alarm_and_locks/117-1__1281085461.png",
+          "bytes": 34651
+        },
+        {
+          "label": "117-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281108105/",
+          "file": "remote_control_alarm_and_locks/117-2__1281108105.png",
+          "bytes": 15249
+        },
+        {
+          "label": "117-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281117211/",
+          "file": "remote_control_alarm_and_locks/117-3__1281117211.png",
+          "bytes": 14769
+        },
+        {
+          "label": "117-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281126526/",
+          "file": "remote_control_alarm_and_locks/117-4__1281126526.png",
+          "bytes": 14936
+        },
+        {
+          "label": "117-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281135450/",
+          "file": "remote_control_alarm_and_locks/117-5__1281135450.png",
+          "bytes": 14442
+        },
+        {
+          "label": "117-6:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281144049/",
+          "file": "remote_control_alarm_and_locks/117-6__1281144049.png",
+          "bytes": 14759
+        }
+      ]
+    },
+    {
+      "label": "Wiring Diagram Index",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Automatic%20Transmission%2FTransaxle/System%20Diagram/Wiring%20Diagram%20Index/",
+      "status": 200,
+      "images": [
+        {
+          "label": "Explorer Sport Trac 4WD V6-4.0L VIN K Flex Fuel",
+          "url": "https://charm.li/images/DM05Q313/ford30/840042992/",
+          "file": "wiring_diagram_index/Explorer_Sport_Trac_4WD_V6-4.0L_VIN_K_Flex_Fuel_840042992.png",
+          "bytes": 12047
+        }
+      ]
+    },
+    {
+      "label": "29-1",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Automatic%20Transmission%2FTransaxle/System%20Diagram/29-1/",
+      "status": 200,
+      "images": [
+        {
+          "label": "29-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/840996578/",
+          "file": "29-1/29-1__840996578.png",
+          "bytes": 21600
+        }
+      ]
+    },
+    {
+      "label": "29-2",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Automatic%20Transmission%2FTransaxle/System%20Diagram/29-2/",
+      "status": 200,
+      "images": [
+        {
+          "label": "29-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/841291154/",
+          "file": "29-2/29-2__841291154.png",
+          "bytes": 20455
+        }
+      ]
+    },
+    {
+      "label": "29-3",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Automatic%20Transmission%2FTransaxle/System%20Diagram/29-3/",
+      "status": 200,
+      "images": [
+        {
+          "label": "29-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/841635043/",
+          "file": "29-3/29-3__841635043.png",
+          "bytes": 36180
+        }
+      ]
+    },
+    {
+      "label": "Shift Interlock, A/T",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Automatic%20Transmission%2FTransaxle/Shift%20Interlock%2C%20A%2FT/",
+      "status": 200,
+      "images": [
+        {
+          "label": "37-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/679748607/",
+          "file": "shift_interlock_a_t/37-1__679748607.png",
+          "bytes": 15190
+        }
+      ]
+    },
+    {
+      "label": "Charging System",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Charging%20System/",
+      "status": 200,
+      "images": [
+        {
+          "label": "12-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1077605096/",
+          "file": "charging_system/12-1__1077605096.png",
+          "bytes": 21668
+        }
+      ]
+    },
+    {
+      "label": "Cruise Control",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Cruise%20Control/",
+      "status": 200,
+      "images": [
+        {
+          "label": "31-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1466123498/",
+          "file": "cruise_control/31-1__1466123498.png",
+          "bytes": 30958
+        },
+        {
+          "label": "31-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1466143975/",
+          "file": "cruise_control/31-2__1466143975.png",
+          "bytes": 20750
+        },
+        {
+          "label": "31-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1466156838/",
+          "file": "cruise_control/31-3__1466156838.png",
+          "bytes": 18992
+        }
+      ]
+    },
+    {
+      "label": "Heating and Air Conditioning",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Heating%20and%20Air%20Conditioning/",
+      "status": 200,
+      "images": [
+        {
+          "label": "54-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1202077493/",
+          "file": "heating_and_air_conditioning/54-1__1202077493.png",
+          "bytes": 19504
+        },
+        {
+          "label": "54-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1202089452/",
+          "file": "heating_and_air_conditioning/54-2__1202089452.png",
+          "bytes": 20321
+        },
+        {
+          "label": "54-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1202101995/",
+          "file": "heating_and_air_conditioning/54-3__1202101995.png",
+          "bytes": 21007
+        },
+        {
+          "label": "54-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1202115131/",
+          "file": "heating_and_air_conditioning/54-4__1202115131.png",
+          "bytes": 24366
+        },
+        {
+          "label": "54-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1202130635/",
+          "file": "heating_and_air_conditioning/54-5__1202130635.png",
+          "bytes": 9015
+        }
+      ]
+    },
+    {
+      "label": "Instrument Cluster",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Instrument%20Panel%2C%20Gauges%20and%20Warning%20Indicators/System%20Diagram/Instrument%20Cluster/",
+      "status": 200,
+      "images": [
+        {
+          "label": "60-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1501602014/",
+          "file": "instrument_cluster/60-1__1501602014.png",
+          "bytes": 11517
+        },
+        {
+          "label": "60-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1501609219/",
+          "file": "instrument_cluster/60-2__1501609219.png",
+          "bytes": 19773
+        },
+        {
+          "label": "60-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1501622403/",
+          "file": "instrument_cluster/60-3__1501622403.png",
+          "bytes": 27944
+        },
+        {
+          "label": "60-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1501639993/",
+          "file": "instrument_cluster/60-4__1501639993.png",
+          "bytes": 21391
+        },
+        {
+          "label": "60-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1501654218/",
+          "file": "instrument_cluster/60-5__1501654218.png",
+          "bytes": 35320
+        },
+        {
+          "label": "60-6:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1501677264/",
+          "file": "instrument_cluster/60-6__1501677264.png",
+          "bytes": 27436
+        },
+        {
+          "label": "60-7:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1501695100/",
+          "file": "instrument_cluster/60-7__1501695100.png",
+          "bytes": 15176
+        }
+      ]
+    },
+    {
+      "label": "Instrument Illumination",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Instrument%20Panel%2C%20Gauges%20and%20Warning%20Indicators/System%20Diagram/Instrument%20Illumination/",
+      "status": 200,
+      "images": [
+        {
+          "label": "71-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1502684906/",
+          "file": "instrument_illumination/71-1__1502684906.png",
+          "bytes": 27888
+        },
+        {
+          "label": "71-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1502701543/",
+          "file": "instrument_illumination/71-2__1502701543.png",
+          "bytes": 29603
+        }
+      ]
+    },
+    {
+      "label": "Overhead Console",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Instrument%20Panel%2C%20Gauges%20and%20Warning%20Indicators/System%20Diagram/Overhead%20Console/",
+      "status": 200,
+      "images": [
+        {
+          "label": "102-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1503579246/",
+          "file": "overhead_console/102-1__1503579246.png",
+          "bytes": 17977
+        }
+      ]
+    },
+    {
+      "label": "Cigarette Lighter",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Instrument%20Panel%2C%20Gauges%20and%20Warning%20Indicators/Cigarette%20Lighter/",
+      "status": 200,
+      "images": [
+        {
+          "label": "44-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1468013347/",
+          "file": "cigarette_lighter/44-1__1468013347.png",
+          "bytes": 18595
+        },
+        {
+          "label": "44-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1468024544/",
+          "file": "cigarette_lighter/44-2__1468024544.png",
+          "bytes": 14993
+        },
+        {
+          "label": "44-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1468033339/",
+          "file": "cigarette_lighter/44-3__1468033339.png",
+          "bytes": 19318
+        }
+      ]
+    },
+    {
+      "label": "Keyless Entry",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Keyless%20Entry/",
+      "status": 200,
+      "images": [
+        {
+          "label": "117-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281085461/",
+          "file": "keyless_entry/117-1__1281085461.png",
+          "bytes": 34651
+        },
+        {
+          "label": "117-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281108105/",
+          "file": "keyless_entry/117-2__1281108105.png",
+          "bytes": 15249
+        },
+        {
+          "label": "117-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281117211/",
+          "file": "keyless_entry/117-3__1281117211.png",
+          "bytes": 14769
+        },
+        {
+          "label": "117-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281126526/",
+          "file": "keyless_entry/117-4__1281126526.png",
+          "bytes": 14936
+        },
+        {
+          "label": "117-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281135450/",
+          "file": "keyless_entry/117-5__1281135450.png",
+          "bytes": 14442
+        },
+        {
+          "label": "117-6:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281144049/",
+          "file": "keyless_entry/117-6__1281144049.png",
+          "bytes": 14759
+        }
+      ]
+    },
+    {
+      "label": "System Diagram",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Lighting%20and%20Horns/System%20Diagram/",
+      "status": 200,
+      "images": [
+        {
+          "label": "71-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1502684906/",
+          "file": "system_diagram/71-1__1502684906.png",
+          "bytes": 27888
+        },
+        {
+          "label": "71-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1502701543/",
+          "file": "system_diagram/71-2__1502701543.png",
+          "bytes": 29603
+        }
+      ]
+    },
+    {
+      "label": "Backup Lamp",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Lighting%20and%20Horns/Backup%20Lamp/",
+      "status": 200,
+      "images": [
+        {
+          "label": "93-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1506560016/",
+          "file": "backup_lamp/93-1__1506560016.png",
+          "bytes": 19887
+        }
+      ]
+    },
+    {
+      "label": "Brake Lamp",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Lighting%20and%20Horns/Brake%20Lamp/",
+      "status": 200,
+      "images": [
+        {
+          "label": "90-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1509635614/",
+          "file": "brake_lamp/90-1__1509635614.png",
+          "bytes": 29631
+        },
+        {
+          "label": "90-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1509654250/",
+          "file": "brake_lamp/90-2__1509654250.png",
+          "bytes": 22696
+        }
+      ]
+    },
+    {
+      "label": "Courtesy Lamp",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Lighting%20and%20Horns/Courtesy%20Lamp/",
+      "status": 200,
+      "images": [
+        {
+          "label": "89-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1518510053/",
+          "file": "courtesy_lamp/89-1__1518510053.png",
+          "bytes": 18922
+        },
+        {
+          "label": "89-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1518521202/",
+          "file": "courtesy_lamp/89-2__1518521202.png",
+          "bytes": 12422
+        },
+        {
+          "label": "89-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1518528826/",
+          "file": "courtesy_lamp/89-3__1518528826.png",
+          "bytes": 28273
+        }
+      ]
+    },
+    {
+      "label": "Daytime Running Lamp",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Lighting%20and%20Horns/Daytime%20Running%20Lamp/",
+      "status": 200,
+      "images": [
+        {
+          "label": "97-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1520689892/",
+          "file": "daytime_running_lamp/97-1__1520689892.png",
+          "bytes": 25835
+        },
+        {
+          "label": "97-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1520705757/",
+          "file": "daytime_running_lamp/97-2__1520705757.png",
+          "bytes": 15432
+        }
+      ]
+    },
+    {
+      "label": "Fog/Driving Lamp",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Lighting%20and%20Horns/Fog%2FDriving%20Lamp/",
+      "status": 200,
+      "images": [
+        {
+          "label": "86-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1524446278/",
+          "file": "fog_driving_lamp/86-1__1524446278.png",
+          "bytes": 23527
+        },
+        {
+          "label": "86-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1524460082/",
+          "file": "fog_driving_lamp/86-2__1524460082.png",
+          "bytes": 18238
+        }
+      ]
+    },
+    {
+      "label": "System Diagram",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Lighting%20and%20Horns/Hazard%20Warning%20Lamps/System%20Diagram/",
+      "status": 200,
+      "images": [
+        {
+          "label": "90-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1509635614/",
+          "file": "system_diagram/90-1__1509635614.png",
+          "bytes": 29631
+        },
+        {
+          "label": "90-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1509654250/",
+          "file": "system_diagram/90-2__1509654250.png",
+          "bytes": 22696
+        }
+      ]
+    },
+    {
+      "label": "Hazard Warning Flasher",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Lighting%20and%20Horns/Hazard%20Warning%20Lamps/Hazard%20Warning%20Flasher/",
+      "status": 200,
+      "images": [
+        {
+          "label": "90-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1509635614/",
+          "file": "hazard_warning_flasher/90-1__1509635614.png",
+          "bytes": 29631
+        },
+        {
+          "label": "90-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1509654250/",
+          "file": "hazard_warning_flasher/90-2__1509654250.png",
+          "bytes": 22696
+        }
+      ]
+    },
+    {
+      "label": "Headlamps",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Lighting%20and%20Horns/Headlamp/Headlamps/",
+      "status": 200,
+      "images": [
+        {
+          "label": "85-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1532339342/",
+          "file": "headlamps/85-1__1532339342.png",
+          "bytes": 18549
+        },
+        {
+          "label": "85-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1532350770/",
+          "file": "headlamps/85-2__1532350770.png",
+          "bytes": 20347
+        }
+      ]
+    },
+    {
+      "label": "Autolamps",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Lighting%20and%20Horns/Headlamp/Autolamps/",
+      "status": 200,
+      "images": [
+        {
+          "label": "87-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1533099875/",
+          "file": "autolamps/87-1__1533099875.png",
+          "bytes": 21803
+        },
+        {
+          "label": "87-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1533112984/",
+          "file": "autolamps/87-2__1533112984.png",
+          "bytes": 23509
+        }
+      ]
+    },
+    {
+      "label": "Horn",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Lighting%20and%20Horns/Horn/",
+      "status": 200,
+      "images": [
+        {
+          "label": "44-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1468013347/",
+          "file": "horn/44-1__1468013347.png",
+          "bytes": 18595
+        },
+        {
+          "label": "44-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1468024544/",
+          "file": "horn/44-2__1468024544.png",
+          "bytes": 14993
+        },
+        {
+          "label": "44-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1468033339/",
+          "file": "horn/44-3__1468033339.png",
+          "bytes": 19318
+        }
+      ]
+    },
+    {
+      "label": "License Plate Lamp",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Lighting%20and%20Horns/License%20Plate%20Lamp/",
+      "status": 200,
+      "images": [
+        {
+          "label": "92-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1537099064/",
+          "file": "license_plate_lamp/92-1__1537099064.png",
+          "bytes": 25293
+        },
+        {
+          "label": "92-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1537113820/",
+          "file": "license_plate_lamp/92-2__1537113820.png",
+          "bytes": 23687
+        }
+      ]
+    },
+    {
+      "label": "Marker Lamp",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Lighting%20and%20Horns/Marker%20Lamp/",
+      "status": 200,
+      "images": [
+        {
+          "label": "92-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1537099064/",
+          "file": "marker_lamp/92-1__1537099064.png",
+          "bytes": 25293
+        },
+        {
+          "label": "92-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1537113820/",
+          "file": "marker_lamp/92-2__1537113820.png",
+          "bytes": 23687
+        }
+      ]
+    },
+    {
+      "label": "Parking Lamp",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Lighting%20and%20Horns/Parking%20Lamp/",
+      "status": 200,
+      "images": [
+        {
+          "label": "92-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1537099064/",
+          "file": "parking_lamp/92-1__1537099064.png",
+          "bytes": 25293
+        },
+        {
+          "label": "92-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1537113820/",
+          "file": "parking_lamp/92-2__1537113820.png",
+          "bytes": 23687
+        }
+      ]
+    },
+    {
+      "label": "Tail Lamp",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Lighting%20and%20Horns/Tail%20Lamp/",
+      "status": 200,
+      "images": [
+        {
+          "label": "92-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1537099064/",
+          "file": "tail_lamp/92-1__1537099064.png",
+          "bytes": 25293
+        },
+        {
+          "label": "92-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1537113820/",
+          "file": "tail_lamp/92-2__1537113820.png",
+          "bytes": 23687
+        }
+      ]
+    },
+    {
+      "label": "Trailer Lamps",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Lighting%20and%20Horns/Trailer%20Lamps/",
+      "status": 200,
+      "images": [
+        {
+          "label": "95-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1321092140/",
+          "file": "trailer_lamps/95-1__1321092140.png",
+          "bytes": 19253
+        }
+      ]
+    },
+    {
+      "label": "Turn Signals",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Lighting%20and%20Horns/Turn%20Signals/",
+      "status": 200,
+      "images": [
+        {
+          "label": "90-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1509635614/",
+          "file": "turn_signals/90-1__1509635614.png",
+          "bytes": 29631
+        },
+        {
+          "label": "90-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1509654250/",
+          "file": "turn_signals/90-2__1509654250.png",
+          "bytes": 22696
+        }
+      ]
+    },
+    {
+      "label": "Electronic Day/Night Mirror",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Mirrors/Electronic%20Day%2FNight%20Mirror/",
+      "status": 200,
+      "images": [
+        {
+          "label": "125-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1390701243/",
+          "file": "electronic_day_night_mirror/125-1__1390701243.png",
+          "bytes": 14668
+        }
+      ]
+    },
+    {
+      "label": "Power Mirrors",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Mirrors/Power%20Mirrors/",
+      "status": 200,
+      "images": [
+        {
+          "label": "124-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1391104740/",
+          "file": "power_mirrors/124-1__1391104740.png",
+          "bytes": 22247
+        }
+      ]
+    },
+    {
+      "label": "Power Door Locks",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20Locks/Power%20Door%20Locks/",
+      "status": 200,
+      "images": [
+        {
+          "label": "110-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1381989853/",
+          "file": "power_door_locks/110-1__1381989853.png",
+          "bytes": 14541
+        },
+        {
+          "label": "110-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1381998582/",
+          "file": "power_door_locks/110-2__1381998582.png",
+          "bytes": 16250
+        },
+        {
+          "label": "110-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1382008489/",
+          "file": "power_door_locks/110-3__1382008489.png",
+          "bytes": 23658
+        },
+        {
+          "label": "110-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1382023273/",
+          "file": "power_door_locks/110-4__1382023273.png",
+          "bytes": 14289
+        }
+      ]
+    },
+    {
+      "label": "Remote Control Alarm and Locks",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20Locks/Remote%20Control%20Alarm%20and%20Locks/",
+      "status": 200,
+      "images": [
+        {
+          "label": "117-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281085461/",
+          "file": "remote_control_alarm_and_locks/117-1__1281085461.png",
+          "bytes": 34651
+        },
+        {
+          "label": "117-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281108105/",
+          "file": "remote_control_alarm_and_locks/117-2__1281108105.png",
+          "bytes": 15249
+        },
+        {
+          "label": "117-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281117211/",
+          "file": "remote_control_alarm_and_locks/117-3__1281117211.png",
+          "bytes": 14769
+        },
+        {
+          "label": "117-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281126526/",
+          "file": "remote_control_alarm_and_locks/117-4__1281126526.png",
+          "bytes": 14936
+        },
+        {
+          "label": "117-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281135450/",
+          "file": "remote_control_alarm_and_locks/117-5__1281135450.png",
+          "bytes": 14442
+        },
+        {
+          "label": "117-6:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1281144049/",
+          "file": "remote_control_alarm_and_locks/117-6__1281144049.png",
+          "bytes": 14759
+        }
+      ]
+    },
+    {
+      "label": "Wiring Diagram Index",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Powertrain%20Management/System%20Diagram/Wiring%20Diagram%20Index/",
+      "status": 200,
+      "images": [
+        {
+          "label": "Explorer Sport Trac 4WD V6-4.0L VIN K Flex Fuel",
+          "url": "https://charm.li/images/DM05Q313/ford30/661494372/",
+          "file": "wiring_diagram_index/Explorer_Sport_Trac_4WD_V6-4.0L_VIN_K_Flex_Fuel_661494372.png",
+          "bytes": 21197
+        }
+      ]
+    },
+    {
+      "label": "23-1",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Powertrain%20Management/System%20Diagram/23-1/",
+      "status": 200,
+      "images": [
+        {
+          "label": "23-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/661877777/",
+          "file": "23-1/23-1__661877777.png",
+          "bytes": 13065
+        }
+      ]
+    },
+    {
+      "label": "23-2",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Powertrain%20Management/System%20Diagram/23-2/",
+      "status": 200,
+      "images": [
+        {
+          "label": "23-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/662382089/",
+          "file": "23-2/23-2__662382089.png",
+          "bytes": 15022
+        }
+      ]
+    },
+    {
+      "label": "23-3",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Powertrain%20Management/System%20Diagram/23-3/",
+      "status": 200,
+      "images": [
+        {
+          "label": "23-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/662781570/",
+          "file": "23-3/23-3__662781570.png",
+          "bytes": 25795
+        }
+      ]
+    },
+    {
+      "label": "23-4",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Powertrain%20Management/System%20Diagram/23-4/",
+      "status": 200,
+      "images": [
+        {
+          "label": "23-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/663274482/",
+          "file": "23-4/23-4__663274482.png",
+          "bytes": 24438
+        }
+      ]
+    },
+    {
+      "label": "23-5",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Powertrain%20Management/System%20Diagram/23-5/",
+      "status": 200,
+      "images": [
+        {
+          "label": "23-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/663716614/",
+          "file": "23-5/23-5__663716614.png",
+          "bytes": 25916
+        }
+      ]
+    },
+    {
+      "label": "23-6",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Powertrain%20Management/System%20Diagram/23-6/",
+      "status": 200,
+      "images": [
+        {
+          "label": "23-6:",
+          "url": "https://charm.li/images/DM05Q313/ford30/663977078/",
+          "file": "23-6/23-6__663977078.png",
+          "bytes": 20111
+        }
+      ]
+    },
+    {
+      "label": "23-7",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Powertrain%20Management/System%20Diagram/23-7/",
+      "status": 200,
+      "images": [
+        {
+          "label": "23-7:",
+          "url": "https://charm.li/images/DM05Q313/ford30/664212500/",
+          "file": "23-7/23-7__664212500.png",
+          "bytes": 24128
+        }
+      ]
+    },
+    {
+      "label": "23-8",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Powertrain%20Management/System%20Diagram/23-8/",
+      "status": 200,
+      "images": [
+        {
+          "label": "23-8:",
+          "url": "https://charm.li/images/DM05Q313/ford30/664687870/",
+          "file": "23-8/23-8__664687870.png",
+          "bytes": 16294
+        }
+      ]
+    },
+    {
+      "label": "23-9",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Powertrain%20Management/System%20Diagram/23-9/",
+      "status": 200,
+      "images": [
+        {
+          "label": "23-9:",
+          "url": "https://charm.li/images/DM05Q313/ford30/665114360/",
+          "file": "23-9/23-9__665114360.png",
+          "bytes": 17908
+        }
+      ]
+    },
+    {
+      "label": "23-10",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Powertrain%20Management/System%20Diagram/23-10/",
+      "status": 200,
+      "images": [
+        {
+          "label": "23-10:",
+          "url": "https://charm.li/images/DM05Q313/ford30/665188463/",
+          "file": "23-10/23-10__665188463.png",
+          "bytes": 18450
+        }
+      ]
+    },
+    {
+      "label": "23-11",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Powertrain%20Management/System%20Diagram/23-11/",
+      "status": 200,
+      "images": [
+        {
+          "label": "23-11:",
+          "url": "https://charm.li/images/DM05Q313/ford30/665256422/",
+          "file": "23-11/23-11__665256422.png",
+          "bytes": 25839
+        }
+      ]
+    },
+    {
+      "label": "23-12",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Powertrain%20Management/System%20Diagram/23-12/",
+      "status": 200,
+      "images": [
+        {
+          "label": "23-12:",
+          "url": "https://charm.li/images/DM05Q313/ford30/665349347/",
+          "file": "23-12/23-12__665349347.png",
+          "bytes": 5215
+        }
+      ]
+    },
+    {
+      "label": "Data Link Connector",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Powertrain%20Management/Data%20Link%20Connector/",
+      "status": 200,
+      "images": [
+        {
+          "label": "14-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/473601402/",
+          "file": "data_link_connector/14-1__473601402.png",
+          "bytes": 16564
+        },
+        {
+          "label": "14-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/473611402/",
+          "file": "data_link_connector/14-2__473611402.png",
+          "bytes": 10825
+        }
+      ]
+    },
+    {
+      "label": "Ignition System",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Powertrain%20Management/Ignition%20System/",
+      "status": 200,
+      "images": [
+        {
+          "label": "21-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/654575598/",
+          "file": "ignition_system/21-1__654575598.png",
+          "bytes": 24008
+        },
+        {
+          "label": "21-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/654590438/",
+          "file": "ignition_system/21-2__654590438.png",
+          "bytes": 14533
+        }
+      ]
+    },
+    {
+      "label": "Information Bus",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Powertrain%20Management/Information%20Bus/",
+      "status": 200,
+      "images": [
+        {
+          "label": "14-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/473601402/",
+          "file": "information_bus/14-1__473601402.png",
+          "bytes": 16564
+        },
+        {
+          "label": "14-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/473611402/",
+          "file": "information_bus/14-2__473611402.png",
+          "bytes": 10825
+        }
+      ]
+    },
+    {
+      "label": "Radio, Stereo, and Compact Disc",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Radio%2C%20Stereo%2C%20and%20Compact%20Disc/",
+      "status": 200,
+      "images": [
+        {
+          "label": "130-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1319499928/",
+          "file": "radio_stereo_and_compact_disc/130-1__1319499928.png",
+          "bytes": 15870
+        },
+        {
+          "label": "130-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1319510042/",
+          "file": "radio_stereo_and_compact_disc/130-2__1319510042.png",
+          "bytes": 8334
+        },
+        {
+          "label": "130-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1319515275/",
+          "file": "radio_stereo_and_compact_disc/130-3__1319515275.png",
+          "bytes": 9365
+        },
+        {
+          "label": "130-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1319521006/",
+          "file": "radio_stereo_and_compact_disc/130-4__1319521006.png",
+          "bytes": 15008
+        },
+        {
+          "label": "130-5:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1319529889/",
+          "file": "radio_stereo_and_compact_disc/130-5__1319529889.png",
+          "bytes": 17260
+        },
+        {
+          "label": "130-6:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1319539848/",
+          "file": "radio_stereo_and_compact_disc/130-6__1319539848.png",
+          "bytes": 19915
+        }
+      ]
+    },
+    {
+      "label": "Climate Controlled Seats",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Seats/System%20Diagram/Climate%20Controlled%20Seats/",
+      "status": 200,
+      "images": [
+        {
+          "label": "119-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1402509529/",
+          "file": "climate_controlled_seats/119-1__1402509529.png",
+          "bytes": 7708
+        },
+        {
+          "label": "119-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1402514433/",
+          "file": "climate_controlled_seats/119-2__1402514433.png",
+          "bytes": 18698
+        }
+      ]
+    },
+    {
+      "label": "Power Seats",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Seats/System%20Diagram/Power%20Seats/",
+      "status": 200,
+      "images": [
+        {
+          "label": "120-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1451209390/",
+          "file": "power_seats/120-1__1451209390.png",
+          "bytes": 14451
+        },
+        {
+          "label": "120-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1451218111/",
+          "file": "power_seats/120-2__1451218111.png",
+          "bytes": 13046
+        }
+      ]
+    },
+    {
+      "label": "Power Lumbar Seats",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Seats/System%20Diagram/Power%20Lumbar%20Seats/",
+      "status": 200,
+      "images": [
+        {
+          "label": "122-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1451540506/",
+          "file": "power_lumbar_seats/122-1__1451540506.png",
+          "bytes": 21095
+        }
+      ]
+    },
+    {
+      "label": "Seat Temperature Element",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Seats/Seat%20Temperature%20Element/",
+      "status": 200,
+      "images": [
+        {
+          "label": "119-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1402509529/",
+          "file": "seat_temperature_element/119-1__1402509529.png",
+          "bytes": 7708
+        },
+        {
+          "label": "119-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1402514433/",
+          "file": "seat_temperature_element/119-2__1402514433.png",
+          "bytes": 18698
+        }
+      ]
+    },
+    {
+      "label": "System Diagram",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Starting%20System/System%20Diagram/",
+      "status": 200,
+      "images": [
+        {
+          "label": "20-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1084178775/",
+          "file": "system_diagram/20-1__1084178775.png",
+          "bytes": 20101
+        }
+      ]
+    },
+    {
+      "label": "Neutral Safety Switch",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Starting%20System/Neutral%20Safety%20Switch/",
+      "status": 200,
+      "images": [
+        {
+          "label": "Explorer Sport Trac 4WD V6-4.0L VIN K Flex Fuel",
+          "url": "https://charm.li/images/DM05Q313/ford30/163629345/",
+          "file": "neutral_safety_switch/Explorer_Sport_Trac_4WD_V6-4.0L_VIN_K_Flex_Fuel_163629345.png",
+          "bytes": 12930
+        }
+      ]
+    },
+    {
+      "label": "Sunroof / Moonroof",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Sunroof%20%2F%20Moonroof/",
+      "status": 200,
+      "images": [
+        {
+          "label": "101-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1396600650/",
+          "file": "sunroof_moonroof/101-1__1396600650.png",
+          "bytes": 19981
+        }
+      ]
+    },
+    {
+      "label": "Trailer Connector",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Trailer%20Connector/",
+      "status": 200,
+      "images": [
+        {
+          "label": "95-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1321092140/",
+          "file": "trailer_connector/95-1__1321092140.png",
+          "bytes": 19253
+        }
+      ]
+    },
+    {
+      "label": "Transfer Case",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Transfer%20Case/",
+      "status": 200,
+      "images": [
+        {
+          "label": "34-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1027137804/",
+          "file": "transfer_case/34-1__1027137804.png",
+          "bytes": 29816
+        },
+        {
+          "label": "34-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1027155903/",
+          "file": "transfer_case/34-2__1027155903.png",
+          "bytes": 25016
+        },
+        {
+          "label": "34-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1027171573/",
+          "file": "transfer_case/34-3__1027171573.png",
+          "bytes": 15135
+        }
+      ]
+    },
+    {
+      "label": "Windows",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Windows/",
+      "status": 200,
+      "images": [
+        {
+          "label": "100-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1558633521/",
+          "file": "windows/100-1__1558633521.png",
+          "bytes": 8842
+        },
+        {
+          "label": "100-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1558639083/",
+          "file": "windows/100-2__1558639083.png",
+          "bytes": 18786
+        },
+        {
+          "label": "100-3:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1558650624/",
+          "file": "windows/100-3__1558650624.png",
+          "bytes": 31424
+        },
+        {
+          "label": "100-4:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1558670038/",
+          "file": "windows/100-4__1558670038.png",
+          "bytes": 15575
+        }
+      ]
+    },
+    {
+      "label": "Wiper and Washer Systems",
+      "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Wiper%20and%20Washer%20Systems/",
+      "status": 200,
+      "images": [
+        {
+          "label": "81-1:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1572374904/",
+          "file": "wiper_and_washer_systems/81-1__1572374904.png",
+          "bytes": 21348
+        },
+        {
+          "label": "81-2:",
+          "url": "https://charm.li/images/DM05Q313/ford30/1572388427/",
+          "file": "wiper_and_washer_systems/81-2__1572388427.png",
+          "bytes": 20342
+        }
+      ]
+    }
+  ]
+}

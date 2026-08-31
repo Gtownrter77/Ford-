@@ -1,0 +1,19 @@
+{
+  "label": "Diagram Set 120",
+  "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Diagrams%20By%20Number/Diagram%20Set%20120/",
+  "status": 200,
+  "images": [
+    {
+      "label": "120-1:",
+      "url": "https://charm.li/images/DM05Q313/ford30/1451209390/",
+      "file": "diagram_set_120/120-1__1451209390.png",
+      "bytes": 14451
+    },
+    {
+      "label": "120-2:",
+      "url": "https://charm.li/images/DM05Q313/ford30/1451218111/",
+      "file": "diagram_set_120/120-2__1451218111.png",
+      "bytes": 13046
+    }
+  ]
+}

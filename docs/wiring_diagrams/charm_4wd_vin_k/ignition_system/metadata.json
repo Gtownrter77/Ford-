@@ -1,0 +1,19 @@
+{
+  "label": "Ignition System",
+  "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Powertrain%20Management/Ignition%20System/",
+  "status": 200,
+  "images": [
+    {
+      "label": "21-1:",
+      "url": "https://charm.li/images/DM05Q313/ford30/654575598/",
+      "file": "ignition_system/21-1__654575598.png",
+      "bytes": 24008
+    },
+    {
+      "label": "21-2:",
+      "url": "https://charm.li/images/DM05Q313/ford30/654590438/",
+      "file": "ignition_system/21-2__654590438.png",
+      "bytes": 14533
+    }
+  ]
+}

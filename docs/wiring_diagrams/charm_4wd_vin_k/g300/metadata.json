@@ -1,0 +1,31 @@
+{
+  "label": "G300",
+  "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Power%20and%20Ground%20Distribution/Ground%20Distribution/G300/",
+  "status": 200,
+  "images": [
+    {
+      "label": "10-10:",
+      "url": "https://charm.li/images/DM05Q313/ford30/1095148075/",
+      "file": "g300/10-10__1095148075.png",
+      "bytes": 18990
+    },
+    {
+      "label": "10-11:",
+      "url": "https://charm.li/images/DM05Q313/ford30/1095159733/",
+      "file": "g300/10-11__1095159733.png",
+      "bytes": 17501
+    },
+    {
+      "label": "10-12:",
+      "url": "https://charm.li/images/DM05Q313/ford30/1095170354/",
+      "file": "g300/10-12__1095170354.png",
+      "bytes": 12824
+    },
+    {
+      "label": "10-13:",
+      "url": "https://charm.li/images/DM05Q313/ford30/1095177998/",
+      "file": "g300/10-13__1095177998.png",
+      "bytes": 15424
+    }
+  ]
+}
