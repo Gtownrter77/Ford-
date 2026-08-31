@@ -1,0 +1,1882 @@
+{
+  "source_file": "app/src/main/java/com/example/data/SportTracData.kt",
+  "entry_count": 57,
+  "entries": [
+    {
+      "id": "engine_block",
+      "name": "4.0L SOHC V6 Engine Block & Heads",
+      "description": "Cast-iron engine block with aluminum 60-degree V6 cylinder heads and single overhead camshafts.",
+      "torque_specs": [
+        {
+          "component": "Cylinder Head Bolts (Step 1)",
+          "imperial": "26",
+          "metric": "35",
+          "notes": "Must replace TTY bolts each time"
+        },
+        {
+          "component": "Cylinder Head Bolts (Step 2)",
+          "imperial": "90 deg",
+          "metric": "90 deg",
+          "notes": "Angle rotation"
+        },
+        {
+          "component": "Oil Pan Bolts",
+          "imperial": "15",
+          "metric": "20",
+          "notes": "Criss-cross pattern"
+        },
+        {
+          "component": "Engine Mount Nuts",
+          "imperial": "65",
+          "metric": "88",
+          "notes": "To frame crossmember"
+        }
+      ],
+      "technical_mentions": []
+    },
+    {
+      "id": "intake_manifold",
+      "name": "Upper & Lower Intake Manifold",
+      "description": "Composite plastic intake manifold with integrated runner controls and fuel rail mountings.",
+      "torque_specs": [
+        {
+          "component": "Lower Intake Manifold Bolts",
+          "imperial": "89 in-lbs",
+          "metric": "10 Nm",
+          "notes": "Tighten in 2 stages"
+        },
+        {
+          "component": "Upper Intake Plenum Bolts",
+          "imperial": "89 in-lbs",
+          "metric": "10 Nm",
+          "notes": "Stage 1: 53 in-lbs, Stage 2: 89 in-lbs"
+        },
+        {
+          "component": "Fuel Rail Retaining Bolts",
+          "imperial": "80 in-lbs",
+          "metric": "9 Nm",
+          "notes": ""
+        }
+      ],
+      "technical_mentions": [
+        "RepairStep(2, \"Disconnect Vacuum Lines & Harness\", \"Label and remove PCV tube, brake booster vacuum hose, and fuel injector connectors.\"),"
+      ]
+    },
+    {
+      "id": "throttle_body",
+      "name": "Throttle Body & Mass Air Flow (MAF) Sensor",
+      "description": "Aluminum throttle body housing with throttle position sensor (TPS) and Idle Air Control (IAC) valve.",
+      "torque_specs": [
+        {
+          "component": "Throttle Body Bolts",
+          "imperial": "89 in-lbs",
+          "metric": "10 Nm",
+          "notes": "Do not overtighten brass inserts"
+        },
+        {
+          "component": "IAC Valve Screws",
+          "imperial": "71 in-lbs",
+          "metric": "8 Nm",
+          "notes": ""
+        }
+      ],
+      "technical_mentions": []
+    },
+    {
+      "id": "thermostat_housing",
+      "name": "Coolant Thermostat Housing Assembly",
+      "description": "2-piece composite thermostat housing outlet with dual coolant temperature sensors and 192\u00b0F thermostat.",
+      "torque_specs": [
+        {
+          "component": "Thermostat Housing Bolts",
+          "imperial": "89 in-lbs",
+          "metric": "10 Nm",
+          "notes": "Plastic housing cracks if over-torqued"
+        },
+        {
+          "component": "Coolant Temperature Sensor",
+          "imperial": "12",
+          "metric": "16",
+          "notes": "Use Teflon tape thread sealant"
+        }
+      ],
+      "technical_mentions": [
+        "RepairStep(3, \"Unplug Sensors\", \"Unclip wiring connectors for ECT sensor and gauge sender.\"),"
+      ]
+    },
+    {
+      "id": "radiator_assembly",
+      "name": "Radiator & Mechanical Fan Clutch",
+      "description": "Aluminum cross-flow radiator core with plastic end tanks and viscous thermal fan clutch assembly.",
+      "torque_specs": [
+        {
+          "component": "Fan Clutch Nut to Water Pump",
+          "imperial": "38",
+          "metric": "52",
+          "notes": "Left-Hand thread on some models (check arrow)"
+        },
+        {
+          "component": "Radiator Mount Brackets",
+          "imperial": "80 in-lbs",
+          "metric": "9 Nm",
+          "notes": ""
+        }
+      ],
+      "technical_mentions": []
+    },
+    {
+      "id": "water_pump",
+      "name": "Engine Coolant Water Pump",
+      "description": "Cast aluminum mechanical impeller pump driven directly by serpentine belt.",
+      "torque_specs": [
+        {
+          "component": "Water Pump Mounting Bolts",
+          "imperial": "89 in-lbs",
+          "metric": "10 Nm",
+          "notes": "Tighten evenly in star pattern"
+        },
+        {
+          "component": "Water Pump Pulley Bolts",
+          "imperial": "18",
+          "metric": "25",
+          "notes": ""
+        }
+      ],
+      "technical_mentions": []
+    },
+    {
+      "id": "ac_compressor",
+      "name": "A/C Scroll Compressor & Magnetic Clutch",
+      "description": "FS10 scroll refrigerant compressor with electromagnetic pulley clutch assembly.",
+      "torque_specs": [
+        {
+          "component": "A/C Compressor Mounting Bolts",
+          "imperial": "18",
+          "metric": "25",
+          "notes": "3 long bolts through engine bracket"
+        },
+        {
+          "component": "Manifold Block Fitting Bolt",
+          "imperial": "15",
+          "metric": "20",
+          "notes": "Use new HNBR green O-rings"
+        }
+      ],
+      "technical_mentions": [
+        "RepairStep(2, \"Disconnect Electrical Clutch Connector\", \"Unplug single-wire magnetic coil lead.\"),"
+      ]
+    },
+    {
+      "id": "transmission_5r55e",
+      "name": "5R55E 5-Speed Automatic Transmission",
+      "description": "Electronically controlled 5-speed automatic transmission with torque converter lockup clutch and overdrive.",
+      "torque_specs": [
+        {
+          "component": "Transmission Fluid Pan Bolts",
+          "imperial": "120 in-lbs",
+          "metric": "14 Nm",
+          "notes": "Do not over-compress rubber gasket"
+        },
+        {
+          "component": "Torque Converter Drive Plate Bolts",
+          "imperial": "34",
+          "metric": "46",
+          "notes": "Access through inspection cover"
+        },
+        {
+          "component": "Bellhousing to Engine Bolts",
+          "imperial": "35",
+          "metric": "47",
+          "notes": ""
+        }
+      ],
+      "technical_mentions": [
+        "RepairStep(2, \"Disconnect Driveshafts\", \"Unbolt front and rear driveshaft flange yokes and support with wire.\"),"
+      ]
+    },
+    {
+      "id": "transmission_solenoids",
+      "name": "Valve Body Solenoid Pack & Filter",
+      "description": "Integrated valve body solenoid block controlling EPC pressure, shift solenoids A/B/C/D, and TCC lockup.",
+      "torque_specs": [
+        {
+          "component": "Solenoid Pack Retaining Bolts",
+          "imperial": "80 in-lbs",
+          "metric": "9 Nm",
+          "notes": "Critical torque to prevent valve body gasket blowouts"
+        },
+        {
+          "component": "Filter Retaining Bolt",
+          "imperial": "80 in-lbs",
+          "metric": "9 Nm",
+          "notes": ""
+        }
+      ],
+      "technical_mentions": [
+        "RepairStep(3, \"Disconnect Wiring Harness\", \"Unplug main 16-pin harness connector from top of solenoid pack.\"),"
+      ]
+    },
+    {
+      "id": "alternator_ignition",
+      "name": "130-Amp Alternator & EDIS Coil Pack",
+      "description": "130-Amp heavy duty alternator with internal voltage regulator and 6-tower distributorless coil pack.",
+      "torque_specs": [
+        {
+          "component": "Alternator Mounting Bolts",
+          "imperial": "35",
+          "metric": "47",
+          "notes": ""
+        },
+        {
+          "component": "B+ Terminal Nut",
+          "imperial": "80 in-lbs",
+          "metric": "9 Nm",
+          "notes": "Do not over-torque terminal post"
+        }
+      ],
+      "technical_mentions": [
+        "RepairStep(3, \"Unplug Wiring\", \"Unplug regulator harness and unbolt red B+ power cable.\"),",
+        "// 10B. WIRING HARNESS, HEADLIGHTS & FUSE BOX 3D"
+      ]
+    },
+    {
+      "id": "wiring_lighting_3d",
+      "name": "Engine Wiring Harness, Headlights & Central Junction Fuse Box",
+      "description": "Complete 12V body wiring loom, engine distribution harness, high-intensity dual beam halogen headlight assemblies, fog lamps, and battery junction box fuses.",
+      "torque_specs": [
+        {
+          "component": "Battery Terminal Clamp Nuts",
+          "imperial": "80 in-lbs",
+          "metric": "9 Nm",
+          "notes": "Clean posts with wire brush"
+        },
+        {
+          "component": "Headlight Adjuster Assembly Screws",
+          "imperial": "25 in-lbs",
+          "metric": "2.8 Nm",
+          "notes": "Align light beam height"
+        },
+        {
+          "component": "Fuse Junction Box Ground Bolt",
+          "imperial": "89 in-lbs",
+          "metric": "10 Nm",
+          "notes": "Ensure bare metal contact for body grounds"
+        }
+      ],
+      "technical_mentions": [
+        "id = \"wiring_lighting_3d\",",
+        "name = \"Engine Wiring Harness, Headlights & Central Junction Fuse Box\",",
+        "description = \"Complete 12V body wiring loom, engine distribution harness, high-intensity dual beam halogen headlight assemblies, fog lamps, and battery junction box fuses.\",",
+        "RepairStep(1, \"Disconnect Battery Ground\", \"Remove 10mm negative battery terminal cable before touching any wiring harness or fuse box.\"),"
+      ]
+    },
+    {
+      "id": "brakes_suspension",
+      "name": "Front Disc Brakes & Torsion Bar Suspension",
+      "description": "Dual-piston floating brake calipers, vented rotors, and heavy-duty front torsion bar suspension arms.",
+      "torque_specs": [
+        {
+          "component": "Caliper Guide Pin Bolts",
+          "imperial": "26",
+          "metric": "35",
+          "notes": "Lubricate with silicone brake grease"
+        },
+        {
+          "component": "Caliper Anchor Bracket Bolts",
+          "imperial": "85",
+          "metric": "115",
+          "notes": "Apply blue Threadlocker"
+        },
+        {
+          "component": "Wheel Lug Nuts",
+          "imperial": "100",
+          "metric": "135",
+          "notes": "Torque in star pattern"
+        }
+      ],
+      "technical_mentions": []
+    },
+    {
+      "id": "truck_frame_body",
+      "name": "Sport Trac Frame & Composite Cargo Bed",
+      "description": "Full box-section steel frame rails, 4-door cab shell structure, and dent-resistant composite cargo bed with tie-down cleats.",
+      "torque_specs": [
+        {
+          "component": "Cargo Bed Mounting Bolts (6 Bolts)",
+          "imperial": "59",
+          "metric": "80",
+          "notes": "Torx T55 head bolts"
+        },
+        {
+          "component": "Cab Cushion Body Mount Bolts",
+          "imperial": "60",
+          "metric": "81",
+          "notes": "Check rubber isolator bushings"
+        },
+        {
+          "component": "Trailer Hitch Receiver Bolts",
+          "imperial": "80",
+          "metric": "108",
+          "notes": "Grade 8 hardware"
+        }
+      ],
+      "technical_mentions": [
+        "RepairStep(1, \"Disconnect Tailgate Wiring\", \"Unplug rear taillight harness and tailgate lock wire connector before bed removal.\"),",
+        "// 13. CONTROL TRAC 4WD TRANSFER CASE & DRIVESHAFTS"
+      ]
+    },
+    {
+      "id": "driveshaft_4x4",
+      "name": "Control Trac 4WD Transfer Case & Driveshafts",
+      "description": "BorgWarner 44-11 electric shift-on-the-fly transfer case with front and rear aluminum driveshafts and Ford 8.8 rear differential.",
+      "torque_specs": [
+        {
+          "component": "Driveshaft Flange Bolts",
+          "imperial": "83",
+          "metric": "112",
+          "notes": "12-point 12mm bolts with blue threadlocker"
+        },
+        {
+          "component": "Transfer Case Drain & Fill Plugs",
+          "imperial": "22",
+          "metric": "30",
+          "notes": "Use MERCON V ATF fluid"
+        },
+        {
+          "component": "Rear Differential Cover Bolts",
+          "imperial": "33",
+          "metric": "45",
+          "notes": "Use 75W-140 Synthetic Gear Oil with Friction Modifier"
+        }
+      ],
+      "technical_mentions": [
+        "id = \"driveshaft_4x4\",",
+        "name = \"Control Trac 4WD Transfer Case & Driveshafts\",",
+        "description = \"BorgWarner 44-11 electric shift-on-the-fly transfer case with front and rear aluminum driveshafts and Ford 8.8 rear differential.\",",
+        "locationDescription = \"Mounted behind 5R55E transmission with driveshafts running to front and rear axles.\",",
+        "TorqueSpec(\"Driveshaft Flange Bolts\", \"83\", \"112\", \"12-point 12mm bolts with blue threadlocker\"),",
+        "TorqueSpec(\"Transfer Case Drain & Fill Plugs\", \"22\", \"30\", \"Use MERCON V ATF fluid\"),",
+        "RepairStep(1, \"Drain Transfer Case\", \"Remove 3/8-inch square drive lower drain plug and drain 1.5 quarts of MERCON V fluid.\"),",
+        "RepairStep(2, \"Unbolt Driveshaft Flanges\", \"Remove four 12-point 12mm bolts at rear differential pinion flange.\"),",
+        "RepairStep(4, \"Inspect 4WD Shift Motor\", \"Check 4x4 electric encoder motor mounted on transfer case rear housing if 4x4 High/Low lights flash on dashboard.\")",
+        "commonSymptoms = listOf(\"4x4 HIGH / LOW dashboard lights flashing 6 times\", \"Clunking sound when engaging 4WD or shifting into Reverse\", \"High-speed driveline vibration from dry U-joints\"),"
+      ]
+    },
+    {
+      "id": "exhaust_system",
+      "name": "Exhaust Manifolds & Catalytic Converter Y-Pipe",
+      "description": "Cast iron exhaust manifolds, dual 3-way catalytic converters Y-pipe assembly, four heated oxygen sensors (HO2S), and stainless steel muffler.",
+      "torque_specs": [
+        {
+          "component": "Exhaust Manifold Nuts to Cylinder Head",
+          "imperial": "18",
+          "metric": "25",
+          "notes": "Apply high-temp anti-seize"
+        },
+        {
+          "component": "Y-Pipe Exhaust Flange Studs",
+          "imperial": "30",
+          "metric": "41",
+          "notes": "Must replace rusted flange nuts"
+        },
+        {
+          "component": "Heated O2 Sensors (HO2S)",
+          "imperial": "30",
+          "metric": "41",
+          "notes": "22mm oxygen sensor socket"
+        }
+      ],
+      "technical_mentions": [
+        "RepairStep(2, \"Disconnect Oxygen Sensors\", \"Unplug electrical connectors for upstream (Bank 1/2 Sensor 1) and downstream O2 sensors.\"),"
+      ]
+    },
+    {
+      "id": "fuel_tank_pump",
+      "name": "22.5 Gallon Fuel Tank & High-Pressure Pump Module",
+      "description": "Molded 22.5-gallon polyethylene fuel tank, steel tank straps, in-tank electric turbine fuel pump module with fuel level sender, and fuel rail pressure sensor.",
+      "torque_specs": [
+        {
+          "component": "Fuel Tank Strap Bolts",
+          "imperial": "38",
+          "metric": "52",
+          "notes": "Inspect straps for rust rot"
+        },
+        {
+          "component": "Fuel Pump Retaining Lock Ring",
+          "imperial": "55",
+          "metric": "75",
+          "notes": "Use brass punch or spanner tool"
+        },
+        {
+          "component": "Fuel Filter Bracket Bolt",
+          "imperial": "89 in-lbs",
+          "metric": "10 Nm",
+          "notes": ""
+        }
+      ],
+      "technical_mentions": []
+    },
+    {
+      "id": "steering_rack",
+      "name": "Power Steering Rack & Pinion Assembly",
+      "description": "Hydraulic power-assisted rack and pinion steering gear with inner/outer tie rod ends, power steering pump, and MERCON V fluid reservoir.",
+      "torque_specs": [
+        {
+          "component": "Steering Rack Mounting Bolts",
+          "imperial": "85",
+          "metric": "115",
+          "notes": "Re-torque to frame crossmember"
+        },
+        {
+          "component": "Outer Tie Rod End Castle Nuts",
+          "imperial": "41",
+          "metric": "56",
+          "notes": "Install new cotter pin"
+        },
+        {
+          "component": "Power Steering Line Pressure Fittings",
+          "imperial": "20",
+          "metric": "27",
+          "notes": "Teflon O-ring seal"
+        }
+      ],
+      "technical_mentions": [
+        "locationDescription = \"Mounted across front lower engine crossmember behind front differential.\","
+      ]
+    },
+    {
+      "id": "abs_master_cylinder_3d",
+      "name": "Brake Master Cylinder, Power Vacuum Booster & 4-Wheel ABS Pump",
+      "description": "Cast aluminum dual-reservoir brake master cylinder, 10-inch vacuum power booster diaphragm, and 4-channel hydraulic anti-lock brake pump control module.",
+      "torque_specs": [
+        {
+          "component": "Master Cylinder Mounting Nuts to Booster",
+          "imperial": "18",
+          "metric": "25",
+          "notes": "Replace paper seal gasket"
+        },
+        {
+          "component": "Brake Fluid Line Fitting Nuts",
+          "imperial": "14",
+          "metric": "19",
+          "notes": "Use 3/8-in & 7/16-in flare nut wrenches"
+        },
+        {
+          "component": "ABS Module Hydraulic Unit Bolts",
+          "imperial": "89 in-lbs",
+          "metric": "10 Nm",
+          "notes": ""
+        }
+      ],
+      "technical_mentions": []
+    },
+    {
+      "id": "rear_brakes_3d",
+      "name": "Rear Disc Brakes & Internal Drum Parking Brake Shoes",
+      "description": "Solid rear brake rotors with integrated hat drum for parking brake shoes, single-piston calipers, and mechanical emergency brake tension cables.",
+      "torque_specs": [
+        {
+          "component": "Rear Caliper Mounting Pins",
+          "imperial": "26",
+          "metric": "35",
+          "notes": "Apply silicone brake lubricant"
+        },
+        {
+          "component": "Rear Caliper Bracket Bolts",
+          "imperial": "70",
+          "metric": "95",
+          "notes": "Apply threadlocker"
+        },
+        {
+          "component": "Wheel Lug Nuts",
+          "imperial": "100",
+          "metric": "135",
+          "notes": "Torque to 100 lb-ft"
+        }
+      ],
+      "technical_mentions": []
+    },
+    {
+      "id": "catback_exhaust_muffler_3d",
+      "name": "Stainless Steel Cat-Back Exhaust Muffler & Mandrel Tailpipe",
+      "description": "Full 2.5-inch aluminized / stainless steel replacement exhaust system including acoustic chamber muffler, tailpipe over rear axle, and heavy-duty rubber isolator hangers.",
+      "torque_specs": [
+        {
+          "component": "Exhaust Flange Clamp Bolts",
+          "imperial": "35",
+          "metric": "47",
+          "notes": "Use heavy duty U-bolt clamps"
+        },
+        {
+          "component": "Cat-Back Inlet Flange Nuts",
+          "imperial": "30",
+          "metric": "41",
+          "notes": "Apply high temp anti-seize"
+        }
+      ],
+      "technical_mentions": []
+    },
+    {
+      "id": "oxygen_sensors_3d",
+      "name": "Upstream & Downstream Heated Oxygen Sensors (HO2S)",
+      "description": "Zirconia 4-wire heated oxygen sensors (Bank 1 & Bank 2 Sensor 1 upstream for fuel trim feedback, and Sensor 2 downstream for catalytic converter monitor).",
+      "torque_specs": [
+        {
+          "component": "O2 Sensor Thread Torque",
+          "imperial": "30",
+          "metric": "41",
+          "notes": "Apply high-temp nickel anti-seize to threads (avoid sensor tip)"
+        }
+      ],
+      "technical_mentions": [
+        "requiredTools = listOf(\"22mm (7/8-in) Slotted O2 Sensor Socket\", \"Penetrating Fluid (PB Blaster)\", \"Propane Torch (if seized)\", \"Wire Harness Cleaner\"),",
+        "RepairStep(2, \"Unplug 4-Pin Harness Connector\", \"Press locking tab on oxygen sensor pigtail harness connector and pull apart.\"),",
+        "RepairStep(3, \"Unscrew O2 Sensor\", \"Slip slotted 22mm O2 sensor socket over wire harness and break sensor loose counter-clockwise.\"),"
+      ]
+    },
+    {
+      "id": "tires_wheels_3d",
+      "name": "P265/70R16 All-Terrain Tires & 16x7-inch Aluminum Wheels",
+      "description": "265/70R16 112T All-Terrain tires mounted on 16x7-inch 5-spoke machined cast aluminum wheels with 5x114.3mm (5x4.5) bolt pattern and 1/2-in-20 lug studs.",
+      "torque_specs": [
+        {
+          "component": "Wheel Lug Nuts (1/2-in-20 Thread)",
+          "imperial": "100",
+          "metric": "135",
+          "notes": "Tighten in 5-lug star criss-cross pattern"
+        },
+        {
+          "component": "Tire Cold Inflation Pressure",
+          "imperial": "35 PSI Front / 35 PSI Rear",
+          "metric": "35 PSI",
+          "notes": "Check pressure when tires are cold"
+        }
+      ],
+      "technical_mentions": []
+    },
+    {
+      "id": "wheel_bearings_hubs_3d",
+      "name": "Front Wheel Hub & Sealed Bearing Assembly with ABS Sensor",
+      "description": "Complete unitized front wheel hub assembly with pre-greased sealed double-row roller bearings, 5 pressed wheel studs, and integrated ABS wheel speed sensor wiring harness.",
+      "torque_specs": [
+        {
+          "component": "Front Axle Shaft Nut (4WD Models)",
+          "imperial": "184",
+          "metric": "250",
+          "notes": "Must use 32mm socket & replace cotter pin"
+        },
+        {
+          "component": "Hub Bearing Assembly to Knuckle Bolts",
+          "imperial": "83",
+          "metric": "112",
+          "notes": "Torque three 15mm mounting bolts"
+        },
+        {
+          "component": "Brake Caliper Anchor Bracket Bolts",
+          "imperial": "85",
+          "metric": "115",
+          "notes": "Apply blue threadlocker"
+        }
+      ],
+      "technical_mentions": [
+        "description = \"Complete unitized front wheel hub assembly with pre-greased sealed double-row roller bearings, 5 pressed wheel studs, and integrated ABS wheel speed sensor wiring harness.\",",
+        "TorqueSpec(\"Front Axle Shaft Nut (4WD Models)\", \"184\", \"250\", \"Must use 32mm socket & replace cotter pin\"),",
+        "RepairStep(2, \"Disconnect ABS Harness Connector\", \"Unplug ABS wheel speed sensor harness connector pinned behind plastic inner fender liner.\"),"
+      ]
+    },
+    {
+      "id": "dash_dashboard_cluster_3d",
+      "name": "Instrument Cluster Gauges, White Face Overlay & Dash Bezel",
+      "description": "Sport Trac white-face gauge cluster including 120 MPH speedometer, tachometer, fuel level, engine coolant temp, oil pressure, battery voltage gauges, and backlighting bulb circuit board.",
+      "torque_specs": [
+        {
+          "component": "Dash Trim Bezel Screws (7mm Head)",
+          "imperial": "18 in-lbs",
+          "metric": "2 Nm",
+          "notes": "Do not overtighten into plastic clips"
+        },
+        {
+          "component": "Instrument Cluster Mounting Screws",
+          "imperial": "22 in-lbs",
+          "metric": "2.5 Nm",
+          "notes": "Hand tighten securely"
+        }
+      ],
+      "technical_mentions": [
+        "RepairStep(3, \"Unscrew Instrument Bezel\", \"Remove four 7mm screws securing dash cluster surround bezel and unclip headlight switch electrical harness.\"),",
+        "RepairStep(4, \"Pull Cluster & Unplug Wiring Connectors\", \"Remove four 7mm cluster screws, tilt unit forward, and depress release tabs on two main wire harness connectors.\"),",
+        "// 24. MAIN DASHBOARD WIRING HARNESS & FUSE BOX (CJB)"
+      ]
+    },
+    {
+      "id": "dash_wiring_harness_3d",
+      "name": "Main Dash Wiring Harness & Central Junction Box (Inside Fuse Panel)",
+      "description": "Complete under-dash main wiring harness interfacing Central Junction Box (CJB interior fuse panel), GEM (Generic Electronic Module), ignition switch, HVAC controls, and radio audio connections.",
+      "torque_specs": [
+        {
+          "component": "Central Junction Box Mounting Bolts",
+          "imperial": "89 in-lbs",
+          "metric": "10 Nm",
+          "notes": "Hand start bolts"
+        },
+        {
+          "component": "Dash Skeleton Reinforcement Bracket Bolts",
+          "imperial": "18",
+          "metric": "25",
+          "notes": "10mm socket"
+        }
+      ],
+      "technical_mentions": [
+        "id = \"dash_wiring_harness_3d\",",
+        "name = \"Main Dash Wiring Harness & Central Junction Box (Inside Fuse Panel)\",",
+        "description = \"Complete under-dash main wiring harness interfacing Central Junction Box (CJB interior fuse panel), GEM (Generic Electronic Module), ignition switch, HVAC controls, and radio audio connections.\",",
+        "RepairStep(1, \"Disconnect Battery & Disarm Airbags\", \"Disconnect battery terminals and wait 10 minutes to safely discharge airbag backup capacitors before touching dash wiring.\"),",
+        "RepairStep(2, \"Access Driver Kick Panel Fuse Box\", \"Remove left lower trim panel to expose Central Junction Box fuse block and GEM module connectors.\"),"
+      ]
+    },
+    {
+      "id": "sunroof_glass_frame_3d",
+      "name": "Power Moonroof Tempered Glass Panel & Weatherstrip Perimeter Seal",
+      "description": "Dark tint solar glass tempered moonroof panel with metal perimeter carrier frame, adjustable height tilt brackets, and rubber perimeter weatherstrip seal.",
+      "torque_specs": [
+        {
+          "component": "Glass Panel Corner Fastener Screws (T25 Torx)",
+          "imperial": "27 in-lbs",
+          "metric": "3 Nm",
+          "notes": "Hand tighten carefully to avoid cracking glass frame"
+        },
+        {
+          "component": "Sunroof Frame Assembly Reinforcement Bolts",
+          "imperial": "89 in-lbs",
+          "metric": "10 Nm",
+          "notes": ""
+        }
+      ],
+      "technical_mentions": []
+    },
+    {
+      "id": "sunroof_motor_tracks_3d",
+      "name": "Sunroof Electric Drive Motor, Helical Drive Cables & Track Rails",
+      "description": "High-torque 12V electric drive motor with worm gear gearbox, twin flexible spiral/helical push-pull cables, aluminum guide track channels, and internal limit switches.",
+      "torque_specs": [
+        {
+          "component": "Sunroof Drive Motor Mounting Screws (T20 Torx)",
+          "imperial": "35 in-lbs",
+          "metric": "4 Nm",
+          "notes": "Apply blue threadlocker"
+        },
+        {
+          "component": "Roof Headliner Grab Handle Screw Bolts",
+          "imperial": "30 in-lbs",
+          "metric": "3.5 Nm",
+          "notes": ""
+        }
+      ],
+      "technical_mentions": [
+        "RepairStep(2, \"Unplug Motor Wire Harness\", \"Disconnect 3-pin power & ground electrical connector on drive motor attached to front frame crossmember.\"),"
+      ]
+    },
+    {
+      "id": "sunroof_drain_tubes_shade_3d",
+      "name": "Sunroof Water Drain Hoses, Interior Sunshade & Overhead Switch",
+      "description": "Four vinyl corner water drainage tubes (routing through A-pillars and C-pillars), vinyl vinyl-wrapped sliding interior fabric sunshade panel, and overhead rocker control switch.",
+      "torque_specs": [
+        {
+          "component": "Overhead Console Mounting Screws",
+          "imperial": "18 in-lbs",
+          "metric": "2 Nm",
+          "notes": "Snug tight"
+        }
+      ],
+      "technical_mentions": []
+    },
+    {
+      "id": "front_windshield_3d",
+      "name": "Front Acoustic Safety Laminated Windshield, Wipers & Cowl Grille",
+      "description": "Solar-control laminated safety glass front windshield with acoustic layer, integrated rearview mirror bracket, dual wiper arms with 22-inch blades, washer jet nozzles, and plastic wiper cowl intake grille.",
+      "torque_specs": [
+        {
+          "component": "Wiper Arm Mounting Pivot Nuts",
+          "imperial": "14",
+          "metric": "19",
+          "notes": "Pop plastic nut cover cap off first"
+        },
+        {
+          "component": "Wiper Linkage Motor Mounting Bolts",
+          "imperial": "89 in-lbs",
+          "metric": "10 Nm",
+          "notes": "Apply blue threadlocker"
+        }
+      ],
+      "technical_mentions": []
+    },
+    {
+      "id": "rear_window_power_slide_3d",
+      "name": "Power Drop-Down Rear Glass Window, Regulator & Weatherstrip Channel",
+      "description": "Signature Sport Trac full-width power drop-down rear window assembly with solar tinted tempered glass, electric cable-driven window regulator motor, defroster heating grid, and lower trough drainage seals.",
+      "torque_specs": [
+        {
+          "component": "Rear Window Glass Clamp Bolts",
+          "imperial": "44 in-lbs",
+          "metric": "5 Nm",
+          "notes": "Tighten carefully into rubber glass channel"
+        },
+        {
+          "component": "Rear Regulator Assembly Nut Screws",
+          "imperial": "89 in-lbs",
+          "metric": "10 Nm",
+          "notes": ""
+        }
+      ],
+      "technical_mentions": [
+        "RepairStep(3, \"Disconnect Power Window Motor Harness\", \"Unplug 2-pin electrical connector for rear power sliding window motor.\"),"
+      ]
+    },
+    {
+      "id": "airbag_driver_clockspring_3d",
+      "name": "Driver Steering Wheel Airbag Module & Spiral Clock Spring Harness",
+      "description": "Dual-stage pyrotechnic driver frontal airbag inflator module mounted behind steering wheel emblem cover, paired with multi-channel spiral cable clock spring harness supplying continuous electrical contact for horn, cruise control switches, and airbag ignition circuits.",
+      "torque_specs": [
+        {
+          "component": "Airbag Steering Wheel Side Screws (8mm Head)",
+          "imperial": "84 in-lbs",
+          "metric": "9.5 Nm",
+          "notes": "Two side cover screws"
+        },
+        {
+          "component": "Steering Wheel Center Hub Bolt",
+          "imperial": "33",
+          "metric": "45",
+          "notes": "Apply blue threadlocker"
+        }
+      ],
+      "technical_mentions": [
+        "name = \"Driver Steering Wheel Airbag Module & Spiral Clock Spring Harness\",",
+        "description = \"Dual-stage pyrotechnic driver frontal airbag inflator module mounted behind steering wheel emblem cover, paired with multi-channel spiral cable clock spring harness supplying continuous electrical contact for horn, cruise control switches, and airbag ignition circuits.\",",
+        "RepairStep(3, \"Disconnect Yellow SRS Wire Connectors\", \"Carefully lift driver airbag module off wheel center and depress locking tabs on yellow SRS electrical wire harness connectors.\"),"
+      ]
+    },
+    {
+      "id": "airbag_rcm_sensors_3d",
+      "name": "Restraint Control Module (RCM) & Front Crash Impact Sensors",
+      "description": "Microprocessor-controlled SRS Restraint Control Module (RCM) with internal solid-state accelerometers and rollover sensors, plus dual front radiator core support crash impact sensors.",
+      "torque_specs": [
+        {
+          "component": "RCM Ground Fastener Nuts to Floor Pan",
+          "imperial": "106 in-lbs",
+          "metric": "12 Nm",
+          "notes": "Must maintain clean metal-to-metal ground seal"
+        },
+        {
+          "component": "Front Crash Sensor Core Support Bolts",
+          "imperial": "89 in-lbs",
+          "metric": "10 Nm",
+          "notes": "Torque to prevent sensor housing vibration"
+        }
+      ],
+      "technical_mentions": [
+        "RepairStep(3, \"Unplug RCM Harness Connectors\", \"Slide red secondary locking wedges back on dual 24-pin yellow airbag connectors.\"),"
+      ]
+    },
+    {
+      "id": "airbag_seatbelt_pretensioners_3d",
+      "name": "Pyrotechnic Seatbelt Buckle Pretensioners & Buckle Switch Harness",
+      "description": "Driver and front passenger pyrotechnic cable-pull seatbelt buckle pretensioner anchors, equipped with integrated buckle latch switches that signal the RCM module whether occupants are buckled in.",
+      "torque_specs": [
+        {
+          "component": "Seatbelt Anchor Bolt to Seat Frame",
+          "imperial": "30",
+          "metric": "40",
+          "notes": "T50 Torx head bolt - heavy threadlocker"
+        },
+        {
+          "component": "Seat Frame Track Floor Mounting Bolts",
+          "imperial": "39",
+          "metric": "53",
+          "notes": "15mm socket"
+        }
+      ],
+      "technical_mentions": [
+        "name = \"Pyrotechnic Seatbelt Buckle Pretensioners & Buckle Switch Harness\",",
+        "locationDescription = \"Mounted to inner side of front driver and passenger bucket seat frames.\",",
+        "requiredTools = listOf(\"T50 Torx Socket & Breaker Bar\", \"15mm Socket\", \"Wire Harness Contact Cleaner\"),",
+        "RepairStep(3, \"Unplug Under-Seat Airbag Harness\", \"Disconnect yellow seatbelt pretensioner wire pigtail located under seat cushion.\"),"
+      ]
+    },
+    {
+      "id": "ac_compressor_pressure_controls",
+      "name": "A/C Compressor, Electromagnetic Clutch & High/Low Pressure Cut-off Switches",
+      "description": "FS10 10-piston aluminum A/C compressor with electromagnetic clutch coil, 6-groove serpentine-belt pulley, air-gap shims, pressure-protection controls, and a sealed R-134a refrigerant circuit. Refrigerant amount and oil balance must be confirmed from the under-hood label and Ford service procedure for the exact vehicle.",
+      "torque_specs": [
+        {
+          "component": "A/C Compressor Mounting Bolts (3 Bolts)",
+          "imperial": "18",
+          "metric": "25",
+          "notes": "Tighten in 2 stages"
+        },
+        {
+          "component": "A/C Manifold Hose Block Bolt",
+          "imperial": "15",
+          "metric": "20",
+          "notes": "Must replace green HNBR O-rings"
+        },
+        {
+          "component": "Clutch Hub Front Center Nut",
+          "imperial": "Verify",
+          "metric": "Verify",
+          "notes": "Measure clutch air gap and use the Ford service specification for this exact compressor/clutch."
+        }
+      ],
+      "technical_mentions": [
+        "RepairStep(3, \"Disconnect A/C Hose Block & Switches\", \"Remove single 10mm bolt securing manifold hose assembly block to compressor back and unplug 2-pin clutch wire connector.\"),"
+      ]
+    },
+    {
+      "id": "heater_core_hvac_3d",
+      "name": "Aluminum Heater Core, Vacuum Control Valve & Heater Hoses",
+      "description": "Heavy-duty aluminum heat-exchanger core housed inside dash HVAC housing, vacuum-actuated 4-port heater coolant control shut-off valve, and dual 5/8-inch reinforced rubber heater supply/return hoses.",
+      "torque_specs": [
+        {
+          "component": "Heater Hose Clamp Tensioners",
+          "imperial": "22 in-lbs",
+          "metric": "2.5 Nm",
+          "notes": "Inspect rubber hoses for swelling"
+        },
+        {
+          "component": "HVAC Case Plenum Mounting Stud Nuts",
+          "imperial": "89 in-lbs",
+          "metric": "10 Nm",
+          "notes": "Engine firewall studs"
+        }
+      ],
+      "technical_mentions": []
+    },
+    {
+      "id": "hvac_blower_motor_3d",
+      "name": "HVAC Blower Motor Fan Assembly & 4-Speed Resistor Block",
+      "description": "High-output 12V permanent magnet blower motor with balanced plastic squirrel cage fan wheel, paired with a ceramic-coated 4-position blower motor resistor block and thermal cutoff fuse.",
+      "torque_specs": [
+        {
+          "component": "Blower Motor Mounting Screws (4 Screws)",
+          "imperial": "25 in-lbs",
+          "metric": "2.8 Nm",
+          "notes": "Hand tighten carefully into plastic housing"
+        },
+        {
+          "component": "Blower Resistor Retaining Screws",
+          "imperial": "18 in-lbs",
+          "metric": "2 Nm",
+          "notes": ""
+        }
+      ],
+      "technical_mentions": [
+        "requiredTools = listOf(\"8mm Socket & Nut Driver\", \"T20 Torx Driver\", \"Electrical Contact Cleaner\", \"Wire Strippers / Heat Shrink Terminal Kit (if connector melted)\"),",
+        "RepairStep(1, \"Unplug Blower Motor Wire Harness\", \"Press release tab on 2-pin electrical connector at blower motor on engine firewall.\"),",
+        "RepairStep(4, \"Replace Blower Motor Resistor Pack\", \"Unbolt two 8mm screws on passenger firewall HVAC case to replace burnt resistor block and inspect wire harness connector for melted pin terminals.\")"
+      ]
+    },
+    {
+      "id": "hvac_blend_door_actuator_3d",
+      "name": "HVAC Electric Temperature Blend Door Actuator Motor",
+      "description": "Micro-stepper electric motor actuator with internal nylon gear reduction drive and feedback potentiometer, controlling the HVAC plenum chamber blend door flap to blend hot heater core air with cold A/C evaporator air.",
+      "torque_specs": [
+        {
+          "component": "Blend Door Actuator Screws (8mm Head)",
+          "imperial": "18 in-lbs",
+          "metric": "2 Nm",
+          "notes": "Do not overtighten screws into plastic plenum"
+        }
+      ],
+      "technical_mentions": [
+        "RepairStep(3, \"Unscrew Mounting Screws & Unplug Wire Harness\", \"Remove three 8mm screws using mini ratchet or flex driver and unplug 5-pin wire connector.\"),"
+      ]
+    },
+    {
+      "id": "ac_evaporator_accumulator_3d",
+      "name": "A/C Evaporator Core, Accumulator / Drier Bottle & Fixed Orifice Tube",
+      "description": "High-efficiency aluminum evaporator core, accumulator/drier bottle with internal desiccant and pressure-switch port, and fixed-orifice metering device. The exact replacement configuration must match the VIN-specific parts catalogue and service procedure.",
+      "torque_specs": [
+        {
+          "component": "A/C Accumulator Nut Coupling Spring Lock",
+          "imperial": "15",
+          "metric": "20",
+          "notes": "Use spring lock tool #4 & #5"
+        },
+        {
+          "component": "Low Pressure Cycling Switch to Accumulator Port",
+          "imperial": "89 in-lbs",
+          "metric": "10 Nm",
+          "notes": "Includes Schrader valve seal"
+        }
+      ],
+      "technical_mentions": []
+    },
+    {
+      "id": "ac_condenser_lines_3d",
+      "name": "A/C Condenser Parallel-Flow Radiator Core & High-Pressure Hose Assembly",
+      "description": "Heavy-duty aluminum parallel-flow A/C condenser heat exchanger with integrated sub-cooler, high-pressure aluminum discharge lines, flexible barrier rubber hoses, and dual high/low Schrader service valve ports.",
+      "torque_specs": [
+        {
+          "component": "A/C Condenser Bracket Retaining Bolts",
+          "imperial": "89 in-lbs",
+          "metric": "10 Nm",
+          "notes": ""
+        },
+        {
+          "component": "High Pressure Hose Fitting Block Bolt",
+          "imperial": "15",
+          "metric": "20",
+          "notes": "Replace green HNBR O-ring seals"
+        }
+      ],
+      "technical_mentions": []
+    },
+    {
+      "id": "ac_service_ports_controls_3d",
+      "name": "A/C Service Ports, Pressure-Protection Controls & Clutch Command Path",
+      "description": "Diagnostic-reference assembly representing the high- and low-side service ports, pressure-protection controls, A/C relay/fuse command path, compressor clutch connector, and associated harness routing. It is intended to guide safe observation and electrical inspection without bypassing safety controls or opening the sealed refrigerant circuit.",
+      "torque_specs": [
+        {
+          "component": "Service-port cap and valve handling",
+          "imperial": "N/A",
+          "metric": "N/A",
+          "notes": "Do not remove Schrader valves or loosen fittings for a basic diagnostic inspection."
+        },
+        {
+          "component": "Pressure-control and clutch-circuit verification",
+          "imperial": "N/A",
+          "metric": "N/A",
+          "notes": "Use the Ford wiring information and approved test methods; do not jumper protective switches."
+        }
+      ],
+      "technical_mentions": [
+        "description = \"Diagnostic-reference assembly representing the high- and low-side service ports, pressure-protection controls, A/C relay/fuse command path, compressor clutch connector, and associated harness routing. It is intended to guide safe observation and electrical inspection without bypassing safety controls or opening the sealed refrigerant circuit.\",",
+        "locationDescription = \"Service ports and pressure-control fittings are located along the refrigerant lines; relay/fuse locations must be confirmed from the exact owner-manual diagram; compressor clutch connector is at the lower passenger-side compressor.\",",
+        "TorqueSpec(\"Pressure-control and clutch-circuit verification\", \"N/A\", \"N/A\", \"Use the Ford wiring information and approved test methods; do not jumper protective switches.\")",
+        "RepairStep(3, \"Inspect without opening the system\", \"With the engine OFF and cool, inspect service-port caps, visible line routing, the compressor-clutch connector, and nearby harnesses for damage, oil-stained dirt, or corrosion.\"),",
+        "RepairStep(4, \"Check protected electrical path\", \"Use the exact owner-manual diagram to inspect the specified fuse and relay. Do not bypass the relay, pressure switches, or clutch connector to force compressor operation.\", warning = \"Pressure switches protect the system. Bypassing them can damage components or create a hazardous condition.\"),"
+      ]
+    },
+    {
+      "id": "dash_instrument_cluster_3d",
+      "name": "Dashboard Instrument Cluster & White-Face Gauge Pack",
+      "description": "Sport Trac factory white-faced gauge instrument cluster featuring analog speedometer, tachometer, engine temp, fuel gauge, oil pressure, battery voltage gauge, illuminated gear position display, and dual 16-pin micro-lock electrical connectors.",
+      "torque_specs": [
+        {
+          "component": "Instrument Cluster Retaining Screws (4 Screws)",
+          "imperial": "22 in-lbs",
+          "metric": "2.5 Nm",
+          "notes": "Hand tighten into plastic dash framing"
+        },
+        {
+          "component": "Dash Bezel Screws (7mm Head)",
+          "imperial": "18 in-lbs",
+          "metric": "2 Nm",
+          "notes": "Two screws located above gauge lens hood"
+        }
+      ],
+      "technical_mentions": [
+        "description = \"Sport Trac factory white-faced gauge instrument cluster featuring analog speedometer, tachometer, engine temp, fuel gauge, oil pressure, battery voltage gauge, illuminated gear position display, and dual 16-pin micro-lock electrical connectors.\",",
+        "RepairStep(3, \"Disconnect Rear Electrical Plugs & Speedo Cable\", \"Tilt cluster top forward, press release tabs on black and grey 16-pin wiring harness plugs, and disconnect PRNDL gear selector string clip.\"),",
+        "RepairStep(4, \"Replace Backlight Bulbs / Install Cluster\", \"Twist \u00bc-turn bulb sockets on cluster rear circuit board to replace dead gauge backlights, reconnect wiring, and test all gauge needles.\")",
+        "commonSymptoms = listOf(\"Speedometer needle bounces erratically, stays stuck at zero, or digital odometer display goes completely blank\", \"Backlight bulbs burned out causing dark spots on tachometer or fuel gauge at night\", \"ABS, Battery, or 4x4 High indicator lights stay continuously illuminated on gauge face\"),",
+        "// 40. DASH CENTER STACK CLIMATE CONTROLS, RADIO & 4WD AUTO SWITCH"
+      ]
+    },
+    {
+      "id": "dash_hvac_radio_center_stack_3d",
+      "name": "Dash Center Stack Radio, Electronic HVAC Panel & 4WD Switch",
+      "description": "Center dash control console housing factory Mach 500 double-DIN radio unit, rotary HVAC vacuum selector switch module, temperature control potentiometer, rear power window toggle switch, and 3-position rotary 4WD Auto / 4x4 High / 4x4 Low transfer case selector switch.",
+      "torque_specs": [
+        {
+          "component": "Center Radio Bezel Screws (7mm Head)",
+          "imperial": "18 in-lbs",
+          "metric": "2 Nm",
+          "notes": "Two screws above HVAC panel"
+        },
+        {
+          "component": "HVAC Control Module Screws",
+          "imperial": "15 in-lbs",
+          "metric": "1.7 Nm",
+          "notes": "Four mini screws into plastic housing"
+        }
+      ],
+      "technical_mentions": [
+        "name = \"Dash Center Stack Radio, Electronic HVAC Panel & 4WD Switch\",",
+        "description = \"Center dash control console housing factory Mach 500 double-DIN radio unit, rotary HVAC vacuum selector switch module, temperature control potentiometer, rear power window toggle switch, and 3-position rotary 4WD Auto / 4x4 High / 4x4 Low transfer case selector switch.\",",
+        "RepairStep(3, \"Disconnect Switch Wire Connectors & Vacuum Harness\", \"Unplug 4WD switch connector, rear power window switch plug, cigarette lighter socket, and 5-tube HVAC vacuum line harness block.\"),",
+        "RepairStep(4, \"Replace Control Switch / Module\", \"Unbolt four 7mm screws on rear of bezel to replace damaged 4WD rotary switch or climate control module.\")",
+        "commonSymptoms = listOf(\"Turning 4WD selector knob does not engage 4x4 or cause transfer case shift motor to click\", \"Air blows ONLY out of defrost vents on windshield regardless of HVAC knob position (vacuum leak)\", \"Rear power window toggle switch fails to lower back glass window\"),"
+      ]
+    },
+    {
+      "id": "steering_wheel_airbag_column_3d",
+      "name": "Steering Column, Cruise Control Switches & Driver SRS Airbag Module",
+      "description": "Collapsible tilt steering column assembly complete with leather-wrapped steering wheel, steering column clockspring wiring coil, multifunction turn signal wiper lever, cruise control ON/OFF/SET thumb switches, ignition lock cylinder, and driver SRS airbag module.",
+      "torque_specs": [
+        {
+          "component": "Steering Wheel Center Hub Retaining Bolt",
+          "imperial": "33",
+          "metric": "45",
+          "notes": "Apply blue threadlocker to M12 bolt"
+        },
+        {
+          "component": "Driver Airbag Module Retaining Screws (8mm)",
+          "imperial": "89 in-lbs",
+          "metric": "10 Nm",
+          "notes": "Two screws behind steering wheel spokes"
+        },
+        {
+          "component": "Steering Column Pinch Bolt to Shaft",
+          "imperial": "26",
+          "metric": "35",
+          "notes": ""
+        }
+      ],
+      "technical_mentions": [
+        "description = \"Collapsible tilt steering column assembly complete with leather-wrapped steering wheel, steering column clockspring wiring coil, multifunction turn signal wiper lever, cruise control ON/OFF/SET thumb switches, ignition lock cylinder, and driver SRS airbag module.\",",
+        "RepairStep(2, \"Remove Airbag Module\", \"Remove two 8mm plastic access covers on back of steering wheel, unscrew 8mm bolts, and unplug yellow SRS connector.\"),"
+      ]
+    },
+    {
+      "id": "overhead_console_compass_3d",
+      "name": "Overhead Roof Console with Digital Compass, Temp Display & Sunroof Switch",
+      "description": "Factory overhead roof console containing green VFD digital display for exterior temperature and heading compass, twin dome map lights, garage door opener storage compartment, sunglass holder bay, and power sunroof toggle control switch.",
+      "torque_specs": [
+        {
+          "component": "Overhead Console Front Screw (Ph2)",
+          "imperial": "15 in-lbs",
+          "metric": "1.7 Nm",
+          "notes": "Single Phillips screw inside sunglass compartment"
+        }
+      ],
+      "technical_mentions": [
+        "RepairStep(3, \"Unplug Electrical Connector\", \"Disconnect 8-pin wiring harness plug powering map lights, compass circuit board, and sunroof switch.\"),"
+      ]
+    },
+    {
+      "id": "power_sunroof_assembly_3d",
+      "name": "Factory Power Glass Sunroof Assembly, Dual-Track Rails & Water Drain Hoses",
+      "description": "Complete power glass sunroof assembly featuring tinted tempered glass panel with perimeter rubber weatherseal gasket, dual extruded aluminum guide track rails, tilt/slide mechanism lifter arms, sliding interior fabric sunshade, and 4-corner rubber water drain hoses routed down A/C roof pillars.",
+      "torque_specs": [
+        {
+          "component": "Glass Panel Side Screws (Torx T25 - 4 Screws)",
+          "imperial": "35 in-lbs",
+          "metric": "4 Nm",
+          "notes": "Adjust glass panel flush with outer roof line"
+        },
+        {
+          "component": "Sunroof Frame Retaining Bolts (10mm)",
+          "imperial": "89 in-lbs",
+          "metric": "10 Nm",
+          "notes": "Eight bolts to roof internal crossmembers"
+        }
+      ],
+      "technical_mentions": [
+        "locationDescription = \"Integrated into roof panel structure above front driver and passenger seats.\","
+      ]
+    },
+    {
+      "id": "sunroof_motor_drive_gear_3d",
+      "name": "Sunroof Electric Drive Motor, Helical Drive Cables & Limit Module",
+      "description": "High-torque 12V reversible electric gear motor with internal brass pinion drive gear, meshing with dual flexible steel helical cables to slide and tilt the sunroof glass, equipped with electronic overload limit sensing and manual hex key emergency closure socket.",
+      "torque_specs": [
+        {
+          "component": "Sunroof Motor Mounting Screws (T20 - 3 Screws)",
+          "imperial": "40 in-lbs",
+          "metric": "4.5 Nm",
+          "notes": "Do not cross-thread into metal bracket"
+        }
+      ],
+      "technical_mentions": [
+        "RepairStep(3, \"Unplug Motor Connector & Unbolt Screws\", \"Disconnect 6-pin electrical plug and unscrew three T20 Torx screws securing motor to roof frame.\"),"
+      ]
+    },
+    {
+      "id": "power_rear_window_assembly_3d",
+      "name": "Sport Trac Power Drop-Down Back Glass Window & Cable Regulator Motor",
+      "description": "Signature Sport Trac full-width power drop-down rear window assembly featuring heated tempered back glass with defrost grid, dual-cable scissor regulator track, high-torque electric motor, bottom drain trough, and rubber weatherstripping seal.",
+      "torque_specs": [
+        {
+          "component": "Rear Window Regulator Bracket Bolts (10mm)",
+          "imperial": "89 in-lbs",
+          "metric": "10 Nm",
+          "notes": ""
+        },
+        {
+          "component": "Glass Mounting Channel Clamp Screws",
+          "imperial": "35 in-lbs",
+          "metric": "4 Nm",
+          "notes": "Ensure rubber clamp isolator pads in place"
+        }
+      ],
+      "technical_mentions": []
+    },
+    {
+      "id": "headlight_foglight_assemblies_3d",
+      "name": "Dual-Beam Halogen Headlight Assemblies, Corner Markers & Fog Lamps",
+      "description": "Clear poly-carbonate front lighting pack consisting of dual composite headlight housings with 9007 HB5 dual-filament halogen bulbs, amber turn signal corner marker lenses with 3157NA bulbs, and lower bumper round fog lamp housings with H10 42W halogen bulbs.",
+      "torque_specs": [
+        {
+          "component": "Headlight Retaining Retraction Pins",
+          "imperial": "Hand Latch",
+          "metric": "N/A",
+          "notes": "Pull two vertical steel slide retainer pins straight up"
+        },
+        {
+          "component": "Fog Lamp Mounting Bracket Bolts (8mm)",
+          "imperial": "45 in-lbs",
+          "metric": "5 Nm",
+          "notes": "Aiming adjustment bolt on rear bracket"
+        }
+      ],
+      "technical_mentions": [
+        "RepairStep(4, \"Twist Bulb Collar & Replace Bulb\", \"Rotate 9007 bulb retaining ring \u00bc-turn counter-clockwise, unplug electrical harness connector, and insert fresh 9007 halogen bulb.\")",
+        "// 47. REAR TAIL LIGHT LENSES, BRAKE LIGHT SOCKETS & REVERSE HARNESS"
+      ]
+    },
+    {
+      "id": "tail_light_reverse_assemblies_3d",
+      "name": "Rear Tail Light Lenses, Brake Light Sockets & Reverse Wire Harness",
+      "description": "Rear bed corner tail lamp assemblies featuring red brake/tail light section (3157 dual-filament bulb), clear reverse light section (3156 bulb), amber turn signal section, rubber weatherproof bulb socket seals, and bed wiring harness plug.",
+      "torque_specs": [
+        {
+          "component": "Tail Light Housing Screws (Ph2 - 2 Screws)",
+          "imperial": "18 in-lbs",
+          "metric": "2 Nm",
+          "notes": "Tighten into plastic bed grommets"
+        }
+      ],
+      "technical_mentions": [
+        "name = \"Rear Tail Light Lenses, Brake Light Sockets & Reverse Wire Harness\",",
+        "description = \"Rear bed corner tail lamp assemblies featuring red brake/tail light section (3157 dual-filament bulb), clear reverse light section (3156 bulb), amber turn signal section, rubber weatherproof bulb socket seals, and bed wiring harness plug.\",",
+        "// 48. BORGWARNER 4411 TRANSFER CASE & ELECTRONIC 4WD SHIFT MOTOR"
+      ]
+    },
+    {
+      "id": "transfer_case_shift_motor_3d",
+      "name": "BorgWarner 4411 Transfer Case & Electronic 4WD Shift Control Motor",
+      "description": "Cast aluminum BorgWarner 4411 electronic shift-on-the-fly transfer case complete with planetary gear reduction set, electromagnetic clutch assembly for 4x4 Auto torque splitting, internal oil pump, drive chain, and rear-mounted 12V DC electric shift encoder motor.",
+      "torque_specs": [
+        {
+          "component": "Transfer Case to Transmission Adapter Bolts (13mm)",
+          "imperial": "30",
+          "metric": "41",
+          "notes": ""
+        },
+        {
+          "component": "4WD Shift Motor Mounting Bolts (T30 / 10mm)",
+          "imperial": "89 in-lbs",
+          "metric": "10 Nm",
+          "notes": "Three bolts attaching motor to shift shaft"
+        },
+        {
+          "component": "Transfer Case Fill & Drain Plugs (3/8 In Drive)",
+          "imperial": "22",
+          "metric": "30",
+          "notes": "Uses 1.5 quarts MERCON V ATF"
+        }
+      ],
+      "technical_mentions": [
+        "name = \"BorgWarner 4411 Transfer Case & Electronic 4WD Shift Control Motor\",",
+        "system = VehicleSystem.DRIVETRAIN_4WD,",
+        "description = \"Cast aluminum BorgWarner 4411 electronic shift-on-the-fly transfer case complete with planetary gear reduction set, electromagnetic clutch assembly for 4x4 Auto torque splitting, internal oil pump, drive chain, and rear-mounted 12V DC electric shift encoder motor.\",",
+        "TorqueSpec(\"Transfer Case to Transmission Adapter Bolts (13mm)\", \"30\", \"41\", \"\"),",
+        "TorqueSpec(\"4WD Shift Motor Mounting Bolts (T30 / 10mm)\", \"89 in-lbs\", \"10 Nm\", \"Three bolts attaching motor to shift shaft\"),",
+        "TorqueSpec(\"Transfer Case Fill & Drain Plugs (3/8 In Drive)\", \"22\", \"30\", \"Uses 1.5 quarts MERCON V ATF\")",
+        "RepairStep(1, \"Unplug 4WD Shift Motor Wire Connector\", \"Press locking tab on 7-pin round wiring harness plug attached to rear of transfer case.\"),",
+        "RepairStep(2, \"Unbolt 4WD Shift Motor\", \"Remove three 10mm bolts securing shift motor assembly to transfer case aluminum rear housing.\"),",
+        "RepairStep(3, \"Inspect Triangular Shift Shaft Rotary Pin\", \"Use pliers to verify manual rotation of triangular shift shaft pin on transfer case.\"),",
+        "RepairStep(4, \"Install New Shift Motor / Change ATF Fluid\", \"Align new motor socket onto triangular shaft pin, torque 10mm bolts, and drain/refill transfer case with 1.5 qts fresh MERCON V ATF.\")",
+        "commonSymptoms = listOf(\"4x4 High and 4x4 Low dash lights flash 6 times periodically while driving\", \"Turning 4WD dash switch produces no sound or engagement under truck\", \"Grinding noise when 4WD auto engages during rear wheel slip\"),",
+        "// 49. REAR ALUMINUM DRIVESHAFT, SLIP YOKE & HEAVY-DUTY U-JOINTS"
+      ]
+    },
+    {
+      "id": "rear_driveshaft_slip_yoke_3d",
+      "name": "Rear Aluminum Driveshaft Assembly, Slip Yoke & Heavy-Duty U-Joints",
+      "description": "Balanced 4-inch diameter lightweight aluminum rear driveshaft tube featuring splined transmission slip yoke, rear pinion companion flange, and dual greaseable Spicer 1330 series universal joints.",
+      "torque_specs": [
+        {
+          "component": "Rear Pinion Flange 12-Point Bolts (12mm Head)",
+          "imperial": "83",
+          "metric": "112",
+          "notes": "Apply red threadlocker to 4 flange bolts"
+        },
+        {
+          "component": "U-Joint Strap Bolts (8mm)",
+          "imperial": "15",
+          "metric": "20",
+          "notes": ""
+        }
+      ],
+      "technical_mentions": [
+        "id = \"rear_driveshaft_slip_yoke_3d\",",
+        "name = \"Rear Aluminum Driveshaft Assembly, Slip Yoke & Heavy-Duty U-Joints\",",
+        "system = VehicleSystem.DRIVETRAIN_4WD,",
+        "description = \"Balanced 4-inch diameter lightweight aluminum rear driveshaft tube featuring splined transmission slip yoke, rear pinion companion flange, and dual greaseable Spicer 1330 series universal joints.\",",
+        "locationDescription = \"Extends from transfer case / transmission rear slip seal to rear differential pinion flange.\",",
+        "RepairStep(1, \"Mark Pinion Flange Alignment\", \"Use paint pen to mark indexing alignment mark on driveshaft flange and differential pinion flange.\"),",
+        "RepairStep(2, \"Remove Four 12-Point Flange Bolts\", \"Unscrew four 12mm 12-point bolts securing driveshaft flange to rear differential.\"),",
+        "RepairStep(3, \"Slide Slip Yoke Out of Transfer Case\", \"Lower rear of driveshaft and slide front slip yoke out of transfer case rear extension housing seal.\"),"
+      ]
+    },
+    {
+      "id": "rear_differential_88_3d",
+      "name": "Ford 8.8-Inch Rear Differential Axle with Limited Slip Traction-Lok",
+      "description": "Cast iron Ford 8.8-inch rear axle housing with 3.73 or 4.10 ring and pinion gear set, Traction-Lok multi-disc clutch pack limited-slip differential carrier, 31-spline axle shafts, steel rear cover pan, and ABS wheel speed sensor port.",
+      "torque_specs": [
+        {
+          "component": "Differential Cover Pan Bolts (10 Bolts - 1/2 In Head)",
+          "imperial": "33",
+          "metric": "45",
+          "notes": "Tighten in star pattern with RTV sealant"
+        },
+        {
+          "component": "Pinion Nut",
+          "imperial": "160",
+          "metric": "217",
+          "notes": "Sets pinion bearing preload"
+        },
+        {
+          "component": "Differential Fill Plug (3/8 In Drive)",
+          "imperial": "22",
+          "metric": "30",
+          "notes": "Use 80W-90 / 75W-140 Synthetic + 4oz Friction Modifier"
+        }
+      ],
+      "technical_mentions": [
+        "system = VehicleSystem.DRIVETRAIN_4WD,",
+        "description = \"Cast iron Ford 8.8-inch rear axle housing with 3.73 or 4.10 ring and pinion gear set, Traction-Lok multi-disc clutch pack limited-slip differential carrier, 31-spline axle shafts, steel rear cover pan, and ABS wheel speed sensor port.\","
+      ]
+    },
+    {
+      "id": "cylinder_heads_valvetrain_3d",
+      "name": "Aluminum Cylinder Heads, Valves, Hydraulic Roller Followers & Head Bolts",
+      "description": "Cast aluminum cylinder heads for Cologne 4.0L SOHC V6 featuring 12 overhead valves (6 intake / 6 exhaust), single overhead camshaft per bank, hydraulic roller rocker arm followers, beehive valve springs, MLS multi-layer steel head gaskets, and torque-to-yield head bolts.",
+      "torque_specs": [
+        {
+          "component": "Head Bolts - Pass 1",
+          "imperial": "26",
+          "metric": "35",
+          "notes": "Use NEW TTY Bolts"
+        },
+        {
+          "component": "Head Bolts - Pass 2",
+          "imperial": "59",
+          "metric": "80",
+          "notes": "Tighten in specified sequence"
+        },
+        {
+          "component": "Head Bolts - Pass 3",
+          "imperial": "Rotate +90\u00b0",
+          "metric": "Angle Torque",
+          "notes": "Final angle torque turn"
+        }
+      ],
+      "technical_mentions": []
+    },
+    {
+      "id": "front_control_arms_balljoints_3d",
+      "name": "Front Upper & Lower Control Arms with Heavy-Duty Press-In Ball Joints",
+      "description": "Forged steel upper and lower front A-arm control suspension arms complete with natural rubber frame pivot bushings, greaseable heavy-duty press-in upper/lower ball joints, torsion bar mounting socket, and sway bar end link mounts.",
+      "torque_specs": [
+        {
+          "component": "Lower Ball Joint Pinch Nut",
+          "imperial": "83",
+          "metric": "112",
+          "notes": "Install fresh cotter pin"
+        },
+        {
+          "component": "Upper Control Arm Camber Pinch Bolts (2 Bolts)",
+          "imperial": "98",
+          "metric": "133",
+          "notes": "Requires 4-wheel alignment after replacement"
+        },
+        {
+          "component": "Lower Control Arm Frame Pivot Bolts",
+          "imperial": "111",
+          "metric": "150",
+          "notes": "Torque while vehicle weight is resting on suspension"
+        }
+      ],
+      "technical_mentions": []
+    },
+    {
+      "id": "radio_mach500_head_unit_3d",
+      "name": "Mach 500 / Pioneer Premium Double-DIN AM/FM Radio & CD Changer Head Unit",
+      "description": "Factory premium double-DIN stereo receiver head unit featuring integrated 6-disc in-dash CD changer mechanism, RDS digital radio tuner module, dot-matrix green vacuum fluorescent display screen, dual volume/tuner rotary encoder dials, speed-compensated volume control processor, rear subwoofer preamp output plug, and dual 16-pin Ford factory wiring harness sockets.",
+      "torque_specs": [
+        {
+          "component": "Center Dash Bezel Screws (7mm Head)",
+          "imperial": "18 in-lbs",
+          "metric": "2 Nm",
+          "notes": "Two 7mm screws located above climate control knobs"
+        },
+        {
+          "component": "Radio Side Mounting Bracket Screws",
+          "imperial": "15 in-lbs",
+          "metric": "1.7 Nm",
+          "notes": "Four mini T15 Torx screws into side chassis"
+        }
+      ],
+      "technical_mentions": [
+        "description = \"Factory premium double-DIN stereo receiver head unit featuring integrated 6-disc in-dash CD changer mechanism, RDS digital radio tuner module, dot-matrix green vacuum fluorescent display screen, dual volume/tuner rotary encoder dials, speed-compensated volume control processor, rear subwoofer preamp output plug, and dual 16-pin Ford factory wiring harness sockets.\",",
+        "RepairStep(4, \"Slide Radio Chassis Out & Unplug Harnesses\", \"Spread DIN keys outward slightly and pull head unit straight forward. Unplug main 16-pin wiring harness, subwoofer RCA/remote plug, and motorola antenna coax lead.\"),",
+        "RepairStep(5, \"Install Replacement Head Unit / Aftermarket Adapter\", \"Connect Ford wiring harness adapter plug, snap antenna coax lead in place, and slide chassis into center stack frame until latches lock.\")"
+      ]
+    },
+    {
+      "id": "audio_door_speakers_subwoofer_3d",
+      "name": "Factory 6x8 Custom Door Speakers, Tweeters & Pioneer 8\\",
+      "description": "High-fidelity vehicle audio transducer system comprising four 6x8-inch polypropylene full-range coaxial door speakers with treated cloth surrounds, A-pillar silk dome tweeters, and the factory Pioneer rear cabin trim-integrated 8-inch powered subwoofer enclosure with dedicated 290-watt peak audio amplifier module.",
+      "torque_specs": [
+        {
+          "component": "Door Speaker Mounting Screws (4 Screws per Door)",
+          "imperial": "18 in-lbs",
+          "metric": "2 Nm",
+          "notes": "7mm screws into plastic door sheet metal inserts"
+        },
+        {
+          "component": "Door Interior Handle Screws (7mm Head)",
+          "imperial": "25 in-lbs",
+          "metric": "2.8 Nm",
+          "notes": "Two screws behind armrest access cover"
+        },
+        {
+          "component": "Pioneer Subwoofer Enclosure Bracket Bolts",
+          "imperial": "89 in-lbs",
+          "metric": "10 Nm",
+          "notes": "Three 10mm bolts to rear cab wall"
+        }
+      ],
+      "technical_mentions": [
+        "requiredTools = listOf(\"7mm & 8mm Sockets & Driver\", \"T20 Torx Bit\", \"Plastic Interior Door Trim Removal Pry Tool\", \"Wire Stripper & Crimp Connectors\"),",
+        "RepairStep(4, \"Install 6x8 Speaker & Harness Adapter\", \"Snap plug-and-play Ford speaker wire harness adapter onto speaker terminals, secure frame with 7mm screws, and reattach door trim panel.\"),"
+      ]
+    },
+    {
+      "id": "q_audio_symptom",
+      "name": "",
+      "description": "",
+      "torque_specs": [],
+      "technical_mentions": [
+        "probableCause = \"Dry rotted speaker surround or broken door hinge wire harness flex leads.\","
+      ]
+    }
+  ],
+  "doc_hits": [
+    {
+      "path": "docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md",
+      "hits": [
+        {
+          "line": 1,
+          "text": "# 2004 Sport Trac 4WD VIN K workshop source (CHARM)"
+        },
+        {
+          "line": 4,
+          "text": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/"
+        },
+        {
+          "line": 8,
+          "text": "- Repair and Diagnosis: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/"
+        },
+        {
+          "line": 9,
+          "text": "- Parts and Labor: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Parts%20and%20Labor/"
+        },
+        {
+          "line": 10,
+          "text": "- Offline zip: https://charm.li/bundle/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/"
+        },
+        {
+          "line": 12,
+          "text": "## 4WD VIN K leaves from the repair-links pack"
+        },
+        {
+          "line": 14,
+          "text": "- Engine: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Engine%2C%20Cooling%20and%20Exhaust/Engine/"
+        },
+        {
+          "line": 15,
+          "text": "- Drive belts: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Engine%2C%20Cooling%20and%20Exhaust/Engine/Drive%20Belts/"
+        },
+        {
+          "line": 16,
+          "text": "- Cooling system: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Engine%2C%20Cooling%20and%20Exhaust/Cooling%20System/"
+        },
+        {
+          "line": 17,
+          "text": "- Transmission speed sensor: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Transmission%20and%20Drivetrain/Automatic%20Transmission%2FTransaxle/Transmission%20Speed%20Sensor/"
+        },
+        {
+          "line": 18,
+          "text": "- Transfer case: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Transmission%20and%20Drivetrain/Transfer%20Case/"
+        },
+        {
+          "line": 19,
+          "text": "- Drive axles: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Transmission%20and%20Drivetrain/Drive%20Axles/"
+        },
+        {
+          "line": 20,
+          "text": "- Suspension: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Steering%20and%20Suspension/Suspension/"
+        },
+        {
+          "line": 21,
+          "text": "- Steering: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Steering%20and%20Suspension/Steering/"
+        },
+        {
+          "line": 22,
+          "text": "- Brakes: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Brakes%20and%20Traction%20Control/Brakes/"
+        },
+        {
+          "line": 23,
+          "text": "- HVAC (4WD): https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Heating%20and%20Air%20Conditioning/"
+        },
+        {
+          "line": 24,
+          "text": "- A/C compressor service (4WD): https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Heating%20and%20Air%20Conditioning/Compressor%20HVAC/Service%20and%20Repair/"
+        },
+        {
+          "line": 25,
+          "text": "- Body general: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Body%20and%20Frame/Description%20and%20Operation/Body%20System%20-%20General%20Information/"
+        },
+        {
+          "line": 26,
+          "text": "- Windows and glass: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Windows%20and%20Glass/"
+        },
+        {
+          "line": 27,
+          "text": "- All DTCs: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/A%20L%20L%20%20Diagnostic%20Trouble%20Codes%20%28%20DTC%20%29/"
+        },
+        {
+          "line": 29,
+          "text": "## 2WD URLs from that pack \u2014 do not use for this 4WD truck"
+        }
+      ]
+    },
+    {
+      "path": "docs/2004_SPORT_TRAC_LINK_PACK.md",
+      "hits": [
+        {
+          "line": 7,
+          "text": "4WD CHARM leaves in `docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md`."
+        },
+        {
+          "line": 11,
+          "text": "YouTube titles in the pack were not verified against this exact 2004 Sport Trac 4WD 4.0L VIN K."
+        },
+        {
+          "line": 41,
+          "text": "## Do not use for this 4WD truck"
+        }
+      ]
+    },
+    {
+      "path": "docs/2004_SPORT_TRAC_OWNER_GUIDE_SPECS.md",
+      "hits": [
+        {
+          "line": 36,
+          "text": "| Transmission | Motorcraft MERCON V ATF | 5R55E 4x4 | 9.8 L (10.3 quarts) dry-fill approx. |"
+        },
+        {
+          "line": 37,
+          "text": "| Transfer case | Motorcraft MERCON ATF | 4WD | 1.2 L (1.3 quarts), fill to bottom of filler hole |"
+        },
+        {
+          "line": 39,
+          "text": "| Front axle | Motorcraft SAE 80W-90 | 4x4 | 1.7 L (1.8 quarts) |"
+        },
+        {
+          "line": 40,
+          "text": "| Rear axle | Motorcraft SAE 75W-90 Fuel Efficient High Performance Synthetic | See footnotes | 2.9\u20133.1 L (5.5\u20135.8 pints) |"
+        },
+        {
+          "line": 47,
+          "text": "3. Transfer case: fill to bottom of filler plug hole."
+        },
+        {
+          "line": 49,
+          "text": "5. Rear axle fill 6\u201314 mm (1/4\u20139/16 in) below filler hole bottom."
+        },
+        {
+          "line": 66,
+          "text": "- Height: 69.9 in / 70.6 in max on 4x4 with 16 in tires"
+        },
+        {
+          "line": 73,
+          "text": "- Torque 113\u2013153 Nm (84\u2013114 lb-ft)"
+        },
+        {
+          "line": 82,
+          "text": "| Transfer case 1.25\u20131.5 qt MERCON V | 1.3 qt MERCON ATF |"
+        },
+        {
+          "line": 83,
+          "text": "| Rear axle 75W-140 as default OG fill | 75W-90 FE synthetic |"
+        },
+        {
+          "line": 86,
+          "text": "Workshop torque sequences, diagnostic pinpoint tests, and teardown steps are still outside this document."
+        }
+      ]
+    },
+    {
+      "path": "docs/BLENDER_GRAPHICS_CONTRACT.md",
+      "hits": [
+        {
+          "line": 11,
+          "text": "| Compose Canvas procedural parts | Training schematic | Live behind the safe-scene gate |"
+        },
+        {
+          "line": 47,
+          "text": "Trac knowledge (torque, TSB-style failure patterns, tools). It does not invent"
+        }
+      ]
+    },
+    {
+      "path": "docs/COMPLETE_PROJECT_INVENTORY.md",
+      "hits": [
+        {
+          "line": 24,
+          "text": "| **Safe-shell route isolation** | `SAFE_SHELL_MODE` routes non-Lounge tabs to an under-review screen. This intentionally prevents feature surfaces from composing while startup/device stability is isolated. | `app/src/main/java/com/example/MainActivity.kt` | **Source-present; sandbox-built.** It remains a containment boundary, not evidence that feature routes are device-verified. |"
+        },
+        {
+          "line": 26,
+          "text": "| **Procedural vehicle-learning model** | The legacy training path uses a Compose Canvas renderer and a 2004 Sport Trac component catalog, repair steps, torque data, and generated hardware/subassembly concepts. | `app/src/main/java/com/example/ui/components/Interactive3DViewport.kt`; `app/src/main/java/com/example/data/SportTracData.kt`; `app/src/main/java/com/example/data/VehicleHardwareCatalog.kt` | **Source-present; previously implicated in device instability.** It is not a Blender/GLTF vehicle replica. |"
+        },
+        {
+          "line": 31,
+          "text": "| **Mentor repair guidance** | Mentor Mode reads selected repair steps aloud, handles step progression and torque narration, manages mute/settings, and persists repair-checklist progress locally. | `app/src/main/java/com/example/ui/components/MentorModeDialog.kt`; `app/src/main/java/com/example/util/MentorTtsManager.kt`; `app/src/main/java/com/example/data/MentorVoiceSettingsRepository.kt` | **Source-present.** TTS exists; full device behavior remains separate from source presence. |"
+        },
+        {
+          "line": 35,
+          "text": "| **Diagnostics and FORScan-style UI** | The app has a dialog with local PID/DTC records, random live-value simulation, pasted-log text matching, and component navigation. | `app/src/main/java/com/example/ui/components/ForscanDialog.kt`; `app/src/main/java/com/example/data/ForscanData.kt`; `app/src/main/java/com/example/model/ForscanModel.kt`; `app/src/main/java/com/example/ui/screens/DiagnosticsScreen.kt` | **Source-present local UI/data.** It is not a live FORScan or OBD transport. |"
+        },
+        {
+          "line": 76,
+          "text": "| **Mentor personality customization** | Choice of mentor voice behavior, pace, pitch, warnings-first order, torque repetition, sensitivity, ducking, and haptic preferences. | Discussed and source-present. | **Partially built:** local settings repository and dialog exist; this is not a recorded-character voice system. | MVP refinement. |"
+        },
+        {
+          "line": 95,
+          "text": "| **Sketchfab/third-party asset licensing discipline** | Every external 3D asset must be acquired through its actual license/download path and correctly attributed or restricted. | Discussed during asset research. | **Absent as imported assets:** research was performed, but no third-party vehicle/character/environment asset is in the repository. | MVP prerequisite for any imported asset. |"
+        },
+        {
+          "line": 97,
+          "text": "| **Showroom / warehouse environment** | A workshop or showroom could frame the truck in the repair realm. | Discussed. | **Absent:** no environment model is imported. | Later release after the wreck asset. |"
+        },
+        {
+          "line": 100,
+          "text": "| **ANR containment discipline** | Startup work must remain bounded, feature data must defer, and unsafe surfaces must remain guarded until real-device evidence supports opening them. | Explicitly discussed and documented. | **Built as current architecture:** pure Lounge, safe-shell routing, and deferred feature data are present. | MVP release gate. |"
+        }
+      ]
+    },
+    {
+      "path": "docs/NEXT_100_TASKS_2026-08-26.md",
+      "hits": [
+        {
+          "line": 4,
+          "text": "Owner Guide remains fluids / Motorcraft / capacities. CHARM remains 4WD VIN K pointers."
+        },
+        {
+          "line": 21,
+          "text": "13. Added height (4x4 16-in tire max)."
+        },
+        {
+          "line": 40,
+          "text": "29. Indexed scheduled-maintenance guide `04nmgmg5e.pdf`."
+        },
+        {
+          "line": 43,
+          "text": "32. Indexed Driving Your SUV or Truck `044x4fw1e.pdf`."
+        },
+        {
+          "line": 61,
+          "text": "## D. CHARM 4WD VIN K expansion (46\u201355)"
+        },
+        {
+          "line": 64,
+          "text": "47. Added offline 4WD VIN K zip leaf."
+        },
+        {
+          "line": 70,
+          "text": "53. Kept every published leaf on the 4WD tree."
+        },
+        {
+          "line": 77,
+          "text": "57. Parts answer stays on FA-1744 / FG-1036 / FL-820S / BXT-65-650 / EV-243 / AGSF-22PP / lug torque."
+        },
+        {
+          "line": 85,
+          "text": "65. Spoken briefing still appends one community video and one 4WD CHARM leaf when present."
+        },
+        {
+          "line": 91,
+          "text": "68. 4WD diagram transfer-case node is OG MERCON ATF 1.3 qt."
+        },
+        {
+          "line": 92,
+          "text": "69. 4WD diagram rear-diff node is OG 75W-90 FE, not 75W-140 as printed spec."
+        },
+        {
+          "line": 93,
+          "text": "70. 4WD diagram service card is 1.3 qt MERCON ATF + shop-substitute note."
+        },
+        {
+          "line": 94,
+          "text": "71. 4WD diagram rear-diff torque chip no longer lists 75W-140 as the fill."
+        },
+        {
+          "line": 95,
+          "text": "72. Rear-diff cover torque note is 75W-90 + XL-7."
+        },
+        {
+          "line": 105,
+          "text": "## G. Overlay / cache / wiring (81\u201386)"
+        },
+        {
+          "line": 123,
+          "text": "94. CHARM test now also requires Parts and Labor + 4WD-only URLs."
+        },
+        {
+          "line": 132,
+          "text": "100. Local dirty OG wiring in `SportTracData` / maintenance consumers is part of this pass."
+        }
+      ]
+    },
+    {
+      "path": "docs/NEXT_FIVE_OG_LIVE_PATHS_2026-08-26.md",
+      "hits": [
+        {
+          "line": 5,
+          "text": "1. `SportTracData` source now carries 2004 OG numbers: coolant 14.0, air FA-1744, transfer case 1.3 qt MERCON ATF, spark gap 0.052-0.056. Shop substitute MERCON V is labeled, not treated as the printed spec."
+        },
+        {
+          "line": 9,
+          "text": "5. 4WD diagram t-case card is 1.3 qt OG MERCON ATF + shop substitute MERCON V, not 1.5 qt MERCON V as factory."
+        }
+      ]
+    },
+    {
+      "path": "docs/OG_TRUTH_AND_CHARM_GATE_2026-08-26.md",
+      "hits": [
+        {
+          "line": 1,
+          "text": "# Owner Guide source truth + CHARM 4WD gate \u2014 2026-08-26 (source-fixed)"
+        },
+        {
+          "line": 5,
+          "text": "1. `SportTracData` source numbers match the 2004 P207 Owner Guide: coolant 14.0 qt, air FA-1744, transfer case 1.3 qt MERCON ATF, rear axle 75W-90 FE + XL-7."
+        },
+        {
+          "line": 8,
+          "text": "4. 4WD diagram transfer-case card is 1.3 qt MERCON ATF. Rear-diff chip is 75W-90 FE, not 75W-140."
+        },
+        {
+          "line": 9,
+          "text": "5. `CharmWorkshopIndex` stays on the 4WD VIN K tree, rejects 2WD pack URLs, and now includes Parts and Labor plus the official CHARM offline zip bundle URL."
+        }
+      ]
+    },
+    {
+      "path": "docs/SHARE_WITH_TESTER.md",
+      "hits": [
+        {
+          "line": 26,
+          "text": "- Ask Mentor: coolant capacity, transfer case fluid, rear axle 75W-90."
+        }
+      ]
+    },
+    {
+      "path": "docs/SPORT_TRAC_100_JOBS_L3.md",
+      "hits": [
+        {
+          "line": 1,
+          "text": "# 100 jobs 3-level check \u2014 2004 Sport Trac 4WD VIN K"
+        },
+        {
+          "line": 9,
+          "text": "PARTIAL: OG fluids/filters, intake 89 in-lb spec, 5R55E/t-case/axles, brakes/A/C wizards, FORScan."
+        },
+        {
+          "line": 10,
+          "text": "GAP: water pump, timing tensioner, 5R55E overhaul, axles R&R, most chassis torque stamps, HVAC charge to label, airbags."
+        },
+        {
+          "line": 12,
+          "text": "CHARM hub: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/"
+        }
+      ]
+    },
+    {
+      "path": "docs/SPORT_TRAC_ALL_REPAIRS.md",
+      "hits": [
+        {
+          "line": 1,
+          "text": "# 2004 Sport Trac 4WD VIN K \u2014 all service repairs"
+        },
+        {
+          "line": 3,
+          "text": "Not the Ford WSM. 4WD VIN K CHARM hub:"
+        },
+        {
+          "line": 4,
+          "text": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/"
+        },
+        {
+          "line": 8,
+          "text": "Oil 5.0 qt 5W-30 + FL-820S. Coolant 14.0 qt Gold. Air FA-1744. Fuel filter FG-1036. Battery BXT-65-650. PCV EV-243. Plugs AGSF-22PP 1.3-1.4 mm. 5R55E MERCON V. T-case 1.3 qt MERCON ATF official / MERCON V shop substitute. Front axle 1.8 qt 80W-90. Rear 75W-90 FE + XL-7 on Traction-Lok refill. Lugs 84-114 lb-ft."
+        },
+        {
+          "line": 11,
+          "text": "1. Lean/misfire: docs/SPORT_TRAC_LEAN_MISFIRE_REPAIRS.md (elbow, PCV valve, intake 89 in-lb, plugs/coil)."
+        },
+        {
+          "line": 14,
+          "text": "4. 5R55E: hot dipstick set, MERCON V, pan ~120 in-lb. No driveway band guess."
+        },
+        {
+          "line": 15,
+          "text": "5. BW4411: fill to hole bottom, 1.3 qt. Shift motor CHARM Transfer case."
+        },
+        {
+          "line": 18,
+          "text": "8. Steering/suspension: CHARM those leaves. Confirm VIN K before using packaged chassis torques."
+        },
+        {
+          "line": 19,
+          "text": "9. A/C: CHARM HVAC 4WD only. Certified recover/charge to under-hood label."
+        },
+        {
+          "line": 23,
+          "text": "Not included: TTY head bolts, 5R55E overhaul, wiring-diagram dump."
+        }
+      ]
+    },
+    {
+      "path": "docs/SPORT_TRAC_BANK2_LEAN_KIT.md",
+      "hits": [
+        {
+          "line": 11,
+          "text": "## Workshop torque used (not Owner Guide)"
+        },
+        {
+          "line": 13,
+          "text": "| Joint | Qty | Torque | Source |"
+        },
+        {
+          "line": 15,
+          "text": "| Intake manifold bolts | 8 (4 per bank) | 10 Nm / 89 in-lb | 2004 VIN K workshop specs + CHARM 2005 VIN K intake table |"
+        },
+        {
+          "line": 16,
+          "text": "| Throttle body bolts | 4 | 9 Nm / 80 in-lb | CHARM 2005 VIN K |"
+        },
+        {
+          "line": 17,
+          "text": "| Ignition coil bolts | 4 | 6 Nm / 53 in-lb | Mitchell 2004 4.0L SOHC engine-performance table |"
+        },
+        {
+          "line": 18,
+          "text": "| Coil bracket bolts | 2 | 10 Nm / 89 in-lb | Mitchell 2004 engine table |"
+        },
+        {
+          "line": 19,
+          "text": "| Spark plugs | 6 | 20 Nm / 15 lb-ft | Mitchell 2004 engine table |"
+        },
+        {
+          "line": 21,
+          "text": "| Fuel rail bolts | 4 | 23 Nm / 17 lb-ft | Mitchell 2004 engine-performance table |"
+        },
+        {
+          "line": 24,
+          "text": "Plastic intake inserts crack if you use a foot-pound wrench on the 89 in-lb bolts."
+        }
+      ]
+    },
+    {
+      "path": "docs/SPORT_TRAC_EVERYTHING.md",
+      "hits": [
+        {
+          "line": 8,
+          "text": "- Remaining service envelopes (exhaust, 22.5 gal tank, battery, alternator, steering box, both front calipers, both driveshafts, FA-1744 air box, condenser, lamps, spare)"
+        },
+        {
+          "line": 19,
+          "text": "This is still not every clip Ford installed. TTY head bolts, interior screws, body clips, and harness retainers stay workshop-manual items."
+        }
+      ]
+    },
+    {
+      "path": "docs/SPORT_TRAC_FASTENERS.md",
+      "hits": [
+        {
+          "line": 4,
+          "text": "Not a VIN-complete Ford BOM. Hidden TTY head bolts, interior screws, body clips, and harness retainers are not claimed."
+        },
+        {
+          "line": 8,
+          "text": "- Wheels: 5 x 1/2-20 lug nuts per corner (OG 84-114 lb-ft) plus an axle/hub nut"
+        },
+        {
+          "line": 12,
+          "text": "- Front axle: 8 cover/flange joints"
+        },
+        {
+          "line": 20,
+          "text": "Torque strings are packaged references. Confirm the workshop manual before use."
+        }
+      ]
+    },
+    {
+      "path": "docs/SPORT_TRAC_LEAN_MISFIRE_REPAIRS.md",
+      "hits": [
+        {
+          "line": 11,
+          "text": "## Torque (workshop)"
+        },
+        {
+          "line": 12,
+          "text": "- Intake bolts 10 Nm / 89 in-lb (2004 VIN K + CHARM 2005 VIN K)"
+        },
+        {
+          "line": 13,
+          "text": "- Throttle body 9 Nm / 80 in-lb"
+        },
+        {
+          "line": 14,
+          "text": "- Coil bolts 6 Nm / 53 in-lb; bracket 10 Nm / 89 in-lb"
+        },
+        {
+          "line": 15,
+          "text": "- Plugs 20 Nm / 15 lb-ft"
+        },
+        {
+          "line": 16,
+          "text": "- Fuel rail 23 Nm / 17 lb-ft"
+        },
+        {
+          "line": 17,
+          "text": "- PCV elbow: press-on, no torque"
+        },
+        {
+          "line": 29,
+          "text": "Battery ground, air box tube, label PCV / booster / EVAP / vacuum, intake bolts, lift manifold, heated PCV fitting while it is up, new gaskets, 89 in-lb middle-out."
+        },
+        {
+          "line": 35,
+          "text": "Clear codes. Watch STFT and Bank 2 LTFT. Spray the new elbow underside. No foot-pound wrench on 89 in-lb intake bolts."
+        }
+      ]
+    },
+    {
+      "path": "docs/SPORT_TRAC_OG_SCALE.md",
+      "hits": [
+        {
+          "line": 13,
+          "text": "| Height 4x4 + 16-in tires | 70.6 in / 1794 mm | 1.7932 |"
+        }
+      ]
+    }
+  ]
+}
