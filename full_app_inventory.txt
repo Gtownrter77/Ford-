@@ -1,0 +1,304 @@
+=== PROJECT ROOT ===
+./.env.example
+./.gitignore
+./4wd_wiring_torque_reference.md
+./ADB_REALTIME_PERFORMANCE_CAPTURE.md
+./ANR_REPAIR_BUILD_EVIDENCE_2026-08-19.md
+./BUILD_INCREMENT_2026-08-26.md
+./CHECKPOINT.md
+./DOCUMENTATION_RECONCILIATION_2026-08-18.md
+./EXTERNAL_SOURCES.md
+./FASTENER_RENDERING_AND_PBR_TRUTH.md
+./FINAL_EVIDENCE_LEDGER_2026-08-18.md
+./FOUNDATION_TRACK_CONTRACT_MAP.md
+./FOUR_STREAM_SPLIT_SCREEN.md
+./FOUR_WORKSTREAM_OPERATING_PLAN.md
+./FUTURE_AFFILIATE_POLICY.md
+./INDEPENDENT_AI_REVIEW_RESULT_2026-08-18.md
+./PENDING_TASKS_2026-08-18.md
+./PHYSICAL_DEVICE_ANR_TRIAGE_2026-08-18.md
+./PHYSICAL_DEVICE_VERIFICATION_PROTOCOL.md
+./PROCEDURAL_MODEL_ARCHITECTURE.md
+./PROJECT_HANDOFF.md
+./PROJECT_TEAM_HARDENING_PRESENTATION_SCRIPT.md
+./PROJECT_TEAM_HARDENING_REVIEW_SUMMARY.md
+./RECOMMENDATION_INTEGRITY.md
+./REPAIR_REALM_ARCHITECTURE.md
+./SAFE_SHELL_ROUTE_ISOLATION_EVIDENCE_2026-08-19.md
+./SHOP_DESTINATION_CONCEPT.md
+./WORKFLOW_RULES.md
+./app/.gitignore
+./app/build.gradle.kts
+./app/proguard-rules.pro
+./build.gradle.kts
+./docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md
+./docs/2004_SPORT_TRAC_COMMUNITY_SOURCES.md
+./docs/2004_SPORT_TRAC_LINK_PACK.md
+./docs/2004_SPORT_TRAC_OWNER_GUIDE_SPECS.md
+./docs/ANDROID_ASSET_PIPELINE.md
+./docs/BLENDER_GRAPHICS_CONTRACT.md
+./docs/COMPLETE_PROJECT_INVENTORY.md
+./docs/CROSS_PLATFORM_GGUF_PLACEMENT.md
+./docs/CURRENT_HUB_STATUS.md
+./docs/CUSTOM_DUAL_EXHAUST_GUIDE.md
+./docs/GEMINI_MODEL_SWITCH.md
+./docs/LLAMA_CPP_PLATFORM_LINKING.md
+./docs/MORNING_ACTION_LIST.md
+./docs/NEXT_100_TASKS_2026-08-26.md
+./docs/NEXT_FIVE_OG_LIVE_PATHS_2026-08-26.md
+./docs/OG_TRUTH_AND_CHARM_GATE_2026-08-26.md
+./docs/REAR_SHOCK_REPLACEMENT_4WD.md
+./docs/SHARE_WITH_TESTER.md
+./docs/SHIP_PASS_2026-08-26.md
+./docs/SPORT_TRAC_100_JOBS_L3.md
+./docs/SPORT_TRAC_4WD_WIRING_CATALOG.md
+./docs/SPORT_TRAC_ALL_REPAIRS.md
+./docs/SPORT_TRAC_BANK2_LEAN_KIT.md
+./docs/SPORT_TRAC_EVERYTHING.md
+./docs/SPORT_TRAC_FASTENERS.md
+./docs/SPORT_TRAC_LEAN_MISFIRE_REPAIRS.md
+./docs/SPORT_TRAC_OG_SCALE.md
+./full_app_inventory.txt
+./gradle.properties
+./gradle/libs.versions.toml
+./manual_archive_full_audit.tsv
+./manual_reaudit_rear_click_exhaust.txt
+./manual_relevant_pages.txt
+./metadata.json
+./parts_catalog_summary.tsv
+./research/Tool_Sponsorship_Shortlist.md
+./research/android_failure_isolation_2026-08-18.txt
+./research/audit_and_build_evidence_2026-08-18.txt
+./research/career_transition_research_notes.md
+./research/evidence_inventory_2026-08-18.txt
+./research/independent_audit_working_2026-08-18.md
+./research/tool_sponsorship_shortlist_notes.md
+./settings.gradle.kts
+./source_notes.md
+./todo.md
+./tools/4wd_reference.json
+./tools/audit_manual_archive.py
+./tools/build_wiring_catalog.py
+./tools/crawl_charm_4wd_vin_k.py
+./tools/extract_2wd_manual.py
+./tools/extract_4wd_reference.py
+./tools/extract_manual_pages.py
+./tools/extract_model_inventory.py
+./tools/render_model_coverage_chart.py
+./tools/validate_charm_source_package.py
+./tools/validate_glb.py
+./tools/validate_rear_shock.py
+./tools/wiring_catalog.json
+
+=== ANDROID FILE COUNTS ===
+    145 kt
+     10 xml
+     10 webp
+      2 json
+      1 tsv
+      1 pro
+      1 png
+      1 md
+      1 kts
+      1 jpg
+      1 h
+      1 glb
+      1 gitignore
+      1 cpp
+
+=== KOTLIN FILES ===
+app/src/androidTest/java/com/example/ExampleInstrumentedTest.kt
+app/src/main/java/com/example/MainActivity.kt
+app/src/main/java/com/example/api/GeminiApiService.kt
+app/src/main/java/com/example/audio/MentorAudioPlayer.kt
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt
+app/src/main/java/com/example/data/CharmWorkshopIndex.kt
+app/src/main/java/com/example/data/CommunityForumThreads.kt
+app/src/main/java/com/example/data/CommunityRepairVideos.kt
+app/src/main/java/com/example/data/ForscanData.kt
+app/src/main/java/com/example/data/GeminiDiagnosticRepository.kt
+app/src/main/java/com/example/data/GltfCadAssetService.kt
+app/src/main/java/com/example/data/MaintenanceRepository.kt
+app/src/main/java/com/example/data/MentorVoiceSettingsRepository.kt
+app/src/main/java/com/example/data/OfficialOwnerPublications.kt
+app/src/main/java/com/example/data/OfflineCacheRepository.kt
+app/src/main/java/com/example/data/OwnerGuideSpecs.kt
+app/src/main/java/com/example/data/PartDataLoader.kt
+app/src/main/java/com/example/data/PartStoreCatalogRanking.kt
+app/src/main/java/com/example/data/PublishedSportTracData.kt
+app/src/main/java/com/example/data/RepairChecklistRepository.kt
+app/src/main/java/com/example/data/RetailerSearchLinks.kt
+app/src/main/java/com/example/data/SportTracBank2LeanKit.kt
+app/src/main/java/com/example/data/SportTracCompleteAssembly.kt
+app/src/main/java/com/example/data/SportTracData.kt
+app/src/main/java/com/example/data/SportTracHullExtras.kt
+app/src/main/java/com/example/data/SportTracPartsCatalog.kt
+app/src/main/java/com/example/data/SportTracPartsReadiness.kt
+app/src/main/java/com/example/data/SportTracServiceManualDiagnostics.kt
+app/src/main/java/com/example/data/SportTracVehicleScale.kt
+app/src/main/java/com/example/data/VehicleAsset.kt
+app/src/main/java/com/example/data/VehicleHardwareCatalog.kt
+app/src/main/java/com/example/data/local/AcousticReferenceDao.kt
+app/src/main/java/com/example/data/local/AcousticReferenceEntity.kt
+app/src/main/java/com/example/data/local/AppDatabase.kt
+app/src/main/java/com/example/data/local/CacheManifestEntity.kt
+app/src/main/java/com/example/data/local/Cached3DAssetEntity.kt
+app/src/main/java/com/example/data/local/CachedRepairManualEntity.kt
+app/src/main/java/com/example/data/local/MaintenanceDao.kt
+app/src/main/java/com/example/data/local/MaintenanceEntity.kt
+app/src/main/java/com/example/data/local/OfflineCacheDao.kt
+app/src/main/java/com/example/data/local/RepairChecklistDao.kt
+app/src/main/java/com/example/data/local/RepairChecklistEntity.kt
+app/src/main/java/com/example/data/local/UpcomingTaskEntity.kt
+app/src/main/java/com/example/localai/LlamaNative.kt
+app/src/main/java/com/example/localai/ModelInstallPath.kt
+app/src/main/java/com/example/localai/OfflineEngine.kt
+app/src/main/java/com/example/mentor/MentorKnowledge.kt
+app/src/main/java/com/example/mentor/OnModelInstruction.kt
+app/src/main/java/com/example/model/ChatMessage.kt
+app/src/main/java/com/example/model/Component3DModel.kt
+app/src/main/java/com/example/model/DiagnosticSymptom.kt
+app/src/main/java/com/example/model/FeatureReadiness.kt
+app/src/main/java/com/example/model/ForscanModel.kt
+app/src/main/java/com/example/model/MaintenanceItem.kt
+app/src/main/java/com/example/model/MentorVoiceProfile.kt
+app/src/main/java/com/example/model/PartCartItem.kt
+app/src/main/java/com/example/model/PartListingTruth.kt
+app/src/main/java/com/example/model/PartStoreRanking.kt
+app/src/main/java/com/example/model/PriceWatchModels.kt
+app/src/main/java/com/example/model/ReadinessDashboardModels.kt
+app/src/main/java/com/example/model/RecommendationIntegrity.kt
+app/src/main/java/com/example/model/VehicleSystem.kt
+app/src/main/java/com/example/navigation/FeatureRoutePolicy.kt
+app/src/main/java/com/example/obd/OBD2_BLUETOOTH_BRIDGE.kt
+app/src/main/java/com/example/physics/Physics3DEngine.kt
+app/src/main/java/com/example/physics/PhysicsAssemblyFactory.kt
+app/src/main/java/com/example/service/AudioAnalysisPipeline.kt
+app/src/main/java/com/example/service/CadStepIngestionService.kt
+app/src/main/java/com/example/service/GltfCadModelService.kt
+app/src/main/java/com/example/service/MaintenanceAlarmReceiver.kt
+app/src/main/java/com/example/service/MaintenanceSchedulerService.kt
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt
+app/src/main/java/com/example/ui/components/AcousticSoundDiagnosticDialog.kt
+app/src/main/java/com/example/ui/components/AddServiceLogDialog.kt
+app/src/main/java/com/example/ui/components/AddUpcomingTaskDialog.kt
+app/src/main/java/com/example/ui/components/ArOverlayView.kt
+app/src/main/java/com/example/ui/components/CadStepIngestionDialog.kt
+app/src/main/java/com/example/ui/components/CameraMeasurementDialog.kt
+app/src/main/java/com/example/ui/components/ColorSegmentBar.kt
+app/src/main/java/com/example/ui/components/ComponentDetailSheet.kt
+app/src/main/java/com/example/ui/components/CustomFeedbackComponents.kt
+app/src/main/java/com/example/ui/components/DiagnosticFlowDialog.kt
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt
+app/src/main/java/com/example/ui/components/ExplodedPhysicsDialog.kt
+app/src/main/java/com/example/ui/components/ForscanDialog.kt
+app/src/main/java/com/example/ui/components/FourWheelDriveDiagram.kt
+app/src/main/java/com/example/ui/components/GeminiChatView.kt
+app/src/main/java/com/example/ui/components/Interactive3DViewport.kt
+app/src/main/java/com/example/ui/components/InteractiveRepairViewer.kt
+app/src/main/java/com/example/ui/components/LayerController.kt
+app/src/main/java/com/example/ui/components/MaintenanceNotificationDialog.kt
+app/src/main/java/com/example/ui/components/MentorDock.kt
+app/src/main/java/com/example/ui/components/MentorModeDialog.kt
+app/src/main/java/com/example/ui/components/MentorVoiceSettingsDialog.kt
+app/src/main/java/com/example/ui/components/OfflineCacheDialog.kt
+app/src/main/java/com/example/ui/components/OnModelInstructionOverlay.kt
+app/src/main/java/com/example/ui/components/PriceWatchDialog.kt
+app/src/main/java/com/example/ui/components/ReadinessDashboardDialog.kt
+app/src/main/java/com/example/ui/components/RepairViewerWithData.kt
+app/src/main/java/com/example/ui/components/SafeSceneLoadGate.kt
+app/src/main/java/com/example/ui/components/SceneViewGltfViewport.kt
+app/src/main/java/com/example/ui/components/SymptomTroubleshootingDialog.kt
+app/src/main/java/com/example/ui/components/TeamPanelDialog.kt
+app/src/main/java/com/example/ui/components/TorqueSpecsQuickReference.kt
+app/src/main/java/com/example/ui/components/TorqueWrenchSimulatorDialog.kt
+app/src/main/java/com/example/ui/components/UpcomingTasksListView.kt
+app/src/main/java/com/example/ui/components/VehicleHealthDashboard.kt
+app/src/main/java/com/example/ui/components/VoiceControlOverlay.kt
+app/src/main/java/com/example/ui/screens/DiagnosticsScreen.kt
+app/src/main/java/com/example/ui/screens/LoungeScreen.kt
+app/src/main/java/com/example/ui/screens/MaintenanceScreen.kt
+app/src/main/java/com/example/ui/screens/Model3DScreen.kt
+app/src/main/java/com/example/ui/screens/PartsShoppingScreen.kt
+app/src/main/java/com/example/ui/screens/RepairManualScreen.kt
+app/src/main/java/com/example/ui/screens/SafeProcedural3DRoute.kt
+app/src/main/java/com/example/ui/screens/VehicleAccuracyBlockedScreen.kt
+app/src/main/java/com/example/ui/screens/VehicleHubRoute.kt
+app/src/main/java/com/example/ui/theme/Color.kt
+app/src/main/java/com/example/ui/theme/Theme.kt
+app/src/main/java/com/example/ui/theme/Type.kt
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt
+app/src/main/java/com/example/util/FastFourierTransform.kt
+app/src/main/java/com/example/util/GltfModelParser.kt
+app/src/main/java/com/example/util/HapticHelper.kt
+app/src/main/java/com/example/util/MaterialResponse.kt
+app/src/main/java/com/example/util/MentorTtsManager.kt
+app/src/main/java/com/example/util/SubAssemblyMeshGenerator.kt
+app/src/main/java/com/example/util/VoiceCommandManager.kt
+app/src/test/java/com/example/ExampleRobolectricTest.kt
+app/src/test/java/com/example/ExampleUnitTest.kt
+app/src/test/java/com/example/GreetingScreenshotTest.kt
+app/src/test/java/com/example/data/CharmWorkshopIndexTest.kt
+app/src/test/java/com/example/data/OfficialPublicationsAndCommunityTest.kt
+app/src/test/java/com/example/data/OwnerGuideAlignmentTest.kt
+app/src/test/java/com/example/data/PartStoreCatalogRankingTest.kt
+app/src/test/java/com/example/data/SportTracCompleteAssemblyTest.kt
+app/src/test/java/com/example/data/SportTracFastenerLayerTest.kt
+app/src/test/java/com/example/data/SportTracVehicleScaleTest.kt
+app/src/test/java/com/example/mentor/MentorKnowledgeTest.kt
+app/src/test/java/com/example/mentor/OnModelInstructionTest.kt
+app/src/test/java/com/example/model/FeatureReadinessContractTest.kt
+app/src/test/java/com/example/model/PartListingTruthTest.kt
+app/src/test/java/com/example/model/ProceduralModelRegressionTest.kt
+app/src/test/java/com/example/model/RecommendationIntegrityTest.kt
+app/src/test/java/com/example/navigation/FeatureRoutePolicyTest.kt
+
+=== ASSETS ===
+app/src/main/assets/SOUND_LIBRARY_MANIFEST.json
+app/src/main/assets/models/README.md
+app/src/main/assets/models/ford_explorer_sport_trac_2004.glb
+app/src/main/assets/parts.tsv
+app/src/main/assets/parts_data.json
+
+=== TEST FILES ===
+./.github/workflows/tester-apk.yml
+./app/src/androidTest/java/com/example/ExampleInstrumentedTest.kt
+./app/src/test/java/com/example/ExampleRobolectricTest.kt
+./app/src/test/java/com/example/ExampleUnitTest.kt
+./app/src/test/java/com/example/GreetingScreenshotTest.kt
+./app/src/test/java/com/example/data/CharmWorkshopIndexTest.kt
+./app/src/test/java/com/example/data/OfficialPublicationsAndCommunityTest.kt
+./app/src/test/java/com/example/data/OwnerGuideAlignmentTest.kt
+./app/src/test/java/com/example/data/PartStoreCatalogRankingTest.kt
+./app/src/test/java/com/example/data/SportTracCompleteAssemblyTest.kt
+./app/src/test/java/com/example/data/SportTracFastenerLayerTest.kt
+./app/src/test/java/com/example/data/SportTracVehicleScaleTest.kt
+./app/src/test/java/com/example/mentor/MentorKnowledgeTest.kt
+./app/src/test/java/com/example/mentor/OnModelInstructionTest.kt
+./app/src/test/java/com/example/model/FeatureReadinessContractTest.kt
+./app/src/test/java/com/example/model/PartListingTruthTest.kt
+./app/src/test/java/com/example/model/ProceduralModelRegressionTest.kt
+./app/src/test/java/com/example/model/RecommendationIntegrityTest.kt
+./app/src/test/java/com/example/navigation/FeatureRoutePolicyTest.kt
+./app/src/test/screenshots/greeting.png
+
+=== BUILD FILES ===
+./app/build.gradle.kts
+./build.gradle.kts
+./settings.gradle.kts
+
+=== GIT STATUS ===
+ [31mM[m source_notes.md
+ [31mM[m todo.md
+[31m??[m docs/CUSTOM_DUAL_EXHAUST_GUIDE.md
+[31m??[m full_app_inventory.txt
+
+=== GIT LOG ===
+[33mfa0a60a[m Upload complete factory manual archive
+[33m0d9fa91[m Add verified 4WD rear shock replacement workflow
+[33m29344b0[m Organize extracted specs and model validation artifacts
+[33m1a8bb06[m Embed complete 4WD wiring source package
+[33mf0b0e0f[m Document ten-change repository update cadence
+[33m7b08d30[m Place 4WD GLB at Android model placeholder path
+[33me40173a[m Add 2004 Sport Trac 4WD technical model package
+[33m0f663a0[m Add 100-job 3-level check ledger for 2004 Sport Trac 4WD VIN K.

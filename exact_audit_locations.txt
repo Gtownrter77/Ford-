@@ -1,0 +1,228 @@
+=== FEATURE ROUTE POLICY ===
+     9	/**
+    10	 * Per-route enablement for the 2026-08-26 increment.
+    11	 *
+    12	 * This replaces the all-or-nothing [SAFE_SHELL_MODE] switch. Lounge stays the
+    13	 * cold-launch surface. Text and list routes are live. The procedural 3D Canvas
+    14	 * is reachable only after an explicit safe-scene load and is capped to a
+    15	 * bounded component set.
+    16	 */
+    17	object FeatureRoutePolicy {
+    18	    const val SAFE_SCENE_COMPONENT_CAP = 8
+    19
+    20	    fun isEnabled(tab: MainTab): Boolean = when (tab) {
+    21	        MainTab.LOUNGE -> true
+    22	        MainTab.REPAIR_MANUAL -> true
+    23	        MainTab.MAINTENANCE -> true
+    24	        MainTab.DIAGNOSTICS -> true
+    25	        MainTab.PARTS_CART -> true
+    26	        MainTab.VIEW_3D -> true
+    27	    }
+    28
+    29	    fun requiresFeatureData(tab: MainTab): Boolean = when (tab) {
+    30	        MainTab.LOUNGE -> false
+    31	        MainTab.PARTS_CART -> false
+    32	        MainTab.VIEW_3D -> false
+    33	        MainTab.REPAIR_MANUAL -> true
+    34	        MainTab.MAINTENANCE -> true
+    35	        MainTab.DIAGNOSTICS -> false
+    36	    }
+    37
+    38	    /**
+    39	     * First interactive 3D frame must not receive the full 56-part catalog.
+    40	     * ALL filter: selected component only. System filter: up to eight parts.
+    41	     */
+    42	    fun boundedSceneComponents(
+    43	        allComponents: List<Component3DModel> = PublishedSportTracData.components,
+    44	        selectedComponent: Component3DModel?,
+    45	        activeSystem: VehicleSystem
+    46	    ): List<Component3DModel> {
+    47	        if (activeSystem != VehicleSystem.ALL) {
+    48	            return allComponents
+    49	                .filter { it.system == activeSystem }
+    50	                .take(SAFE_SCENE_COMPONENT_CAP)
+    51	        }
+    52	        val focused = selectedComponent ?: allComponents.firstOrNull()
+    53	        return listOfNotNull(focused)
+    54	    }
+    55	}
+=== SHIP PASS ===
+     1	# Ship pass 2026-08-26
+     2
+     3	## Built
+     4	Source on `main` now matches the Owner Guide for fluids/Motorcraft/capacities that the UI actually shows.
+     5
+     6	## How to install the APK
+     7	This sandbox has no Android SDK. On the phone/dev machine:
+     8
+     9	```
+    10	git clone https://github.com/Gtownrter77/Ford-.git
+    11	cd Ford-
+    12	./gradlew :app:assembleDebug
+    13	```
+    14
+    15	Install `app/build/outputs/apk/debug/app-debug.apk`.
+    16
+    17	## Still not claimed
+    18	- Physical-device ANR/logcat proof
+    19	- Licensed wreck GLB
+    20	- Live OBD / FORScan session
+    21	- VIN-verified community videos
+    22	- Live retailer checkout
+=== MODEL BUILD SUMMARY ===
+    45	| Collections present | 10 requested organizational collections |
+    46	| Render dimensions | 3840 × 2160 |
+    47	| GLB export | Completed |
+    48	| Blender version used | 4.0.2 |
+    49
+    50	## Deliverables
+    51
+    52	The primary files are `explorer_sport_trac_teaching_model.blend`, `explorer_sport_trac_teaching_model.glb`, `front_3_4_4k.png`, `side_4k.png`, and `rear_3_4_4k.png`. Supporting files include `extract_manual.py`, the structured extraction outputs under `extracted/`, `build_vehicle.py`, `render_4k.py`, `validate_blend.py`, and `blend_validation.json`.
+    53
+    54	## Recommended next refinement
+    55
+    56	For a final project requiring production-level mechanical accuracy, the next phase should manually reconcile each modeled assembly against the corresponding exploded-view page, convert verified torque values into object-level metadata, import or construct a complete connector/pin database, and replace the teaching primitives with measured or OEM CAD geometry. The current file is intentionally structured to make that refinement practical without reorganizing the scene.
+=== BLENDER CONTRACT ===
+     1	# Blender-level graphics contract
+     2
+     3	The product wraps around a 3D truck. Phone-quality graphics at Blender level
+     4	are **Filament / SceneView rendering a licensed GLB**, not the Compose Canvas
+     5	procedural mesh.
+     6
+     7	## What the app can render today
+     8
+     9	| Path | Quality | Status |
+    10	|---|---|
+    11	| Compose Canvas procedural parts | Training schematic | Live behind the safe-scene gate |
+    12	| SceneView / Filament GLB | PBR, IBL, real materials | Code present; licensed Sport Trac wreck GLB is **not packaged** |
+    13	| Blender `.blend` opened in-app | Not an Android runtime format | Export GLB first |
+    14
+    15	Canvas is the ANR-safe practice layer. It will never look like a Blender Cycles
+    16	hero shot. Do not describe it as Blender-level.
+    17
+    18	## Required asset to get Blender-level look
+    19
+    20	1. License a 2004 Explorer Sport Trac wreck or high-detail truck GLB.
+    21	2. In Blender: Principled BSDF only, `metallic` / `roughness` maps, no
+    22	   Cycles-only nodes.
+    23	3. Export glTF 2.0 Binary (`.glb`), Y-up, +Z forward, applied scale.
+    24	4. Keep these node names so Mentor and parts_data.json can bind:
+    25
+    26	```
+    27	front_bumper
+    28	front_left_wheel
+    29	driver_front_door
+    30	engine_assembly
+    31	rear_bumper
+    32	```
+    33
+    34	5. Place the file at:
+    35
+    36	```
+    37	app/src/main/assets/models/ford_explorer_sport_trac_2004_wreck.glb
+    38	```
+    39
+    40	6. Rebuild. `InteractiveRepairViewer` already refuses to fake a truck if that
+    41	   file is missing.
+    42
+    43	## Mentor binding
+    44
+    45	Selecting a GLB node must open the Mentor dock for the matching
+    46	`Component3DModel` / `parts_data.json` part. The Mentor speaks packaged Sport
+    47	Trac knowledge (torque, TSB-style failure patterns, tools). It does not invent
+    48	OEM data that is not in the catalog.
+=== SOURCE ARCHIVE README ===
+     1	# Complete 2004 Explorer Sport Trac Factory Manual Archive
+     2
+     3	This archive contains the complete extracted manual source supplied for the project.
+     4
+     5	- HTML pages: 9,188
+     6	- Total files: 16,111
+     7	- Source configuration: 2WD V6-4.0L VIN K Flex Fuel (the 4WD fitment mismatch remains documented)
+     8	- Archive: `ford_explorer_sport_trac_2004_manual.tar.gz`
+     9	- SHA-256: see `ford_explorer_sport_trac_2004_manual.SHA256`
+    10
+    11	Extract from the repository root with:
+    12
+    13	```bash
+    14	tar -xzf docs/source_archives/ford_explorer_sport_trac_2004_manual.tar.gz
+    15	```
+=== WORKFLOW ===
+     1	name: Tester APK
+     2
+     3	on:
+     4	  workflow_dispatch:
+     5	  push:
+     6	    branches: [main]
+     7	    paths:
+     8	      - "app/**"
+     9	      - ".github/workflows/tester-apk.yml"
+    10
+    11	permissions:
+    12	  contents: write
+    13
+    14	jobs:
+    15	  debug-apk:
+    16	    runs-on: ubuntu-latest
+    17	    steps:
+    18	      - uses: actions/checkout@v4
+    19	      - uses: actions/setup-java@v4
+    20	        with:
+    21	          distribution: temurin
+    22	          java-version: "17"
+    23	      - uses: android-actions/setup-android@v3
+    24	      - name: Prepare env and debug keystore
+    25	        run: |
+    26	          cp -n .env.example .env || true
+    27	          if [ ! -f debug.keystore ]; then
+    28	            keytool -genkeypair -v -keystore debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
+    29	          fi
+    30	          chmod +x gradlew || true
+    31	      - name: Assemble debug APK
+    32	        run: ./gradlew :app:assembleDebug --stacktrace
+    33	      - name: Upload APK artifact
+    34	        uses: actions/upload-artifact@v4
+    35	        with:
+    36	          name: mentor-sport-trac-debug
+    37	          path: app/build/outputs/apk/debug/*.apk
+    38	          if-no-files-found: warn
+=== 4WD CATALOG ===
+     1	# 2004 Ford Explorer Sport Trac 4WD Wiring Evidence Catalog
+     2
+     3	## Verified source package
+     4
+     5	The repository now embeds the collected 4WD VIN K electrical diagram source tree under [`docs/wiring_diagrams/charm_4wd_vin_k/`](wiring_diagrams/charm_4wd_vin_k/). The package contains 274 discovered CHARM category entries, 147 saved source HTML pages, 357 downloaded PNG plates on disk, and a root `index.json` with source URLs, HTTP statuses, plate URLs, local paths, and byte sizes. All discovered category requests returned HTTP 200 and all indexed plate references resolve to files in the package. `SHA256SUMS` covers the embedded files.
+     6
+     7	The package was fetched from the [Operation CHARM 2004 Explorer Sport Trac 4WD V6-4.0L VIN K Flex Fuel hub](https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/) and its live Repair and Diagnosis diagram tree. The fetcher is retained at [`tools/crawl_charm_4wd_vin_k.py`](../tools/crawl_charm_4wd_vin_k.py).
+     8
+     9	## 4WD control diagrams
+    10
+    11	The most relevant verified 4WD source family is the local [`transfer_case/`](wiring_diagrams/charm_4wd_vin_k/transfer_case/) folder. It includes three source plates for the Transfer Case electrical diagram family:
+    12
+    13	| Plate | Local source file | What is visible on the plate |
+    14	|---|---|---|
+    15	| 34-1 | [`34-1__1027137804.png`](wiring_diagrams/charm_4wd_vin_k/transfer_case/34-1__1027137804.png) | Four-wheel-drive control module, transfer-case assembly, C281A/C281B, C215/C350, fuse feeds, VREF/VPWR, VSS, grounds, wire color/gauge labels, and transfer-case motor/position-switch circuits. |
+    16	| 34-2 | [`34-2__1027155903.png`](wiring_diagrams/charm_4wd_vin_k/transfer_case/34-2__1027155903.png) | 4x4 mode switch with Off/High/Low positions, 4WD Low/High instrument indications, C284, central security module, data-link references, grounds, illumination, and wire color/gauge labels. |
+    17	| 34-3 | [`34-3__1027171573.png`](wiring_diagrams/charm_4wd_vin_k/transfer_case/34-3__1027171573.png) | Four-wheel-drive control module reference, brake-pedal-position input, digital transmission-range sensor, C278/C281A/C167/C144, grounds, splice references, and 4x4 Low range enable logic. |
+    18
+    19	The source page for these plates is recorded in [`transfer_case/metadata.json`](wiring_diagrams/charm_4wd_vin_k/transfer_case/metadata.json), with the raw HTML preserved beside it.
+    20
+    21	## Other embedded electrical diagram families
+    22
+    23	The complete package includes the available source pages and plates for air-bag systems, anti-lock brakes/traction control, charging, climate control, cruise control, data-link connector, daytime-running lamps, fog/driving lamps, headlamps, horn, ignition, instrument cluster, instrument illumination, keyless entry, lighting, neutral-safety switch, overhead console, parking/marker/license-plate lamps, power door locks, power lumbar/seats/mirrors, radio/stereo/CD, remote alarm/locks, seat temperature elements, shift interlock, sunroof/moonroof, tail/trailer lamps and connector, transfer case, turn signals, windows, and wiper/washer systems. The source tree also preserves diagram sets, component views, grounds, splices, harness pages, and connector-related pages discovered from the live tree.
+    24
+    25	## Repository-authored evidence versus factory source
+    26
+    27	The Kotlin data and earlier extraction documents remain useful as a teaching index for connector descriptions and component relationships, but they are not a substitute for the embedded source plates. Repository-authored statements such as connector pin counts, repair-step wording, and torque strings are retained with their provenance and should not be promoted to factory specifications unless the corresponding source page or plate verifies them.
+    28
+    29	The local Lemon archive originally downloaded for this project is explicitly labeled **2WD**. It must not be used to represent the 4WD wiring source. The embedded CHARM tree is the source used for the 4WD diagram package. The repository also does not claim that every electrical diagram has a complete terminal-by-terminal pinout; the source package contains only the pages and plates exposed by the live 4WD tree.
+    30
+    31	## Integrity status
+    32
+    33	A package validator confirms that all discovered category requests returned HTTP 200, all indexed plate references resolve to local files, no stale error files remain, and the embedded PNG files are recognized as PNG images. The package is ready for repository use as a source archive, subject to the source provider’s redistribution terms.
+    34
+    35	## References
+    36
+    37	[1]: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/ "Operation CHARM: 2004 Ford Explorer Sport Trac 4WD-4.0L VIN K Flex Fuel"
+    38	[2]: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/ "Operation CHARM: Repair and Diagnosis"
+    39	[3]: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Transfer%20Case/ "Operation CHARM: Transfer Case Electrical Diagrams"

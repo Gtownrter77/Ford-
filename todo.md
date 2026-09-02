@@ -298,3 +298,15 @@
 - [x] Package the complete extracted approximately 9.2k-page HTML manual archive for repository storage.
 - [x] Verify page count, archive integrity, size, and checksum before commit.
 - [x] Commit and push the complete archive, then verify the remote commit and clean working tree.
+
+## Custom dual-exhaust guide
+- [x] Extract factory exhaust layout, service procedure, parts, and torque evidence from the complete manual archive.
+- [x] Separate factory-documented components from custom dual-tailpipe fabrication parts.
+- [x] Cross-check suspension, fuel-tank, heat-shield, emissions, and clearance risks.
+- [x] Deliver a step-by-step parts list and installation guide with manual page references.
+
+## Full app audit and three-level verification
+- [x] Inventory every app section, route, data registry, workflow, asset, and repository documentation area.
+- [x] Run level 1 source/static checks, level 2 asset/source-of-truth checks, and level 3 build/runtime evidence checks.
+- [x] Classify each section as verified and shippable, partially verified, blocked, or not implemented with exact locations.
+- [ ] Write and commit the complete audit report, push GitHub, and verify the remote commit and clean working tree.

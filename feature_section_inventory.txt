@@ -1,0 +1,1079 @@
+=== REGISTRY/DATA FILES ===
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt
+app/src/main/java/com/example/data/CharmWorkshopIndex.kt
+app/src/main/java/com/example/data/CommunityForumThreads.kt
+app/src/main/java/com/example/data/CommunityRepairVideos.kt
+app/src/main/java/com/example/data/ForscanData.kt
+app/src/main/java/com/example/data/GeminiDiagnosticRepository.kt
+app/src/main/java/com/example/data/GltfCadAssetService.kt
+app/src/main/java/com/example/data/MaintenanceRepository.kt
+app/src/main/java/com/example/data/MentorVoiceSettingsRepository.kt
+app/src/main/java/com/example/data/OfficialOwnerPublications.kt
+app/src/main/java/com/example/data/OfflineCacheRepository.kt
+app/src/main/java/com/example/data/OwnerGuideSpecs.kt
+app/src/main/java/com/example/data/PartDataLoader.kt
+app/src/main/java/com/example/data/PartStoreCatalogRanking.kt
+app/src/main/java/com/example/data/PublishedSportTracData.kt
+app/src/main/java/com/example/data/RepairChecklistRepository.kt
+app/src/main/java/com/example/data/RetailerSearchLinks.kt
+app/src/main/java/com/example/data/SportTracBank2LeanKit.kt
+app/src/main/java/com/example/data/SportTracCompleteAssembly.kt
+app/src/main/java/com/example/data/SportTracData.kt
+app/src/main/java/com/example/data/SportTracHullExtras.kt
+app/src/main/java/com/example/data/SportTracPartsCatalog.kt
+app/src/main/java/com/example/data/SportTracPartsReadiness.kt
+app/src/main/java/com/example/data/SportTracServiceManualDiagnostics.kt
+app/src/main/java/com/example/data/SportTracVehicleScale.kt
+app/src/main/java/com/example/data/VehicleAsset.kt
+app/src/main/java/com/example/data/VehicleHardwareCatalog.kt
+app/src/main/java/com/example/model/ChatMessage.kt
+app/src/main/java/com/example/model/Component3DModel.kt
+app/src/main/java/com/example/model/DiagnosticSymptom.kt
+app/src/main/java/com/example/model/FeatureReadiness.kt
+app/src/main/java/com/example/model/ForscanModel.kt
+app/src/main/java/com/example/model/MaintenanceItem.kt
+app/src/main/java/com/example/model/MentorVoiceProfile.kt
+app/src/main/java/com/example/model/PartCartItem.kt
+app/src/main/java/com/example/model/PartListingTruth.kt
+app/src/main/java/com/example/model/PartStoreRanking.kt
+app/src/main/java/com/example/model/PriceWatchModels.kt
+app/src/main/java/com/example/model/ReadinessDashboardModels.kt
+app/src/main/java/com/example/model/RecommendationIntegrity.kt
+app/src/main/java/com/example/model/VehicleSystem.kt
+
+=== COMPONENT IDS ===
+"${component.id}_service_bolt_${index + 1}"
+"${component.id}_service_seal"
+"${component.id}_service_washer_${index + 1}"
+"${component.id}_trim_screw_${index + 1}"
+"${id}_bolt_1"
+"${id}_gasket"
+"${id}_w"
+"${id}_washer_1"
+"abs_master_cylinder_3d"
+"ac_compressor"
+"ac_compressor_pressure_controls"
+"ac_condenser_lines_3d"
+"ac_evaporator_accumulator_3d"
+"ac_heat_readiness"
+"ac_service_ports_controls_3d"
+"airbag_driver_clockspring_3d"
+"airbag_rcm_sensors_3d"
+"airbag_seatbelt_pretensioners_3d"
+"alternator_ignition"
+"audio_door_speakers_subwoofer_3d"
+"body_cabin_reference"
+"brake_wheel_safety_readiness"
+"brakes_suspension"
+"cat_air_conditioning"
+"cat_audio_radio"
+"cat_cooling_overheat"
+"cat_engine_noise"
+"cat_transmission"
+"catback_exhaust_muffler_3d"
+"cylinder_heads_valvetrain_3d"
+"dash_dashboard_cluster_3d"
+"dash_hvac_radio_center_stack_3d"
+"dash_instrument_cluster_3d"
+"dash_wiring_harness_3d"
+"driveshaft_4x4"
+"engine_block"
+"exhaust_system"
+"front_control_arms_balljoints_3d"
+"front_windshield_3d"
+"fuel_tank_pump"
+"head_bolt_1"
+"head_bolt_2"
+"head_gasket_left"
+"head_gasket_right"
+"head_washer_1"
+"head_washer_2"
+"headlight_foglight_assemblies_3d"
+"heater_core_hvac_3d"
+"hvac_blend_door_actuator_3d"
+"hvac_blower_motor_3d"
+"intake_bolt_1"
+"intake_bolt_2"
+"intake_manifold"
+"intake_port_gasket_1"
+"intake_washer_1"
+"maintenance_ignition_readiness"
+"match_4x4_shift_motor"
+"match_5r55e_valvebody"
+"match_ac_clutch_shim"
+"match_ball_joints"
+"match_brake_rotors"
+"match_fan_clutch"
+"match_fuel_pump_checkvalve"
+"match_intake_gaskets"
+"match_power_steering_aeration"
+"match_thermostat_housing"
+"match_timing_tensioners"
+"mobility_drivetrain_readiness"
+"node_cylinder_head_left"
+"node_head_bolt_1"
+"node_head_gasket_left"
+"node_head_washer_1"
+"overhead_console_compass_3d"
+"oxygen_sensors_3d"
+"part_4x4_shift_motor"
+"part_ac_accumulator_murray"
+"part_ac_compressor_murray"
+"part_ac_condenser_murray"
+"part_airbag_clockspring_dorman"
+"part_airbag_front_crash_sensor"
+"part_airbag_seatbelt_pretensioner"
+"part_alternator_ultrapower"
+"part_blend_door_actuator_dorman"
+"part_blower_motor_murray"
+"part_blower_resistor_dorman"
+"part_brake_master_cylinder_dorman"
+"part_brake_pads_ceramic"
+"part_catback_muffler_walker"
+"part_cluster_led_bulbs_sylvania"
+"part_dash_fuse_block_dorman"
+"part_dash_wiring_repair_pigtails"
+"part_door_speakers_6x8"
+"part_front_rotor_vented"
+"part_front_wiper_blades_bosch"
+"part_generic_$componentId"
+"part_headlight_assembly_anzo"
+"part_headlight_bulbs_motorcraft"
+"part_heater_core_murray"
+"part_hub_assembly_moog"
+"part_instrument_cluster_dorman"
+"part_intake_gasket_felpro"
+"part_lug_nuts_dorman"
+"part_o2_sensor_bosch"
+"part_oil_filter_motorcraft"
+"part_oil_wix"
+"part_radio_head_unit"
+"part_radio_wiring_harness"
+"part_rear_brake_pads_rotors_bosch"
+"part_rear_shock_kyb_344269_pair"
+"part_rear_window_regulator_dorman"
+"part_serpentine_belt_gates"
+"part_spark_plug_bosch"
+"part_spark_plug_motorcraft"
+"part_subwoofer_pioneer"
+"part_sunroof_drain_cleaner_kit"
+"part_sunroof_drive_motor"
+"part_sunroof_weatherstrip_seal"
+"part_thermostat_housing_dorman"
+"part_timing_tensioner_cloyes"
+"part_tire_goodyear_adventure"
+"part_tool_brake_bleeder"
+"part_tool_digital_multimeter"
+"part_tool_din_keys"
+"part_tool_exhaust_cutter"
+"part_tool_fuel_pressure_tester"
+"part_tool_spring_compressor"
+"part_trans_filter_wix"
+"part_wheel_oe_aluminum"
+"part_windshield_urethane_3m"
+"part_wiring_harness_dorman"
+"pcv_elbow"
+"plug_b1_${i + 1}"
+"plug_b2_${i + 1}"
+"power_rear_window_assembly_3d"
+"power_sunroof_assembly_3d"
+"q_ac_symptom"
+"q_audio_symptom"
+"q_coolant_symptom"
+"q_engine_noise_type"
+"q_transmission_symptom"
+"radiator_assembly"
+"radio_mach500_head_unit_3d"
+"rear_brakes_3d"
+"rear_differential_88_3d"
+"rear_driveshaft_slip_yoke_3d"
+"rear_shock_absorbers_4wd_3d"
+"rear_suspension_readiness"
+"rear_window_power_slide_3d"
+"serpentine_belt"
+"stat_bolt_1"
+"stat_o_ring"
+"stat_washer_1"
+"steering_rack"
+"steering_wheel_airbag_column_3d"
+"sunroof_drain_tubes_shade_3d"
+"sunroof_glass_frame_3d"
+"sunroof_motor_drive_gear_3d"
+"sunroof_motor_tracks_3d"
+"sym_4x4_clunk_turn"
+"sym_4x4_flash"
+"sym_ac_blowing_warm"
+"sym_battery_drain"
+"sym_brake_shudder"
+"sym_clunk_speedbumps"
+"sym_cold_rattle"
+"sym_coolant_valley_leak"
+"sym_hard_drive_engage"
+"sym_lean_codes"
+"sym_long_crank_start"
+"sym_misfire_acceleration"
+"sym_no_heat_idle"
+"sym_od_light_flashing"
+"sym_overheat_traffic"
+"sym_power_steering_whine"
+"sym_rough_idle"
+"sym_shift_flare"
+"tail_light_reverse_assemblies_3d"
+"thermostat_housing"
+"throttle_body"
+"tires_wheels_3d"
+"transfer_case_shift_motor_3d"
+"transmission_5r55e"
+"transmission_solenoids"
+"truck_frame_body"
+"visibility_electrical_readiness"
+"water_pump"
+"wheel_bearings_hubs_3d"
+"wiring_lighting_3d"
+"wp_bolt_1"
+"wp_gasket"
+
+=== WORKFLOW / REPAIR IDS ===
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt:39:                audioSampleUrlOrResource = "acoustic_db/ref_40l_normal_idle.wav"
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt:51:                recommendedFix = "No repair necessary. Normal operating acoustic telemetry.",
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt:54:                audioSampleUrlOrResource = "acoustic_db/ref_40l_normal_cruise.wav"
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt:69:                audioSampleUrlOrResource = "acoustic_db/ref_sohc_chain_rattle.wav"
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt:84:                audioSampleUrlOrResource = "acoustic_db/ref_radio_whistle.wav"
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt:99:                audioSampleUrlOrResource = "acoustic_db/ref_water_pump_squeal.wav"
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt:114:                audioSampleUrlOrResource = "acoustic_db/ref_lifter_tick.wav"
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt:129:                audioSampleUrlOrResource = "acoustic_db/ref_fuel_pump_hum.wav"
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt:144:                audioSampleUrlOrResource = "acoustic_db/ref_power_steering_groan.wav"
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt:159:                audioSampleUrlOrResource = "acoustic_db/ref_exhaust_leak.wav"
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt:174:                audioSampleUrlOrResource = "training_profile/ac_compressor_pulley_growl"
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt:189:                audioSampleUrlOrResource = "training_profile/ac_clutch_cycling_context"
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt:204:                audioSampleUrlOrResource = "training_profile/ac_belt_squeal"
+app/src/main/java/com/example/data/CharmWorkshopIndex.kt:40:            listOf("repair", "diagnosis", "workshop")
+app/src/main/java/com/example/data/CommunityForumThreads.kt:4: * ExplorerForum / community Q&A from the repair-links pack.
+app/src/main/java/com/example/data/CommunityForumThreads.kt:42:            "https://www.justanswer.com/ford/1413h-2004-ford-explorer-sport-i-d-repair-brakes.html",
+app/src/main/java/com/example/data/CommunityRepairVideos.kt:6: * Community how-to videos from the repair-links pack.
+app/src/main/java/com/example/data/GeminiDiagnosticRepository.kt:284:                        Tap the **"Record & Compare Vehicle Sound"** button in the Acoustic AI tab, hold your phone mic near the noise for 5 seconds, and get an instant 3D BILT step-by-step fix guide with Big Mike voice coaching!
+app/src/main/java/com/example/data/GeminiDiagnosticRepository.kt:357:                        3. Tap any of the common symptom prompt cards (e.g., Engine Sputtering, Overheating, 5R55E Shift Flare, Cold Start Rattle) for step-by-step repair guides!
+app/src/main/java/com/example/data/GeminiDiagnosticRepository.kt:370:        sourceName: String,
+app/src/main/java/com/example/data/GeminiDiagnosticRepository.kt:381:            Audio Source: $sourceName
+app/src/main/java/com/example/data/GeminiDiagnosticRepository.kt:439:        generateLocalAcousticFallback(peakFrequencyHz, sourceName, topMatchTitle, topMatchConfidence)
+app/src/main/java/com/example/data/GeminiDiagnosticRepository.kt:456:        sourceName: String,
+app/src/main/java/com/example/data/GeminiDiagnosticRepository.kt:465:                **Acoustic Recording Source:** $sourceName
+app/src/main/java/com/example/data/GeminiDiagnosticRepository.kt:489:                **Acoustic Recording Source:** $sourceName
+app/src/main/java/com/example/data/GeminiDiagnosticRepository.kt:512:                **Acoustic Recording Source:** $sourceName
+app/src/main/java/com/example/data/GeminiDiagnosticRepository.kt:534:                **Acoustic Recording Source:** $sourceName
+app/src/main/java/com/example/data/MentorVoiceSettingsRepository.kt:25:        val torqueTwice = prefs.getBoolean(KEY_TORQUE_TWICE, true)
+app/src/main/java/com/example/data/MentorVoiceSettingsRepository.kt:35:            autoReadTorqueTwice = torqueTwice,
+app/src/main/java/com/example/data/MentorVoiceSettingsRepository.kt:72:        private const val KEY_TORQUE_TWICE = "auto_read_torque_twice"
+app/src/main/java/com/example/data/OfficialOwnerPublications.kt:16:        "Official Ford owner publication. Not the workshop manual. Fluids and Motorcraft numbers come from the Owner Guide; teardown steps do not."
+app/src/main/java/com/example/data/OfflineCacheRepository.kt:41:            val repairStepsJsonArray = JSONArray()
+app/src/main/java/com/example/data/OfflineCacheRepository.kt:42:            model.repairSteps.forEach { step ->
+app/src/main/java/com/example/data/OfflineCacheRepository.kt:44:                    put("stepNumber", step.stepNumber)
+app/src/main/java/com/example/data/OfflineCacheRepository.kt:45:                    put("title", step.title)
+app/src/main/java/com/example/data/OfflineCacheRepository.kt:46:                    put("instruction", step.instruction)
+app/src/main/java/com/example/data/OfflineCacheRepository.kt:47:                    put("warning", step.warning ?: "")
+app/src/main/java/com/example/data/OfflineCacheRepository.kt:48:                    put("tip", step.tip ?: "")
+app/src/main/java/com/example/data/OfflineCacheRepository.kt:50:                repairStepsJsonArray.put(obj)
+app/src/main/java/com/example/data/OfflineCacheRepository.kt:53:            val torqueSpecsJsonArray = JSONArray()
+app/src/main/java/com/example/data/OfflineCacheRepository.kt:54:            model.torqueSpecs.forEach { ts ->
+app/src/main/java/com/example/data/OfflineCacheRepository.kt:57:                    put("torqueFtLbs", ts.torqueFtLbs)
+app/src/main/java/com/example/data/OfflineCacheRepository.kt:58:                    put("torqueNm", ts.torqueNm)
+app/src/main/java/com/example/data/OfflineCacheRepository.kt:61:                torqueSpecsJsonArray.put(obj)
+app/src/main/java/com/example/data/OfflineCacheRepository.kt:91:                repairStepsJson = repairStepsJsonArray.toString(),
+app/src/main/java/com/example/data/OfflineCacheRepository.kt:92:                torqueSpecsJson = torqueSpecsJsonArray.toString(),
+app/src/main/java/com/example/data/OfflineCacheRepository.kt:105:            match.diagnosticVerificationSteps.forEach { step -> diagStepsArray.put(step) }
+app/src/main/java/com/example/data/OfflineCacheRepository.kt:171:            updateNotes = "Upgraded to 2004 Explorer Sport Trac Factory Service Pack v$targetVersion with updated CAD geometries and torque specs.",
+app/src/main/java/com/example/data/OwnerGuideSpecs.kt:7: * Not a workshop manual. Do not treat these as repair torque sequences.
+app/src/main/java/com/example/data/OwnerGuideSpecs.kt:32:        "Official 2004 OG: Motorcraft MERCON ATF (XT-2-QDX), not MERCON V. Fill to bottom of filler hole. XT-2 is discontinued. Shop substitute when XT-2 cannot be sourced: MERCON V (XT-5)."
+app/src/main/java/com/example/data/PartDataLoader.kt:7:/** Minimal repair-part record used by inspection UI and raycast lookups. */
+app/src/main/java/com/example/data/PartDataLoader.kt:23: * Supported JSON: either `[ {...} ]` or `{ "parts": [ {...} ] }`. The repair realm's
+app/src/main/java/com/example/data/PublishedSportTracData.kt:17:        MaintenanceScheduleItem("transfer_case", "Transfer Case Fluid Service", VehicleSystem.TRANSMISSION, 60000, 48, "1.3 qt Motorcraft MERCON ATF (XT-2-QDX) per 2004 OG", "Official OG is MERCON ATF, not MERCON V. Fill to filler-hole bottom. Shop substitute MERCON V only when XT-2 cannot be sourced.", "transfer_case"),
+app/src/main/java/com/example/data/PublishedSportTracData.kt:42:            torqueSpecs = component.torqueSpecs.map { spec ->
+app/src/main/java/com/example/data/PublishedSportTracData.kt:55:            repairSteps = component.repairSteps.map { step ->
+app/src/main/java/com/example/data/PublishedSportTracData.kt:56:                step.copy(
+app/src/main/java/com/example/data/PublishedSportTracData.kt:57:                    instruction = step.instruction
+app/src/main/java/com/example/data/SportTracBank2LeanKit.kt:25:        "Mitchell 2004 4.0L SOHC Explorer engine torque table: spark plug 20 Nm (15 lb-ft). Gap from 2004 OG."
+app/src/main/java/com/example/data/SportTracBank2LeanKit.kt:33:        val torque: String,
+app/src/main/java/com/example/data/SportTracBank2LeanKit.kt:35:        val source: String,
+app/src/main/java/com/example/data/SportTracBank2LeanKit.kt:49:        SpecRow("pcv", "PCV elbow clamp / hose at rear of intake", 1, "Snug. Do not crush the elbow.", "Hose-clamp pliers", "Community / prior Mentor path: dry-rot PCV elbow is a Bank 2 lean source.", true, FastenerCategory.WASHER_SEAL)
+app/src/main/java/com/example/data/SportTracBank2LeanKit.kt:52:    val torqueSpecs: List<TorqueSpec> = rows.map {
+app/src/main/java/com/example/data/SportTracBank2LeanKit.kt:53:        TorqueSpec(it.name, it.torque.substringBefore("/").trim(), it.torque.substringAfter("/").trim(), it.source)
+app/src/main/java/com/example/data/SportTracBank2LeanKit.kt:61:            specOrThread = it.torque,
+app/src/main/java/com/example/data/SportTracBank2LeanKit.kt:63:            notes = "${if (it.bank2) "Bank 2 lean path. " else ""}${it.source} Confirm VIN workshop manual."
+app/src/main/java/com/example/data/SportTracBank2LeanKit.kt:129:            torqueSpecs = component.torqueSpecs + torqueSpecs,
+app/src/main/java/com/example/data/SportTracData.kt:100:    // and explicit source labeling so geometry supports inspection rather than decorative illustration.
+app/src/main/java/com/example/data/SportTracData.kt:356:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:363:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:391:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:397:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:398:                    RepairStep(1, "Depressurize Fuel System", "Remove fuel pump relay and crank engine for 5 seconds to drop fuel rail line pressure.", warning = "Fuel is under 65 PSI. Wear safety goggles."),
+app/src/main/java/com/example/data/SportTracData.kt:401:                    RepairStep(4, "Replace Gaskets & Torque", "Install new silicone rubber press-in gaskets and torque in proper sequence.")
+app/src/main/java/com/example/data/SportTracData.kt:424:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:429:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:456:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:457:                    TorqueSpec("Thermostat Housing Bolts", "89 in-lbs", "10 Nm", "Plastic housing cracks if over-torqued"),
+app/src/main/java/com/example/data/SportTracData.kt:461:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:489:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:494:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:522:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:527:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:532:                    RepairStep(5, "Install New Pump", "Apply thin layer of RTV silicone sealant and torque bolts to 89 in-lbs.")
+app/src/main/java/com/example/data/SportTracData.kt:555:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:560:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:580:                description = "Electronically controlled 5-speed automatic transmission with torque converter lockup clutch and overdrive.",
+app/src/main/java/com/example/data/SportTracData.kt:588:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:594:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:597:                    RepairStep(3, "Unbolt Torque Converter", "Remove flywheel dust cover and unbolt torque converter nuts through access port."),
+app/src/main/java/com/example/data/SportTracData.kt:600:                commonSymptoms = listOf("Flashing O/D OFF dashboard light", "Delayed 2-3 gear shift engagement or flare", "Shudder during torque converter lockup"),
+app/src/main/java/com/example/data/SportTracData.kt:621:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:622:                    TorqueSpec("Solenoid Pack Retaining Bolts", "80 in-lbs", "9 Nm", "Critical torque to prevent valve body gasket blowouts"),
+app/src/main/java/com/example/data/SportTracData.kt:626:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:653:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:655:                    TorqueSpec("B+ Terminal Nut", "80 in-lbs", "9 Nm", "Do not over-torque terminal post")
+app/src/main/java/com/example/data/SportTracData.kt:658:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:685:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:691:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:718:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:724:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:751:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:757:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:784:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:790:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:817:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:823:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:850:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:856:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:883:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:884:                    TorqueSpec("Steering Rack Mounting Bolts", "85", "115", "Re-torque to frame crossmember"),
+app/src/main/java/com/example/data/SportTracData.kt:889:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:917:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:923:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:951:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:957:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:985:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:990:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:994:                    RepairStep(4, "Install New Stainless System", "Slide replacement muffler over axle tube, align polished tailpipe tip with rear bumper cut-out, and torque exhaust clamps.")
+app/src/main/java/com/example/data/SportTracData.kt:1017:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1021:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1025:                    RepairStep(4, "Apply Anti-Seize & Thread New Sensor", "Coat threads with nickel anti-seize paste, hand thread into boss, and torque to 30 lb-ft.")
+app/src/main/java/com/example/data/SportTracData.kt:1048:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1053:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1055:                    RepairStep(2, "Jack Up Frame Corner", "Place hydraulic jack under front lower control arm or rear axle tube and raise vehicle onto safety jack stands."),
+app/src/main/java/com/example/data/SportTracData.kt:1057:                    RepairStep(4, "Mount Wheel & Torque in Star Pattern", "Hand-thread lug nuts, lower truck to ground, and torque each lug to 100 lb-ft in a 5-point star pattern.")
+app/src/main/java/com/example/data/SportTracData.kt:1080:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1086:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1090:                    RepairStep(4, "Install Fresh Hub & Torque Axle Nut", "Clean knuckle bore, slide new hub onto axle shaft, tighten 3 knuckle bolts to 83 lb-ft, and torque axle nut to 184 lb-ft.")
+app/src/main/java/com/example/data/SportTracData.kt:1113:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1118:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1123:                    RepairStep(5, "Replace Backlight Bulbs or Solder Joints", "Twist bulb sockets 1/4 turn to replace burnt gauge illumination bulbs or repair odometer display cold solder joints.")
+app/src/main/java/com/example/data/SportTracData.kt:1146:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1151:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1178:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1183:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1203:                description = "High-torque 12V electric drive motor with worm gear gearbox, twin flexible spiral/helical push-pull cables, aluminum guide track channels, and internal limit switches.",
+app/src/main/java/com/example/data/SportTracData.kt:1211:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1216:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1244:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1248:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1267:                description = "Solar-control laminated safety glass front windshield with acoustic layer, integrated rearview mirror bracket, dual wiper arms with 22-inch blades, washer jet nozzles, and plastic wiper cowl intake grille.",
+app/src/main/java/com/example/data/SportTracData.kt:1275:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1280:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1307:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1312:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1339:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1344:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1371:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1376:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1403:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1408:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1435:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1441:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1468:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1473:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1500:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1505:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1524:                description = "Micro-stepper electric motor actuator with internal nylon gear reduction drive and feedback potentiometer, controlling the HVAC plenum chamber blend door flap to blend hot heater core air with cold A/C evaporator air.",
+app/src/main/java/com/example/data/SportTracData.kt:1532:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1536:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1563:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1568:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1595:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1600:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1619:                description = "Diagnostic-reference assembly representing the high- and low-side service ports, pressure-protection controls, A/C relay/fuse command path, compressor clutch connector, and associated harness routing. It is intended to guide safe observation and electrical inspection without bypassing safety controls or opening the sealed refrigerant circuit.",
+app/src/main/java/com/example/data/SportTracData.kt:1627:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1632:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1633:                    RepairStep(1, "Heat and engine-safety preflight", "Park outdoors or in a fully ventilated area, work in shade where possible, set the parking brake, and keep hands and clothing clear of belts and fans."),
+app/src/main/java/com/example/data/SportTracData.kt:1660:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1665:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1692:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1697:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1724:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1730:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1757:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1761:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1788:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1793:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1797:                    RepairStep(4, "Reinstall & Align Glass Panel", "Set glass panel onto brackets, tighten T25 screws finger tight, align glass flush with roof surface (+1mm higher at rear edge), and torque screws to 35 in-lbs.")
+app/src/main/java/com/example/data/SportTracData.kt:1812:                description = "High-torque 12V reversible electric gear motor with internal brass pinion drive gear, meshing with dual flexible steel helical cables to slide and tilt the sunroof glass, equipped with electronic overload limit sensing and manual hex key emergency closure socket.",
+app/src/main/java/com/example/data/SportTracData.kt:1820:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1824:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1843:                description = "Signature Sport Trac full-width power drop-down rear window assembly featuring heated tempered back glass with defrost grid, dual-cable scissor regulator track, high-torque electric motor, bottom drain trough, and rubber weatherstripping seal.",
+app/src/main/java/com/example/data/SportTracData.kt:1851:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1856:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1883:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1888:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1915:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1919:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1938:                description = "Cast aluminum BorgWarner 4411 electronic shift-on-the-fly transfer case complete with planetary gear reduction set, electromagnetic clutch assembly for 4x4 Auto torque splitting, internal oil pump, drive chain, and rear-mounted 12V DC electric shift encoder motor.",
+app/src/main/java/com/example/data/SportTracData.kt:1946:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1952:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1956:                    RepairStep(4, "Install New Shift Motor / Change ATF Fluid", "Align new motor socket onto triangular shaft pin, torque 10mm bolts, and drain/refill transfer case with 1.5 qts fresh MERCON V ATF.")
+app/src/main/java/com/example/data/SportTracData.kt:1979:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1984:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:1988:                    RepairStep(4, "Replace U-Joints & Grease Slip Yoke Splines", "Press out old dry needle bearing U-joints, install greaseable Spicer 1330 U-joints, apply PTFE grease to slip yoke splines, and torque flange bolts to 83 lb-ft with red threadlocker.")
+app/src/main/java/com/example/data/SportTracData.kt:2011:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:2017:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:2021:                    RepairStep(4, "Apply RTV Sealant & Refill Gear Oil", "Apply continuous 1/8-in bead of RTV grey silicone around cover pan, torque 10 bolts to 33 lb-ft, wait 1 hour, and fill with 2.5 qts 75W-140 synthetic gear oil + 4oz XL-3 friction modifier additive.")
+app/src/main/java/com/example/data/SportTracData.kt:2036:                description = "Cast aluminum cylinder heads for Cologne 4.0L SOHC V6 featuring 12 overhead valves (6 intake / 6 exhaust), single overhead camshaft per bank, hydraulic roller rocker arm followers, beehive valve springs, MLS multi-layer steel head gaskets, and torque-to-yield head bolts.",
+app/src/main/java/com/example/data/SportTracData.kt:2044:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:2047:                    TorqueSpec("Head Bolts - Pass 3", "Rotate +90°", "Angle Torque", "Final angle torque turn")
+app/src/main/java/com/example/data/SportTracData.kt:2050:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:2054:                    RepairStep(4, "Install MLS Head Gaskets & Torque Head Bolts", "Place fresh MLS steel head gaskets dry, position head, install NEW TTY bolts lubricated with engine oil, and follow 3-pass torque-to-yield sequence (26 ft-lb -> 59 ft-lb -> +90° turn).")
+app/src/main/java/com/example/data/SportTracData.kt:2077:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:2083:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:2087:                    RepairStep(4, "Press In Greaseable Ball Joint / Align Alignment", "Press in new greaseable ball joint, install snap ring, torque ball joint nuts, grease Zerk fitting, and perform 4-wheel alignment.")
+app/src/main/java/com/example/data/SportTracData.kt:2110:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:2113:                    TorqueSpec("Wheel nuts", "100", "135", "Reinstall wheel and torque in star pattern")
+app/src/main/java/com/example/data/SportTracData.kt:2116:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:2122:                    RepairStep(6, "Torque, lower, and inspect", "Torque the upper frame nuts to 17 lb-ft (23 N·m) and the lower bolts to 46 lb-ft (63 N·m) using the 4WD VIN K rear specification. Reinstall wheels and torque wheel nuts to 100 lb-ft (135 N·m), lower the vehicle, and perform a bounce/visual inspection for contact, loose hardware, or asymmetric ride height.", tip = "After a short, low-speed test, recheck for oil leakage, loose hardware, abnormal noise, and correct shock clearance. Stop immediately if the vehicle wanders or a mount shifts.")
+app/src/main/java/com/example/data/SportTracData.kt:2156:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:2161:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:2194:                torqueSpecs = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:2200:                repairSteps = listOf(
+app/src/main/java/com/example/data/SportTracData.kt:2419:                        optionText = "High-pitched whining or whistling sound from speakers that changes pitch when stepping on the gas pedal",
+app/src/main/java/com/example/data/SportTracHullExtras.kt:109:        torqueSpecs = emptyList(),
+app/src/main/java/com/example/data/SportTracHullExtras.kt:111:        repairSteps = emptyList(),
+app/src/main/java/com/example/data/SportTracPartsCatalog.kt:627:            id = "part_dash_wiring_repair_pigtails",
+app/src/main/java/com/example/data/SportTracPartsReadiness.kt:92:            description = "A focused replacement package for worn or leaking rear shocks on the 4WD chassis. Confirm VIN/axle-code fitment and compare the pair price before ordering; the torque values come from the 4WD VIN K rear suspension specification.",
+app/src/main/java/com/example/data/SportTracPartsReadiness.kt:100:            id = "brake_wheel_safety_readiness",
+app/src/main/java/com/example/data/SportTracPartsReadiness.kt:101:            title = "Brake, wheel, and safety readiness",
+app/src/main/java/com/example/data/SportTracPartsReadiness.kt:144:            description = "Lighting, wipers, and electrical repair parts that can immediately affect visibility or legal road use.",
+app/src/main/java/com/example/data/SportTracPartsReadiness.kt:151:                "part_dash_wiring_repair_pigtails"
+app/src/main/java/com/example/data/SportTracPartsReadiness.kt:158:            description = "Prebuilt part records for water management, cabin comfort, rear-window, dash, sunroof, and audio repairs when the model points to them.",
+app/src/main/java/com/example/data/SportTracServiceManualDiagnostics.kt:276:            problemSummary = "Thermal hotspots or ungreased caliper slide pins cause uneven friction material transfer onto front brake rotor surfaces. Uneven rotor thickness creates torque pulsing through caliper during braking.",
+app/src/main/java/com/example/data/VehicleHardwareCatalog.kt:19: * manual before it is used as a repair or restoration authority.
+app/src/main/java/com/example/data/VehicleHardwareCatalog.kt:52:            boltTool = "13 mm socket / calibrated torque wrench",
+app/src/main/java/com/example/data/VehicleHardwareCatalog.kt:63:            boltTool = "15 mm socket / calibrated torque wrench",
+app/src/main/java/com/example/data/VehicleHardwareCatalog.kt:74:            boltTool = "15 mm socket / breaker bar / torque wrench",
+app/src/main/java/com/example/data/VehicleHardwareCatalog.kt:85:            boltTool = "8 mm / 10 mm socket and inch-pound torque wrench",
+app/src/main/java/com/example/data/VehicleHardwareCatalog.kt:127:        val torque = component.torqueSpecs.firstOrNull()?.let { "Torque reference: ${it.torqueFtLbs} ft-lb (${it.torqueNm}). ${it.notes}" }
+app/src/main/java/com/example/data/VehicleHardwareCatalog.kt:139:                        notes = "$torque $validationNote"
+app/src/main/java/com/example/data/VehicleHardwareCatalog.kt:203:        val torqueText = component.torqueSpecs.firstOrNull()?.let { "Torque reference: ${it.torqueFtLbs} ft-lb / ${it.torqueNm}." }
+app/src/main/java/com/example/data/VehicleHardwareCatalog.kt:217:                specDetails = "${profile.boltThread} • $torqueText Verify against VIN-specific Ford data."
+app/src/main/java/com/example/data/local/AcousticReferenceEntity.kt:21:    val audioSampleUrlOrResource: String,
+app/src/main/java/com/example/data/local/AppDatabase.kt:26:    abstract fun repairChecklistDao(): RepairChecklistDao
+app/src/main/java/com/example/data/local/Cached3DAssetEntity.kt:21:    val repairStepsJson: String,
+app/src/main/java/com/example/data/local/Cached3DAssetEntity.kt:22:    val torqueSpecsJson: String,
+app/src/main/java/com/example/data/local/CachedRepairManualEntity.kt:6:@Entity(tableName = "cached_repair_manuals")
+app/src/main/java/com/example/data/local/OfflineCacheDao.kt:32:    @Query("SELECT * FROM cached_repair_manuals ORDER BY title ASC")
+app/src/main/java/com/example/data/local/OfflineCacheDao.kt:35:    @Query("SELECT * FROM cached_repair_manuals WHERE id = :id LIMIT 1")
+app/src/main/java/com/example/data/local/OfflineCacheDao.kt:41:    @Query("DELETE FROM cached_repair_manuals")
+app/src/main/java/com/example/data/local/OfflineCacheDao.kt:44:    @Query("SELECT COUNT(*) FROM cached_repair_manuals")
+app/src/main/java/com/example/data/local/RepairChecklistDao.kt:8:    @Query("SELECT * FROM repair_checklists ORDER BY lastUpdated DESC")
+app/src/main/java/com/example/data/local/RepairChecklistDao.kt:11:    @Query("SELECT * FROM repair_checklists WHERE componentId = :componentId LIMIT 1")
+app/src/main/java/com/example/data/local/RepairChecklistDao.kt:14:    @Query("SELECT * FROM repair_checklists WHERE componentId = :componentId LIMIT 1")
+app/src/main/java/com/example/data/local/RepairChecklistDao.kt:20:    @Query("DELETE FROM repair_checklists WHERE componentId = :componentId")
+app/src/main/java/com/example/data/local/RepairChecklistDao.kt:23:    @Query("DELETE FROM repair_checklists")
+app/src/main/java/com/example/data/local/RepairChecklistEntity.kt:6:@Entity(tableName = "repair_checklists")
+
+=== PARTS CATALOG ENTRIES ===
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt:34:                soundCharacteristics = "Smooth 120Hz-280Hz combustion rhythm, balanced sub-bass exhaust tone, zero metallic clatter",
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt:49:                soundCharacteristics = "Consistent 380Hz-580Hz smooth induction and exhaust tone during steady cruise",
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt:147:                soundProfileId = "exhaust_manifold_gasket_leak_007",
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt:154:                soundCharacteristics = "Rhythmic sharp exhaust puff/hiss under acceleration, diminishes as manifold heats up",
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt:155:                rootCause = "Cracked cast iron exhaust manifold or blown multi-layer steel manifold gasket on passenger side bank",
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt:156:                recommendedFix = "Replace exhaust manifold gasket set, inspect casting for thermal stress cracks.",
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt:157:                targetComponentId = "exhaust_manifolds_3d",
+app/src/main/java/com/example/data/AcousticDiagnosticRepository.kt:159:                audioSampleUrlOrResource = "acoustic_db/ref_exhaust_leak.wav"
+app/src/main/java/com/example/data/CharmWorkshopIndex.kt:75:            listOf("suspension", "control arm", "ball joint", "shock", "sway")
+app/src/main/java/com/example/data/CommunityRepairVideos.kt:48:            listOf("shock", "strut", "damper")
+app/src/main/java/com/example/data/GeminiDiagnosticRepository.kt:133:            lower.contains("exhaust") || lower.contains("catalytic") || lower.contains("converter") || lower.contains("p0420") || lower.contains("p0430") || lower.contains("o2 sensor") ->
+app/src/main/java/com/example/data/GeminiDiagnosticRepository.kt:134:                Pair("exhaust_system", "Exhaust Manifolds & Catalytic Converter Y-Pipe")
+app/src/main/java/com/example/data/PartStoreCatalogRanking.kt:9: * retailer tracking, affiliate relationships, accounts, or payment data.
+app/src/main/java/com/example/data/RetailerSearchLinks.kt:8: * deliberate fallback when a retailer has no connected, authorized price feed.
+app/src/main/java/com/example/data/RetailerSearchLinks.kt:9: * Opening a link never confirms fitment, price, availability, seller identity,
+app/src/main/java/com/example/data/RetailerSearchLinks.kt:13:    fun searchUrl(retailer: RetailerSource, partNumber: String): String? {
+app/src/main/java/com/example/data/RetailerSearchLinks.kt:15:        return when (retailer) {
+app/src/main/java/com/example/data/SportTracData.kt:366:                    RepairStep(3, "Remove Accessories", "Remove upper intake plenum, serpentine belt, alternator, and exhaust manifolds."),
+app/src/main/java/com/example/data/SportTracData.kt:805:                id = "exhaust_system",
+app/src/main/java/com/example/data/SportTracData.kt:809:                description = "Cast iron exhaust manifolds, dual 3-way catalytic converters Y-pipe assembly, four heated oxygen sensors (HO2S), and stainless steel muffler.",
+app/src/main/java/com/example/data/SportTracData.kt:824:                    RepairStep(1, "Apply Penetrating Oil", "Soak all rusted exhaust flange nuts and O2 sensors in penetrating fluid 30 minutes before starting.", warning = "Exhaust components get extremely hot. Allow engine to cool completely before touching."),
+app/src/main/java/com/example/data/SportTracData.kt:826:                    RepairStep(3, "Unbolt Flange Connections", "Remove exhaust Y-pipe flange nuts at manifold outlets."),
+app/src/main/java/com/example/data/SportTracData.kt:829:                commonSymptoms = listOf("Loud ticking exhaust leak under acceleration", "Check Engine Light codes P0420 / P0430 (Catalyst Efficiency Below Threshold)", "Sulfur or rotten egg odor from tailpipe"),
+app/src/main/java/com/example/data/SportTracData.kt:973:                id = "catback_exhaust_muffler_3d",
+app/src/main/java/com/example/data/SportTracData.kt:977:                description = "Full 2.5-inch aluminized / stainless steel replacement exhaust system including acoustic chamber muffler, tailpipe over rear axle, and heavy-duty rubber isolator hangers.",
+app/src/main/java/com/example/data/SportTracData.kt:993:                    RepairStep(3, "Pry Hangers & Remove Muffler", "Use exhaust hanger pliers to pop mounting prongs out of rubber isolators and slide muffler rearward over axle."),
+app/src/main/java/com/example/data/SportTracData.kt:994:                    RepairStep(4, "Install New Stainless System", "Slide replacement muffler over axle tube, align polished tailpipe tip with rear bumper cut-out, and torque exhaust clamps.")
+app/src/main/java/com/example/data/SportTracData.kt:996:                commonSymptoms = listOf("Loud rumbling or buzzing exhaust drone while driving", "Rattling noise under cargo bed floor when idling", "Visible rust hole or dark soot marks on muffler casing"),
+app/src/main/java/com/example/data/SportTracData.kt:1010:                locationDescription = "Threaded directly into exhaust manifolds and Y-pipe before and after catalytic converters.",
+app/src/main/java/com/example/data/SportTracData.kt:1027:                commonSymptoms = listOf("Check Engine Light P0133, P0135, P0141 or P0153 (O2 Sensor Circuit / Slow Response)", "Poor fuel economy (12-14 MPG)", "Rich exhaust smell"),
+app/src/main/java/com/example/data/SportTracData.kt:2036:                description = "Cast aluminum cylinder heads for Cologne 4.0L SOHC V6 featuring 12 overhead valves (6 intake / 6 exhaust), single overhead camshaft per bank, hydraulic roller rocker arm followers, beehive valve springs, MLS multi-layer steel head gaskets, and torque-to-yield head bolts.",
+app/src/main/java/com/example/data/SportTracData.kt:2056:                commonSymptoms = listOf("Engine overheating with white sweet-smelling exhaust smoke and loss of coolant", "Milky chocolate-colored foam on engine oil dipstick (coolant mixing with motor oil due to blown head gasket)", "Low compression on adjacent cylinders causing misfire flash code P0300/P0301"),
+app/src/main/java/com/example/data/SportTracData.kt:2098:                id = "rear_shock_absorbers_4wd_3d",
+app/src/main/java/com/example/data/SportTracData.kt:2102:                description = "Pair of rear telescopic shock absorbers for the 2004 Explorer Sport Trac 4WD chassis, shown with steel damper bodies, polished piston rods, upper and lower mounting eyes, and service fastener interfaces. Geometry is a teaching aid; confirm replacement fitment against the VIN and axle code before purchase.",
+app/src/main/java/com/example/data/SportTracData.kt:2103:                locationDescription = "One shock is mounted at each side of the rear axle, between the frame rail and rear axle/spring assembly.",
+app/src/main/java/com/example/data/SportTracData.kt:2117:                    RepairStep(1, "Verify fitment and prepare the work area", "Confirm the replacement pair is listed for 2004 Explorer Sport Trac 4WD, compare the mounting-eye orientation, park on a level surface, apply the parking brake, chock the front wheels, and disconnect no electrical components.", warning = "Do not work beneath a vehicle supported only by a floor jack. Support the frame with rated jack stands before removing a shock fastener."),
+app/src/main/java/com/example/data/SportTracData.kt:2118:                    RepairStep(2, "Lift and support the rear of the truck", "Loosen the rear wheel nuts slightly, lift the rear frame with a floor jack, place rated jack stands under the frame, and keep the axle supported separately so it cannot drop when the shock is removed.", warning = "Never place a stand under a thin body panel or an unstable suspension arm. Confirm the vehicle is stable before entering the work zone."),
+app/src/main/java/com/example/data/SportTracData.kt:2119:                    RepairStep(3, "Remove the upper shock mounting nuts", "Brush the exposed threads, apply penetrant, and remove the upper shock absorber-to-frame nuts. If the stud turns with the nut, use the correct counter-hold method rather than applying heat near rubber components or fuel-system parts."),
+app/src/main/java/com/example/data/SportTracData.kt:2120:                    RepairStep(4, "Remove the lower bolt and the old shock", "Support the axle, remove the lower shock absorber bolt, then withdraw the shock. Compare the old and new units for length, bushing stack, eye orientation, and physical damage before installation."),
+app/src/main/java/com/example/data/SportTracData.kt:2121:                    RepairStep(5, "Install the replacement shock pair", "Install both shocks with the same orientation and hardware stack as removed. Start all threads by hand; do not fully tighten the bushings while the axle is hanging if the mount design requires ride-height loading."),
+app/src/main/java/com/example/data/SportTracData.kt:2122:                    RepairStep(6, "Torque, lower, and inspect", "Torque the upper frame nuts to 17 lb-ft (23 N·m) and the lower bolts to 46 lb-ft (63 N·m) using the 4WD VIN K rear specification. Reinstall wheels and torque wheel nuts to 100 lb-ft (135 N·m), lower the vehicle, and perform a bounce/visual inspection for contact, loose hardware, or asymmetric ride height.", tip = "After a short, low-speed test, recheck for oil leakage, loose hardware, abnormal noise, and correct shock clearance. Stop immediately if the vehicle wanders or a mount shifts.")
+app/src/main/java/com/example/data/SportTracData.kt:2124:                commonSymptoms = listOf("Rear-end float or repeated bouncing after a bump", "Damped oil leakage from a shock body", "Uneven rear tire cupping or scalloped tread", "Clunking from a loose shock mount"),
+app/src/main/java/com/example/data/SportTracData.kt:2127:                    FastenerInventoryItem("Upper shock-to-frame nut", FastenerCategory.BOLT, 2, "Factory rear shock mount", "Torque wrench", "Torque 23 N·m / 17 lb-ft per 4WD VIN K rear specification"),
+app/src/main/java/com/example/data/SportTracData.kt:2128:                    FastenerInventoryItem("Lower shock mounting bolt", FastenerCategory.BOLT, 2, "Factory rear shock lower mount", "Torque wrench", "Torque 63 N·m / 46 lb-ft per 4WD VIN K rear specification"),
+app/src/main/java/com/example/data/SportTracData.kt:2132:                    SubAssemblyPart("rear_shock_damper_body", "Twin-tube damper body", SubAssemblyType.MAIN_BODY, v, f, specDetails = "Teaching geometry; verify actual replacement dimensions"),
+app/src/main/java/com/example/data/SportTracData.kt:2133:                    SubAssemblyPart("rear_shock_upper_eye", "Upper frame mounting eye", SubAssemblyType.BOLT, emptyList(), emptyList(), localOffset = Point3D(0f, 1.28f, 0f), specDetails = "Upper nuts: 23 N·m / 17 lb-ft"),
+app/src/main/java/com/example/data/SportTracData.kt:2134:                    SubAssemblyPart("rear_shock_lower_eye", "Lower axle mounting eye", SubAssemblyType.BOLT, emptyList(), emptyList(), localOffset = Point3D(0f, -1.23f, 0f), specDetails = "Lower bolt: 63 N·m / 46 lb-ft")
+app/src/main/java/com/example/data/SportTracHullExtras.kt:20:            extra("scaled_exhaust", "Exhaust / muffler envelope", VehicleSystem.ENGINE, "SCALE-EXHAUST",
+app/src/main/java/com/example/data/SportTracHullExtras.kt:21:                "Single pipe + muffler under the bed. Not a VIN-scanned pipe route.",
+app/src/main/java/com/example/data/SportTracPartsCatalog.kt:13:        // Rear shock replacement — benchmark pricing, verify live fitment before purchase
+app/src/main/java/com/example/data/SportTracPartsCatalog.kt:15:            id = "part_rear_shock_kyb_344269_pair",
+app/src/main/java/com/example/data/SportTracPartsCatalog.kt:16:            componentId = "rear_shock_absorbers_4wd_3d",
+app/src/main/java/com/example/data/SportTracPartsCatalog.kt:17:            partName = "KYB Excel-G Rear Shock Absorbers (Pair) — 2001–2005 Sport Trac 4WD fitment",
+app/src/main/java/com/example/data/SportTracPartsCatalog.kt:28:                CompetitorPrice("Amazon", 119.99, 0.0, "Verify seller and fitment")
+app/src/main/java/com/example/data/SportTracPartsCatalog.kt:31:            warranty = "Verify manufacturer warranty at checkout"
+app/src/main/java/com/example/data/SportTracPartsCatalog.kt:438:            id = "part_catback_muffler_walker",
+app/src/main/java/com/example/data/SportTracPartsCatalog.kt:439:            componentId = "catback_exhaust_muffler_3d",
+app/src/main/java/com/example/data/SportTracPartsCatalog.kt:1025:            id = "part_tool_exhaust_cutter",
+app/src/main/java/com/example/data/SportTracPartsCatalog.kt:1026:            componentId = "catback_exhaust_muffler_3d",
+app/src/main/java/com/example/data/SportTracPartsReadiness.kt:47:            description = "The first watch package for no-cooling, weak-airflow, clutch-command, accessory-drive, and heat-management diagnosis. Use the A/C Workbench and fitment verification before ordering a sealed-system part.",
+app/src/main/java/com/example/data/SportTracPartsReadiness.kt:82:                PendingFitmentItem("Engine air filter", "Confirm air-cleaner housing dimensions and catalog fitment before part-number lookup."),
+app/src/main/java/com/example/data/SportTracPartsReadiness.kt:90:            title = "Rear suspension and shock readiness",
+app/src/main/java/com/example/data/SportTracPartsReadiness.kt:92:            description = "A focused replacement package for worn or leaking rear shocks on the 4WD chassis. Confirm VIN/axle-code fitment and compare the pair price before ordering; the torque values come from the 4WD VIN K rear suspension specification.",
+app/src/main/java/com/example/data/SportTracPartsReadiness.kt:93:            partIds = setOf("part_rear_shock_kyb_344269_pair"),
+app/src/main/java/com/example/data/SportTracPartsReadiness.kt:95:                PendingFitmentItem("Rear shock mounting hardware", "Inspect upper nuts, lower bolts, bushings, and sleeves; replace damaged or corroded hardware before reassembly."),
+app/src/main/java/com/example/data/SportTracPartsReadiness.kt:96:                PendingFitmentItem("Rear shock application", "Verify 4WD fitment, mounting-eye orientation, and pair quantity against the VIN and axle code before purchase.")
+app/src/main/java/com/example/data/SportTracPartsReadiness.kt:124:            description = "Parts that can leave the truck without four-wheel-drive, reliable charging, or dependable exhaust/emissions operation.",
+app/src/main/java/com/example/data/SportTracPartsReadiness.kt:129:                "part_catback_muffler_walker",
+app/src/main/java/com/example/data/SportTracPartsReadiness.kt:131:                "part_tool_exhaust_cutter"
+
+=== SOURCE/MANUAL LINKS ===
+app/src/main/java/com/example/MainActivity.kt:103:                SafeTabButton(MainTab.REPAIR_MANUAL, selectedTab, "Manual", Icons.Default.MenuBook, "tab_manual", onTabSelected)
+app/src/main/java/com/example/MainActivity.kt:127:                    val searchQuery by viewModel.manualSearchQuery.collectAsState()
+app/src/main/java/com/example/data/CharmWorkshopIndex.kt:6: * CHARM workshop leaves for the 2004 Explorer Sport Trac 4WD V6-4.0L VIN K only.
+app/src/main/java/com/example/data/CharmWorkshopIndex.kt:7: * 2WD pack URLs are recorded so they can be rejected, never recommended.
+app/src/main/java/com/example/data/CharmWorkshopIndex.kt:16:    const val VEHICLE_TREE = "Explorer Sport Trac 4WD V6-4.0L VIN K Flex Fuel"
+app/src/main/java/com/example/data/CharmWorkshopIndex.kt:18:        "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/"
+app/src/main/java/com/example/data/CharmWorkshopIndex.kt:20:        "CHARM is a third-party copy of workshop pages. Confirm the 4WD VIN K tree before using a procedure."
+app/src/main/java/com/example/data/CharmWorkshopIndex.kt:23:        "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/"
+app/src/main/java/com/example/data/CharmWorkshopIndex.kt:26:        CharmWorkshopLeaf("4WD VIN K hub", HUB, listOf("workshop", "charm", "manual", "fsm", "hub")),
+app/src/main/java/com/example/data/CharmWorkshopIndex.kt:33:            "Offline 4WD VIN K zip bundle",
+app/src/main/java/com/example/data/CharmWorkshopIndex.kt:34:            "https://charm.li/bundle/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/",
+app/src/main/java/com/example/data/CharmWorkshopIndex.kt:65:            listOf("transfer", "4wd", "4x4", "shift motor")
+app/src/main/java/com/example/data/CharmWorkshopIndex.kt:88:            "HVAC (4WD)",
+app/src/main/java/com/example/data/CharmWorkshopIndex.kt:93:            "A/C compressor service (4WD)",
+app/src/main/java/com/example/data/CharmWorkshopIndex.kt:115:        "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%202WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Specifications/Mechanical%20Specifications/Firing%20Order/",
+app/src/main/java/com/example/data/CharmWorkshopIndex.kt:116:        "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%202WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Heating%20and%20Air%20Conditioning/Compressor%20HVAC/Service%20and%20Repair/"
+app/src/main/java/com/example/data/CharmWorkshopIndex.kt:120:        return url.contains("Sport%20Trac%202WD") ||
+app/src/main/java/com/example/data/CharmWorkshopIndex.kt:121:            url.contains("Sport Trac 2WD") ||
+app/src/main/java/com/example/data/CharmWorkshopIndex.kt:151:            return "No 4WD VIN K CHARM leaf matches that request. Hub: $HUB. $DISCLAIMER"
+app/src/main/java/com/example/data/CommunityForumThreads.kt:17:        "Community thread only. Not factory spec. Do not mix 2007-2010 Sport Trac advice onto this 2004 4WD VIN K truck."
+app/src/main/java/com/example/data/CommunityRepairVideos.kt:17:        "Community video only. Not the Ford workshop manual. Confirm it matches this 2004 Sport Trac 4WD 4.0L VIN K before following it."
+app/src/main/java/com/example/data/ForscanData.kt:83:            fordSpecificDetails = "4WABS Module lost AC pulse signal from front right hub sensor harness. Causes ABS light and 4x4 High flashing lights.",
+app/src/main/java/com/example/data/GeminiDiagnosticRepository.kt:131:            lower.contains("4x4") || lower.contains("4wd") || lower.contains("transfer case") || lower.contains("driveshaft") || lower.contains("u-joint") || lower.contains("differential") ->
+app/src/main/java/com/example/data/GeminiDiagnosticRepository.kt:132:                Pair("driveshaft_4x4", "Control Trac 4WD Transfer Case & Driveshafts")
+app/src/main/java/com/example/data/GeminiDiagnosticRepository.kt:220:                        Based on Ford 5R55E Automatic Transmission service manual documentation:
+app/src/main/java/com/example/data/MaintenanceRepository.kt:139:                    title = "4x4 Transfer Case Fluid Service",
+app/src/main/java/com/example/data/OfficialOwnerPublications.kt:5: * These are owner documents, not the workshop manual.
+app/src/main/java/com/example/data/OfficialOwnerPublications.kt:14:    const val HUB = "https://www.ford.com/support/owner-manuals-details/explorer-sport-trac/2004"
+app/src/main/java/com/example/data/OfficialOwnerPublications.kt:16:        "Official Ford owner publication. Not the workshop manual. Fluids and Motorcraft numbers come from the Owner Guide; teardown steps do not."
+app/src/main/java/com/example/data/OfficialOwnerPublications.kt:20:            "2004 Sport Trac owner-manuals hub",
+app/src/main/java/com/example/data/OfficialOwnerPublications.kt:22:            listOf("hub", "owner manual", "owners guide", "official")
+app/src/main/java/com/example/data/OfficialOwnerPublications.kt:85:            "Driving Your SUV or Truck printing 1 (044x4fw1e)",
+app/src/main/java/com/example/data/OfficialOwnerPublications.kt:86:            "https://www.fordservicecontent.com/Ford_Content/catalog/owner_guides/044x4fw1e.pdf",
+app/src/main/java/com/example/data/OfficialOwnerPublications.kt:87:            listOf("4wd", "4x4", "suv", "truck driving", "controltrac")
+app/src/main/java/com/example/data/OfficialOwnerPublications.kt:90:            "Driving Your SUV or Truck printing 2 (044x4fw2e)",
+app/src/main/java/com/example/data/OfficialOwnerPublications.kt:91:            "https://www.fordservicecontent.com/Ford_Content/catalog/owner_guides/044x4fw2e.pdf",
+app/src/main/java/com/example/data/OfficialOwnerPublications.kt:92:            listOf("4wd", "4x4", "suv")
+app/src/main/java/com/example/data/OfflineCacheRepository.kt:33:    val manualsCountFlow: Flow<Int> = offlineCacheDao.getRepairManualsCountFlow()
+app/src/main/java/com/example/data/OfflineCacheRepository.kt:90:                manualSectionRef = model.manualSectionRef,
+app/src/main/java/com/example/data/OfflineCacheRepository.kt:103:        val manualsToCache = SportTracServiceManualDiagnostics.manualTroubleMatches.map { match ->
+app/src/main/java/com/example/data/OfflineCacheRepository.kt:125:        offlineCacheDao.insertRepairManuals(manualsToCache)
+app/src/main/java/com/example/data/OwnerGuideSpecs.kt:6: * Hub: https://www.ford.com/support/owner-manuals-details/explorer-sport-trac/2004
+app/src/main/java/com/example/data/OwnerGuideSpecs.kt:7: * Not a workshop manual. Do not treat these as repair torque sequences.
+app/src/main/java/com/example/data/OwnerGuideSpecs.kt:12:    const val HUB = "https://www.ford.com/support/owner-manuals-details/explorer-sport-trac/2004"
+app/src/main/java/com/example/data/OwnerGuideSpecs.kt:39:    const val FRONT_AXLE = "1.8 quarts Motorcraft SAE 80W-90 (4x4)"
+app/src/main/java/com/example/data/OwnerGuideSpecs.kt:52:    const val HEIGHT = "69.9 in; 70.6 in max on 4x4 with 16-in tires"
+app/src/main/java/com/example/data/OwnerGuideSpecs.kt:59:        "Transmission Fluid" to "$TRANS_FLUID 4x4 $TRANS_4X4_DRY_FILL; 4x2 $TRANS_4X2_DRY_FILL",
+app/src/main/java/com/example/data/PublishedSportTracData.kt:18:        MaintenanceScheduleItem("front_axle", "Front Axle Fluid Inspection", VehicleSystem.BRAKES_CHASSIS, 60000, 48, "1.8 qt Motorcraft SAE 80W-90 (4x4 OG)", "4x4 front axle OG fill. Inspect for leaks before treating as a routine drain.", "front_diff"),
+app/src/main/java/com/example/data/SportTracBank2LeanKit.kt:19:        "2004 Sport Trac 4WD VIN K workshop specs + CHARM 2005 VIN K intake table: intake manifold bolts 10 Nm (89 in-lb)."
+app/src/main/java/com/example/data/SportTracBank2LeanKit.kt:63:            notes = "${if (it.bank2) "Bank 2 lean path. " else ""}${it.source} Confirm VIN workshop manual."
+app/src/main/java/com/example/data/SportTracData.kt:14:        "Drivetrain" to "ControlTrac 4WD / Rear-Wheel Drive",
+app/src/main/java/com/example/data/SportTracData.kt:768:        // 13. CONTROL TRAC 4WD TRANSFER CASE & DRIVESHAFTS
+app/src/main/java/com/example/data/SportTracData.kt:772:                id = "driveshaft_4x4",
+app/src/main/java/com/example/data/SportTracData.kt:773:                name = "Control Trac 4WD Transfer Case & Driveshafts",
+app/src/main/java/com/example/data/SportTracData.kt:794:                    RepairStep(4, "Inspect 4WD Shift Motor", "Check 4x4 electric encoder motor mounted on transfer case rear housing if 4x4 High/Low lights flash on dashboard.")
+app/src/main/java/com/example/data/SportTracData.kt:796:                commonSymptoms = listOf("4x4 HIGH / LOW dashboard lights flashing 6 times", "Clunking sound when engaging 4WD or shifting into Reverse", "High-speed driveline vibration from dry U-joints"),
+app/src/main/java/com/example/data/SportTracData.kt:1081:                    TorqueSpec("Front Axle Shaft Nut (4WD Models)", "184", "250", "Must use 32mm socket & replace cotter pin"),
+app/src/main/java/com/example/data/SportTracData.kt:1215:                requiredTools = listOf("T20 & T25 Torx Drivers", "White Lithium Grease", "4mm Allen Wrench (for manual emergency crank)", "Multimeter / Wire Probe"),
+app/src/main/java/com/example/data/SportTracData.kt:1221:                    RepairStep(5, "Calibrate & Synchronize Track Positions", "Run manual re-initialization sequence (hold TILT switch 10 seconds) until motor resets home position stops.")
+app/src/main/java/com/example/data/SportTracData.kt:1620:                locationDescription = "Service ports and pressure-control fittings are located along the refrigerant lines; relay/fuse locations must be confirmed from the exact owner-manual diagram; compressor clutch connector is at the lower passenger-side compressor.",
+app/src/main/java/com/example/data/SportTracData.kt:1631:                requiredTools = listOf("Owner-manual fuse/relay diagram", "Flashlight", "Safety glasses", "Digital multimeter only if experienced", "Professional MVAC recovery/diagnostic equipment for any refrigerant-circuit service"),
+app/src/main/java/com/example/data/SportTracData.kt:1636:                    RepairStep(4, "Check protected electrical path", "Use the exact owner-manual diagram to inspect the specified fuse and relay. Do not bypass the relay, pressure switches, or clutch connector to force compressor operation.", warning = "Pressure switches protect the system. Bypassing them can damage components or create a hazardous condition."),
+app/src/main/java/com/example/data/SportTracData.kt:1671:                commonSymptoms = listOf("Speedometer needle bounces erratically, stays stuck at zero, or digital odometer display goes completely blank", "Backlight bulbs burned out causing dark spots on tachometer or fuel gauge at night", "ABS, Battery, or 4x4 High indicator lights stay continuously illuminated on gauge face"),
+app/src/main/java/com/example/data/SportTracData.kt:1676:        // 40. DASH CENTER STACK CLIMATE CONTROLS, RADIO & 4WD AUTO SWITCH
+app/src/main/java/com/example/data/SportTracData.kt:1681:                name = "Dash Center Stack Radio, Electronic HVAC Panel & 4WD Switch",
+app/src/main/java/com/example/data/SportTracData.kt:1684:                description = "Center dash control console housing factory Mach 500 double-DIN radio unit, rotary HVAC vacuum selector switch module, temperature control potentiometer, rear power window toggle switch, and 3-position rotary 4WD Auto / 4x4 High / 4x4 Low transfer case selector switch.",
+app/src/main/java/com/example/data/SportTracData.kt:1700:                    RepairStep(3, "Disconnect Switch Wire Connectors & Vacuum Harness", "Unplug 4WD switch connector, rear power window switch plug, cigarette lighter socket, and 5-tube HVAC vacuum line harness block."),
+app/src/main/java/com/example/data/SportTracData.kt:1701:                    RepairStep(4, "Replace Control Switch / Module", "Unbolt four 7mm screws on rear of bezel to replace damaged 4WD rotary switch or climate control module.")
+app/src/main/java/com/example/data/SportTracData.kt:1703:                commonSymptoms = listOf("Turning 4WD selector knob does not engage 4x4 or cause transfer case shift motor to click", "Air blows ONLY out of defrost vents on windshield regardless of HVAC knob position (vacuum leak)", "Rear power window toggle switch fails to lower back glass window"),
+app/src/main/java/com/example/data/SportTracData.kt:1812:                description = "High-torque 12V reversible electric gear motor with internal brass pinion drive gear, meshing with dual flexible steel helical cables to slide and tilt the sunroof glass, equipped with electronic overload limit sensing and manual hex key emergency closure socket.",
+app/src/main/java/com/example/data/SportTracData.kt:1823:                requiredTools = listOf("T20 Torx Driver", "4mm Allen Wrench (for emergency manual cranking)", "White Lithium Grease", "10mm Socket"),
+app/src/main/java/com/example/data/SportTracData.kt:1826:                    RepairStep(2, "Emergency Manual Closure (if stuck open)", "Insert 4mm Allen wrench into center socket of motor gear shaft and manually turn clockwise to crank glass fully closed."),
+app/src/main/java/com/example/data/SportTracData.kt:1930:        // 48. BORGWARNER 4411 TRANSFER CASE & ELECTRONIC 4WD SHIFT MOTOR
+app/src/main/java/com/example/data/SportTracData.kt:1935:                name = "BorgWarner 4411 Transfer Case & Electronic 4WD Shift Control Motor",
+app/src/main/java/com/example/data/SportTracData.kt:1936:                system = VehicleSystem.DRIVETRAIN_4WD,
+app/src/main/java/com/example/data/SportTracData.kt:1938:                description = "Cast aluminum BorgWarner 4411 electronic shift-on-the-fly transfer case complete with planetary gear reduction set, electromagnetic clutch assembly for 4x4 Auto torque splitting, internal oil pump, drive chain, and rear-mounted 12V DC electric shift encoder motor.",
+app/src/main/java/com/example/data/SportTracData.kt:1948:                    TorqueSpec("4WD Shift Motor Mounting Bolts (T30 / 10mm)", "89 in-lbs", "10 Nm", "Three bolts attaching motor to shift shaft"),
+app/src/main/java/com/example/data/SportTracData.kt:1953:                    RepairStep(1, "Unplug 4WD Shift Motor Wire Connector", "Press locking tab on 7-pin round wiring harness plug attached to rear of transfer case."),
+app/src/main/java/com/example/data/SportTracData.kt:1954:                    RepairStep(2, "Unbolt 4WD Shift Motor", "Remove three 10mm bolts securing shift motor assembly to transfer case aluminum rear housing."),
+app/src/main/java/com/example/data/SportTracData.kt:1955:                    RepairStep(3, "Inspect Triangular Shift Shaft Rotary Pin", "Use pliers to verify manual rotation of triangular shift shaft pin on transfer case."),
+app/src/main/java/com/example/data/SportTracData.kt:1958:                commonSymptoms = listOf("4x4 High and 4x4 Low dash lights flash 6 times periodically while driving", "Turning 4WD dash switch produces no sound or engagement under truck", "Grinding noise when 4WD auto engages during rear wheel slip"),
+app/src/main/java/com/example/data/SportTracData.kt:1969:                system = VehicleSystem.DRIVETRAIN_4WD,
+app/src/main/java/com/example/data/SportTracData.kt:2001:                system = VehicleSystem.DRIVETRAIN_4WD,
+app/src/main/java/com/example/data/SportTracData.kt:2094:        // 53. REAR SHOCK ABSORBER — 4WD VIN K
+app/src/main/java/com/example/data/SportTracData.kt:2099:                name = "4WD Rear Shock Absorber Pair & Mounting Eyes",
+app/src/main/java/com/example/data/SportTracData.kt:2102:                description = "Pair of rear telescopic shock absorbers for the 2004 Explorer Sport Trac 4WD chassis, shown with steel damper bodies, polished piston rods, upper and lower mounting eyes, and service fastener interfaces. Geometry is a teaching aid; confirm replacement fitment against the VIN and axle code before purchase.",
+app/src/main/java/com/example/data/SportTracData.kt:2111:                    TorqueSpec("Shock absorber-to-frame nuts", "17", "23", "4WD VIN K CHARM rear specification"),
+app/src/main/java/com/example/data/SportTracData.kt:2112:                    TorqueSpec("Shock absorber lower bolt", "46", "63", "4WD VIN K CHARM rear specification"),
+app/src/main/java/com/example/data/SportTracData.kt:2117:                    RepairStep(1, "Verify fitment and prepare the work area", "Confirm the replacement pair is listed for 2004 Explorer Sport Trac 4WD, compare the mounting-eye orientation, park on a level surface, apply the parking brake, chock the front wheels, and disconnect no electrical components.", warning = "Do not work beneath a vehicle supported only by a floor jack. Support the frame with rated jack stands before removing a shock fastener."),
+app/src/main/java/com/example/data/SportTracData.kt:2122:                    RepairStep(6, "Torque, lower, and inspect", "Torque the upper frame nuts to 17 lb-ft (23 N·m) and the lower bolts to 46 lb-ft (63 N·m) using the 4WD VIN K rear specification. Reinstall wheels and torque wheel nuts to 100 lb-ft (135 N·m), lower the vehicle, and perform a bounce/visual inspection for contact, loose hardware, or asymmetric ride height.", tip = "After a short, low-speed test, recheck for oil leakage, loose hardware, abnormal noise, and correct shock clearance. Stop immediately if the vehicle wanders or a mount shifts.")
+app/src/main/java/com/example/data/SportTracData.kt:2127:                    FastenerInventoryItem("Upper shock-to-frame nut", FastenerCategory.BOLT, 2, "Factory rear shock mount", "Torque wrench", "Torque 23 N·m / 17 lb-ft per 4WD VIN K rear specification"),
+app/src/main/java/com/example/data/SportTracData.kt:2128:                    FastenerInventoryItem("Lower shock mounting bolt", FastenerCategory.BOLT, 2, "Factory rear shock lower mount", "Torque wrench", "Torque 63 N·m / 46 lb-ft per 4WD VIN K rear specification"),
+app/src/main/java/com/example/data/SportTracData.kt:2136:                manualSectionRef = "Operation CHARM 4WD VIN K: Suspension > Specifications > Rear"
+app/src/main/java/com/example/data/SportTracData.kt:2454:                            recommendedAction = "Pull radio head unit using U-shaped Ford DIN removal keys. Disassemble top cover to manually clear stuck disc or upgrade to modern double-DIN Bluetooth head unit."
+app/src/main/java/com/example/data/SportTracHullExtras.kt:48:            extra("scaled_shaft_front", "Front driveshaft", VehicleSystem.DRIVETRAIN_4WD, "SCALE-DS-F",
+app/src/main/java/com/example/data/SportTracHullExtras.kt:52:            extra("scaled_shaft_rear", "Rear driveshaft", VehicleSystem.DRIVETRAIN_4WD, "SCALE-DS-R",
+app/src/main/java/com/example/data/SportTracHullExtras.kt:102:        locationDescription = "Meter-true hull extra. Confirm workshop manual.",
+app/src/main/java/com/example/data/SportTracPartsCatalog.kt:17:            partName = "KYB Excel-G Rear Shock Absorbers (Pair) — 2001–2005 Sport Trac 4WD fitment",
+app/src/main/java/com/example/data/SportTracPartsCatalog.kt:235:        // 4x4 Shift Motor
+app/src/main/java/com/example/data/SportTracPartsCatalog.kt:237:            id = "part_4x4_shift_motor",
+app/src/main/java/com/example/data/SportTracPartsCatalog.kt:238:            componentId = "driveshaft_4x4",
+app/src/main/java/com/example/data/SportTracPartsCatalog.kt:239:            partName = "Dorman 4x4 Electric Transfer Case Shift Motor",
+app/src/main/java/com/example/data/SportTracPartsCatalog.kt:254:            category = "4WD & Drivetrain",
+app/src/main/java/com/example/data/SportTracPartsReadiness.kt:85:                PendingFitmentItem("Fuse assortment", "Match fuse type and amp rating to the owner manual or circuit label; never substitute a higher rating.")
+app/src/main/java/com/example/data/SportTracPartsReadiness.kt:92:            description = "A focused replacement package for worn or leaking rear shocks on the 4WD chassis. Confirm VIN/axle-code fitment and compare the pair price before ordering; the torque values come from the 4WD VIN K rear suspension specification.",
+app/src/main/java/com/example/data/SportTracPartsReadiness.kt:96:                PendingFitmentItem("Rear shock application", "Verify 4WD fitment, mounting-eye orientation, and pair quantity against the VIN and axle code before purchase.")
+app/src/main/java/com/example/data/SportTracPartsReadiness.kt:122:            title = "4WD, drivetrain, and road-readiness",
+app/src/main/java/com/example/data/SportTracPartsReadiness.kt:126:                "part_4x4_shift_motor",
+app/src/main/java/com/example/data/SportTracServiceManualDiagnostics.kt:88:            id = "sym_4x4_flash",
+app/src/main/java/com/example/data/SportTracServiceManualDiagnostics.kt:89:            title = "4x4 HIGH & 4x4 LOW Dashboard Lights Flashing 6 Times",
+app/src/main/java/com/example/data/SportTracServiceManualDiagnostics.kt:90:            description = "Both 4WD indicator lights flash 6 times in sequence on instrument cluster upon key turn or switch activation.",
+app/src/main/java/com/example/data/SportTracServiceManualDiagnostics.kt:91:            system = VehicleSystem.DRIVETRAIN_4WD,
+app/src/main/java/com/example/data/SportTracServiceManualDiagnostics.kt:95:            id = "sym_4x4_clunk_turn",
+app/src/main/java/com/example/data/SportTracServiceManualDiagnostics.kt:96:            title = "Loud Popping / Binding in Front End during 4WD Turns",
+app/src/main/java/com/example/data/SportTracServiceManualDiagnostics.kt:97:            description = "Heavy knocking sound and steering resistance when turning steering wheel on loose surfaces in 4WD HIGH.",
+app/src/main/java/com/example/data/SportTracServiceManualDiagnostics.kt:98:            system = VehicleSystem.DRIVETRAIN_4WD,
+app/src/main/java/com/example/data/SportTracServiceManualDiagnostics.kt:138:    val manualTroubleMatches = listOf(
+app/src/main/java/com/example/data/SportTracServiceManualDiagnostics.kt:234:            id = "match_4x4_shift_motor",
+app/src/main/java/com/example/data/SportTracServiceManualDiagnostics.kt:235:            title = "ControlTrac 4WD Transfer Case Shift Motor / Relay Contact Fault",
+app/src/main/java/com/example/data/SportTracServiceManualDiagnostics.kt:238:            problemSummary = "The 2004 Sport Trac uses an electric motor mounted to the BorgWarner 4411 transfer case to shift between 2WD, 4WD High, and 4WD Low. Internal rotary position switch contacts oxidize due to infrequent use, causing 4x4 module to lose encoder position.",
+app/src/main/java/com/example/data/SportTracServiceManualDiagnostics.kt:239:            probableCause = "Corroded encoder wheel contacts inside shift motor or sticking 4x4 control module relay.",
+app/src/main/java/com/example/data/SportTracServiceManualDiagnostics.kt:243:            matchingSymptomIds = listOf("sym_4x4_flash", "sym_4x4_clunk_turn"),
+app/src/main/java/com/example/data/SportTracServiceManualDiagnostics.kt:246:                "Step 2: Tap transfer case shift motor housing lightly with rubber mallet while an assistant toggles 4x4 dash switch.",
+app/src/main/java/com/example/data/SportTracServiceManualDiagnostics.kt:357:        return manualTroubleMatches
+app/src/main/java/com/example/data/SportTracVehicleScale.kt:41:    val height4x4M: Float = inches(HEIGHT_4X4_16_IN)
+app/src/main/java/com/example/data/VehicleHardwareCatalog.kt:19: * manual before it is used as a repair or restoration authority.
+app/src/main/java/com/example/data/VehicleHardwareCatalog.kt:57:        VehicleSystem.TRANSMISSION, VehicleSystem.DRIVETRAIN_4WD -> HardwareProfile(
+app/src/main/java/com/example/data/VehicleHardwareCatalog.kt:128:            ?: "Torque is not inferred; consult the Ford workshop manual."
+app/src/main/java/com/example/data/VehicleHardwareCatalog.kt:198:            VehicleSystem.ENGINE, VehicleSystem.TRANSMISSION, VehicleSystem.DRIVETRAIN_4WD -> 0.72f
+app/src/main/java/com/example/data/VehicleHardwareCatalog.kt:204:            ?: "Torque reference required from Ford workshop manual."
+app/src/main/java/com/example/data/local/Cached3DAssetEntity.kt:20:    val manualSectionRef: String,
+app/src/main/java/com/example/data/local/CachedRepairManualEntity.kt:6:@Entity(tableName = "cached_repair_manuals")
+app/src/main/java/com/example/data/local/OfflineCacheDao.kt:32:    @Query("SELECT * FROM cached_repair_manuals ORDER BY title ASC")
+app/src/main/java/com/example/data/local/OfflineCacheDao.kt:35:    @Query("SELECT * FROM cached_repair_manuals WHERE id = :id LIMIT 1")
+app/src/main/java/com/example/data/local/OfflineCacheDao.kt:39:    suspend fun insertRepairManuals(manuals: List<CachedRepairManualEntity>)
+app/src/main/java/com/example/data/local/OfflineCacheDao.kt:41:    @Query("DELETE FROM cached_repair_manuals")
+app/src/main/java/com/example/data/local/OfflineCacheDao.kt:44:    @Query("SELECT COUNT(*) FROM cached_repair_manuals")
+app/src/main/java/com/example/mentor/MentorKnowledge.kt:16: * service-manual matches already in this repo. This is not a claim of
+app/src/main/java/com/example/mentor/MentorKnowledge.kt:42:        val failures = SportTracServiceManualDiagnostics.manualTroubleMatches.filter { match ->
+app/src/main/java/com/example/mentor/MentorKnowledge.kt:69:            uncertaintyNote = "Owner-guide fluids and Motorcraft numbers are from the 2004 P207 Sport Trac Owners Guide. Torque sequences and teardown steps still need the workshop manual before turning a wrench.",
+app/src/main/java/com/example/mentor/MentorKnowledge.kt:76:        "2004 OG: oil 5.0 qt 5W-30 + FL-820S; coolant 14.0 qt Premium Gold; 5R55E 4x4 MERCON V (Mercon 5) dry-fill about 10.3 qt set by dipstick; 4x2 about 10.0 qt. Transfer case official: 1.3 qt MERCON ATF XT-2-QDX, not MERCON V. Power steering official: MERCON ATF. Brake: DOT 3 to reservoir line. Washer: 2.7 qt. Common sense: XT-2 is discontinued, so shops use MERCON V in the t-case and PS when original Mercon cannot be sourced. Do not treat that as the printed OG spec. Ford printed do-not-mix MERCON and MERCON V."
+app/src/main/java/com/example/mentor/MentorKnowledge.kt:80:        "2004 OG: front axle 1.8 qt 80W-90 on 4x4. Rear axle 5.5-5.8 pints 75W-90 FE synthetic, fill 6-14 mm below the hole. Add XL-7 4 oz on a complete Traction-Lok refill. Rear synthetic is lubricated for life unless leak, service, or water submersion. 75W-140 is not the printed OG fill."
+app/src/main/java/com/example/mentor/MentorKnowledge.kt:84:        "2004 OG 4-door: length 205.9 in, width 71.8 in, height 69.9 in (70.6 in max 4x4 16-in tires), wheelbase 125.9 in, track 58.5 / 58.3 in."
+app/src/main/java/com/example/mentor/MentorKnowledge.kt:101:            " 4WD VIN K workshop: ${brief.workshopLeaves.first()}. ${CharmWorkshopIndex.DISCLAIMER}"
+app/src/main/java/com/example/mentor/MentorKnowledge.kt:124:            q.contains("service manual") || q.contains("repair manual")
+app/src/main/java/com/example/mentor/MentorKnowledge.kt:127:            q.contains("fordservicecontent") || q.contains("owner manual")
+app/src/main/java/com/example/mentor/MentorKnowledge.kt:150:                    "No packaged torque value for ${component.name}. Use the Ford workshop manual, not guesswork."
+app/src/main/java/com/example/model/Component3DModel.kt:93:    val manualSectionRef: String = "Section 303-01A: " + name + " Service"
+app/src/main/java/com/example/model/ForscanModel.kt:11:    FOUR_X_FOUR("4X4M", "4WD Control Module", Color(0xFFA855F7)),
+app/src/main/java/com/example/model/VehicleSystem.kt:89:    DRIVETRAIN_4WD(
+app/src/main/java/com/example/model/VehicleSystem.kt:90:        displayName = "4WD & Drivetrain",
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:93:        realVehicleTransfer = "Use the owner-manual fuse/relay diagram and safe visual observations to document whether the clutch engages. Record results rather than forcing engagement.",
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:124:            "Check the owner-manual fuse chart and the appropriate HVAC/blower fuse before removing trim. Replace only with the specified fuse rating.",
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:137:        tools = "Safety glasses, flashlight, owner manual, multimeter only if experienced",
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:141:            "Check the A/C-related fuse and relay locations using the exact owner-manual diagram for this truck. Do not bypass a relay or pressure switch.",
+app/src/main/java/com/example/ui/components/AddUpcomingTaskDialog.kt:122:                            VehicleSystem.DRIVETRAIN_4WD to "4WD"
+app/src/main/java/com/example/ui/components/CameraMeasurementDialog.kt:165:    // Match calculated size against Sport Trac service manual specs
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt:111:            id = "4x4",
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt:112:            title = "ControlTrac 4WD",
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt:113:            description = "4x4 High/Low lights flashing 6 times, transfer case click, shift motor",
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt:116:            rootStepId = "4x4_1"
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt:301:            questionSubtitle = "Identify front-end noise characteristics on 2001-2005 Sport Trac 4WD/RWD",
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt:431:        // --- 4x4 DECISION TREE ---
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt:432:        "4x4_1" to WizardStep(
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt:433:            id = "4x4_1",
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt:436:            questionTitle = "What happens when you turn dashboard 4x4 selector switch?",
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt:437:            questionSubtitle = "ControlTrac 4WD System Diagnostic Flow",
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt:438:            techTip = "When 4WD module detects circuit failure on key-on, it flashes 4x4 HIGH and 4x4 LOW lights 6 times on instrument cluster.",
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt:441:                    title = "4x4 High and Low lights flash 6 times on start-up & 4WD won't engage",
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt:445:                        issueTitle = "4WD Control Module (GEM) Failure / Power Loss",
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt:447:                        componentName = "4WD Control Module (GEM / 4x4 Module)",
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt:451:                        summary = "The 4x4 Control Module mounted behind passenger kick panel lost communications or experienced internal relay contact oxidation.",
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt:453:                        recommendedParts = listOf("Motorcraft 4WD Control Module", "Dorman 600-551 4x4 Control Module"),
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt:461:                    subtitle = "Motor hums briefly or stops midway between 2WD and 4x4 High",
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt:471:                        verificationProcedure = "Lightly tap aluminum housing of transfer case shift motor with hammer while partner switches 4x4 knob. If motor engages, internal contacts are sticking.",
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt:571:                        verificationProcedure = "Pull head unit out of dash using U-shaped Ford DIN removal keys. Unbolt top shield cover to clear stuck CD disc manually.",
+app/src/main/java/com/example/ui/components/FourWheelDriveDiagram.kt:56:        description = "System runs in 2WD (rear wheels) under normal dry road conditions. When ABS speed sensors detect rear wheel slip, 4WD Control Module energizes the transfer case electromagnetic clutch in milliseconds to send up to 100% torque to front wheels.",
+app/src/main/java/com/example/ui/components/FourWheelDriveDiagram.kt:66:        description = "Electromagnetic clutch is fully energized continuously, locking front and rear driveshafts in a solid 50/50 torque split. Disables 4x4 AUTO slip modulation.",
+app/src/main/java/com/example/ui/components/FourWheelDriveDiagram.kt:84:    TRANSFER_CASE("BorgWarner 4411 Transfer Case", "4WD System", "Electric Shift / EMC Clutch (MERCON V ATF)"),
+app/src/main/java/com/example/ui/components/FourWheelDriveDiagram.kt:85:    SHIFT_MOTOR("4x4 Electric Encoder Motor", "Electrical / Actuator", "Mounted on T-Case Rear Housing"),
+app/src/main/java/com/example/ui/components/FourWheelDriveDiagram.kt:89:    CONTROL_MODULE("4WD Control Module (GEM)", "Electronics", "Behind Passenger Kick Panel / ABS Speed Inputs")
+app/src/main/java/com/example/ui/components/FourWheelDriveDiagram.kt:130:        // 1. TOP 4WD DASHBOARD MODE SWITCHER
+app/src/main/java/com/example/ui/components/FourWheelDriveDiagram.kt:154:                                text = "CONTROL TRAC 4WD SYSTEM DIAGRAM",
+app/src/main/java/com/example/ui/components/FourWheelDriveDiagram.kt:184:                                text = if (showTroubleshooting) "Diagram View" else "4x4 Diagnostics",
+app/src/main/java/com/example/ui/components/FourWheelDriveDiagram.kt:194:                // Mode Selector Buttons (4x4 AUTO / 4x4 HIGH / 4x4 LOW)
+app/src/main/java/com/example/ui/components/FourWheelDriveDiagram.kt:289:            // 4x4 TROUBLESHOOTING & DIAGNOSTIC CHECKLIST VIEW
+app/src/main/java/com/example/ui/components/FourWheelDriveDiagram.kt:449:                    // 4WD Control Module Box
+app/src/main/java/com/example/ui/components/FourWheelDriveDiagram.kt:547:                        // 4WD Control Module Label
+app/src/main/java/com/example/ui/components/FourWheelDriveDiagram.kt:555:                                text = "4x4 Control Module (GEM)",
+app/src/main/java/com/example/ui/components/FourWheelDriveDiagram.kt:602:                                it.id == "driveshaft_4x4" || it.name.contains("Transfer Case", ignoreCase = true) || it.name.contains("Driveshaft", ignoreCase = true)
+app/src/main/java/com/example/ui/components/FourWheelDriveDiagram.kt:697:                        text = "A common issue on 2004 Sport Trac models is the 4WD HIGH / LOW lights flashing 6 times on start or while driving. This indicates the 4WD Control Module lost position encoder feedback or speed sensor pulse.",
+app/src/main/java/com/example/ui/components/FourWheelDriveDiagram.kt:706:                        "Step 1: Check 4WD Fuse #25 (15A) and Fuse #115 (20A) in Battery Junction Box.",
+app/src/main/java/com/example/ui/components/FourWheelDriveDiagram.kt:707:                        "Step 2: Inspect 4x4 Shift Motor Encoder Harness on Transfer Case rear housing for corrosion or frayed wires.",
+app/src/main/java/com/example/ui/components/FourWheelDriveDiagram.kt:708:                        "Step 3: Tap shift motor body gently with rubber mallet while an assistant rotates switch to 4x4 HIGH (frees stuck motor brushes).",
+app/src/main/java/com/example/ui/components/FourWheelDriveDiagram.kt:710:                        "Step 5: Replace 4x4 Electric Shift Encoder Motor (OEM #1L2Z-7G360-A)."
+app/src/main/java/com/example/ui/components/Interactive3DViewport.kt:2177:                                modifier = Modifier.testTag("view_repair_manual_btn")
+app/src/main/java/com/example/ui/components/Interactive3DViewport.kt:2947:                                .testTag("direct_manual_link_btn")
+app/src/main/java/com/example/ui/components/Interactive3DViewport.kt:2978:                                            text = comp.manualSectionRef,
+app/src/main/java/com/example/ui/components/Interactive3DViewport.kt:3036:                                    .testTag("view_full_manual_btn")
+app/src/main/java/com/example/ui/components/LayerController.kt:492:                                                newMap[it] = (it == VehicleSystem.ENGINE || it == VehicleSystem.AIR_INTAKE || it == VehicleSystem.TRANSMISSION || it == VehicleSystem.DRIVETRAIN_4WD)
+app/src/main/java/com/example/ui/components/LayerController.kt:507:                                                newMap[it] = (it == VehicleSystem.BRAKES_CHASSIS || it == VehicleSystem.DRIVETRAIN_4WD)
+app/src/main/java/com/example/ui/components/MentorDock.kt:114:                    text = "4WD VIN K workshop: $workshopLeaf",
+app/src/main/java/com/example/ui/components/MentorVoiceSettingsDialog.kt:731:                                                        "All CAD models and service manual procedures are cached in Room SQLite database v${cacheManifest?.dbSchemaVersion ?: 6}."
+app/src/main/java/com/example/ui/components/MentorVoiceSettingsDialog.kt:733:                                                        "Some 3D models or service manuals are not yet stored locally. Tap Force Update to cache now.",
+app/src/main/java/com/example/ui/components/PriceWatchDialog.kt:130:                            text = "This saves a seven-day review plan for this exact part number. It does not scrape a site, place an order, or confirm fitment. Retailer links open a manual verification search until an authorized live data source is connected.",
+app/src/main/java/com/example/ui/components/ReadinessDashboardDialog.kt:224:            detail = "${packages.size} system packages keep the catalog organized across climate, maintenance, brakes, 4WD/drivetrain, visibility/electrical, body/cabin, and audio/reference work.",
+app/src/main/java/com/example/ui/components/TeamPanelDialog.kt:88:        "1. Interactive 3D BILT Mapping (Highest Importance)" to "Every single system—Engine, Dash, Interior, Drivetrain 4WD, Transmission, Suspension, Lighting, Heating/Air, and Sunroof—mapped in full 3D with explode sliders, step timelines, and BILT voice guidance.",
+app/src/main/java/com/example/ui/components/TorqueSpecsQuickReference.kt:74:    // Master database of 2004 Ford Explorer Sport Trac Torque Specs compiled from OEM service manuals & component models
+app/src/main/java/com/example/ui/components/TorqueSpecsQuickReference.kt:132:                TorqueEntry("extra_5", "Front Axle Shaft Hub Nut", "Front 4WD Hub Assembly", VehicleSystem.TRANSMISSION, 184f, "M24 Large Spindle Nut", "32mm Deep Axle Socket", "Single Continuous Heavy Pass", true, "Retaining Cotter Pin", "Extreme high torque required to set front wheel bearing preload."),
+app/src/main/java/com/example/ui/components/TorqueSpecsQuickReference.kt:574:                        Icon(Icons.Default.Grid4x4, contentDescription = null, tint = Color(0xFF10B981), modifier = Modifier.size(14.dp))
+app/src/main/java/com/example/ui/components/UpcomingTasksListView.kt:81:                "4WD" -> task.systemName.contains("4WD", ignoreCase = true) || task.systemName.contains("Drivetrain", ignoreCase = true)
+app/src/main/java/com/example/ui/components/UpcomingTasksListView.kt:326:                listOf("ALL", "OVERDUE", "CRITICAL", "ENGINE", "TRANS", "BRAKES", "4WD").forEach { filterKey ->
+app/src/main/java/com/example/ui/screens/DiagnosticsScreen.kt:398:                                    text = "Step-by-step decision trees for engine misfires (P0300, PCV elbow), suspension clunks & wheel bearings, 5R55E 2-3 shift flares, 4x4 flashing lights, and thermostat leaks with confidence scoring & OEM parts.",
+app/src/main/java/com/example/ui/screens/DiagnosticsScreen.kt:425:                                .testTag("service_manual_symptom_card"),
+app/src/main/java/com/example/ui/screens/DiagnosticsScreen.kt:469:                                    text = "Select one or multiple symptoms from an extensive list across Engine, 5R55E Transmission, ControlTrac 4WD, Cooling, and Brakes to pinpoint exact potential causes, OBD codes, and step-by-step diagnostic procedures.",
+app/src/main/java/com/example/ui/screens/PartsShoppingScreen.kt:691:                        text = "Review your saved list before opening any retailer manually. This app does not submit orders, collect payment, or charge an account.",
+app/src/main/java/com/example/ui/screens/RepairManualScreen.kt:144:                            text = "4WD Diagram",
+app/src/main/java/com/example/ui/screens/RepairManualScreen.kt:239:                        .testTag("manual_search_input")
+app/src/main/java/com/example/ui/screens/RepairManualScreen.kt:417:                        .testTag("manual_item_${comp.id}"),
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:208:    private val _manualSearchQuery = MutableStateFlow("")
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:209:    val manualSearchQuery: StateFlow<String> = _manualSearchQuery.asStateFlow()
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:224:        _manualSearchQuery
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:269:            viewModelScope.launch { activeCacheRepo.manualsCountFlow.collect { _cachedManualsCount.value = it } }
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:361:        _manualSearchQuery.value = query
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:457:            text.contains("drivetrain") || text.contains("4wd") || text.contains("4x4") || text.contains("differential") || text.contains("transfer case") || text.contains("driveshaft") -> {
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:458:                setSystemFilter(VehicleSystem.DRIVETRAIN_4WD)
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:460:                "Filtered 3D model to 4WD Drivetrain"
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:473:            text.contains("manual") || text.contains("repair") || text.contains("specs") -> {
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:556:            text.contains("4wd") || text.contains("4x4") || text.contains("transfer case") || text.contains("driveshaft") || text.contains("diagram") -> {
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:557:                selectComponentById("driveshaft_4x4")
+app/src/main/java/com/example/ui/viewmodel/ExplorerViewModel.kt:559:                "Selected Control Trac 4WD Transfer Case & Driveshafts"
+app/src/main/java/com/example/util/HapticHelper.kt:25:                component.system == VehicleSystem.DRIVETRAIN_4WD ||
+app/src/main/java/com/example/util/SubAssemblyMeshGenerator.kt:391:        specDetails: String = "Motorcraft AGSF-22PP Platinum Plug • Gap 0.054 in • torque per Ford workshop manual"
+app/src/test/java/com/example/data/CharmWorkshopIndexTest.kt:13:            assertTrue(leaf.url.contains("4WD"))
+app/src/test/java/com/example/data/CharmWorkshopIndexTest.kt:15:            assertFalse(leaf.url.contains("2WD"))
+app/src/test/java/com/example/data/CharmWorkshopIndexTest.kt:29:        assertFalse(formatted.contains("2WD"))
+app/src/test/java/com/example/data/CharmWorkshopIndexTest.kt:30:        assertTrue(formatted.contains("4WD VIN K"))
+app/src/test/java/com/example/data/CharmWorkshopIndexTest.kt:36:        assertTrue(hits.any { it.url.contains("Compressor") && it.url.contains("4WD") })
+app/src/test/java/com/example/data/OfficialPublicationsAndCommunityTest.kt:32:        assertTrue(CommunityRepairVideos.DISCLAIMER.contains("Not the Ford workshop manual"))
+app/src/test/java/com/example/data/OfficialPublicationsAndCommunityTest.kt:50:            assertTrue(leaf.url.contains("4WD"))
+app/src/test/java/com/example/data/OfficialPublicationsAndCommunityTest.kt:51:            assertFalse(leaf.url.contains("2WD"))
+app/src/test/java/com/example/data/SportTracCompleteAssemblyTest.kt:33:            VehicleSystem.DRIVETRAIN_4WD,
+app/src/test/java/com/example/mentor/MentorKnowledgeTest.kt:18:        assertTrue(brief.uncertaintyNote.contains("workshop manual"))
+app/src/test/java/com/example/mentor/MentorKnowledgeTest.kt:41:        assertTrue(answer.contains("charm.li"))
+app/src/test/java/com/example/mentor/MentorKnowledgeTest.kt:42:        assertTrue(answer.contains("4WD"))
+app/src/test/java/com/example/mentor/MentorKnowledgeTest.kt:43:        assertFalse(answer.contains("2WD"))
+app/src/test/java/com/example/mentor/MentorKnowledgeTest.kt:47:            assertFalse(leaf.contains("2WD"))
+app/src/test/java/com/example/mentor/MentorKnowledgeTest.kt:57:        assertTrue(answer.contains("Not the workshop manual"))
+app/src/test/java/com/example/model/RecommendationIntegrityTest.kt:39:        val manualRecord = quote(
+app/src/test/java/com/example/model/RecommendationIntegrityTest.kt:46:        val ranked = RecommendationIntegrity.sortedForReview(listOf(manualRecord, savedRecord))
+docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md:1:# 2004 Sport Trac 4WD VIN K workshop source (CHARM)
+docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md:4:https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/
+docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md:8:- Repair and Diagnosis: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/
+docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md:9:- Parts and Labor: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Parts%20and%20Labor/
+docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md:10:- Offline zip: https://charm.li/bundle/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/
+docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md:12:## 4WD VIN K leaves from the repair-links pack
+docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md:14:- Engine: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Engine%2C%20Cooling%20and%20Exhaust/Engine/
+docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md:15:- Drive belts: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Engine%2C%20Cooling%20and%20Exhaust/Engine/Drive%20Belts/
+docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md:16:- Cooling system: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Engine%2C%20Cooling%20and%20Exhaust/Cooling%20System/
+docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md:17:- Transmission speed sensor: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Transmission%20and%20Drivetrain/Automatic%20Transmission%2FTransaxle/Transmission%20Speed%20Sensor/
+docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md:18:- Transfer case: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Transmission%20and%20Drivetrain/Transfer%20Case/
+docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md:19:- Drive axles: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Transmission%20and%20Drivetrain/Drive%20Axles/
+docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md:20:- Suspension: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Steering%20and%20Suspension/Suspension/
+docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md:21:- Steering: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Steering%20and%20Suspension/Steering/
+docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md:22:- Brakes: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Brakes%20and%20Traction%20Control/Brakes/
+docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md:23:- HVAC (4WD): https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Heating%20and%20Air%20Conditioning/
+docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md:24:- A/C compressor service (4WD): https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Heating%20and%20Air%20Conditioning/Compressor%20HVAC/Service%20and%20Repair/
+docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md:25:- Body general: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Body%20and%20Frame/Description%20and%20Operation/Body%20System%20-%20General%20Information/
+docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md:26:- Windows and glass: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Windows%20and%20Glass/
+docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md:27:- All DTCs: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/A%20L%20L%20%20Diagnostic%20Trouble%20Codes%20%28%20DTC%20%29/
+docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md:29:## 2WD URLs from that pack — do not use for this 4WD truck
+docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md:31:- Firing order: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%202WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Specifications/Mechanical%20Specifications/Firing%20Order/
+docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md:32:- HVAC compressor: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%202WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Heating%20and%20Air%20Conditioning/Compressor%20HVAC/Service%20and%20Repair/
+docs/2004_SPORT_TRAC_LINK_PACK.md:3:Source file: 2004_Ford_Sport_Trac_Full_Repair_Links.zip (link list only; no manuals inside)
+docs/2004_SPORT_TRAC_LINK_PACK.md:7:4WD CHARM leaves in `docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md`.
+docs/2004_SPORT_TRAC_LINK_PACK.md:11:YouTube titles in the pack were not verified against this exact 2004 Sport Trac 4WD 4.0L VIN K.
+docs/2004_SPORT_TRAC_LINK_PACK.md:41:## Do not use for this 4WD truck
+docs/2004_SPORT_TRAC_LINK_PACK.md:43:- 2WD CHARM firing order
+docs/2004_SPORT_TRAC_LINK_PACK.md:44:- 2WD CHARM compressor service
+docs/2004_SPORT_TRAC_OWNER_GUIDE_SPECS.md:3:Source page: https://www.ford.com/support/owner-manuals-details/explorer-sport-trac/2004
+docs/2004_SPORT_TRAC_OWNER_GUIDE_SPECS.md:12:Extracted from the Maintenance and Specifications tables in those files. Owner Guide is not a workshop manual.
+docs/2004_SPORT_TRAC_OWNER_GUIDE_SPECS.md:36:| Transmission | Motorcraft MERCON V ATF | 5R55E 4x4 | 9.8 L (10.3 quarts) dry-fill approx. |
+docs/2004_SPORT_TRAC_OWNER_GUIDE_SPECS.md:37:| Transfer case | Motorcraft MERCON ATF | 4WD | 1.2 L (1.3 quarts), fill to bottom of filler hole |
+docs/2004_SPORT_TRAC_OWNER_GUIDE_SPECS.md:39:| Front axle | Motorcraft SAE 80W-90 | 4x4 | 1.7 L (1.8 quarts) |
+docs/2004_SPORT_TRAC_OWNER_GUIDE_SPECS.md:66:- Height: 69.9 in / 70.6 in max on 4x4 with 16 in tires
+docs/COMPLETE_PROJECT_INVENTORY.md:11:The app is a privacy-first, practice-first learning tool centered on a 2004 Ford Explorer Sport Trac. Its intended use is to help the owner inspect a component, rehearse a repair, understand diagnostic evidence, make transparent parts choices, and retain control of real-world decisions. It is not an automatic-ordering system, a payment wallet, a verified universal repair manual, or a replacement for professional diagnosis. [1] [2]
+docs/NEXT_100_TASKS_2026-08-26.md:4:Owner Guide remains fluids / Motorcraft / capacities. CHARM remains 4WD VIN K pointers.
+docs/NEXT_100_TASKS_2026-08-26.md:21:13. Added height (4x4 16-in tire max).
+docs/NEXT_100_TASKS_2026-08-26.md:33:22. Indexed owner-manuals hub.
+docs/NEXT_100_TASKS_2026-08-26.md:43:32. Indexed Driving Your SUV or Truck `044x4fw1e.pdf`.
+docs/NEXT_100_TASKS_2026-08-26.md:61:## D. CHARM 4WD VIN K expansion (46–55)
+docs/NEXT_100_TASKS_2026-08-26.md:64:47. Added offline 4WD VIN K zip leaf.
+docs/NEXT_100_TASKS_2026-08-26.md:70:53. Kept every published leaf on the 4WD tree.
+docs/NEXT_100_TASKS_2026-08-26.md:71:54. Kept 2WD pack URLs on the reject list.
+docs/NEXT_100_TASKS_2026-08-26.md:85:65. Spoken briefing still appends one community video and one 4WD CHARM leaf when present.
+docs/NEXT_100_TASKS_2026-08-26.md:90:67. Power-steering service-manual flush cites OG MERCON ATF first.
+docs/NEXT_100_TASKS_2026-08-26.md:91:68. 4WD diagram transfer-case node is OG MERCON ATF 1.3 qt.
+docs/NEXT_100_TASKS_2026-08-26.md:92:69. 4WD diagram rear-diff node is OG 75W-90 FE, not 75W-140 as printed spec.
+docs/NEXT_100_TASKS_2026-08-26.md:93:70. 4WD diagram service card is 1.3 qt MERCON ATF + shop-substitute note.
+docs/NEXT_100_TASKS_2026-08-26.md:94:71. 4WD diagram rear-diff torque chip no longer lists 75W-140 as the fill.
+docs/NEXT_100_TASKS_2026-08-26.md:123:94. CHARM test now also requires Parts and Labor + 4WD-only URLs.
+docs/NEXT_FIVE_OG_LIVE_PATHS_2026-08-26.md:8:4. Power-steering service-manual flush cites official MERCON ATF, with MERCON V only as the XT-2 substitute.
+docs/NEXT_FIVE_OG_LIVE_PATHS_2026-08-26.md:9:5. 4WD diagram t-case card is 1.3 qt OG MERCON ATF + shop substitute MERCON V, not 1.5 qt MERCON V as factory.
+docs/OG_TRUTH_AND_CHARM_GATE_2026-08-26.md:1:# Owner Guide source truth + CHARM 4WD gate — 2026-08-26 (source-fixed)
+docs/OG_TRUTH_AND_CHARM_GATE_2026-08-26.md:7:3. Local Gemini overheating refill is 14.0 qt. Power-steering service-manual flush cites OG MERCON ATF first.
+docs/OG_TRUTH_AND_CHARM_GATE_2026-08-26.md:8:4. 4WD diagram transfer-case card is 1.3 qt MERCON ATF. Rear-diff chip is 75W-90 FE, not 75W-140.
+docs/OG_TRUTH_AND_CHARM_GATE_2026-08-26.md:9:5. `CharmWorkshopIndex` stays on the 4WD VIN K tree, rejects 2WD pack URLs, and now includes Parts and Labor plus the official CHARM offline zip bundle URL.
+docs/SPORT_TRAC_100_JOBS_L3.md:1:# 100 jobs 3-level check — 2004 Sport Trac 4WD VIN K
+docs/SPORT_TRAC_100_JOBS_L3.md:12:CHARM hub: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/
+docs/SPORT_TRAC_ALL_REPAIRS.md:1:# 2004 Sport Trac 4WD VIN K — all service repairs
+docs/SPORT_TRAC_ALL_REPAIRS.md:3:Not the Ford WSM. 4WD VIN K CHARM hub:
+docs/SPORT_TRAC_ALL_REPAIRS.md:4:https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/
+docs/SPORT_TRAC_ALL_REPAIRS.md:5:Reject 2WD URLs.
+docs/SPORT_TRAC_ALL_REPAIRS.md:19:9. A/C: CHARM HVAC 4WD only. Certified recover/charge to under-hood label.
+docs/SPORT_TRAC_EVERYTHING.md:19:This is still not every clip Ford installed. TTY head bolts, interior screws, body clips, and harness retainers stay workshop-manual items.
+docs/SPORT_TRAC_FASTENERS.md:20:Torque strings are packaged references. Confirm the workshop manual before use.
+docs/SPORT_TRAC_OG_SCALE.md:13:| Height 4x4 + 16-in tires | 70.6 in / 1794 mm | 1.7932 |
+docs/SPORT_TRAC_4WD_WIRING_CATALOG.md:1:# 2004 Ford Explorer Sport Trac 4WD Wiring Evidence Catalog
+docs/SPORT_TRAC_4WD_WIRING_CATALOG.md:5:The repository now embeds the collected 4WD VIN K electrical diagram source tree under [`docs/wiring_diagrams/charm_4wd_vin_k/`](wiring_diagrams/charm_4wd_vin_k/). The package contains 274 discovered CHARM category entries, 147 saved source HTML pages, 357 downloaded PNG plates on disk, and a root `index.json` with source URLs, HTTP statuses, plate URLs, local paths, and byte sizes. All discovered category requests returned HTTP 200 and all indexed plate references resolve to files in the package. `SHA256SUMS` covers the embedded files.
+docs/SPORT_TRAC_4WD_WIRING_CATALOG.md:7:The package was fetched from the [Operation CHARM 2004 Explorer Sport Trac 4WD V6-4.0L VIN K Flex Fuel hub](https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/) and its live Repair and Diagnosis diagram tree. The fetcher is retained at [`tools/crawl_charm_4wd_vin_k.py`](../tools/crawl_charm_4wd_vin_k.py).
+docs/SPORT_TRAC_4WD_WIRING_CATALOG.md:9:## 4WD control diagrams
+docs/SPORT_TRAC_4WD_WIRING_CATALOG.md:11:The most relevant verified 4WD source family is the local [`transfer_case/`](wiring_diagrams/charm_4wd_vin_k/transfer_case/) folder. It includes three source plates for the Transfer Case electrical diagram family:
+docs/SPORT_TRAC_4WD_WIRING_CATALOG.md:16:| 34-2 | [`34-2__1027155903.png`](wiring_diagrams/charm_4wd_vin_k/transfer_case/34-2__1027155903.png) | 4x4 mode switch with Off/High/Low positions, 4WD Low/High instrument indications, C284, central security module, data-link references, grounds, illumination, and wire color/gauge labels. |
+docs/SPORT_TRAC_4WD_WIRING_CATALOG.md:17:| 34-3 | [`34-3__1027171573.png`](wiring_diagrams/charm_4wd_vin_k/transfer_case/34-3__1027171573.png) | Four-wheel-drive control module reference, brake-pedal-position input, digital transmission-range sensor, C278/C281A/C167/C144, grounds, splice references, and 4x4 Low range enable logic. |
+docs/SPORT_TRAC_4WD_WIRING_CATALOG.md:29:The local Lemon archive originally downloaded for this project is explicitly labeled **2WD**. It must not be used to represent the 4WD wiring source. The embedded CHARM tree is the source used for the 4WD diagram package. The repository also does not claim that every electrical diagram has a complete terminal-by-terminal pinout; the source package contains only the pages and plates exposed by the live 4WD tree.
+docs/SPORT_TRAC_4WD_WIRING_CATALOG.md:37:[1]: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/ "Operation CHARM: 2004 Ford Explorer Sport Trac 4WD-4.0L VIN K Flex Fuel"
+docs/SPORT_TRAC_4WD_WIRING_CATALOG.md:38:[2]: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/ "Operation CHARM: Repair and Diagnosis"
+docs/SPORT_TRAC_4WD_WIRING_CATALOG.md:39:[3]: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Transfer%20Case/ "Operation CHARM: Transfer Case Electrical Diagrams"
+docs/wiring_diagrams/charm_4wd_vin_k/README.md:1:# Complete 4WD VIN K Electrical Diagram Source Package
+docs/wiring_diagrams/charm_4wd_vin_k/README.md:3:This directory embeds the complete source-file collection fetched from the live Operation CHARM 4WD VIN K tree for the 2004 Ford Explorer Sport Trac 4WD V6-4.0L VIN K Flex Fuel configuration.
+docs/wiring_diagrams/charm_4wd_vin_k/README.md:7:The images are source plates, not redrawn project graphics. Use the labels and connector references on the plates as the authority for the diagram family. The repository intentionally does not claim that the old 2WD Lemon bundle is a 4WD source; these files were fetched from the explicit 4WD VIN K CHARM tree.
+docs/wiring_diagrams/charm_4wd_vin_k/README.md:9:Source hub: https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:3:- **1.html** — Free Service Manual for the 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:4:- **2.html** — Repair and Diagnosis — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine;Transmission;Suspension;Body;Wiring;Interior — images: 463
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:5:- **3.html** — Parts and Labor — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine;Transmission;Suspension;Body;Wiring;Interior — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:6:- **4.html** — Alarm Module — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Wiring — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:7:- **5.html** — Antitheft Relay — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Wiring — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:8:- **6.html** — General Module — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Wiring — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:9:- **7.html** — Keyless Entry Relay — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Wiring — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:10:- **8.html** — Keyless Entry Relay — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Body;Wiring — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:11:- **9.html** — Power Door Lock Relay — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Body;Wiring — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:12:- **10.html** — Power Seat Control Module — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Body;Wiring;Interior — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:13:- **11.html** — Seat Temperature Control Module — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Body;Wiring;Interior — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:14:- **12.html** — Electronic Brake Control Module — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Suspension;Wiring — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:15:- **13.html** — Headlamp Control Module — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Wiring — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:16:- **14.html** — Horn Relay — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Wiring — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:17:- **15.html** — Interior Lighting Module — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Wiring;Interior — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:18:- **16.html** — Body Control Module — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Body;Wiring — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:19:- **17.html** — Engine Control Module — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine;Wiring — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:20:- **18.html** — Main Relay (Computer/Fuel System) — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Wiring — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:21:- **19.html** — Fuel Pump Control Unit — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Wiring — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:22:- **20.html** — Fuel Pump Relay — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Wiring — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:23:- **21.html** — Main Relay (Computer/Fuel System) — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Wiring — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:24:- **22.html** — Air Bag Control Module — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Wiring — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:25:- **23.html** — Starter Relay — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Wiring — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:26:- **24.html** — Power Window Relay — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Body;Wiring — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:27:- **25.html** — Parking Assist Distance Sensor — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:28:- **26.html** — Power Door Lock Switch — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Body — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:29:- **27.html** — Power Mirror Switch — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Body — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:30:- **28.html** — Power Seat Switch — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Body;Interior — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:31:- **29.html** — Sunroof / Moonroof Switch — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Body — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:32:- **30.html** — Brake Fluid Pressure Sensor/Switch — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Suspension — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:33:- **31.html** — Parking Brake Warning Switch — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Suspension — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:34:- **32.html** — Wheel Speed Sensor — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Suspension — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:35:- **33.html** — Coolant Temperature Sensor/Switch (For Computer) — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:36:- **34.html** — Engine Temperature Sensor — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:37:- **35.html** — Temperature Sensor (Gauge) — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:38:- **36.html** — Cruise Control Switch — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:39:- **37.html** — Oil Pressure Sender — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:40:- **38.html** — Blower Motor Switch — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:41:- **39.html** — High Pressure Sensor / Switch — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:42:- **40.html** — Parts Information — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:43:- **41.html** — Refrigerant Pressure Sensor / Switch: Labor Times — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:44:- **42.html** — Vacuum Sensor / Switch HVAC — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:45:- **43.html** — Dimmer Switch — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Interior — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:46:- **44.html** — Door Switch — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Body;Interior — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:47:- **45.html** — Fuel Gauge Sender — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Interior — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:48:- **46.html** — Parking Brake Warning Switch — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Suspension;Interior — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:49:- **47.html** — Backup Lamp Switch — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:50:- **48.html** — Brake Light Switch — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Suspension — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:51:- **49.html** — Combination Switch — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:52:- **50.html** — Door Switch — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Body — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:53:- **51.html** — Fog/Driving Lamp Switch — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:54:- **52.html** — Headlamp Switch — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:55:- **53.html** — Horn Switch — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:56:- **54.html** — Turn Signal Switch — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:57:- **55.html** — Accelerator Pedal Position Sensor — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:58:- **56.html** — Air Flow Meter/Sensor — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:59:- **57.html** — Cam Position Sensor Mount — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:60:- **58.html** — Parts Information — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:61:- **59.html** — Camshaft Position Sensor: Labor Times — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:62:- **60.html** — Coolant Temperature Sensor/Switch (For Computer) — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:63:- **61.html** — Crankshaft Position Sensor — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:64:- **62.html** — Engine Temperature Sensor — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:65:- **63.html** — Knock Sensor — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:66:- **64.html** — Oxygen Sensor — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:67:- **65.html** — Pressure Feedback Exhaust Sensor — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:68:- **66.html** — Throttle Position Sensor — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:69:- **67.html** — Transmission Position Sensor/Switch — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Transmission — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:70:- **68.html** — Vehicle Speed Sensor — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:71:- **69.html** — Pressure Feedback Exhaust Sensor — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:72:- **70.html** — Accelerator Pedal Position Sensor — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:73:- **71.html** — Air Flow Meter/Sensor — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:74:- **72.html** — Fuel Pressure Sensor/Switch — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:75:- **73.html** — Inertia Fuel Shutoff Switch — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:76:- **74.html** — Throttle Position Sensor — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:77:- **75.html** — Cam Position Sensor Mount — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:78:- **76.html** — Parts Information — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:79:- **77.html** — Camshaft Position Sensor: Labor Times — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:80:- **78.html** — Crankshaft Position Sensor — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:81:- **79.html** — Ignition Switch Lock Cylinder — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:82:- **80.html** — Parts Information — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:83:- **81.html** — Ignition Switch: Labor Times — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:84:- **82.html** — Knock Sensor — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:85:- **83.html** — Impact Sensor — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:86:- **84.html** — Ignition Switch Lock Cylinder — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:87:- **85.html** — Parts Information — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:88:- **86.html** — Ignition Switch: Labor Times — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:89:- **87.html** — Neutral Safety Switch — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:90:- **88.html** — Tire Pressure Sensor — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Suspension — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:91:- **89.html** — Overdrive Switch — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Transmission — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:92:- **90.html** — Transmission Position Sensor/Switch — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Transmission — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:93:- **91.html** — Transmission Speed Sensor — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Transmission — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:94:- **92.html** — Power Window Switch — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Body — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:95:- **93.html** — Wiper Switch — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:96:- **94.html** — Alignment — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:97:- **95.html** — Air Filter Element — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:98:- **96.html** — Fuel Filter — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:99:- **97.html** — Ignition Cable — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:100:- **98.html** — Spark Plug — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:101:- **99.html** — Compression Check — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:102:- **100.html** — Drive Belt — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:103:- **101.html** — Air Filter Element — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:104:- **102.html** — Fluid Filter - A/T — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:105:- **103.html** — Fuel Filter — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:106:- **104.html** — Oil Filter — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:107:- **105.html** — Coolant Line/Hose — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:108:- **106.html** — Heater Hose — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Interior — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:109:- **107.html** — Hose/Line HVAC — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:110:- **108.html** — Power Steering Line/Hose — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Suspension — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:111:- **109.html** — Radiator Hose — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:112:- **110.html** — Coolant — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:113:- **111.html** — Fluid - A/T — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:114:- **112.html** — Fluid - Differential — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:115:- **113.html** — Engine Oil — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:116:- **114.html** — Brake Bleeding — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Suspension — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:117:- **115.html** — Tire Pressure Sensor — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:118:- **116.html** — Tires — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:119:- **117.html** — Wheel Bearing — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:120:- **118.html** — Wheel Seal — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:121:- **119.html** — Wheel Stud / Lug Nut — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:122:- **120.html** — Wheels — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:123:- **121.html** — Maintenance: Labor Times — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Unclassified — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:124:- **122.html** — Air Filter Element — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:125:- **123.html** — Auxiliary Shaft — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:126:- **124.html** — Auxiliary Shaft Gear/Sprocket — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:127:- **125.html** — Balance Shaft — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:128:- **126.html** — Balance Shaft Chain Tensioner — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:129:- **127.html** — Balance Shaft Gear — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:130:- **128.html** — Camshaft — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:131:- **129.html** — Camshaft Gear/Sprocket — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:132:- **130.html** — Compression Check — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:133:- **131.html** — Connecting Rod — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:134:- **132.html** — Connecting Rod Bearing — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:135:- **133.html** — Crankshaft — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:136:- **134.html** — Crankshaft Gear/Sprocket — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:137:- **135.html** — Crankshaft Main Bearing — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:138:- **136.html** — Cylinder Block Assembly — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:139:- **137.html** — Cylinder Head Assembly — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:140:- **138.html** — Cylinder Head Gasket — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:141:- **139.html** — Drive Belt — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:142:- **140.html** — Drive Belt Tensioner — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:143:- **141.html** — Engine Block Heater — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine;Interior — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:144:- **142.html** — Engine Mount — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:145:- **143.html** — Engine Oil — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:146:- **144.html** — Exhaust Manifold Gasket — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:147:- **145.html** — Expansion/Freeze Plug — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:148:- **146.html** — Front Crankshaft Seal — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:149:- **147.html** — Fuel Filter — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:150:- **148.html** — Harmonic Balancer - Crankshaft Pulley — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:151:- **149.html** — Idler Pulley — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:152:- **150.html** — Ignition Cable — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:153:- **151.html** — Intake Manifold — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:154:- **152.html** — Intake Manifold Gasket — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:155:- **153.html** — Lifter / Lash Adjuster — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:156:- **154.html** — Oil Cooler, Engine — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:157:- **155.html** — Oil Filter — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:158:- **156.html** — Oil Filter Adapter — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:159:- **157.html** — Oil Line, Engine — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:160:- **158.html** — Oil Pan — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:161:- **159.html** — Oil Pan Gasket — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:162:- **160.html** — Oil Pick Up/Strainer — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:163:- **161.html** — Oil Pressure Gauge — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:164:- **162.html** — Oil Pressure Sender — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:165:- **163.html** — Oil Pump — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:166:- **164.html** — Oil Pump Drive Shaft — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:167:- **165.html** — Overhaul Gasket Set — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:168:- **166.html** — Piston — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:169:- **167.html** — Piston Ring — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:170:- **168.html** — Rear Crankshaft Main Bearing Seal — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:171:- **169.html** — Rocker Arm Assembly — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:172:- **170.html** — Spark Plug — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:173:- **171.html** — Thermostat Gasket — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:174:- **172.html** — Timing Chain — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:175:- **173.html** — Timing Chain Guide — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:176:- **174.html** — Timing Chain Tensioner — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:177:- **175.html** — Timing Cover — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:178:- **176.html** — Timing Cover Gasket — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:179:- **177.html** — Valve — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:180:- **178.html** — Valve Cover — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:181:- **179.html** — Valve Cover Gasket — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:182:- **180.html** — Valve Guide Seal — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:183:- **181.html** — Valve Spring — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine;Suspension — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:184:- **182.html** — Valve Spring Lock — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine;Suspension — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:185:- **183.html** — Valve Spring Retainer — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine;Suspension — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:186:- **184.html** — Water Pump — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:187:- **185.html** — Water Pump Gasket — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:188:- **186.html** — Images — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 1
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:189:- **187.html** — Parts Information — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine — images: 0
+docs/source_manual_extraction/2wd_bundle/titles_and_systems.md:190:- **188.html** — Engine: Labor Times — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals — systems: Engine;Wiring — images: 0

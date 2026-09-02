@@ -1,0 +1,563 @@
+=== BUILD CONFIG ===
+./app/build.gradle.kts
+--- ./app/build.gradle.kts
+import com.google.gms.googleservices.GoogleServicesPlugin.MissingGoogleServicesStrategy
+
+plugins {
+  alias(libs.plugins.android.application)
+  alias(libs.plugins.kotlin.compose)
+  alias(libs.plugins.google.devtools.ksp)
+  alias(libs.plugins.roborazzi)
+  alias(libs.plugins.secrets)
+  alias(libs.plugins.google.services)
+}
+
+android {
+  namespace = "com.example"
+  compileSdk { version = release(36) { minorApiLevel = 1 } }
+
+  defaultConfig {
+    applicationId = "com.aistudio.fordexplorer2004.trac3d"
+    minSdk = 24
+    targetSdk = 36
+    versionCode = 1
+    versionName = "1.0"
+
+    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+    ndk {
+      abiFilters += "arm64-v8a"
+    }
+
+    externalNativeBuild {
+      cmake {
+        cppFlags += "-std=c++17"
+        arguments += "-DANDROID_STL=c++_shared"
+      }
+    }
+  }
+
+  signingConfigs {
+    create("release") {
+      val keystorePath = System.getenv("KEYSTORE_PATH") ?: "${rootDir}/my-upload-key.jks"
+      storeFile = file(keystorePath)
+      storePassword = System.getenv("STORE_PASSWORD")
+      keyAlias = "upload"
+      keyPassword = System.getenv("KEY_PASSWORD")
+    }
+    create("debugConfig") {
+      storeFile = file("${rootDir}/debug.keystore")
+      storePassword = "android"
+      keyAlias = "androiddebugkey"
+      keyPassword = "android"
+    }
+  }
+
+  buildTypes {
+    release {
+      isCrunchPngs = false
+      isMinifyEnabled = false
+      proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+      signingConfig = signingConfigs.getByName("release")
+    }
+    debug { signingConfig = signingConfigs.getByName("debugConfig") }
+  }
+  compileOptions {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+  }
+  buildFeatures {
+    compose = true
+    buildConfig = true
+  }
+  externalNativeBuild {
+    cmake {
+      path = file("../shared/llama/CMakeLists.txt")
+      version = "3.22.1"
+    }
+  }
+  // Binary 3D/AI files must stay uncompressed in the APK.
+  // Compressed assets over ~1MB fail AssetManager.open() on many devices.
+  androidResources {
+    noCompress += listOf("glb", "gltf", "bin", "gguf", "ktx", "filamat")
+  }
+  testOptions { unitTests { isIncludeAndroidResources = true } }
+}
+
+secrets {
+  propertiesFileName = ".env"
+  defaultPropertiesFileName = ".env.example"
+}
+
+googleServices { missingGoogleServicesStrategy = MissingGoogleServicesStrategy.WARN }
+
+dependencies {
+  implementation(platform(libs.androidx.compose.bom))
+  implementation(platform(libs.firebase.bom))
+  implementation(libs.androidx.activity.compose)
+  implementation(libs.androidx.camera.camera2)
+  implementation(libs.androidx.camera.core)
+  implementation(libs.androidx.camera.lifecycle)
+  implementation(libs.androidx.camera.view)
+  implementation(libs.androidx.compose.material.icons.core)
+  implementation(libs.androidx.compose.material.icons.extended)
+  implementation(libs.androidx.compose.material3)
+  implementation(libs.androidx.compose.ui)
+  implementation(libs.androidx.compose.ui.graphics)
+  implementation(libs.androidx.compose.ui.tooling.preview)
+  implementation(libs.androidx.core.ktx)
+  implementation(libs.androidx.lifecycle.runtime.compose)
+  implementation(libs.androidx.lifecycle.runtime.ktx)
+  implementation(libs.androidx.lifecycle.viewmodel.compose)
+  implementation(libs.androidx.navigation.compose)
+  implementation(libs.androidx.room.ktx)
+  implementation(libs.androidx.room.runtime)
+  implementation(libs.converter.moshi)
+  implementation(libs.firebase.ai)
+  implementation(libs.firebase.appcheck.recaptcha)
+  implementation(libs.kotlinx.coroutines.android)
+  implementation(libs.kotlinx.coroutines.core)
+  implementation(libs.logging.interceptor)
+  implementation(libs.moshi.kotlin)
+  implementation(libs.okhttp)
+  implementation(libs.retrofit)
+  implementation(libs.sceneview)
+  testImplementation(libs.androidx.compose.ui.test.junit4)
+  testImplementation(libs.androidx.core)
+  testImplementation(libs.androidx.junit)
+  testImplementation(libs.junit)
+  testImplementation(libs.kotlinx.coroutines.test)
+  testImplementation(libs.robolectric)
+  testImplementation(libs.roborazzi)
+  testImplementation(libs.roborazzi.compose)
+  testImplementation(libs.roborazzi.junit.rule)
+  androidTestImplementation(platform(libs.androidx.compose.bom))
+  androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+  androidTestImplementation(libs.androidx.espresso.core)
+  androidTestImplementation(libs.androidx.junit)
+  androidTestImplementation(libs.androidx.runner)
+  debugImplementation(libs.androidx.compose.ui.test.manifest)
+  debugImplementation(libs.androidx.compose.ui.tooling)
+  "ksp"(libs.androidx.room.compiler)
+  "ksp"(libs.moshi.kotlin.codegen)
+}
+./build.gradle.kts
+--- ./build.gradle.kts
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+plugins {
+  alias(libs.plugins.android.application) apply false
+  alias(libs.plugins.kotlin.compose) apply false
+  alias(libs.plugins.google.devtools.ksp) apply false
+  alias(libs.plugins.roborazzi) apply false
+  alias(libs.plugins.secrets) apply false
+  alias(libs.plugins.google.services) apply false
+}
+./gradle.properties
+--- ./gradle.properties
+# Project-wide Gradle settings.
+# IDE (e.g. Android Studio) users:
+# Gradle settings configured through the IDE *will override*
+# any settings specified in this file.
+# For more details on how to configure your build environment visit
+# http://www.gradle.org/docs/current/userguide/build_environment.html
+# Specifies the JVM arguments used for the daemon process.
+# The setting is particularly useful for tweaking memory settings.
+org.gradle.jvmargs=-Xmx4g -Dfile.encoding=UTF-8
+# When configured, Gradle will run in incubating parallel mode.
+# This option should only be used with decoupled projects. For more details, visit
+# https://developer.android.com/r/tools/gradle-multi-project-decoupled-projects
+org.gradle.parallel=true
+# Kotlin code style for this project: "official" or "obsolete":
+kotlin.code.style=official
+# Enables namespacing of each library's R class so that its R class includes only the
+# resources declared in the library itself and none from the library's dependencies,
+# thereby reducing the size of the R class for that library
+android.nonTransitiveRClass=true
+org.gradle.caching=true
+org.gradle.configuration-cache=true
+# Set the maximum number of workers to 4 to avoid overloading the machine.
+org.gradle.workers.max=4
+# Set the Kotlin compiler execution strategy to in-process to avoid "Could not
+# connect to Kotlin compile daemon" error.
+kotlin.compiler.execution.strategy=in-process
+# Allow the google-services plugin to work even if the google-services.json is not present.
+googleServices.missing.passthrough=true
+./settings.gradle.kts
+--- ./settings.gradle.kts
+pluginManagement {
+  repositories {
+    google {
+      content {
+        includeGroupByRegex("com\\.android.*")
+        includeGroupByRegex("com\\.google.*")
+        includeGroupByRegex("androidx.*")
+      }
+    }
+    mavenCentral()
+    gradlePluginPortal()
+  }
+}
+
+plugins { id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0" }
+
+dependencyResolutionManagement {
+  repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+  repositories {
+    google()
+    mavenCentral()
+  }
+}
+
+rootProject.name = "Ford Explorer 2004 3D Manual"
+
+include(":app")
+=== READMES / STATUS DOCS ===
+./docs/CURRENT_HUB_STATUS.md
+./docs/source_archives/README.md
+./research/audit_and_build_evidence_2026-08-18.txt
+./research/independent_audit_working_2026-08-18.md
+./tools/audit_manual_archive.py
+./technical_model/2004_explorer_sport_trac_4wd/README.md
+./manual_reaudit_rear_click_exhaust.txt
+./manual_archive_full_audit.tsv
+./architecture_policy_audit.txt
+=== NAVIGATION POLICY ===
+package com.example.navigation
+
+import com.example.data.SportTracData
+import com.example.model.VehicleSystem
+import com.example.ui.viewmodel.MainTab
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
+import org.junit.Test
+
+class FeatureRoutePolicyTest {
+
+    @Test
+    fun loungeDoesNotOpenFeatureData() {
+        assertFalse(FeatureRoutePolicy.requiresFeatureData(MainTab.LOUNGE))
+        assertFalse(FeatureRoutePolicy.requiresFeatureData(MainTab.VIEW_3D))
+        assertFalse(FeatureRoutePolicy.requiresFeatureData(MainTab.PARTS_CART))
+        assertTrue(FeatureRoutePolicy.requiresFeatureData(MainTab.MAINTENANCE))
+        assertTrue(FeatureRoutePolicy.requiresFeatureData(MainTab.REPAIR_MANUAL))
+    }
+
+    @Test
+    fun allFilterBoundsSceneToOneComponent() {
+        val selected = SportTracData.components.first()
+        val bounded = FeatureRoutePolicy.boundedSceneComponents(
+            selectedComponent = selected,
+            activeSystem = VehicleSystem.ALL
+        )
+        assertEquals(1, bounded.size)
+        assertEquals(selected.id, bounded.single().id)
+    }
+
+    @Test
+    fun systemFilterCapsAtEightComponents() {
+        val bounded = FeatureRoutePolicy.boundedSceneComponents(
+            selectedComponent = SportTracData.components.firstOrNull(),
+            activeSystem = VehicleSystem.ENGINE
+        )
+        assertTrue(bounded.size <= FeatureRoutePolicy.SAFE_SCENE_COMPONENT_CAP)
+        assertTrue(bounded.all { it.system == VehicleSystem.ENGINE })
+    }
+}
+=== READINESS CONTRACT ===
+package com.example.model
+
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
+import org.junit.Test
+
+class FeatureReadinessContractTest {
+    @Test
+    fun foundationCatalog_hasUniqueDomainIds() {
+        val ids = FoundationTrackCatalog.domains.map { it.domainId }
+        assertEquals(ids.size, ids.toSet().size)
+    }
+
+    @Test
+    fun foundationCatalog_doesNotRepresentDevicePendingAsVerified() {
+        val devicePending = FoundationTrackCatalog.domains.filter {
+            it.readiness == FeatureReadiness.DEVICE_PENDING
+        }
+
+        assertTrue(devicePending.isNotEmpty())
+        assertTrue(devicePending.none { it.readiness == FeatureReadiness.SANDBOX_VERIFIED })
+    }
+
+    @Test
+    fun foundationCatalog_containsTheMajorRemainingDomains() {
+        val ids = FoundationTrackCatalog.domains.map { it.domainId }.toSet()
+
+        assertTrue(ids.contains("procedural_3d"))
+        assertTrue(ids.contains("ac_workbench"))
+        assertTrue(ids.contains("mentor"))
+        assertTrue(ids.contains("audio_diagnosis"))
+        assertTrue(ids.contains("part_store"))
+        assertTrue(ids.contains("body_shop"))
+    }
+}
+=== TEST COMMAND DOCS ===
+docs/2004_SPORT_TRAC_LINK_PACK.md:11:YouTube titles in the pack were not verified against this exact 2004 Sport Trac 4WD 4.0L VIN K.
+docs/2004_SPORT_TRAC_OWNER_GUIDE_SPECS.md:1:# 2004 Explorer Sport Trac — Owner Guide specs (verified)
+docs/2004_SPORT_TRAC_OWNER_GUIDE_SPECS.md:86:Workshop torque sequences, diagnostic pinpoint tests, and teardown steps are still outside this document.
+docs/COMPLETE_PROJECT_INVENTORY.md:7:> **Status vocabulary.** “Source-present” means code or repository content exists. “Sandbox-built” means the recorded Gradle assembly and unit-test command passed. “Device-verified” means a physical-phone result was actually reported or observed. “Stub” means an intentionally limited interface or placeholder is present. “Absent” means no implementation was identified in the repository audit.
+docs/COMPLETE_PROJECT_INVENTORY.md:11:The app is a privacy-first, practice-first learning tool centered on a 2004 Ford Explorer Sport Trac. Its intended use is to help the owner inspect a component, rehearse a repair, understand diagnostic evidence, make transparent parts choices, and retain control of real-world decisions. It is not an automatic-ordering system, a payment wallet, a verified universal repair manual, or a replacement for professional diagnosis. [1] [2]
+docs/COMPLETE_PROJECT_INVENTORY.md:24:| **Safe-shell route isolation** | `SAFE_SHELL_MODE` routes non-Lounge tabs to an under-review screen. This intentionally prevents feature surfaces from composing while startup/device stability is isolated. | `app/src/main/java/com/example/MainActivity.kt` | **Source-present; sandbox-built.** It remains a containment boundary, not evidence that feature routes are device-verified. |
+docs/COMPLETE_PROJECT_INVENTORY.md:27:| **Guarded Interactive Repair Viewer** | A SceneView/Filament-oriented inspection surface includes GLB asset loading, node-name-to-part matching, camera focus/reset controls, an inspection card, a dark/amber HUD, a mentor-narration action, and an asset-required state. | `app/src/main/java/com/example/ui/components/InteractiveRepairViewer.kt`; `REPAIR_REALM_ARCHITECTURE.md` | **Source-present; sandbox-built.** No licensed wreck GLB is packaged, and live raycast/camera/audio behavior is not device-verified. |
+docs/COMPLETE_PROJECT_INVENTORY.md:32:| **Voice-command input** | Android `SpeechRecognizer` captures opt-in commands and exposes recognized text/state. Mentor Mode starts listening only when its local voice-listening state is enabled. | `app/src/main/java/com/example/util/VoiceCommandManager.kt`; `app/src/main/java/com/example/ui/components/MentorModeDialog.kt` | **Source-present.** This is command input, not a verified hands-free repair session. |
+docs/COMPLETE_PROJECT_INVENTORY.md:36:| **Gemini-oriented diagnostic chat** | A Retrofit client is configured for `gemini-3.5-flash`; the diagnostic repository submits text when a non-placeholder API key is available and otherwise uses embedded local fallback analysis. | `app/src/main/java/com/example/api/GeminiApiService.kt`; `app/src/main/java/com/example/data/GeminiDiagnosticRepository.kt`; `app/src/main/java/com/example/ui/components/GeminiChatView.kt`; `.env.example` | **Source-present.** No `gemini-2.5` identifier is present, and a live key/session was not verified by this project record. [4] |
+docs/COMPLETE_PROJECT_INVENTORY.md:51:| **Live acoustic diagnostic validation** | **Partially implemented source path; unverified as a real diagnostic service.** The mic/FFT code exists, but profile quality, device behavior, and diagnostic accuracy are not validated in this record. | `AudioAnalysisPipeline.kt`; `AcousticSoundDiagnosticDialog.kt`; `FOUNDATION_TRACK_CONTRACT_MAP.md` | MVP validation work before any diagnostic-confidence claim. |
+docs/COMPLETE_PROJECT_INVENTORY.md:53:| **Verified live LLM service behavior** | **Unverified.** Cloud calls are conditional on an injected key; local fallback text is embedded in source. | `GeminiDiagnosticRepository.kt`; `.env.example` | MVP validation if cloud intelligence is retained. |
+docs/COMPLETE_PROJECT_INVENTORY.md:56:| **VIN entry and fitment workflow** | **Discussed; partial data-model/concept support only.** No verified VIN lookup/service integration is recorded. | `PROJECT_HANDOFF.md`; `SHOP_DESTINATION_CONCEPT.md`; fitment/readiness source models | MVP only if a real fitment source is authorized. |
+docs/COMPLETE_PROJECT_INVENTORY.md:77:| **Mentor reasoning boundaries** | Mentor guidance should state uncertainty, favor inspection and practice, and not claim universal answers or take decisions away from the owner. | Discussed and documented. | **Partial:** source includes local guidance and evidence warnings; comprehensive enforcement is not independently verified. | MVP principle. |
+docs/COMPLETE_PROJECT_INVENTORY.md:80:| **Offline-first expectation** | Core learning, local data, repair steps, and cached references should remain useful without a cloud connection. | Discussed and documented. | **Partial:** Room, local catalogs, cache entities, and local fallbacks exist; end-to-end offline behavior is not device-verified. | MVP architecture principle. |
+docs/COMPLETE_PROJECT_INVENTORY.md:82:| **Accessibility: voice control** | Optional hands-free command input for repair situations. | Discussed. | **Partially built:** Android speech recognition and Mentor command handling exist; device accessibility testing is not recorded. | MVP accessibility aid. |
+docs/COMPLETE_PROJECT_INVENTORY.md:89:| **Fitment evidence and VIN-gated decisions** | The app should distinguish known fitment from items that need VIN, capacity, trim, or configuration confirmation. | Discussed and documented. | **Partial:** pending-fitment models/records exist; no verified VIN service is present. | MVP safety/accuracy behavior. |
+docs/COMPLETE_PROJECT_INVENTORY.md:99:| **Physical-device protocol and crash evidence** | New APKs must be tested on Ry’s actual phone, with launch observation, tab/lifecycle tests, and evidence capture for crashes or ANRs. | Explicitly discussed and documented. | **Partially performed:** cold-launch shell has a reported 10/10 result; no complete repair-realm or feature-suite device sign-off is recorded. | MVP release gate. |
+docs/COMPLETE_PROJECT_INVENTORY.md:103:| **Truth-status reporting** | Every claim should distinguish source-present, sandbox-built, package-verified, device-pending, and device-verified. | Explicitly discussed after earlier trust failures. | **Documented and partially practiced:** handoff/evidence records and this inventory use status boundaries; no automated release-status system is recorded. | MVP governance requirement. |
+docs/COMPLETE_PROJECT_INVENTORY.md:114:2. The guarded SceneView repair realm is source-present, but it has no licensed wreck GLB in the repository and no device-verified inspection session. [3]
+docs/GEMINI_MODEL_SWITCH.md:45:> This document is a switch scaffold only. It does not change the configured endpoint, test a cloud request, or establish that a production key or model access is available.
+docs/LLAMA_CPP_PLATFORM_LINKING.md:11:| 1 | Add `externalNativeBuild.cmake` in `app/build.gradle.kts` pointing to `../../shared/llama/CMakeLists.txt`, with CMake version `3.22.1` or newer. |
+docs/LLAMA_CPP_PLATFORM_LINKING.md:12:| 2 | Set the Android ABI filter to `arm64-v8a` first. Add other ABIs only after testing each native backend. |
+docs/LLAMA_CPP_PLATFORM_LINKING.md:17:// app/build.gradle.kts
+docs/NEXT_100_TASKS_2026-08-26.md:5:Community videos and forum threads stay labeled unverified.
+docs/NEXT_100_TASKS_2026-08-26.md:116:87. Overview test covers axles, brake, washer, battery, fuel filter, firing order, wheelbase.
+docs/NEXT_100_TASKS_2026-08-26.md:117:88. Maintenance test requires the new OG service ids.
+docs/NEXT_100_TASKS_2026-08-26.md:118:89. Rear-axle source test forbids the old 2.5 qt 75W-140 refill sentence.
+docs/NEXT_100_TASKS_2026-08-26.md:119:90. Mentor official-PDF test requires fordservicecontent + 04p27og.
+docs/NEXT_100_TASKS_2026-08-26.md:120:91. Mentor forum test requires explorerforum + community disclaimer.
+docs/NEXT_100_TASKS_2026-08-26.md:121:92. Mentor axle test requires 75W-90 + XL-7.
+docs/NEXT_100_TASKS_2026-08-26.md:123:94. CHARM test now also requires Parts and Labor + 4WD-only URLs.
+docs/NEXT_100_TASKS_2026-08-26.md:131:99. No claim that community videos were VIN-verified.
+docs/OG_TRUTH_AND_CHARM_GATE_2026-08-26.md:12:This is source-shippable. It is not a physical-device verification or a licensed GLB release.
+docs/SHARE_WITH_TESTER.md:1:# Share with a family tester
+docs/SHARE_WITH_TESTER.md:7:## Fastest path for you
+docs/SHARE_WITH_TESTER.md:10:   `./gradlew :app:assembleDebug`
+docs/SHARE_WITH_TESTER.md:17:1. Open https://github.com/Gtownrter77/Ford-/actions/workflows/tester-apk.yml
+docs/SHARE_WITH_TESTER.md:28:- Screenshot anything that crashes or looks the wrong size.
+docs/SHARE_WITH_TESTER.md:30:Feedback issue: https://github.com/Gtownrter77/Ford-/issues (create one titled Family tester notes).
+docs/SHIP_PASS_2026-08-26.md:12:./gradlew :app:assembleDebug
+docs/SHIP_PASS_2026-08-26.md:21:- VIN-verified community videos
+docs/SPORT_TRAC_4WD_WIRING_CATALOG.md:11:The most relevant verified 4WD source family is the local [`transfer_case/`](wiring_diagrams/charm_4wd_vin_k/transfer_case/) folder. It includes three source plates for the Transfer Case electrical diagram family:
+docs/source_manual_extraction/2wd_bundle/manual_pages.csv:189:188.html,Engine: Labor Times — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals,Engine;Wiring,0,,,0L VIN K;1960-2025;2004;2WD V6-4;LEMON;NOTE,"Engine: Labor Times — 2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel Service Manual ~ LEMON Manuals LEMON Manuals : Even more car manuals for everyone: 1960-2025 Home >> Ford >> 2004 >> Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel >> Parts and Labor >> Engine, Cooling and Exhaust >> Engine >> Labor Times Engine: Labor Times Standard Hours Manufacturer Warranty Hours Skill Level Notes Diagnose/Test Oil Leak, Diagnosis 1.0 0.5 C Replace Complete Assembly Without Transfer Of Parts Auto Trans 8.8 6.6 B Does Not Include: Transfer Of Any Part Of Engine Or Replacement Of Optional Equipment. Complete Assembly With Transfer Of Parts Auto Trans 11.3 9.9 B Includes: Transfer All Fuel & Electrical Units. Does Not Include: Transfer Of Optional Equipment. Long Block Auto Trans 15.3 0.0 B Includes: R&I Engine And Transfer All Necessary Components Not Supplied With Long Block. Short Block Auto Trans 18.3 11.1 A Includes: R&I Engine And Replacement Of Necessary Components. NOTE To Grind Valves, Add One Bank 2.3 1.9 A Both Banks 4.4 3.7 A Overhaul/Rebuild Auto Trans 28.3 0.0 A Includes: Disassemble & Clean Engine, Ridge Ream & Hone Cylinders, Fit Pistons, Rings, Pins, Main & Rod Bearings, Grind Valves & Tune-Up scientia non olet · About LEMON Manuals"
+docs/source_manual_extraction/2wd_bundle/model_build_summary.md:56:For a final project requiring production-level mechanical accuracy, the next phase should manually reconcile each modeled assembly against the corresponding exploded-view page, convert verified torque values into object-level metadata, import or construct a complete connector/pin database, and replace the teaching primitives with measured or OEM CAD geometry. The current file is intentionally structured to make that refinement practical without reorganizing the scene.
+docs/source_manual_extraction/2wd_bundle/archive_inventory.txt:22:     1522  2026-03-01 00:00   2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel/icons/testing-and-inspection.svg
+docs/REAR_SHOCK_REPLACEMENT_4WD.md:3:This teaching workflow is keyed to the app component `rear_shock_absorbers_4wd_3d` and is intended for the 2004 Ford Explorer Sport Trac 4WD V6-4.0L VIN K configuration. The 3D mesh is an inspection aid representing the damper body, piston rod, and mounting eyes; it is not a dimensional substitute for a verified replacement part.
+docs/CUSTOM_DUAL_EXHAUST_GUIDE.md:13:Do not install an unverified second catalytic converter, remove or relocate oxygen sensors, or split the exhaust upstream of the catalytic converters. Those changes are not supported by the supplied manual and can create emissions, calibration, heat, and inspection problems.
+docs/CUSTOM_DUAL_EXHAUST_GUIDE.md:31:The manual’s page-1434 muffler record lists Ford `5L2Z-5230-A` and notes that current price and availability must be confirmed with a dealer. That is a factory single-muffler reference, not a dual-outlet replacement number. The archive does not provide a verified dual-outlet aftermarket part number.
+docs/CUSTOM_DUAL_EXHAUST_GUIDE.md:99:### 10. Leak and interference test
+docs/CUSTOM_DUAL_EXHAUST_GUIDE.md:107:The archive establishes the factory component arrangement, factory muffler service sequence, replacement-gasket and new-fastener requirements, exhaust alignment method, and the three listed 40 N·m torque values. It does not establish a factory dual-rear-tailpipe conversion, a verified dual-outlet aftermarket part number, or 4WD-specific custom tailpipe dimensions.
+docs/CUSTOM_DUAL_EXHAUST_GUIDE.md:117:| `pages/2274.html` | Exhaust alignment and leak-test procedure. |
+app/src/test/java/com/example/ExampleRobolectricTest.kt:4:import androidx.test.core.app.ApplicationProvider
+app/src/test/java/com/example/ExampleUnitTest.kt:7: * Example local unit test, which will execute on the development machine (host).
+app/src/test/java/com/example/ExampleUnitTest.kt:9: * See [testing documentation](http://d.android.com/tools/testing).
+app/src/test/java/com/example/GreetingScreenshotTest.kt:3:import androidx.compose.ui.test.junit4.createComposeRule
+app/src/test/java/com/example/GreetingScreenshotTest.kt:4:import androidx.compose.ui.test.onRoot
+app/src/test/java/com/example/GreetingScreenshotTest.kt:27:    composeTestRule.onRoot().captureRoboImage(filePath = "src/test/screenshots/greeting.png")
+app/src/test/java/com/example/data/OfficialPublicationsAndCommunityTest.kt:27:    fun communityVideosStayLabeledUnverified() {
+app/src/test/java/com/example/data/PartStoreCatalogRankingTest.kt:29:    fun verifiedAmericanMadeClaimOutranksUndisclosedOriginOnlyWhenRequested() {
+app/src/test/java/com/example/data/PartStoreCatalogRankingTest.kt:31:        val verifiedAmericanMade = part(
+app/src/test/java/com/example/data/PartStoreCatalogRankingTest.kt:38:            listOf(undisclosed, verifiedAmericanMade),
+app/src/test/java/com/example/data/PartStoreCatalogRankingTest.kt:42:        assertEquals(verifiedAmericanMade, ranked.first())
+app/src/test/java/com/example/model/RecommendationIntegrityTest.kt:10:    fun fitmentEvidenceOutranksCheaperUnverifiedMarketplaceListing() {
+app/src/test/java/com/example/model/RecommendationIntegrityTest.kt:11:        val verifiedCatalogQuote = quote(
+app/src/test/java/com/example/model/RecommendationIntegrityTest.kt:25:            listOf(cheaperMarketplaceListing, verifiedCatalogQuote)
+app/src/test/java/com/example/model/RecommendationIntegrityTest.kt:28:        assertEquals(verifiedCatalogQuote, ranked.first())
+app/src/main/assets/parts_data.json:81:        "After reassembly, verify fluid levels, check for leaks, and perform the required diagnostic and road-test checks."
+app/src/main/java/com/example/MainActivity.kt:43:import androidx.compose.ui.platform.testTag
+app/src/main/java/com/example/MainActivity.kt:99:                modifier = Modifier.testTag("main_navigation_bar")
+app/src/main/java/com/example/MainActivity.kt:236:        modifier = Modifier.testTag(tag)
+app/src/main/java/com/example/MainActivity.kt:264:            modifier = Modifier.testTag("route_under_review")
+app/src/main/java/com/example/MainActivity.kt:286:                        .testTag("return_to_lounge_btn")
+app/src/main/java/com/example/data/CommunityRepairVideos.kt:7: * Not factory workshop content. Vehicle year/config is not verified per clip.
+app/src/main/java/com/example/data/ForscanData.kt:16:            suggestedForscanTest = "Execute FORScan KOER (Key On Engine Running) test while spraying brake cleaner near PCV elbow to observe LTFT drop."
+app/src/main/java/com/example/data/GeminiDiagnosticRepository.kt:23:        - Diagnostic Inspection Steps (e.g., STFT/LTFT fuel trims, vacuum gauge test, FORScan PID test)
+app/src/main/java/com/example/data/GeminiDiagnosticRepository.kt:173:                        - **Step 2**: Inspect spark plug wires for carbon tracking and test coil pack primary/secondary resistance (Target: 0.3 - 1.0 ohms primary, 12.8 - 13.1 kohms secondary).
+app/src/main/java/com/example/data/GeminiDiagnosticRepository.kt:201:                        - **Step 2**: Perform a 16 PSI cooling system pressure test at the radiator cap using a hand pressure pump.
+app/src/main/java/com/example/data/GeminiDiagnosticRepository.kt:274:                        Yes! You can record any strange noise directly using our **Acoustic Sound & Noise Analyzer** in the Guided Flows tab. Our AI spectral engine compares your audio against over **245,000 verified vehicle sound signatures** to deliver a **95%+ confidence guarantee**:
+app/src/main/java/com/example/data/GeminiDiagnosticRepository.kt:306:                        - Perform a smoke test or carefully spray brake cleaner around intake plenum seams while idling; watch for RPM drops.
+app/src/main/java/com/example/data/GeminiDiagnosticRepository.kt:338:                        2. Replace 130A Alternator or Motorcraft BXT-65-650 battery if voltage fails load test.
+app/src/main/java/com/example/data/GltfCadAssetService.kt:41:    val progress: Float = 0.0f, // 0.0f = fully assembled, 1.0f = maximum exploded separation
+app/src/main/java/com/example/data/OfflineCacheRepository.kt:156:        val latestVersion = manifest?.latestAvailableVersion ?: "2.5.0"
+app/src/main/java/com/example/data/OfflineCacheRepository.kt:157:        val isUpgradeAvailable = currentVersion != latestVersion
+app/src/main/java/com/example/data/OfflineCacheRepository.kt:164:    suspend fun performUpgradeToLatestVersion(): String = withContext(Dispatchers.IO) {
+app/src/main/java/com/example/data/OfflineCacheRepository.kt:166:        val targetVersion = manifest?.latestAvailableVersion ?: "2.5.0"
+app/src/main/java/com/example/data/PublishedSportTracData.kt:20:        MaintenanceScheduleItem("battery", "Battery Inspection", VehicleSystem.ELECTRICAL, 0, 12, "Motorcraft BXT-65-650 (2004 OG)", "Owner Guide battery group. Load-test before replacing on age alone.", "alternator_ignition"),
+app/src/main/java/com/example/data/SportTracData.kt:962:                    RepairStep(5, "Compress Piston & Reassemble", "Push single caliper piston back into bore and assemble with fresh ceramic brake pads.")
+app/src/main/java/com/example/data/SportTracData.kt:1154:                    RepairStep(3, "Inspect Relay & Fuse Contacts", "Use multimeter or continuity tester to check mini-fuses (10A, 15A, 20A) and ISO relays for corrosion or melting."),
+app/src/main/java/com/example/data/SportTracData.kt:1363:                description = "Microprocessor-controlled SRS Restraint Control Module (RCM) with internal solid-state accelerometers and rollover sensors, plus dual front radiator core support crash impact sensors.",
+app/src/main/java/com/example/data/SportTracData.kt:1364:                locationDescription = "RCM mounted under center console on floor tunnel; crash sensors mounted on front radiator core support crossmember.",
+app/src/main/java/com/example/data/SportTracData.kt:1382:                commonSymptoms = listOf("Airbag indicator light illuminated continuously on dash without turning off", "OBD code B1318 (Low Battery Voltage to RCM) or B1231 (Crash Data Stored)", "Front crash sensor corrosion causing SRS flash code 42"),
+app/src/main/java/com/example/data/SportTracData.kt:1445:                    RepairStep(4, "Unbolt & Replace Compressor", "Remove the compressor fasteners, install approved new O-rings lubricated with the specified PAG oil, and have the system recovered, evacuated, leak-tested, and charged to the exact under-hood-label specification by qualified A/C service equipment.", warning = "Do not guess refrigerant charge or compressor-oil quantity. An incorrect charge or oil balance can damage the replacement compressor.")
+app/src/main/java/com/example/data/SportTracData.kt:1567:                requiredTools = listOf("Correct spring-lock quick-disconnect tools", "Approved orifice-tube extraction tool", "A/C recovery, evacuation, and leak-test equipment", "Ford-specified PAG oil and new compatible O-rings"),
+app/src/main/java/com/example/data/SportTracData.kt:1572:                    RepairStep(4, "Replace Evaporator & Accumulator", "Install the correct accumulator/drier, fixed orifice, and compatible O-rings. Before charging, have the system evacuated, leak-tested, and charged to the exact under-hood-label specification.", warning = "Opening the refrigerant circuit requires correct recovery equipment; do not release refrigerant to atmosphere.")
+app/src/main/java/com/example/data/SportTracData.kt:1604:                    RepairStep(4, "Replace Condenser Core", "Install the correct condenser and compatible new O-rings, then have the system evacuated, leak-tested, and charged to the exact under-hood-label specification with approved A/C equipment.", warning = "Do not charge by a guessed pressure target or a generic can label; use the vehicle-specific label and Ford procedure.")
+app/src/main/java/com/example/data/SportTracData.kt:1629:                    TorqueSpec("Pressure-control and clutch-circuit verification", "N/A", "N/A", "Use the Ford wiring information and approved test methods; do not jumper protective switches.")
+app/src/main/java/com/example/data/SportTracData.kt:1634:                    RepairStep(2, "Confirm cabin-air and A/C request", "Verify the blower moves air and that MAX A/C / low-temperature control settings are actually requesting cooling before testing the compressor command path."),
+app/src/main/java/com/example/data/SportTracData.kt:1637:                    RepairStep(5, "Escalate sealed-system diagnosis", "If airflow and basic electrical checks are normal but cooling is still poor, have a qualified A/C technician recover, measure, leak-test, evacuate, and charge the system according to the under-hood label and Ford procedure.")
+app/src/main/java/com/example/data/SportTracData.kt:1669:                    RepairStep(4, "Replace Backlight Bulbs / Install Cluster", "Twist ¼-turn bulb sockets on cluster rear circuit board to replace dead gauge backlights, reconnect wiring, and test all gauge needles.")
+app/src/main/java/com/example/data/SportTracData.kt:1860:                    RepairStep(4, "Replace Regulator Motor / Cable Unit", "Unbolt regulator motor from cab wall, replace snapped cable assembly, reattach glass clamps, and test rear window switch operation.")
+app/src/main/java/com/example/data/SportTracData.kt:2122:                    RepairStep(6, "Torque, lower, and inspect", "Torque the upper frame nuts to 17 lb-ft (23 N·m) and the lower bolts to 46 lb-ft (63 N·m) using the 4WD VIN K rear specification. Reinstall wheels and torque wheel nuts to 100 lb-ft (135 N·m), lower the vehicle, and perform a bounce/visual inspection for contact, loose hardware, or asymmetric ride height.", tip = "After a short, low-speed test, recheck for oil leakage, loose hardware, abnormal noise, and correct shock clearance. Stop immediately if the vehicle wanders or a mount shifts.")
+app/src/main/java/com/example/data/SportTracData.kt:2311:                            recommendedAction = "Perform smoke test or spray brake cleaner around intake plenum seams at idle to confirm RPM drop, then replace upper and lower intake gasket kit."
+app/src/main/java/com/example/data/SportTracData.kt:2428:                            recommendedAction = "Clean engine firewall ground lug, test alternator diode ripple with multimeter AC scale, or install an inline 12V audio power noise choke filter."
+app/src/main/java/com/example/data/SportTracData.kt:2441:                            recommendedAction = "Remove interior door trim panel, test 6x8 speaker terminals for 4-ohm resistance with multimeter, and replace with fresh 6x8 coaxial speakers."
+app/src/main/java/com/example/data/SportTracData.kt:2454:                            recommendedAction = "Pull radio head unit using U-shaped Ford DIN removal keys. Disassemble top cover to manually clear stuck disc or upgrade to modern double-DIN Bluetooth head unit."
+app/src/main/java/com/example/data/SportTracHullExtras.kt:29:                "Group-size envelope in the driver-front corner. Motorcraft test / charge per OG.",
+app/src/main/java/com/example/data/SportTracPartsCatalog.kt:789:            id = "part_airbag_front_crash_sensor",
+app/src/main/java/com/example/data/SportTracPartsCatalog.kt:983:            id = "part_tool_fuel_pressure_tester",
+app/src/main/java/com/example/data/SportTracPartsReadiness.kt:78:                "part_tool_fuel_pressure_tester"
+app/src/main/java/com/example/data/SportTracPartsReadiness.kt:116:                "part_airbag_front_crash_sensor",
+app/src/main/java/com/example/data/SportTracServiceManualDiagnostics.kt:190:                "Step 2: Perform cooling system pressure test at 16 PSI. Observe thermostat housing lower body neck seam for micro-beads of coolant.",
+app/src/main/java/com/example/data/SportTracServiceManualDiagnostics.kt:248:                "Step 4: Unbolt 3 10mm bolts securing shift motor to transfer case rear housing and test motor cycle operation."
+app/src/main/java/com/example/data/SportTracServiceManualDiagnostics.kt:321:                "Step 1: Connect mechanical fuel pressure gauge to Schrader valve test port on fuel rail (Spec: 60-65 PSI).",
+app/src/main/java/com/example/data/VehicleHardwareCatalog.kt:18: * must be verified against the VIN-specific Ford parts catalogue and workshop
+app/src/main/java/com/example/data/local/AcousticReferenceEntity.kt:22:    val verifiedDatabaseCount: Int = 245000
+app/src/main/java/com/example/data/local/CacheManifestEntity.kt:14:    val latestAvailableVersion: String = "2.5.0"
+app/src/main/java/com/example/model/FeatureReadiness.kt:5: * not a claim that a feature is complete or device-verified.
+app/src/main/java/com/example/model/FeatureReadiness.kt:30:            evidenceNote = "2026-08-26: 3D tab opens a safe-scene gate; first authorized frame is bounded to one part or eight parts in one system. Physical runtime remains unverified.",
+app/src/main/java/com/example/model/FeatureReadiness.kt:51:            evidenceNote = "Audio-analysis and acoustic-reference source paths exist; microphone behavior and classification accuracy are unverified.",
+app/src/main/java/com/example/model/FeatureReadiness.kt:58:            evidenceNote = "Local catalog, ranking, readiness, and privacy-boundary UI exist; live scraping and ordering are not verified.",
+app/src/main/java/com/example/model/PartListingTruth.kt:32:        sellerLabel = sellerName?.takeIf { it.isNotBlank() } ?: "Seller not verified by this app",
+app/src/main/java/com/example/model/PartStoreRanking.kt:8:    BEST_VERIFIED_FIT("Best verified fit", "Fitment evidence and quote verification first, then delivered total."),
+app/src/main/java/com/example/model/PartStoreRanking.kt:10:    FASTEST_AVAILABILITY("Fastest availability", "Verified local or availability fields first when a source provides them."),
+app/src/main/java/com/example/model/PartStoreRanking.kt:14:    AMERICAN_MADE("American Made", "Verified U.S.-origin claim first; “assembled” and unknown claims remain distinct.")
+app/src/main/java/com/example/model/PartStoreRanking.kt:21:    VERIFIED_MADE_IN_USA("Made in USA — verified", true),
+app/src/main/java/com/example/model/PartStoreRanking.kt:22:    VERIFIED_ASSEMBLED_IN_USA("Assembled in USA — verified", false),
+app/src/main/java/com/example/model/PriceWatchModels.kt:38:        "The user recorded that fitment was verified outside this app."
+app/src/main/java/com/example/physics/Physics3DEngine.kt:180: * Simulation Preset Configurations for Exploded View & Assembly testing.
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:46:import androidx.compose.ui.platform.testTag
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:85:        realVehicleTransfer = "On the truck, test all fan speeds first. A failed blower or resistor is a cabin-air problem, not a reason to charge the A/C system.",
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:102:        safetyBoundary = "The real refrigerant circuit remains sealed during rehearsal. Recovery, evacuation, leak testing, and charging are not practice steps."
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:125:            "Listen for the blower motor behind the passenger-side dash. A working motor with no airflow points toward a blocked inlet, mode-door, or housing issue.",
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:153:        tools = "Flashlight, thermometer for vent comparison, professional A/C service equipment for pressure testing",
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:159:            "Have a certified shop recover, evacuate, leak-test, and charge the system by the under-hood label and Ford procedure rather than using a single low-side gauge or guessing by pressure."
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:177:        stopCondition = "Stop testing if engine temperature rises above normal, steam appears, or there is a coolant smell/leak. Engine cooling takes priority over cabin A/C."
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:230:        modifier = modifier.testTag("ac_system_workbench_dialog"),
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:344:                                text = "Refrigerant recovery, evacuation, leak testing, and charging require correct A/C equipment and should be handled by a qualified MVAC technician. Use the under-hood label and Ford service information—not a guessed pressure target—for the exact charge specification.",
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:368:                        modifier = Modifier.testTag("ac_practice_next_btn")
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:385:                        modifier = Modifier.testTag("ac_workbench_close_btn")
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:392:                        modifier = Modifier.testTag("ac_workbench_view_component_btn")
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:411:                        modifier = Modifier.testTag("ac_practice_back_btn")
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:423:                        modifier = Modifier.testTag("ac_workbench_back_btn")
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:448:                    text = "Work in shade when possible, take water breaks, and never test the truck in an enclosed garage. Stop if the engine temperature rises, the belt smokes, or anyone becomes unwell from the heat.",
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:463:            .testTag("ac_path_${path.id}"),
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:500:            .testTag("ac_practice_entry_card")
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:586:                    .testTag("ac_practice_view_model_${stepIndex + 1}")
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:597:                    .testTag("ac_practice_mark_rehearsed_${stepIndex + 1}")
+app/src/main/java/com/example/ui/components/AcSystemWorkbenchDialog.kt:648:            .testTag("ac_parts_finder_guidance_card")
+app/src/main/java/com/example/ui/components/AcousticSoundDiagnosticDialog.kt:31:import androidx.compose.ui.platform.testTag
+app/src/main/java/com/example/ui/components/AcousticSoundDiagnosticDialog.kt:166:                        modifier = Modifier.testTag("btn_close_acoustic_dialog")
+app/src/main/java/com/example/ui/components/AcousticSoundDiagnosticDialog.kt:271:                                .testTag("fft_spectrum_canvas")
+app/src/main/java/com/example/ui/components/AcousticSoundDiagnosticDialog.kt:371:                                        .testTag("btn_start_mic_record")
+app/src/main/java/com/example/ui/components/AcousticSoundDiagnosticDialog.kt:387:                                        .testTag("btn_stop_mic_record")
+app/src/main/java/com/example/ui/components/AcousticSoundDiagnosticDialog.kt:425:                                    .testTag("btn_analyze_gemini_audio")
+app/src/main/java/com/example/ui/components/AcousticSoundDiagnosticDialog.kt:469:                            .testTag("scenario_selector_lazyrow")
+app/src/main/java/com/example/ui/components/AcousticSoundDiagnosticDialog.kt:481:                                    .testTag("scenario_chip_${scenario.name}")
+app/src/main/java/com/example/ui/components/AcousticSoundDiagnosticDialog.kt:658:                        .testTag("ranked_matches_lazycolumn"),
+app/src/main/java/com/example/ui/components/AcousticSoundDiagnosticDialog.kt:811:                                                .testTag("btn_view_3d_${profile.targetComponentId}")
+app/src/main/java/com/example/ui/components/AcousticSoundDiagnosticDialog.kt:847:                        .testTag("btn_close_acoustic_footer")
+app/src/main/java/com/example/ui/components/AddServiceLogDialog.kt:10:import androidx.compose.ui.platform.testTag
+app/src/main/java/com/example/ui/components/AddServiceLogDialog.kt:45:        modifier = modifier.testTag("add_service_log_dialog"),
+app/src/main/java/com/example/ui/components/AddServiceLogDialog.kt:72:                        .testTag("service_title_input")
+app/src/main/java/com/example/ui/components/AddServiceLogDialog.kt:88:                        .testTag("component_description_input")
+app/src/main/java/com/example/ui/components/AddServiceLogDialog.kt:107:                            .testTag("mileage_input")
+app/src/main/java/com/example/ui/components/AddServiceLogDialog.kt:122:                            .testTag("service_date_input")
+app/src/main/java/com/example/ui/components/AddServiceLogDialog.kt:142:                            .testTag("cost_input")
+app/src/main/java/com/example/ui/components/AddServiceLogDialog.kt:157:                            .testTag("system_input")
+app/src/main/java/com/example/ui/components/AddServiceLogDialog.kt:173:                        .testTag("notes_input")
+app/src/main/java/com/example/ui/components/AddServiceLogDialog.kt:204:                modifier = Modifier.testTag("save_service_log_btn")
+app/src/main/java/com/example/ui/components/AddUpcomingTaskDialog.kt:18:import androidx.compose.ui.platform.testTag
+app/src/main/java/com/example/ui/components/AddUpcomingTaskDialog.kt:53:        modifier = modifier.testTag("add_upcoming_task_dialog"),
+app/src/main/java/com/example/ui/components/AddUpcomingTaskDialog.kt:103:                        .testTag("input_task_title")
+app/src/main/java/com/example/ui/components/AddUpcomingTaskDialog.kt:169:                            .testTag("input_target_mileage")
+app/src/main/java/com/example/ui/components/AddUpcomingTaskDialog.kt:187:                            .testTag("input_cost")
+app/src/main/java/com/example/ui/components/AddUpcomingTaskDialog.kt:300:                        .testTag("input_fluid_spec")
+app/src/main/java/com/example/ui/components/AddUpcomingTaskDialog.kt:319:                        .testTag("input_notes")
+app/src/main/java/com/example/ui/components/AddUpcomingTaskDialog.kt:347:                modifier = Modifier.testTag("btn_save_upcoming_task")
+app/src/main/java/com/example/ui/components/ArOverlayView.kt:46:import androidx.compose.ui.platform.testTag
+app/src/main/java/com/example/ui/components/ArOverlayView.kt:141:            .testTag("ar_camera_view_container")
+app/src/main/java/com/example/ui/components/ArOverlayView.kt:355:                            .testTag("ar_digital_label_${comp.id}"),
+app/src/main/java/com/example/ui/components/ArOverlayView.kt:464:                                .testTag("ar_toggle_digital_labels")
+app/src/main/java/com/example/ui/components/ArOverlayView.kt:486:                                .testTag("ar_toggle_calibrate")
+app/src/main/java/com/example/ui/components/ArOverlayView.kt:511:                                .testTag("ar_toggle_sim_camera")
+app/src/main/java/com/example/ui/components/ArOverlayView.kt:530:                                .testTag("ar_toggle_wireframe")
+app/src/main/java/com/example/ui/components/ArOverlayView.kt:549:                                .testTag("ar_toggle_guided_steps")
+app/src/main/java/com/example/ui/components/ArOverlayView.kt:568:                                .testTag("ar_toggle_camera_measurement")
+app/src/main/java/com/example/ui/components/ArOverlayView.kt:691:                    .testTag("ar_component_callout"),
+app/src/main/java/com/example/ui/components/ArOverlayView.kt:781:                                .testTag("ar_callout_mentor_mode_btn"),
+app/src/main/java/com/example/ui/components/ArOverlayView.kt:803:                    .testTag("ar_guided_steps_panel"),
+app/src/main/java/com/example/ui/components/ArOverlayView.kt:844:                                    .testTag("ar_hud_mentor_mode_btn")
+app/src/main/java/com/example/ui/components/ArOverlayView.kt:915:                            .testTag("ar_comp_strip_${comp.id}"),
+app/src/main/java/com/example/ui/components/CadStepIngestionDialog.kt:26:import androidx.compose.ui.platform.testTag
+app/src/main/java/com/example/ui/components/CadStepIngestionDialog.kt:145:                        modifier = Modifier.testTag("btn_close_cad_ingest_dialog")
+app/src/main/java/com/example/ui/components/CadStepIngestionDialog.kt:163:                    modifier = Modifier.fillMaxWidth().testTag("step_file_selector_lazyrow")
+app/src/main/java/com/example/ui/components/CadStepIngestionDialog.kt:179:                                .testTag("chip_step_file_$index")
+app/src/main/java/com/example/ui/components/CadStepIngestionDialog.kt:329:                                    .testTag("btn_bilt_prev_step")
+app/src/main/java/com/example/ui/components/CadStepIngestionDialog.kt:338:                                    .testTag("btn_bilt_next_step")
+app/src/main/java/com/example/ui/components/CadStepIngestionDialog.kt:509:                            .testTag("bilt_steps_lazycolumn"),
+app/src/main/java/com/example/ui/components/CadStepIngestionDialog.kt:520:                                    .testTag("item_bilt_step_$idx")
+app/src/main/java/com/example/ui/components/CadStepIngestionDialog.kt:594:                            .testTag("btn_view_gltf_in_3d")
+app/src/main/java/com/example/ui/components/CameraMeasurementDialog.kt:51:import androidx.compose.ui.platform.testTag
+app/src/main/java/com/example/ui/components/CameraMeasurementDialog.kt:179:            .testTag("camera_measurement_dialog"),
+app/src/main/java/com/example/ui/components/CameraMeasurementDialog.kt:306:                        .testTag("camera_cv_viewport")
+app/src/main/java/com/example/ui/components/ColorSegmentBar.kt:20:import androidx.compose.ui.platform.testTag
+app/src/main/java/com/example/ui/components/ColorSegmentBar.kt:46:                    .testTag("segment_pill_${system.name.lowercase()}"),
+app/src/main/java/com/example/ui/components/ComponentDetailSheet.kt:20:import androidx.compose.ui.platform.testTag
+app/src/main/java/com/example/ui/components/ComponentDetailSheet.kt:51:        modifier = modifier.testTag("component_detail_sheet")
+app/src/main/java/com/example/ui/components/ComponentDetailSheet.kt:127:                            .testTag("btn_add_component_to_cart")
+app/src/main/java/com/example/ui/components/ComponentDetailSheet.kt:158:                            .testTag("mode_3d_practice_sim"),
+app/src/main/java/com/example/ui/components/ComponentDetailSheet.kt:177:                            .testTag("mode_real_truck"),
+app/src/main/java/com/example/ui/components/ComponentDetailSheet.kt:518:                                .testTag("btn_launch_mentor_mode")
+app/src/main/java/com/example/ui/components/CustomFeedbackComponents.kt:31:import androidx.compose.ui.platform.testTag
+app/src/main/java/com/example/ui/components/CustomFeedbackComponents.kt:191:                .testTag("compact_cad_loading_indicator")
+app/src/main/java/com/example/ui/components/CustomFeedbackComponents.kt:259:                .testTag("full_cad_loading_overlay"),
+app/src/main/java/com/example/ui/components/CustomFeedbackComponents.kt:528:            "Analyzing recorded audio spectrum against 245,000+ verified sound signatures...",
+app/src/main/java/com/example/ui/components/CustomFeedbackComponents.kt:562:                .testTag("gemini_inline_loading_indicator")
+app/src/main/java/com/example/ui/components/CustomFeedbackComponents.kt:654:                .testTag("gemini_banner_loading_container"),
+app/src/main/java/com/example/ui/components/CustomFeedbackComponents.kt:825:            .testTag("custom_app_snackbar_${payload.type.name.lowercase()}"),
+app/src/main/java/com/example/ui/components/DiagnosticFlowDialog.kt:17:import androidx.compose.ui.platform.testTag
+app/src/main/java/com/example/ui/components/DiagnosticFlowDialog.kt:37:        modifier = modifier.testTag("diagnostic_flow_dialog"),
+app/src/main/java/com/example/ui/components/DiagnosticFlowDialog.kt:80:                                .testTag("diag_option_btn"),
+app/src/main/java/com/example/ui/components/DiagnosticFlowDialog.kt:184:                                    .testTag("open_diagnostic_repair_btn")
+app/src/main/java/com/example/ui/components/DiagnosticFlowDialog.kt:198:                    Text("Re-test Symptoms", color = Color(0xFF38BDF8))
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt:23:import androidx.compose.ui.platform.testTag
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt:187:                        verificationProcedure = "While engine idles, spray a brief mist of carb cleaner or throttle body spray onto the rubber PCV elbow behind the upper intake. If engine RPM instantly changes or smooths out, the vacuum leak is 100% verified.",
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt:552:                        verificationProcedure = "Pop interior door trim panel, inspect 6x8 speaker cone surround, and test terminals with multimeter for 4-ohm resistance.",
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt:625:                .testTag("diagnostic_wizard_dialog"),
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt:680:                            .testTag("wizard_close_button")
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt:716:                                .testTag("wizard_cat_${cat.id}"),
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt:888:                                            .testTag("wizard_option_${option.title.take(15)}"),
+app/src/main/java/com/example/ui/components/DiagnosticWizardDialog.kt:1176:                        .testTag("wizard_locate_3d_btn")
+app/src/main/java/com/example/ui/components/ExplodedPhysicsDialog.kt:32:import androidx.compose.ui.platform.testTag
+app/src/main/java/com/example/ui/components/ExplodedPhysicsDialog.kt:171:                        modifier = Modifier.testTag("btn_close_physics_dialog")
+app/src/main/java/com/example/ui/components/ExplodedPhysicsDialog.kt:189:                    modifier = Modifier.fillMaxWidth().testTag("physics_preset_lazyrow")
+app/src/main/java/com/example/ui/components/ExplodedPhysicsDialog.kt:199:                                .testTag("chip_preset_${preset.name}")
+app/src/main/java/com/example/ui/components/ExplodedPhysicsDialog.kt:224:                        .testTag("physics_3d_canvas_box")
+app/src/main/java/com/example/ui/components/ExplodedPhysicsDialog.kt:441:                            .testTag("slider_physics_explode"),
+app/src/main/java/com/example/ui/components/ExplodedPhysicsDialog.kt:474:                            modifier = Modifier.testTag("chip_toggle_gravity")
+app/src/main/java/com/example/ui/components/ExplodedPhysicsDialog.kt:486:                            modifier = Modifier.testTag("chip_toggle_aabb")
+app/src/main/java/com/example/ui/components/ExplodedPhysicsDialog.kt:497:                            modifier = Modifier.testTag("chip_toggle_constraints")
+app/src/main/java/com/example/ui/components/ExplodedPhysicsDialog.kt:507:                                .testTag("btn_reset_physics")
+app/src/main/java/com/example/ui/components/ExplodedPhysicsDialog.kt:519:                                .testTag("btn_play_pause_physics")
+app/src/main/java/com/example/ui/components/ForscanDialog.kt:24:import androidx.compose.ui.platform.testTag
+app/src/main/java/com/example/ui/components/ForscanDialog.kt:72:            .testTag("forscan_integration_dialog"),
+app/src/main/java/com/example/ui/components/ForscanDialog.kt:400:                                                .testTag("forscan_dtc_highlight_3d_btn")
+app/src/main/java/com/example/ui/components/FourWheelDriveDiagram.kt:31:import androidx.compose.ui.platform.testTag
+app/src/main/java/com/example/ui/components/FourWheelDriveDiagram.kt:175:                            .testTag("toggle_4wd_troubleshooting")
+app/src/main/java/com/example/ui/components/FourWheelDriveDiagram.kt:207:                                .testTag("mode_switch_${mode.name}"),
+app/src/main/java/com/example/ui/components/FourWheelDriveDiagram.kt:306:                        .testTag("4wd_canvas_diagram")
+app/src/main/java/com/example/ui/components/FourWheelDriveDiagram.kt:509:                            .testTag("node_transfer_case")
+app/src/main/java/com/example/ui/components/FourWheelDriveDiagram.kt:570:                        .testTag("4wd_node_detail_card"),
+app/src/main/java/com/example/ui/components/GeminiChatView.kt:25:import androidx.compose.ui.platform.testTag
+app/src/main/java/com/example/ui/components/GeminiChatView.kt:128:            .testTag("gemini_chat_view")
+app/src/main/java/com/example/ui/components/GeminiChatView.kt:192:                    modifier = Modifier.testTag("gemini_clear_chat")
+app/src/main/java/com/example/ui/components/GeminiChatView.kt:250:                                .testTag("symptom_card_${symptom.title.lowercase().replace(' ', '_')}"),
+app/src/main/java/com/example/ui/components/GeminiChatView.kt:344:                        .testTag("gemini_chat_input"),
+app/src/main/java/com/example/ui/components/GeminiChatView.kt:382:                        .testTag("gemini_send_btn")
+app/src/main/java/com/example/ui/components/GeminiChatView.kt:482:                            .testTag("gemini_error_retry_btn")
+app/src/main/java/com/example/ui/components/GeminiChatView.kt:508:                            .testTag("chat_suggested_part_${message.suggestedComponentId}"),
+app/src/main/java/com/example/ui/components/Interactive3DViewport.kt:44:import androidx.compose.ui.platform.testTag

@@ -44,3 +44,13 @@ An archive-wide scan covered all 9,188 HTML pages in the supplied 2004 Explorer 
 Page 2999 states that a clunk can be caused by driveline backlash or loose suspension components. Page 8750 says muffler/tailpipe service requires removing the shock absorber bolt to position the shock out of the way and moving the RH stabilizer bar link out of the way; it warns against oil/grease-based lubricants on rubber isolators and requires a new converter outlet gasket and new exhaust fasteners. Page 2269 describes the factory system as stainless steel with a dual-converter Y-pipe, dual three-way catalytic converter, and muffler/resonator assembly; exhaust fasteners are torque-prevailing and must be torqued to specification. The supplied archive does not document a conversion from a single tailpipe to a dual tailpipe system; it documents the factory catalytic/Y-pipe arrangement and a single muffler/resonator/tailpipe service assembly.
 
 Because this local bundle is labeled 2WD while the vehicle task is 4WD, any 4WD-specific fitment or clearance claim must remain explicitly caveated and cross-checked against the live 4WD source.
+
+## Factory exhaust torque plate verified
+
+Manual pages 2275/5261 reference image `images/DM05Q313/ford30/469830850.png`, whose factory table lists: muffler-to-converter bolts and nuts 40 N·m (30 lb-ft); converter-to-manifold nuts 40 N·m (30 lb-ft); dual converter Y-pipe to dual three-way nuts 40 N·m (30 lb-ft). The plate is 736 x 342 px and legible. These are factory exhaust fastener values from the supplied manual bundle, but the bundle title remains 2WD VIN K and must be cross-checked for 4WD application before app promotion.
+
+## Full app shippability audit: 2026-09-02
+
+Three-level audit written to `docs/FULL_APP_SHIPPABILITY_AUDIT.md`. Level 1 source/static checks passed for the CHARM package, rear-shock linkage, repository structure, and provenance scans. Level 2 passed for the complete manual archive checksum/counts, CHARM source package integrity, and Blender import of the repository and original 4WD GLBs. Blender 4.0.2 reports 166 mesh objects and 15 materials for the 8,544,536-byte 4WD GLB.
+
+Level 3 Android build/runtime verification is blocked in the current checkout/environment: no executable Gradle wrapper is present and no Android SDK/toolchain is available. `./gradlew test` and `./gradlew :app:assembleDebug` therefore could not run. The project’s existing `docs/SHIP_PASS_2026-08-26.md` also explicitly withholds physical-device ANR/logcat proof, live OBD/FORScan proof, live retailer checkout, licensed wreck-GLB proof, and VIN-verified community-video proof. The full app is consequently not release-verified, even though multiple offline repository packages are verified and shippable.
