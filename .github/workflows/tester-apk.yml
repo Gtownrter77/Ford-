@@ -6,6 +6,13 @@ on:
     branches: [main]
     paths:
       - "app/**"
+      - "shared/**"
+      - "gradle/**"
+      - "gradlew"
+      - "gradlew.bat"
+      - "build.gradle.kts"
+      - "settings.gradle.kts"
+      - "gradle.properties"
       - ".github/workflows/tester-apk.yml"
 
 permissions:
@@ -21,6 +28,10 @@ jobs:
           distribution: temurin
           java-version: "17"
       - uses: android-actions/setup-android@v3
+      - name: Install Android build dependencies
+        run: |
+          sdkmanager --install "platform-tools" "platforms;android-36" "build-tools;36.0.0" "cmake;3.22.1" "ndk;27.2.12479018"
+          yes | sdkmanager --licenses >/dev/null || true
       - name: Prepare env and debug keystore
         run: |
           cp -n .env.example .env || true

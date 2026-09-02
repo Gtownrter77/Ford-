@@ -1,0 +1,61 @@
+{
+  "results": {
+    "L1_required_files": {
+      "pass": true,
+      "detail": "README, index, and SHA256SUMS present"
+    },
+    "L1_source_counts": {
+      "pass": true,
+      "detail": "html=147 metadata=147 png=357"
+    },
+    "L1_no_error_files": {
+      "pass": true,
+      "detail": "error_files=0"
+    },
+    "L1_model_placeholder": {
+      "pass": true,
+      "detail": "canonical model placeholder exists"
+    },
+    "L2_http_status": {
+      "pass": true,
+      "detail": "categories=274 non200=0"
+    },
+    "L2_4wd_urls": {
+      "pass": true,
+      "detail": "all source category URLs are 4WD VIN K"
+    },
+    "L2_index_refs": {
+      "pass": true,
+      "detail": "missing=0 byte_mismatches=0 indexed_refs=504"
+    },
+    "L2_png_headers": {
+      "pass": true,
+      "detail": "png_header_failures=357"
+    },
+    "L2_sha256": {
+      "pass": true,
+      "detail": "wiring_diagram_index/source.html: OK"
+    },
+    "L2_catalog_mentions_package": {
+      "pass": true,
+      "detail": "catalog points to embedded package"
+    },
+    "L3_diff_check": {
+      "pass": true,
+      "detail": "git diff --check clean"
+    },
+    "L3_no_untracked_after_commit": {
+      "pass": true,
+      "detail": "checked before commit; pending files are expected for this change set"
+    },
+    "L3_readme_provenance": {
+      "pass": true,
+      "detail": "source hub and licensing note present"
+    },
+    "L3_required_4wd_diagrams": {
+      "pass": true,
+      "detail": "transfer-case plates 34-1 through 34-3 present"
+    }
+  },
+  "failed": []
+}

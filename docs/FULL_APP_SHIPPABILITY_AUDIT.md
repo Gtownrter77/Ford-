@@ -7,7 +7,7 @@
 
 ## Executive determination
 
-The repository contains substantial, usable teaching content and several source packages that are verified at the repository level. The **complete Android application cannot honestly be labeled fully verified and shippable yet** because this environment cannot execute the project’s Android build: there is no Gradle wrapper in the checkout and no Android SDK/toolchain available here. The latest project evidence also explicitly withholds physical-device crash/ANR proof and live retailer checkout proof.
+The repository contains substantial, usable teaching content and several source packages that are verified at the repository level. The **complete Android application cannot honestly be labeled fully verified and shippable yet** because this environment still lacks an Android SDK/native toolchain and therefore cannot complete the project’s Android build. During this remediation pass, the missing Gradle wrapper was repaired and bootstrapped successfully. The latest project evidence also explicitly withholds physical-device crash/ANR proof and live retailer checkout proof.
 
 The most accurate status is therefore **conditionally shippable as a source repository and teaching-content package, but not release-verified as an installable Android application**.
 
@@ -72,7 +72,7 @@ This verifies **file integrity and scene presence**, not complete factory dimens
 
 ### Android build and release packaging — blocked at Level 3
 
-The checkout has no executable `gradlew` or Gradle wrapper, and the sandbox has no Android SDK/toolchain configured for this project. The attempted commands were `./gradlew test --no-daemon --stacktrace` and `./gradlew :app:assembleDebug --no-daemon --stacktrace`; both were blocked because the wrapper is absent. The exact evidence is retained in `full_app_build_test.log`.
+The checkout now contains an executable Gradle 9.3.1 wrapper in `gradlew` and `gradle/wrapper/`; `./gradlew --version` bootstraps successfully. The Android build remains blocked because the sandbox has no Android SDK/native toolchain configured. The attempted `./gradlew :app:assembleDebug --no-daemon --stacktrace` reaches the Android plugin and then stops at SDK discovery in `local.properties`. The original and repaired build evidence is retained in `full_app_build_test.log` and `repaired_build_test.log`.
 
 The repository’s own `docs/SHIP_PASS_2026-08-26.md` says that the sandbox has no Android SDK and explicitly does not claim physical-device ANR/logcat proof. Until an Android build environment runs the project, the APK is **not release-verified**.
 
@@ -126,13 +126,13 @@ Level 2 does not certify that every model component is dimensionally factory-acc
 
 ### Level 3 — Build/runtime: blocked, so the app is not fully release-shippable
 
-The Android build and tests could not be run because the Gradle wrapper and Android SDK are absent in the current environment. No fresh device/emulator route walkthrough or logcat record was produced during this audit. This is the decisive reason the **entire app** cannot be marked 100 percent verified and shippable.
+The Android build and tests could not be completed because the Android SDK/native toolchain is absent in the current environment. The Gradle wrapper itself has now been repaired and bootstrapped, but the build stops at SDK discovery. No fresh device/emulator route walkthrough or logcat record was produced during this audit. This remains the decisive reason the **entire app** cannot be marked 100 percent verified and shippable.
 
 ## Required actions to reach 100 percent
 
 | Priority | Required action | Exact area |
 |---:|---|---|
-| 1 | Provide or restore the Gradle wrapper, Android SDK, and project build configuration, then run unit, instrumentation, and debug-APK builds. | Repository root; `app/`; `full_app_build_test.log` currently records the blocker. |
+| 1 | Provide the Android SDK/native toolchain and run unit, instrumentation, and debug-APK builds; the Gradle wrapper is now restored. | Android SDK environment; `app/`; `repaired_build_test.log` records the remaining blocker. |
 | 2 | Walk every enabled tab and high-risk dialog on an emulator or physical device with logcat capture. | `FeatureRoutePolicy.kt`, all files under `ui/screens/` and `ui/components/`. |
 | 3 | Reconcile all 3D assemblies against 4WD VIN K exploded views and record dimensions/torques as object metadata. | `app/src/main/assets/models/`; `docs/source_manual_extraction/2wd_bundle/model_build_summary.md`. |
 | 4 | Pair every mechanical torque and fitment statement with a verified 4WD VIN K source page. | `SportTracData.kt`, `SportTracPartsCatalog.kt`, `source_notes.md`. |

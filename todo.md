@@ -310,3 +310,8 @@
 - [x] Run level 1 source/static checks, level 2 asset/source-of-truth checks, and level 3 build/runtime evidence checks.
 - [x] Classify each section as verified and shippable, partially verified, blocked, or not implemented with exact locations.
 - [ ] Write and commit the complete audit report, push GitHub, and verify the remote commit and clean working tree.
+
+## One-time 30-minute remediation authorization
+- [ ] Identify and fix the highest-impact safe blockers affecting build, route stability, source integrity, assets, and shippability claims.
+- [ ] Run the strongest available three-level verification after fixes and correct regressions.
+- [ ] Commit and push all remediation changes, then record any blockers that require unavailable external tooling or device access.
