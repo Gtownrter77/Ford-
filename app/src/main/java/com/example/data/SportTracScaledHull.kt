@@ -10,8 +10,8 @@ object SportTracScaledHull {
     private val s get() = SportTracVehicleScale
 
     val components: List<Component3DModel> = listOf(
-        component("scaled_frame_left", "Left frame rail", VehicleSystem.BRAKES_CHASSIS, Point3D(-0.62f, 0.38f, 0f), 1.8f, 0.12f, 3.0f, 0.12f),
-        component("scaled_frame_right", "Right frame rail", VehicleSystem.BRAKES_CHASSIS, Point3D(0.62f, 0.38f, 0f), 1.8f, 0.12f, 3.0f, 0.12f),
+        component("scaled_frame_left", "Left frame rail", VehicleSystem.BRAKES_CHASSIS, Point3D(-0.62f, 0.38f, 0f), 0.12f, 0.12f, 3.0f, 0.12f),
+        component("scaled_frame_right", "Right frame rail", VehicleSystem.BRAKES_CHASSIS, Point3D(0.62f, 0.38f, 0f), 0.12f, 0.12f, 3.0f, 0.12f),
         component("scaled_cab", "Cab shell envelope", VehicleSystem.LIGHTING_BODY, Point3D(0f, 1.10f, 0.55f), 1.58f, 1.20f, 1.75f, 0.10f),
         component("scaled_bed", "Bed shell envelope", VehicleSystem.LIGHTING_BODY, Point3D(0f, 0.98f, -1.30f), 1.55f, 0.82f, 1.30f, 0.12f),
         component("scaled_engine_40l", "4.0L SOHC engine envelope", VehicleSystem.ENGINE, Point3D(0f, 0.82f, 1.02f), 0.88f, 0.78f, 0.92f, 0.18f),
@@ -19,10 +19,10 @@ object SportTracScaledHull {
         component("scaled_tcase_bw4411", "BW4411 transfer case envelope", VehicleSystem.DRIVETRAIN_4WD, Point3D(0f, 0.42f, -0.52f), 0.52f, 0.52f, 0.60f, 0.20f),
         component("scaled_rear_88", "Ford 8.8 rear axle envelope", VehicleSystem.DRIVETRAIN_4WD, Point3D(0f, 0.36f, s.rearAxleZ), 1.50f, 0.50f, 0.34f, 0.18f),
         component("scaled_front_diff", "Front differential envelope", VehicleSystem.DRIVETRAIN_4WD, Point3D(0f, 0.34f, s.frontAxleZ), 0.85f, 0.48f, 0.38f, 0.18f),
-        component("scaled_wheel_fl", "Front wheel LH", VehicleSystem.BRAKES_CHASSIS, s.wheelCenter(true, false), 0.76f, 0.28f, 0.76f, 0.30f),
-        component("scaled_wheel_fr", "Front wheel RH", VehicleSystem.BRAKES_CHASSIS, s.wheelCenter(true, true), 0.76f, 0.28f, 0.76f, 0.30f),
-        component("scaled_wheel_rl", "Rear wheel LH", VehicleSystem.BRAKES_CHASSIS, s.wheelCenter(false, false), 0.76f, 0.28f, 0.76f, 0.30f),
-        component("scaled_wheel_rr", "Rear wheel RH", VehicleSystem.BRAKES_CHASSIS, s.wheelCenter(false, true), 0.76f, 0.28f, 0.76f, 0.30f),
+        component("scaled_wheel_fl", "Front wheel LH", VehicleSystem.BRAKES_CHASSIS, s.wheelCenter(true, false), 0.28f, 0.76f, 0.76f, 0.30f),
+        component("scaled_wheel_fr", "Front wheel RH", VehicleSystem.BRAKES_CHASSIS, s.wheelCenter(true, true), 0.28f, 0.76f, 0.76f, 0.30f),
+        component("scaled_wheel_rl", "Rear wheel LH", VehicleSystem.BRAKES_CHASSIS, s.wheelCenter(false, false), 0.28f, 0.76f, 0.76f, 0.30f),
+        component("scaled_wheel_rr", "Rear wheel RH", VehicleSystem.BRAKES_CHASSIS, s.wheelCenter(false, true), 0.28f, 0.76f, 0.76f, 0.30f),
         component("scaled_front_shaft", "Front propeller shaft", VehicleSystem.DRIVETRAIN_4WD, Point3D(0f, 0.30f, 0.62f), 0.14f, 0.14f, 1.35f, 0.25f),
         component("scaled_rear_shaft", "Rear propeller shaft", VehicleSystem.DRIVETRAIN_4WD, Point3D(0f, 0.30f, -0.44f), 0.14f, 0.14f, 1.30f, 0.25f)
     )

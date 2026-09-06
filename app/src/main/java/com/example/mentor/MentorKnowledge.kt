@@ -77,7 +77,7 @@ object MentorKnowledge {
     const val OWNER_GUIDE_PARTS =
         "2004 OG Motorcraft: air FA-1744, fuel FG-1036, oil FL-820S, battery BXT-65-650, PCV EV-243, plugs AGSF-22PP gap 0.052-0.056 in. Lug nuts 1/2-20 at 84-114 lb-ft."
     const val OWNER_GUIDE_AXLES =
-        "2004 OG: front axle 1.8 qt 80W-90 on 4x4. Rear axle 5.5-5.8 pints 75W-90 FE synthetic, fill 6-14 mm below the hole. Add XL-7 4 oz on a complete Traction-Lok refill. Rear synthetic is lubricated for life unless leak, service, or water submersion. 75W-140 is not the printed OG fill."
+        "2004 OG: front axle 1.8 qt 80W-90 on 4x4. Rear axle 5.5-5.8 pints 75W-90 FE synthetic, fill 6-14 mm below the hole. Add XL-7 4 oz on a complete Traction-Lok refill. Rear synthetic is lubricated for life unless leak, service, or water submersion. The heavier alternative is not the printed OG fill."
     const val OWNER_GUIDE_ENGINE =
         "2004 OG engine data: 4.0L SOHC V6, 245 ci, compression 9.7:1, firing order 1-4-2-5-3-6, EDIS ignition, 87 octane or E85 max, AGSF-22PP gap 0.052-0.056 in. VECI decal overrides the table if it differs."
     const val OWNER_GUIDE_DIMENSIONS =

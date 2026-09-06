@@ -22,7 +22,15 @@ object SportTracFastenerLayer {
 
     fun enrich(component: Component3DModel): Component3DModel {
         val inventory = VehicleHardwareCatalog.enrich(component)
-        return inventory.copy(subAssemblies = inventory.subAssemblies + visualFasteners(component))
+        val verifiedBoundary = "VIN-specific quantity, finish, and specification must be confirmed before service."
+        val boundedFasteners = inventory.fasteners.map { item ->
+            if (item.notes.contains("VIN-specific")) item
+            else item.copy(notes = "${item.notes.trimEnd()} $verifiedBoundary".trim())
+        }
+        return inventory.copy(
+            fasteners = boundedFasteners,
+            subAssemblies = inventory.subAssemblies + visualFasteners(component)
+        )
     }
 
     fun jointsFor(componentId: String): List<Joint> = when {
