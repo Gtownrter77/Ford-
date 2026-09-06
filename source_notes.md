@@ -54,3 +54,7 @@ Manual pages 2275/5261 reference image `images/DM05Q313/ford30/469830850.png`, w
 Three-level audit written to `docs/FULL_APP_SHIPPABILITY_AUDIT.md`. Level 1 source/static checks passed for the CHARM package, rear-shock linkage, repository structure, and provenance scans. Level 2 passed for the complete manual archive checksum/counts, CHARM source package integrity, and Blender import of the repository and original 4WD GLBs. Blender 4.0.2 reports 166 mesh objects and 15 materials for the 8,544,536-byte 4WD GLB.
 
 Level 3 Android build/runtime verification is blocked in the current checkout/environment: no executable Gradle wrapper is present and no Android SDK/toolchain is available. `./gradlew test` and `./gradlew :app:assembleDebug` therefore could not run. The project’s existing `docs/SHIP_PASS_2026-08-26.md` also explicitly withholds physical-device ANR/logcat proof, live OBD/FORScan proof, live retailer checkout, licensed wreck-GLB proof, and VIN-verified community-video proof. The full app is consequently not release-verified, even though multiple offline repository packages are verified and shippable.
+
+## Direct 4WD model correction pass
+
+Blender 4.0.2 re-opened the canonical 4WD scene, corrected visible legacy 2WD labels, and wrote explicit source-boundary metadata to the scene and relevant driveline/rear-shock objects. The scene now records 9,188 HTML pages, the local archive’s 2WD limitation, and the embedded CHARM 4WD VIN K source boundary. The canonical GLB was re-exported and validated: 166 mesh objects, 15 materials, 8,544,536 bytes.

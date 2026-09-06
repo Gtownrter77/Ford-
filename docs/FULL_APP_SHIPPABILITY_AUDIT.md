@@ -146,3 +146,8 @@ The **verified and shippable repository portions** are the embedded 4WD wiring s
 The **not-100-percent portions** are the Android build and runtime, physical-device route behavior, complete VIN-specific mechanical accuracy of the 3D model, full 4WD verification of every mechanical data value, the custom dual-exhaust fitment, live commerce, live OBD/FORScan, and unverified media/licensing claims. Their exact locations are listed above.
 
 The project should therefore be described as **a substantial, source-annotated vocational teaching repository with several verified offline packages—not yet a fully release-verified Android application**.
+
+
+## Direct model correction pass
+
+A Blender 4.0.2 correction pass was executed after this audit. It removed visible legacy 2WD labels, added explicit source-boundary metadata to the scene, tagged 4WD driveline and rear-shock objects with their applicable source references and service limits, and re-exported the canonical Android GLB. Structural validation remains positive at 166 mesh objects, 15 materials, and 8,544,536 bytes. This improves provenance and configuration consistency; it does not convert the teaching-envelope geometry into complete OEM CAD.

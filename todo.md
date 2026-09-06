@@ -315,3 +315,13 @@
 - [ ] Identify and fix the highest-impact safe blockers affecting build, route stability, source integrity, assets, and shippability claims.
 - [ ] Run the strongest available three-level verification after fixes and correct regressions.
 - [ ] Commit and push all remediation changes, then record any blockers that require unavailable external tooling or device access.
+
+## Model provenance clarification
+- [ ] Explain exactly which source data drove Blender geometry and which archive-wide review happened later.
+- [ ] State the mechanical-accuracy limitations plainly and distinguish structural GLB validation from factory dimensional validation.
+
+## Direct model rebuild and verification
+- [ ] Map current 4WD model assemblies to the supplied factory-source records.
+- [ ] Correct the highest-impact geometry, 4WD placement, and source metadata gaps.
+- [ ] Run Blender import/scene checks plus source and repository validation.
+- [ ] Push the stable model checkpoint and record only completion status and blockers.
