@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.sp
 import com.example.data.SportTracData
 import com.example.model.ChatMessage
 import com.example.model.DiagnosticSymptomCategory
+import com.example.ui.components.CriticalDiagnosticDialog
 import com.example.ui.components.DiagnosticFlowDialog
 import com.example.ui.components.ForscanDialog
 import com.example.ui.components.GeminiChatView
@@ -50,10 +51,18 @@ fun DiagnosticsScreen(
     var showSymptomTroubleshootingDialog by remember { mutableStateOf(false) }
     var showDiagnosticWizardDialog by remember { mutableStateOf(false) }
     var showAcSystemWorkbench by remember { mutableStateOf(false) }
+    var showCriticalDiagnostic by remember { mutableStateOf(false) }
 
     if (showAcSystemWorkbench) {
         com.example.ui.components.AcSystemWorkbenchDialog(
             onDismiss = { showAcSystemWorkbench = false },
+            onNavigateToComponent = onNavigateToComponent
+        )
+    }
+
+    if (showCriticalDiagnostic) {
+        CriticalDiagnosticDialog(
+            onDismiss = { showCriticalDiagnostic = false },
             onNavigateToComponent = onNavigateToComponent
         )
     }
@@ -274,6 +283,33 @@ fun DiagnosticsScreen(
                     contentPadding = PaddingValues(horizontal = 16.dp, vertical = 12.dp),
                     verticalArrangement = Arrangement.spacedBy(14.dp)
                 ) {
+                    item {
+                        Surface(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clip(RoundedCornerShape(16.dp))
+                                .clickable { showCriticalDiagnostic = true }
+                                .testTag("critical_diagnostic_protocol_card"),
+                            color = Color(0xFF3B1111),
+                            shape = RoundedCornerShape(16.dp),
+                            border = BorderStroke(1.5.dp, Color(0xFFF87171))
+                        ) {
+                            Column(modifier = Modifier.padding(16.dp)) {
+                                Text("CRITICAL ROADSIDE DIAGNOSTIC PROTOCOL", color = Color(0xFFFCA5A5), fontWeight = FontWeight.Black, fontSize = 12.sp)
+                                Spacer(modifier = Modifier.height(6.dp))
+                                Text("A/C • HEAT • OIL PRESSURE • TIMING CHAIN", color = Color.White, fontWeight = FontWeight.Bold)
+                                Spacer(modifier = Modifier.height(6.dp))
+                                Text("Use the stop rules first, then work through measured checks. Low oil pressure, overheating, major leaks, smoke, or loud metallic rattle means engine off and tow.", color = Color(0xFFFEE2E2), style = MaterialTheme.typography.bodySmall)
+                                Spacer(modifier = Modifier.height(10.dp))
+                                Button(onClick = { showCriticalDiagnostic = true }, colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFB91C1C)), modifier = Modifier.fillMaxWidth().testTag("open_critical_diagnostic_btn")) {
+                                    Icon(Icons.Default.Warning, contentDescription = null, modifier = Modifier.size(17.dp))
+                                    Spacer(modifier = Modifier.width(6.dp))
+                                    Text("Open Safety Diagnostic", fontWeight = FontWeight.Bold)
+                                }
+                            }
+                        }
+                    }
+
                     // A/C Workbench Hero Card — targeted, safety-first climate-control diagnosis.
                     item {
                         Surface(
