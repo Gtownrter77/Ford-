@@ -1,0 +1,114 @@
+{
+  "generated_utc": "2026-09-07T00:37:36.736069+00:00",
+  "definition": "Repository release verification, not OEM or physical-truck certification. Each area must meet structural artifact, evidence/scale-boundary, and app/package gates.",
+  "areas": [
+    {
+      "area": "Base 4WD teaching model",
+      "checks": {
+        "GLB present": true,
+        "Blend present": true,
+        "Preview present": true
+      },
+      "level1_structural": 100,
+      "level2_evidence_boundary": 100,
+      "level3_app_package": 100,
+      "release_score": 100
+    },
+    {
+      "area": "Corrected exterior",
+      "checks": {
+        "GLB present": true,
+        "Blend present": true,
+        "Preview present": true
+      },
+      "level1_structural": 100,
+      "level2_evidence_boundary": 100,
+      "level3_app_package": 100,
+      "release_score": 100
+    },
+    {
+      "area": "HVAC reference",
+      "checks": {
+        "GLB present": true,
+        "Blend present": true,
+        "Preview present": true
+      },
+      "level1_structural": 100,
+      "level2_evidence_boundary": 100,
+      "level3_app_package": 100,
+      "release_score": 100
+    },
+    {
+      "area": "Interior level 1",
+      "checks": {
+        "GLB present": true,
+        "Blend present": true,
+        "Preview present": true
+      },
+      "level1_structural": 100,
+      "level2_evidence_boundary": 100,
+      "level3_app_package": 100,
+      "release_score": 100
+    },
+    {
+      "area": "Next-five systems",
+      "checks": {
+        "GLB present": true,
+        "Blend present": true,
+        "Preview present": true
+      },
+      "level1_structural": 100,
+      "level2_evidence_boundary": 100,
+      "level3_app_package": 100,
+      "release_score": 100
+    },
+    {
+      "area": "Mechanical and body",
+      "checks": {
+        "GLB present": true,
+        "Blend present": true,
+        "Preview present": true
+      },
+      "level1_structural": 100,
+      "level2_evidence_boundary": 100,
+      "level3_app_package": 100,
+      "release_score": 100
+    },
+    {
+      "area": "Chassis and safety",
+      "checks": {
+        "GLB present": true,
+        "Blend present": true,
+        "Preview present": true
+      },
+      "level1_structural": 100,
+      "level2_evidence_boundary": 100,
+      "level3_app_package": 100,
+      "release_score": 100
+    },
+    {
+      "area": "Hardware detail",
+      "checks": {
+        "GLB present": true,
+        "Blend present": true,
+        "Preview present": true
+      },
+      "level1_structural": 100,
+      "level2_evidence_boundary": 100,
+      "level3_app_package": 100,
+      "release_score": 100
+    },
+    {
+      "area": "HVAC/oiling/timing release",
+      "checks": {
+        "GLB present": true,
+        "Blend present": true,
+        "Preview present": true
+      },
+      "level1_structural": 100,
+      "level2_evidence_boundary": 100,
+      "level3_app_package": 100,
+      "release_score": 100
+    }
+  ]
+}
