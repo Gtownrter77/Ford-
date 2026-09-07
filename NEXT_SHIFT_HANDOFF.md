@@ -4,7 +4,7 @@
 **Repository:** `https://github.com/Gtownrter77/Ford-`
 **Target:** 2004 Ford Explorer Sport Trac, 4.0L SOHC V6, 4WD, VIN K Flex Fuel
 **Current branch:** `main`
-**Current commit at handoff:** `31a2219`
+**Current commit at handoff:** `e9eec61` (`feat(auth): require Google account sign-in`)
 
 ## Executive status
 
@@ -16,17 +16,23 @@ The project is **not** a certified OEM CAD package, a physical-device-certified 
 
 The app must require users to sign in with a Google account before accessing Mentor, diagnostics, FORScan/OBD workflows, manual content, 3D technical assets, or saved technician records. Anonymous use is not an allowed product state.
 
-The next shift must implement this as an actual authentication gate, not merely a welcome-screen button:
+The authentication gate is now implemented in the app entry point and is compile/test verified. The next shift must complete provider configuration and physical-device validation; do not replace the gate with an anonymous fallback.
 
-- Use the project’s configured Firebase/Google authentication path where available.
-- Require a successful Google identity before entering the main app shell.
-- Persist and restore the authenticated session securely through the provider SDK.
-- Provide sign-out and account-switch behavior.
-- Return users to the sign-in screen when the session is invalid or revoked.
+- Use the project’s configured Firebase/Google authentication path where available. **Implemented with Firebase Auth + Android Credential Manager.**
+- Require a successful Google identity before entering the main app shell. **Implemented; `MainActivity` renders the protected shell only after a Firebase user exists.**
+- Persist and restore the authenticated session securely through the provider SDK. **Provider session restore is used; physical cold-start validation remains.**
+- Provide sign-out and account-switch behavior. **Provider sign-out exists in `GoogleAuthManager`; expose and validate the UI action next.**
+- Return users to the sign-in screen when the session is invalid or revoked. **Gate logic is present; revoked-session/device validation remains.**
 - Do not store Google passwords or access tokens in app preferences.
 - Keep diagnostic records scoped to the authenticated account.
 - Test cold start, first sign-in, cancelled sign-in, sign-out, revoked session, offline startup, and account switching.
-- Do not claim this is complete until a real device successfully signs in with Google and the protected screens cannot be reached anonymously.
+- Do not claim this is complete until a real device successfully signs in with Google and the protected screens cannot be reached anonymously. **Code/build gate is complete; physical-device acceptance is still open.**
+
+### Authentication implementation and remaining setup
+
+The implementation is in commit `e9eec61`. `GoogleSignInScreen` invokes Credential Manager, exchanges the Google ID token with Firebase Auth, and calls back into `MainActivity` only after successful authentication. `GoogleAuthManager` has no anonymous path and does not store passwords or tokens in preferences.
+
+Before installing on a physical device, configure the Firebase project with the matching Android application ID and signing fingerprints, place the generated `google-services.json` in the app module, and set `GOOGLE_WEB_CLIENT_ID` to the Firebase Web OAuth client ID through the project Secrets configuration. Without those provider settings, the app intentionally remains blocked rather than allowing anonymous access.
 
 This requirement changes the product priority: authentication and account-scoped data protection now precede further Mentor feature expansion.
 
@@ -57,6 +63,9 @@ This requirement changes the product priority: authentication and account-scoped
 | `app/src/main/java/com/example/obd/AndroidObd2BluetoothBridge.kt` | Real Bluetooth SPP ELM327 transport and standard PID/DTC parser. |
 | `app/src/test/java/com/example/obd/Obd2PidParserTest.kt` | Deterministic RPM, coolant, transport-failure, and DTC parser tests. |
 | `app/src/main/java/com/example/ui/components/CriticalDiagnosticDialog.kt` | Roadside triage, full diagnostic protocol, and technician handoff fields. |
+| `app/src/main/java/com/example/auth/GoogleAuthManager.kt` | Firebase Auth and Credential Manager integration; mandatory Google identity. |
+| `app/src/main/java/com/example/ui/auth/GoogleSignInScreen.kt` | Blocking Google sign-in UI and failure-state messaging. |
+| `app/src/main/java/com/example/MainActivity.kt` | Authentication gate around the protected app shell. |
 | `docs/OBD2_FORSCAN_INTEGRATION.md` | OBD/FORScan scope, supported commands, and safety boundary. |
 | `docs/VEHICLE_VERIFICATION_MANIFEST.md` | VIN-K/4WD evidence and physical-verification boundaries. |
 | `RELEASE_AUDIT.md` | Repository release-gate report. |
@@ -193,6 +202,15 @@ The next shift should not mark the mechanical issues complete based on source re
 - OBD/FORScan DTCs, freeze-frame, and relevant live data.
 - VIN, mileage, engine/drivetrain configuration, and prior repair history.
 
+### Authentication device-validation checklist
+
+- First launch with no Firebase session shows only the Google sign-in screen.
+- Cancelled or failed sign-in does not enter Mentor, 3D, Diagnostics, or FORScan.
+- Successful Google sign-in enters the protected shell and restores after cold start.
+- Sign-out/account switching returns to the gate and does not expose the prior account’s records.
+- Revoked/expired session returns to the gate.
+- Offline startup fails closed when no valid cached provider session exists.
+
 ## Acceptance tests for the next shift
 
 The source-retrieval phase is complete only when:
@@ -210,4 +228,4 @@ The source-retrieval phase is complete only when:
 
 ## Final handoff instruction
 
-Start with source manifest/index construction and tests. Do not generate more decorative geometry before making Mentor retrieval, citations, configuration filtering, and technician handoff evidence real. Preserve the current safety language and evidence boundaries. Push each verified phase to `main` with a short commit message and update this handoff’s current commit/build status.
+Start with Firebase provider setup and physical authentication acceptance, then continue source manifest/index construction and tests. Do not generate more decorative geometry before making Mentor retrieval, citations, configuration filtering, and technician handoff evidence real. Preserve the current safety language and evidence boundaries. The auth code/build phase passed `testDebugUnitTest` and `assembleDebug`; update this handoff again after real-device sign-in and account-scoping checks. Push each verified phase to `main` with a short commit message and update this handoff’s current commit/build status.
