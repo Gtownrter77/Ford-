@@ -1,5 +1,9 @@
 package com.example.ui.components
 
+import android.Manifest
+import android.os.Build
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -21,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -29,7 +34,11 @@ import com.example.data.ForscanData
 import com.example.model.FordModule
 import com.example.model.ForscanDtcCode
 import com.example.model.ForscanPidData
+import com.example.obd.AndroidObd2BluetoothBridge
+import com.example.obd.Obd2AdapterCandidate
+import com.example.obd.Obd2PidParser
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 enum class ForscanSubTab(val label: String) {
     LIVE_PIDS("Live PIDs & Gauges"),
@@ -49,16 +58,34 @@ fun ForscanDialog(
     var pasteLogText by remember { mutableStateOf("") }
     var selectedDtc by remember { mutableStateOf<ForscanDtcCode?>(ForscanData.knownSportTracDtcs[0]) }
     var activeDtcsList by remember { mutableStateOf(ForscanData.knownSportTracDtcs) }
-    var isConnectedToObd by remember { mutableStateOf(true) }
+    var isConnectedToObd by remember { mutableStateOf(false) }
+    var adapters by remember { mutableStateOf<List<Obd2AdapterCandidate>>(emptyList()) }
+    var connectionMessage by remember { mutableStateOf("No adapter connected") }
+    val context = LocalContext.current
+    val bridge = remember(context) { AndroidObd2BluetoothBridge(context) }
+    val scope = rememberCoroutineScope()
+    val bluetoothPermissionLauncher = rememberLauncherForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {
+        scope.launch {
+            adapters = bridge.discoverAdapters()
+            val candidate = adapters.firstOrNull()
+            if (candidate == null) connectionMessage = "Pair an ELM327/OBDLink adapter first" else runCatching { bridge.connect(candidate) }.onSuccess { isConnectedToObd = true; connectionMessage = candidate.displayName }.onFailure { connectionMessage = "Connection failed: ${it.message ?: "transport error"}" }
+        }
+    }
+    LaunchedEffect(Unit) {
+        adapters = bridge.discoverAdapters()
+        if (adapters.isNotEmpty()) connectionMessage = "${adapters.size} paired adapter(s) found"
+    }
+    DisposableEffect(Unit) { onDispose { scope.launch { bridge.disconnect() } } }
 
     // Live PID value simulation loop
-    LaunchedEffect(isLiveStreaming) {
-        while (isLiveStreaming) {
-            delay(800)
+    LaunchedEffect(isLiveStreaming, isConnectedToObd) {
+        while (isLiveStreaming && isConnectedToObd) {
+            delay(250)
+            val rpm = Obd2PidParser.parse(bridge.sendElm327Command("010C"))?.value
+            val ect = Obd2PidParser.parse(bridge.sendElm327Command("0105"))?.value
             pidsList = pidsList.map { pid ->
-                val jitter = (Math.random() - 0.5) * (if (pid.shortName == "RPM") 30.0 else if (pid.shortName == "ECT") 0.5 else 0.2)
-                val newDouble = (pid.currentValue + jitter).coerceIn(pid.minVal, pid.maxVal)
-                pid.copy(currentValue = Math.round(newDouble * 10.0) / 10.0)
+                val value = when (pid.shortName) { "RPM" -> rpm; "ECT" -> ect; else -> null }
+                if (value == null) pid else pid.copy(currentValue = Math.round(value * 10.0) / 10.0)
             }
         }
     }
@@ -133,17 +160,27 @@ fun ForscanDialog(
                             )
                             Spacer(modifier = Modifier.width(6.dp))
                             Text(
-                                text = if (isConnectedToObd) "ELM327 Bluetooth (OBDLink MX+ v2.2)" else "Disconnected",
+                                text = if (isConnectedToObd) "$connectionMessage • live transport" else connectionMessage,
                                 style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.SemiBold),
                                 color = Color(0xFFCBD5E1)
                             )
                         }
 
-                        Text(
-                            text = "14.1 V",
-                            style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
-                            color = Color(0xFFFFD700)
-                        )
+                        if (!isConnectedToObd) {
+                            Button(
+                                onClick = {
+                                    val needed = if (Build.VERSION.SDK_INT >= 31) arrayOf(Manifest.permission.BLUETOOTH_SCAN, Manifest.permission.BLUETOOTH_CONNECT) else emptyArray()
+                                    if (needed.isNotEmpty()) bluetoothPermissionLauncher.launch(needed) else scope.launch {
+                                        adapters = bridge.discoverAdapters(); val candidate = adapters.firstOrNull()
+                                        if (candidate == null) connectionMessage = "Pair an ELM327/OBDLink adapter first" else runCatching { bridge.connect(candidate) }.onSuccess { isConnectedToObd = true; connectionMessage = candidate.displayName }.onFailure { connectionMessage = "Connection failed: ${it.message ?: "transport error"}" }
+                                    }
+                                },
+                                contentPadding = PaddingValues(horizontal = 8.dp, vertical = 2.dp),
+                                modifier = Modifier.height(28.dp)
+                            ) { Text("Connect", fontSize = 11.sp) }
+                        } else {
+                            Text("LIVE", style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold), color = Color(0xFF10B981))
+                        }
                     }
                 }
 
