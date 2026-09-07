@@ -53,9 +53,8 @@ class GoogleAuthManager(private val context: Context) {
     fun signOut() { auth?.signOut() }
 
     private suspend fun awaitFirebaseSignIn(firebaseAuth: FirebaseAuth, idToken: String) = suspendCancellableCoroutine { continuation ->
-        val task = firebaseAuth.signInWithCredential(GoogleAuthProvider.getCredential(idToken, null))
-            .addOnSuccessListener { continuation.resume(Unit) }
-            .addOnFailureListener { continuation.resumeWithException(it) }
-        continuation.invokeOnCancellation { task.cancel() }
+        firebaseAuth.signInWithCredential(GoogleAuthProvider.getCredential(idToken, null))
+            .addOnSuccessListener { if (continuation.isActive) continuation.resume(Unit) }
+            .addOnFailureListener { if (continuation.isActive) continuation.resumeWithException(it) }
     }
 }
