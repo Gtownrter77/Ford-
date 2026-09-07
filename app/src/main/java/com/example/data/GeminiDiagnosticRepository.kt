@@ -27,7 +27,7 @@ class GeminiDiagnosticRepository(
         - Urgency Level: "Immediate Attention Needed", "Repair Soon", or "Monitor / Safe to Drive"
         
         Keep your tone professional, practical, and specialized for the Cologne 4.0L SOHC engine and 5R55E transmission.
-    """.trimIndent()
+    """.trimIndent() + "\n\n" + MentorPreloadedSkills.CONTRACT
 
     suspend fun analyzeSymptom(
         userMessageText: String,
@@ -65,19 +65,11 @@ class GeminiDiagnosticRepository(
                     )
                 )
 
-                val request = GeminiRequest(
-                    contents = contentsList,
-                    systemInstruction = GeminiContent(
-                        role = "system",
-                        parts = listOf(GeminiPart(text = systemPrompt))
-                    ),
-                    generationConfig = GeminiGenerationConfig(
-                        temperature = 0.3f
-                    )
+                val aiText = callAgent(
+                    apiKey,
+                    contentsList,
+                    systemPrompt + "\n\nMENTOR AGENT: provide the final safe, prioritized outcome. Use the source evidence, distinguish measured facts from inference, cite source IDs, identify the next discriminating test, and provide 3D and technician handoff guidance."
                 )
-
-                val response = GeminiClient.service.generateContent(apiKey, request)
-                val aiText = response.candidates?.firstOrNull()?.content?.parts?.firstOrNull()?.text
 
                 if (!aiText.isNullOrBlank()) {
                     val (componentId, componentName) = detectComponentMatch(aiText)
@@ -107,6 +99,18 @@ class GeminiDiagnosticRepository(
             suggestedComponentName = componentName ?: localResponse.suggestedComponentName,
             urgencyLevel = localResponse.urgencyLevel
         )
+    }
+
+    private suspend fun callAgent(apiKey: String, contents: List<GeminiContent>, rolePrompt: String): String? {
+        val response = GeminiClient.service.generateContent(
+            apiKey,
+            GeminiRequest(
+                contents = contents,
+                systemInstruction = GeminiContent(role = "system", parts = listOf(GeminiPart(text = rolePrompt))),
+                generationConfig = GeminiGenerationConfig(temperature = 0.3f)
+            )
+        )
+        return response.candidates?.firstOrNull()?.content?.parts?.firstOrNull()?.text
     }
 
     private fun detectComponentMatch(text: String): Pair<String?, String?> {

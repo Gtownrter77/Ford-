@@ -599,7 +599,7 @@ fun GeminiAiLoadingAnimation(
                             horizontalArrangement = Arrangement.spacedBy(6.dp)
                         ) {
                             Text(
-                                text = "GEMINI 3.5 FLASH",
+                                text = "GEMINI 2.5 FLASH",
                                 style = MaterialTheme.typography.labelSmall.copy(
                                     fontWeight = FontWeight.Black,
                                     letterSpacing = 0.5.sp
