@@ -12,6 +12,24 @@ The repository is a Kotlin/Jetpack Compose Android teaching and diagnostic app w
 
 The project is **not** a certified OEM CAD package, a physical-device-certified app, a full FORScan desktop replacement, or a complete page-cited manual retrieval system. Do not upgrade any of those statements to “complete” without the evidence described below.
 
+## New product requirement — mandatory Google-account sign-in
+
+The app must require users to sign in with a Google account before accessing Mentor, diagnostics, FORScan/OBD workflows, manual content, 3D technical assets, or saved technician records. Anonymous use is not an allowed product state.
+
+The next shift must implement this as an actual authentication gate, not merely a welcome-screen button:
+
+- Use the project’s configured Firebase/Google authentication path where available.
+- Require a successful Google identity before entering the main app shell.
+- Persist and restore the authenticated session securely through the provider SDK.
+- Provide sign-out and account-switch behavior.
+- Return users to the sign-in screen when the session is invalid or revoked.
+- Do not store Google passwords or access tokens in app preferences.
+- Keep diagnostic records scoped to the authenticated account.
+- Test cold start, first sign-in, cancelled sign-in, sign-out, revoked session, offline startup, and account switching.
+- Do not claim this is complete until a real device successfully signs in with Google and the protected screens cannot be reached anonymously.
+
+This requirement changes the product priority: authentication and account-scoped data protection now precede further Mentor feature expansion.
+
 ## Verified current state
 
 | Area | Current state |
