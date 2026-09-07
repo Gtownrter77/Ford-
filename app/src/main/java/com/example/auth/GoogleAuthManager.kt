@@ -11,17 +11,20 @@ import androidx.credentials.CredentialManager
 import androidx.credentials.CustomCredential
 import androidx.credentials.GetCredentialRequest
 import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 
 class GoogleAuthManager(private val context: Context) {
     private val auth: FirebaseAuth? = runCatching { FirebaseAuth.getInstance() }.getOrNull()
     private val credentialManager = CredentialManager.create(context)
+    private val signInMutex = Mutex()
 
     fun isSignedIn(): Boolean = auth?.currentUser != null
     fun accountLabel(): String? = auth?.currentUser?.email
 
-    suspend fun signIn(activity: Activity): Result<String> = runCatching {
+    suspend fun signIn(activity: Activity): Result<String> = signInMutex.withLock { runCatching {
         val firebaseAuth = auth ?: error("Firebase Auth is not configured. Add google-services.json and Firebase project settings.")
         val clientId = BuildConfig.GOOGLE_WEB_CLIENT_ID
         require(clientId.isNotBlank() && !clientId.startsWith("REPLACE_")) { "Google web client ID is not configured." }
@@ -43,13 +46,16 @@ class GoogleAuthManager(private val context: Context) {
         }
         awaitFirebaseSignIn(firebaseAuth, tokenCredential.idToken)
         firebaseAuth.currentUser?.email ?: "Google account"
-    }
+        // TODO: Register an AuthStateListener in the UI layer so token expiry,
+        // remote revocation, and account deletion immediately return to the gate.
+    } }
 
     fun signOut() { auth?.signOut() }
 
     private suspend fun awaitFirebaseSignIn(firebaseAuth: FirebaseAuth, idToken: String) = suspendCancellableCoroutine { continuation ->
-        firebaseAuth.signInWithCredential(GoogleAuthProvider.getCredential(idToken, null))
+        val task = firebaseAuth.signInWithCredential(GoogleAuthProvider.getCredential(idToken, null))
             .addOnSuccessListener { continuation.resume(Unit) }
             .addOnFailureListener { continuation.resumeWithException(it) }
+        continuation.invokeOnCancellation { task.cancel() }
     }
 }

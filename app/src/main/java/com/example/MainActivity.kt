@@ -70,6 +70,9 @@ class MainActivity : ComponentActivity() {
                 var selectedTab by remember { mutableStateOf(MainTab.VIEW_3D) }
                 val authManager = remember { GoogleAuthManager(this@MainActivity) }
                 var isSignedIn by remember { mutableStateOf(authManager.isSignedIn()) }
+                // TODO: Subscribe to FirebaseAuth auth-state changes and set
+                // isSignedIn=false on token expiry, revocation, or account deletion.
+                // TODO: Expose sign-out/account-switch UI before physical acceptance.
 
                 if (isSignedIn) {
                     FeatureLaunchShell(
