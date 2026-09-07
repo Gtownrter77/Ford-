@@ -1,6 +1,6 @@
 # Vehicle Repository Release Audit
 
-Generated: 2026-09-07T00:37:36.736069+00:00
+Generated: 2026-09-07T00:43:56.767706+00:00
 
 **Scope:** repository shippability of the model/app packages. This is not OEM dimensional certification, a physical-device test, or a diagnosis of a specific truck.
 
@@ -17,6 +17,8 @@ Generated: 2026-09-07T00:37:36.736069+00:00
 | HVAC/oiling/timing release | 100% | 100% | 100% | **100%** |
 
 **Result:** 9/9 areas meet the minimum 80% repository release threshold.
+
+**Evidence manifest:** [`docs/VEHICLE_VERIFICATION_MANIFEST.md`](docs/VEHICLE_VERIFICATION_MANIFEST.md)
 
 ## Three-level gate definition
 

@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-09-07T00:37:36.736069+00:00",
+  "generated_utc": "2026-09-07T00:43:56.767706+00:00",
   "definition": "Repository release verification, not OEM or physical-truck certification. Each area must meet structural artifact, evidence/scale-boundary, and app/package gates.",
   "areas": [
     {
