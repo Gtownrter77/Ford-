@@ -12,7 +12,9 @@ import com.example.model.ChatSender
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class GeminiDiagnosticRepository {
+class GeminiDiagnosticRepository(
+    private val sourceRetriever: MentorSourceRetriever = CuratedMentorSourceRetriever()
+) {
 
     private val systemPrompt = """
         You are the Master Mechanic AI for a 2004 Ford Explorer Sport Trac 4.0L SOHC V6.
@@ -32,6 +34,10 @@ class GeminiDiagnosticRepository {
         history: List<ChatMessage>
     ): ChatMessage = withContext(Dispatchers.IO) {
         val apiKey = BuildConfig.GEMINI_API_KEY
+        val sourceEvidence = runCatching {
+            sourceRetriever.search(userMessageText, VehicleConfiguration())
+        }.getOrDefault(emptyList())
+        val sourceContext = MentorSourceContext.format(sourceEvidence)
 
         // Check if API key is present and non-placeholder
         val isValidKey = apiKey.isNotBlank() && apiKey != "MY_GEMINI_API_KEY"
@@ -55,7 +61,7 @@ class GeminiDiagnosticRepository {
                 contentsList.add(
                     GeminiContent(
                         role = "user",
-                        parts = listOf(GeminiPart(text = userMessageText))
+                        parts = listOf(GeminiPart(text = "$userMessageText\n\n$sourceContext"))
                     )
                 )
 
@@ -96,7 +102,7 @@ class GeminiDiagnosticRepository {
 
         ChatMessage(
             sender = ChatSender.GEMINI_MECHANIC,
-            text = localResponse.text,
+            text = "$sourceContext\n\n${localResponse.text}",
             suggestedComponentId = componentId ?: localResponse.suggestedComponentId,
             suggestedComponentName = componentName ?: localResponse.suggestedComponentName,
             urgencyLevel = localResponse.urgencyLevel
@@ -555,4 +561,3 @@ class GeminiDiagnosticRepository {
         )
     }
 }
-
