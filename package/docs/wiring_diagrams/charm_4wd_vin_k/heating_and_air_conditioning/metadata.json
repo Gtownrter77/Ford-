@@ -1,0 +1,37 @@
+{
+  "label": "Heating and Air Conditioning",
+  "url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Diagrams/Electrical%20Diagrams/Heating%20and%20Air%20Conditioning/",
+  "status": 200,
+  "images": [
+    {
+      "label": "54-1:",
+      "url": "https://charm.li/images/DM05Q313/ford30/1202077493/",
+      "file": "heating_and_air_conditioning/54-1__1202077493.png",
+      "bytes": 19504
+    },
+    {
+      "label": "54-2:",
+      "url": "https://charm.li/images/DM05Q313/ford30/1202089452/",
+      "file": "heating_and_air_conditioning/54-2__1202089452.png",
+      "bytes": 20321
+    },
+    {
+      "label": "54-3:",
+      "url": "https://charm.li/images/DM05Q313/ford30/1202101995/",
+      "file": "heating_and_air_conditioning/54-3__1202101995.png",
+      "bytes": 21007
+    },
+    {
+      "label": "54-4:",
+      "url": "https://charm.li/images/DM05Q313/ford30/1202115131/",
+      "file": "heating_and_air_conditioning/54-4__1202115131.png",
+      "bytes": 24366
+    },
+    {
+      "label": "54-5:",
+      "url": "https://charm.li/images/DM05Q313/ford30/1202130635/",
+      "file": "heating_and_air_conditioning/54-5__1202130635.png",
+      "bytes": 9015
+    }
+  ]
+}

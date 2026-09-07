@@ -16,3 +16,6 @@
 local.properties
 .env
 debug.keystore
+
+# Generated submission binary; distribute outside GitHub because it exceeds GitHub file limits.
+/package/app-debug.apk

@@ -1,0 +1,16 @@
+{
+  "root": "/home/ubuntu/ford_explorer_sport_trac_2004/manual/2004 Ford Explorer Sport Trac 2WD V6-4.0L VIN K Flex Fuel",
+  "page_count": 9185,
+  "image_count": 17887,
+  "pages_by_system": {
+    "Engine": 2272,
+    "Transmission": 1308,
+    "Suspension": 1489,
+    "Body": 1781,
+    "Wiring": 2735,
+    "Interior": 1553
+  },
+  "pages_with_torque_terms": 546,
+  "pages_with_dimensions": 558,
+  "pages_with_part_candidates": 9185
+}
