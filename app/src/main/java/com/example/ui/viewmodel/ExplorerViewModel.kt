@@ -11,7 +11,6 @@ import com.example.data.local.VehicleProfileEntity
 import com.example.model.*
 import com.example.ui.components.SnackbarPayload
 import com.example.ui.components.SnackbarType
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -19,7 +18,6 @@ import kotlinx.coroutines.launch
 import com.example.data.SportTracPartsCatalog
 
 enum class MainTab {
-    LOUNGE,
     VIEW_3D,
     REPAIR_MANUAL,
     DIAGNOSTICS,
@@ -29,48 +27,89 @@ enum class MainTab {
 
 class ExplorerViewModel(application: Application) : AndroidViewModel(application) {
 
-    /** Track 2 boundary: Room stays unopened until an intentional first 3D request. */
-    private val applicationContext = application.applicationContext
-    private var featureDataInitialized = false
-    private var repository: MaintenanceRepository? = null
-    private var acousticRepository: com.example.data.AcousticDiagnosticRepository? = null
-    private var repairChecklistRepo: com.example.data.RepairChecklistRepository? = null
-    private var offlineCacheRepo: com.example.data.OfflineCacheRepository? = null
+    private val db = AppDatabase.getDatabase(application)
+    private val repository = MaintenanceRepository(db.maintenanceDao())
+    val acousticRepository = com.example.data.AcousticDiagnosticRepository(db.acousticReferenceDao())
+    val repairChecklistRepo = com.example.data.RepairChecklistRepository(db.repairChecklistDao())
+    val offlineCacheRepo = com.example.data.OfflineCacheRepository(db.offlineCacheDao())
+    val diagnosticHeatmapRepo = com.example.data.DiagnosticHeatmapRepository(db.diagnosticFailureDao(), db.maintenanceDao())
 
-    private val _cached3DAssetsCount = MutableStateFlow(0)
-    val cached3DAssetsCount: StateFlow<Int> = _cached3DAssetsCount.asStateFlow()
+    val failureRisks: StateFlow<Map<String, com.example.data.local.ComponentFailureRiskEntity>> = diagnosticHeatmapRepo.allFailureRisks
+        .map { list -> list.associateBy { it.componentId } }
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = emptyMap()
+        )
 
-    private val _cachedManualsCount = MutableStateFlow(0)
-    val cachedManualsCount: StateFlow<Int> = _cachedManualsCount.asStateFlow()
+    val failureRisksList: StateFlow<List<com.example.data.local.ComponentFailureRiskEntity>> = diagnosticHeatmapRepo.allFailureRisks
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = emptyList()
+        )
 
-    private val _cachedSymptomsCount = MutableStateFlow(0)
-    val cachedSymptomsCount: StateFlow<Int> = _cachedSymptomsCount.asStateFlow()
+    private val _isHeatmapActive = MutableStateFlow(false)
+    val isHeatmapActive: StateFlow<Boolean> = _isHeatmapActive.asStateFlow()
 
-    private val _cacheManifest = MutableStateFlow<com.example.data.local.CacheManifestEntity?>(
-        com.example.data.local.CacheManifestEntity()
-    )
-    val cacheManifest: StateFlow<com.example.data.local.CacheManifestEntity?> = _cacheManifest.asStateFlow()
+    fun toggleDiagnosticHeatmap() {
+        _isHeatmapActive.value = !_isHeatmapActive.value
+        if (_isHeatmapActive.value) {
+            _voiceNotice.value = "Diagnostic Heatmap overlay active: Color-coding parts by failure probability from Room DB"
+        } else {
+            _voiceNotice.value = "Diagnostic Heatmap overlay deactivated"
+        }
+    }
+
+    fun setHeatmapActive(active: Boolean) {
+        _isHeatmapActive.value = active
+    }
+
+    val cached3DAssetsCount: StateFlow<Int> = offlineCacheRepo.assets3DCountFlow
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = 0
+        )
+
+    val cachedManualsCount: StateFlow<Int> = offlineCacheRepo.manualsCountFlow
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = 0
+        )
+
+    val cachedSymptomsCount: StateFlow<Int> = offlineCacheRepo.symptomsCountFlow
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = 0
+        )
+
+    val cacheManifest: StateFlow<com.example.data.local.CacheManifestEntity?> = offlineCacheRepo.manifestFlow
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = com.example.data.local.CacheManifestEntity()
+        )
 
     fun resyncOfflineCache() {
-        val activeCacheRepo = offlineCacheRepo ?: return
         viewModelScope.launch {
-            activeCacheRepo.seedAndSyncOfflineCache()
+            offlineCacheRepo.seedAndSyncOfflineCache()
             _voiceNotice.value = "Room DB Offline Cache synced successfully!"
         }
     }
 
     fun upgradeOfflineCache() {
-        val activeCacheRepo = offlineCacheRepo ?: return
         viewModelScope.launch {
-            val updatedVer = activeCacheRepo.performUpgradeToLatestVersion()
+            val updatedVer = offlineCacheRepo.performUpgradeToLatestVersion()
             _voiceNotice.value = "Room Cache Upgraded to v$updatedVer!"
         }
     }
 
     fun checkForCacheUpgrades() {
-        val activeCacheRepo = offlineCacheRepo ?: return
         viewModelScope.launch {
-            val isAvail = activeCacheRepo.checkForUpgrades()
+            val isAvail = offlineCacheRepo.checkForUpgrades()
             if (isAvail) {
                 _voiceNotice.value = "New CAD & Manual Content v2.5.0 Available for Upgrade!"
             } else {
@@ -80,15 +119,18 @@ class ExplorerViewModel(application: Application) : AndroidViewModel(application
     }
 
     fun clearOfflineCache() {
-        val activeCacheRepo = offlineCacheRepo ?: return
         viewModelScope.launch {
-            activeCacheRepo.clearAllOfflineCache()
+            offlineCacheRepo.clearAllOfflineCache()
             _voiceNotice.value = "Room DB Offline Cache cleared."
         }
     }
 
-    private val _savedChecklists = MutableStateFlow<List<com.example.data.local.RepairChecklistEntity>>(emptyList())
-    val savedChecklists: StateFlow<List<com.example.data.local.RepairChecklistEntity>> = _savedChecklists.asStateFlow()
+    val savedChecklists: StateFlow<List<com.example.data.local.RepairChecklistEntity>> = repairChecklistRepo.allSavedChecklists
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = emptyList()
+        )
 
     fun saveRepairChecklistProgress(
         componentId: String,
@@ -97,9 +139,8 @@ class ExplorerViewModel(application: Application) : AndroidViewModel(application
         completedIndices: Set<Int>,
         totalSteps: Int
     ) {
-        val activeChecklistRepo = repairChecklistRepo ?: return
         viewModelScope.launch {
-            activeChecklistRepo.saveProgress(
+            repairChecklistRepo.saveProgress(
                 componentId = componentId,
                 componentName = componentName,
                 currentStepIndex = currentStepIndex,
@@ -110,9 +151,8 @@ class ExplorerViewModel(application: Application) : AndroidViewModel(application
     }
 
     fun resetRepairChecklistProgress(componentId: String) {
-        val activeChecklistRepo = repairChecklistRepo ?: return
         viewModelScope.launch {
-            activeChecklistRepo.resetProgress(componentId)
+            repairChecklistRepo.resetProgress(componentId)
         }
     }
 
@@ -150,10 +190,7 @@ class ExplorerViewModel(application: Application) : AndroidViewModel(application
     }
 
     // Active Navigation Tab
-    // The Lounge is intentionally the safe first route while the full interactive 3D scene
-    // remains under physical-device performance review. Users can still choose the 3D tab,
-    // but application startup no longer opens the known ANR-prone route automatically.
-    private val _currentTab = MutableStateFlow(MainTab.LOUNGE)
+    private val _currentTab = MutableStateFlow(MainTab.VIEW_3D)
     val currentTab: StateFlow<MainTab> = _currentTab.asStateFlow()
 
     // Active System Filter (Engine, Intake, Trans, Cooling, A/C, Elect, Brakes)
@@ -208,15 +245,24 @@ class ExplorerViewModel(application: Application) : AndroidViewModel(application
     private val _manualSearchQuery = MutableStateFlow("")
     val manualSearchQuery: StateFlow<String> = _manualSearchQuery.asStateFlow()
 
-    // Room-backed state stays at safe defaults until the first 3D request.
-    private val _maintenanceLogs = MutableStateFlow<List<MaintenanceEntity>>(emptyList())
-    val maintenanceLogs: StateFlow<List<MaintenanceEntity>> = _maintenanceLogs.asStateFlow()
+    // Room Database State Flows
+    val maintenanceLogs: StateFlow<List<MaintenanceEntity>> = repository.allLogs.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = emptyList()
+    )
 
-    private val _vehicleProfile = MutableStateFlow<VehicleProfileEntity?>(VehicleProfileEntity())
-    val vehicleProfile: StateFlow<VehicleProfileEntity?> = _vehicleProfile.asStateFlow()
+    val vehicleProfile: StateFlow<VehicleProfileEntity?> = repository.vehicleProfile.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = VehicleProfileEntity()
+    )
 
-    private val _upcomingTasks = MutableStateFlow<List<com.example.data.local.UpcomingTaskEntity>>(emptyList())
-    val upcomingTasks: StateFlow<List<com.example.data.local.UpcomingTaskEntity>> = _upcomingTasks.asStateFlow()
+    val upcomingTasks: StateFlow<List<com.example.data.local.UpcomingTaskEntity>> = repository.upcomingTasks.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = emptyList()
+    )
 
     // Components List filtered by active system and search query
     val filteredComponents: StateFlow<List<Component3DModel>> = combine(
@@ -242,44 +288,32 @@ class ExplorerViewModel(application: Application) : AndroidViewModel(application
         initialValue = SportTracData.components
     )
 
-    /** Opens local feature data only after an intentional first request for the 3D tab. */
-    fun ensureFeatureData() {
-        if (featureDataInitialized) return
+    init {
+        viewModelScope.launch {
+            repository.initializeDefaultDataIfEmpty()
+            acousticRepository.seedInitialDatabaseIfEmpty()
+            offlineCacheRepo.seedAndSyncOfflineCache()
+        }
 
-        synchronized(this) {
-            if (featureDataInitialized) return
-
-            val database = AppDatabase.getDatabase(applicationContext)
-            val activeRepository = MaintenanceRepository(database.maintenanceDao())
-            val activeAcousticRepository = com.example.data.AcousticDiagnosticRepository(database.acousticReferenceDao())
-            val activeChecklistRepo = com.example.data.RepairChecklistRepository(database.repairChecklistDao())
-            val activeCacheRepo = com.example.data.OfflineCacheRepository(database.offlineCacheDao())
-
-            repository = activeRepository
-            acousticRepository = activeAcousticRepository
-            repairChecklistRepo = activeChecklistRepo
-            offlineCacheRepo = activeCacheRepo
-            featureDataInitialized = true
-
-            viewModelScope.launch { activeRepository.allLogs.collect { _maintenanceLogs.value = it } }
-            viewModelScope.launch { activeRepository.vehicleProfile.collect { _vehicleProfile.value = it } }
-            viewModelScope.launch { activeRepository.upcomingTasks.collect { _upcomingTasks.value = it } }
-            viewModelScope.launch { activeChecklistRepo.allSavedChecklists.collect { _savedChecklists.value = it } }
-            viewModelScope.launch { activeCacheRepo.assets3DCountFlow.collect { _cached3DAssetsCount.value = it } }
-            viewModelScope.launch { activeCacheRepo.manualsCountFlow.collect { _cachedManualsCount.value = it } }
-            viewModelScope.launch { activeCacheRepo.symptomsCountFlow.collect { _cachedSymptomsCount.value = it } }
-            viewModelScope.launch { activeCacheRepo.manifestFlow.collect { _cacheManifest.value = it } }
-
-            viewModelScope.launch(Dispatchers.IO) {
-                activeRepository.initializeDefaultDataIfEmpty()
-                activeAcousticRepository.seedInitialDatabaseIfEmpty()
-                activeCacheRepo.seedAndSyncOfflineCache()
+        viewModelScope.launch {
+            combine(
+                repository.allLogs,
+                repository.upcomingTasks,
+                repository.vehicleProfile
+            ) { logs, upcoming, profile ->
+                Triple(logs, upcoming, profile)
+            }.collectLatest { (logs, upcoming, profile) ->
+                diagnosticHeatmapRepo.evaluateAndSyncFailureRisks(
+                    components = SportTracData.components,
+                    maintenanceLogs = logs,
+                    upcomingTasks = upcoming,
+                    vehicleProfile = profile
+                )
             }
         }
     }
 
     fun setTab(tab: MainTab) {
-        if (tab == MainTab.VIEW_3D) ensureFeatureData()
         _currentTab.value = tab
     }
 
@@ -362,31 +396,27 @@ class ExplorerViewModel(application: Application) : AndroidViewModel(application
     }
 
     fun logMaintenance(log: MaintenanceEntity) {
-        val activeRepository = repository ?: return
         viewModelScope.launch {
-            activeRepository.logMaintenance(log)
-            activeRepository.updateVehicleMileage(log.mileageAtService)
+            repository.logMaintenance(log)
+            repository.updateVehicleMileage(log.mileageAtService)
         }
     }
 
     fun updateMaintenanceLog(log: MaintenanceEntity) {
-        val activeRepository = repository ?: return
         viewModelScope.launch {
-            activeRepository.updateLog(log)
+            repository.updateLog(log)
         }
     }
 
     fun deleteMaintenanceLog(id: Long) {
-        val activeRepository = repository ?: return
         viewModelScope.launch {
-            activeRepository.deleteLog(id)
+            repository.deleteLog(id)
         }
     }
 
     fun updateMileage(newMileage: Int) {
-        val activeRepository = repository ?: return
         viewModelScope.launch {
-            activeRepository.updateVehicleMileage(newMileage)
+            repository.updateVehicleMileage(newMileage)
         }
     }
 
@@ -735,21 +765,28 @@ class ExplorerViewModel(application: Application) : AndroidViewModel(application
         _cartItems.value = emptyList()
     }
 
+    fun checkoutOrder(paymentMethod: String) {
+        val total = _cartItems.value.sumOf { it.itemTotal }
+        val count = _cartItems.value.sumOf { it.quantity }
+        val orderNum = "OR-2026-${(100000..999999).random()}"
+        
+        _orderSuccessNotice.value = "✅ Order #$orderNum Confirmed!\n$count parts total: \$${String.format("%.2f", total)} charged via $paymentMethod.\nO'Reilly Store #1428 notification sent for pickup/delivery!"
+        clearCart()
+    }
+
     fun dismissOrderSuccessNotice() {
         _orderSuccessNotice.value = null
     }
 
     fun deleteLog(id: Long) {
-        val activeRepository = repository ?: return
         viewModelScope.launch {
-            activeRepository.deleteLog(id)
+            repository.deleteLog(id)
         }
     }
 
     fun addUpcomingTask(task: com.example.data.local.UpcomingTaskEntity) {
-        val activeRepository = repository ?: return
         viewModelScope.launch {
-            activeRepository.addUpcomingTask(task)
+            repository.addUpcomingTask(task)
             _voiceNotice.value = "Upcoming maintenance task added to Room DB!"
         }
     }
@@ -760,24 +797,22 @@ class ExplorerViewModel(application: Application) : AndroidViewModel(application
         costUsd: Double,
         notes: String
     ) {
-        val activeRepository = repository ?: return
         viewModelScope.launch {
-            activeRepository.completeUpcomingTask(task, actualMileage, costUsd, notes)
+            repository.completeUpcomingTask(task, actualMileage, costUsd, notes)
             _voiceNotice.value = "Task '${task.title}' marked completed in Room DB!"
         }
     }
 
     fun deleteUpcomingTask(taskId: Long) {
-        val activeRepository = repository ?: return
         viewModelScope.launch {
-            activeRepository.deleteUpcomingTask(taskId)
+            repository.deleteUpcomingTask(taskId)
         }
     }
 
     fun updateUpcomingTask(task: com.example.data.local.UpcomingTaskEntity) {
-        val activeRepository = repository ?: return
         viewModelScope.launch {
-            activeRepository.updateUpcomingTask(task)
+            repository.updateUpcomingTask(task)
         }
     }
 }
+

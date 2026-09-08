@@ -26,10 +26,7 @@ import com.example.model.Component3DModel
 import com.example.model.VehicleSystem
 import com.example.util.HapticHelper
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Camera
-import androidx.compose.material.icons.filled.Straighten
-import androidx.compose.material.icons.filled.ViewInAr
-import androidx.compose.material.icons.filled.Build
+import androidx.compose.material.icons.filled.*
 import com.example.ui.components.ArOverlayView
 import com.example.ui.components.CameraMeasurementDialog
 import com.example.ui.components.ColorSegmentBar
@@ -66,6 +63,9 @@ fun Model3DScreen(
     cached3DCount: Int = 14,
     cachedManualsCount: Int = 11,
     cachedSymptomsCount: Int = 18,
+    isHeatmapActive: Boolean = false,
+    failureRisks: Map<String, com.example.data.local.ComponentFailureRiskEntity> = emptyMap(),
+    onToggleHeatmap: () -> Unit = {},
     requestDetailSheetOpen: Boolean = false,
     onClearDetailSheetRequest: () -> Unit = {},
     onSelectSystem: (VehicleSystem) -> Unit,
@@ -163,6 +163,9 @@ fun Model3DScreen(
                     components = components,
                     selectedComponent = selectedComponent,
                     activeSystemFilter = activeSystem,
+                    isHeatmapActive = isHeatmapActive,
+                    failureRisks = failureRisks,
+                    onToggleHeatmap = onToggleHeatmap,
                     onComponentSelect = { comp -> onSelectComponent(comp) },
                     onOpenDetailManual = { comp ->
                         onSelectComponent(comp)
@@ -376,6 +379,24 @@ fun Model3DScreen(
                                     imageVector = Icons.Default.CloudOff,
                                     contentDescription = "Room Offline Caching Status",
                                     tint = Color(0xFF4ADE80),
+                                    modifier = Modifier.size(15.dp)
+                                )
+                            }
+
+                            IconButton(
+                                onClick = onToggleHeatmap,
+                                modifier = Modifier
+                                    .size(30.dp)
+                                    .background(
+                                        if (isHeatmapActive) Color(0xFFDC2626) else Color(0xFFEF4444).copy(alpha = 0.25f),
+                                        CircleShape
+                                    )
+                                    .testTag("btn_toggle_heatmap_top")
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.LocalFireDepartment,
+                                    contentDescription = "Diagnostic Failure Heatmap Overlay",
+                                    tint = if (isHeatmapActive) Color.White else Color(0xFFF87171),
                                     modifier = Modifier.size(15.dp)
                                 )
                             }

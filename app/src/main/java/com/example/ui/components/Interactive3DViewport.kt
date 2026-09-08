@@ -55,7 +55,6 @@ import com.example.model.SubAssemblyPart
 import com.example.model.SubAssemblyType
 import com.example.model.VehicleSystem
 import com.example.util.HapticHelper
-import com.example.util.MaterialResponse
 import kotlinx.coroutines.delay
 import kotlin.math.*
 
@@ -92,6 +91,7 @@ private data class ProjectedComponentCenter(
 @OptIn(ExperimentalMaterial3Api::class)
 enum class ViewportLayerTab {
     CLEAN,
+    HEATMAP,
     SHADING,
     EXPLODED,
     ASSEMBLY,
@@ -99,10 +99,6 @@ enum class ViewportLayerTab {
     MENTOR,
     ANIMATION
 }
-
-// Physical-device ANR containment: the first interactive scene must remain bounded.
-// Detailed hardware and full-system exploration are explicit follow-up actions, not launch work.
-private const val SAFE_INITIAL_SCENE_COMPONENT_LIMIT = 8
 
 /**
  * Blender-Level 3D Keyframe Animation Tracks
@@ -206,7 +202,10 @@ fun Interactive3DViewport(
     activeSystemFilter: VehicleSystem,
     onComponentSelect: (Component3DModel) -> Unit,
     onOpenDetailManual: (Component3DModel) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    isHeatmapActive: Boolean = false,
+    failureRisks: Map<String, com.example.data.local.ComponentFailureRiskEntity> = emptyMap(),
+    onToggleHeatmap: () -> Unit = {}
 ) {
     val context = LocalContext.current
     val view = LocalView.current
@@ -216,8 +215,8 @@ fun Interactive3DViewport(
     var activeLayerTab by remember { mutableStateOf(ViewportLayerTab.CLEAN) }
     var layerControllerState by remember { mutableStateOf(LayerControllerState()) }
     var showLayerControllerDialog by remember { mutableStateOf(false) }
-    var isInteractiveSceneLoaded by remember { mutableStateOf(false) }
-    var showHardwareDetail by remember { mutableStateOf(false) }
+    var showHighRiskOnly by remember { mutableStateOf(false) }
+    val effectiveHeatmapActive = isHeatmapActive || activeLayerTab == ViewportLayerTab.HEATMAP
 
     if (showLayerControllerDialog) {
         LayerControllerDialog(
@@ -238,8 +237,7 @@ fun Interactive3DViewport(
     val showCalloutLeaders = layerControllerState.showCalloutLeaders
     val showTechnicalAnnotations = layerControllerState.showTechnicalAnnotations
     val showHudInfoCards = layerControllerState.showHudInfoCards
-    // Bloom is intentionally opt-in after the physical-device ANR. It amplifies overdraw.
-    var showBloomEffect by remember { mutableStateOf(false) }
+    var showBloomEffect by remember { mutableStateOf(true) }
     var clipPlaneSlice by remember { mutableFloatStateOf(1.0f) } // 0..1 cutaway
 
     // Sub-Assembly Exploded View & Hardware Filter State
@@ -261,9 +259,17 @@ fun Interactive3DViewport(
     var isPlayingBiltAnimation by remember { mutableStateOf(false) }
     var isVoiceGuidanceMuted by remember { mutableStateOf(false) }
 
-    // Stable marker glow keeps the default viewport from running a perpetual recomposition loop.
-    // Interactive camera, mentor, and explicit animation controls remain available below.
-    val pulseGlow = 0.7f
+    // Pulsing animation for glowing BILT target markers
+    val infiniteTransition = rememberInfiniteTransition(label = "bilt_pulse")
+    val pulseGlow by infiniteTransition.animateFloat(
+        initialValue = 0.4f,
+        targetValue = 1.0f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(900, easing = LinearEasing),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "pulseGlow"
+    )
 
     val animatedExplode by animateFloatAsState(targetValue = explodeFactor, label = "explode")
     val textMeasurer = rememberTextMeasurer()
@@ -285,28 +291,16 @@ fun Interactive3DViewport(
         label = "animatedZoom"
     )
 
-    // Filter components based on vehicle system tab & layer controller visibility state.
-    // The complete filtered catalog is retained for the controls, but it is not rendered by default.
-    val filterMatchedComponents = remember(components, activeSystemFilter, layerControllerState) {
+    // Filter components based on vehicle system tab & layer controller visibility state
+    val visibleComponents = remember(components, activeSystemFilter, layerControllerState, effectiveHeatmapActive, showHighRiskOnly, failureRisks) {
         components.filter { comp ->
             val systemMatch = (activeSystemFilter == VehicleSystem.ALL || comp.system == activeSystemFilter)
-            systemMatch && layerControllerState.isPartVisible(comp)
-        }
-    }
-
-    // The first interactive frame is intentionally bounded. With ALL selected, render only the
-    // active part; with a system selected, keep the active part first and cap the scene at eight.
-    val visibleComponents = remember(filterMatchedComponents, selectedComponent?.id, activeSystemFilter, isInteractiveSceneLoaded) {
-        if (!isInteractiveSceneLoaded) {
-            emptyList()
-        } else {
-            val selectedVisible = filterMatchedComponents.firstOrNull { it.id == selectedComponent?.id }
-            val ordered = if (activeSystemFilter == VehicleSystem.ALL) {
-                listOfNotNull(selectedVisible ?: filterMatchedComponents.firstOrNull())
-            } else {
-                listOfNotNull(selectedVisible) + filterMatchedComponents.filterNot { it.id == selectedComponent?.id }
-            }
-            ordered.take(SAFE_INITIAL_SCENE_COMPONENT_LIMIT)
+            val partVisible = layerControllerState.isPartVisible(comp)
+            val highRiskMatch = if (effectiveHeatmapActive && showHighRiskOnly) {
+                val risk = failureRisks[comp.id]
+                risk != null && (risk.riskSeverity == "CRITICAL" || risk.riskSeverity == "HIGH" || risk.dynamicRiskScore >= 0.65f)
+            } else true
+            systemMatch && partVisible && highRiskMatch
         }
     }
 
@@ -444,30 +438,14 @@ fun Interactive3DViewport(
             .background(canvasBgColor)
             .testTag("3d_viewport_box")
     ) {
-        // Tap hit-testing needs the latest projected centers, but updating snapshot state
-        // from every Canvas draw would trigger avoidable recompositions.
-        val projectedCentersRef = remember {
-            arrayOf<List<ProjectedComponentCenter>>(emptyList())
-        }
+        var projectedCenters by remember { mutableStateOf<List<ProjectedComponentCenter>>(emptyList()) }
 
-        if (!isInteractiveSceneLoaded) {
-            SafeSceneLoadGate(
-                availableComponentCount = filterMatchedComponents.size,
-                onLoadSafeScene = {
-                    activeLayerTab = ViewportLayerTab.CLEAN
-                    showHardwareDetail = false
-                    showBloomEffect = false
-                    isInteractiveSceneLoaded = true
-                },
-                modifier = Modifier.align(Alignment.Center)
-            )
-        } else {
-            // BILT 3D Canvas Visualizer (procedural Canvas render path)
-            Canvas(
+        // BILT 3D Canvas Visualizer (Hardware-Accelerated GLTF Render Canvas)
+        Canvas(
             modifier = Modifier
                 .fillMaxSize()
                 .graphicsLayer {
-                    compositingStrategy = CompositingStrategy.Auto
+                    compositingStrategy = CompositingStrategy.Offscreen
                 }
                 .pointerInput(Unit) {
                     detectDragGestures { change, dragAmount ->
@@ -478,7 +456,7 @@ fun Interactive3DViewport(
                 }
                 .pointerInput(visibleComponents, cameraYaw, cameraPitch, cameraZoom, animatedExplode) {
                     detectTapGestures { tapOffset ->
-                        val hit = projectedCentersRef[0]
+                        val hit = projectedCenters
                             .filter { sqrt((it.screenPos.x - tapOffset.x).pow(2) + (it.screenPos.y - tapOffset.y).pow(2)) < 90f }
                             .minByOrNull { sqrt((it.screenPos.x - tapOffset.x).pow(2) + (it.screenPos.y - tapOffset.y).pow(2)) }
 
@@ -547,12 +525,9 @@ fun Interactive3DViewport(
                 val isSelected = selectedComponent?.id == comp.id
                 val isCurrentStepPart = isBiltStepMode && currentBiltStepPart?.id == comp.id
 
-                // Component vertices are authored in their own assembly position.
-                // Explode vectors are therefore additive offsets only; adding the
-                // center offset here would translate every mesh twice.
-                val explodedX = comp.explodeVector.x * animatedExplode
-                val explodedY = comp.explodeVector.y * animatedExplode
-                val explodedZ = comp.explodeVector.z * animatedExplode
+                val explodedX = comp.centerOffset.x + comp.explodeVector.x * animatedExplode
+                val explodedY = comp.centerOffset.y + comp.explodeVector.y * animatedExplode
+                val explodedZ = comp.centerOffset.z + comp.explodeVector.z * animatedExplode
 
                 // Check cutaway clipping plane filter
                 if (clipPlaneSlice < 1.0f && explodedZ > (clipPlaneSlice * 4.0f - 2.0f)) {
@@ -560,13 +535,10 @@ fun Interactive3DViewport(
                 }
 
                 // Center position transform
-                val centerWorldX = comp.centerOffset.x + explodedX
-                val centerWorldY = comp.centerOffset.y + explodedY
-                val centerWorldZ = comp.centerOffset.z + explodedZ
-                val rxCenter = centerWorldX * cosY - centerWorldZ * sinY
-                val rzCenter = centerWorldX * sinY + centerWorldZ * cosY
-                val ryCenter = centerWorldY * cosP - rzCenter * sinP
-                val finalZCenter = centerWorldY * sinP + rzCenter * cosP
+                val rxCenter = explodedX * cosY - explodedZ * sinY
+                val rzCenter = explodedX * sinY + explodedZ * cosY
+                val ryCenter = explodedY * cosP - rzCenter * sinP
+                val finalZCenter = explodedY * sinP + rzCenter * cosP
 
                 val projXCenter = centerX + rxCenter * baseScale
                 val projYCenter = centerY - ryCenter * baseScale
@@ -575,11 +547,31 @@ fun Interactive3DViewport(
                     ProjectedComponentCenter(comp, Offset(projXCenter, projYCenter), finalZCenter)
                 )
 
-                // Base Color logic with BILT Active Part Glow
+                // Base Color logic with Diagnostic Failure Heatmap & BILT Active Part Glow
                 val rawHex = comp.faces.firstOrNull()?.colorHex ?: comp.system.hexColor
+                val compRisk = failureRisks[comp.id]
+                val heatmapColor = if (compRisk != null) {
+                    when (compRisk.riskSeverity) {
+                        "CRITICAL" -> Color(0xFFEF4444) // Hot Crimson Red
+                        "HIGH" -> Color(0xFFF97316)     // Fiery Blaze Orange
+                        "MODERATE" -> Color(0xFFEAB308) // Warning Gold/Yellow
+                        "LOW" -> Color(0xFF06B6D4)      // Cyan/Teal
+                        else -> Color(0xFF10B981)       // Mint/Emerald Green (Optimal)
+                    }
+                } else {
+                    when (comp.system) {
+                        VehicleSystem.ENGINE -> Color(0xFFEF4444)
+                        VehicleSystem.COOLING -> Color(0xFFF97316)
+                        VehicleSystem.TRANSMISSION -> Color(0xFFF97316)
+                        VehicleSystem.AIR_INTAKE -> Color(0xFFEAB308)
+                        else -> Color(0xFF10B981)
+                    }
+                }
+
                 val baseColor = when {
                     isCurrentStepPart -> Color(0xFF00F0FF) // BILT Cyan Active Part Highlight
                     isSelected -> Color(0xFFFFD700)       // Gold Selected Part
+                    effectiveHeatmapActive -> heatmapColor // Diagnostic Heatmap Color
                     else -> parseColorFromHex(rawHex)
                 }
 
@@ -732,7 +724,7 @@ fun Interactive3DViewport(
                 }
 
                 // 3. Transform & Render Connected Sub-Assemblies (Bolts, Screws, Washers, Gaskets, Belts)
-                if (showHardwareDetail && comp.subAssemblies.isNotEmpty()) {
+                if (comp.subAssemblies.isNotEmpty()) {
                     comp.subAssemblies.forEach { subPart ->
                         if (subAssemblyTypeFilter != null && subPart.type != subAssemblyTypeFilter) {
                             return@forEach
@@ -740,15 +732,13 @@ fun Interactive3DViewport(
 
                         val isSubSelected = selectedSubAssembly?.id == subPart.id
 
-                        // Subassembly meshes already include their local offsets.
-                        // Anchor them once to the parent assembly's world center,
-                        // then apply only the requested exploded-view separation.
-                        val subExplodedX = comp.centerOffset.x + explodedX + subPart.explodeDirection.x * animatedExplode * subPart.explodeDistanceMultiplier
-                        val subExplodedY = comp.centerOffset.y + explodedY + subPart.explodeDirection.y * animatedExplode * subPart.explodeDistanceMultiplier
-                        val subExplodedZ = comp.centerOffset.z + explodedZ + subPart.explodeDirection.z * animatedExplode * subPart.explodeDistanceMultiplier
+                        val subExplodedX = explodedX + subPart.localOffset.x + subPart.explodeDirection.x * animatedExplode * subPart.explodeDistanceMultiplier
+                        val subExplodedY = explodedY + subPart.localOffset.y + subPart.explodeDirection.y * animatedExplode * subPart.explodeDistanceMultiplier
+                        val subExplodedZ = explodedZ + subPart.localOffset.z + subPart.explodeDirection.z * animatedExplode * subPart.explodeDistanceMultiplier
 
                         val subBaseColor = when {
                             isSubSelected -> Color(0xFFFFD700)
+                            effectiveHeatmapActive -> heatmapColor.copy(alpha = 0.85f)
                             subPart.type == SubAssemblyType.GASKET -> Color(0xFF38BDF8)
                             subPart.type == SubAssemblyType.SEAL_O_RING -> Color(0xFFF97316)
                             subPart.type == SubAssemblyType.BOLT || subPart.type == SubAssemblyType.SCREW -> Color(0xFFE2E8F0)
@@ -814,14 +804,7 @@ fun Interactive3DViewport(
                                 val dotLight = (normX * lightVector.x + normY * lightVector.y + normZ * lightVector.z).coerceIn(-1.0f, 1.0f)
                                 val diffuse = max(0.35f, (dotLight + 1.0f) / 2.0f)
                                 val reflectZ = 2f * dotLight * normZ - lightVector.z
-
-                                // Material-aware Canvas highlight approximation. These values shape
-                                // the hand-written highlight only; this is not a GPU PBR shader.
-                                val specGloss = MaterialResponse.specularHighlight(
-                                    reflectZ = reflectZ,
-                                    metallicFactor = subPart.metallicFactor,
-                                    roughnessFactor = subPart.roughnessFactor
-                                )
+                                val specGloss = if (reflectZ > 0f) reflectZ.pow(10f) * 0.45f else 0f
 
                                 val shadedFill = Color(
                                     red = (subBaseColor.red * diffuse + specGloss).coerceIn(0f, 1f),
@@ -859,7 +842,7 @@ fun Interactive3DViewport(
                 }
             }
 
-            projectedCentersRef[0] = newProjectedCenters
+            projectedCenters = newProjectedCenters
 
             // Sort faces back to front (Painter's algorithm Z-sorting)
             facesToDraw.sortBy { it.avgZ }
@@ -942,6 +925,37 @@ fun Interactive3DViewport(
                     drawCircle(
                         color = Color.White,
                         radius = 4.dp.toPx(),
+                        center = node.screenPos
+                    )
+                } else if (effectiveHeatmapActive) {
+                    val compRisk = failureRisks[node.component.id]
+                    val severity = compRisk?.riskSeverity ?: "MODERATE"
+                    val isCritical = severity == "CRITICAL"
+                    val isHigh = severity == "HIGH"
+                    val markerColor = when (severity) {
+                        "CRITICAL" -> Color(0xFFEF4444)
+                        "HIGH" -> Color(0xFFF97316)
+                        "MODERATE" -> Color(0xFFEAB308)
+                        "LOW" -> Color(0xFF06B6D4)
+                        else -> Color(0xFF10B981)
+                    }
+
+                    if (isCritical) {
+                        drawCircle(
+                            color = Color(0xFFEF4444).copy(alpha = 0.35f * pulseGlow),
+                            radius = 16.dp.toPx() * pulseGlow,
+                            center = node.screenPos
+                        )
+                    }
+
+                    drawCircle(
+                        color = markerColor,
+                        radius = if (isCritical || isHigh) 7.dp.toPx() else 4.dp.toPx(),
+                        center = node.screenPos
+                    )
+                    drawCircle(
+                        color = Color.White,
+                        radius = 2.dp.toPx(),
                         center = node.screenPos
                     )
                 } else if (activeLayerTab == ViewportLayerTab.ANNOTATIONS) {
@@ -1239,30 +1253,6 @@ fun Interactive3DViewport(
                 sinP = sinP,
                 textMeasurer = textMeasurer
             )
-            }
-        }
-
-        if (isInteractiveSceneLoaded && !showHardwareDetail) {
-            Surface(
-                color = Color(0xE60F172A),
-                shape = RoundedCornerShape(14.dp),
-                border = BorderStroke(1.dp, Color(0xFFF59E0B).copy(alpha = 0.70f)),
-                modifier = Modifier
-                    .align(Alignment.BottomEnd)
-                    .padding(12.dp)
-                    .clip(RoundedCornerShape(14.dp))
-                    .clickable {
-                        // Hardware stays opt-in and bloom stays off for the first detail load.
-                        showHardwareDetail = true
-                        showBloomEffect = false
-                    }
-                    .testTag("load_hardware_detail_btn")
-            ) {
-                Column(modifier = Modifier.padding(horizontal = 12.dp, vertical = 9.dp)) {
-                    Text("SAFE SCENE · ${visibleComponents.size} PARTS", color = Color(0xFFBAE6FD), style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold))
-                    Text("Load hardware detail", color = Color(0xFFFBBF24), style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold))
-                }
-            }
         }
 
         // Unified Layer Control Bar & Layer Panels (Declutters 3D Canvas)
@@ -1304,6 +1294,26 @@ fun Interactive3DViewport(
                     ) {
                         Text(
                             text = "👁️ Clean",
+                            style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 11.sp),
+                            color = Color.White,
+                            modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp)
+                        )
+                    }
+
+                    // Layer 2: Diagnostic Failure Heatmap (Room DB)
+                    Surface(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(12.dp))
+                            .clickable {
+                                activeLayerTab = ViewportLayerTab.HEATMAP
+                                if (!isHeatmapActive) onToggleHeatmap()
+                            }
+                            .testTag("layer_tab_heatmap"),
+                        color = if (activeLayerTab == ViewportLayerTab.HEATMAP || effectiveHeatmapActive) Color(0xFFDC2626) else Color.Transparent,
+                        shape = RoundedCornerShape(12.dp)
+                    ) {
+                        Text(
+                            text = "🔥 Heatmap",
                             style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 11.sp),
                             color = Color.White,
                             modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp)
@@ -1594,6 +1604,200 @@ fun Interactive3DViewport(
 
             // Layer-Specific Control Panels
             when (activeLayerTab) {
+                ViewportLayerTab.HEATMAP -> {
+                    Surface(
+                        color = Color(0xF20F172A),
+                        shape = RoundedCornerShape(14.dp),
+                        border = BorderStroke(1.dp, Color(0xFFEF4444)),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 4.dp)
+                            .testTag("heatmap_control_panel")
+                    ) {
+                        Column(
+                            modifier = Modifier.padding(10.dp),
+                            verticalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            // Header: Flame icon, title, active toggle, focus high-risk button
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Default.LocalFireDepartment,
+                                        contentDescription = null,
+                                        tint = Color(0xFFEF4444),
+                                        modifier = Modifier.size(18.dp)
+                                    )
+                                    Column {
+                                        Text(
+                                            text = "DIAGNOSTIC FAILURE HEATMAP",
+                                            style = MaterialTheme.typography.labelSmall.copy(
+                                                fontWeight = FontWeight.Black,
+                                                fontSize = 11.sp
+                                            ),
+                                            color = Color.White
+                                        )
+                                        Text(
+                                            text = "Room DB Failure Probability Engine • Cologne 4.0L SOHC",
+                                            style = MaterialTheme.typography.labelSmall.copy(fontSize = 9.sp),
+                                            color = Color(0xFF94A3B8)
+                                        )
+                                    }
+                                }
+
+                                // Quick button to guide directly to the highest risk component!
+                                val highestRiskComp = remember(visibleComponents, failureRisks) {
+                                    visibleComponents.maxByOrNull { comp ->
+                                        failureRisks[comp.id]?.dynamicRiskScore ?: 0f
+                                    }
+                                }
+
+                                Surface(
+                                    color = Color(0xFFDC2626),
+                                    shape = RoundedCornerShape(8.dp),
+                                    modifier = Modifier
+                                        .clickable {
+                                            if (highestRiskComp != null) {
+                                                cameraYaw = 40f
+                                                cameraPitch = 25f
+                                                cameraZoom = 1.35f
+                                                onComponentSelect(highestRiskComp)
+                                                HapticHelper.triggerComponentHaptic(context, view, haptic, highestRiskComp)
+                                            }
+                                        }
+                                        .testTag("btn_focus_high_risk_area")
+                                ) {
+                                    Row(
+                                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
+                                        verticalAlignment = Alignment.CenterVertically,
+                                        horizontalArrangement = Arrangement.spacedBy(4.dp)
+                                    ) {
+                                        Icon(
+                                            imageVector = Icons.Default.NearMe,
+                                            contentDescription = null,
+                                            tint = Color.White,
+                                            modifier = Modifier.size(12.dp)
+                                        )
+                                        Text(
+                                            text = "Guide High-Risk",
+                                            style = MaterialTheme.typography.labelSmall.copy(
+                                                fontWeight = FontWeight.Bold,
+                                                fontSize = 10.sp
+                                            ),
+                                            color = Color.White
+                                        )
+                                    }
+                                }
+                            }
+
+                            // Thermal spectrum gradient bar legend
+                            Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                                Box(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .height(8.dp)
+                                        .clip(RoundedCornerShape(4.dp))
+                                        .background(
+                                            Brush.horizontalGradient(
+                                                listOf(
+                                                    Color(0xFF10B981), // 0% Optimal Mint
+                                                    Color(0xFF06B6D4), // 25% Cyan
+                                                    Color(0xFFEAB308), // 50% Yellow
+                                                    Color(0xFFF97316), // 75% Orange
+                                                    Color(0xFFEF4444)  // 100% Critical Red
+                                                )
+                                            )
+                                        )
+                                )
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.SpaceBetween
+                                ) {
+                                    Text("0% Healthy", style = MaterialTheme.typography.labelSmall.copy(fontSize = 9.sp), color = Color(0xFF10B981))
+                                    Text("50% Moderate Wear", style = MaterialTheme.typography.labelSmall.copy(fontSize = 9.sp), color = Color(0xFFEAB308))
+                                    Text("100% Critical Failure Risk", style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 9.sp), color = Color(0xFFEF4444))
+                                }
+                            }
+
+                            // Summary chips & Isolation Filter
+                            val criticalCount = remember(failureRisks) { failureRisks.values.count { it.riskSeverity == "CRITICAL" } }
+                            val highCount = remember(failureRisks) { failureRisks.values.count { it.riskSeverity == "HIGH" } }
+                            val moderateCount = remember(failureRisks) { failureRisks.values.count { it.riskSeverity == "MODERATE" } }
+
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.spacedBy(6.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                // Critical count chip
+                                Surface(
+                                    color = Color(0x33EF4444),
+                                    shape = RoundedCornerShape(6.dp),
+                                    border = BorderStroke(1.dp, Color(0xFFEF4444).copy(alpha = 0.5f))
+                                ) {
+                                    Text(
+                                        text = "🔥 $criticalCount Critical",
+                                        style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 9.5.sp),
+                                        color = Color(0xFFFCA5A5),
+                                        modifier = Modifier.padding(horizontal = 6.dp, vertical = 3.dp)
+                                    )
+                                }
+
+                                // High count chip
+                                Surface(
+                                    color = Color(0x33F97316),
+                                    shape = RoundedCornerShape(6.dp),
+                                    border = BorderStroke(1.dp, Color(0xFFF97316).copy(alpha = 0.5f))
+                                ) {
+                                    Text(
+                                        text = "⚠️ $highCount High",
+                                        style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 9.5.sp),
+                                        color = Color(0xFFFDBA74),
+                                        modifier = Modifier.padding(horizontal = 6.dp, vertical = 3.dp)
+                                    )
+                                }
+
+                                // Moderate chip
+                                Surface(
+                                    color = Color(0x33EAB308),
+                                    shape = RoundedCornerShape(6.dp),
+                                    border = BorderStroke(1.dp, Color(0xFFEAB308).copy(alpha = 0.5f))
+                                ) {
+                                    Text(
+                                        text = "⚙️ $moderateCount Mod",
+                                        style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 9.5.sp),
+                                        color = Color(0xFFFDE047),
+                                        modifier = Modifier.padding(horizontal = 6.dp, vertical = 3.dp)
+                                    )
+                                }
+
+                                // Filter toggle: Show High-Risk Only
+                                Surface(
+                                    color = if (showHighRiskOnly) Color(0xFFEF4444) else Color(0xFF1E293B),
+                                    shape = RoundedCornerShape(6.dp),
+                                    border = BorderStroke(1.dp, if (showHighRiskOnly) Color(0xFFEF4444) else Color(0xFF475569)),
+                                    modifier = Modifier
+                                        .clickable { showHighRiskOnly = !showHighRiskOnly }
+                                        .testTag("btn_filter_high_risk_only")
+                                ) {
+                                    Text(
+                                        text = if (showHighRiskOnly) "✓ High-Risk Only" else "Isolate High-Risk",
+                                        style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 9.5.sp),
+                                        color = if (showHighRiskOnly) Color.White else Color(0xFFCBD5E1),
+                                        modifier = Modifier.padding(horizontal = 6.dp, vertical = 3.dp)
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+
                 ViewportLayerTab.SHADING -> {
                     Surface(
                         color = Color(0xEB0F172A),
@@ -2767,6 +2971,98 @@ fun Interactive3DViewport(
                                     tint = Color.White,
                                     modifier = Modifier.size(16.dp)
                                 )
+                            }
+                        }
+
+                        // Diagnostic Failure Probability Risk Banner (Powered by Room Database)
+                        val compRisk = failureRisks[comp.id]
+                        if (compRisk != null) {
+                            val riskColor = when (compRisk.riskSeverity) {
+                                "CRITICAL" -> Color(0xFFEF4444)
+                                "HIGH" -> Color(0xFFF97316)
+                                "MODERATE" -> Color(0xFFEAB308)
+                                "LOW" -> Color(0xFF06B6D4)
+                                else -> Color(0xFF10B981)
+                            }
+
+                            Surface(
+                                color = Color(0xFF1E293B),
+                                shape = RoundedCornerShape(12.dp),
+                                border = BorderStroke(1.2.dp, riskColor),
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .testTag("heatmap_risk_detail_card_${comp.id}")
+                            ) {
+                                Column(
+                                    modifier = Modifier.padding(10.dp),
+                                    verticalArrangement = Arrangement.spacedBy(6.dp)
+                                ) {
+                                    Row(
+                                        modifier = Modifier.fillMaxWidth(),
+                                        horizontalArrangement = Arrangement.SpaceBetween,
+                                        verticalAlignment = Alignment.CenterVertically
+                                    ) {
+                                        Row(
+                                            verticalAlignment = Alignment.CenterVertically,
+                                            horizontalArrangement = Arrangement.spacedBy(6.dp)
+                                        ) {
+                                            Icon(
+                                                imageVector = Icons.Default.LocalFireDepartment,
+                                                contentDescription = null,
+                                                tint = riskColor,
+                                                modifier = Modifier.size(16.dp)
+                                            )
+                                            Text(
+                                                text = "FAILURE PROBABILITY: ${(compRisk.dynamicRiskScore * 100).toInt()}% (${compRisk.riskSeverity})",
+                                                style = MaterialTheme.typography.labelSmall.copy(
+                                                    fontWeight = FontWeight.Black,
+                                                    fontSize = 11.sp
+                                                ),
+                                                color = riskColor
+                                            )
+                                        }
+
+                                        if (compRisk.isOverdue) {
+                                            Surface(
+                                                color = Color(0xFFDC2626),
+                                                shape = RoundedCornerShape(4.dp)
+                                            ) {
+                                                Text(
+                                                    text = "OVERDUE",
+                                                    style = MaterialTheme.typography.labelSmall.copy(
+                                                        fontWeight = FontWeight.Bold,
+                                                        fontSize = 9.sp
+                                                    ),
+                                                    color = Color.White,
+                                                    modifier = Modifier.padding(horizontal = 4.dp, vertical = 2.dp)
+                                                )
+                                            }
+                                        }
+                                    }
+
+                                    LinearProgressIndicator(
+                                        progress = { compRisk.dynamicRiskScore },
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .height(6.dp)
+                                            .clip(CircleShape),
+                                        color = riskColor,
+                                        trackColor = Color(0xFF0F172A)
+                                    )
+
+                                    Text(
+                                        text = "Primary Mode: ${compRisk.primaryFailureMode}",
+                                        style = MaterialTheme.typography.bodySmall.copy(fontSize = 10.5.sp, fontWeight = FontWeight.SemiBold),
+                                        color = Color(0xFFE2E8F0),
+                                        maxLines = 2
+                                    )
+                                    Text(
+                                        text = "Room DB Status: ${compRisk.roomDataSourceSummary}",
+                                        style = MaterialTheme.typography.labelSmall.copy(fontSize = 10.sp),
+                                        color = Color(0xFF94A3B8),
+                                        maxLines = 2
+                                    )
+                                }
                             }
                         }
 

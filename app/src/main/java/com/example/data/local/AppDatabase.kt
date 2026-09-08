@@ -15,9 +15,10 @@ import androidx.room.RoomDatabase
         Cached3DAssetEntity::class,
         CachedRepairManualEntity::class,
         CachedSymptomEntity::class,
-        CacheManifestEntity::class
+        CacheManifestEntity::class,
+        ComponentFailureRiskEntity::class
     ],
-    version = 6,
+    version = 7,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -25,6 +26,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun acousticReferenceDao(): AcousticReferenceDao
     abstract fun repairChecklistDao(): RepairChecklistDao
     abstract fun offlineCacheDao(): OfflineCacheDao
+    abstract fun diagnosticFailureDao(): DiagnosticFailureDao
 
     companion object {
         @Volatile
