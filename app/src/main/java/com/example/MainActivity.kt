@@ -41,12 +41,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.navigation.FeatureRoutePolicy
-import com.example.auth.GoogleAuthManager
-import com.example.ui.auth.GoogleSignInScreen
 import com.example.ui.screens.DiagnosticsScreen
 import com.example.ui.screens.LoungeScreen
 import com.example.ui.screens.MaintenanceScreen
@@ -68,27 +65,17 @@ class MainActivity : ComponentActivity() {
         setContent {
             SportTracTheme {
                 var selectedTab by remember { mutableStateOf(MainTab.VIEW_3D) }
-                val authManager = remember { GoogleAuthManager(this@MainActivity) }
-                var isSignedIn by remember { mutableStateOf(authManager.isSignedIn()) }
-                // TODO: Subscribe to FirebaseAuth auth-state changes and set
-                // isSignedIn=false on token expiry, revocation, or account deletion.
-                // TODO: Expose sign-out/account-switch UI before physical acceptance.
-
-                if (isSignedIn) {
-                    FeatureLaunchShell(
-                        selectedTab = selectedTab,
-                        viewModel = explorerViewModel,
-                        onTabSelected = { tab ->
-                            if (FeatureRoutePolicy.requiresFeatureData(tab)) {
-                                explorerViewModel.ensureFeatureData()
-                            }
-                            selectedTab = tab
-                        },
-                        onReturnToLounge = { selectedTab = MainTab.LOUNGE }
-                    )
-                } else {
-                    GoogleSignInScreen(onSignedIn = { isSignedIn = true })
-                }
+                FeatureLaunchShell(
+                    selectedTab = selectedTab,
+                    viewModel = explorerViewModel,
+                    onTabSelected = { tab ->
+                        if (FeatureRoutePolicy.requiresFeatureData(tab)) {
+                            explorerViewModel.ensureFeatureData()
+                        }
+                        selectedTab = tab
+                    },
+                    onReturnToLounge = { selectedTab = MainTab.LOUNGE }
+                )
             }
         }
     }
