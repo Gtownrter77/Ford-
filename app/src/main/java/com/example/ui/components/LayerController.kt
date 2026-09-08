@@ -41,11 +41,11 @@ data class LayerControllerState(
     val partVisibility: Map<String, Boolean> = emptyMap(),
     val isolatedSystem: VehicleSystem? = null,
     val searchQuery: String = "",
-    // Wording & Annotation Layer Toggles
-    val showCalloutLeaders: Boolean = true,
-    val showTechnicalAnnotations: Boolean = true,
-    val showDimensions: Boolean = true,
-    val showHudInfoCards: Boolean = true
+    // Wording & Annotation Layer Toggles (Default to false so model is completely unobscured; name tags pop up on hover)
+    val showCalloutLeaders: Boolean = false,
+    val showTechnicalAnnotations: Boolean = false,
+    val showDimensions: Boolean = false,
+    val showHudInfoCards: Boolean = false
 ) {
     val isAllWordingHidden: Boolean
         get() = !showCalloutLeaders && !showTechnicalAnnotations && !showDimensions && !showHudInfoCards

@@ -37,7 +37,7 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.input.pointer.*
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalView
@@ -254,7 +254,7 @@ fun Interactive3DViewport(
     }
 
     // BILT Step-by-Step Intelligent Assembly Engine State
-    var isBiltStepMode by remember { mutableStateOf(true) }
+    var isBiltStepMode by remember { mutableStateOf(false) }
     var currentBiltStepIndex by remember { mutableIntStateOf(0) }
     var isPlayingBiltAnimation by remember { mutableStateOf(false) }
     var isVoiceGuidanceMuted by remember { mutableStateOf(false) }
@@ -439,6 +439,7 @@ fun Interactive3DViewport(
             .testTag("3d_viewport_box")
     ) {
         var projectedCenters by remember { mutableStateOf<List<ProjectedComponentCenter>>(emptyList()) }
+        var hoverPointerPosition by remember { mutableStateOf<Offset?>(null) }
 
         // BILT 3D Canvas Visualizer (Hardware-Accelerated GLTF Render Canvas)
         Canvas(
@@ -448,29 +449,71 @@ fun Interactive3DViewport(
                     compositingStrategy = CompositingStrategy.Offscreen
                 }
                 .pointerInput(Unit) {
-                    detectDragGestures { change, dragAmount ->
-                        change.consume()
-                        cameraYaw = (cameraYaw + dragAmount.x * 0.45f) % 360f
-                        cameraPitch = (cameraPitch - dragAmount.y * 0.45f).coerceIn(-85f, 85f)
-                    }
-                }
-                .pointerInput(visibleComponents, cameraYaw, cameraPitch, cameraZoom, animatedExplode) {
-                    detectTapGestures { tapOffset ->
-                        val hit = projectedCenters
-                            .filter { sqrt((it.screenPos.x - tapOffset.x).pow(2) + (it.screenPos.y - tapOffset.y).pow(2)) < 90f }
-                            .minByOrNull { sqrt((it.screenPos.x - tapOffset.x).pow(2) + (it.screenPos.y - tapOffset.y).pow(2)) }
-
-                        if (hit != null) {
-                            HapticHelper.triggerComponentHaptic(context, view, haptic, hit.component)
-                            onComponentSelect(hit.component)
-                            val hitIndex = visibleComponents.indexOfFirst { it.id == hit.component.id }
-                            if (hitIndex >= 0) {
-                                currentBiltStepIndex = hitIndex
+                    awaitPointerEventScope {
+                        while (true) {
+                            val event = awaitPointerEvent(PointerEventPass.Main)
+                            val firstPos = event.changes.firstOrNull()?.position
+                            when (event.type) {
+                                PointerEventType.Move,
+                                PointerEventType.Enter -> {
+                                    hoverPointerPosition = firstPos
+                                }
+                                PointerEventType.Exit -> {
+                                    hoverPointerPosition = null
+                                }
+                                PointerEventType.Press -> {
+                                    hoverPointerPosition = firstPos
+                                }
+                                PointerEventType.Release -> {
+                                    hoverPointerPosition = null
+                                }
                             }
-                        } else {
-                            HapticHelper.triggerControlTick(context, view, haptic)
                         }
                     }
+                }
+                .pointerInput(Unit) {
+                    detectDragGestures(
+                        onDragStart = { offset ->
+                            hoverPointerPosition = offset
+                        },
+                        onDragEnd = {
+                            hoverPointerPosition = null
+                        },
+                        onDragCancel = {
+                            hoverPointerPosition = null
+                        },
+                        onDrag = { change, dragAmount ->
+                            change.consume()
+                            hoverPointerPosition = change.position
+                            cameraYaw = (cameraYaw + dragAmount.x * 0.45f) % 360f
+                            cameraPitch = (cameraPitch - dragAmount.y * 0.45f).coerceIn(-85f, 85f)
+                        }
+                    )
+                }
+                .pointerInput(visibleComponents, cameraYaw, cameraPitch, cameraZoom, animatedExplode) {
+                    detectTapGestures(
+                        onPress = { offset ->
+                            hoverPointerPosition = offset
+                            tryAwaitRelease()
+                            hoverPointerPosition = null
+                        },
+                        onTap = { tapOffset ->
+                            val hit = projectedCenters
+                                .filter { sqrt((it.screenPos.x - tapOffset.x).pow(2) + (it.screenPos.y - tapOffset.y).pow(2)) < 90f }
+                                .minByOrNull { sqrt((it.screenPos.x - tapOffset.x).pow(2) + (it.screenPos.y - tapOffset.y).pow(2)) }
+
+                            if (hit != null) {
+                                HapticHelper.triggerComponentHaptic(context, view, haptic, hit.component)
+                                onComponentSelect(hit.component)
+                                val hitIndex = visibleComponents.indexOfFirst { it.id == hit.component.id }
+                                if (hitIndex >= 0) {
+                                    currentBiltStepIndex = hitIndex
+                                }
+                            } else {
+                                HapticHelper.triggerControlTick(context, view, haptic)
+                            }
+                        }
+                    )
                 }
         ) {
             val canvasWidth = size.width
@@ -968,202 +1011,104 @@ fun Interactive3DViewport(
                 }
             }
 
-            // 3. Draw BILT High-Tech Callout Leaders & Floating Technical Annotations with Torque Specs & Part IDs
-            if ((showTechnicalAnnotations || showCalloutLeaders) && visibleComponents.isNotEmpty()) {
-                newProjectedCenters.forEachIndexed { index, node ->
-                    val isCurrent = isBiltStepMode && currentBiltStepPart?.id == node.component.id
-                    val isSelected = selectedComponent?.id == node.component.id
-
-                    val shouldDrawCallout = (isCurrent || isSelected) && showCalloutLeaders
-                    val shouldDrawTechAnnotation = showTechnicalAnnotations && !shouldDrawCallout
-
-                    if (shouldDrawCallout) {
-                        val leaderStart = node.screenPos
-                        val leaderEnd = Offset(leaderStart.x + 70f, leaderStart.y - 60f)
-
-                        val accentCol = if (isCurrent) Color(0xFF00F0FF) else Color(0xFFFFD700)
-
-                        // Leader line
-                        drawLine(
-                            color = accentCol,
-                            start = leaderStart,
-                            end = leaderEnd,
-                            strokeWidth = 2.dp.toPx(),
-                            cap = StrokeCap.Round
-                        )
-                        drawLine(
-                            color = accentCol,
-                            start = leaderEnd,
-                            end = Offset(leaderEnd.x + 30f, leaderEnd.y),
-                            strokeWidth = 2.dp.toPx(),
-                            cap = StrokeCap.Round
-                        )
-
-                        // Callout Text Box Background Card (Prevents Text Overlap)
-                        val calloutBgTopLeft = Offset(leaderEnd.x + 8f, leaderEnd.y - 28f)
-                        val cardWidth = 250f
-                        val cardHeight = 44f
-
-                        drawRoundRect(
-                            color = Color(0xFA0F172A),
-                            topLeft = calloutBgTopLeft,
-                            size = Size(cardWidth, cardHeight),
-                            cornerRadius = CornerRadius(10f, 10f)
-                        )
-                        drawRoundRect(
-                            color = accentCol,
-                            topLeft = calloutBgTopLeft,
-                            size = Size(cardWidth, cardHeight),
-                            cornerRadius = CornerRadius(10f, 10f),
-                            style = Stroke(width = 1.2f.dp.toPx())
-                        )
-
-                        // Callout Text Box Content
-                        val stepNum = visibleComponents.indexOfFirst { it.id == node.component.id } + 1
-                        val calloutText = "STEP $stepNum: ${node.component.name.uppercase()}"
-                        val torqueVal = node.component.torqueSpecs.firstOrNull()?.torqueFtLbs ?: "85"
-                        val specText = "OEM #${node.component.oemPartNumber} • $torqueVal LB-FT"
-
-                        drawText(
-                            textMeasurer = textMeasurer,
-                            text = calloutText,
-                            topLeft = Offset(calloutBgTopLeft.x + 10f, calloutBgTopLeft.y + 6f),
-                            style = TextStyle(
-                                color = accentCol,
-                                fontSize = 10.sp,
-                                fontWeight = FontWeight.Bold,
-                                fontFamily = FontFamily.Monospace
-                            ),
-                            size = Size(max(1f, cardWidth - 12f), max(1f, cardHeight - 8f))
-                        )
-                        drawText(
-                            textMeasurer = textMeasurer,
-                            text = specText,
-                            topLeft = Offset(calloutBgTopLeft.x + 10f, calloutBgTopLeft.y + 24f),
-                            style = TextStyle(
-                                color = Color.White.copy(alpha = 0.90f),
-                                fontSize = 8.5.sp,
-                                fontFamily = FontFamily.Monospace
-                            ),
-                            size = Size(max(1f, cardWidth - 12f), max(1f, cardHeight - 26f))
-                        )
-                    } else if (shouldDrawTechAnnotation) {
-                        // Floating Technical Annotation Label for orbit mode
-                        val dx = if (index % 2 == 0) 50f else -180f
-                        val dy = if (index % 3 == 0) -35f else -55f
-                        val leaderStart = node.screenPos
-                        val leaderEnd = Offset(leaderStart.x + dx, leaderStart.y + dy)
-
-                        val accentCol = Color(0xFF38BDF8)
-
-                        // Subtle leader line connecting 3D point to floating label
-                        drawLine(
-                            color = accentCol.copy(alpha = 0.6f),
-                            start = leaderStart,
-                            end = leaderEnd,
-                            strokeWidth = 1.2f.dp.toPx(),
-                            cap = StrokeCap.Round
-                        )
-
-                        val cardWidth = 195f
-                        val cardHeight = 36f
-                        val calloutBgTopLeft = Offset(
-                            if (dx > 0) leaderEnd.x + 4f else leaderEnd.x - cardWidth - 4f,
-                            leaderEnd.y - cardHeight / 2f
-                        )
-
-                        drawRoundRect(
-                            color = Color(0xEE0F172A),
-                            topLeft = calloutBgTopLeft,
-                            size = Size(cardWidth, cardHeight),
-                            cornerRadius = CornerRadius(8f, 8f)
-                        )
-                        drawRoundRect(
-                            color = accentCol.copy(alpha = 0.7f),
-                            topLeft = calloutBgTopLeft,
-                            size = Size(cardWidth, cardHeight),
-                            cornerRadius = CornerRadius(8f, 8f),
-                            style = Stroke(width = 1.dp.toPx())
-                        )
-
-                        val torqueVal = node.component.torqueSpecs.firstOrNull()?.torqueFtLbs ?: "85"
-                        val titleText = node.component.name.uppercase()
-                        val infoText = "OEM #${node.component.oemPartNumber} • 🔩 ${torqueVal} LB-FT"
-
-                        drawText(
-                            textMeasurer = textMeasurer,
-                            text = titleText,
-                            topLeft = Offset(calloutBgTopLeft.x + 8f, calloutBgTopLeft.y + 4f),
-                            style = TextStyle(
-                                color = Color.White,
-                                fontSize = 9.sp,
-                                fontWeight = FontWeight.Bold,
-                                fontFamily = FontFamily.Monospace
-                            ),
-                            size = Size(max(1f, cardWidth - 10f), max(1f, cardHeight - 6f))
-                        )
-                        drawText(
-                            textMeasurer = textMeasurer,
-                            text = infoText,
-                            topLeft = Offset(calloutBgTopLeft.x + 8f, calloutBgTopLeft.y + 19f),
-                            style = TextStyle(
-                                color = Color(0xFF00F0FF),
-                                fontSize = 8.sp,
-                                fontWeight = FontWeight.Medium,
-                                fontFamily = FontFamily.Monospace
-                            ),
-                            size = Size(max(1f, cardWidth - 10f), max(1f, cardHeight - 21f))
-                        )
-                    }
-                }
+            // 3. Dynamic Pop-up Name Tag: Appears ONLY when cursor or fingertip hovers over a component
+            val hoveredNode = hoverPointerPosition?.let { pos ->
+                newProjectedCenters
+                    .filter { hypot(it.screenPos.x - pos.x, it.screenPos.y - pos.y) < 75f }
+                    .minByOrNull { hypot(it.screenPos.x - pos.x, it.screenPos.y - pos.y) }
             }
 
-            // 4. Draw Selected Part Dimension Bounding Box (Anchored Non-Overlapping HUD Pill)
-            if (showDimensions && selectedComponent != null) {
-                val selComp = selectedComponent
+            if (hoveredNode != null) {
+                val node = hoveredNode
+                val comp = node.component
+                val accentCol = comp.system.color
+                val leaderStart = node.screenPos
 
-                val minX = selComp.vertices.minOfOrNull { it.x } ?: -0.5f
-                val maxX = selComp.vertices.maxOfOrNull { it.x } ?: 0.5f
-                val minY = selComp.vertices.minOfOrNull { it.y } ?: -0.5f
-                val maxY = selComp.vertices.maxOfOrNull { it.y } ?: 0.5f
-                val minZ = selComp.vertices.minOfOrNull { it.z } ?: -0.5f
-                val maxZ = selComp.vertices.maxOfOrNull { it.z } ?: 0.5f
+                // Target indicator ring on the hovered component
+                drawCircle(
+                    color = accentCol.copy(alpha = 0.35f),
+                    radius = 14.dp.toPx(),
+                    center = leaderStart
+                )
+                drawCircle(
+                    color = accentCol,
+                    radius = 5.dp.toPx(),
+                    center = leaderStart
+                )
+                drawCircle(
+                    color = Color.White,
+                    radius = 2.dp.toPx(),
+                    center = leaderStart
+                )
 
-                val dxMm = ((maxX - minX) * 350f).toInt()
-                val dyMm = ((maxY - minY) * 350f).toInt()
-                val dzMm = ((maxZ - minZ) * 350f).toInt()
+                val cardWidth = 230f
+                val cardHeight = 44f
+                val placeRight = leaderStart.x < canvasWidth - cardWidth - 40f
+                val placeAbove = leaderStart.y > cardHeight + 40f
 
-                val dimText = "CAD DIM: ${dxMm}mm × ${dyMm}mm × ${dzMm}mm"
+                val dx = if (placeRight) 40f else -40f
+                val dy = if (placeAbove) -30f else 30f
+                val leaderEnd = Offset(leaderStart.x + dx, leaderStart.y + dy)
+                val horizontalEnd = Offset(if (placeRight) leaderEnd.x + 20f else leaderEnd.x - 20f, leaderEnd.y)
 
-                // Position Dimension HUD Pill at Top-Right of Canvas to avoid geometry & callout overlap
-                val dimBgTopLeft = Offset(canvasWidth - 270f, 60f)
-                val dimWidth = 250f
-                val dimHeight = 32f
+                drawLine(
+                    color = accentCol,
+                    start = leaderStart,
+                    end = leaderEnd,
+                    strokeWidth = 2.dp.toPx(),
+                    cap = StrokeCap.Round
+                )
+                drawLine(
+                    color = accentCol,
+                    start = leaderEnd,
+                    end = horizontalEnd,
+                    strokeWidth = 2.dp.toPx(),
+                    cap = StrokeCap.Round
+                )
+
+                val cardTopLeft = Offset(
+                    if (placeRight) horizontalEnd.x + 4f else horizontalEnd.x - cardWidth - 4f,
+                    horizontalEnd.y - cardHeight / 2f
+                )
 
                 drawRoundRect(
-                    color = Color(0xFA0F172A),
-                    topLeft = dimBgTopLeft,
-                    size = Size(dimWidth, dimHeight),
+                    color = Color(0xF50B132B),
+                    topLeft = cardTopLeft,
+                    size = Size(cardWidth, cardHeight),
                     cornerRadius = CornerRadius(10f, 10f)
                 )
                 drawRoundRect(
-                    color = Color(0xFFFFD700).copy(alpha = 0.8f),
-                    topLeft = dimBgTopLeft,
-                    size = Size(dimWidth, dimHeight),
+                    color = accentCol,
+                    topLeft = cardTopLeft,
+                    size = Size(cardWidth, cardHeight),
                     cornerRadius = CornerRadius(10f, 10f),
-                    style = Stroke(width = 1.2f.dp.toPx())
+                    style = Stroke(width = 1.5f.dp.toPx())
                 )
+
+                val torqueVal = comp.torqueSpecs.firstOrNull()?.torqueFtLbs ?: "85"
                 drawText(
                     textMeasurer = textMeasurer,
-                    text = dimText,
-                    topLeft = Offset(dimBgTopLeft.x + 12f, dimBgTopLeft.y + 8f),
+                    text = comp.name.uppercase(),
+                    topLeft = Offset(cardTopLeft.x + 8f, cardTopLeft.y + 5f),
                     style = TextStyle(
-                        color = Color(0xFFFFD700),
-                        fontSize = 10.sp,
+                        color = Color.White,
+                        fontSize = 9.5.sp,
                         fontWeight = FontWeight.Bold,
                         fontFamily = FontFamily.Monospace
                     ),
-                    size = Size(max(1f, dimWidth - 14f), max(1f, dimHeight - 10f))
+                    size = Size(cardWidth - 16f, 18f)
+                )
+                drawText(
+                    textMeasurer = textMeasurer,
+                    text = "${comp.system.displayName} • OEM #${comp.oemPartNumber} • 🔩 ${torqueVal} LB-FT",
+                    topLeft = Offset(cardTopLeft.x + 8f, cardTopLeft.y + 23f),
+                    style = TextStyle(
+                        color = accentCol,
+                        fontSize = 8.sp,
+                        fontWeight = FontWeight.Medium,
+                        fontFamily = FontFamily.Monospace
+                    ),
+                    size = Size(cardWidth - 16f, 18f)
                 )
             }
 
@@ -1238,11 +1183,6 @@ fun Interactive3DViewport(
                 }
             }
 
-            // 5. Center Laser Crosshair Sight
-            drawCircle(color = Color.White.copy(alpha = 0.25f), radius = 18.dp.toPx(), center = Offset(centerX, centerY), style = Stroke(width = 1.dp.toPx()))
-            drawLine(color = Color.White.copy(alpha = 0.25f), start = Offset(centerX - 24f, centerY), end = Offset(centerX + 24f, centerY), strokeWidth = 1.dp.toPx())
-            drawLine(color = Color.White.copy(alpha = 0.25f), start = Offset(centerX, centerY - 24f), end = Offset(centerX, centerY + 24f), strokeWidth = 1.dp.toPx())
-
             // 6. Draw BILT 3D Axis Gizmo (Bottom Left)
             drawBilt3dAxisGizmo(
                 gizmoCenterX = 70f,
@@ -1255,1064 +1195,28 @@ fun Interactive3DViewport(
             )
         }
 
-        // Unified Layer Control Bar & Layer Panels (Declutters 3D Canvas)
-        Column(
+        // Floating Reset Camera Button in bottom-right corner (compact, non-intrusive)
+        IconButton(
+            onClick = {
+                cameraYaw = 45f
+                cameraPitch = 28f
+                cameraZoom = 1.0f
+                explodeFactor = 0.0f
+            },
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp)
-                .align(Alignment.TopStart),
-            verticalArrangement = Arrangement.spacedBy(6.dp)
+                .align(Alignment.BottomEnd)
+                .padding(16.dp)
+                .size(36.dp)
+                .background(Color(0xEB0B132B), CircleShape)
+                .border(1.dp, Color(0xFF334155), CircleShape)
+                .testTag("reset_camera_btn")
         ) {
-            // Top Compact Sub-Tab Navigation Bar for Viewport Layers
-            Surface(
-                color = Color(0xEB0F172A),
-                shape = RoundedCornerShape(16.dp),
-                border = BorderStroke(1.dp, Color(0xFF1E293B)),
-                shadowElevation = 8.dp
-            ) {
-                Row(
-                    modifier = Modifier.padding(4.dp),
-                    horizontalArrangement = Arrangement.spacedBy(4.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    // Layer 1: Clean Canvas
-                    Surface(
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(12.dp))
-                            .clickable {
-                                activeLayerTab = ViewportLayerTab.CLEAN
-                                layerControllerState = layerControllerState.copy(
-                                    showCalloutLeaders = false,
-                                    showTechnicalAnnotations = false,
-                                    showDimensions = false,
-                                    showHudInfoCards = false
-                                )
-                            }
-                            .testTag("layer_tab_clean"),
-                        color = if (activeLayerTab == ViewportLayerTab.CLEAN) Color(0xFF0284C7) else Color.Transparent,
-                        shape = RoundedCornerShape(12.dp)
-                    ) {
-                        Text(
-                            text = "👁️ Clean",
-                            style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 11.sp),
-                            color = Color.White,
-                            modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp)
-                        )
-                    }
-
-                    // Layer 2: Diagnostic Failure Heatmap (Room DB)
-                    Surface(
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(12.dp))
-                            .clickable {
-                                activeLayerTab = ViewportLayerTab.HEATMAP
-                                if (!isHeatmapActive) onToggleHeatmap()
-                            }
-                            .testTag("layer_tab_heatmap"),
-                        color = if (activeLayerTab == ViewportLayerTab.HEATMAP || effectiveHeatmapActive) Color(0xFFDC2626) else Color.Transparent,
-                        shape = RoundedCornerShape(12.dp)
-                    ) {
-                        Text(
-                            text = "🔥 Heatmap",
-                            style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 11.sp),
-                            color = Color.White,
-                            modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp)
-                        )
-                    }
-
-                    // Layer 2: Shading
-                    Surface(
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(12.dp))
-                            .clickable { activeLayerTab = ViewportLayerTab.SHADING }
-                            .testTag("layer_tab_shading"),
-                        color = if (activeLayerTab == ViewportLayerTab.SHADING) Color(0xFF0284C7) else Color.Transparent,
-                        shape = RoundedCornerShape(12.dp)
-                    ) {
-                        Text(
-                            text = "🎨 Shading",
-                            style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 11.sp),
-                            color = Color.White,
-                            modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp)
-                        )
-                    }
-
-                    // Layer 3: Exploded
-                    Surface(
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(12.dp))
-                            .clickable {
-                                activeLayerTab = ViewportLayerTab.EXPLODED
-                                if (explodeFactor == 0f) explodeFactor = 0.85f
-                            }
-                            .testTag("layer_tab_exploded"),
-                        color = if (activeLayerTab == ViewportLayerTab.EXPLODED) Color(0xFF0284C7) else Color.Transparent,
-                        shape = RoundedCornerShape(12.dp)
-                    ) {
-                        Text(
-                            text = "💥 Exploded",
-                            style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 11.sp),
-                            color = Color.White,
-                            modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp)
-                        )
-                    }
-
-                    // Layer 4: Assembly
-                    Surface(
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(12.dp))
-                            .clickable { activeLayerTab = ViewportLayerTab.ASSEMBLY }
-                            .testTag("layer_tab_assembly"),
-                        color = if (activeLayerTab == ViewportLayerTab.ASSEMBLY) Color(0xFF0284C7) else Color.Transparent,
-                        shape = RoundedCornerShape(12.dp)
-                    ) {
-                        Text(
-                            text = "🔧 Assembly",
-                            style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 11.sp),
-                            color = Color.White,
-                            modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp)
-                        )
-                    }
-
-                    // Layer 4: Annotations & Camera
-                    Surface(
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(12.dp))
-                            .clickable { activeLayerTab = ViewportLayerTab.ANNOTATIONS }
-                            .testTag("layer_tab_annotations"),
-                        color = if (activeLayerTab == ViewportLayerTab.ANNOTATIONS) Color(0xFF0284C7) else Color.Transparent,
-                        shape = RoundedCornerShape(12.dp)
-                    ) {
-                        Text(
-                            text = "📐 Specs",
-                            style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 11.sp),
-                            color = Color.White,
-                            modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp)
-                        )
-                    }
-
-                    // Layer 5: Mentor Mode
-                    Surface(
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(12.dp))
-                            .clickable { activeLayerTab = ViewportLayerTab.MENTOR }
-                            .testTag("layer_tab_mentor"),
-                        color = if (activeLayerTab == ViewportLayerTab.MENTOR) Color(0xFF00F0FF) else Color.Transparent,
-                        shape = RoundedCornerShape(12.dp)
-                    ) {
-                        Text(
-                            text = "🎓 Mentor",
-                            style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Black, fontSize = 11.sp),
-                            color = if (activeLayerTab == ViewportLayerTab.MENTOR) Color(0xFF0F172A) else Color.White,
-                            modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp)
-                        )
-                    }
-
-                    // Layer 6: Blender 3D Animation & Keyframe Timeline
-                    Surface(
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(12.dp))
-                            .clickable {
-                                activeLayerTab = ViewportLayerTab.ANIMATION
-                                isBlenderAnimPlaying = true
-                            }
-                            .testTag("layer_tab_animation"),
-                        color = if (activeLayerTab == ViewportLayerTab.ANIMATION) Color(0xFFFF6F00) else Color.Transparent,
-                        shape = RoundedCornerShape(12.dp)
-                    ) {
-                        Text(
-                            text = "🎬 Animation",
-                            style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Black, fontSize = 11.sp),
-                            color = Color.White,
-                            modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp)
-                        )
-                    }
-
-                    // Layer 6: State-Managed Systems Layer Controller
-                    Surface(
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(12.dp))
-                            .clickable { showLayerControllerDialog = true }
-                            .testTag("layer_tab_controller_btn"),
-                        color = if (layerControllerState.isolatedSystem != null || layerControllerState.visibleSystemCount < layerControllerState.totalSystemCount) Color(0xFFF59E0B) else Color(0xFF1E293B),
-                        border = BorderStroke(1.dp, Color(0xFF38BDF8)),
-                        shape = RoundedCornerShape(12.dp)
-                    ) {
-                        Row(
-                            modifier = Modifier.padding(horizontal = 8.dp, vertical = 6.dp),
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(4.dp)
-                        ) {
-                            Icon(
-                                imageVector = Icons.Default.Layers,
-                                contentDescription = "Systems Layer Controller",
-                                tint = Color(0xFF38BDF8),
-                                modifier = Modifier.size(14.dp)
-                            )
-                            Text(
-                                text = "Layers (${layerControllerState.visibleSystemCount}/${layerControllerState.totalSystemCount})",
-                                style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 11.sp),
-                                color = Color.White
-                            )
-                        }
-                    }
-
-                    Spacer(modifier = Modifier.weight(1f))
-
-                    // Reset Viewport Camera Button
-                    IconButton(
-                        onClick = {
-                            cameraYaw = 45f
-                            cameraPitch = 28f
-                            cameraZoom = 1.0f
-                            explodeFactor = 0.0f
-                            clipPlaneSlice = 1.0f
-                        },
-                        modifier = Modifier
-                            .size(28.dp)
-                            .background(Color(0xFF1E293B), CircleShape)
-                            .testTag("reset_camera_btn")
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.CenterFocusWeak,
-                            contentDescription = "Reset Camera",
-                            tint = Color.White,
-                            modifier = Modifier.size(15.dp)
-                        )
-                    }
-                }
-            }
-
-            // Wording & Text Layer Quick Toggle Strip (Declutters 3D CAD Viewport)
-            Surface(
-                color = Color(0xEB0F172A),
-                shape = RoundedCornerShape(14.dp),
-                border = BorderStroke(1.dp, if (layerControllerState.isAllWordingHidden) Color(0xFF22C55E) else Color(0xFF334155)),
-                shadowElevation = 6.dp,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 4.dp, vertical = 2.dp)
-            ) {
-                Row(
-                    modifier = Modifier
-                        .padding(horizontal = 6.dp, vertical = 4.dp)
-                        .horizontalScroll(rememberScrollState()),
-                    horizontalArrangement = Arrangement.spacedBy(6.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    // Master Clean Model Button (1-Click Hide All Text)
-                    Surface(
-                        color = if (layerControllerState.isAllWordingHidden) Color(0xFF22C55E) else Color(0xFF1E293B),
-                        shape = RoundedCornerShape(10.dp),
-                        border = BorderStroke(1.dp, if (layerControllerState.isAllWordingHidden) Color(0xFF4ADE80) else Color(0xFF475569)),
-                        modifier = Modifier
-                            .clickable {
-                                val hideAll = !layerControllerState.isAllWordingHidden
-                                layerControllerState = layerControllerState.copy(
-                                    showCalloutLeaders = !hideAll,
-                                    showTechnicalAnnotations = !hideAll,
-                                    showDimensions = !hideAll,
-                                    showHudInfoCards = !hideAll
-                                )
-                            }
-                            .testTag("btn_quick_clean_model_wording")
-                    ) {
-                        Row(
-                            modifier = Modifier.padding(horizontal = 8.dp, vertical = 5.dp),
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(4.dp)
-                        ) {
-                            Icon(
-                                imageVector = if (layerControllerState.isAllWordingHidden) Icons.Default.VisibilityOff else Icons.Default.SubtitlesOff,
-                                contentDescription = null,
-                                tint = if (layerControllerState.isAllWordingHidden) Color.Black else Color(0xFF00F0FF),
-                                modifier = Modifier.size(13.dp)
-                            )
-                            Text(
-                                text = if (layerControllerState.isAllWordingHidden) "🚫 CLEAN MODEL (TEXT OFF)" else "🚫 HIDE WORDING",
-                                style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Black, fontSize = 10.sp),
-                                color = if (layerControllerState.isAllWordingHidden) Color.Black else Color.White
-                            )
-                        }
-                    }
-
-                    // Layer 1: Callout Labels Layer
-                    FilterChip(
-                        selected = layerControllerState.showCalloutLeaders,
-                        onClick = {
-                            layerControllerState = layerControllerState.copy(showCalloutLeaders = !layerControllerState.showCalloutLeaders)
-                        },
-                        label = { Text("🏷️ Callouts", fontSize = 10.sp, fontWeight = FontWeight.Bold) },
-                        colors = FilterChipDefaults.filterChipColors(
-                            selectedContainerColor = Color(0xFF0284C7),
-                            selectedLabelColor = Color.White,
-                            containerColor = Color(0xFF1E293B),
-                            labelColor = Color(0xFF94A3B8)
-                        ),
-                        modifier = Modifier.testTag("chip_viewport_layer_callouts")
-                    )
-
-                    // Layer 2: Tech Specs & Torque Layer
-                    FilterChip(
-                        selected = layerControllerState.showTechnicalAnnotations,
-                        onClick = {
-                            layerControllerState = layerControllerState.copy(showTechnicalAnnotations = !layerControllerState.showTechnicalAnnotations)
-                        },
-                        label = { Text("🔩 Specs & Torque", fontSize = 10.sp, fontWeight = FontWeight.Bold) },
-                        colors = FilterChipDefaults.filterChipColors(
-                            selectedContainerColor = Color(0xFF0284C7),
-                            selectedLabelColor = Color.White,
-                            containerColor = Color(0xFF1E293B),
-                            labelColor = Color(0xFF94A3B8)
-                        ),
-                        modifier = Modifier.testTag("chip_viewport_layer_specs")
-                    )
-
-                    // Layer 3: CAD Dimensions Layer
-                    FilterChip(
-                        selected = layerControllerState.showDimensions,
-                        onClick = {
-                            layerControllerState = layerControllerState.copy(showDimensions = !layerControllerState.showDimensions)
-                        },
-                        label = { Text("📐 Dimensions", fontSize = 10.sp, fontWeight = FontWeight.Bold) },
-                        colors = FilterChipDefaults.filterChipColors(
-                            selectedContainerColor = Color(0xFF0284C7),
-                            selectedLabelColor = Color.White,
-                            containerColor = Color(0xFF1E293B),
-                            labelColor = Color(0xFF94A3B8)
-                        ),
-                        modifier = Modifier.testTag("chip_viewport_layer_dimensions")
-                    )
-
-                    // Layer 4: HUD Info Overlay Cards Layer
-                    FilterChip(
-                        selected = layerControllerState.showHudInfoCards,
-                        onClick = {
-                            layerControllerState = layerControllerState.copy(showHudInfoCards = !layerControllerState.showHudInfoCards)
-                        },
-                        label = { Text("📄 HUD Cards", fontSize = 10.sp, fontWeight = FontWeight.Bold) },
-                        colors = FilterChipDefaults.filterChipColors(
-                            selectedContainerColor = Color(0xFF0284C7),
-                            selectedLabelColor = Color.White,
-                            containerColor = Color(0xFF1E293B),
-                            labelColor = Color(0xFF94A3B8)
-                        ),
-                        modifier = Modifier.testTag("chip_viewport_layer_hud_cards")
-                    )
-                }
-            }
-
-            // Layer-Specific Control Panels
-            when (activeLayerTab) {
-                ViewportLayerTab.HEATMAP -> {
-                    Surface(
-                        color = Color(0xF20F172A),
-                        shape = RoundedCornerShape(14.dp),
-                        border = BorderStroke(1.dp, Color(0xFFEF4444)),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = 4.dp)
-                            .testTag("heatmap_control_panel")
-                    ) {
-                        Column(
-                            modifier = Modifier.padding(10.dp),
-                            verticalArrangement = Arrangement.spacedBy(8.dp)
-                        ) {
-                            // Header: Flame icon, title, active toggle, focus high-risk button
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.SpaceBetween,
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Row(
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    horizontalArrangement = Arrangement.spacedBy(6.dp)
-                                ) {
-                                    Icon(
-                                        imageVector = Icons.Default.LocalFireDepartment,
-                                        contentDescription = null,
-                                        tint = Color(0xFFEF4444),
-                                        modifier = Modifier.size(18.dp)
-                                    )
-                                    Column {
-                                        Text(
-                                            text = "DIAGNOSTIC FAILURE HEATMAP",
-                                            style = MaterialTheme.typography.labelSmall.copy(
-                                                fontWeight = FontWeight.Black,
-                                                fontSize = 11.sp
-                                            ),
-                                            color = Color.White
-                                        )
-                                        Text(
-                                            text = "Room DB Failure Probability Engine • Cologne 4.0L SOHC",
-                                            style = MaterialTheme.typography.labelSmall.copy(fontSize = 9.sp),
-                                            color = Color(0xFF94A3B8)
-                                        )
-                                    }
-                                }
-
-                                // Quick button to guide directly to the highest risk component!
-                                val highestRiskComp = remember(visibleComponents, failureRisks) {
-                                    visibleComponents.maxByOrNull { comp ->
-                                        failureRisks[comp.id]?.dynamicRiskScore ?: 0f
-                                    }
-                                }
-
-                                Surface(
-                                    color = Color(0xFFDC2626),
-                                    shape = RoundedCornerShape(8.dp),
-                                    modifier = Modifier
-                                        .clickable {
-                                            if (highestRiskComp != null) {
-                                                cameraYaw = 40f
-                                                cameraPitch = 25f
-                                                cameraZoom = 1.35f
-                                                onComponentSelect(highestRiskComp)
-                                                HapticHelper.triggerComponentHaptic(context, view, haptic, highestRiskComp)
-                                            }
-                                        }
-                                        .testTag("btn_focus_high_risk_area")
-                                ) {
-                                    Row(
-                                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-                                        verticalAlignment = Alignment.CenterVertically,
-                                        horizontalArrangement = Arrangement.spacedBy(4.dp)
-                                    ) {
-                                        Icon(
-                                            imageVector = Icons.Default.NearMe,
-                                            contentDescription = null,
-                                            tint = Color.White,
-                                            modifier = Modifier.size(12.dp)
-                                        )
-                                        Text(
-                                            text = "Guide High-Risk",
-                                            style = MaterialTheme.typography.labelSmall.copy(
-                                                fontWeight = FontWeight.Bold,
-                                                fontSize = 10.sp
-                                            ),
-                                            color = Color.White
-                                        )
-                                    }
-                                }
-                            }
-
-                            // Thermal spectrum gradient bar legend
-                            Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                                Box(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .height(8.dp)
-                                        .clip(RoundedCornerShape(4.dp))
-                                        .background(
-                                            Brush.horizontalGradient(
-                                                listOf(
-                                                    Color(0xFF10B981), // 0% Optimal Mint
-                                                    Color(0xFF06B6D4), // 25% Cyan
-                                                    Color(0xFFEAB308), // 50% Yellow
-                                                    Color(0xFFF97316), // 75% Orange
-                                                    Color(0xFFEF4444)  // 100% Critical Red
-                                                )
-                                            )
-                                        )
-                                )
-                                Row(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    horizontalArrangement = Arrangement.SpaceBetween
-                                ) {
-                                    Text("0% Healthy", style = MaterialTheme.typography.labelSmall.copy(fontSize = 9.sp), color = Color(0xFF10B981))
-                                    Text("50% Moderate Wear", style = MaterialTheme.typography.labelSmall.copy(fontSize = 9.sp), color = Color(0xFFEAB308))
-                                    Text("100% Critical Failure Risk", style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 9.sp), color = Color(0xFFEF4444))
-                                }
-                            }
-
-                            // Summary chips & Isolation Filter
-                            val criticalCount = remember(failureRisks) { failureRisks.values.count { it.riskSeverity == "CRITICAL" } }
-                            val highCount = remember(failureRisks) { failureRisks.values.count { it.riskSeverity == "HIGH" } }
-                            val moderateCount = remember(failureRisks) { failureRisks.values.count { it.riskSeverity == "MODERATE" } }
-
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.spacedBy(6.dp),
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                // Critical count chip
-                                Surface(
-                                    color = Color(0x33EF4444),
-                                    shape = RoundedCornerShape(6.dp),
-                                    border = BorderStroke(1.dp, Color(0xFFEF4444).copy(alpha = 0.5f))
-                                ) {
-                                    Text(
-                                        text = "🔥 $criticalCount Critical",
-                                        style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 9.5.sp),
-                                        color = Color(0xFFFCA5A5),
-                                        modifier = Modifier.padding(horizontal = 6.dp, vertical = 3.dp)
-                                    )
-                                }
-
-                                // High count chip
-                                Surface(
-                                    color = Color(0x33F97316),
-                                    shape = RoundedCornerShape(6.dp),
-                                    border = BorderStroke(1.dp, Color(0xFFF97316).copy(alpha = 0.5f))
-                                ) {
-                                    Text(
-                                        text = "⚠️ $highCount High",
-                                        style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 9.5.sp),
-                                        color = Color(0xFFFDBA74),
-                                        modifier = Modifier.padding(horizontal = 6.dp, vertical = 3.dp)
-                                    )
-                                }
-
-                                // Moderate chip
-                                Surface(
-                                    color = Color(0x33EAB308),
-                                    shape = RoundedCornerShape(6.dp),
-                                    border = BorderStroke(1.dp, Color(0xFFEAB308).copy(alpha = 0.5f))
-                                ) {
-                                    Text(
-                                        text = "⚙️ $moderateCount Mod",
-                                        style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 9.5.sp),
-                                        color = Color(0xFFFDE047),
-                                        modifier = Modifier.padding(horizontal = 6.dp, vertical = 3.dp)
-                                    )
-                                }
-
-                                // Filter toggle: Show High-Risk Only
-                                Surface(
-                                    color = if (showHighRiskOnly) Color(0xFFEF4444) else Color(0xFF1E293B),
-                                    shape = RoundedCornerShape(6.dp),
-                                    border = BorderStroke(1.dp, if (showHighRiskOnly) Color(0xFFEF4444) else Color(0xFF475569)),
-                                    modifier = Modifier
-                                        .clickable { showHighRiskOnly = !showHighRiskOnly }
-                                        .testTag("btn_filter_high_risk_only")
-                                ) {
-                                    Text(
-                                        text = if (showHighRiskOnly) "✓ High-Risk Only" else "Isolate High-Risk",
-                                        style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 9.5.sp),
-                                        color = if (showHighRiskOnly) Color.White else Color(0xFFCBD5E1),
-                                        modifier = Modifier.padding(horizontal = 6.dp, vertical = 3.dp)
-                                    )
-                                }
-                            }
-                        }
-                    }
-                }
-
-                ViewportLayerTab.SHADING -> {
-                    Surface(
-                        color = Color(0xEB0F172A),
-                        shape = RoundedCornerShape(14.dp),
-                        border = BorderStroke(1.dp, Color(0xFF0284C7)),
-                        modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp)
-                    ) {
-                        Row(
-                            modifier = Modifier.padding(8.dp),
-                            horizontalArrangement = Arrangement.spacedBy(6.dp),
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Text("SHADING:", style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold), color = Color(0xFF38BDF8))
-                            CadRenderStyle.values().forEach { style ->
-                                val isSelected = cadRenderStyle == style
-                                Surface(
-                                    color = if (isSelected) Color(0xFF0284C7) else Color(0xFF1E293B),
-                                    shape = RoundedCornerShape(10.dp),
-                                    border = BorderStroke(1.dp, if (isSelected) Color(0xFF38BDF8) else Color(0xFF334155)),
-                                    modifier = Modifier
-                                        .clickable { cadRenderStyle = style }
-                                        .testTag("cad_style_${style.name}")
-                                ) {
-                                    Text(
-                                        text = style.label,
-                                        style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 10.sp),
-                                        color = if (isSelected) Color.White else Color(0xFF94A3B8),
-                                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
-                                    )
-                                }
-                            }
-                        }
-                    }
-                }
-
-                ViewportLayerTab.EXPLODED -> {
-                    Surface(
-                        color = Color(0xEB0F172A),
-                        shape = RoundedCornerShape(14.dp),
-                        border = BorderStroke(1.dp, Color(0xFF0284C7)),
-                        modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp)
-                    ) {
-                        Column(
-                            modifier = Modifier.padding(10.dp),
-                            verticalArrangement = Arrangement.spacedBy(8.dp)
-                        ) {
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.SpaceBetween,
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Row(
-                                    horizontalArrangement = Arrangement.spacedBy(6.dp),
-                                    verticalAlignment = Alignment.CenterVertically
-                                ) {
-                                    Icon(
-                                        imageVector = Icons.Default.Compress,
-                                        contentDescription = "Explode",
-                                        tint = Color(0xFF00F0FF),
-                                        modifier = Modifier.size(16.dp)
-                                    )
-                                    Text(
-                                        text = "EXPLODED SUB-ASSEMBLIES",
-                                        style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold, letterSpacing = 0.5.sp),
-                                        color = Color(0xFF38BDF8)
-                                    )
-                                }
-
-                                Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                                    Surface(
-                                        color = Color(0xFF00F0FF).copy(alpha = 0.2f),
-                                        shape = RoundedCornerShape(8.dp),
-                                        border = BorderStroke(1.dp, Color(0xFF00F0FF)),
-                                        modifier = Modifier
-                                            .clickable { showPhysicsDialog = true }
-                                            .testTag("btn_open_physics_simulation")
-                                    ) {
-                                        Text(
-                                            text = "⚡ Physics Sim",
-                                            style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 9.sp),
-                                            color = Color(0xFF00F0FF),
-                                            modifier = Modifier.padding(horizontal = 6.dp, vertical = 3.dp)
-                                        )
-                                    }
-
-                                    listOf(0.0f to "ASSEMBLED", 0.5f to "50%", 1.0f to "EXPLODED").forEach { (factor, label) ->
-                                        Surface(
-                                            color = if (abs(explodeFactor - factor) < 0.05f) Color(0xFF0284C7) else Color(0xFF1E293B),
-                                            shape = RoundedCornerShape(8.dp),
-                                            modifier = Modifier.clickable { explodeFactor = factor }.testTag("explode_preset_$label")
-                                        ) {
-                                            Text(
-                                                text = label,
-                                                style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 9.sp),
-                                                color = Color.White,
-                                                modifier = Modifier.padding(horizontal = 6.dp, vertical = 3.dp)
-                                            )
-                                        }
-                                    }
-                                }
-                            }
-
-                            // Separation Slider
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.spacedBy(8.dp)
-                            ) {
-                                Text("Separation:", style = MaterialTheme.typography.labelSmall, color = Color(0xFF94A3B8))
-                                Slider(
-                                    value = explodeFactor,
-                                    onValueChange = { explodeFactor = it },
-                                    valueRange = 0f..1f,
-                                    modifier = Modifier.weight(1f).testTag("explode_slider"),
-                                    colors = SliderDefaults.colors(
-                                        thumbColor = Color(0xFF00F0FF),
-                                        activeTrackColor = Color(0xFF0284C7),
-                                        inactiveTrackColor = Color(0xFF334155)
-                                    )
-                                )
-                                Text("${(explodeFactor * 100).toInt()}%", style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold), color = Color(0xFF00F0FF))
-                            }
-
-                            // Hardware Type Filter Chips
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.spacedBy(4.dp),
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Text("Hardware:", style = MaterialTheme.typography.labelSmall, color = Color(0xFF94A3B8))
-
-                                val filters = listOf(
-                                    null to "ALL",
-                                    SubAssemblyType.BOLT to "🔩 BOLTS",
-                                    SubAssemblyType.WASHER to "⭕ WASHERS",
-                                    SubAssemblyType.GASKET to "📑 GASKETS",
-                                    SubAssemblyType.BELT to "🎗️ BELTS",
-                                    SubAssemblyType.SPARK_PLUG to "⚡ PLUGS"
-                                )
-
-                                filters.forEach { (type, label) ->
-                                    val isSelected = subAssemblyTypeFilter == type
-                                    Surface(
-                                        color = if (isSelected) Color(0xFF0284C7) else Color(0xFF1E293B),
-                                        shape = RoundedCornerShape(8.dp),
-                                        border = BorderStroke(1.dp, if (isSelected) Color(0xFF00F0FF) else Color(0xFF334155)),
-                                        modifier = Modifier.clickable { subAssemblyTypeFilter = type }
-                                    ) {
-                                        Text(
-                                            text = label,
-                                            style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 9.sp),
-                                            color = if (isSelected) Color.White else Color(0xFF94A3B8),
-                                            modifier = Modifier.padding(horizontal = 6.dp, vertical = 3.dp)
-                                        )
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-                ViewportLayerTab.ANNOTATIONS -> {
-                    Surface(
-                        color = Color(0xEB0F172A),
-                        shape = RoundedCornerShape(14.dp),
-                        border = BorderStroke(1.dp, Color(0xFF0284C7)),
-                        modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp)
-                    ) {
-                        Row(
-                            modifier = Modifier.padding(8.dp),
-                            horizontalArrangement = Arrangement.spacedBy(6.dp),
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Surface(
-                                color = if (showTechnicalAnnotations) Color(0xFF0284C7) else Color(0xFF1E293B),
-                                shape = RoundedCornerShape(8.dp),
-                                border = BorderStroke(1.dp, if (showTechnicalAnnotations) Color(0xFF00F0FF) else Color(0xFF334155)),
-                                modifier = Modifier
-                                    .clickable { layerControllerState = layerControllerState.copy(showTechnicalAnnotations = !showTechnicalAnnotations) }
-                                    .testTag("toggle_tech_annotations_btn")
-                            ) {
-                                Text(
-                                    text = if (showTechnicalAnnotations) "🏷️ ANNOTATIONS: ON" else "🏷️ ANNOTATIONS: OFF",
-                                    style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 10.sp),
-                                    color = if (showTechnicalAnnotations) Color.White else Color(0xFF94A3B8),
-                                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
-                                )
-                            }
-
-                            Surface(
-                                color = if (showBloomEffect) Color(0xFF0284C7) else Color(0xFF1E293B),
-                                shape = RoundedCornerShape(8.dp),
-                                border = BorderStroke(1.dp, if (showBloomEffect) Color(0xFF00F0FF) else Color(0xFF334155)),
-                                modifier = Modifier
-                                    .clickable { showBloomEffect = !showBloomEffect }
-                                    .testTag("toggle_bloom_effect_btn")
-                            ) {
-                                Text(
-                                    text = if (showBloomEffect) "✨ BLOOM: ON" else "✨ BLOOM: OFF",
-                                    style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 10.sp),
-                                    color = if (showBloomEffect) Color.White else Color(0xFF94A3B8),
-                                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
-                                )
-                            }
-
-                            Surface(
-                                color = if (showCalloutLeaders) Color(0xFF0284C7) else Color(0xFF1E293B),
-                                shape = RoundedCornerShape(8.dp),
-                                modifier = Modifier.clickable { layerControllerState = layerControllerState.copy(showCalloutLeaders = !showCalloutLeaders) }
-                            ) {
-                                Text("CALLOUTS", style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 10.sp), color = Color.White, modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp))
-                            }
-
-                            Surface(
-                                color = if (showDimensions) Color(0xFF0284C7) else Color(0xFF1E293B),
-                                shape = RoundedCornerShape(8.dp),
-                                modifier = Modifier.clickable { layerControllerState = layerControllerState.copy(showDimensions = !showDimensions) }
-                            ) {
-                                Text("DIMENSIONS", style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 10.sp), color = Color.White, modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp))
-                            }
-
-                            Spacer(modifier = Modifier.weight(1f))
-
-                            listOf("ISO" to (45f to 28f), "FRONT" to (0f to 0f), "TOP" to (0f to 85f)).forEach { (name, angles) ->
-                                Surface(
-                                    color = Color(0xFF1E293B),
-                                    shape = RoundedCornerShape(8.dp),
-                                    modifier = Modifier.clickable { cameraYaw = angles.first; cameraPitch = angles.second }
-                                ) {
-                                    Text(name, style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 10.sp), color = Color(0xFF38BDF8), modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp))
-                                }
-                            }
-                        }
-                    }
-                }
-
-                ViewportLayerTab.ASSEMBLY, ViewportLayerTab.CLEAN, ViewportLayerTab.MENTOR, ViewportLayerTab.ANIMATION -> { /* Minimal overlay */ }
-            }
-        }
-
-        // Blender 3D Animation Timeline & Studio Controller (Shown in Animation layer)
-        if (activeLayerTab == ViewportLayerTab.ANIMATION) {
-            Surface(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(10.dp)
-                    .align(Alignment.BottomCenter)
-                    .testTag("blender_animation_timeline_panel"),
-                color = Color(0xFA0B132B),
-                shape = RoundedCornerShape(16.dp),
-                border = BorderStroke(1.5.dp, Color(0xFFFF6F00)),
-                shadowElevation = 14.dp
-            ) {
-                Column(
-                    modifier = Modifier.padding(12.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    // Header Row: Animation Title, Stats HUD & Studio Lighting Selector
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                            Surface(
-                                color = Color(0xFFFF6F00),
-                                shape = RoundedCornerShape(8.dp)
-                            ) {
-                                Text(
-                                    text = "BLENDER 3D ANIMATION DOPE SHEET",
-                                    style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Black, fontSize = 9.5.sp, letterSpacing = 0.8.sp),
-                                    color = Color.White,
-                                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 3.dp)
-                                )
-                            }
-
-                            Text(
-                                text = "Frame ${(blenderTimelineProgress * 120f).toInt()} / 120 • 60 FPS • PBR EEVEE",
-                                style = MaterialTheme.typography.labelSmall.copy(fontSize = 10.sp, fontFamily = FontFamily.Monospace, fontWeight = FontWeight.Bold),
-                                color = Color(0xFFFF9E40)
-                            )
-                        }
-
-                        // Studio Lighting Selector Pills
-                        Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                            BlenderLightingPreset.values().forEach { preset ->
-                                val isSelected = blenderLightingPreset == preset
-                                Surface(
-                                    color = if (isSelected) Color(0xFFFF6F00) else Color(0xFF1E293B),
-                                    shape = RoundedCornerShape(8.dp),
-                                    border = BorderStroke(1.dp, if (isSelected) Color.White else Color(0xFF334155)),
-                                    modifier = Modifier
-                                        .clickable {
-                                            HapticHelper.triggerControlTick(context, view, haptic)
-                                            blenderLightingPreset = preset
-                                        }
-                                        .testTag("lighting_preset_${preset.name}")
-                                ) {
-                                    Text(
-                                        text = preset.label.take(6),
-                                        style = MaterialTheme.typography.labelSmall.copy(fontSize = 9.sp, fontWeight = FontWeight.Bold),
-                                        color = if (isSelected) Color.White else Color(0xFF94A3B8),
-                                        modifier = Modifier.padding(horizontal = 6.dp, vertical = 3.dp)
-                                    )
-                                }
-                            }
-                        }
-                    }
-
-                    // Animation Track Selector Pills (Turntable 360, Exploded Keyframes, Cinematic Flythrough, Part Sequence)
-                    LazyRow(
-                        horizontalArrangement = Arrangement.spacedBy(6.dp),
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        items(BlenderAnimTrack.values().toList()) { track ->
-                            val isSelected = blenderAnimTrack == track
-                            Surface(
-                                color = if (isSelected) Color(0xFF0284C7) else Color(0xFF1E293B),
-                                shape = RoundedCornerShape(10.dp),
-                                border = BorderStroke(1.dp, if (isSelected) Color(0xFF00F0FF) else Color(0xFF334155)),
-                                modifier = Modifier
-                                    .clickable {
-                                        HapticHelper.triggerControlTick(context, view, haptic)
-                                        blenderAnimTrack = track
-                                        blenderTimelineProgress = 0f
-                                        isBlenderAnimPlaying = true
-                                    }
-                                    .testTag("anim_track_${track.name}")
-                            ) {
-                                Row(
-                                    modifier = Modifier.padding(horizontal = 10.dp, vertical = 5.dp),
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    horizontalArrangement = Arrangement.spacedBy(6.dp)
-                                ) {
-                                    Text(track.icon, fontSize = 12.sp)
-                                    Text(
-                                        text = track.label,
-                                        style = MaterialTheme.typography.labelSmall.copy(
-                                            fontWeight = if (isSelected) FontWeight.Black else FontWeight.Bold,
-                                            fontSize = 10.5.sp
-                                        ),
-                                        color = if (isSelected) Color.White else Color(0xFFCBD5E1)
-                                    )
-                                }
-                            }
-                        }
-                    }
-
-                    // Scrubbable Keyframe Timeline Slider
-                    Column {
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Text(
-                                text = "Keyframe Scrubber",
-                                style = MaterialTheme.typography.labelSmall.copy(fontSize = 9.sp, fontWeight = FontWeight.Bold),
-                                color = Color(0xFF94A3B8)
-                            )
-                            Text(
-                                text = "00:0${(blenderTimelineProgress * 4.0f).toInt()}s / 00:04s",
-                                style = MaterialTheme.typography.labelSmall.copy(fontSize = 10.sp, fontFamily = FontFamily.Monospace, fontWeight = FontWeight.Bold),
-                                color = Color(0xFF00F0FF)
-                            )
-                        }
-
-                        Slider(
-                            value = blenderTimelineProgress,
-                            onValueChange = {
-                                isBlenderAnimPlaying = false
-                                blenderTimelineProgress = it
-                            },
-                            valueRange = 0f..1f,
-                            colors = SliderDefaults.colors(
-                                thumbColor = Color(0xFFFF6F00),
-                                activeTrackColor = Color(0xFFFF6F00),
-                                inactiveTrackColor = Color(0xFF1E293B)
-                            ),
-                            modifier = Modifier
-                                .height(22.dp)
-                                .testTag("blender_timeline_slider")
-                        )
-                    }
-
-                    // Timeline Transport Controls & Playback Speed Selector
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        // Transport Buttons: SkipStart, PrevFrame, Play/Pause, NextFrame, SkipEnd
-                        Row(
-                            horizontalArrangement = Arrangement.spacedBy(4.dp),
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            IconButton(
-                                onClick = {
-                                    HapticHelper.triggerControlTick(context, view, haptic)
-                                    blenderTimelineProgress = 0f
-                                },
-                                modifier = Modifier
-                                    .size(32.dp)
-                                    .background(Color(0xFF1E293B), CircleShape)
-                                    .testTag("btn_anim_skip_start")
-                            ) {
-                                Icon(Icons.Default.SkipPrevious, contentDescription = "Start Frame", tint = Color.White, modifier = Modifier.size(16.dp))
-                            }
-
-                            IconButton(
-                                onClick = {
-                                    HapticHelper.triggerControlTick(context, view, haptic)
-                                    blenderTimelineProgress = (blenderTimelineProgress - 1f / 120f).coerceAtLeast(0f)
-                                },
-                                modifier = Modifier
-                                    .size(32.dp)
-                                    .background(Color(0xFF1E293B), CircleShape)
-                                    .testTag("btn_anim_prev_frame")
-                            ) {
-                                Icon(Icons.Default.FastRewind, contentDescription = "Step Back 1 Frame", tint = Color.White, modifier = Modifier.size(16.dp))
-                            }
-
-                            IconButton(
-                                onClick = {
-                                    HapticHelper.triggerControlTick(context, view, haptic)
-                                    isBlenderAnimPlaying = !isBlenderAnimPlaying
-                                },
-                                modifier = Modifier
-                                    .size(40.dp)
-                                    .background(if (isBlenderAnimPlaying) Color(0xFFFF6F00) else Color(0xFF0284C7), CircleShape)
-                                    .testTag("btn_anim_play_pause")
-                            ) {
-                                Icon(
-                                    imageVector = if (isBlenderAnimPlaying) Icons.Default.Pause else Icons.Default.PlayArrow,
-                                    contentDescription = "Play or Pause Blender Animation",
-                                    tint = Color.White,
-                                    modifier = Modifier.size(22.dp)
-                                )
-                            }
-
-                            IconButton(
-                                onClick = {
-                                    HapticHelper.triggerControlTick(context, view, haptic)
-                                    blenderTimelineProgress = (blenderTimelineProgress + 1f / 120f).coerceAtMost(1f)
-                                },
-                                modifier = Modifier
-                                    .size(32.dp)
-                                    .background(Color(0xFF1E293B), CircleShape)
-                                    .testTag("btn_anim_next_frame")
-                            ) {
-                                Icon(Icons.Default.FastForward, contentDescription = "Step Forward 1 Frame", tint = Color.White, modifier = Modifier.size(16.dp))
-                            }
-
-                            IconButton(
-                                onClick = {
-                                    HapticHelper.triggerControlTick(context, view, haptic)
-                                    blenderTimelineProgress = 1f
-                                },
-                                modifier = Modifier
-                                    .size(32.dp)
-                                    .background(Color(0xFF1E293B), CircleShape)
-                                    .testTag("btn_anim_skip_end")
-                            ) {
-                                Icon(Icons.Default.SkipNext, contentDescription = "End Frame", tint = Color.White, modifier = Modifier.size(16.dp))
-                            }
-                        }
-
-                        // Loop & Speed Pills
-                        Row(
-                            horizontalArrangement = Arrangement.spacedBy(6.dp),
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Surface(
-                                color = if (isBlenderLoopEnabled) Color(0xFF166534) else Color(0xFF1E293B),
-                                shape = RoundedCornerShape(8.dp),
-                                border = BorderStroke(1.dp, if (isBlenderLoopEnabled) Color(0xFF22C55E) else Color(0xFF334155)),
-                                modifier = Modifier
-                                    .clickable {
-                                        HapticHelper.triggerControlTick(context, view, haptic)
-                                        isBlenderLoopEnabled = !isBlenderLoopEnabled
-                                    }
-                                    .testTag("btn_anim_loop_toggle")
-                            ) {
-                                Text(
-                                    text = if (isBlenderLoopEnabled) "🔁 LOOP: ON" else "🔁 LOOP: OFF",
-                                    style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 9.sp),
-                                    color = if (isBlenderLoopEnabled) Color(0xFF86EFAC) else Color(0xFF94A3B8),
-                                    modifier = Modifier.padding(horizontal = 6.dp, vertical = 3.dp)
-                                )
-                            }
-
-                            listOf(0.5f to "0.5x", 1.0f to "1.0x", 2.0f to "2.0x").forEach { (speedVal, label) ->
-                                val isSelected = blenderPlaybackSpeed == speedVal
-                                Surface(
-                                    color = if (isSelected) Color(0xFF0284C7) else Color(0xFF1E293B),
-                                    shape = RoundedCornerShape(8.dp),
-                                    modifier = Modifier
-                                        .clickable {
-                                            HapticHelper.triggerControlTick(context, view, haptic)
-                                            blenderPlaybackSpeed = speedVal
-                                        }
-                                        .testTag("speed_pill_$label")
-                                ) {
-                                    Text(
-                                        text = label,
-                                        style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold, fontSize = 9.sp),
-                                        color = if (isSelected) Color.White else Color(0xFF94A3B8),
-                                        modifier = Modifier.padding(horizontal = 6.dp, vertical = 3.dp)
-                                    )
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            Icon(
+                imageVector = Icons.Default.CenterFocusWeak,
+                contentDescription = "Reset Camera View",
+                tint = Color.White,
+                modifier = Modifier.size(18.dp)
+            )
         }
 
         // BILT Step-by-Step Guided Assembly Player (Only shown in Assembly layer)

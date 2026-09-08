@@ -151,88 +151,27 @@ fun Model3DScreen(
         )
     }
 
-    Box(
+    Column(
         modifier = modifier
             .fillMaxSize()
             .background(Color(0xFF0F172A))
     ) {
-        // 1. Full-bleed Main Viewport Canvas (Either Interactive 3D Canvas, SceneView GLTF Renderer, or AR Overlay View)
-        when (viewportMode) {
-            ViewportMode.MODEL_3D -> {
-                Interactive3DViewport(
-                    components = components,
-                    selectedComponent = selectedComponent,
-                    activeSystemFilter = activeSystem,
-                    isHeatmapActive = isHeatmapActive,
-                    failureRisks = failureRisks,
-                    onToggleHeatmap = onToggleHeatmap,
-                    onComponentSelect = { comp -> onSelectComponent(comp) },
-                    onOpenDetailManual = { comp ->
-                        onSelectComponent(comp)
-                        showDetailSheet = true
-                    }
-                )
-            }
-
-            ViewportMode.SCENEVIEW_GLTF -> {
-                SceneViewGltfViewport(
-                    components = components,
-                    selectedComponent = selectedComponent,
-                    onComponentSelect = { comp -> onSelectComponent(comp) }
-                )
-            }
-
-            ViewportMode.AR_CAMERA -> {
-                ArOverlayView(
-                    components = components,
-                    selectedComponent = selectedComponent,
-                    onSelectComponent = onSelectComponent,
-                    onOpenDetailSheet = { comp ->
-                        onSelectComponent(comp)
-                        showDetailSheet = true
-                    }
-                )
-            }
-        }
-
-        // Floating Focus Canvas Toggle (Eye Icon in Top-Right corner)
-        Surface(
-            color = if (isFocusMode) Color(0xFF0284C7) else Color(0xEB0B132B),
-            shape = CircleShape,
-            border = BorderStroke(1.dp, if (isFocusMode) Color(0xFF38BDF8) else Color(0xFF334155)),
-            shadowElevation = 8.dp,
-            modifier = Modifier
-                .align(Alignment.TopEnd)
-                .padding(top = 12.dp, end = 12.dp)
-                .size(38.dp)
-                .clip(CircleShape)
-                .clickable { isFocusMode = !isFocusMode }
-                .testTag("toggle_focus_mode_btn")
-        ) {
-            Box(contentAlignment = Alignment.Center) {
-                Icon(
-                    imageVector = if (isFocusMode) Icons.Default.VisibilityOff else Icons.Default.Visibility,
-                    contentDescription = "Toggle Focus Mode",
-                    tint = Color.White,
-                    modifier = Modifier.size(20.dp)
-                )
-            }
-        }
-
         if (!isFocusMode) {
-            // 2. Floating Top Controls Overlay (System Category Filter & Viewport Mode Toggles)
-            Column(
-                modifier = Modifier
-                    .align(Alignment.TopCenter)
-                    .fillMaxWidth()
-                    .padding(top = 8.dp, start = 12.dp, end = 58.dp)
+            // Dedicated Top Header: System Tabs (ColorSegmentBar) + Mode Switchers + Focus Toggle
+            // Sits strictly ABOVE the 3D model canvas, so tabs NEVER cover the model!
+            Surface(
+                color = Color(0xFF0B132B),
+                border = BorderStroke(1.dp, Color(0xFF1E293B)),
+                shadowElevation = 4.dp
             ) {
                 Row(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 8.dp, vertical = 6.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    // Color-coded System Segment Bar (Slim Floating Scrollable Row)
+                    // System Segment Bar (All, Intake, Exhaust, Cooling, etc.)
                     Box(modifier = Modifier.weight(1f)) {
                         ColorSegmentBar(
                             activeSystem = activeSystem,
@@ -242,22 +181,21 @@ fun Model3DScreen(
 
                     Spacer(modifier = Modifier.width(6.dp))
 
-                    // Viewport Mode Floating Toggle Pill (3D / AR / CV Measure)
+                    // Viewport Mode Pill & Dialog Triggers
                     Surface(
-                        color = Color(0xEB0B132B),
-                        shape = RoundedCornerShape(20.dp),
-                        border = BorderStroke(1.dp, Color(0xFF334155)),
-                        shadowElevation = 6.dp
+                        color = Color(0xFF1E293B),
+                        shape = RoundedCornerShape(16.dp),
+                        border = BorderStroke(1.dp, Color(0xFF334155))
                     ) {
                         Row(
-                            modifier = Modifier.padding(3.dp),
+                            modifier = Modifier.padding(2.dp),
                             horizontalArrangement = Arrangement.spacedBy(2.dp),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             IconButton(
                                 onClick = { viewportMode = ViewportMode.MODEL_3D },
                                 modifier = Modifier
-                                    .size(30.dp)
+                                    .size(28.dp)
                                     .background(
                                         if (viewportMode == ViewportMode.MODEL_3D) Color(0xFF0284C7) else Color.Transparent,
                                         CircleShape
@@ -275,7 +213,7 @@ fun Model3DScreen(
                             IconButton(
                                 onClick = { viewportMode = ViewportMode.SCENEVIEW_GLTF },
                                 modifier = Modifier
-                                    .size(30.dp)
+                                    .size(28.dp)
                                     .background(
                                         if (viewportMode == ViewportMode.SCENEVIEW_GLTF) Color(0xFFFF6F00) else Color.Transparent,
                                         CircleShape
@@ -293,7 +231,7 @@ fun Model3DScreen(
                             IconButton(
                                 onClick = { viewportMode = ViewportMode.AR_CAMERA },
                                 modifier = Modifier
-                                    .size(30.dp)
+                                    .size(28.dp)
                                     .background(
                                         if (viewportMode == ViewportMode.AR_CAMERA) Color(0xFFFF6F00) else Color.Transparent,
                                         CircleShape
@@ -311,7 +249,7 @@ fun Model3DScreen(
                             IconButton(
                                 onClick = { showCameraMeasurementDialog = true },
                                 modifier = Modifier
-                                    .size(30.dp)
+                                    .size(28.dp)
                                     .background(Color.Transparent, CircleShape)
                                     .testTag("mode_camera_cv_measure")
                             ) {
@@ -326,7 +264,7 @@ fun Model3DScreen(
                             IconButton(
                                 onClick = { showPhysicsDialog = true },
                                 modifier = Modifier
-                                    .size(30.dp)
+                                    .size(28.dp)
                                     .background(Color(0xFF0284C7).copy(alpha = 0.35f), CircleShape)
                                     .testTag("btn_open_physics_simulation_top")
                             ) {
@@ -341,7 +279,7 @@ fun Model3DScreen(
                             IconButton(
                                 onClick = { showCadIngestionDialog = true },
                                 modifier = Modifier
-                                    .size(30.dp)
+                                    .size(28.dp)
                                     .background(Color(0xFF00F0FF).copy(alpha = 0.2f), CircleShape)
                                     .testTag("btn_open_cad_ingest_dialog")
                             ) {
@@ -356,7 +294,7 @@ fun Model3DScreen(
                             IconButton(
                                 onClick = { showLayerControllerDialog = true },
                                 modifier = Modifier
-                                    .size(30.dp)
+                                    .size(28.dp)
                                     .background(Color(0xFFF59E0B).copy(alpha = 0.25f), CircleShape)
                                     .testTag("btn_open_layer_controller_top")
                             ) {
@@ -371,7 +309,7 @@ fun Model3DScreen(
                             IconButton(
                                 onClick = { showOfflineCacheDialog = true },
                                 modifier = Modifier
-                                    .size(30.dp)
+                                    .size(28.dp)
                                     .background(Color(0xFF22C55E).copy(alpha = 0.25f), CircleShape)
                                     .testTag("btn_open_offline_cache_top")
                             ) {
@@ -386,7 +324,7 @@ fun Model3DScreen(
                             IconButton(
                                 onClick = onToggleHeatmap,
                                 modifier = Modifier
-                                    .size(30.dp)
+                                    .size(28.dp)
                                     .background(
                                         if (isHeatmapActive) Color(0xFFDC2626) else Color(0xFFEF4444).copy(alpha = 0.25f),
                                         CircleShape
@@ -402,37 +340,117 @@ fun Model3DScreen(
                             }
                         }
                     }
+
+                    Spacer(modifier = Modifier.width(6.dp))
+
+                    // Focus Canvas Toggle Button
+                    IconButton(
+                        onClick = { isFocusMode = !isFocusMode },
+                        modifier = Modifier
+                            .size(30.dp)
+                            .background(Color(0xFF1E293B), CircleShape)
+                            .testTag("toggle_focus_mode_btn")
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Visibility,
+                            contentDescription = "Toggle Focus Mode",
+                            tint = Color.White,
+                            modifier = Modifier.size(16.dp)
+                        )
+                    }
+                }
+            }
+        }
+
+        // Dedicated Unobscured 3D Canvas Area: Fills all remaining space (weight = 1f)
+        Box(
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxWidth()
+        ) {
+            when (viewportMode) {
+                ViewportMode.MODEL_3D -> {
+                    Interactive3DViewport(
+                        components = components,
+                        selectedComponent = selectedComponent,
+                        activeSystemFilter = activeSystem,
+                        isHeatmapActive = isHeatmapActive,
+                        failureRisks = failureRisks,
+                        onToggleHeatmap = onToggleHeatmap,
+                        onComponentSelect = { comp -> onSelectComponent(comp) },
+                        onOpenDetailManual = { comp ->
+                            onSelectComponent(comp)
+                            showDetailSheet = true
+                        }
+                    )
+                }
+
+                ViewportMode.SCENEVIEW_GLTF -> {
+                    SceneViewGltfViewport(
+                        components = components,
+                        selectedComponent = selectedComponent,
+                        onComponentSelect = { comp -> onSelectComponent(comp) }
+                    )
+                }
+
+                ViewportMode.AR_CAMERA -> {
+                    ArOverlayView(
+                        components = components,
+                        selectedComponent = selectedComponent,
+                        onSelectComponent = onSelectComponent,
+                        onOpenDetailSheet = { comp ->
+                            onSelectComponent(comp)
+                            showDetailSheet = true
+                        }
+                    )
                 }
             }
 
-            // 3. Floating Bottom Component Selector Tray (Collapsible to clear viewport clutter)
+            if (isFocusMode) {
+                IconButton(
+                    onClick = { isFocusMode = false },
+                    modifier = Modifier
+                        .align(Alignment.TopEnd)
+                        .padding(12.dp)
+                        .size(36.dp)
+                        .background(Color(0xEB0B132B), CircleShape)
+                        .border(1.dp, Color(0xFF38BDF8), CircleShape)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.VisibilityOff,
+                        contentDescription = "Exit Focus Mode",
+                        tint = Color(0xFF38BDF8),
+                        modifier = Modifier.size(18.dp)
+                    )
+                }
+            }
+        }
+
+        // Bottom Parts Tray: Sits strictly BELOW the 3D model canvas, never covering it
+        if (!isFocusMode) {
             Surface(
                 modifier = Modifier
-                    .align(Alignment.BottomCenter)
                     .fillMaxWidth()
-                    .padding(horizontal = 12.dp, vertical = 8.dp),
+                    .padding(horizontal = 8.dp, vertical = 4.dp),
                 color = Color(0xEB0B132B),
-                shape = RoundedCornerShape(16.dp),
+                shape = RoundedCornerShape(12.dp),
                 border = BorderStroke(1.dp, Color(0xFF1E293B)),
-                shadowElevation = 8.dp
+                shadowElevation = 4.dp
             ) {
                 Column(modifier = Modifier.padding(vertical = 4.dp)) {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clip(RoundedCornerShape(12.dp))
+                            .clip(RoundedCornerShape(10.dp))
                             .clickable { isTrayExpanded = !isTrayExpanded }
-                            .padding(horizontal = 12.dp, vertical = 6.dp),
+                            .padding(horizontal = 10.dp, vertical = 5.dp),
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Text(
-                                text = "PARTS LAYER (${components.size})",
-                                style = MaterialTheme.typography.labelSmall.copy(
-                                    fontWeight = FontWeight.Bold,
-                                    letterSpacing = 0.5.sp
-                                ),
+                                text = "PARTS (${components.size})",
+                                style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
                                 color = Color(0xFF94A3B8)
                             )
                             if (selectedComponent != null) {
@@ -450,14 +468,14 @@ fun Model3DScreen(
                             imageVector = if (isTrayExpanded) Icons.Default.ExpandMore else Icons.Default.ExpandLess,
                             contentDescription = if (isTrayExpanded) "Collapse Tray" else "Expand Tray",
                             tint = Color(0xFF38BDF8),
-                            modifier = Modifier.size(18.dp)
+                            modifier = Modifier.size(16.dp)
                         )
                     }
 
                     if (isTrayExpanded) {
                         LazyRow(
-                            contentPadding = PaddingValues(horizontal = 12.dp, vertical = 4.dp),
-                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                            contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp),
+                            horizontalArrangement = Arrangement.spacedBy(6.dp)
                         ) {
                             items(components) { comp ->
                                 val isSelected = selectedComponent?.id == comp.id
