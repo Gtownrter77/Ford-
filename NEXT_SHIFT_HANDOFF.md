@@ -67,6 +67,7 @@ This requirement changes the product priority: authentication and account-scoped
 | `app/src/main/java/com/example/ui/auth/GoogleSignInScreen.kt` | Blocking Google sign-in UI and failure-state messaging. |
 | `app/src/main/java/com/example/MainActivity.kt` | Authentication gate around the protected app shell. |
 | `docs/OBD2_FORSCAN_INTEGRATION.md` | OBD/FORScan scope, supported commands, and safety boundary. |
+| `docs/TERMUX_BUILD.md` | Complete desktop build versus reduced ARM64 Termux build instructions. |
 | `docs/VEHICLE_VERIFICATION_MANIFEST.md` | VIN-K/4WD evidence and physical-verification boundaries. |
 | `RELEASE_AUDIT.md` | Repository release-gate report. |
 | `tools/validate_vehicle_release.py` | Whole-repository artifact/evidence/package audit. |

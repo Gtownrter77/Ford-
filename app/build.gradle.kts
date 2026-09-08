@@ -9,6 +9,12 @@ plugins {
   alias(libs.plugins.google.services)
 }
 
+// Termux on ARM64 can build the Kotlin/Compose app, but the complete native
+// llama engine requires an Android NDK toolchain that is not part of Termux.
+// `-PtermuxBuild=true` intentionally produces a reduced APK without that JNI
+// library; normal desktop/release builds keep the complete native engine.
+val termuxBuild = providers.gradleProperty("termuxBuild").orNull == "true"
+
 android {
   namespace = "com.example"
   compileSdk { version = release(36) { minorApiLevel = 1 } }
@@ -26,10 +32,12 @@ android {
       abiFilters += "arm64-v8a"
     }
 
-    externalNativeBuild {
-      cmake {
-        cppFlags += "-std=c++17"
-        arguments += "-DANDROID_STL=c++_shared"
+    if (!termuxBuild) {
+      externalNativeBuild {
+        cmake {
+          cppFlags += "-std=c++17"
+          arguments += "-DANDROID_STL=c++_shared"
+        }
       }
     }
   }
@@ -67,10 +75,12 @@ android {
     compose = true
     buildConfig = true
   }
-  externalNativeBuild {
-    cmake {
-      path = file("../shared/llama/CMakeLists.txt")
-      version = "3.22.1"
+  if (!termuxBuild) {
+    externalNativeBuild {
+      cmake {
+        path = file("../shared/llama/CMakeLists.txt")
+        version = "3.22.1"
+      }
     }
   }
   // Binary 3D/AI files must stay uncompressed in the APK.
