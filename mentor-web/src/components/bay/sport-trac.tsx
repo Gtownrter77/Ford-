@@ -324,6 +324,7 @@ export function SportTrac({ paintId }: { paintId: PaintId }) {
     (jobId.startsWith("ac") ||
       jobId.startsWith("hvac") ||
       jobId.startsWith("leaf-") ||
+      jobId.startsWith("engine-") ||
       jobId === "heater-core");
 
   return (
@@ -730,6 +731,7 @@ function CharmHotspots() {
     { id: "heater-core", pos: [0.0, 0.78, 1.02], size: [0.22, 0.14, 0.12] },
     { id: "leaf-9325", pos: [0.22, 0.72, 1.08], size: [0.16, 0.12, 0.14] },
     { id: "leaf-9340", pos: [0.0, 0.98, 0.92], size: [0.28, 0.08, 0.12] },
+    { id: "engine-vin-k", pos: [-0.18, 0.86, 1.55], size: [0.42, 0.28, 0.5] },
   ];
 
   return (

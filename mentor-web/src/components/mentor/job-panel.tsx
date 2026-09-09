@@ -3,6 +3,7 @@ import { CHARM, JOBS, jobById } from "@/lib/mentor/book";
 import { STUDIO } from "@/lib/mentor/rights";
 import { HVAC_DIAGS, PINPOINT_INDEX } from "@/lib/mentor/hvac-diagnostics";
 import { HVAC_PARTS } from "@/lib/mentor/hvac-parts";
+import { ENGINE_INDEX } from "@/lib/mentor/engines";
 import {
   LABOR,
   SECTIONS,
@@ -18,6 +19,7 @@ const DESKS: { id: Desk; label: string }[] = [
   { id: "diag", label: "Diagnose" },
   { id: "pin", label: "Pinpoint" },
   { id: "parts", label: "R&R" },
+  { id: "engine", label: "Engine" },
   { id: "tree", label: `Tree ${LABOR.length}` },
 ];
 
@@ -156,6 +158,24 @@ export function JobPanel() {
               )}
             >
               {j.title}
+            </button>
+          ))}
+        </div>
+      ) : null}
+
+      {desk === "engine" ? (
+        <div className="flex gap-1 overflow-x-auto border-b border-line p-2">
+          {ENGINE_INDEX.map((p) => (
+            <button
+              key={p.id}
+              type="button"
+              onClick={() => setJob(p.id)}
+              className={cn(
+                "inline-flex min-h-11 shrink-0 items-center rounded-sm px-3 text-sm",
+                jobId === p.id ? "bg-fg text-bg" : "bg-raised text-muted hover:text-fg",
+              )}
+            >
+              {p.title}
             </button>
           ))}
         </div>

@@ -72,7 +72,7 @@ function Bay() {
               2004 Sport Trac
             </p>
             <p className="mt-2 text-sm text-muted">
-              CHARM HVAC · 4WD VIN K · all rights reserved
+              4.0 SOHC VIN K · CHARM 4WD · all rights reserved
             </p>
           </div>
           <div className="pointer-events-auto rounded-md border border-line bg-surface/80 px-3 py-2">

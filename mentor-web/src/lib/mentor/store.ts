@@ -3,10 +3,11 @@ import { persist } from "zustand/middleware";
 import { CARDS } from "./book";
 import type { PaintId } from "./scale";
 
-export type Desk = "diag" | "pin" | "parts" | "tree";
+export type Desk = "diag" | "pin" | "parts" | "engine" | "tree";
 
 function deskFor(jobId: string | null): Desk {
   if (!jobId) return "tree";
+  if (jobId.startsWith("engine-")) return "engine";
   if (jobId.startsWith("hvac-pt-")) return "pin";
   if (jobId.startsWith("hvac-")) return "diag";
   return "parts";
@@ -31,7 +32,7 @@ type MentorState = {
 
 export const useMentor = create<MentorState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       paint: "oxford",
       autoOrbit: false,
       jobId: "hvac-inspect",
@@ -61,10 +62,23 @@ export const useMentor = create<MentorState>()(
       },
       setQuery: (query) => set({ query, desk: "tree" }),
       setSection: (section) => set({ section, desk: "tree" }),
-      setDesk: (desk) => set({ desk }),
+      setDesk: (desk) => {
+        if (desk === "engine" && !get().jobId?.startsWith("engine-")) {
+          const job = CARDS.find((j) => j.id === "engine-vin-k");
+          set({
+            desk,
+            jobId: "engine-vin-k",
+            leafId: job?.pages[0]?.id ?? "7934",
+            section: "Engine, Cooling and Exhaust",
+            autoOrbit: false,
+          });
+          return;
+        }
+        set({ desk });
+      },
     }),
     {
-      name: "trac-mentor-vr-v5",
+      name: "trac-mentor-vr-v6",
       partialize: (s) => ({
         paint: s.paint,
         jobId: s.jobId,

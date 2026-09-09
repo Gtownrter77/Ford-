@@ -126,3 +126,7 @@ Tailscale IPs from the 2026-09-07 operator note (verify with `tailscale status` 
 ## Complete (2026-09-09)
 
 Mentor HVAC desk is closed: Diagnose / Pinpoint A–K / R&R / Tree 598. Symptom chart 1761 and DTC P1460–P1469 on the desk. Clickable FS-10, condenser, orifice, accumulator, evaporator, heater, blower, control. Admin lock is studio-only and is not stored in this public repo.
+
+## Engine desk (2026-09-09)
+
+2004 Sport Trac has one engine: 4.0L SOHC FFV V6 VIN K. Owner Guide 04p27og2e. No 4.6 on this body. VIN E is not a bolt-in. CHARM leaf 7934 for R&R hours.

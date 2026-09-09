@@ -8,9 +8,10 @@ export type RackStep = {
 export const VEHICLE = {
   year: "2004",
   model: "Explorer Sport Trac XLT",
-  engine: "4.0L SOHC V6 VIN K Flex Fuel",
+  engine: "4.0L SOHC FFV V6 VIN K",
   drive: "4WD",
-  vinNote: "VIN K engine family — verify every torque and charge on the truck and under-hood label.",
+  vinNote:
+    "Eighth VIN digit K is the flex-fuel Cologne. 2004 Sport Trac has no 4.6 V8. Verify torque on the truck and VECI label.",
 };
 
 export const RACK_STEPS: RackStep[] = [
