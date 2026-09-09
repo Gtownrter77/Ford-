@@ -2,6 +2,8 @@
 
 **Repo:** `Gtownrter77/Ford-`  
 **Android HEAD before this push:** `134b651`  
+**Docs commit:** `9a7d080`  
+**mentor-web commit:** `7036912`  
 **This checkpoint adds:** web Mentor CHARM bay + HVAC Testing and Inspection + CB1 notes.
 
 ## Change counter (5-change cadence)

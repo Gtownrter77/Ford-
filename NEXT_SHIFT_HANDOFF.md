@@ -5,6 +5,7 @@
 **Target:** 2004 Ford Explorer Sport Trac, 4.0L SOHC V6, 4WD, VIN K Flex Fuel  
 **Current Android HEAD at last pull:** `134b651` (`refactor: optimize UI defaults and project structure`, 2026-09-08)  
 **This checkpoint:** CHARM web bay + HVAC Testing and Inspection + CB1 Linux notes  
+**Pushed:** `9a7d080` (docs) · `7036912` (mentor-web source + 598 labor JSON)  
 **Cadence:** 5 substantive changes → push (WORKFLOW_RULES.md)
 
 ---
