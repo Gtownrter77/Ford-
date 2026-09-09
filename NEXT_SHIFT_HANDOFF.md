@@ -130,3 +130,7 @@ Mentor HVAC desk is closed: Diagnose / Pinpoint A–K / R&R / Tree 598. Symptom 
 ## Engine desk (2026-09-09)
 
 2004 Sport Trac has one engine: 4.0L SOHC FFV V6 VIN K. Owner Guide 04p27og2e. No 4.6 on this body. VIN E is not a bolt-in. CHARM leaf 7934 for R&R hours.
+
+## Phones (2026-09-09)
+
+Pixel 8: sideload `SportTracMentor.apk` (debug, unknown sources). iPhone: Safari → Share → Add to Home Screen. No App Store IPA without a Mac.

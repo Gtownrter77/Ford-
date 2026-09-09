@@ -75,7 +75,20 @@ function Bay() {
               4.0 SOHC VIN K · CHARM 4WD · all rights reserved
             </p>
           </div>
-          <div className="pointer-events-auto rounded-md border border-line bg-surface/80 px-3 py-2">
+          <div className="pointer-events-auto flex items-center gap-2 rounded-md border border-line bg-surface/80 px-3 py-2">
+            <a
+              href="/SportTracMentor.apk"
+              download
+              className="inline-flex min-h-11 items-center px-1 text-sm text-muted hover:text-fg"
+            >
+              APK
+            </a>
+            <a
+              href="/?install=1"
+              className="inline-flex min-h-11 items-center px-1 text-sm text-muted hover:text-fg"
+            >
+              iPhone
+            </a>
             <UserButton />
           </div>
         </header>
