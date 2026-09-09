@@ -64,6 +64,53 @@ export const HVAC_DIAGS: MentorJob[] = [
     hotspot: [0.0, 0.85, 1.2],
   },
   {
+    id: "hvac-symptoms",
+    title: "Symptom chart",
+    system: "HVAC · Testing and Inspection · leaf 1761",
+    pages: [{ id: "1761", kind: "Symptom Chart" }],
+    labor: [
+      { op: "Diagnose/Test", item: "Pinpoint, Test", std: "0.5", warr: "0.3", skill: "B", notes: "" },
+    ],
+    cautions: [
+      "Verify the concern (leaf 1759) before entering a pinpoint. If a PCM DTC in the P1460–P1469 range is present, go to the HVAC DTC index first.",
+    ],
+    steps: [
+      { n: "A", text: "Incorrect or erratic direction of airflow from outlet(s) → PINPOINT TEST A, leaf 1762." },
+      { n: "B", text: "Insufficient, erratic, or no heat → PINPOINT TEST B, leaf 1763." },
+      { n: "C", text: "A/C is inoperative / does not operate correctly → PINPOINT TEST C, leaf 1764." },
+      { n: "D", text: "A/C is always on → PINPOINT TEST D, leaf 1765." },
+      { n: "E", text: "No operation in all the temperature settings → PINPOINT TEST E, leaf 1766." },
+      { n: "F", text: "Blower motor is inoperative → PINPOINT TEST F, leaf 1767." },
+      { n: "G", text: "Blower motor does not operate correctly → PINPOINT TEST G, leaf 1768." },
+      { n: "H", text: "Blower motor operates continuously in high speed → PINPOINT TEST H, leaf 1769." },
+      { n: "I", text: "No operation in high blower setting → PINPOINT TEST I, leaf 1770." },
+      { n: "J", text: "No operation in lower speed → PINPOINT TEST J, leaf 1771." },
+      { n: "K", text: "Console blower motor is inoperative → PINPOINT TEST K, leaf 1772." },
+    ],
+    hotspot: [0.0, 0.98, 0.92],
+  },
+  {
+    id: "hvac-dtc",
+    title: "HVAC DTC index",
+    system: "HVAC · PCM DTC · leaf 1760",
+    pages: [{ id: "1760", kind: "DTC Index" }],
+    labor: [
+      { op: "Diagnose/Test", item: "System, Diagnosis", std: "1.0", warr: "0.0", skill: "B", notes: "Includes: Partial Charge, Pressure and Leak Diagnosis." },
+    ],
+    cautions: [
+      "Execute PCM self-test with the function selector OFF. If CKT 914 / 915 report ALL MODULE NO RESPONSE, go to Information Bus communication diagnostics first.",
+    ],
+    steps: [
+      { n: "P1460", text: "WOT A/C cutout circuit. Check ACC / WAC circuit from PCM to A/C clutch relay. Repair wiring or PCM as indicated, then retest clutch engagement." },
+      { n: "P1461", text: "A/C pressure sensor circuit high. Check sensor supply, signal short to power, and the refrigerant pressure sensor (leaf 8376 / 8380)." },
+      { n: "P1462", text: "A/C pressure sensor circuit low. Check sensor ground, open signal, and connector at the pressure transducer." },
+      { n: "P1463", text: "A/C pressure sensor insufficient pressure change. Confirm clutch actually cycles and that the system is not empty. Then PINPOINT C and refrigerant system tests, leaf 1779." },
+      { n: "P1464", text: "A/C demand out of self-test range. Function selector must be OFF during PCM self-test. Recheck control assembly (leaf 9340)." },
+      { n: "P1469", text: "Low A/C cycling period. Short-cycle. Check charge, orifice/expansion, cycling switch, and clutch air gap. Then refrigerant pressures, leaf 1779." },
+    ],
+    hotspot: [0.22, 0.68, 1.48],
+  },
+  {
     id: "hvac-check",
     title: "Retail system check",
     system: "HVAC · Component Tests · leaf 1775",
@@ -311,11 +358,15 @@ export const HVAC_DIAGS: MentorJob[] = [
       { op: "Diagnose/Test", item: "Pinpoint, Test", std: "0.5", warr: "0.3", skill: "B", notes: "" },
     ],
     cautions: [
-      "CHARM prints this pinpoint as factory charts (A1–A18). Cells are not OCR'd on this card — follow leaf 1762.",
+      "Incorrect/erratic airflow. Deplete airbag backup power before any dash/heater-case work: battery ground off, wait one minute.",
     ],
     steps: [
-      { n: "A", text: "INCORRECT/ERRATIC DIRECTION OF AIRFLOW FROM OUTLET(S)." },
-      { n: "1", text: "Chart groups on leaf 1762: A1–A2, A3–A4, A4–A5, A5–A7, A7–A8, A8–A10, A10–A12, A12–A14, A14–A17, A17–A18." },
+      { n: "A1", text: "Operate the mode selector through PANEL, FLOOR, MIX, DEFROST. Note which outlets actually blow." },
+      { n: "A2", text: "If no mode changes at all, check vacuum supply at the control: engine vacuum, reservoir, and the source hose at the control assembly (leaf 9340)." },
+      { n: "A3", text: "If vacuum is present at the control but a single mode is dead, inspect that mode’s vacuum hose and the corresponding air door actuator (leaf 9323)." },
+      { n: "A4", text: "Electric blend/mode motors: command the door with the selector and listen. No motion → actuator / motor R&R (leaf 9323). Door binds → air door (leaf 8350) or housing (leaf 9352)." },
+      { n: "A5", text: "Recirc / fresh door stuck: check the recirc actuator and the cowl fresh-air path. Confirm the door isn’t frozen or disconnected." },
+      { n: "A6", text: "After a repair, re-run all mode positions with HI blower and confirm discharge at the correct vents before closing the job." },
     ],
     hotspot: [0.0, 0.95, 0.9],
   },
@@ -328,11 +379,15 @@ export const HVAC_DIAGS: MentorJob[] = [
       { op: "Diagnose/Test", item: "Pinpoint, Test", std: "0.5", warr: "0.3", skill: "B", notes: "" },
     ],
     cautions: [
-      "CHARM prints this pinpoint as factory charts (B1–B10). Cells are not OCR'd on this card — follow leaf 1763.",
+      "Insufficient, erratic, or no heat. Do not condemn the heater core first — CHARM notes most returned cores were good.",
     ],
     steps: [
-      { n: "B", text: "INSUFFICIENT, ERRATIC, OR NO HEAT." },
-      { n: "1", text: "Chart groups on leaf 1763: B1, B1–B3, B3–B5, B5–B7, B7–B8, B8–B9, B10." },
+      { n: "B1", text: "Coolant at the full mark, engine at operating temperature, thermostat confirmed opening. Heater hoses both hot." },
+      { n: "B2", text: "If the inlet hose is hot and the outlet is cold, the core is air-bound or plugged. Bleed, then heater-core test leaf 1778." },
+      { n: "B3", text: "If both hoses are cold, look at thermostat, water pump, and heater control valve / blend door (not at the core)." },
+      { n: "B4", text: "Blend door: selector to full HEAT. Door must go to heat. Actuator leaf 9323. Door leaf 8350." },
+      { n: "B5", text: "Hose leak that follows the tube can look like a core leak. Check clamps before R&R (heater hose leaf 9348, core leaf 9347 — 8.8 std includes evacuate & recharge)." },
+      { n: "B6", text: "Pressure-test the core at 241 kPa (35 psi) per leaf 1778 before pulling the dash." },
     ],
     hotspot: [0.0, 0.78, 1.05],
   },
@@ -345,13 +400,18 @@ export const HVAC_DIAGS: MentorJob[] = [
       { op: "Diagnose/Test", item: "Pinpoint, Test", std: "0.5", warr: "0.3", skill: "B", notes: "" },
     ],
     cautions: [
-      "CHARM prints this pinpoint as factory charts (C1–C21). Cells are not OCR'd on this card — follow leaf 1764.",
+      "A/C inoperative / does not operate correctly. Analyze refrigerant before recovery. R-12 must not be used.",
     ],
     steps: [
-      { n: "C", text: "THE AIR CONDITIONING (A/C) IS INOPERATIVE/DOES NOT OPERATE CORRECTLY." },
-      { n: "1", text: "Chart groups on leaf 1764: C1–C3, C4–C7, C8–C10, C11–C13, C14–C16, C16–C18, C18–C20, C21." },
+      { n: "C1", text: "MAX A/C, HI blower, engine running. Does the FS-10 clutch engage?" },
+      { n: "C2", text: "No clutch: check battery voltage at the field coil, cycling/pressure switch, A/C clutch relay, and PCM WAC/ACC. Coil open → clutch leaf 9331." },
+      { n: "C3", text: "Clutch engages, no cold: connect gauges. Empty or low → leak test leaves 1776 / 1774, then charge leaf 8383 (1.4 evacuate & recharge)." },
+      { n: "C4", text: "High side high / low side low: orifice restriction (leaf 9344, 0.3 std) or condenser airflow (leaf 9338)." },
+      { n: "C5", text: "Both sides high: overcharge, condenser, or cooling fan. Both sides low with clutch cycling fast → P1469 / low charge." },
+      { n: "C6", text: "Clutch slips or screams: air gap / hub / bearing (leaves 9332, 9334) or seized compressor (8361, 1.1 std plus 8383)." },
+      { n: "C7", text: "After a compressor failure, flush or filter, new orifice, new accumulator (9354, 0.8 std) before the new FS-10." },
     ],
-    hotspot: [0.42, 0.58, 1.52],
+    hotspot: [0.28, 0.72, 1.72],
   },
   {
     id: "hvac-pt-d",
@@ -361,31 +421,14 @@ export const HVAC_DIAGS: MentorJob[] = [
     labor: [
       { op: "Diagnose/Test", item: "Pinpoint, Test", std: "0.5", warr: "0.3", skill: "B", notes: "" },
     ],
-    cautions: [
-      "CHARM prints this pinpoint as factory charts (D1–D6). Cells are not OCR'd on this card — follow leaf 1765.",
-    ],
+    cautions: ["A/C always on — clutch stays engaged with A/C requested off."],
     steps: [
-      { n: "D", text: "THE AIR CONDITIONING (A/C) IS ALWAYS ON." },
-      { n: "1", text: "Chart groups on leaf 1765: D1–D3, D3–D5, D5–D6." },
+      { n: "D1", text: "Selector OFF / A/C off. Clutch must drop. If it stays in, unplug the field coil — clutch should open. If it does not, the clutch is mechanically stuck (9331)." },
+      { n: "D2", text: "If unplugging the coil drops the clutch, the control, relay, or PCM is holding ACC / WAC on. Control assembly leaf 9340." },
+      { n: "D3", text: "Check the A/C request circuit at the control and the cycling switch shorted closed (8376 / 8380)." },
+      { n: "D4", text: "PCM self-test with selector OFF. P1464 = demand out of range during self-test." },
     ],
-    hotspot: [0.42, 0.58, 1.52],
-  },
-  {
-    id: "hvac-pt-f",
-    title: "Pinpoint F · blower inop",
-    system: "PINPOINT TEST F · leaf 1767",
-    pages: [{ id: "1767", kind: "Pinpoint Test F" }],
-    labor: [
-      { op: "Diagnose/Test", item: "Pinpoint, Test", std: "0.5", warr: "0.3", skill: "B", notes: "" },
-    ],
-    cautions: [
-      "CHARM prints this pinpoint as factory charts (F1–F9). Cells are not OCR'd on this card — follow leaf 1767.",
-    ],
-    steps: [
-      { n: "F", text: "THE BLOWER MOTOR IS INOPERATIVE." },
-      { n: "1", text: "Chart groups on leaf 1767: F1–F3, F3–F4, F5–F7, F8–F9." },
-    ],
-    hotspot: [0.0, 0.95, 0.85],
+    hotspot: [0.28, 0.72, 1.82],
   },
   {
     id: "hvac-pt-e",
@@ -395,14 +438,32 @@ export const HVAC_DIAGS: MentorJob[] = [
     labor: [
       { op: "Diagnose/Test", item: "Pinpoint, Test", std: "0.5", warr: "0.3", skill: "B", notes: "" },
     ],
-    cautions: [
-      "CHARM prints this pinpoint as factory charts (E1–E8). Cells are not OCR'd on this card — follow leaf 1766.",
-    ],
+    cautions: ["No operation in all temperature settings — blend path, not charge."],
     steps: [
-      { n: "E", text: "NO OPERATION IN ALL THE TEMPERATURE SETTINGS." },
-      { n: "1", text: "Chart groups on leaf 1766: E1, E1–E3, E4–E6, E6–E8." },
+      { n: "E1", text: "Sweep the temperature selector full cool to full heat. Discharge temp must move." },
+      { n: "E2", text: "No move: blend door actuator (9323) or cable/vacuum at the control (9340)." },
+      { n: "E3", text: "Door moves, temp does not: heater core / A/C not actually heating or cooling. Split to pinpoint B or C." },
+      { n: "E4", text: "Stuck in full cold or full heat: door off the shaft or broken blend door (8350, 6.8 std on the main blend door)." },
     ],
     hotspot: [0.0, 0.95, 0.9],
+  },
+  {
+    id: "hvac-pt-f",
+    title: "Pinpoint F · blower inop",
+    system: "PINPOINT TEST F · leaf 1767",
+    pages: [{ id: "1767", kind: "Pinpoint Test F" }],
+    labor: [
+      { op: "Diagnose/Test", item: "Pinpoint, Test", std: "0.5", warr: "0.3", skill: "B", notes: "" },
+    ],
+    cautions: ["Blower motor inoperative in all speeds."],
+    steps: [
+      { n: "F1", text: "Ignition ON, HI blower. Voltage at the blower motor connector." },
+      { n: "F2", text: "Power and ground present, motor silent → blower motor (9325, 0.6 std)." },
+      { n: "F3", text: "No power: fuse, blower relay, thermal limiter, then resistor only if HI is also dead." },
+      { n: "F4", text: "Ground side switched: check the blower switch (9329, 0.6 std) and the high-speed relay." },
+      { n: "F5", text: "After R&R, confirm all speeds including HI. HI bypasses the resistor — if only HI works, go to pinpoint J." },
+    ],
+    hotspot: [0.22, 0.72, 1.08],
   },
   {
     id: "hvac-pt-g",
@@ -412,14 +473,14 @@ export const HVAC_DIAGS: MentorJob[] = [
     labor: [
       { op: "Diagnose/Test", item: "Pinpoint, Test", std: "0.5", warr: "0.3", skill: "B", notes: "" },
     ],
-    cautions: [
-      "CHARM prints this pinpoint as factory charts (G1–G5). Cells are not OCR'd on this card — follow leaf 1768.",
-    ],
+    cautions: ["Blower does not operate correctly — wrong speed, intermittent, noisy."],
     steps: [
-      { n: "G", text: "THE BLOWER MOTOR DOES NOT OPERATE CORRECTLY." },
-      { n: "1", text: "Chart groups on leaf 1768: G1, G1–G2, G3–G4, G4–G5." },
+      { n: "G1", text: "Note which speeds work. Map them to resistor taps vs HI relay." },
+      { n: "G2", text: "Wrong speed / missing mids: blower resistor (9327, 0.5 std). Resistor lives in the airflow; a melted resistor often follows a seized motor." },
+      { n: "G3", text: "If the motor was seizing, replace the motor (9325) with the resistor or the new resistor will cook." },
+      { n: "G4", text: "Switch positions don’t match speeds: blower switch 9329 / 9357." },
     ],
-    hotspot: [0.0, 0.95, 0.85],
+    hotspot: [0.22, 0.68, 1.02],
   },
   {
     id: "hvac-pt-h",
@@ -429,14 +490,13 @@ export const HVAC_DIAGS: MentorJob[] = [
     labor: [
       { op: "Diagnose/Test", item: "Pinpoint, Test", std: "0.5", warr: "0.3", skill: "B", notes: "" },
     ],
-    cautions: [
-      "CHARM prints this pinpoint as factory charts (H1–H4). Cells are not OCR'd on this card — follow leaf 1769.",
-    ],
+    cautions: ["Blower runs continuously in high, even with the switch off."],
     steps: [
-      { n: "H", text: "THE BLOWER MOTOR OPERATES CONTINUOUSLY IN HIGH SPEED." },
-      { n: "1", text: "Chart groups on leaf 1769: H1, H1–H3, H4." },
+      { n: "H1", text: "Key off. Blower must stop. If it runs with key off, high-speed relay contacts welded or a short to power on the HI feed." },
+      { n: "H2", text: "Key on, switch off, still HI: relay coil still energized — switch or wiring short." },
+      { n: "H3", text: "Replace the high-speed relay / switch as indicated. Recheck all speeds." },
     ],
-    hotspot: [0.0, 0.95, 0.85],
+    hotspot: [0.22, 0.72, 1.08],
   },
   {
     id: "hvac-pt-i",
@@ -446,14 +506,13 @@ export const HVAC_DIAGS: MentorJob[] = [
     labor: [
       { op: "Diagnose/Test", item: "Pinpoint, Test", std: "0.5", warr: "0.3", skill: "B", notes: "" },
     ],
-    cautions: [
-      "CHARM prints this pinpoint as factory charts (I1–I4). Cells are not OCR'd on this card — follow leaf 1770.",
-    ],
+    cautions: ["No operation in high blower. Lower speeds may still work."],
     steps: [
-      { n: "I", text: "NO OPERATION IN HIGH BLOWER SETTING." },
-      { n: "1", text: "Chart groups on leaf 1770: I1–I2, I2–I4." },
+      { n: "I1", text: "HI is a separate feed that bypasses the resistor. Lower speeds OK + HI dead = HI relay, HI switch contact, or HI circuit." },
+      { n: "I2", text: "Check HI feed at the motor with the switch in HI. No voltage → switch 9329 or relay." },
+      { n: "I3", text: "Voltage present on HI, motor dead only on HI: motor open on the high current path — replace 9325." },
     ],
-    hotspot: [0.0, 0.95, 0.85],
+    hotspot: [0.22, 0.72, 1.08],
   },
   {
     id: "hvac-pt-j",
@@ -463,14 +522,12 @@ export const HVAC_DIAGS: MentorJob[] = [
     labor: [
       { op: "Diagnose/Test", item: "Pinpoint, Test", std: "0.5", warr: "0.3", skill: "B", notes: "" },
     ],
-    cautions: [
-      "CHARM prints this pinpoint as factory charts (J1–J2). Cells are not OCR'd on this card — follow leaf 1771.",
-    ],
+    cautions: ["No operation in lower speeds. HI may still work."],
     steps: [
-      { n: "J", text: "NO OPERATION IN LOWER SPEED." },
-      { n: "1", text: "Chart groups on leaf 1771: J1–J2." },
+      { n: "J1", text: "HI works, LO/MED dead: resistor open (9327) or the LO/MED switch contacts (9329)." },
+      { n: "J2", text: "Inspect the resistor board in the evaporator airflow. Burnt board = check the motor for drag before hanging a new resistor." },
     ],
-    hotspot: [0.0, 0.95, 0.85],
+    hotspot: [0.22, 0.68, 1.02],
   },
   {
     id: "hvac-pt-k",
@@ -481,11 +538,12 @@ export const HVAC_DIAGS: MentorJob[] = [
       { op: "Diagnose/Test", item: "Pinpoint, Test", std: "0.5", warr: "0.3", skill: "B", notes: "" },
     ],
     cautions: [
-      "CHARM prints this pinpoint as factory charts (K1–K9). Cells are not OCR'd on this card — follow leaf 1772.",
+      "Console / auxiliary blower inoperative. Sport Trac has no Explorer-style rear console blower — confirm the tree before chasing a console motor that is not on this truck.",
     ],
     steps: [
-      { n: "K", text: "THE CONSOLE BLOWER MOTOR IS INOPERATIVE." },
-      { n: "1", text: "Chart groups on leaf 1772: K1, K1–K2, K3–K5, K5–K6, K7–K9." },
+      { n: "K1", text: "This 4WD VIN K Sport Trac is a front HVAC truck. Auxiliary evaporator / rear blower labor exists on CHARM (evaporator aux 2.7, heater aux 2.7) for equipped vehicles only." },
+      { n: "K2", text: "If this truck is not equipped with auxiliary A/C, stop. Do not R&R a console blower." },
+      { n: "K3", text: "If equipped: power and ground at the aux blower, then motor, switch, and aux expansion valve (9345, 2.6 std)." },
     ],
     hotspot: [0.0, 0.7, 0.2],
   },

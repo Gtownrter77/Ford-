@@ -1,4 +1,5 @@
 import { HVAC_DIAGS } from "./hvac-diagnostics";
+import { HVAC_PARTS } from "./hvac-parts";
 import { STUDIO } from "./rights";
 
 export const CHARM = {
@@ -316,7 +317,7 @@ export const JOBS: MentorJob[] = [
 ];
 
 export function jobById(id: string | null): MentorJob | undefined {
-  return [...HVAC_DIAGS, ...JOBS].find((j) => j.id === id);
+  return CARDS.find((j) => j.id === id);
 }
 
-export const CARDS = [...HVAC_DIAGS, ...JOBS];
+export const CARDS = [...HVAC_DIAGS, ...JOBS, ...HVAC_PARTS];

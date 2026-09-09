@@ -2,6 +2,7 @@ import { Search, X } from "lucide-react";
 import { CHARM, JOBS, jobById } from "@/lib/mentor/book";
 import { STUDIO } from "@/lib/mentor/rights";
 import { HVAC_DIAGS, PINPOINT_INDEX } from "@/lib/mentor/hvac-diagnostics";
+import { HVAC_PARTS } from "@/lib/mentor/hvac-parts";
 import {
   LABOR,
   SECTIONS,
@@ -10,8 +11,15 @@ import {
   searchLabor,
   type CharmRow,
 } from "@/lib/mentor/charm-catalog";
-import { useMentor } from "@/lib/mentor/store";
+import { useMentor, type Desk } from "@/lib/mentor/store";
 import { cn } from "@/lib/utils";
+
+const DESKS: { id: Desk; label: string }[] = [
+  { id: "diag", label: "Diagnose" },
+  { id: "pin", label: "Pinpoint" },
+  { id: "parts", label: "R&R" },
+  { id: "tree", label: `Tree ${LABOR.length}` },
+];
 
 function Hours({ row }: { row: CharmRow }) {
   return (
@@ -32,10 +40,12 @@ export function JobPanel() {
   const leafId = useMentor((s) => s.leafId);
   const query = useMentor((s) => s.query);
   const section = useMentor((s) => s.section);
+  const desk = useMentor((s) => s.desk);
   const setJob = useMentor((s) => s.setJob);
   const setLeaf = useMentor((s) => s.setLeaf);
   const setQuery = useMentor((s) => s.setQuery);
   const setSection = useMentor((s) => s.setSection);
+  const setDesk = useMentor((s) => s.setDesk);
 
   const job = jobById(jobId);
   const leaf = leafById(leafId);
@@ -54,18 +64,20 @@ export function JobPanel() {
   const pageId = job?.pages[0]?.id ?? leaf?.id;
   const heading = job?.title ?? leaf?.t;
   const system = job?.system ?? leaf?.s;
+  const diags = HVAC_DIAGS.filter((j) => !j.id.startsWith("hvac-pt-"));
+  const parts = [...JOBS, ...HVAC_PARTS];
 
   return (
-    <div className="pointer-events-auto flex max-h-[42dvh] w-full max-w-lg flex-col overflow-hidden rounded-md border border-line bg-surface/95 sm:max-h-[68dvh]">
+    <div className="pointer-events-auto flex max-h-[46dvh] w-full max-w-lg flex-col overflow-hidden rounded-md border border-line bg-surface/95 sm:max-h-[72dvh]">
       <div className="border-b border-line px-4 py-3">
         <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-charm">
           {STUDIO.name}
         </p>
         <p className="mt-1 font-display text-lg leading-none tracking-tight">
-          HVAC diagnostics
+          CHARM HVAC desk
         </p>
         <p className="mt-1 text-xs text-muted">
-          CHARM Testing and Inspection · 4WD VIN K · printed leaves only
+          4WD VIN K · {CHARM.laborLeaves} printed labor leaves
         </p>
         <label className="mt-3 flex min-h-11 items-center gap-2 rounded-sm border border-line bg-raised px-3">
           <Search className="size-4 text-faint" />
@@ -79,106 +91,130 @@ export function JobPanel() {
       </div>
 
       <div className="flex gap-1 overflow-x-auto border-b border-line p-2">
-        <button
-          type="button"
-          onClick={() => setSection(null)}
-          className={cn(
-            "inline-flex min-h-11 shrink-0 items-center rounded-sm px-3 text-sm",
-            section === null ? "bg-charm text-bg" : "bg-raised text-muted hover:text-fg",
-          )}
-        >
-          All {LABOR.length}
-        </button>
-        {SECTIONS.map((s) => (
+        {DESKS.map((d) => (
           <button
-            key={s}
+            key={d.id}
             type="button"
-            onClick={() => setSection(s)}
+            onClick={() => setDesk(d.id)}
             className={cn(
               "inline-flex min-h-11 shrink-0 items-center rounded-sm px-3 text-sm",
-              section === s ? "bg-charm text-bg" : "bg-raised text-muted hover:text-fg",
+              desk === d.id ? "bg-charm text-bg" : "bg-raised text-muted hover:text-fg",
             )}
           >
-            {SECTION_SHORT[s] ?? s}
+            {d.label}
           </button>
         ))}
       </div>
 
-      <div className="flex gap-1 overflow-x-auto border-b border-line p-2">
-        {HVAC_DIAGS.filter((j) => !j.id.startsWith("hvac-pt-")).map((j) => (
+      {desk === "diag" ? (
+        <div className="flex gap-1 overflow-x-auto border-b border-line p-2">
+          {diags.map((j) => (
+            <button
+              key={j.id}
+              type="button"
+              onClick={() => setJob(j.id)}
+              className={cn(
+                "inline-flex min-h-11 shrink-0 items-center rounded-sm px-3 text-sm",
+                jobId === j.id ? "bg-fg text-bg" : "bg-raised text-muted hover:text-fg",
+              )}
+            >
+              {j.title}
+            </button>
+          ))}
+        </div>
+      ) : null}
+
+      {desk === "pin" ? (
+        <div className="flex gap-1 overflow-x-auto border-b border-line p-2">
+          {PINPOINT_INDEX.map((p) => (
+            <button
+              key={p.id}
+              type="button"
+              onClick={() => setJob(p.id)}
+              className={cn(
+                "inline-flex size-11 shrink-0 items-center justify-center rounded-sm font-mono text-sm",
+                jobId === p.id ? "bg-fg text-bg" : "bg-raised text-muted hover:text-fg",
+              )}
+              title={`${p.letter} · ${p.title} · leaf ${p.page}`}
+            >
+              {p.letter}
+            </button>
+          ))}
+        </div>
+      ) : null}
+
+      {desk === "parts" ? (
+        <div className="flex gap-1 overflow-x-auto border-b border-line p-2">
+          {parts.map((j) => (
+            <button
+              key={j.id}
+              type="button"
+              onClick={() => setJob(j.id)}
+              className={cn(
+                "inline-flex min-h-11 shrink-0 items-center rounded-sm px-3 text-sm",
+                jobId === j.id ? "bg-fg text-bg" : "bg-raised text-muted hover:text-fg",
+              )}
+            >
+              {j.title}
+            </button>
+          ))}
+        </div>
+      ) : null}
+
+      {desk === "tree" ? (
+        <div className="flex gap-1 overflow-x-auto border-b border-line p-2">
           <button
-            key={j.id}
             type="button"
-            onClick={() => setJob(j.id)}
+            onClick={() => setSection(null)}
             className={cn(
               "inline-flex min-h-11 shrink-0 items-center rounded-sm px-3 text-sm",
-              jobId === j.id ? "bg-charm text-bg" : "bg-raised text-muted hover:text-fg",
+              section === null ? "bg-charm text-bg" : "bg-raised text-muted hover:text-fg",
             )}
           >
-            {j.title}
+            All
           </button>
-        ))}
-      </div>
-
-      <div className="flex gap-1 overflow-x-auto border-b border-line p-2">
-        {PINPOINT_INDEX.map((p) => (
-          <button
-            key={p.id}
-            type="button"
-            onClick={() => setJob(p.id)}
-            className={cn(
-              "inline-flex size-11 shrink-0 items-center justify-center rounded-sm font-mono text-sm",
-              jobId === p.id ? "bg-fg text-bg" : "bg-raised text-muted hover:text-fg",
-            )}
-            title={`${p.letter} · ${p.title} · leaf ${p.page}`}
-          >
-            {p.letter}
-          </button>
-        ))}
-      </div>
-
-      <div className="flex gap-1 overflow-x-auto border-b border-line p-2">
-        {JOBS.map((j) => (
-          <button
-            key={j.id}
-            type="button"
-            onClick={() => setJob(j.id)}
-            className={cn(
-              "inline-flex min-h-11 shrink-0 items-center rounded-sm px-3 text-sm",
-              jobId === j.id ? "bg-fg text-bg" : "bg-raised text-muted hover:text-fg",
-            )}
-          >
-            {j.title}
-          </button>
-        ))}
-      </div>
+          {SECTIONS.map((s) => (
+            <button
+              key={s}
+              type="button"
+              onClick={() => setSection(s)}
+              className={cn(
+                "inline-flex min-h-11 shrink-0 items-center rounded-sm px-3 text-sm",
+                section === s ? "bg-charm text-bg" : "bg-raised text-muted hover:text-fg",
+              )}
+            >
+              {SECTION_SHORT[s] ?? s}
+            </button>
+          ))}
+        </div>
+      ) : null}
 
       <div className="min-h-0 flex-1 overflow-y-auto">
-        {query.trim() || !(job || leaf) ? (
-        <ul className="divide-y divide-line border-b border-line">
-          {hits.map((h) => (
-            <li key={h.id}>
-              <button
-                type="button"
-                onClick={() => setLeaf(h.id)}
-                className={cn(
-                  "flex min-h-11 w-full items-center justify-between gap-3 px-4 py-1.5 text-left",
-                  leafId === h.id ? "bg-raised text-fg" : "text-muted hover:text-fg",
-                )}
-              >
-                <span className="min-w-0">
-                  <span className="block truncate text-sm text-fg">{h.t}</span>
-                  <span className="block truncate text-xs text-faint">
-                    {SECTION_SHORT[h.s] ?? h.s} · leaf {h.id}
+        {desk === "tree" || query.trim() ? (
+          <ul className="divide-y divide-line border-b border-line">
+            {hits.map((h) => (
+              <li key={h.id}>
+                <button
+                  type="button"
+                  onClick={() => setLeaf(h.id)}
+                  className={cn(
+                    "flex min-h-11 w-full items-center justify-between gap-3 px-4 py-1.5 text-left",
+                    leafId === h.id ? "bg-raised text-fg" : "text-muted hover:text-fg",
+                  )}
+                >
+                  <span className="min-w-0">
+                    <span className="block truncate text-sm text-fg">{h.t}</span>
+                    <span className="block truncate text-xs text-faint">
+                      {SECTION_SHORT[h.s] ?? h.s} · leaf {h.id}
+                    </span>
                   </span>
-                </span>
-                <span className="shrink-0 font-mono text-sm tabular-nums text-charm">
-                  {h.r[0]?.h}
-                </span>
-              </button>
-            </li>
-          ))}
-        </ul>
+                  <span className="shrink-0 font-mono text-sm tabular-nums text-charm">
+                    {h.r[0]?.h}
+                  </span>
+                </button>
+              </li>
+            ))}
+          </ul>
         ) : null}
 
         {job || leaf ? (
@@ -237,7 +273,7 @@ export function JobPanel() {
             {job?.steps?.length ? (
               <ol className="mt-4 space-y-3 border-t border-line pt-3">
                 {job.steps.map((s) => (
-                  <li key={s.n} className="grid grid-cols-[2rem_1fr] gap-2 text-sm">
+                  <li key={s.n} className="grid grid-cols-[2.4rem_1fr] gap-2 text-sm">
                     <span className="font-mono text-charm">{s.n}</span>
                     <span>
                       <span className="text-fg">{s.text}</span>

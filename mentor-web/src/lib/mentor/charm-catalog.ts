@@ -18,20 +18,12 @@ export type CharmLeaf = {
 
 export const LABOR = laborJson as CharmLeaf[];
 
-export const SECTIONS = [
-  "Heating and Air Conditioning",
-  "Engine, Cooling and Exhaust",
-  "Transmission and Drivetrain",
-  "Steering and Suspension",
-  "Brakes and Traction Control",
-  "Powertrain Management",
-  "Starting and Charging",
-  "Body and Frame",
-  "Lighting and Horns",
-  "Sensors and Switches",
-  "Maintenance",
-  "Windows and Glass",
-] as const;
+const HVAC = "Heating and Air Conditioning";
+
+export const SECTIONS: string[] = [
+  HVAC,
+  ...Array.from(new Set(LABOR.map((l) => l.s))).filter((s) => s !== HVAC),
+];
 
 export const SECTION_SHORT: Record<string, string> = {
   "Heating and Air Conditioning": "HVAC",
@@ -46,6 +38,12 @@ export const SECTION_SHORT: Record<string, string> = {
   "Sensors and Switches": "Sensors",
   Maintenance: "Maint",
   "Windows and Glass": "Glass",
+  "Relays and Modules": "Relays",
+  "Restraints and Safety Systems": "Restraints",
+  "Accessories and Optional Equipment": "Accessories",
+  "Cruise Control": "Cruise",
+  "Instrument Panel, Gauges and Warning Indicators": "I/P",
+  "Wiper and Washer Systems": "Wipers",
 };
 
 export function leafById(id: string | null): CharmLeaf | undefined {
@@ -61,8 +59,9 @@ export function searchLabor(query: string, section: string | null): CharmLeaf[] 
       (l) =>
         l.t.toLowerCase().includes(q) ||
         l.s.toLowerCase().includes(q) ||
+        l.id.includes(q) ||
         l.r.some((r) => (r.i ?? r.o).toLowerCase().includes(q)),
     );
   }
-  return pool.slice(0, 8);
+  return pool.slice(0, 40);
 }

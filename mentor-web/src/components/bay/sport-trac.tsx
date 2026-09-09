@@ -285,23 +285,32 @@ function Hood({ mats, open }: { mats: Mats; open: boolean }) {
 function EngineBay({ mats }: { mats: Mats }) {
   return (
     <group position={[0, 0.72, (COWL_Z + NOSE_Z) / 2 - 0.05]}>
-      <mesh position={[0, 0.08, 0.22]} material={mats.dark} castShadow>
-        <boxGeometry args={[0.62, 0.28, 0.08]} />
+      <mesh position={[0, 0.08, 0.28]} material={mats.dark} castShadow>
+        <boxGeometry args={[0.72, 0.32, 0.08]} />
       </mesh>
-      <mesh position={[0, 0.08, 0.3]} material={mats.silver}>
-        <boxGeometry args={[0.58, 0.24, 0.03]} />
+      <mesh position={[0, 0.08, 0.36]} material={mats.silver}>
+        <boxGeometry args={[0.68, 0.28, 0.03]} />
       </mesh>
-      <mesh position={[-0.22, 0.12, -0.05]} material={mats.dark} castShadow>
-        <boxGeometry args={[0.32, 0.22, 0.42]} />
+      <mesh position={[-0.18, 0.14, -0.08]} material={mats.dark} castShadow>
+        <boxGeometry args={[0.42, 0.28, 0.5]} />
       </mesh>
-      <mesh position={[0.28, 0.02, -0.08]} material={mats.cladding} castShadow>
-        <boxGeometry args={[0.2, 0.16, 0.22]} />
+      <mesh position={[0.32, 0.02, -0.1]} material={mats.cladding} castShadow>
+        <boxGeometry args={[0.22, 0.18, 0.24]} />
       </mesh>
-      <mesh position={[0.28, 0.02, 0.06]} rotation={[Math.PI / 2, 0, 0]} material={mats.dark}>
-        <cylinderGeometry args={[0.085, 0.085, 0.05, 20]} />
+      <mesh position={[0.32, 0.02, 0.05]} rotation={[Math.PI / 2, 0, 0]} material={mats.dark}>
+        <cylinderGeometry args={[0.09, 0.09, 0.05, 20]} />
       </mesh>
-      <mesh position={[0.28, 0.18, -0.08]} rotation={[0, 0, Math.PI / 2]} material={mats.rubber}>
-        <torusGeometry args={[0.1, 0.012, 8, 18]} />
+      <mesh position={[0.32, 0.2, -0.1]} rotation={[0, 0, Math.PI / 2]} material={mats.rubber}>
+        <torusGeometry args={[0.11, 0.012, 8, 18]} />
+      </mesh>
+      <mesh position={[0.34, 0.18, 0.18]} material={mats.silver} castShadow>
+        <cylinderGeometry args={[0.045, 0.045, 0.16, 12]} />
+      </mesh>
+      <mesh position={[-0.28, 0.08, 0.02]} rotation={[0, 0, Math.PI / 2]} material={mats.cladding}>
+        <cylinderGeometry args={[0.03, 0.03, 0.55, 10]} />
+      </mesh>
+      <mesh position={[0.12, 0.1, 0.08]} rotation={[0, 0.4, Math.PI / 2]} material={mats.cladding}>
+        <cylinderGeometry args={[0.018, 0.018, 0.42, 8]} />
       </mesh>
     </group>
   );
@@ -314,6 +323,7 @@ export function SportTrac({ paintId }: { paintId: PaintId }) {
     !!jobId &&
     (jobId.startsWith("ac") ||
       jobId.startsWith("hvac") ||
+      jobId.startsWith("leaf-") ||
       jobId === "heater-core");
 
   return (
@@ -708,28 +718,47 @@ function CharmHotspots() {
   const jobId = useMentor((s) => s.jobId);
   const setJob = useMentor((s) => s.setJob);
   const job = jobById(jobId);
-  const mark = job?.hotspot ?? [0.42, 0.58, 1.52];
-  const lit = !!jobId && (jobId.startsWith("ac") || jobId.startsWith("hvac") || jobId === "heater-core");
+  const mark = job?.hotspot ?? [0.28, 0.72, 1.72];
+
+  const spots: { id: string; pos: [number, number, number]; size: [number, number, number] }[] = [
+    { id: "ac-compressor", pos: [0.28, 0.72, 1.72], size: [0.22, 0.16, 0.24] },
+    { id: "ac-clutch", pos: [0.28, 0.72, 1.86], size: [0.16, 0.14, 0.08] },
+    { id: "ac-condenser", pos: [0.0, 0.72, 2.35], size: [0.7, 0.28, 0.06] },
+    { id: "leaf-9354", pos: [0.32, 0.78, 1.35], size: [0.12, 0.18, 0.12] },
+    { id: "leaf-9344", pos: [0.18, 0.7, 1.45], size: [0.1, 0.08, 0.1] },
+    { id: "ac-evaporator", pos: [0.0, 0.78, 1.12], size: [0.28, 0.16, 0.18] },
+    { id: "heater-core", pos: [0.0, 0.78, 1.02], size: [0.22, 0.14, 0.12] },
+    { id: "leaf-9325", pos: [0.22, 0.72, 1.08], size: [0.16, 0.12, 0.14] },
+    { id: "leaf-9340", pos: [0.0, 0.98, 0.92], size: [0.28, 0.08, 0.12] },
+  ];
 
   return (
     <group>
-      <mesh
-        position={[0.28, 0.74, (COWL_Z + NOSE_Z) / 2]}
-        castShadow
-        onClick={(e) => {
-          e.stopPropagation();
-          setJob("ac-compressor");
-        }}
-      >
-        <boxGeometry args={[0.2, 0.16, 0.22]} />
-        <meshStandardMaterial
-          color="#2a3034"
-          metalness={0.55}
-          roughness={0.4}
-          emissive={lit ? "#9aa3a7" : "#000000"}
-          emissiveIntensity={lit ? 0.4 : 0}
-        />
-      </mesh>
+      {spots.map((s) => {
+        const on = jobId === s.id;
+        return (
+          <mesh
+            key={s.id}
+            position={s.pos}
+            castShadow
+            onClick={(e) => {
+              e.stopPropagation();
+              setJob(s.id);
+            }}
+          >
+            <boxGeometry args={s.size} />
+            <meshStandardMaterial
+              color="#2a3034"
+              metalness={0.55}
+              roughness={0.4}
+              emissive={on ? "#c4b08a" : "#000000"}
+              emissiveIntensity={on ? 0.55 : 0}
+              transparent
+              opacity={on ? 0.95 : 0.35}
+            />
+          </mesh>
+        );
+      })}
       {job ? (
         <mesh position={mark}>
           <sphereGeometry args={[0.032, 16, 16]} />

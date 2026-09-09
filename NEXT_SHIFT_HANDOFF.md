@@ -122,3 +122,7 @@ Tailscale IPs from the 2026-09-07 operator note (verify with `tailscale status` 
 ## Rights
 
 **© 2026 Guru Studios of ATL. All rights reserved.** See `LICENSE` and `COPYRIGHT.md`. Ford marks remain Ford’s. CHARM pages remain third-party.
+
+## Complete (2026-09-09)
+
+Mentor HVAC desk is closed: Diagnose / Pinpoint A–K / R&R / Tree 598. Symptom chart 1761 and DTC P1460–P1469 on the desk. Clickable FS-10, condenser, orifice, accumulator, evaporator, heater, blower, control. Admin lock is studio-only and is not stored in this public repo.

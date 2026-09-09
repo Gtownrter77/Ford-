@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import { Headphones, RotateCcw } from "lucide-react";
 import { MentorBay, xrStore } from "@/components/bay/mentor-bay";
 import { JobPanel } from "@/components/mentor/job-panel";
+import { AdminLock } from "@/components/mentor/admin-lock";
+import { UserButton } from "@/lib/auth/gates";
+import { useCurrentUserState } from "@/lib/auth/use-current-user";
 import { PAINTS, type PaintId } from "@/lib/mentor/scale";
 import { STUDIO } from "@/lib/mentor/rights";
 import { useMentor } from "@/lib/mentor/store";
@@ -11,6 +14,13 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/")({ component: Home });
 
 function Home() {
+  const { user, isPending } = useCurrentUserState();
+  if (isPending) return <AdminLock pending />;
+  if (!user) return <AdminLock />;
+  return <Bay />;
+}
+
+function Bay() {
   const paint = useMentor((s) => s.paint);
   const setPaint = useMentor((s) => s.setPaint);
   const [xrOk, setXrOk] = useState(false);
@@ -64,6 +74,9 @@ function Home() {
             <p className="mt-2 text-sm text-muted">
               CHARM HVAC · 4WD VIN K · all rights reserved
             </p>
+          </div>
+          <div className="pointer-events-auto rounded-md border border-line bg-surface/80 px-3 py-2">
+            <UserButton />
           </div>
         </header>
 
