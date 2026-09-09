@@ -1,7 +1,3 @@
-# Current hub status — 2026-08-26
+# Current hub status — 2026-09-09
 
-The 3D hub is a complete 2004 Explorer Sport Trac. Not a wreck.
-
-Drop file:
-
-`app/src/main/assets/models/ford_explorer_sport_trac_2004.glb`
+Android `main` HEAD at last pull: `134b651`. Web CHARM bay + HVAC Testing and Inspection + CB1 notes in this checkpoint. See `NEXT_SHIFT_HANDOFF.md`.

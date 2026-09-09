@@ -1,232 +1,119 @@
-# Ford Sport Trac Mentor App — Next-Shift Handoff
+# Ford Sport Trac Mentor — Next-Shift Handoff
 
-**Prepared:** 2026-09-06
-**Repository:** `https://github.com/Gtownrter77/Ford-`
-**Target:** 2004 Ford Explorer Sport Trac, 4.0L SOHC V6, 4WD, VIN K Flex Fuel
-**Current branch:** `main`
-**Current commit at handoff:** `e9eec61` (`feat(auth): require Google account sign-in`)
+**Prepared:** 2026-09-09  
+**Repository:** https://github.com/Gtownrter77/Ford-  
+**Target:** 2004 Ford Explorer Sport Trac, 4.0L SOHC V6, 4WD, VIN K Flex Fuel  
+**Current Android HEAD at last pull:** `134b651` (`refactor: optimize UI defaults and project structure`, 2026-09-08)  
+**This checkpoint:** CHARM web bay + HVAC Testing and Inspection + CB1 Linux notes  
+**Cadence:** 5 substantive changes → push (WORKFLOW_RULES.md)
 
-## Executive status
+---
 
-The repository is a Kotlin/Jetpack Compose Android teaching and diagnostic app with a meter-scale Blender/GLB vehicle-model package. The current digital release gates pass: model assets exist, GLB integrity checks pass, Android unit tests pass, and the debug APK packages successfully. The latest major addition is a real classic-Bluetooth ELM327 transport layer with OBD-II PID/DTC parsing and FORScan log matching.
+## Two products, one truck
 
-The project is **not** a certified OEM CAD package, a physical-device-certified app, a full FORScan desktop replacement, or a complete page-cited manual retrieval system. Do not upgrade any of those statements to “complete” without the evidence described below.
+| Product | Where | Status |
+|---|---|---|
+| Android Mentor (Kotlin / Compose / GLB) | `app/` on `main` | Last ship: Google sign-in gate + OBD/FORScan. Physical-device Google sign-in still open. |
+| Web Mentor bay (React / Three / CHARM book) | `mentor-web/` (this checkpoint) | Playable 1:1 bay. CHARM 4WD VIN K labor catalog (598 leaves). HVAC diagnostics desk from printed Testing and Inspection leaves. |
 
-## New product requirement — mandatory Google-account sign-in
+Do not treat the web bay as a replacement for the Android app. It is the CHARM book + meter-true hull for rehearsal while CB1 / Pixel 8 / Android catch up.
 
-The app must require users to sign in with a Google account before accessing Mentor, diagnostics, FORScan/OBD workflows, manual content, 3D technical assets, or saved technician records. Anonymous use is not an allowed product state.
+Do not treat CHARM as Ford. It is a third-party copy. VECI and the under-hood label override a table if they differ.
 
-The authentication gate is now implemented in the app entry point and is compile/test verified. The next shift must complete provider configuration and physical-device validation; do not replace the gate with an anonymous fallback.
+---
 
-- Use the project’s configured Firebase/Google authentication path where available. **Implemented with Firebase Auth + Android Credential Manager.**
-- Require a successful Google identity before entering the main app shell. **Implemented; `MainActivity` renders the protected shell only after a Firebase user exists.**
-- Persist and restore the authenticated session securely through the provider SDK. **Provider session restore is used; physical cold-start validation remains.**
-- Provide sign-out and account-switch behavior. **Provider sign-out exists in `GoogleAuthManager`; expose and validate the UI action next.**
-- Return users to the sign-in screen when the session is invalid or revoked. **Gate logic is present; revoked-session/device validation remains.**
-- Do not store Google passwords or access tokens in app preferences.
-- Keep diagnostic records scoped to the authenticated account.
-- Test cold start, first sign-in, cancelled sign-in, sign-out, revoked session, offline startup, and account switching.
-- Do not claim this is complete until a real device successfully signs in with Google and the protected screens cannot be reached anonymously. **Code/build gate is complete; physical-device acceptance is still open.**
+## What landed 2026-09-07 → 2026-09-09 (web)
 
-### Authentication implementation and remaining setup
+1. Meter-true 2004 Sport Trac hull (Owner Guide dimensions). Oxford White / Shadow Grey / Redfire.
+2. Shop bay + WebXR enter (Quest browser). Orbit / walk the bay.
+3. CHARM 4WD VIN K tree only. 9,562 HTML leaves in the pack. **598 labor-times tables** parsed into `mentor-web/src/lib/mentor/charm-labor.json`.
+4. HVAC labor cards with printed hours: compressor 1.1, clutch 1.8, shaft seal 1.8, condenser 1.1, evaporator 2.1/2.7, heater core 8.8/2.7, recover 0.4, evac/charge 1.4, system diagnosis 1.0, pinpoint 0.5.
+5. Compressor **Service and Repair** (leaf 1705) + **External Leak Test** (leaf 1703) as printed steps.
+6. HVAC **Testing and Inspection** desk (leaves 1759–1779, pinpoint A–K 1762–1772).
+7. Search + section chips over the 598 labor leaves. Hours only as CHARM printed them. No guessed torque, charge, or oil.
 
-The implementation is in commit `e9eec61`. `GoogleSignInScreen` invokes Credential Manager, exchanges the Google ID token with Firebase Auth, and calls back into `MainActivity` only after successful authentication. `GoogleAuthManager` has no anonymous path and does not store passwords or tokens in preferences.
+### CHARM HVAC diagnostics (printed)
 
-Before installing on a physical device, configure the Firebase project with the matching Android application ID and signing fingerprints, place the generated `google-services.json` in the app module, and set `GOOGLE_WEB_CLIENT_ID` to the Firebase Web OAuth client ID through the project Secrets configuration. Without those provider settings, the app intentionally remains blocked rather than allowing anonymous access.
+| Card | Leaf | What it is |
+|---|---|---|
+| Inspect / verify | 1759 | Duplicate concern, visual inspect, DLC scan tool, data-link, PCM DTCs, else symptom chart |
+| HVAC DTC index | 1760 | **P1460–P1469** (factory chart — image, not OCR'd) |
+| Symptom chart | 1761 | Factory chart → pinpoint A–K (image, not OCR'd) |
+| Retail system check | 1775 | 10 min MAX A/C idle, gauges at 1500 rpm, blower/mode/temp, leak if low |
+| Refrigerant pressures | 1779 | Proc 1 ≤100°F / proc 2 above. Record suction & discharge vs CHARM charts |
+| Electronic leak | 1776 | 60–80 psi, engine off, H10PM, ventilate first |
+| Evaporator / condenser leak | 1774 | Recover, isolate core, 45 min vacuum, 30 in-Hg hold |
+| Heater core test | 1778 | Outlet-hose hot check, then 35 psi / 3 min |
+| Pinpoint A–K | 1762–1772 | Named tests + chart groups. Cells are factory images — follow the book |
 
-This requirement changes the product priority: authentication and account-scoped data protection now precede further Mentor feature expansion.
+Safety printed on 1751: airbag backup — battery ground off, wait one minute, before climate-control work. R-134a only. Analyzer before recover.
 
-## Verified current state
+---
 
-| Area | Current state |
+## Android app — unchanged from last `main` (do not downgrade)
+
+Google sign-in is **mandatory** in the Android product. No anonymous fallback.
+
+- Firebase + Credential Manager implemented (`e9eec61` lineage).
+- Next shift still owes: `google-services.json`, `GOOGLE_WEB_CLIENT_ID`, physical Pixel 8 sign-in, sign-out UI, revoked-session test.
+- OBD: ELM327 SPP + standard PID/DTC. No module programming. No auto-clear.
+- Mentor retrieval of the full CHARM corpus is still the largest Android gap. The web bay's 598-leaf labor JSON is a start for that index — do not paste 9,562 pages into Gemini.
+
+---
+
+## CB1 Chromebook Linux (penguin) — infrastructure
+
+**Role:** cracked-screen 4 GB Chromebook, 24/7 house server. Pixel 8 (HB1) is the remote screen via Tailscale.
+
+| Item | Last observed 2026-09-07 |
 |---|---|
-| Model assets | 9 GLB release areas, corresponding Blender scenes, and rendered previews are present. |
-| GLB integrity | All 9 GLBs passed `tools/validate_glb.py`. |
-| Release audit | `RELEASE_AUDIT.md` and `release_audit.json` report 9/9 areas at or above the repository’s 80% release threshold. |
-| VIN/evidence traceability | `docs/VEHICLE_VERIFICATION_MANIFEST.md` maps each area to artifacts, source anchors, and remaining physical checks. |
-| HVAC/oiling/timing | Three-level reference package and safety-first diagnostic workflow are present. |
-| Critical diagnostic workflow | Roadside triage, full protocol, and technician handoff measurement fields are present. |
-| OBD/FORScan | Real paired-Bluetooth ELM327 transport, standard PID polling, DTC decoding, and FORScan log parsing are present. |
-| Android build | `testDebugUnitTest` and `assembleDebug` passed after the OBD/FORScan changes. |
-| Current APK | `app/build/outputs/apk/debug/app-debug.apk` was generated by the last successful build. |
-| Source corpus | 16,117 archive-inventory entries are present under `docs/source_manual_extraction`; no full manual HTML/PDF corpus is bundled in Android assets. |
-| Mentor retrieval | Curated local rules, selected Room summaries, and Gemini prompts are present; full page-indexed retrieval is not present. |
+| Host | Crostini `penguin` / Debian trixie, ~2.7 GiB visible RAM |
+| Card 1 | `/dev/sdc1` ext4 label `SD_SRC`, UUID `70040cfb-73e4-4813-ab03-602daf79a901`, mounted `/mnt/sd2` (~469G) |
+| fstab | `UUID=… /mnt/sd2 ext4 noatime,nodiratime,commit=120,errors=remount-ro,nofail,x-systemd.device-timeout=8 0 2` |
+| Swapfile | `/mnt/sd2/swapfile` 8 GiB, pri 10, UUID `789f7f71-79ae-4b31-98b0-94181a08b40f` |
+| zram | `systemd-zram-generator` ram/2 lz4 — **device timed out**. Reboot then `sudo systemctl start /dev/zram0` |
+| Second 512 GB card | Not seen in Crostini. Do not bind-mount as fake sd3. |
+| Node | v22.23.2 (NodeSource) |
+| Grok CLI | 1.0.13, signed in `rlongmbox@gmail.com` via `grok login --device-auth` |
+| OmniRoute | `sudo npm install -g omniroute` was **still running** (PID ~10551, swapping). Do not claim installed until `omniroute --version` works. |
+| OpenCode | **Not installed this shift.** |
+| ChromeOS | Stay signed in. Lid open, charger in, sleep never on AC — or Crostini dies. |
 
-## Important files
+Tailscale IPs from the 2026-09-07 operator note (verify with `tailscale status` before trusting):
 
-| File | Role |
-|---|---|
-| `app/src/main/java/com/example/data/GeminiDiagnosticRepository.kt` | Gemini prompt, conversation history, local fallback analysis, and component matching. |
-| `app/src/main/java/com/example/data/OfflineCacheRepository.kt` | Seeds selected repair-manual summaries into Room; this is not a full corpus index. |
-| `app/src/main/java/com/example/data/CharmWorkshopIndex.kt` | Curated workshop links/index for selected VIN-K 4WD areas. |
-| `app/src/main/java/com/example/ui/components/ForscanDialog.kt` | FORScan UI, paired-adapter connect state, live PID view, and DTC log import. |
-| `app/src/main/java/com/example/obd/AndroidObd2BluetoothBridge.kt` | Real Bluetooth SPP ELM327 transport and standard PID/DTC parser. |
-| `app/src/test/java/com/example/obd/Obd2PidParserTest.kt` | Deterministic RPM, coolant, transport-failure, and DTC parser tests. |
-| `app/src/main/java/com/example/ui/components/CriticalDiagnosticDialog.kt` | Roadside triage, full diagnostic protocol, and technician handoff fields. |
-| `app/src/main/java/com/example/auth/GoogleAuthManager.kt` | Firebase Auth and Credential Manager integration; mandatory Google identity. |
-| `app/src/main/java/com/example/ui/auth/GoogleSignInScreen.kt` | Blocking Google sign-in UI and failure-state messaging. |
-| `app/src/main/java/com/example/MainActivity.kt` | Authentication gate around the protected app shell. |
-| `docs/OBD2_FORSCAN_INTEGRATION.md` | OBD/FORScan scope, supported commands, and safety boundary. |
-| `docs/TERMUX_BUILD.md` | Complete desktop build versus reduced ARM64 Termux build instructions. |
-| `docs/VEHICLE_VERIFICATION_MANIFEST.md` | VIN-K/4WD evidence and physical-verification boundaries. |
-| `RELEASE_AUDIT.md` | Repository release-gate report. |
-| `tools/validate_vehicle_release.py` | Whole-repository artifact/evidence/package audit. |
+- CB1 penguin-1: `100.78.197.121`
+- CB2 penguin: `100.100.214.8` (was stale)
+- HB1 Pixel 8: `100.68.223.72`
 
-## Mentor’s intended role
+---
 
-The Mentor is a **configuration-aware diagnostic and learning guide**, not an oracle and not an autonomous repair authorizer. It should help the owner or technician:
+## Source of truth
 
-1. State the symptom and immediate safety condition.
-2. Select the correct vehicle configuration: 2004 Sport Trac, 4.0L SOHC, 4WD, VIN K Flex Fuel.
-3. Ask for measured evidence before ranking causes.
-4. Separate observed facts, measured values, retrieved manual evidence, inference, and unknowns.
-5. Retrieve the most relevant VIN-K 4WD source pages and show citations.
-6. Teach the repair on the 3D model before physical work.
-7. Accept FORScan DTC/PID data and technician measurements.
-8. Recommend the next safest discriminating test—not simply the most likely replacement part.
-9. Escalate oil-pressure warnings, overheating, smoke, active leaks, severe timing noise, SRS/brake hazards, and unsafe roadside situations.
-10. Produce a technician-ready handoff containing symptoms, conditions, measurements, codes, evidence citations, decisions, and unresolved questions.
+- CHARM tree: `2004 Explorer Sport Trac 4WD V6-4.0L VIN K Flex Fuel`
+- Pack: charm.li bundle for that tree (~129 MB zip, **not** in git)
+- Labor JSON: `mentor-web/src/lib/mentor/charm-labor.json` (598 tables)
+- HVAC procedures: `mentor-web/src/lib/mentor/hvac-diagnostics.ts` + compressor steps in `book.ts`
+- Scale: `mentor-web/src/lib/mentor/scale.ts` — Owner Guide inches
 
-The Mentor must never present an unmeasured confidence score as proof, invent a torque/capacity/pressure value, silently use a 2WD page for a 4WD truck, or authorize driving when a stop/tow condition is present.
+**Never silently use a 2WD leaf.**
 
-## Next required feature: full source retrieval
+---
 
-The largest remaining Mentor gap is page-level use of the available source archive. The next shift should implement this as a bounded retrieval system rather than paste the entire archive into a prompt.
+## Next crew — ordered
 
-### Phase A — Build a source manifest
+1. Confirm OmniRoute finished on CB1 (`which omniroute` / health). If npm died, retry with `NODE_OPTIONS=--max-old-space-size=512`.
+2. Install OpenCode: `npm install -g opencode` after Node is stable.
+3. Reboot CB1 once for zram. Confirm `swapon --show` has zram prio 100 and sd2 swapfile prio 10.
+4. Pixel 8: Tailscale + Android Google sign-in on the Kotlin app.
+5. Port the 598-leaf labor JSON + HVAC diagnostic cards into Android `CharmWorkshopIndex` / Room FTS (Phase A–C in the previous handoff).
+6. Pinpoint A–K charts are images. OCR or ship the PNGs — do not invent cells.
+7. Keep 5-change push cadence.
 
-Create a machine-readable manifest for every source page/archive entry with:
+---
 
-- Configuration: `2004`, `Sport Trac`, `4WD` or `2WD`, `VIN K`, `4.0L`, `Flex Fuel` where known.
-- System and subsection.
-- Source title and page/leaf identifier.
-- Original URL/archive path.
-- Content checksum.
-- Evidence type: procedure, specification, wiring, diagnosis, parts/labor, owner guidance, or unknown.
-- Eligibility: `preferred`, `allowed-with-warning`, or `blocked` for the target configuration.
+## Do not
 
-The 4WD VIN-K workshop links recorded in `docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md` are the preferred anchor set. 2WD pages must be marked and never silently selected for 4WD-specific procedures.
-
-### Phase B — Extract and index
-
-Extract page text from the available archive into a build-time index. Do not put an unbounded 9,300-page text blob directly in the Gemini prompt. Use a compact Room/SQLite FTS index or a versioned compressed asset with:
-
-- Tokenized title/body search.
-- System and configuration filters.
-- Page-level snippets.
-- Stable source IDs.
-- Manual-page citation metadata.
-
-Add a deterministic CLI validator that reports page count, empty pages, duplicate hashes, configuration labels, and index version.
-
-### Phase C — Retrieval contract
-
-Implement a `MentorSourceRetriever` interface with a local implementation first:
-
-```kotlin
-interface MentorSourceRetriever {
-    suspend fun search(
-        query: String,
-        configuration: VehicleConfiguration,
-        limit: Int = 5
-    ): List<SourceExcerpt>
-}
-
-data class SourceExcerpt(
-    val sourceId: String,
-    val title: String,
-    val section: String,
-    val pageLabel: String,
-    val configuration: String,
-    val excerpt: String,
-    val sourceUrl: String?,
-    val evidenceType: String,
-    val fitWarning: String?
-)
-```
-
-The retriever should return no result rather than a weak cross-configuration result when the only match is blocked. It should return warnings when a source is generic, 2WD, owner-guide-only, or missing a VIN-specific label.
-
-### Phase D — Mentor prompt integration
-
-For each Mentor question:
-
-1. Detect the likely system and safety class.
-2. Retrieve top source excerpts with configuration filters.
-3. Put the excerpts in a clearly delimited `SOURCE EVIDENCE` block.
-4. Require the model to cite source IDs/page labels for factual manual claims.
-5. Require the model to say `not found in indexed source` when evidence is missing.
-6. Keep retrieved excerpts short enough to preserve conversation context.
-7. Log the evidence IDs in the technician handoff.
-
-The Gemini request must remain optional. The offline Mentor should still provide safe triage and a retrieval result/citation when the API key is absent.
-
-## Required source-aware answer schema
-
-Extend Mentor output toward a structured result:
-
-- `safetyLevel`: `STOP_AND_TOW`, `DO_NOT_RUN`, `CAUTION`, or `NORMAL_DIAGNOSTIC`
-- `observedFacts`
-- `missingMeasurements`
-- `retrievedEvidence[]`
-- `candidateCauses[]`
-- `nextTest`
-- `doNotDo[]`
-- `componentId`
-- `configurationWarning`
-- `technicianHandoff`
-
-A source citation is required for exact torque, pressure, capacity, wiring, calibration, module procedure, or safety-critical service claims.
-
-## OBD/FORScan follow-up
-
-The current Bluetooth layer supports generic ELM327 SPP and standard PIDs. It does not implement proprietary Ford module programming or bidirectional functions. The next shift may extend it only with explicit protocol evidence and tests.
-
-Safe next additions:
-
-- Persist an OBD session with timestamp, adapter name, VIN entry, DTCs, and PID samples.
-- Add a “measured vs simulated/unavailable” visual state.
-- Add export of DTC/PID data into the technician handoff.
-- Add standard PID polling for fuel trims, load, MAP, vehicle speed, and throttle only after parser tests.
-- Keep Ford module commands read-only until a qualified protocol contract and confirmation flow exist.
-
-Do not add automatic clearing, coding, module programming, actuator activation, or security-access commands as a convenience feature.
-
-## Physical-truck validation plan
-
-The next shift should not mark the mechanical issues complete based on source retrieval. The technician must still document:
-
-- Mechanical oil pressure cold and fully warm using the exact service procedure.
-- A/C low/high pressures, ambient temperature, leak evidence, clutch command, and vent temperature.
-- Coolant temperature, heater-hose temperatures, blend/mode operation, and cooling-system integrity.
-- Timing-noise condition, localization, scan data, guide/tensioner condition, and timing marks.
-- OBD/FORScan DTCs, freeze-frame, and relevant live data.
-- VIN, mileage, engine/drivetrain configuration, and prior repair history.
-
-### Authentication device-validation checklist
-
-- First launch with no Firebase session shows only the Google sign-in screen.
-- Cancelled or failed sign-in does not enter Mentor, 3D, Diagnostics, or FORScan.
-- Successful Google sign-in enters the protected shell and restores after cold start.
-- Sign-out/account switching returns to the gate and does not expose the prior account’s records.
-- Revoked/expired session returns to the gate.
-- Offline startup fails closed when no valid cached provider session exists.
-
-## Acceptance tests for the next shift
-
-The source-retrieval phase is complete only when:
-
-1. The index validator reports a reproducible page count and version.
-2. A 4WD HVAC query retrieves 4WD HVAC evidence with citations.
-3. A timing-chain query retrieves engine/timing evidence and does not silently select a 2WD-only page.
-4. A torque query with no verified source returns an explicit unknown/manual-check warning.
-5. Offline mode returns safe triage and local evidence without a Gemini key.
-6. Gemini mode receives only bounded retrieved excerpts and cites them.
-7. A technician handoff records measurements, DTCs, evidence IDs, and unresolved items.
-8. Parser, retrieval, configuration-filter, and prompt-contract tests pass.
-9. `testDebugUnitTest`, `assembleDebug`, and the whole-repository release validator pass.
-10. No claim is made that the physical truck is safe to drive without physical inspection.
-
-## Final handoff instruction
-
-Start with Firebase provider setup and physical authentication acceptance, then continue source manifest/index construction and tests. Do not generate more decorative geometry before making Mentor retrieval, citations, configuration filtering, and technician handoff evidence real. Preserve the current safety language and evidence boundaries. The auth code/build phase passed `testDebugUnitTest` and `assembleDebug`; update this handoff again after real-device sign-in and account-scoping checks. Push each verified phase to `main` with a short commit message and update this handoff’s current commit/build status.
+- Invent labor, torque, charge, oil, or clutch gap.
+- Recover / evacuate / charge without professional equipment.
+- Mark physical A/C, oil pressure, or timing “fixed” from this bay.
+- Commit the 129 MB CHARM zip or `node_modules`.
