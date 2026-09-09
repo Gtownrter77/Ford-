@@ -1,11 +1,11 @@
 import { HVAC_DIAGS } from "./hvac-diagnostics";
+import { STUDIO } from "./rights";
 
 export const CHARM = {
   tree: "2004 Explorer Sport Trac 4WD V6-4.0L VIN K Flex Fuel",
   leaves: 9562,
   laborLeaves: 598,
-  disclaimer:
-    "CHARM is a third-party copy of workshop pages. Confirm the 4WD VIN K tree. VECI and the under-hood label override a table if they differ. Recover, evacuate, and charge stay professional-equipment work.",
+  disclaimer: `${STUDIO.mark} CHARM is a third-party copy of workshop pages. Confirm the 4WD VIN K tree. VECI and the under-hood label override a table if they differ. Recover, evacuate, and charge stay professional-equipment work. Ford marks remain Ford’s.`,
 } as const;
 
 export type LaborRow = {

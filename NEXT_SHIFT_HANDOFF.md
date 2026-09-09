@@ -118,3 +118,7 @@ Tailscale IPs from the 2026-09-07 operator note (verify with `tailscale status` 
 - Recover / evacuate / charge without professional equipment.
 - Mark physical A/C, oil pressure, or timing “fixed” from this bay.
 - Commit the 129 MB CHARM zip or `node_modules`.
+
+## Rights
+
+**© 2026 Guru Studios of ATL. All rights reserved.** See `LICENSE` and `COPYRIGHT.md`. Ford marks remain Ford’s. CHARM pages remain third-party.

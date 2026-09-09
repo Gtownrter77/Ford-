@@ -29,7 +29,7 @@ export const TAIL_Z = REAR_AXLE_Z - REAR_OVERHANG;
 
 export const BODY_W = WIDTH - 0.1;
 export const CAB_REAR_Z = TAIL_Z + BED_LEN + 0.05;
-export const COWL_Z = FRONT_AXLE_Z - 0.32;
+export const COWL_Z = FRONT_AXLE_Z - 0.46;
 
 export const PAINTS = {
   oxford: { name: "Oxford White", color: "#e6e2d8" },

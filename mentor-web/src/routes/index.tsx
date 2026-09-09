@@ -4,6 +4,7 @@ import { Headphones, RotateCcw } from "lucide-react";
 import { MentorBay, xrStore } from "@/components/bay/mentor-bay";
 import { JobPanel } from "@/components/mentor/job-panel";
 import { PAINTS, type PaintId } from "@/lib/mentor/scale";
+import { STUDIO } from "@/lib/mentor/rights";
 import { useMentor } from "@/lib/mentor/store";
 import { cn } from "@/lib/utils";
 
@@ -53,15 +54,15 @@ function Home() {
 
       <div className="pointer-events-none absolute inset-0 z-10 flex flex-col justify-between gap-3 p-4 sm:p-6">
         <header className="flex items-start justify-between gap-4">
-          <div className="max-w-[20rem]">
+          <div className="max-w-[22rem]">
             <p className="font-mono text-xs tracking-[0.22em] text-charm uppercase">
-              CHARM HVAC · Testing and Inspection
+              {STUDIO.name}
             </p>
             <p className="font-display mt-1 text-2xl leading-none tracking-tight sm:text-3xl">
               2004 Sport Trac
             </p>
             <p className="mt-2 text-sm text-muted">
-              4.0L VIN K · Flex Fuel · printed book
+              CHARM HVAC · 4WD VIN K · all rights reserved
             </p>
           </div>
         </header>
@@ -116,7 +117,7 @@ function Home() {
               <p className="max-w-xs text-sm text-muted">{vrMsg}</p>
             ) : (
               <p className="hidden max-w-xs text-xs text-faint sm:block">
-                Tap a CHARM leaf. Hours are printed. Drag the bay to walk it.
+                {STUDIO.mark}
               </p>
             )}
           </div>

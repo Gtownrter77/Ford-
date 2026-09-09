@@ -26,8 +26,8 @@ function CameraRig() {
   const seat = useMemo(
     () =>
       job
-        ? new THREE.Vector3(job.hotspot[0] + 2.35, job.hotspot[1] + 0.9, job.hotspot[2] + 1.55)
-        : new THREE.Vector3(6.5, 1.22, 1.85),
+        ? new THREE.Vector3(job.hotspot[0] + 3.2, job.hotspot[1] + 1.15, job.hotspot[2] + 2.8)
+        : new THREE.Vector3(4.8, 1.42, 5.4),
     [job],
   );
   const settle = useMemo(() => ({ t: 1 }), [jobId]);
@@ -52,7 +52,7 @@ function Scene() {
 
   return (
     <>
-      <PerspectiveCamera makeDefault position={[6.5, 1.22, 1.85]} fov={30} />
+      <PerspectiveCamera makeDefault position={[4.8, 1.42, 5.4]} fov={32} />
       <BayLights />
       <Suspense fallback={null}>
         <Environment preset="warehouse" environmentIntensity={0.4} />
@@ -73,7 +73,7 @@ function Scene() {
       <color attach="background" args={["#0c0d0b"]} />
       <OrbitControls
         makeDefault
-        target={[0, 0.72, 0.05]}
+        target={[0, 0.78, 0.15]}
         enableDamping
         dampingFactor={0.08}
         minDistance={2.4}

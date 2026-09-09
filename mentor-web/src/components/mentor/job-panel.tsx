@@ -1,5 +1,6 @@
 import { Search, X } from "lucide-react";
 import { CHARM, JOBS, jobById } from "@/lib/mentor/book";
+import { STUDIO } from "@/lib/mentor/rights";
 import { HVAC_DIAGS, PINPOINT_INDEX } from "@/lib/mentor/hvac-diagnostics";
 import {
   LABOR,
@@ -58,7 +59,7 @@ export function JobPanel() {
     <div className="pointer-events-auto flex max-h-[42dvh] w-full max-w-lg flex-col overflow-hidden rounded-md border border-line bg-surface/95 sm:max-h-[68dvh]">
       <div className="border-b border-line px-4 py-3">
         <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-charm">
-          Operation CHARM
+          {STUDIO.name}
         </p>
         <p className="mt-1 font-display text-lg leading-none tracking-tight">
           HVAC diagnostics
