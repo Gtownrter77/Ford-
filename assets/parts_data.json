@@ -1,0 +1,118 @@
+{
+  "vehicle": {
+    "vehicleId": "2004_sport_trac_vink",
+    "displayName": "2004 Explorer Sport Trac VIN K",
+    "modelAssetPath": "models/ford_explorer_sport_trac_2004_wreck.glb",
+    "overviewCamera": {
+      "position": [0.0, 1.5, 3.5],
+      "lookAt": [0.0, 0.8, 0.0]
+    }
+  },
+  "parts": [
+    {
+      "id": "wheel_front_left",
+      "nodeNames": ["wheel_front_left", "front_left_wheel", "FL_wheel"],
+      "partName": "Front Left Wheel",
+      "oemPartNumber": "Not specified in 2004 OG",
+      "aftermarketPartNumber": "16\" or 17\" per trim",
+      "focusCamera": {
+        "position": [-1.2, 1.0, 1.5],
+        "lookAt": [-1.0, 0.8, 0.0]
+      },
+      "replacementSteps": [
+        "Safely raise vehicle and support with jack stands",
+        "Remove five lug nuts (84-114 ft-lb torque)",
+        "Remove wheel and inspect brake components",
+        "Clean wheel hub and bearing face",
+        "Install new or refurbished wheel, hand-tighten lugs",
+        "Torque lugs in star pattern to 84-114 ft-lb",
+        "Retighten at 500 miles after wheel work"
+      ],
+      "mentorScript": "Front left wheel removal and installation. Always use jack stands and never work under a vehicle supported only by a hydraulic jack. OG torque is 84 to 114 foot-pounds. After any wheel disturbance, retighten lug nuts at 500 miles."
+    },
+    {
+      "id": "wheel_front_right",
+      "nodeNames": ["wheel_front_right", "front_right_wheel", "FR_wheel"],
+      "partName": "Front Right Wheel",
+      "oemPartNumber": "Not specified in 2004 OG",
+      "aftermarketPartNumber": "16\" or 17\" per trim",
+      "focusCamera": {
+        "position": [1.2, 1.0, 1.5],
+        "lookAt": [1.0, 0.8, 0.0]
+      },
+      "replacementSteps": [
+        "Safely raise vehicle and support with jack stands",
+        "Remove five lug nuts (84-114 ft-lb torque)",
+        "Remove wheel and inspect brake components",
+        "Clean wheel hub and bearing face",
+        "Install new or refurbished wheel, hand-tighten lugs",
+        "Torque lugs in star pattern to 84-114 ft-lb",
+        "Retighten at 500 miles after wheel work"
+      ],
+      "mentorScript": "Front right wheel removal and installation. Always use jack stands and never work under a vehicle supported only by a hydraulic jack. OG torque is 84 to 114 foot-pounds. After any wheel disturbance, retighten lug nuts at 500 miles."
+    },
+    {
+      "id": "wheel_rear_left",
+      "nodeNames": ["wheel_rear_left", "rear_left_wheel", "RL_wheel"],
+      "partName": "Rear Left Wheel",
+      "oemPartNumber": "Not specified in 2004 OG",
+      "aftermarketPartNumber": "16\" or 17\" per trim",
+      "focusCamera": {
+        "position": [-1.2, 1.0, -1.5],
+        "lookAt": [-1.0, 0.8, 0.0]
+      },
+      "replacementSteps": [
+        "Safely raise vehicle and support with jack stands",
+        "Remove five lug nuts (84-114 ft-lb torque)",
+        "Remove wheel and inspect brake components",
+        "Clean wheel hub and bearing face",
+        "Install new or refurbished wheel, hand-tighten lugs",
+        "Torque lugs in star pattern to 84-114 ft-lb",
+        "Retighten at 500 miles after wheel work"
+      ],
+      "mentorScript": "Rear left wheel removal and installation. Always use jack stands and never work under a vehicle supported only by a hydraulic jack. OG torque is 84 to 114 foot-pounds. After any wheel disturbance, retighten lug nuts at 500 miles."
+    },
+    {
+      "id": "wheel_rear_right",
+      "nodeNames": ["wheel_rear_right", "rear_right_wheel", "RR_wheel"],
+      "partName": "Rear Right Wheel",
+      "oemPartNumber": "Not specified in 2004 OG",
+      "aftermarketPartNumber": "16\" or 17\" per trim",
+      "focusCamera": {
+        "position": [1.2, 1.0, -1.5],
+        "lookAt": [1.0, 0.8, 0.0]
+      },
+      "replacementSteps": [
+        "Safely raise vehicle and support with jack stands",
+        "Remove five lug nuts (84-114 ft-lb torque)",
+        "Remove wheel and inspect brake components",
+        "Clean wheel hub and bearing face",
+        "Install new or refurbished wheel, hand-tighten lugs",
+        "Torque lugs in star pattern to 84-114 ft-lb",
+        "Retighten at 500 miles after wheel work"
+      ],
+      "mentorScript": "Rear right wheel removal and installation. Always use jack stands and never work under a vehicle supported only by a hydraulic jack. OG torque is 84 to 114 foot-pounds. After any wheel disturbance, retighten lug nuts at 500 miles."
+    },
+    {
+      "id": "lug_nut_wheel",
+      "nodeNames": ["lug_nut", "lug", "fastener_wheel"],
+      "partName": "Wheel Lug Nut (5x per wheel)",
+      "oemPartNumber": "1/2-20 OEM spec",
+      "aftermarketPartNumber": "Any 1/2-20 Grade 8 or better",
+      "focusCamera": {
+        "position": [0.8, 1.2, 1.8],
+        "lookAt": [0.7, 1.0, 0.5]
+      },
+      "replacementSteps": [
+        "Locate lug nut on wheel hub (five per wheel)",
+        "Using 3/4\" socket and torque wrench",
+        "Tighten to specification: 84-114 ft-lb (113-153 N·m)",
+        "Use a star or cross pattern to ensure even load",
+        "Do not over-torque; can strip threads",
+        "Retighten all lug nuts at 500 miles after any wheel work",
+        "Check annually for looseness with torque wrench"
+      ],
+      "mentorScript": "Wheel lug nuts secure the wheel to the hub. The 2004 OG specification is 1/2 inch by 20 threads per inch, torqued to between 84 and 114 foot-pounds. Use a torque wrench in a star pattern. Over-torquing can strip the hub and wheel studs. Always retighten at 500 miles after any wheel disturbance."
+    }
+  ]
+}
