@@ -13,7 +13,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class GeminiDiagnosticRepository(
-    private val sourceRetriever: MentorSourceRetriever = CuratedMentorSourceRetriever()
+    private val sourceRetriever: MentorSourceRetriever = CompositeMentorSourceRetriever(
+        IndexedMentorSourceRetriever(),
+        CuratedMentorSourceRetriever()
+    )
 ) {
 
     private val systemPrompt = """

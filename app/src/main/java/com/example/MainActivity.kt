@@ -45,6 +45,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        runCatching { com.example.data.MentorIndexHolder.ensureAndroidAssets(applicationContext) }
         enableEdgeToEdge()
 
         setContent {

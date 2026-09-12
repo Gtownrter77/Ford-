@@ -1,9 +1,13 @@
 {
-  "indexVersion": "1.0.0",
-  "source": "docs/source_manual_extraction/2wd_bundle/manual_pages.csv",
-  "targetConfiguration": "2004 Ford Explorer Sport Trac 4WD V6-4.0L VIN K Flex Fuel",
-  "pageCount": 9185,
-  "eligibleForTarget": 0,
-  "blockedConfigurationMismatch": 9185,
-  "indexPath": "docs/source_manual_extraction/source_index.jsonl"
+  "indexVersion": "2.0.0",
+  "source": "2004 Ford Explorer Sport Trac 4WD V6-4.0L VIN K Flex Fuel.zip",
+  "targetConfiguration": "2004 Sport Trac 4WD V6-4.0L VIN K Flex Fuel",
+  "pageCount": 9560,
+  "indexedNonEmpty": 9560,
+  "eligibleForTarget": 9560,
+  "blockedConfigurationMismatch": 0,
+  "emptyPages": 0,
+  "duplicateBodyHashes": 0,
+  "indexPath": "docs/source_manual_extraction/source_index.jsonl",
+  "assetPath": "app/src/main/assets/mentor/source_index.jsonl"
 }
