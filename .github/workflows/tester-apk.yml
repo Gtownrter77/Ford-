@@ -57,4 +57,5 @@ jobs:
         with:
           name: mentor-sport-trac-debug
           path: app/build/outputs/apk/debug/*.apk
-          if-no-
+          if-no-files-found: warn
+
