@@ -1,0 +1,18 @@
+{
+  "vehicle": "2004 Ford Explorer Sport Trac",
+  "scope": "chassis and powertrain",
+  "source_repository": "Gtownrter77/Ford-",
+  "canonical_component_records": 71,
+  "source_component_records": 56,
+  "meter_scale_reference_records": 15,
+  "explicit_hardware_stack_records": 19,
+  "status": "baseline inventory — not VIN-complete OEM BOM",
+  "critical_gaps": [
+    "VIN-specific configuration lock",
+    "complete exploded-view reconciliation",
+    "one-to-one OEM part/fastener mapping",
+    "verified quantities for every gasket/seal/clip/retainer",
+    "measured or OEM CAD geometry for each component",
+    "motion constraints and time-state data"
+  ]
+}
