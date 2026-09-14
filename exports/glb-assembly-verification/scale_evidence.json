@@ -1,0 +1,17 @@
+{
+  "source_sha256": "4577bfc36d3530919761464a2869405c715c10c454c7ad7f317f09629950ff52",
+  "declared_units": "meters",
+  "overall_scale_status": "supported by repository declaration; component engineering accuracy requires independent factory dimensions",
+  "claims": [
+    {
+      "claim": "Overall model uses meter units",
+      "status": "supported",
+      "basis": "repository app/src/main/assets/models/README.md"
+    },
+    {
+      "claim": "Individual fastener diameter/thread/grade/torque",
+      "status": "not_verified",
+      "basis": "GLB geometry and node names alone do not establish these specifications"
+    }
+  ]
+}

@@ -1,0 +1,5431 @@
+{
+  "source": "/tmp/ford-repo/app/src/main/assets/models/ford_explorer_sport_trac_2004_corrected_exterior.glb",
+  "sha256": "4577bfc36d3530919761464a2869405c715c10c454c7ad7f317f09629950ff52",
+  "declared_units": "meters (per repository model README)",
+  "parts": [
+    {
+      "source_name": "A pillar",
+      "source_node_index": 80,
+      "source_mesh": "Cube.082",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.7967998390902988,
+        1.5479614018935663,
+        -0.8900000192224979
+      ],
+      "bounds_max_m": [
+        1.0832001561413296,
+        2.4120386362534063,
+        -0.8200000189244747
+      ],
+      "dimensions_m": [
+        0.28640031705103075,
+        0.86407723435984,
+        0.07000000029802322
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "A pillar.001",
+      "source_node_index": 85,
+      "source_mesh": "Cube.077",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.7967998390902988,
+        1.5479614018935663,
+        0.8200000189244747
+      ],
+      "bounds_max_m": [
+        1.0832001561413296,
+        2.4120386362534063,
+        0.8900000192224979
+      ],
+      "dimensions_m": [
+        0.28640031705103075,
+        0.86407723435984,
+        0.07000000029802322
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Amber turn signal",
+      "source_node_index": 56,
+      "source_mesh": "Cube.105",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        2.481999982148409,
+        1.5299999415874481,
+        -0.4293999895453453
+      ],
+      "bounds_max_m": [
+        2.5579999797046185,
+        1.829999953508377,
+        -0.31939999014139175
+      ],
+      "dimensions_m": [
+        0.07599999755620956,
+        0.30000001192092896,
+        0.10999999940395355
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Amber turn signal.001",
+      "source_node_index": 59,
+      "source_mesh": "Cube.103",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        2.481999982148409,
+        1.5299999415874481,
+        0.31939999014139175
+      ],
+      "bounds_max_m": [
+        2.5579999797046185,
+        1.829999953508377,
+        0.4293999895453453
+      ],
+      "dimensions_m": [
+        0.07599999755620956,
+        0.30000001192092896,
+        0.10999999940395355
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "B pillar",
+      "source_node_index": 79,
+      "source_mesh": "Cube.083",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.004999998956918716,
+        1.5699999928474426,
+        -0.8900000192224979
+      ],
+      "bounds_max_m": [
+        0.10500000044703484,
+        2.4300000071525574,
+        -0.8200000189244747
+      ],
+      "dimensions_m": [
+        0.10999999940395355,
+        0.8600000143051147,
+        0.07000000029802322
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "B pillar.001",
+      "source_node_index": 84,
+      "source_mesh": "Cube.078",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.004999998956918716,
+        1.5699999928474426,
+        0.8200000189244747
+      ],
+      "bounds_max_m": [
+        0.10500000044703484,
+        2.4300000071525574,
+        0.8900000192224979
+      ],
+      "dimensions_m": [
+        0.10999999940395355,
+        0.8600000143051147,
+        0.07000000029802322
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Bed floor",
+      "source_node_index": 98,
+      "source_mesh": "Cube.068",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -2.3299999237060547,
+        1.744999971240759,
+        -0.7699999809265137
+      ],
+      "bounds_max_m": [
+        -0.7699999809265137,
+        1.8149999715387821,
+        0.7699999809265137
+      ],
+      "dimensions_m": [
+        1.559999942779541,
+        0.07000000029802322,
+        1.5399999618530273
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Bed tonneau cover",
+      "source_node_index": 97,
+      "source_mesh": "Cube.069",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -2.349999964237213,
+        1.834999993443489,
+        -0.800000011920929
+      ],
+      "bounds_max_m": [
+        -0.7499999403953552,
+        1.9249999970197678,
+        0.800000011920929
+      ],
+      "dimensions_m": [
+        1.600000023841858,
+        0.09000000357627869,
+        1.600000023841858
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Black honeycomb grille",
+      "source_node_index": 61,
+      "source_mesh": "Cube.101",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        2.4900001045316458,
+        1.280000016093254,
+        -0.47999998927116394
+      ],
+      "bounds_max_m": [
+        2.540000105276704,
+        1.6800000220537186,
+        0.47999998927116394
+      ],
+      "dimensions_m": [
+        0.05000000074505806,
+        0.4000000059604645,
+        0.9599999785423279
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Black running board",
+      "source_node_index": 62,
+      "source_mesh": "Cube.100",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.400000024586916,
+        0.6500000283122063,
+        -0.7448000088334084
+      ],
+      "bounds_max_m": [
+        1.3000000230967999,
+        0.7900000289082527,
+        -0.5448000058531761
+      ],
+      "dimensions_m": [
+        2.700000047683716,
+        0.14000000059604645,
+        0.20000000298023224
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Black running board.001",
+      "source_node_index": 64,
+      "source_mesh": "Cube.098",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.400000024586916,
+        0.6500000283122063,
+        0.5448000058531761
+      ],
+      "bounds_max_m": [
+        1.3000000230967999,
+        0.7900000289082527,
+        0.7448000088334084
+      ],
+      "dimensions_m": [
+        2.700000047683716,
+        0.14000000059604645,
+        0.20000000298023224
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "C pillar",
+      "source_node_index": 78,
+      "source_mesh": "Cube.084",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.8586812372368582,
+        1.5452455468256985,
+        -0.8900000192224979
+      ],
+      "bounds_max_m": [
+        -0.5813188199836008,
+        2.414754491321274,
+        -0.8200000189244747
+      ],
+      "dimensions_m": [
+        0.2773624172532574,
+        0.8695089444955757,
+        0.07000000029802322
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "C pillar.001",
+      "source_node_index": 83,
+      "source_mesh": "Cube.079",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.8586812372368582,
+        1.5452455468256985,
+        0.8200000189244747
+      ],
+      "bounds_max_m": [
+        -0.5813188199836008,
+        2.414754491321274,
+        0.8900000192224979
+      ],
+      "dimensions_m": [
+        0.2773624172532574,
+        0.8695089444955757,
+        0.07000000029802322
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Cooling fan",
+      "source_node_index": 219,
+      "source_mesh": "Cylinder.033",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.6149999853223562,
+        1.2799999415874481,
+        -0.27000001072883606
+      ],
+      "bounds_max_m": [
+        1.6649999860674143,
+        1.8199999630451202,
+        0.27000001072883606
+      ],
+      "dimensions_m": [
+        0.05000000074505806,
+        0.5400000214576721,
+        0.5400000214576721
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "Crank pulley",
+      "source_node_index": 220,
+      "source_mesh": "Cylinder.032",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.3999999985098839,
+        0.9300000220537186,
+        -0.17000000178813934
+      ],
+      "bounds_max_m": [
+        0.47999999672174454,
+        1.2700000256299973,
+        0.17000000178813934
+      ],
+      "dimensions_m": [
+        0.07999999821186066,
+        0.3400000035762787,
+        0.3400000035762787
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "Crew cab roof and pillars",
+      "source_node_index": 100,
+      "source_mesh": "Cube.066",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.8300000429153442,
+        1.2100000381469727,
+        -0.8399999737739563
+      ],
+      "bounds_max_m": [
+        1.8700000047683716,
+        2.450000047683716,
+        0.8399999737739563
+      ],
+      "dimensions_m": [
+        2.700000047683716,
+        1.2400000095367432,
+        1.6799999475479126
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Crossmember",
+      "source_node_index": 195,
+      "source_mesh": "Cube.006",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.549999974668026,
+        0.39000000059604645,
+        -0.7799999713897705
+      ],
+      "bounds_max_m": [
+        1.7499999776482582,
+        0.5499999970197678,
+        0.7799999713897705
+      ],
+      "dimensions_m": [
+        0.20000000298023224,
+        0.1599999964237213,
+        1.559999942779541
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Crossmember.001",
+      "source_node_index": 198,
+      "source_mesh": "Cube.003",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.8200000301003456,
+        0.39000000059604645,
+        -0.7799999713897705
+      ],
+      "bounds_max_m": [
+        -1.6200000271201134,
+        0.5499999970197678,
+        0.7799999713897705
+      ],
+      "dimensions_m": [
+        0.20000000298023224,
+        0.1599999964237213,
+        1.559999942779541
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Crossmember.002",
+      "source_node_index": 197,
+      "source_mesh": "Cube.004",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.8500000014901161,
+        0.39000000059604645,
+        -0.7799999713897705
+      ],
+      "bounds_max_m": [
+        -0.6499999985098839,
+        0.5499999970197678,
+        0.7799999713897705
+      ],
+      "dimensions_m": [
+        0.20000000298023224,
+        0.1599999964237213,
+        1.559999942779541
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Crossmember.003",
+      "source_node_index": 196,
+      "source_mesh": "Cube.005",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.3499999865889549,
+        0.39000000059604645,
+        -0.7799999713897705
+      ],
+      "bounds_max_m": [
+        0.5499999895691872,
+        0.5499999970197678,
+        0.7799999713897705
+      ],
+      "dimensions_m": [
+        0.20000000298023224,
+        0.1599999964237213,
+        1.559999942779541
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Door handle",
+      "source_node_index": 75,
+      "source_mesh": "Cube.087",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.4949999824166298,
+        1.6049999948590994,
+        0.872599994763732
+      ],
+      "bounds_max_m": [
+        0.6649999842047691,
+        1.6549999956041574,
+        0.92259999550879
+      ],
+      "dimensions_m": [
+        0.17000000178813934,
+        0.05000000074505806,
+        0.05000000074505806
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Door handle.001",
+      "source_node_index": 72,
+      "source_mesh": "Cube.090",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.4949999824166298,
+        1.6049999948590994,
+        -0.92259999550879
+      ],
+      "bounds_max_m": [
+        0.6649999842047691,
+        1.6549999956041574,
+        -0.872599994763732
+      ],
+      "dimensions_m": [
+        0.17000000178813934,
+        0.05000000074505806,
+        0.05000000074505806
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Door handle.002",
+      "source_node_index": 69,
+      "source_mesh": "Cube.093",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.33500000089406967,
+        1.6049999948590994,
+        0.872599994763732
+      ],
+      "bounds_max_m": [
+        -0.16499999910593033,
+        1.6549999956041574,
+        0.92259999550879
+      ],
+      "dimensions_m": [
+        0.17000000178813934,
+        0.05000000074505806,
+        0.05000000074505806
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Door handle.003",
+      "source_node_index": 66,
+      "source_mesh": "Cube.096",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.33500000089406967,
+        1.6049999948590994,
+        -0.92259999550879
+      ],
+      "bounds_max_m": [
+        -0.16499999910593033,
+        1.6549999956041574,
+        -0.872599994763732
+      ],
+      "dimensions_m": [
+        0.17000000178813934,
+        0.05000000074505806,
+        0.05000000074505806
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Door lower protective molding",
+      "source_node_index": 76,
+      "source_mesh": "Cube.086",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.1199999749660492,
+        1.08500000461936,
+        0.862400010228157
+      ],
+      "bounds_max_m": [
+        0.8400000035762787,
+        1.1550000049173832,
+        0.9064000099897385
+      ],
+      "dimensions_m": [
+        0.7200000286102295,
+        0.07000000029802322,
+        0.04399999976158142
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Door lower protective molding.001",
+      "source_node_index": 73,
+      "source_mesh": "Cube.089",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.1199999749660492,
+        1.08500000461936,
+        -0.9064000099897385
+      ],
+      "bounds_max_m": [
+        0.8400000035762787,
+        1.1550000049173832,
+        -0.862400010228157
+      ],
+      "dimensions_m": [
+        0.7200000286102295,
+        0.07000000029802322,
+        0.04399999976158142
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Door lower protective molding.002",
+      "source_node_index": 70,
+      "source_mesh": "Cube.092",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.7100000083446503,
+        1.08500000461936,
+        0.862400010228157
+      ],
+      "bounds_max_m": [
+        0.010000020265579224,
+        1.1550000049173832,
+        0.9064000099897385
+      ],
+      "dimensions_m": [
+        0.7200000286102295,
+        0.07000000029802322,
+        0.04399999976158142
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Door lower protective molding.003",
+      "source_node_index": 67,
+      "source_mesh": "Cube.095",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.7100000083446503,
+        1.08500000461936,
+        -0.9064000099897385
+      ],
+      "bounds_max_m": [
+        0.010000020265579224,
+        1.1550000049173832,
+        -0.862400010228157
+      ],
+      "dimensions_m": [
+        0.7200000286102295,
+        0.07000000029802322,
+        0.04399999976158142
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Ford oval badge",
+      "source_node_index": 54,
+      "source_mesh": "Cube.106",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        2.5349999526515603,
+        1.4350000098347664,
+        -0.11999999731779099
+      ],
+      "bounds_max_m": [
+        2.564999951981008,
+        1.54500000923872,
+        0.11999999731779099
+      ],
+      "dimensions_m": [
+        0.029999999329447746,
+        0.10999999940395355,
+        0.23999999463558197
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Frame left rail",
+      "source_node_index": 200,
+      "source_mesh": "Cube.001",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -2.450000047683716,
+        0.38999998569488525,
+        0.6550000160932541
+      ],
+      "bounds_max_m": [
+        2.450000047683716,
+        0.5699999928474426,
+        0.8050000220537186
+      ],
+      "dimensions_m": [
+        4.900000095367432,
+        0.18000000715255737,
+        0.15000000596046448
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Frame right rail",
+      "source_node_index": 199,
+      "source_mesh": "Cube.002",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -2.450000047683716,
+        0.38999998569488525,
+        -0.8050000220537186
+      ],
+      "bounds_max_m": [
+        2.450000047683716,
+        0.5699999928474426,
+        -0.6550000160932541
+      ],
+      "dimensions_m": [
+        4.900000095367432,
+        0.18000000715255737,
+        0.15000000596046448
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Front CV joint",
+      "source_node_index": 160,
+      "source_mesh": "Cylinder.064",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.3950000256299973,
+        0.6249999850988388,
+        0.3172000087797642
+      ],
+      "bounds_max_m": [
+        1.5450000315904617,
+        0.7749999910593033,
+        0.43720000609755516
+      ],
+      "dimensions_m": [
+        0.15000000596046448,
+        0.15000000596046448,
+        0.11999999731779099
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "Front CV joint.001",
+      "source_node_index": 158,
+      "source_mesh": "Cylinder.065",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.3950000256299973,
+        0.6249999850988388,
+        -0.43720000609755516
+      ],
+      "bounds_max_m": [
+        1.5450000315904617,
+        0.7749999910593033,
+        -0.3172000087797642
+      ],
+      "dimensions_m": [
+        0.15000000596046448,
+        0.15000000596046448,
+        0.11999999731779099
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "Front fascia",
+      "source_node_index": 95,
+      "source_mesh": "Cube.071",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        2.17999991774559,
+        0.7599999606609344,
+        -0.8600000143051147
+      ],
+      "bounds_max_m": [
+        2.499999910593033,
+        1.5999999344348907,
+        0.8600000143051147
+      ],
+      "dimensions_m": [
+        0.3199999928474426,
+        0.8399999737739563,
+        1.7200000286102295
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Front halfshaft",
+      "source_node_index": 161,
+      "source_mesh": "Front halfshaft",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.9920909404754639,
+        0.5774067640304565,
+        -0.03529994934797287
+      ],
+      "bounds_max_m": [
+        1.575015902519226,
+        0.7618194818496704,
+        0.42851942777633667
+      ],
+      "dimensions_m": [
+        0.5829249620437622,
+        0.18441271781921387,
+        0.46381937712430954
+      ],
+      "vertex_count": 275,
+      "face_count": 480
+    },
+    {
+      "source_name": "Front halfshaft.001",
+      "source_node_index": 159,
+      "source_mesh": "Front halfshaft.001",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.9920909404754639,
+        0.5774067044258118,
+        -0.42851942777633667
+      ],
+      "bounds_max_m": [
+        1.575015902519226,
+        0.7618194818496704,
+        0.03529995679855347
+      ],
+      "dimensions_m": [
+        0.5829249620437622,
+        0.18441277742385864,
+        0.46381938457489014
+      ],
+      "vertex_count": 275,
+      "face_count": 480
+    },
+    {
+      "source_name": "Front seat",
+      "source_node_index": 106,
+      "source_mesh": "Cube.049",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.3100000135600567,
+        1.079999953508377,
+        0.09999999403953552
+      ],
+      "bounds_max_m": [
+        0.4100000150501728,
+        1.5199999511241913,
+        0.7000000178813934
+      ],
+      "dimensions_m": [
+        0.7200000286102295,
+        0.4399999976158142,
+        0.6000000238418579
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Front seat back",
+      "source_node_index": 105,
+      "source_mesh": "Cube.050",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.020000003278255463,
+        1.3099999725818634,
+        0.09999999403953552
+      ],
+      "bounds_max_m": [
+        0.17999999970197678,
+        1.9899999797344208,
+        0.7000000178813934
+      ],
+      "dimensions_m": [
+        0.20000000298023224,
+        0.6800000071525574,
+        0.6000000238418579
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Front seat back.001",
+      "source_node_index": 103,
+      "source_mesh": "Cube.052",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.020000003278255463,
+        1.3099999725818634,
+        -0.7000000178813934
+      ],
+      "bounds_max_m": [
+        0.17999999970197678,
+        1.9899999797344208,
+        -0.09999999403953552
+      ],
+      "dimensions_m": [
+        0.20000000298023224,
+        0.6800000071525574,
+        0.6000000238418579
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Front seat.001",
+      "source_node_index": 104,
+      "source_mesh": "Cube.051",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.3100000135600567,
+        1.079999953508377,
+        -0.7000000178813934
+      ],
+      "bounds_max_m": [
+        0.4100000150501728,
+        1.5199999511241913,
+        -0.09999999403953552
+      ],
+      "dimensions_m": [
+        0.7200000286102295,
+        0.4399999976158142,
+        0.6000000238418579
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Front side window",
+      "source_node_index": 87,
+      "source_mesh": "Cube.075",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.09000000357627869,
+        1.7099999785423279,
+        0.8300000187009573
+      ],
+      "bounds_max_m": [
+        0.8699999749660492,
+        2.3299999833106995,
+        0.8800000194460154
+      ],
+      "dimensions_m": [
+        0.7799999713897705,
+        0.6200000047683716,
+        0.05000000074505806
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Front side window.001",
+      "source_node_index": 82,
+      "source_mesh": "Cube.080",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.09000000357627869,
+        1.7099999785423279,
+        -0.8800000194460154
+      ],
+      "bounds_max_m": [
+        0.8699999749660492,
+        2.3299999833106995,
+        -0.8300000187009573
+      ],
+      "dimensions_m": [
+        0.7799999713897705,
+        0.6200000047683716,
+        0.05000000074505806
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Front stabilizer bar",
+      "source_node_index": 164,
+      "source_mesh": "Front stabilizer bar",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.8429826498031616,
+        0.46539321541786194,
+        0.36171624064445496
+      ],
+      "bounds_max_m": [
+        1.5704506635665894,
+        0.5929694771766663,
+        0.7484037280082703
+      ],
+      "dimensions_m": [
+        0.7274680137634277,
+        0.12757626175880432,
+        0.3866874873638153
+      ],
+      "vertex_count": 275,
+      "face_count": 480
+    },
+    {
+      "source_name": "Front stabilizer bar.001",
+      "source_node_index": 163,
+      "source_mesh": "Front stabilizer bar.001",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.8429826498031616,
+        0.46539321541786194,
+        -0.7484037280082703
+      ],
+      "bounds_max_m": [
+        1.5704506635665894,
+        0.5929694771766663,
+        -0.36171624064445496
+      ],
+      "dimensions_m": [
+        0.7274680137634277,
+        0.12757626175880432,
+        0.3866874873638153
+      ],
+      "vertex_count": 275,
+      "face_count": 480
+    },
+    {
+      "source_name": "Headlight housing",
+      "source_node_index": 60,
+      "source_mesh": "Cube.102",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        2.4749999903142452,
+        1.5199999511241913,
+        0.2799999862909317
+      ],
+      "bounds_max_m": [
+        2.5449999906122684,
+        1.839999943971634,
+        0.7599999755620956
+      ],
+      "dimensions_m": [
+        0.07000000029802322,
+        0.3199999928474426,
+        0.47999998927116394
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Headlight housing.001",
+      "source_node_index": 57,
+      "source_mesh": "Cube.104",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        2.4749999903142452,
+        1.5199999511241913,
+        -0.7599999755620956
+      ],
+      "bounds_max_m": [
+        2.5449999906122684,
+        1.839999943971634,
+        -0.2799999862909317
+      ],
+      "dimensions_m": [
+        0.07000000029802322,
+        0.3199999928474426,
+        0.47999998927116394
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Instrument panel",
+      "source_node_index": 107,
+      "source_mesh": "Cube.048",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.699999988079071,
+        1.820000022649765,
+        -0.7200000286102295
+      ],
+      "bounds_max_m": [
+        1.0600000023841858,
+        2.1400000154972076,
+        0.7200000286102295
+      ],
+      "dimensions_m": [
+        0.36000001430511475,
+        0.3199999928474426,
+        1.440000057220459
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Label_2 m reference",
+      "source_node_index": 4,
+      "source_mesh": "Label_2 m reference",
+      "system": "body",
+      "is_guide": true,
+      "bounds_min_m": [
+        -0.2847500443458557,
+        0.1959067787921094,
+        1.6928300906694078
+      ],
+      "bounds_max_m": [
+        0.2849303185939789,
+        0.2689932960960125,
+        1.7260824975938762
+      ],
+      "dimensions_m": [
+        0.5696803629398346,
+        0.07308651730390311,
+        0.0332524069244684
+      ],
+      "vertex_count": 13024,
+      "face_count": 21980
+    },
+    {
+      "source_name": "Label_2004 FORD EXPLORER SPORT TRAC",
+      "source_node_index": 12,
+      "source_mesh": "Label_2004 FORD EXPLORER SPORT TRAC",
+      "system": "body",
+      "is_guide": true,
+      "bounds_min_m": [
+        -1.923319935798645,
+        3.094702288259216,
+        1.4929475926539977
+      ],
+      "bounds_max_m": [
+        1.9206801652908325,
+        3.2609664497655615,
+        1.5564724225507662
+      ],
+      "dimensions_m": [
+        3.8440001010894775,
+        0.1662641615063456,
+        0.06352482989676855
+      ],
+      "vertex_count": 21764,
+      "face_count": 36416
+    },
+    {
+      "source_name": "Label_Frame rail",
+      "source_node_index": 6,
+      "source_mesh": "Label_Frame rail",
+      "system": "body",
+      "is_guide": true,
+      "bounds_min_m": [
+        -0.21809504926204681,
+        0.5458205777315518,
+        0.9210133097606064
+      ],
+      "bounds_max_m": [
+        0.21930503845214844,
+        0.6245843466032988,
+        0.9561103335154773
+      ],
+      "dimensions_m": [
+        0.43740008771419525,
+        0.07876376887174696,
+        0.03509702375487089
+      ],
+      "vertex_count": 10376,
+      "face_count": 17492
+    },
+    {
+      "source_name": "Long hood",
+      "source_node_index": 96,
+      "source_mesh": "Cube.070",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.6059450187790159,
+        1.835128141700552,
+        -0.8299999833106995
+      ],
+      "bounds_max_m": [
+        2.334055038441443,
+        2.1248718964464204,
+        0.8299999833106995
+      ],
+      "dimensions_m": [
+        1.7281100196624273,
+        0.28974375474586833,
+        1.659999966621399
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Lower dark bumper",
+      "source_node_index": 94,
+      "source_mesh": "Cube.072",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        2.3400000408291817,
+        0.7100000083446503,
+        -0.8799999952316284
+      ],
+      "bounds_max_m": [
+        2.5800000354647636,
+        1.030000001192093,
+        0.8799999952316284
+      ],
+      "dimensions_m": [
+        0.23999999463558197,
+        0.3199999928474426,
+        1.7599999904632568
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Lower rocker and body shell",
+      "source_node_index": 101,
+      "source_mesh": "Cube.065",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -2.4800000190734863,
+        0.6599999964237213,
+        -0.8799999952316284
+      ],
+      "bounds_max_m": [
+        2.4800000190734863,
+        1.3400000035762787,
+        0.8799999952316284
+      ],
+      "dimensions_m": [
+        4.960000038146973,
+        0.6800000071525574,
+        1.7599999904632568
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Muffler",
+      "source_node_index": 193,
+      "source_mesh": "Cylinder.046",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.4399999380111694,
+        0.2799999862909317,
+        0.20000000298023224
+      ],
+      "bounds_max_m": [
+        -0.9199999570846558,
+        0.5599999874830246,
+        0.48000000417232513
+      ],
+      "dimensions_m": [
+        0.5199999809265137,
+        0.2800000011920929,
+        0.2800000011920929
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "Pickup bed side structure",
+      "source_node_index": 99,
+      "source_mesh": "Cube.067",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -2.409999966621399,
+        0.8500000238418579,
+        -0.8600000143051147
+      ],
+      "bounds_max_m": [
+        -0.6899999380111694,
+        1.8300000429153442,
+        0.8600000143051147
+      ],
+      "dimensions_m": [
+        1.7200000286102295,
+        0.9800000190734863,
+        1.7200000286102295
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Rear dark bumper",
+      "source_node_index": 93,
+      "source_mesh": "Cube.073",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -2.5900000259280205,
+        0.7700000107288361,
+        -0.8799999952316284
+      ],
+      "bounds_max_m": [
+        -2.3500000312924385,
+        1.070000022649765,
+        0.8799999952316284
+      ],
+      "dimensions_m": [
+        0.23999999463558197,
+        0.30000001192092896,
+        1.7599999904632568
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Rear side window",
+      "source_node_index": 86,
+      "source_mesh": "Cube.076",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.7100000083446503,
+        1.7099999785423279,
+        0.8300000187009573
+      ],
+      "bounds_max_m": [
+        0.09000000357627869,
+        2.3299999833106995,
+        0.8800000194460154
+      ],
+      "dimensions_m": [
+        0.800000011920929,
+        0.6200000047683716,
+        0.05000000074505806
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Rear side window.001",
+      "source_node_index": 81,
+      "source_mesh": "Cube.081",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.7100000083446503,
+        1.7099999785423279,
+        -0.8800000194460154
+      ],
+      "bounds_max_m": [
+        0.09000000357627869,
+        2.3299999833106995,
+        -0.8300000187009573
+      ],
+      "dimensions_m": [
+        0.800000011920929,
+        0.6200000047683716,
+        0.05000000074505806
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Roof rail",
+      "source_node_index": 65,
+      "source_mesh": "Cube.097",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.2000000476837158,
+        2.5149999409914017,
+        0.58500000461936
+      ],
+      "bounds_max_m": [
+        1.2000000476837158,
+        2.6049999445676804,
+        0.6550000049173832
+      ],
+      "dimensions_m": [
+        2.4000000953674316,
+        0.09000000357627869,
+        0.07000000029802322
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Roof rail.001",
+      "source_node_index": 63,
+      "source_mesh": "Cube.099",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.2000000476837158,
+        2.5149999409914017,
+        -0.6550000049173832
+      ],
+      "bounds_max_m": [
+        1.2000000476837158,
+        2.6049999445676804,
+        -0.58500000461936
+      ],
+      "dimensions_m": [
+        2.4000000953674316,
+        0.09000000357627869,
+        0.07000000029802322
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Round fog lamp",
+      "source_node_index": 58,
+      "source_mesh": "Cylinder.068",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        2.5175000857561827,
+        0.9249999821186066,
+        0.24819999933242798
+      ],
+      "bounds_max_m": [
+        2.5525000859051943,
+        1.1149999797344208,
+        0.4381999969482422
+      ],
+      "dimensions_m": [
+        0.03500000014901161,
+        0.1899999976158142,
+        0.1899999976158142
+      ],
+      "vertex_count": 288,
+      "face_count": 188
+    },
+    {
+      "source_name": "Round fog lamp.001",
+      "source_node_index": 55,
+      "source_mesh": "Cylinder.069",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        2.5175000857561827,
+        0.9249999821186066,
+        -0.4381999969482422
+      ],
+      "bounds_max_m": [
+        2.5525000859051943,
+        1.1149999797344208,
+        -0.24819999933242798
+      ],
+      "dimensions_m": [
+        0.03500000014901161,
+        0.1899999976158142,
+        0.1899999976158142
+      ],
+      "vertex_count": 288,
+      "face_count": 188
+    },
+    {
+      "source_name": "Rounded wheel arch fender",
+      "source_node_index": 89,
+      "source_mesh": "Sphere.003",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.0799994468688965,
+        0.33000004291534424,
+        -0.9400001093745232
+      ],
+      "bounds_max_m": [
+        2.0400001108646393,
+        1.3899999856948853,
+        -0.7399998903274536
+      ],
+      "dimensions_m": [
+        0.9600006639957428,
+        1.059999942779541,
+        0.20000021904706955
+      ],
+      "vertex_count": 4512,
+      "face_count": 2208
+    },
+    {
+      "source_name": "Rounded wheel arch fender.001",
+      "source_node_index": 92,
+      "source_mesh": "Sphere",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -2.100000500679016,
+        0.33000004291534424,
+        0.7399998381733894
+      ],
+      "bounds_max_m": [
+        -1.1399998366832733,
+        1.3899999856948853,
+        0.940000057220459
+      ],
+      "dimensions_m": [
+        0.9600006639957428,
+        1.059999942779541,
+        0.20000021904706955
+      ],
+      "vertex_count": 4512,
+      "face_count": 2208
+    },
+    {
+      "source_name": "Rounded wheel arch fender.002",
+      "source_node_index": 91,
+      "source_mesh": "Sphere.001",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -2.100000500679016,
+        0.33000004291534424,
+        -0.9400001093745232
+      ],
+      "bounds_max_m": [
+        -1.1399998366832733,
+        1.3899999856948853,
+        -0.7399998903274536
+      ],
+      "dimensions_m": [
+        0.9600006639957428,
+        1.059999942779541,
+        0.20000021904706955
+      ],
+      "vertex_count": 4512,
+      "face_count": 2208
+    },
+    {
+      "source_name": "Rounded wheel arch fender.003",
+      "source_node_index": 90,
+      "source_mesh": "Sphere.002",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.0799994468688965,
+        0.33000004291534424,
+        0.7399998381733894
+      ],
+      "bounds_max_m": [
+        2.0400001108646393,
+        1.3899999856948853,
+        0.940000057220459
+      ],
+      "dimensions_m": [
+        0.9600006639957428,
+        1.059999942779541,
+        0.20000021904706955
+      ],
+      "vertex_count": 4512,
+      "face_count": 2208
+    },
+    {
+      "source_name": "Scale bar",
+      "source_node_index": 5,
+      "source_mesh": "Cube.061",
+      "system": "body",
+      "is_guide": true,
+      "bounds_min_m": [
+        -1.0,
+        0.12200000137090683,
+        1.7020000293850899
+      ],
+      "bounds_max_m": [
+        1.0,
+        0.15799999982118607,
+        1.738000027835369
+      ],
+      "dimensions_m": [
+        2.0,
+        0.035999998450279236,
+        0.035999998450279236
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Side mirror",
+      "source_node_index": 52,
+      "source_mesh": "Sphere.005",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.7499998658895493,
+        1.7600000128149986,
+        -1.0500001087784767
+      ],
+      "bounds_max_m": [
+        1.0100000351667404,
+        1.9600000157952309,
+        -0.9099999591708183
+      ],
+      "dimensions_m": [
+        0.26000016927719116,
+        0.20000000298023224,
+        0.1400001496076584
+      ],
+      "vertex_count": 4512,
+      "face_count": 2208
+    },
+    {
+      "source_name": "Side mirror.001",
+      "source_node_index": 53,
+      "source_mesh": "Sphere.004",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.7499998658895493,
+        1.7600000128149986,
+        0.9099999293684959
+      ],
+      "bounds_max_m": [
+        1.0100000351667404,
+        1.9600000157952309,
+        1.0500000789761543
+      ],
+      "dimensions_m": [
+        0.26000016927719116,
+        0.20000000298023224,
+        0.1400001496076584
+      ],
+      "vertex_count": 4512,
+      "face_count": 2208
+    },
+    {
+      "source_name": "Six spoke alloy wheel",
+      "source_node_index": 47,
+      "source_mesh": "Cylinder.070",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.9000000059604645,
+        0.45000001788139343,
+        0.8500000163912773
+      ],
+      "bounds_max_m": [
+        -1.3400000035762787,
+        1.0100000202655792,
+        0.9900000169873238
+      ],
+      "dimensions_m": [
+        0.5600000023841858,
+        0.5600000023841858,
+        0.14000000059604645
+      ],
+      "vertex_count": 288,
+      "face_count": 188
+    },
+    {
+      "source_name": "Six spoke alloy wheel.001",
+      "source_node_index": 38,
+      "source_mesh": "Cylinder.072",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.9000000059604645,
+        0.45000001788139343,
+        -0.9900000169873238
+      ],
+      "bounds_max_m": [
+        -1.3400000035762787,
+        1.0100000202655792,
+        -0.8500000163912773
+      ],
+      "dimensions_m": [
+        0.5600000023841858,
+        0.5600000023841858,
+        0.14000000059604645
+      ],
+      "vertex_count": 288,
+      "face_count": 188
+    },
+    {
+      "source_name": "Six spoke alloy wheel.002",
+      "source_node_index": 29,
+      "source_mesh": "Cylinder.074",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.2799999415874481,
+        0.45000001788139343,
+        0.8500000163912773
+      ],
+      "bounds_max_m": [
+        1.839999943971634,
+        1.0100000202655792,
+        0.9900000169873238
+      ],
+      "dimensions_m": [
+        0.5600000023841858,
+        0.5600000023841858,
+        0.14000000059604645
+      ],
+      "vertex_count": 288,
+      "face_count": 188
+    },
+    {
+      "source_name": "Six spoke alloy wheel.003",
+      "source_node_index": 20,
+      "source_mesh": "Cylinder.076",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.2799999415874481,
+        0.45000001788139343,
+        -0.9900000169873238
+      ],
+      "bounds_max_m": [
+        1.839999943971634,
+        1.0100000202655792,
+        -0.8500000163912773
+      ],
+      "dimensions_m": [
+        0.5600000023841858,
+        0.5600000023841858,
+        0.14000000059604645
+      ],
+      "vertex_count": 288,
+      "face_count": 188
+    },
+    {
+      "source_name": "Sport Trac door skin",
+      "source_node_index": 77,
+      "source_mesh": "Cube.085",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.09999999403953552,
+        0.9100000262260437,
+        0.8449999950826168
+      ],
+      "bounds_max_m": [
+        0.8599999845027924,
+        1.7700000405311584,
+        0.91499999538064
+      ],
+      "dimensions_m": [
+        0.7599999904632568,
+        0.8600000143051147,
+        0.07000000029802322
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Sport Trac door skin.001",
+      "source_node_index": 74,
+      "source_mesh": "Cube.088",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.09999999403953552,
+        0.9100000262260437,
+        -0.91499999538064
+      ],
+      "bounds_max_m": [
+        0.8599999845027924,
+        1.7700000405311584,
+        -0.8449999950826168
+      ],
+      "dimensions_m": [
+        0.7599999904632568,
+        0.8600000143051147,
+        0.07000000029802322
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Sport Trac door skin.002",
+      "source_node_index": 71,
+      "source_mesh": "Cube.091",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.7299999892711639,
+        0.9100000262260437,
+        0.8449999950826168
+      ],
+      "bounds_max_m": [
+        0.030000001192092896,
+        1.7700000405311584,
+        0.91499999538064
+      ],
+      "dimensions_m": [
+        0.7599999904632568,
+        0.8600000143051147,
+        0.07000000029802322
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Sport Trac door skin.003",
+      "source_node_index": 68,
+      "source_mesh": "Cube.094",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.7299999892711639,
+        0.9100000262260437,
+        -0.91499999538064
+      ],
+      "bounds_max_m": [
+        0.030000001192092896,
+        1.7700000405311584,
+        -0.8449999950826168
+      ],
+      "dimensions_m": [
+        0.7599999904632568,
+        0.8600000143051147,
+        0.07000000029802322
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Sport Trac tire",
+      "source_node_index": 21,
+      "source_mesh": "Torus.007",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.9999999403953552,
+        0.17000001668930054,
+        -1.0900000184774399
+      ],
+      "bounds_max_m": [
+        2.119999945163727,
+        1.2900000214576721,
+        -0.7500000149011612
+      ],
+      "dimensions_m": [
+        1.1200000047683716,
+        1.1200000047683716,
+        0.3400000035762787
+      ],
+      "vertex_count": 5120,
+      "face_count": 2560
+    },
+    {
+      "source_name": "Sport Trac tire.001",
+      "source_node_index": 48,
+      "source_mesh": "Torus.004",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -2.1800000071525574,
+        0.17000001668930054,
+        0.7500000149011612
+      ],
+      "bounds_max_m": [
+        -1.0600000023841858,
+        1.2900000214576721,
+        1.0900000184774399
+      ],
+      "dimensions_m": [
+        1.1200000047683716,
+        1.1200000047683716,
+        0.3400000035762787
+      ],
+      "vertex_count": 5120,
+      "face_count": 2560
+    },
+    {
+      "source_name": "Sport Trac tire.002",
+      "source_node_index": 39,
+      "source_mesh": "Torus.005",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -2.1800000071525574,
+        0.17000001668930054,
+        -1.0900000184774399
+      ],
+      "bounds_max_m": [
+        -1.0600000023841858,
+        1.2900000214576721,
+        -0.7500000149011612
+      ],
+      "dimensions_m": [
+        1.1200000047683716,
+        1.1200000047683716,
+        0.3400000035762787
+      ],
+      "vertex_count": 5120,
+      "face_count": 2560
+    },
+    {
+      "source_name": "Sport Trac tire.003",
+      "source_node_index": 30,
+      "source_mesh": "Torus.006",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.9999999403953552,
+        0.17000001668930054,
+        0.7500000149011612
+      ],
+      "bounds_max_m": [
+        2.119999945163727,
+        1.2900000214576721,
+        1.0900000184774399
+      ],
+      "dimensions_m": [
+        1.1200000047683716,
+        1.1200000047683716,
+        0.3400000035762787
+      ],
+      "vertex_count": 5120,
+      "face_count": 2560
+    },
+    {
+      "source_name": "Tailgate",
+      "source_node_index": 51,
+      "source_mesh": "Cube.107",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -2.5549999810755253,
+        0.9799999892711639,
+        -0.7799999713897705
+      ],
+      "bounds_max_m": [
+        -2.484999980777502,
+        1.780000001192093,
+        0.7799999713897705
+      ],
+      "dimensions_m": [
+        0.07000000029802322,
+        0.800000011920929,
+        1.559999942779541
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Technical ground",
+      "source_node_index": 0,
+      "source_mesh": "Cube.062",
+      "system": "body",
+      "is_guide": true,
+      "bounds_min_m": [
+        -3.299999952316284,
+        0.020000001415610313,
+        -2.200000047683716
+      ],
+      "bounds_max_m": [
+        3.299999952316284,
+        0.0800000000745058,
+        2.200000047683716
+      ],
+      "dimensions_m": [
+        6.599999904632568,
+        0.05999999865889549,
+        4.400000095367432
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Throttle body",
+      "source_node_index": 214,
+      "source_mesh": "Cylinder.034",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.4000000208616257,
+        1.8800000175833702,
+        -0.10000000149011612
+      ],
+      "bounds_max_m": [
+        1.560000017285347,
+        2.0800000205636024,
+        0.10000000149011612
+      ],
+      "dimensions_m": [
+        0.1599999964237213,
+        0.20000000298023224,
+        0.20000000298023224
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "Tire",
+      "source_node_index": 177,
+      "source_mesh": "Torus.003",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.0199999809265137,
+        0.19000005722045898,
+        -1.070000022649765
+      ],
+      "bounds_max_m": [
+        2.0799999237060547,
+        1.25,
+        -0.7500000298023224
+      ],
+      "dimensions_m": [
+        1.059999942779541,
+        1.059999942779541,
+        0.3199999928474426
+      ],
+      "vertex_count": 2304,
+      "face_count": 1152
+    },
+    {
+      "source_name": "Tire.001",
+      "source_node_index": 189,
+      "source_mesh": "Torus",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -2.149999976158142,
+        0.19000005722045898,
+        0.7500000298023224
+      ],
+      "bounds_max_m": [
+        -1.090000033378601,
+        1.25,
+        1.070000022649765
+      ],
+      "dimensions_m": [
+        1.059999942779541,
+        1.059999942779541,
+        0.3199999928474426
+      ],
+      "vertex_count": 2304,
+      "face_count": 1152
+    },
+    {
+      "source_name": "Tire.002",
+      "source_node_index": 185,
+      "source_mesh": "Torus.001",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -2.149999976158142,
+        0.19000005722045898,
+        -1.070000022649765
+      ],
+      "bounds_max_m": [
+        -1.090000033378601,
+        1.25,
+        -0.7500000298023224
+      ],
+      "dimensions_m": [
+        1.059999942779541,
+        1.059999942779541,
+        0.3199999928474426
+      ],
+      "vertex_count": 2304,
+      "face_count": 1152
+    },
+    {
+      "source_name": "Tire.003",
+      "source_node_index": 181,
+      "source_mesh": "Torus.002",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.0199999809265137,
+        0.19000005722045898,
+        0.7500000298023224
+      ],
+      "bounds_max_m": [
+        2.0799999237060547,
+        1.25,
+        1.070000022649765
+      ],
+      "dimensions_m": [
+        1.059999942779541,
+        1.059999942779541,
+        0.3199999928474426
+      ],
+      "vertex_count": 2304,
+      "face_count": 1152
+    },
+    {
+      "source_name": "Valve cover",
+      "source_node_index": 223,
+      "source_mesh": "Cube.038",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.5799999535083771,
+        1.599999949336052,
+        0.15000001341104507
+      ],
+      "bounds_max_m": [
+        1.4999999701976776,
+        1.7599999457597733,
+        0.39000000804662704
+      ],
+      "dimensions_m": [
+        0.9200000166893005,
+        0.1599999964237213,
+        0.23999999463558197
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Valve cover.001",
+      "source_node_index": 221,
+      "source_mesh": "Cube.040",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.5799999535083771,
+        1.599999949336052,
+        -0.39000000804662704
+      ],
+      "bounds_max_m": [
+        1.4999999701976776,
+        1.7599999457597733,
+        -0.15000001341104507
+      ],
+      "dimensions_m": [
+        0.9200000166893005,
+        0.1599999964237213,
+        0.23999999463558197
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Vertical tail lamp",
+      "source_node_index": 50,
+      "source_mesh": "Cube.108",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -2.5900000669062138,
+        1.25,
+        0.4599999785423279
+      ],
+      "bounds_max_m": [
+        -2.5200000666081905,
+        1.75,
+        0.7199999690055847
+      ],
+      "dimensions_m": [
+        0.07000000029802322,
+        0.5,
+        0.25999999046325684
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Vertical tail lamp.001",
+      "source_node_index": 49,
+      "source_mesh": "Cube.109",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -2.5900000669062138,
+        1.25,
+        -0.7199999690055847
+      ],
+      "bounds_max_m": [
+        -2.5200000666081905,
+        1.75,
+        -0.4599999785423279
+      ],
+      "dimensions_m": [
+        0.07000000029802322,
+        0.5,
+        0.25999999046325684
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Wheel center cap",
+      "source_node_index": 46,
+      "source_mesh": "Cylinder.071",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.7050000056624413,
+        0.6450000181794167,
+        0.8491999953985214
+      ],
+      "bounds_max_m": [
+        -1.535000003874302,
+        0.815000019967556,
+        1.0091999918222427
+      ],
+      "dimensions_m": [
+        0.17000000178813934,
+        0.17000000178813934,
+        0.1599999964237213
+      ],
+      "vertex_count": 288,
+      "face_count": 188
+    },
+    {
+      "source_name": "Wheel center cap.001",
+      "source_node_index": 37,
+      "source_mesh": "Cylinder.073",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.7050000056624413,
+        0.6450000181794167,
+        -1.0091999918222427
+      ],
+      "bounds_max_m": [
+        -1.535000003874302,
+        0.815000019967556,
+        -0.8491999953985214
+      ],
+      "dimensions_m": [
+        0.17000000178813934,
+        0.17000000178813934,
+        0.1599999964237213
+      ],
+      "vertex_count": 288,
+      "face_count": 188
+    },
+    {
+      "source_name": "Wheel center cap.002",
+      "source_node_index": 28,
+      "source_mesh": "Cylinder.075",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.4749999418854713,
+        0.6450000181794167,
+        0.8491999953985214
+      ],
+      "bounds_max_m": [
+        1.6449999436736107,
+        0.815000019967556,
+        1.0091999918222427
+      ],
+      "dimensions_m": [
+        0.17000000178813934,
+        0.17000000178813934,
+        0.1599999964237213
+      ],
+      "vertex_count": 288,
+      "face_count": 188
+    },
+    {
+      "source_name": "Wheel center cap.003",
+      "source_node_index": 19,
+      "source_mesh": "Cylinder.077",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.4749999418854713,
+        0.6450000181794167,
+        -1.0091999918222427
+      ],
+      "bounds_max_m": [
+        1.6449999436736107,
+        0.815000019967556,
+        -0.8491999953985214
+      ],
+      "dimensions_m": [
+        0.17000000178813934,
+        0.17000000178813934,
+        0.1599999964237213
+      ],
+      "vertex_count": 288,
+      "face_count": 188
+    },
+    {
+      "source_name": "Wheel lug",
+      "source_node_index": 145,
+      "source_mesh": "Cylinder.003",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.5190525576472282,
+        0.6980000287294388,
+        0.8940999861806631
+      ],
+      "bounds_max_m": [
+        -1.4809474423527718,
+        0.7420000284910202,
+        0.9440999869257212
+      ],
+      "dimensions_m": [
+        0.03810511529445648,
+        0.04399999976158142,
+        0.05000000074505806
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Wheel lug.001",
+      "source_node_index": 144,
+      "source_mesh": "Cylinder.004",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.601970486342907,
+        0.8121267706155777,
+        0.8940999861806631
+      ],
+      "bounds_max_m": [
+        -1.5638653710484505,
+        0.8561267703771591,
+        0.9440999869257212
+      ],
+      "dimensions_m": [
+        0.03810511529445648,
+        0.04399999976158142,
+        0.05000000074505806
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Wheel lug.002",
+      "source_node_index": 143,
+      "source_mesh": "Cylinder.005",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.7361345812678337,
+        0.7685342580080032,
+        0.8940999861806631
+      ],
+      "bounds_max_m": [
+        -1.6980294659733772,
+        0.8125342577695847,
+        0.9440999869257212
+      ],
+      "dimensions_m": [
+        0.03810511529445648,
+        0.04399999976158142,
+        0.05000000074505806
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Wheel lug.003",
+      "source_node_index": 142,
+      "source_mesh": "Cylinder.006",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.7361345812678337,
+        0.6274657994508743,
+        0.8940999861806631
+      ],
+      "bounds_max_m": [
+        -1.6980294659733772,
+        0.6714657992124557,
+        0.9440999869257212
+      ],
+      "dimensions_m": [
+        0.03810511529445648,
+        0.04399999976158142,
+        0.05000000074505806
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Wheel lug.004",
+      "source_node_index": 141,
+      "source_mesh": "Cylinder.007",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.601970486342907,
+        0.5838732272386551,
+        0.8940999861806631
+      ],
+      "bounds_max_m": [
+        -1.5638653710484505,
+        0.6278732270002365,
+        0.9440999869257212
+      ],
+      "dimensions_m": [
+        0.03810511529445648,
+        0.04399999976158142,
+        0.05000000074505806
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Wheel lug.005",
+      "source_node_index": 140,
+      "source_mesh": "Cylinder.011",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.5190525576472282,
+        0.6980000287294388,
+        -0.9440999869257212
+      ],
+      "bounds_max_m": [
+        -1.4809474423527718,
+        0.7420000284910202,
+        -0.8940999861806631
+      ],
+      "dimensions_m": [
+        0.03810511529445648,
+        0.04399999976158142,
+        0.05000000074505806
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Wheel lug.006",
+      "source_node_index": 139,
+      "source_mesh": "Cylinder.012",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.601970486342907,
+        0.8121267706155777,
+        -0.9440999869257212
+      ],
+      "bounds_max_m": [
+        -1.5638653710484505,
+        0.8561267703771591,
+        -0.8940999861806631
+      ],
+      "dimensions_m": [
+        0.03810511529445648,
+        0.04399999976158142,
+        0.05000000074505806
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Wheel lug.007",
+      "source_node_index": 138,
+      "source_mesh": "Cylinder.013",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.7361345812678337,
+        0.7685342580080032,
+        -0.9440999869257212
+      ],
+      "bounds_max_m": [
+        -1.6980294659733772,
+        0.8125342577695847,
+        -0.8940999861806631
+      ],
+      "dimensions_m": [
+        0.03810511529445648,
+        0.04399999976158142,
+        0.05000000074505806
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Wheel lug.008",
+      "source_node_index": 137,
+      "source_mesh": "Cylinder.014",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.7361345812678337,
+        0.6274657994508743,
+        -0.9440999869257212
+      ],
+      "bounds_max_m": [
+        -1.6980294659733772,
+        0.6714657992124557,
+        -0.8940999861806631
+      ],
+      "dimensions_m": [
+        0.03810511529445648,
+        0.04399999976158142,
+        0.05000000074505806
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Wheel lug.009",
+      "source_node_index": 136,
+      "source_mesh": "Cylinder.015",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.601970486342907,
+        0.5838732272386551,
+        -0.9440999869257212
+      ],
+      "bounds_max_m": [
+        -1.5638653710484505,
+        0.6278732270002365,
+        -0.8940999861806631
+      ],
+      "dimensions_m": [
+        0.03810511529445648,
+        0.04399999976158142,
+        0.05000000074505806
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Wheel lug.010",
+      "source_node_index": 135,
+      "source_mesh": "Cylinder.019",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.6509473994374275,
+        0.6980000287294388,
+        0.8940999861806631
+      ],
+      "bounds_max_m": [
+        1.689052514731884,
+        0.7420000284910202,
+        0.9440999869257212
+      ],
+      "dimensions_m": [
+        0.03810511529445648,
+        0.04399999976158142,
+        0.05000000074505806
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Wheel lug.011",
+      "source_node_index": 134,
+      "source_mesh": "Cylinder.020",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.5680294707417488,
+        0.8121267706155777,
+        0.8940999861806631
+      ],
+      "bounds_max_m": [
+        1.6061345860362053,
+        0.8561267703771591,
+        0.9440999869257212
+      ],
+      "dimensions_m": [
+        0.03810511529445648,
+        0.04399999976158142,
+        0.05000000074505806
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Wheel lug.012",
+      "source_node_index": 133,
+      "source_mesh": "Cylinder.021",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.433865375816822,
+        0.7685342580080032,
+        0.8940999861806631
+      ],
+      "bounds_max_m": [
+        1.4719704911112785,
+        0.8125342577695847,
+        0.9440999869257212
+      ],
+      "dimensions_m": [
+        0.03810511529445648,
+        0.04399999976158142,
+        0.05000000074505806
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Wheel lug.013",
+      "source_node_index": 132,
+      "source_mesh": "Cylinder.022",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.433865375816822,
+        0.6274657994508743,
+        0.8940999861806631
+      ],
+      "bounds_max_m": [
+        1.4719704911112785,
+        0.6714657992124557,
+        0.9440999869257212
+      ],
+      "dimensions_m": [
+        0.03810511529445648,
+        0.04399999976158142,
+        0.05000000074505806
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Wheel lug.014",
+      "source_node_index": 131,
+      "source_mesh": "Cylinder.023",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.5680294707417488,
+        0.5838732272386551,
+        0.8940999861806631
+      ],
+      "bounds_max_m": [
+        1.6061345860362053,
+        0.6278732270002365,
+        0.9440999869257212
+      ],
+      "dimensions_m": [
+        0.03810511529445648,
+        0.04399999976158142,
+        0.05000000074505806
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Wheel lug.015",
+      "source_node_index": 130,
+      "source_mesh": "Cylinder.027",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.6509473994374275,
+        0.6980000287294388,
+        -0.9440999869257212
+      ],
+      "bounds_max_m": [
+        1.689052514731884,
+        0.7420000284910202,
+        -0.8940999861806631
+      ],
+      "dimensions_m": [
+        0.03810511529445648,
+        0.04399999976158142,
+        0.05000000074505806
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Wheel lug.016",
+      "source_node_index": 129,
+      "source_mesh": "Cylinder.028",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.5680294707417488,
+        0.8121267706155777,
+        -0.9440999869257212
+      ],
+      "bounds_max_m": [
+        1.6061345860362053,
+        0.8561267703771591,
+        -0.8940999861806631
+      ],
+      "dimensions_m": [
+        0.03810511529445648,
+        0.04399999976158142,
+        0.05000000074505806
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Wheel lug.017",
+      "source_node_index": 128,
+      "source_mesh": "Cylinder.029",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.433865375816822,
+        0.7685342580080032,
+        -0.9440999869257212
+      ],
+      "bounds_max_m": [
+        1.4719704911112785,
+        0.8125342577695847,
+        -0.8940999861806631
+      ],
+      "dimensions_m": [
+        0.03810511529445648,
+        0.04399999976158142,
+        0.05000000074505806
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Wheel lug.018",
+      "source_node_index": 127,
+      "source_mesh": "Cylinder.030",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.433865375816822,
+        0.6274657994508743,
+        -0.9440999869257212
+      ],
+      "bounds_max_m": [
+        1.4719704911112785,
+        0.6714657992124557,
+        -0.8940999861806631
+      ],
+      "dimensions_m": [
+        0.03810511529445648,
+        0.04399999976158142,
+        0.05000000074505806
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Wheel lug.019",
+      "source_node_index": 126,
+      "source_mesh": "Cylinder.031",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.5680294707417488,
+        0.5838732272386551,
+        -0.9440999869257212
+      ],
+      "bounds_max_m": [
+        1.6061345860362053,
+        0.6278732270002365,
+        -0.8940999861806631
+      ],
+      "dimensions_m": [
+        0.03810511529445648,
+        0.04399999976158142,
+        0.05000000074505806
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Wheel rim",
+      "source_node_index": 188,
+      "source_mesh": "Cylinder",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.8900000154972076,
+        0.45000001788139343,
+        0.8500000275671482
+      ],
+      "bounds_max_m": [
+        -1.3499999940395355,
+        0.9900000393390656,
+        0.9700000248849392
+      ],
+      "dimensions_m": [
+        0.5400000214576721,
+        0.5400000214576721,
+        0.11999999731779099
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "Wheel rim.001",
+      "source_node_index": 184,
+      "source_mesh": "Cylinder.008",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.8900000154972076,
+        0.45000001788139343,
+        -0.9700000248849392
+      ],
+      "bounds_max_m": [
+        -1.3499999940395355,
+        0.9900000393390656,
+        -0.8500000275671482
+      ],
+      "dimensions_m": [
+        0.5400000214576721,
+        0.5400000214576721,
+        0.11999999731779099
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "Wheel rim.002",
+      "source_node_index": 180,
+      "source_mesh": "Cylinder.016",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.2799999415874481,
+        0.45000001788139343,
+        0.8500000275671482
+      ],
+      "bounds_max_m": [
+        1.8199999630451202,
+        0.9900000393390656,
+        0.9700000248849392
+      ],
+      "dimensions_m": [
+        0.5400000214576721,
+        0.5400000214576721,
+        0.11999999731779099
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "Wheel rim.003",
+      "source_node_index": 176,
+      "source_mesh": "Cylinder.024",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.2799999415874481,
+        0.45000001788139343,
+        -0.9700000248849392
+      ],
+      "bounds_max_m": [
+        1.8199999630451202,
+        0.9900000393390656,
+        -0.8500000275671482
+      ],
+      "dimensions_m": [
+        0.5400000214576721,
+        0.5400000214576721,
+        0.11999999731779099
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "Wheel spoke",
+      "source_node_index": 45,
+      "source_mesh": "Cube.110",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.5179999992251396,
+        0.702000018209219,
+        0.8441999927163124
+      ],
+      "bounds_max_m": [
+        -1.4820000007748604,
+        0.7580000199377537,
+        1.0141999945044518
+      ],
+      "dimensions_m": [
+        0.035999998450279236,
+        0.0560000017285347,
+        0.17000000178813934
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Wheel spoke.001",
+      "source_node_index": 44,
+      "source_mesh": "Cube.111",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.642612102906378,
+        0.8059230409562588,
+        0.8711115375705833
+      ],
+      "bounds_max_m": [
+        -1.477387782652704,
+        0.8619230426847935,
+        0.9872884496501808
+      ],
+      "dimensions_m": [
+        0.16522432025367406,
+        0.0560000017285347,
+        0.11617691207959746
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Wheel spoke.002",
+      "source_node_index": 43,
+      "source_mesh": "Cube.112",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.7626121062855988,
+        0.8059230409562588,
+        0.8711115342353594
+      ],
+      "bounds_max_m": [
+        -1.5973877888102264,
+        0.8619230426847935,
+        0.9872884529854048
+      ],
+      "dimensions_m": [
+        0.16522431747537247,
+        0.0560000017285347,
+        0.11617691875004543
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Wheel spoke.003",
+      "source_node_index": 42,
+      "source_mesh": "Cube.113",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.7580000161928189,
+        0.702000018209219,
+        0.8441999911427028
+      ],
+      "bounds_max_m": [
+        -1.7220000028806675,
+        0.7580000199377537,
+        1.0141999960780612
+      ],
+      "dimensions_m": [
+        0.03600001331215141,
+        0.0560000017285347,
+        0.17000000493535838
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Wheel spoke.004",
+      "source_node_index": 41,
+      "source_mesh": "Cube.114",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.7626121076747496,
+        0.5980769358575344,
+        0.8711115375705833
+      ],
+      "bounds_max_m": [
+        -1.5973877874210756,
+        0.6540769375860691,
+        0.9872884496501808
+      ],
+      "dimensions_m": [
+        0.16522432025367406,
+        0.0560000017285347,
+        0.11617691207959746
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Wheel spoke.005",
+      "source_node_index": 40,
+      "source_mesh": "Cube.115",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.642612102906378,
+        0.5980769358575344,
+        0.8711115375705833
+      ],
+      "bounds_max_m": [
+        -1.477387782652704,
+        0.6540769375860691,
+        0.9872884496501808
+      ],
+      "dimensions_m": [
+        0.16522432025367406,
+        0.0560000017285347,
+        0.11617691207959746
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Wheel spoke.006",
+      "source_node_index": 36,
+      "source_mesh": "Cube.116",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.5179999992251396,
+        0.702000018209219,
+        -1.0141999945044518
+      ],
+      "bounds_max_m": [
+        -1.4820000007748604,
+        0.7580000199377537,
+        -0.8441999927163124
+      ],
+      "dimensions_m": [
+        0.035999998450279236,
+        0.0560000017285347,
+        0.17000000178813934
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Wheel spoke.007",
+      "source_node_index": 35,
+      "source_mesh": "Cube.117",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.642612102906378,
+        0.8059230409562588,
+        -0.9872884496501808
+      ],
+      "bounds_max_m": [
+        -1.477387782652704,
+        0.8619230426847935,
+        -0.8711115375705833
+      ],
+      "dimensions_m": [
+        0.16522432025367406,
+        0.0560000017285347,
+        0.11617691207959746
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Wheel spoke.008",
+      "source_node_index": 34,
+      "source_mesh": "Cube.118",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.7626121062855988,
+        0.8059230409562588,
+        -0.9872884529854048
+      ],
+      "bounds_max_m": [
+        -1.5973877888102264,
+        0.8619230426847935,
+        -0.8711115342353594
+      ],
+      "dimensions_m": [
+        0.16522431747537247,
+        0.0560000017285347,
+        0.11617691875004543
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Wheel spoke.009",
+      "source_node_index": 33,
+      "source_mesh": "Cube.119",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.7580000161928189,
+        0.702000018209219,
+        -1.0141999960780612
+      ],
+      "bounds_max_m": [
+        -1.7220000028806675,
+        0.7580000199377537,
+        -0.8441999911427028
+      ],
+      "dimensions_m": [
+        0.03600001331215141,
+        0.0560000017285347,
+        0.17000000493535838
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Wheel spoke.010",
+      "source_node_index": 32,
+      "source_mesh": "Cube.120",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.7626121076747496,
+        0.5980769358575344,
+        -0.9872884496501808
+      ],
+      "bounds_max_m": [
+        -1.5973877874210756,
+        0.6540769375860691,
+        -0.8711115375705833
+      ],
+      "dimensions_m": [
+        0.16522432025367406,
+        0.0560000017285347,
+        0.11617691207959746
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Wheel spoke.011",
+      "source_node_index": 31,
+      "source_mesh": "Cube.121",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.642612102906378,
+        0.5980769358575344,
+        -0.9872884496501808
+      ],
+      "bounds_max_m": [
+        -1.477387782652704,
+        0.6540769375860691,
+        -0.8711115375705833
+      ],
+      "dimensions_m": [
+        0.16522432025367406,
+        0.0560000017285347,
+        0.11617691207959746
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Wheel spoke.012",
+      "source_node_index": 27,
+      "source_mesh": "Cube.122",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.661999948322773,
+        0.702000018209219,
+        0.8441999927163124
+      ],
+      "bounds_max_m": [
+        1.6979999467730522,
+        0.7580000199377537,
+        1.0141999945044518
+      ],
+      "dimensions_m": [
+        0.035999998450279236,
+        0.0560000017285347,
+        0.17000000178813934
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Wheel spoke.013",
+      "source_node_index": 26,
+      "source_mesh": "Cube.123",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.5373878446415346,
+        0.8059230409562588,
+        0.8711115375705833
+      ],
+      "bounds_max_m": [
+        1.7026121648952086,
+        0.8619230426847935,
+        0.9872884496501808
+      ],
+      "dimensions_m": [
+        0.16522432025367406,
+        0.0560000017285347,
+        0.11617691207959746
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Wheel spoke.014",
+      "source_node_index": 25,
+      "source_mesh": "Cube.124",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.4173878412623138,
+        0.8059230409562588,
+        0.8711115342353594
+      ],
+      "bounds_max_m": [
+        1.5826121587376862,
+        0.8619230426847935,
+        0.9872884529854048
+      ],
+      "dimensions_m": [
+        0.16522431747537247,
+        0.0560000017285347,
+        0.11617691875004543
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Wheel spoke.015",
+      "source_node_index": 24,
+      "source_mesh": "Cube.125",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.4220000505643833,
+        0.702000018209219,
+        0.8441999911427028
+      ],
+      "bounds_max_m": [
+        1.4580000638765347,
+        0.7580000199377537,
+        1.0141999960780612
+      ],
+      "dimensions_m": [
+        0.03600001331215141,
+        0.0560000017285347,
+        0.17000000493535838
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Wheel spoke.016",
+      "source_node_index": 23,
+      "source_mesh": "Cube.126",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.417387839873163,
+        0.5980769358575344,
+        0.8711115375705833
+      ],
+      "bounds_max_m": [
+        1.582612160126837,
+        0.6540769375860691,
+        0.9872884496501808
+      ],
+      "dimensions_m": [
+        0.16522432025367406,
+        0.0560000017285347,
+        0.11617691207959746
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Wheel spoke.017",
+      "source_node_index": 22,
+      "source_mesh": "Cube.127",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.5373878446415346,
+        0.5980769358575344,
+        0.8711115375705833
+      ],
+      "bounds_max_m": [
+        1.7026121648952086,
+        0.6540769375860691,
+        0.9872884496501808
+      ],
+      "dimensions_m": [
+        0.16522432025367406,
+        0.0560000017285347,
+        0.11617691207959746
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Wheel spoke.018",
+      "source_node_index": 18,
+      "source_mesh": "Cube.128",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.661999948322773,
+        0.702000018209219,
+        -1.0141999945044518
+      ],
+      "bounds_max_m": [
+        1.6979999467730522,
+        0.7580000199377537,
+        -0.8441999927163124
+      ],
+      "dimensions_m": [
+        0.035999998450279236,
+        0.0560000017285347,
+        0.17000000178813934
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Wheel spoke.019",
+      "source_node_index": 17,
+      "source_mesh": "Cube.129",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.5373878446415346,
+        0.8059230409562588,
+        -0.9872884496501808
+      ],
+      "bounds_max_m": [
+        1.7026121648952086,
+        0.8619230426847935,
+        -0.8711115375705833
+      ],
+      "dimensions_m": [
+        0.16522432025367406,
+        0.0560000017285347,
+        0.11617691207959746
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Wheel spoke.020",
+      "source_node_index": 16,
+      "source_mesh": "Cube.130",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.4173878412623138,
+        0.8059230409562588,
+        -0.9872884529854048
+      ],
+      "bounds_max_m": [
+        1.5826121587376862,
+        0.8619230426847935,
+        -0.8711115342353594
+      ],
+      "dimensions_m": [
+        0.16522431747537247,
+        0.0560000017285347,
+        0.11617691875004543
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Wheel spoke.021",
+      "source_node_index": 15,
+      "source_mesh": "Cube.131",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.4220000505643833,
+        0.702000018209219,
+        -1.0141999960780612
+      ],
+      "bounds_max_m": [
+        1.4580000638765347,
+        0.7580000199377537,
+        -0.8441999911427028
+      ],
+      "dimensions_m": [
+        0.03600001331215141,
+        0.0560000017285347,
+        0.17000000493535838
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Wheel spoke.022",
+      "source_node_index": 14,
+      "source_mesh": "Cube.132",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.417387839873163,
+        0.5980769358575344,
+        -0.9872884496501808
+      ],
+      "bounds_max_m": [
+        1.582612160126837,
+        0.6540769375860691,
+        -0.8711115375705833
+      ],
+      "dimensions_m": [
+        0.16522432025367406,
+        0.0560000017285347,
+        0.11617691207959746
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Wheel spoke.023",
+      "source_node_index": 13,
+      "source_mesh": "Cube.133",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.5373878446415346,
+        0.5980769358575344,
+        -0.9872884496501808
+      ],
+      "bounds_max_m": [
+        1.7026121648952086,
+        0.6540769375860691,
+        -0.8711115375705833
+      ],
+      "dimensions_m": [
+        0.16522432025367406,
+        0.0560000017285347,
+        0.11617691207959746
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Windshield",
+      "source_node_index": 88,
+      "source_mesh": "Cube.074",
+      "system": "body",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.9527784120814515,
+        1.7602376975014424,
+        -0.6899999976158142
+      ],
+      "bounds_max_m": [
+        1.2472216356022643,
+        2.4397621117636943,
+        0.6899999976158142
+      ],
+      "dimensions_m": [
+        0.29444322352081276,
+        0.6795244142622519,
+        1.3799999952316284
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "4WD mount bolt",
+      "source_node_index": 108,
+      "source_mesh": "Cylinder.067",
+      "system": "drivetrain",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.5303108878433704,
+        0.6049999855458736,
+        -0.5000000074505806
+      ],
+      "bounds_max_m": [
+        -0.46968911215662956,
+        0.6749999858438969,
+        -0.42000000923871994
+      ],
+      "dimensions_m": [
+        0.060621775686740875,
+        0.07000000029802322,
+        0.07999999821186066
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "4WD mount bolt.001",
+      "source_node_index": 109,
+      "source_mesh": "Cylinder.066",
+      "system": "drivetrain",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.5303108878433704,
+        0.6049999855458736,
+        0.42000000923871994
+      ],
+      "bounds_max_m": [
+        -0.46968911215662956,
+        0.6749999858438969,
+        0.5000000074505806
+      ],
+      "dimensions_m": [
+        0.060621775686740875,
+        0.07000000029802322,
+        0.07999999821186066
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Cylinder head",
+      "source_node_index": 224,
+      "source_mesh": "Cube.037",
+      "system": "drivetrain",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.5599999725818634,
+        1.4399999603629112,
+        0.14000001549720764
+      ],
+      "bounds_max_m": [
+        1.5199999511241913,
+        1.6399999633431435,
+        0.4000000059604645
+      ],
+      "dimensions_m": [
+        0.9599999785423279,
+        0.20000000298023224,
+        0.25999999046325684
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Cylinder head.001",
+      "source_node_index": 222,
+      "source_mesh": "Cube.039",
+      "system": "drivetrain",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.5599999725818634,
+        1.4399999603629112,
+        -0.4000000059604645
+      ],
+      "bounds_max_m": [
+        1.5199999511241913,
+        1.6399999633431435,
+        -0.14000001549720764
+      ],
+      "dimensions_m": [
+        0.9599999785423279,
+        0.20000000298023224,
+        0.25999999046325684
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Engine block 4.0L V6",
+      "source_node_index": 225,
+      "source_mesh": "Cube.036",
+      "system": "drivetrain",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.4999999403953552,
+        0.6800000369548798,
+        -0.3799999952316284
+      ],
+      "bounds_max_m": [
+        1.5999999642372131,
+        1.520000010728836,
+        0.3799999952316284
+      ],
+      "dimensions_m": [
+        1.100000023841858,
+        0.8399999737739563,
+        0.7599999904632568
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Engine fastener",
+      "source_node_index": 117,
+      "source_mesh": "Cylinder.056",
+      "system": "drivetrain",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.549689095467329,
+        1.4649999998509884,
+        0.4899999815970659
+      ],
+      "bounds_max_m": [
+        0.6103108711540699,
+        1.5350000001490116,
+        0.5499999802559614
+      ],
+      "dimensions_m": [
+        0.060621775686740875,
+        0.07000000029802322,
+        0.05999999865889549
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Engine fastener.001",
+      "source_node_index": 116,
+      "source_mesh": "Cylinder.057",
+      "system": "drivetrain",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.549689095467329,
+        1.6650000475347042,
+        0.4899999815970659
+      ],
+      "bounds_max_m": [
+        0.6103108711540699,
+        1.7350000478327274,
+        0.5499999802559614
+      ],
+      "dimensions_m": [
+        0.060621775686740875,
+        0.07000000029802322,
+        0.05999999865889549
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Engine fastener.002",
+      "source_node_index": 115,
+      "source_mesh": "Cylinder.058",
+      "system": "drivetrain",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.549689095467329,
+        1.4649999998509884,
+        -0.5499999802559614
+      ],
+      "bounds_max_m": [
+        0.6103108711540699,
+        1.5350000001490116,
+        -0.4899999815970659
+      ],
+      "dimensions_m": [
+        0.060621775686740875,
+        0.07000000029802322,
+        0.05999999865889549
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Engine fastener.003",
+      "source_node_index": 114,
+      "source_mesh": "Cylinder.059",
+      "system": "drivetrain",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.549689095467329,
+        1.6650000475347042,
+        -0.5499999802559614
+      ],
+      "bounds_max_m": [
+        0.6103108711540699,
+        1.7350000478327274,
+        -0.4899999815970659
+      ],
+      "dimensions_m": [
+        0.060621775686740875,
+        0.07000000029802322,
+        0.05999999865889549
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Engine fastener.004",
+      "source_node_index": 113,
+      "source_mesh": "Cylinder.060",
+      "system": "drivetrain",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.3896890692412853,
+        1.4649999998509884,
+        0.4899999815970659
+      ],
+      "bounds_max_m": [
+        1.4503108449280262,
+        1.5350000001490116,
+        0.5499999802559614
+      ],
+      "dimensions_m": [
+        0.060621775686740875,
+        0.07000000029802322,
+        0.05999999865889549
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Engine fastener.005",
+      "source_node_index": 112,
+      "source_mesh": "Cylinder.061",
+      "system": "drivetrain",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.3896890692412853,
+        1.6650000475347042,
+        0.4899999815970659
+      ],
+      "bounds_max_m": [
+        1.4503108449280262,
+        1.7350000478327274,
+        0.5499999802559614
+      ],
+      "dimensions_m": [
+        0.060621775686740875,
+        0.07000000029802322,
+        0.05999999865889549
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Engine fastener.006",
+      "source_node_index": 111,
+      "source_mesh": "Cylinder.062",
+      "system": "drivetrain",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.3896890692412853,
+        1.4649999998509884,
+        -0.5499999802559614
+      ],
+      "bounds_max_m": [
+        1.4503108449280262,
+        1.5350000001490116,
+        -0.4899999815970659
+      ],
+      "dimensions_m": [
+        0.060621775686740875,
+        0.07000000029802322,
+        0.05999999865889549
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Engine fastener.007",
+      "source_node_index": 110,
+      "source_mesh": "Cylinder.063",
+      "system": "drivetrain",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.3896890692412853,
+        1.6650000475347042,
+        -0.5499999802559614
+      ],
+      "bounds_max_m": [
+        1.4503108449280262,
+        1.7350000478327274,
+        -0.4899999815970659
+      ],
+      "dimensions_m": [
+        0.060621775686740875,
+        0.07000000029802322,
+        0.05999999865889549
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Exhaust pipe",
+      "source_node_index": 194,
+      "source_mesh": "Exhaust pipe",
+      "system": "drivetrain",
+      "is_guide": false,
+      "bounds_min_m": [
+        -2.1263015270233154,
+        0.34102553129196167,
+        0.2800000011920929
+      ],
+      "bounds_max_m": [
+        0.5091527700424194,
+        0.6063246130943298,
+        0.4000000059604645
+      ],
+      "dimensions_m": [
+        2.635454297065735,
+        0.26529908180236816,
+        0.12000000476837158
+      ],
+      "vertex_count": 407,
+      "face_count": 720
+    },
+    {
+      "source_name": "Frame mount bolt",
+      "source_node_index": 125,
+      "source_mesh": "Cylinder.048",
+      "system": "drivetrain",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.9889711923897266,
+        0.5949999839067459,
+        0.690000019967556
+      ],
+      "bounds_max_m": [
+        -1.911028902977705,
+        0.6849999874830246,
+        0.7700000181794167
+      ],
+      "dimensions_m": [
+        0.07794228941202164,
+        0.09000000357627869,
+        0.07999999821186066
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Frame mount bolt.001",
+      "source_node_index": 124,
+      "source_mesh": "Cylinder.049",
+      "system": "drivetrain",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.9889711923897266,
+        0.5949999839067459,
+        -0.7700000181794167
+      ],
+      "bounds_max_m": [
+        -1.911028902977705,
+        0.6849999874830246,
+        -0.690000019967556
+      ],
+      "dimensions_m": [
+        0.07794228941202164,
+        0.09000000357627869,
+        0.07999999821186066
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Frame mount bolt.002",
+      "source_node_index": 123,
+      "source_mesh": "Cylinder.050",
+      "system": "drivetrain",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.8889711685478687,
+        0.5949999839067459,
+        0.690000019967556
+      ],
+      "bounds_max_m": [
+        -0.8110288791358471,
+        0.6849999874830246,
+        0.7700000181794167
+      ],
+      "dimensions_m": [
+        0.07794228941202164,
+        0.09000000357627869,
+        0.07999999821186066
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Frame mount bolt.003",
+      "source_node_index": 122,
+      "source_mesh": "Cylinder.051",
+      "system": "drivetrain",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.8889711685478687,
+        0.5949999839067459,
+        -0.7700000181794167
+      ],
+      "bounds_max_m": [
+        -0.8110288791358471,
+        0.6849999874830246,
+        -0.690000019967556
+      ],
+      "dimensions_m": [
+        0.07794228941202164,
+        0.09000000357627869,
+        0.07999999821186066
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Frame mount bolt.004",
+      "source_node_index": 121,
+      "source_mesh": "Cylinder.052",
+      "system": "drivetrain",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.3110288493335247,
+        0.5949999839067459,
+        0.690000019967556
+      ],
+      "bounds_max_m": [
+        0.38897113874554634,
+        0.6849999874830246,
+        0.7700000181794167
+      ],
+      "dimensions_m": [
+        0.07794228941202164,
+        0.09000000357627869,
+        0.07999999821186066
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Frame mount bolt.005",
+      "source_node_index": 120,
+      "source_mesh": "Cylinder.053",
+      "system": "drivetrain",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.3110288493335247,
+        0.5949999839067459,
+        -0.7700000181794167
+      ],
+      "bounds_max_m": [
+        0.38897113874554634,
+        0.6849999874830246,
+        -0.690000019967556
+      ],
+      "dimensions_m": [
+        0.07794228941202164,
+        0.09000000357627869,
+        0.07999999821186066
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Frame mount bolt.006",
+      "source_node_index": 119,
+      "source_mesh": "Cylinder.054",
+      "system": "drivetrain",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.5110288076102734,
+        0.5949999839067459,
+        0.690000019967556
+      ],
+      "bounds_max_m": [
+        1.588971097022295,
+        0.6849999874830246,
+        0.7700000181794167
+      ],
+      "dimensions_m": [
+        0.07794228941202164,
+        0.09000000357627869,
+        0.07999999821186066
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Frame mount bolt.007",
+      "source_node_index": 118,
+      "source_mesh": "Cylinder.055",
+      "system": "drivetrain",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.5110288076102734,
+        0.5949999839067459,
+        -0.7700000181794167
+      ],
+      "bounds_max_m": [
+        1.588971097022295,
+        0.6849999874830246,
+        -0.690000019967556
+      ],
+      "dimensions_m": [
+        0.07794228941202164,
+        0.09000000357627869,
+        0.07999999821186066
+      ],
+      "vertex_count": 36,
+      "face_count": 20
+    },
+    {
+      "source_name": "Front differential",
+      "source_node_index": 162,
+      "source_mesh": "Cube.063",
+      "system": "drivetrain",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.8199999779462814,
+        0.46000000834465027,
+        -0.47999998927116394
+      ],
+      "bounds_max_m": [
+        1.219999983906746,
+        0.7800000011920929,
+        0.47999998927116394
+      ],
+      "dimensions_m": [
+        0.4000000059604645,
+        0.3199999928474426,
+        0.9599999785423279
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Front propeller shaft",
+      "source_node_index": 201,
+      "source_mesh": "Front propeller shaft",
+      "system": "drivetrain",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.6423644423484802,
+        0.5586961507797241,
+        -0.0650000125169754
+      ],
+      "bounds_max_m": [
+        0.8279615640640259,
+        1.0376313924789429,
+        0.0650000125169754
+      ],
+      "dimensions_m": [
+        1.470326006412506,
+        0.47893524169921875,
+        0.1300000250339508
+      ],
+      "vertex_count": 275,
+      "face_count": 480
+    },
+    {
+      "source_name": "Intake manifold",
+      "source_node_index": 215,
+      "source_mesh": "Cube.042",
+      "system": "drivetrain",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.5699999928474426,
+        1.7899999618530273,
+        -0.23999999463558197
+      ],
+      "bounds_max_m": [
+        1.4699999690055847,
+        2.049999952316284,
+        0.23999999463558197
+      ],
+      "dimensions_m": [
+        0.8999999761581421,
+        0.25999999046325684,
+        0.47999998927116394
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Label_4.0L V6 engine",
+      "source_node_index": 10,
+      "source_mesh": "Label_4.0L V6 engine",
+      "system": "drivetrain",
+      "is_guide": true,
+      "bounds_min_m": [
+        0.720694899559021,
+        1.7227009603936367,
+        0.9206366674239347
+      ],
+      "bounds_max_m": [
+        1.3769652843475342,
+        1.826195723264034,
+        0.9636224736909307
+      ],
+      "dimensions_m": [
+        0.6562703847885132,
+        0.10349476287039727,
+        0.042985806266995996
+      ],
+      "vertex_count": 13025,
+      "face_count": 21888
+    },
+    {
+      "source_name": "Label_Front differential",
+      "source_node_index": 2,
+      "source_mesh": "Label_Front differential",
+      "system": "drivetrain",
+      "is_guide": true,
+      "bounds_min_m": [
+        0.6528649926185608,
+        0.8771298513577399,
+        0.9926445606963881
+      ],
+      "bounds_max_m": [
+        1.3883449733257294,
+        0.9542597152354797,
+        1.0241592409488012
+      ],
+      "dimensions_m": [
+        0.7354799807071686,
+        0.07712986387773979,
+        0.03151468025241311
+      ],
+      "vertex_count": 16046,
+      "face_count": 26920
+    },
+    {
+      "source_name": "Label_Front propeller shaft",
+      "source_node_index": 1,
+      "source_mesh": "Label_Front propeller shaft",
+      "system": "drivetrain",
+      "is_guide": true,
+      "bounds_min_m": [
+        -0.3368949666619301,
+        0.7940112110065465,
+        0.9926445606963881
+      ],
+      "bounds_max_m": [
+        0.585144929587841,
+        0.8942597128512939,
+        1.0316712788852804
+      ],
+      "dimensions_m": [
+        0.9220398962497711,
+        0.10024850184474743,
+        0.03902671818889236
+      ],
+      "vertex_count": 18904,
+      "face_count": 31800
+    },
+    {
+      "source_name": "Lower radiator hose",
+      "source_node_index": 216,
+      "source_mesh": "Lower radiator hose",
+      "system": "drivetrain",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.169251799583435,
+        1.0571397542953491,
+        -0.1649441123008728
+      ],
+      "bounds_max_m": [
+        1.9590668678283691,
+        1.2219765186309814,
+        -0.0054053328931331635
+      ],
+      "dimensions_m": [
+        0.7898150682449341,
+        0.16483676433563232,
+        0.15953877940773964
+      ],
+      "vertex_count": 275,
+      "face_count": 480
+    },
+    {
+      "source_name": "Propeller shaft",
+      "source_node_index": 203,
+      "source_mesh": "Propeller shaft",
+      "system": "drivetrain",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.7889854907989502,
+        0.6492390036582947,
+        -0.07500001788139343
+      ],
+      "bounds_max_m": [
+        -0.3851179778575897,
+        1.029759407043457,
+        0.07500001788139343
+      ],
+      "dimensions_m": [
+        1.4038675129413605,
+        0.38052040338516235,
+        0.15000003576278687
+      ],
+      "vertex_count": 275,
+      "face_count": 480
+    },
+    {
+      "source_name": "Radiator",
+      "source_node_index": 218,
+      "source_mesh": "Cube.041",
+      "system": "drivetrain",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.8800000473856926,
+        1.0500000417232513,
+        -0.6499999761581421
+      ],
+      "bounds_max_m": [
+        2.020000047981739,
+        1.8900000154972076,
+        0.6499999761581421
+      ],
+      "dimensions_m": [
+        0.14000000059604645,
+        0.8399999737739563,
+        1.2999999523162842
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Upper radiator hose",
+      "source_node_index": 217,
+      "source_mesh": "Upper radiator hose",
+      "system": "drivetrain",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.1671650409698486,
+        1.7105255126953125,
+        0.005405344069004059
+      ],
+      "bounds_max_m": [
+        1.9674159288406372,
+        1.9638437032699585,
+        0.16493751108646393
+      ],
+      "dimensions_m": [
+        0.8002508878707886,
+        0.253318190574646,
+        0.15953216701745987
+      ],
+      "vertex_count": 275,
+      "face_count": 480
+    },
+    {
+      "source_name": "Fuel filler neck",
+      "source_node_index": 191,
+      "source_mesh": "Fuel filler neck",
+      "system": "fuel",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.7755365371704102,
+        0.5805853605270386,
+        -0.763422966003418
+      ],
+      "bounds_max_m": [
+        -1.320072054862976,
+        1.1832150220870972,
+        -0.5472198724746704
+      ],
+      "dimensions_m": [
+        0.4554644823074341,
+        0.6026296615600586,
+        0.21620309352874756
+      ],
+      "vertex_count": 275,
+      "face_count": 480
+    },
+    {
+      "source_name": "Fuel injector",
+      "source_node_index": 212,
+      "source_mesh": "Cylinder.035",
+      "system": "fuel",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.7549999710172415,
+        1.6400000303983688,
+        0.24500001035630703
+      ],
+      "bounds_max_m": [
+        0.8049999717622995,
+        1.8000000268220901,
+        0.2950000111013651
+      ],
+      "dimensions_m": [
+        0.05000000074505806,
+        0.1599999964237213,
+        0.05000000074505806
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "Fuel injector.001",
+      "source_node_index": 211,
+      "source_mesh": "Cylinder.036",
+      "system": "fuel",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.9650000091642141,
+        1.6400000303983688,
+        0.24500001035630703
+      ],
+      "bounds_max_m": [
+        1.0150000099092722,
+        1.8000000268220901,
+        0.2950000111013651
+      ],
+      "dimensions_m": [
+        0.05000000074505806,
+        0.1599999964237213,
+        0.05000000074505806
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "Fuel injector.002",
+      "source_node_index": 210,
+      "source_mesh": "Cylinder.037",
+      "system": "fuel",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.1750000473111868,
+        1.6400000303983688,
+        0.24500001035630703
+      ],
+      "bounds_max_m": [
+        1.2250000480562449,
+        1.8000000268220901,
+        0.2950000111013651
+      ],
+      "dimensions_m": [
+        0.05000000074505806,
+        0.1599999964237213,
+        0.05000000074505806
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "Fuel injector.003",
+      "source_node_index": 208,
+      "source_mesh": "Cylinder.038",
+      "system": "fuel",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.7549999710172415,
+        1.6400000303983688,
+        -0.2950000111013651
+      ],
+      "bounds_max_m": [
+        0.8049999717622995,
+        1.8000000268220901,
+        -0.24500001035630703
+      ],
+      "dimensions_m": [
+        0.05000000074505806,
+        0.1599999964237213,
+        0.05000000074505806
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "Fuel injector.004",
+      "source_node_index": 207,
+      "source_mesh": "Cylinder.039",
+      "system": "fuel",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.9650000091642141,
+        1.6400000303983688,
+        -0.2950000111013651
+      ],
+      "bounds_max_m": [
+        1.0150000099092722,
+        1.8000000268220901,
+        -0.24500001035630703
+      ],
+      "dimensions_m": [
+        0.05000000074505806,
+        0.1599999964237213,
+        0.05000000074505806
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "Fuel injector.005",
+      "source_node_index": 206,
+      "source_mesh": "Cylinder.040",
+      "system": "fuel",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.1750000473111868,
+        1.6400000303983688,
+        -0.2950000111013651
+      ],
+      "bounds_max_m": [
+        1.2250000480562449,
+        1.8000000268220901,
+        -0.24500001035630703
+      ],
+      "dimensions_m": [
+        0.05000000074505806,
+        0.1599999964237213,
+        0.05000000074505806
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "Fuel rail",
+      "source_node_index": 213,
+      "source_mesh": "Fuel rail",
+      "system": "fuel",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.699603796005249,
+        1.756226897239685,
+        0.24500000476837158
+      ],
+      "bounds_max_m": [
+        1.300396203994751,
+        1.8137730360031128,
+        0.29500001668930054
+      ],
+      "dimensions_m": [
+        0.600792407989502,
+        0.057546138763427734,
+        0.050000011920928955
+      ],
+      "vertex_count": 143,
+      "face_count": 240
+    },
+    {
+      "source_name": "Fuel rail.001",
+      "source_node_index": 209,
+      "source_mesh": "Fuel rail.001",
+      "system": "fuel",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.699603796005249,
+        1.756226897239685,
+        -0.29500001668930054
+      ],
+      "bounds_max_m": [
+        1.300396203994751,
+        1.8137730360031128,
+        -0.24500000476837158
+      ],
+      "dimensions_m": [
+        0.600792407989502,
+        0.057546138763427734,
+        0.050000011920928955
+      ],
+      "vertex_count": 143,
+      "face_count": 240
+    },
+    {
+      "source_name": "Fuel tank",
+      "source_node_index": 192,
+      "source_mesh": "Cube.047",
+      "system": "fuel",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.2799999713897705,
+        0.3699999749660492,
+        -0.550000011920929
+      ],
+      "bounds_max_m": [
+        -0.2799999713897705,
+        0.6699999868869781,
+        0.550000011920929
+      ],
+      "dimensions_m": [
+        1.0,
+        0.30000001192092896,
+        1.100000023841858
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Label_2WD | V6 4.0L | VIN K | FLEX FUEL",
+      "source_node_index": 11,
+      "source_mesh": "Label_2WD | V6 4.0L | VIN K | FLEX FUEL",
+      "system": "fuel",
+      "is_guide": true,
+      "bounds_min_m": [
+        -0.976349949836731,
+        2.788327273939589,
+        1.5163660177652696
+      ],
+      "bounds_max_m": [
+        0.9764799475669861,
+        2.909339257868507,
+        1.565043784434724
+      ],
+      "dimensions_m": [
+        1.952829897403717,
+        0.1210119839289181,
+        0.04867776666945445
+      ],
+      "vertex_count": 8266,
+      "face_count": 13484
+    },
+    {
+      "source_name": "Steering wheel",
+      "source_node_index": 102,
+      "source_mesh": "Cylinder.047",
+      "system": "steering",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.6499999761581421,
+        1.60999995470047,
+        0.337499993853271
+      ],
+      "bounds_max_m": [
+        1.0299999713897705,
+        1.9899999499320984,
+        0.36249999422580004
+      ],
+      "dimensions_m": [
+        0.3799999952316284,
+        0.3799999952316284,
+        0.02500000037252903
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "Brake disc",
+      "source_node_index": 175,
+      "source_mesh": "Cylinder.025",
+      "system": "suspension",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.3699999451637268,
+        0.5400000214576721,
+        -0.913400006480515
+      ],
+      "bounds_max_m": [
+        1.7299999594688416,
+        0.9000000357627869,
+        -0.888400006107986
+      ],
+      "dimensions_m": [
+        0.36000001430511475,
+        0.36000001430511475,
+        0.02500000037252903
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "Brake disc.001",
+      "source_node_index": 187,
+      "source_mesh": "Cylinder.001",
+      "system": "suspension",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.800000011920929,
+        0.5400000214576721,
+        0.888400006107986
+      ],
+      "bounds_max_m": [
+        -1.4399999976158142,
+        0.9000000357627869,
+        0.913400006480515
+      ],
+      "dimensions_m": [
+        0.36000001430511475,
+        0.36000001430511475,
+        0.02500000037252903
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "Brake disc.002",
+      "source_node_index": 183,
+      "source_mesh": "Cylinder.009",
+      "system": "suspension",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.800000011920929,
+        0.5400000214576721,
+        -0.913400006480515
+      ],
+      "bounds_max_m": [
+        -1.4399999976158142,
+        0.9000000357627869,
+        -0.888400006107986
+      ],
+      "dimensions_m": [
+        0.36000001430511475,
+        0.36000001430511475,
+        0.02500000037252903
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "Brake disc.003",
+      "source_node_index": 179,
+      "source_mesh": "Cylinder.017",
+      "system": "suspension",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.3699999451637268,
+        0.5400000214576721,
+        0.888400006107986
+      ],
+      "bounds_max_m": [
+        1.7299999594688416,
+        0.9000000357627869,
+        0.913400006480515
+      ],
+      "dimensions_m": [
+        0.36000001430511475,
+        0.36000001430511475,
+        0.02500000037252903
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "Label_Rear axle / 2WD",
+      "source_node_index": 8,
+      "source_mesh": "Label_Rear axle / 2WD",
+      "system": "suspension",
+      "is_guide": true,
+      "bounds_min_m": [
+        -1.9251199960708618,
+        0.8458205896524807,
+        0.9207073842731973
+      ],
+      "bounds_max_m": [
+        -1.171466201543808,
+        0.9255259005954419,
+        0.9561103335154773
+      ],
+      "dimensions_m": [
+        0.7536537945270538,
+        0.07970531094296118,
+        0.035402949242279935
+      ],
+      "vertex_count": 11389,
+      "face_count": 19108
+    },
+    {
+      "source_name": "Rear axle housing",
+      "source_node_index": 173,
+      "source_mesh": "Cube.044",
+      "system": "suspension",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.8200000077486038,
+        0.48000001907348633,
+        -0.699999988079071
+      ],
+      "bounds_max_m": [
+        -1.4200000017881393,
+        0.8400000333786011,
+        0.699999988079071
+      ],
+      "dimensions_m": [
+        0.4000000059604645,
+        0.36000001430511475,
+        1.399999976158142
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Rear axle shaft",
+      "source_node_index": 172,
+      "source_mesh": "Rear axle shaft",
+      "system": "suspension",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.6749999523162842,
+        0.6081961393356323,
+        0.22375470399856567
+      ],
+      "bounds_max_m": [
+        -1.565000057220459,
+        0.7718039155006409,
+        0.6672453284263611
+      ],
+      "dimensions_m": [
+        0.1099998950958252,
+        0.16360777616500854,
+        0.4434906244277954
+      ],
+      "vertex_count": 143,
+      "face_count": 240
+    },
+    {
+      "source_name": "Rear axle shaft.001",
+      "source_node_index": 171,
+      "source_mesh": "Rear axle shaft.001",
+      "system": "suspension",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.6750000715255737,
+        0.6081961393356323,
+        -0.6672453284263611
+      ],
+      "bounds_max_m": [
+        -1.5649999380111694,
+        0.7718039155006409,
+        -0.22375470399856567
+      ],
+      "dimensions_m": [
+        0.1100001335144043,
+        0.16360777616500854,
+        0.4434906244277954
+      ],
+      "vertex_count": 143,
+      "face_count": 240
+    },
+    {
+      "source_name": "Shock absorber",
+      "source_node_index": 169,
+      "source_mesh": "Cylinder.042",
+      "system": "suspension",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.7236969338775057,
+        0.7038094261005106,
+        0.5650000050663948
+      ],
+      "bounds_max_m": [
+        -1.5163030756592375,
+        1.1961905500576315,
+        0.6750000044703484
+      ],
+      "dimensions_m": [
+        0.20739385821826817,
+        0.49238112395712097,
+        0.10999999940395355
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "Shock absorber.001",
+      "source_node_index": 168,
+      "source_mesh": "Cylinder.043",
+      "system": "suspension",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.7236969338775057,
+        0.7038094261005106,
+        -0.6750000044703484
+      ],
+      "bounds_max_m": [
+        -1.5163030756592375,
+        1.1961905500576315,
+        -0.5650000050663948
+      ],
+      "dimensions_m": [
+        0.20739385821826817,
+        0.49238112395712097,
+        0.10999999940395355
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "Shock absorber.002",
+      "source_node_index": 166,
+      "source_mesh": "Cylinder.044",
+      "system": "suspension",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.44630302320715,
+        0.7038094261005106,
+        0.5650000050663948
+      ],
+      "bounds_max_m": [
+        1.6536968814254183,
+        1.1961905500576315,
+        0.6750000044703484
+      ],
+      "dimensions_m": [
+        0.20739385821826817,
+        0.49238112395712097,
+        0.10999999940395355
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "Shock absorber.003",
+      "source_node_index": 165,
+      "source_mesh": "Cylinder.045",
+      "system": "suspension",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.44630302320715,
+        0.7038094261005106,
+        -0.6750000044703484
+      ],
+      "bounds_max_m": [
+        1.6536968814254183,
+        1.1961905500576315,
+        -0.5650000050663948
+      ],
+      "dimensions_m": [
+        0.20739385821826817,
+        0.49238112395712097,
+        0.10999999940395355
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "Suspension control arm",
+      "source_node_index": 170,
+      "source_mesh": "Cube.045",
+      "system": "suspension",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.7200000062584877,
+        0.48000001162290573,
+        -0.6499999761581421
+      ],
+      "bounds_max_m": [
+        -1.5200000032782555,
+        0.6200000122189522,
+        0.6499999761581421
+      ],
+      "dimensions_m": [
+        0.20000000298023224,
+        0.14000000059604645,
+        1.2999999523162842
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Suspension control arm.001",
+      "source_node_index": 167,
+      "source_mesh": "Cube.046",
+      "system": "suspension",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.449999950826168,
+        0.48000001162290573,
+        -0.6499999761581421
+      ],
+      "bounds_max_m": [
+        1.6499999538064003,
+        0.6200000122189522,
+        0.6499999761581421
+      ],
+      "dimensions_m": [
+        0.20000000298023224,
+        0.14000000059604645,
+        1.2999999523162842
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Wheel hub",
+      "source_node_index": 186,
+      "source_mesh": "Cylinder.002",
+      "system": "suspension",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.6850000023841858,
+        0.6550000309944153,
+        0.8440999835729599
+      ],
+      "bounds_max_m": [
+        -1.5550000071525574,
+        0.7850000262260437,
+        0.9940999895334244
+      ],
+      "dimensions_m": [
+        0.12999999523162842,
+        0.12999999523162842,
+        0.15000000596046448
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "Wheel hub.001",
+      "source_node_index": 182,
+      "source_mesh": "Cylinder.010",
+      "system": "suspension",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.6850000023841858,
+        0.6550000309944153,
+        -0.9940999895334244
+      ],
+      "bounds_max_m": [
+        -1.5550000071525574,
+        0.7850000262260437,
+        -0.8440999835729599
+      ],
+      "dimensions_m": [
+        0.12999999523162842,
+        0.12999999523162842,
+        0.15000000596046448
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "Wheel hub.002",
+      "source_node_index": 178,
+      "source_mesh": "Cylinder.018",
+      "system": "suspension",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.48499995470047,
+        0.6550000309944153,
+        0.8440999835729599
+      ],
+      "bounds_max_m": [
+        1.6149999499320984,
+        0.7850000262260437,
+        0.9940999895334244
+      ],
+      "dimensions_m": [
+        0.12999999523162842,
+        0.12999999523162842,
+        0.15000000596046448
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "Wheel hub.003",
+      "source_node_index": 174,
+      "source_mesh": "Cylinder.026",
+      "system": "suspension",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.48499995470047,
+        0.6550000309944153,
+        -0.9940999895334244
+      ],
+      "bounds_max_m": [
+        1.6149999499320984,
+        0.7850000262260437,
+        -0.8440999835729599
+      ],
+      "dimensions_m": [
+        0.12999999523162842,
+        0.12999999523162842,
+        0.15000000596046448
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "4WD transfer case",
+      "source_node_index": 202,
+      "source_mesh": "Cube",
+      "system": "transmission",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.7199999839067459,
+        0.7400000244379044,
+        -0.30000001192092896
+      ],
+      "bounds_max_m": [
+        -0.23999999463558197,
+        1.2200000137090683,
+        0.30000001192092896
+      ],
+      "dimensions_m": [
+        0.47999998927116394,
+        0.47999998927116394,
+        0.6000000238418579
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "5R55E automatic transmission",
+      "source_node_index": 205,
+      "source_mesh": "Cube.043",
+      "system": "transmission",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.43000001460313797,
+        0.6800000071525574,
+        -0.3499999940395355
+      ],
+      "bounds_max_m": [
+        0.6700000092387199,
+        1.2800000309944153,
+        0.3499999940395355
+      ],
+      "dimensions_m": [
+        1.100000023841858,
+        0.6000000238418579,
+        0.699999988079071
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Label_4WD transfer case",
+      "source_node_index": 3,
+      "source_mesh": "Label_4WD transfer case",
+      "system": "transmission",
+      "is_guide": true,
+      "bounds_min_m": [
+        -0.905655026435852,
+        1.297130445289761,
+        0.9926445606963881
+      ],
+      "bounds_max_m": [
+        -0.05672478675842285,
+        1.3742596723201355,
+        1.0241591737128257
+      ],
+      "dimensions_m": [
+        0.8489302396774292,
+        0.0771292270303745,
+        0.031514613016437654
+      ],
+      "vertex_count": 18169,
+      "face_count": 30660
+    },
+    {
+      "source_name": "Label_5R55E automatic transmission",
+      "source_node_index": 9,
+      "source_mesh": "Label_5R55E automatic transmission",
+      "system": "transmission",
+      "is_guide": true,
+      "bounds_min_m": [
+        -0.5692599639296532,
+        1.175819239663805,
+        0.9210133097606064
+      ],
+      "bounds_max_m": [
+        0.768049992620945,
+        1.2545842822302824,
+        0.956110467951454
+      ],
+      "dimensions_m": [
+        1.3373099565505981,
+        0.07876504256647743,
+        0.03509715819084769
+      ],
+      "vertex_count": 32954,
+      "face_count": 55660
+    },
+    {
+      "source_name": "Transfer case crossmember",
+      "source_node_index": 190,
+      "source_mesh": "Cube.064",
+      "system": "transmission",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.619999997317791,
+        0.4800000227987766,
+        -0.6399999856948853
+      ],
+      "bounds_max_m": [
+        -0.380000002682209,
+        0.6000000201165676,
+        0.6399999856948853
+      ],
+      "dimensions_m": [
+        0.23999999463558197,
+        0.11999999731779099,
+        1.2799999713897705
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Transmission output",
+      "source_node_index": 204,
+      "source_mesh": "Cylinder.041",
+      "system": "transmission",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.6500000059604645,
+        0.8900000154972076,
+        -0.09000000357627869
+      ],
+      "bounds_max_m": [
+        -0.3499999940395355,
+        1.070000022649765,
+        0.09000000357627869
+      ],
+      "dimensions_m": [
+        0.30000001192092896,
+        0.18000000715255737,
+        0.18000000715255737
+      ],
+      "vertex_count": 192,
+      "face_count": 124
+    },
+    {
+      "source_name": "ABS harness",
+      "source_node_index": 154,
+      "source_mesh": "ABS harness",
+      "system": "wiring",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.2018885612487793,
+        0.6026340126991272,
+        0.6619690656661987
+      ],
+      "bounds_max_m": [
+        1.5603222846984863,
+        0.8982594013214111,
+        0.8747462034225464
+      ],
+      "dimensions_m": [
+        1.7622108459472656,
+        0.29562538862228394,
+        0.21277713775634766
+      ],
+      "vertex_count": 407,
+      "face_count": 720
+    },
+    {
+      "source_name": "ABS harness connector",
+      "source_node_index": 152,
+      "source_mesh": "Cube.056",
+      "system": "wiring",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.24500000476837158,
+        0.58500000461936,
+        0.6850000284612179
+      ],
+      "bounds_max_m": [
+        -0.1550000011920929,
+        0.6550000049173832,
+        0.7550000287592411
+      ],
+      "dimensions_m": [
+        0.09000000357627869,
+        0.07000000029802322,
+        0.07000000029802322
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "ABS harness connector.001",
+      "source_node_index": 153,
+      "source_mesh": "Cube.055",
+      "system": "wiring",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.5049999505281448,
+        0.8150000236928463,
+        0.8250000141561031
+      ],
+      "bounds_max_m": [
+        1.5949999541044235,
+        0.8850000239908695,
+        0.8950000144541264
+      ],
+      "dimensions_m": [
+        0.09000000357627869,
+        0.07000000029802322,
+        0.07000000029802322
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Body harness",
+      "source_node_index": 151,
+      "source_mesh": "Body harness",
+      "system": "wiring",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.2525393962860107,
+        1.7130703926086426,
+        -0.018000002950429916
+      ],
+      "bounds_max_m": [
+        0.9539951086044312,
+        1.9298701286315918,
+        0.018000002950429916
+      ],
+      "dimensions_m": [
+        2.206534504890442,
+        0.21679973602294922,
+        0.03600000590085983
+      ],
+      "vertex_count": 407,
+      "face_count": 720
+    },
+    {
+      "source_name": "Body harness connector",
+      "source_node_index": 149,
+      "source_mesh": "Cube.058",
+      "system": "wiring",
+      "is_guide": false,
+      "bounds_min_m": [
+        -1.2950000017881393,
+        1.6950000189244747,
+        -0.03500000014901161
+      ],
+      "bounds_max_m": [
+        -1.2049999982118607,
+        1.765000019222498,
+        0.03500000014901161
+      ],
+      "dimensions_m": [
+        0.09000000357627869,
+        0.07000000029802322,
+        0.07000000029802322
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Body harness connector.001",
+      "source_node_index": 150,
+      "source_mesh": "Cube.057",
+      "system": "wiring",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.9049999862909317,
+        1.744999971240759,
+        -0.03500000014901161
+      ],
+      "bounds_max_m": [
+        0.9949999898672104,
+        1.8149999715387821,
+        0.03500000014901161
+      ],
+      "dimensions_m": [
+        0.09000000357627869,
+        0.07000000029802322,
+        0.07000000029802322
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Engine harness",
+      "source_node_index": 157,
+      "source_mesh": "Engine harness",
+      "system": "wiring",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.6906224489212036,
+        1.5029932260513306,
+        0.4031263291835785
+      ],
+      "bounds_max_m": [
+        1.8050507307052612,
+        1.797378659248352,
+        0.5764928460121155
+      ],
+      "dimensions_m": [
+        1.1144282817840576,
+        0.2943854331970215,
+        0.173366516828537
+      ],
+      "vertex_count": 407,
+      "face_count": 720
+    },
+    {
+      "source_name": "Engine harness connector",
+      "source_node_index": 156,
+      "source_mesh": "Cube.053",
+      "system": "wiring",
+      "is_guide": false,
+      "bounds_min_m": [
+        0.6549999862909317,
+        1.5650000236928463,
+        0.38499998673796654
+      ],
+      "bounds_max_m": [
+        0.7449999898672104,
+        1.6350000239908695,
+        0.45499998703598976
+      ],
+      "dimensions_m": [
+        0.09000000357627869,
+        0.07000000029802322,
+        0.07000000029802322
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Engine harness connector.001",
+      "source_node_index": 155,
+      "source_mesh": "Cube.054",
+      "system": "wiring",
+      "is_guide": false,
+      "bounds_min_m": [
+        1.7549999505281448,
+        1.484999980777502,
+        0.41499998793005943
+      ],
+      "bounds_max_m": [
+        1.8449999541044235,
+        1.5549999810755253,
+        0.48499998822808266
+      ],
+      "dimensions_m": [
+        0.09000000357627869,
+        0.07000000029802322,
+        0.07000000029802322
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Label_Body harness",
+      "source_node_index": 7,
+      "source_mesh": "Label_Body harness",
+      "system": "wiring",
+      "is_guide": true,
+      "bounds_min_m": [
+        -0.29146504402160645,
+        1.9227022498854276,
+        0.9210133097606064
+      ],
+      "bounds_max_m": [
+        0.29531845450401306,
+        2.0245843823660854,
+        0.963622342456667
+      ],
+      "dimensions_m": [
+        0.5867834985256195,
+        0.1018821324806578,
+        0.042609032696060645
+      ],
+      "vertex_count": 14176,
+      "face_count": 23932
+    },
+    {
+      "source_name": "Rear lamp harness",
+      "source_node_index": 148,
+      "source_mesh": "Rear lamp harness",
+      "system": "wiring",
+      "is_guide": false,
+      "bounds_min_m": [
+        -2.1570608615875244,
+        0.8240630626678467,
+        -0.7442197799682617
+      ],
+      "bounds_max_m": [
+        -0.942779541015625,
+        1.3660048246383667,
+        -0.5823495984077454
+      ],
+      "dimensions_m": [
+        1.2142813205718994,
+        0.54194176197052,
+        0.16187018156051636
+      ],
+      "vertex_count": 275,
+      "face_count": 480
+    },
+    {
+      "source_name": "Rear lamp harness connector",
+      "source_node_index": 147,
+      "source_mesh": "Cube.059",
+      "system": "wiring",
+      "is_guide": false,
+      "bounds_min_m": [
+        -0.9949999898672104,
+        0.8049999736249447,
+        -0.6350000239908695
+      ],
+      "bounds_max_m": [
+        -0.9049999862909317,
+        0.8749999739229679,
+        -0.5650000236928463
+      ],
+      "dimensions_m": [
+        0.09000000357627869,
+        0.07000000029802322,
+        0.07000000029802322
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    },
+    {
+      "source_name": "Rear lamp harness connector.001",
+      "source_node_index": 146,
+      "source_mesh": "Cube.060",
+      "system": "wiring",
+      "is_guide": false,
+      "bounds_min_m": [
+        -2.195000097155571,
+        1.3150000236928463,
+        -0.7349999882280827
+      ],
+      "bounds_max_m": [
+        -2.1050000935792923,
+        1.3850000239908695,
+        -0.6649999879300594
+      ],
+      "dimensions_m": [
+        0.09000000357627869,
+        0.07000000029802322,
+        0.07000000029802322
+      ],
+      "vertex_count": 24,
+      "face_count": 12
+    }
+  ]
+}
