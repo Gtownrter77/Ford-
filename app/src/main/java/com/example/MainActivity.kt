@@ -403,7 +403,6 @@ class MainActivity : ComponentActivity() {
                                 onUpdateFulfillment = { id, ful -> viewModel.updateCartItemFulfillment(id, ful) },
                                 onRemoveItem = { id -> viewModel.removeFromCart(id) },
                                 onAddPartToCart = { part -> viewModel.addPartToCart(part) },
-                                onCheckout = { method -> viewModel.checkoutOrder(method) },
                                 onDismissSuccessNotice = { viewModel.dismissOrderSuccessNotice() }
                             )
                         }

@@ -11,8 +11,7 @@ import org.junit.Test
 class FeatureRoutePolicyTest {
 
     @Test
-    fun loungeDoesNotOpenFeatureData() {
-        assertFalse(FeatureRoutePolicy.requiresFeatureData(MainTab.LOUNGE))
+    fun nonDataRoutesDoNotOpenFeatureData() {
         assertFalse(FeatureRoutePolicy.requiresFeatureData(MainTab.VIEW_3D))
         assertFalse(FeatureRoutePolicy.requiresFeatureData(MainTab.PARTS_CART))
         assertTrue(FeatureRoutePolicy.requiresFeatureData(MainTab.MAINTENANCE))

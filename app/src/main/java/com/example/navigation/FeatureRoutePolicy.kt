@@ -18,7 +18,6 @@ object FeatureRoutePolicy {
     const val SAFE_SCENE_COMPONENT_CAP = 8
 
     fun isEnabled(tab: MainTab): Boolean = when (tab) {
-        MainTab.LOUNGE -> true
         MainTab.REPAIR_MANUAL -> true
         MainTab.MAINTENANCE -> true
         MainTab.DIAGNOSTICS -> true
@@ -27,7 +26,6 @@ object FeatureRoutePolicy {
     }
 
     fun requiresFeatureData(tab: MainTab): Boolean = when (tab) {
-        MainTab.LOUNGE -> false
         MainTab.PARTS_CART -> false
         MainTab.VIEW_3D -> false
         MainTab.REPAIR_MANUAL -> true
