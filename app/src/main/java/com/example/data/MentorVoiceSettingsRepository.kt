@@ -3,6 +3,7 @@ package com.example.data
 import android.content.Context
 import android.content.SharedPreferences
 import com.example.model.MentorVoiceSettings
+import com.example.model.MentorCharacter
 import com.example.model.VoicePersonality
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -16,6 +17,9 @@ class MentorVoiceSettingsRepository(context: Context) {
     val settingsFlow: StateFlow<MentorVoiceSettings> = _settingsFlow.asStateFlow()
 
     fun loadSettings(): MentorVoiceSettings {
+        val characterId = prefs.getString(KEY_CHARACTER, MentorCharacter.MASTER_MECHANIC.id) ?: MentorCharacter.MASTER_MECHANIC.id
+        val character = MentorCharacter.entries.find { it.id == characterId } ?: MentorCharacter.MASTER_MECHANIC
+
         val profileId = prefs.getString(KEY_PROFILE, VoicePersonality.BIG_MIKE.id) ?: VoicePersonality.BIG_MIKE.id
         val profile = VoicePersonality.entries.find { it.id == profileId } ?: VoicePersonality.BIG_MIKE
 
@@ -28,6 +32,7 @@ class MentorVoiceSettingsRepository(context: Context) {
         val haptics = prefs.getBoolean(KEY_HAPTICS, true)
 
         return MentorVoiceSettings(
+            activeCharacter = character,
             activeProfile = profile,
             speechRate = speechRate,
             pitch = pitch,
@@ -41,6 +46,7 @@ class MentorVoiceSettingsRepository(context: Context) {
 
     fun saveSettings(settings: MentorVoiceSettings) {
         prefs.edit()
+            .putString(KEY_CHARACTER, settings.activeCharacter.id)
             .putString(KEY_PROFILE, settings.activeProfile.id)
             .putFloat(KEY_SPEECH_RATE, settings.speechRate)
             .putFloat(KEY_PITCH, settings.pitch)
@@ -54,6 +60,10 @@ class MentorVoiceSettingsRepository(context: Context) {
         _settingsFlow.value = settings
     }
 
+    fun selectCharacter(character: MentorCharacter) {
+        saveSettings(_settingsFlow.value.copy(activeCharacter = character))
+    }
+
     fun selectProfile(profile: VoicePersonality) {
         val current = _settingsFlow.value
         val updated = current.copy(
@@ -65,6 +75,7 @@ class MentorVoiceSettingsRepository(context: Context) {
     }
 
     companion object {
+        private const val KEY_CHARACTER = "active_character_id"
         private const val KEY_PROFILE = "active_profile_id"
         private const val KEY_SPEECH_RATE = "speech_rate"
         private const val KEY_PITCH = "pitch"
