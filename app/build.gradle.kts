@@ -11,6 +11,8 @@ plugins {
 // -PtermuxBuild=true intentionally produces a reduced APK without that JNI
 // library; normal desktop/release builds keep the complete native engine.
 val termuxBuild = providers.gradleProperty("termuxBuild").orNull == "true"
+val nativeLlamaCmake = rootProject.file("shared/llama/CMakeLists.txt")
+val nativeLlamaEnabled = !termuxBuild && nativeLlamaCmake.isFile
 
 android {
   namespace = "com.example"
@@ -29,7 +31,7 @@ android {
       abiFilters += "arm64-v8a"
     }
 
-    if (!termuxBuild) {
+    if (nativeLlamaEnabled) {
       externalNativeBuild {
         cmake {
           cppFlags += "-std=c++17"
@@ -72,10 +74,10 @@ android {
     compose = true
     buildConfig = true
   }
-  if (!termuxBuild) {
+  if (nativeLlamaEnabled) {
     externalNativeBuild {
       cmake {
-        path = file("../shared/llama/CMakeLists.txt")
+        path = nativeLlamaCmake
         version = "3.22.1"
       }
     }
