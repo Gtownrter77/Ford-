@@ -14,6 +14,21 @@ From the repository root, after `ANDROID_HOME` points to an SDK containing `plat
 ./gradlew testDebugUnitTest assembleDebug -PtermuxBuild=true --no-daemon
 ```
 
+The reusable wrapper performs the same checks and prints a clear result:
+
+```bash
+chmod +x scripts/build_android_apk.sh
+scripts/build_android_apk.sh --termux
+```
+
+It automatically accepts SDK licenses **only when a real `sdkmanager` is present**. It never fabricates license files. To explicitly request license acceptance, use:
+
+```bash
+scripts/build_android_apk.sh --termux --accept
+```
+
+If Termux has no `sdkmanager`, the script reports that fact and continues with the already-installed platform/tool layout. This is expected for the reduced Termux profile.
+
 The resulting APK is:
 
 ```text
@@ -29,6 +44,14 @@ On a supported Android development machine with the Android NDK installed:
 ```bash
 ./gradlew testDebugUnitTest assembleDebug --no-daemon
 ```
+
+Or use the wrapper:
+
+```bash
+scripts/build_android_apk.sh --full --accept
+```
+
+The full mode stops before Gradle if NDK `28.2.13676358` is not installed. Do not create an empty NDK directory or answer a license prompt as a substitute for the actual native toolchain.
 
 Do not pass `-PtermuxBuild=true` for the complete build.
 
