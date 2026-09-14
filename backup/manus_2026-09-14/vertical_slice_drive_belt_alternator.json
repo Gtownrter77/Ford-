@@ -1,0 +1,41 @@
+{
+  "schema_version": "0.1.0",
+  "slice_id": "service_drive_belt_alternator_4wd_vin_k",
+  "vehicle_id": "vehicle_2004_sport_trac",
+  "title": "Engine-bay drive belt and alternator access path",
+  "purpose": "First end-to-end Digital Twin service slice for component identity, spatial context, dependencies, access prerequisites, safety, and repair state.",
+  "authoritative_configuration": "2004 Sport Trac 4WD V6-4.0L VIN K Flex Fuel",
+  "status": "scaffold_pending_page_level_4wd_reconciliation",
+  "source_resolution": {
+    "repository_source_map": "docs/2004_SPORT_TRAC_CHARM_WORKSHOP.md",
+    "authoritative_section": "4WD VIN K Drive Belts",
+    "source_url": "https://charm.li/Ford/2004/Explorer%20Sport%20Trac%204WD%20V6-4.0L%20VIN%20K%20Flex%20Fuel/Repair%20and%20Diagnosis/Engine%2C%20Cooling%20and%20Exhaust/Engine/Drive%20Belts/",
+    "retrieval_status": "page_not_found_during_current_retrieval",
+    "policy": "Keep procedure, fastener, torque, and page citations pending until the 4WD source page is available from the indexed archive."
+  },
+  "component_ids": ["alternator_ignition", "engine_40l", "wiring_lighting_3d"],
+  "planned_relationships": [
+    {"from": "engine_40l", "relationship": "contains_or_mounts", "to": "alternator_ignition", "status": "reference_spatial_relationship"},
+    {"from": "alternator_ignition", "relationship": "connected_to", "to": "wiring_lighting_3d", "status": "reference_electrical_relationship"},
+    {"from": "drive_belt", "relationship": "transmits_rotation_between", "to": ["crankshaft_pulley", "alternator", "idler_or_tensioner", "accessories"], "status": "manual_page_reconciliation_required"}
+  ],
+  "access_prerequisites": [
+    {"step": 1, "action": "engine_off_and_key_removed", "safety": "required", "evidence": "manual_page_pending"},
+    {"step": 2, "action": "verify_belt_routing_and_tensioner_access", "safety": "required", "evidence": "manual_page_pending"},
+    {"step": 3, "action": "disconnect_electrical_connector_or_battery_feed_if_required", "safety": "configuration_and_manual_dependent", "evidence": "manual_page_pending"}
+  ],
+  "service_states": [
+    {"id": "installed", "description": "Belt and alternator installed; connectors and fasteners seated", "status": "defined"},
+    {"id": "access_prepared", "description": "Safety and access prerequisites completed", "status": "defined"},
+    {"id": "belt_released", "description": "Belt tension released and routing preserved", "status": "pending_verified_sequence"},
+    {"id": "alternator_removed", "description": "Alternator detached with electrical connections controlled", "status": "pending_verified_sequence"},
+    {"id": "service_complete", "description": "Component reinstalled, belt routed, tension applied, and verification completed", "status": "pending_verified_sequence"}
+  ],
+  "fastener_policy": "Do not populate size, quantity, or torque until matched to a 4WD VIN K manual page.",
+  "mentor_context": {
+    "known_facts": ["canonical component IDs", "reference spatial grouping", "service slice intent"],
+    "unknowns": ["exact 4WD page references", "fastener quantities", "torque values", "confirmed removal order", "VIN-instance variation"],
+    "guidance_rule": "Mentor may explain only verified facts and should ask for confirmation when a pending field is required."
+  },
+  "evidence": {"primary_source": "4WD VIN K manual index summary", "indexed_page_count": 9560, "page_level_citations": [], "confidence": "scaffold_only"}
+}
