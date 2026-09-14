@@ -77,6 +77,7 @@ enum class VoicePersonality(
 }
 
 data class MentorVoiceSettings(
+    val activeCharacter: MentorCharacter = MentorCharacter.MASTER_MECHANIC,
     val activeProfile: VoicePersonality = VoicePersonality.BIG_MIKE,
     val speechRate: Float = VoicePersonality.BIG_MIKE.defaultSpeechRate,
     val pitch: Float = VoicePersonality.BIG_MIKE.defaultPitch,
