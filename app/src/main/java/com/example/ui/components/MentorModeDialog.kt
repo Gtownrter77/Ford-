@@ -45,6 +45,8 @@ fun MentorModeDialog(
     val coroutineScope = rememberCoroutineScope()
     val ttsManager = remember { MentorTtsManager(context) }
     val vcm = remember { voiceCommandManager ?: VoiceCommandManager(context) }
+    val mentorSettingsRepository = remember { com.example.data.MentorVoiceSettingsRepository(context) }
+    var activeMentor by remember { mutableStateOf(mentorSettingsRepository.loadSettings().activeCharacter) }
 
     var currentStepIndex by remember { mutableStateOf(0) }
     val completedStepIndices = remember { mutableStateListOf<Int>() }
@@ -58,6 +60,7 @@ fun MentorModeDialog(
             onDismiss = {
                 showVoiceSettingsDialog = false
                 ttsManager.reloadSettings()
+                activeMentor = mentorSettingsRepository.loadSettings().activeCharacter
             }
         )
     }
@@ -243,7 +246,7 @@ fun MentorModeDialog(
                         Column {
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 Text(
-                                    text = "MENTOR MODE",
+                                    text = activeMentor.title.uppercase(),
                                     style = MaterialTheme.typography.titleMedium.copy(
                                         fontWeight = FontWeight.Bold,
                                         letterSpacing = 1.sp
@@ -265,7 +268,7 @@ fun MentorModeDialog(
                                 }
                             }
                             Text(
-                                text = "${component.name} • OEM Manual Procedure",
+                                text = "${activeMentor.badge} • ${component.name} • OEM Manual Procedure",
                                 style = MaterialTheme.typography.labelSmall,
                                 color = Color(0xFF38BDF8)
                             )
