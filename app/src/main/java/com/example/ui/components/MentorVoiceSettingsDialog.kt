@@ -30,6 +30,7 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.example.data.MentorVoiceSettingsRepository
 import com.example.model.MentorVoiceSettings
+import com.example.model.MentorCharacter
 import com.example.model.VoicePersonality
 import com.example.util.HapticHelper
 import com.example.util.MentorTtsManager
@@ -161,7 +162,113 @@ fun MentorVoiceSettingsDialog(
                         .fillMaxWidth(),
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
-                    // Section 1: Voice Profiles
+                    // Section 1: One-on-one Mentor identity
+                    item {
+                        Text(
+                            text = "CHOOSE YOUR MENTOR",
+                            style = MaterialTheme.typography.labelSmall.copy(
+                                fontWeight = FontWeight.Bold,
+                                letterSpacing = 0.8.sp
+                            ),
+                            color = Color(0xFF94A3B8)
+                        )
+                    }
+
+                    items(MentorCharacter.entries) { character ->
+                        val isSelected = settings.activeCharacter == character
+                        Surface(
+                            color = if (isSelected) Color(0xFF1E293B) else Color(0xFF182232),
+                            shape = RoundedCornerShape(16.dp),
+                            border = BorderStroke(
+                                width = if (isSelected) 2.dp else 1.dp,
+                                color = if (isSelected) character.accentColor else Color(0xFF334155)
+                            ),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable {
+                                    HapticHelper.triggerControlTick(context, view, haptic)
+                                    val updated = settings.copy(activeCharacter = character)
+                                    settings = updated
+                                    repository.saveSettings(updated)
+                                }
+                                .testTag("mentor_character_card_${character.id}")
+                        ) {
+                            Row(
+                                modifier = Modifier.padding(14.dp),
+                                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Surface(
+                                    color = character.accentColor.copy(alpha = 0.18f),
+                                    shape = CircleShape,
+                                    border = BorderStroke(1.dp, character.accentColor),
+                                    modifier = Modifier.size(46.dp)
+                                ) {
+                                    Box(contentAlignment = Alignment.Center) {
+                                        Icon(
+                                            imageVector = when (character) {
+                                                MentorCharacter.MASTER_MECHANIC -> Icons.Default.Build
+                                                MentorCharacter.PRECISION_ENGINEER -> Icons.Default.Engineering
+                                                MentorCharacter.GEARHEAD -> Icons.Default.DirectionsCar
+                                            },
+                                            contentDescription = null,
+                                            tint = character.accentColor
+                                        )
+                                    }
+                                }
+                                Column(modifier = Modifier.weight(1f)) {
+                                    Row(
+                                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                                        verticalAlignment = Alignment.CenterVertically
+                                    ) {
+                                        Text(
+                                            text = character.title,
+                                            style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Black),
+                                            color = Color.White
+                                        )
+                                        if (isSelected) {
+                                            Surface(
+                                                color = character.accentColor.copy(alpha = 0.16f),
+                                                shape = RoundedCornerShape(6.dp)
+                                            ) {
+                                                Text(
+                                                    text = "ACTIVE",
+                                                    style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
+                                                    color = character.accentColor,
+                                                    modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
+                                                )
+                                            }
+                                        }
+                                    }
+                                    Text(
+                                        text = character.roleTitle,
+                                        style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
+                                        color = character.accentColor
+                                    )
+                                    Spacer(modifier = Modifier.height(2.dp))
+                                    Text(
+                                        text = character.tagline,
+                                        style = MaterialTheme.typography.bodySmall,
+                                        color = Color(0xFFCBD5E1)
+                                    )
+                                }
+                                RadioButton(
+                                    selected = isSelected,
+                                    onClick = {
+                                        val updated = settings.copy(activeCharacter = character)
+                                        settings = updated
+                                        repository.saveSettings(updated)
+                                    },
+                                    colors = RadioButtonDefaults.colors(
+                                        selectedColor = character.accentColor,
+                                        unselectedColor = Color(0xFF64748B)
+                                    )
+                                )
+                            }
+                        }
+                    }
+
+                    // Section 2: Voice Profiles
                     item {
                         Text(
                             text = "CHOOSE MENTOR VOICE PROFILE",
